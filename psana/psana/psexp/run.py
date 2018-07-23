@@ -1,4 +1,5 @@
 from psana.psexp.node import Smd0, SmdNode, BigDataNode
+from psana.dgrammanager import DgramManager
 import numpy as np
 
 def read_event(ds, event_type=None):
@@ -12,18 +13,18 @@ def read_event(ds, event_type=None):
     rank = ds.mpi.rank
     size = ds.mpi.size
     if size == 1:
-        for evt in ds.dm: yield evt       # safe for python2
+        dm = DgramManager(ds.xtc_files, configs=ds.dm.configs)
+        for evt in dm: yield evt       # safe for python2
     else:
         if ds.nodetype == 'smd0':
-            Smd0(ds.mpi, ds.smd_dm.fds, ds.nsmds, max_events=ds.max_events)
+            Smd0(ds)
         elif ds.nodetype == 'smd':
             bd_node_ids = (np.arange(size)[ds.nsmds+1:] % ds.nsmds) + 1
-            smd_node = SmdNode(ds.mpi, ds.smd_configs, len(bd_node_ids[bd_node_ids==rank]), \
-                               batch_size=ds.batch_size, filter=ds.filter)
+            smd_node = SmdNode(ds, len(bd_node_ids[bd_node_ids==rank]))
             smd_node.run_mpi()
         elif ds.nodetype == 'bd':
             smd_node_id = (rank % ds.nsmds) + 1
-            bd_node = BigDataNode(ds.mpi, ds.smd_configs, ds.dm, smd_node_id)
+            bd_node = BigDataNode(ds, smd_node_id)
             for evt in bd_node.run_mpi():
                 yield evt
 

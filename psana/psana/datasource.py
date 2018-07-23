@@ -1,7 +1,9 @@
 import sys, os, glob
 from psana.detector.detector import Detector
 from psana.psexp.run import Run
-from psana.psexp.tools import MpiComm, DataSourceHelper
+from psana.psexp.tools import MpiComm
+from psana.datasource_helper import DataSourceHelper
+from psana.dgrammanager import DgramManager
 
 class DataSource(object):
     """ Read XTC files  """ 
@@ -20,9 +22,25 @@ class DataSource(object):
         self.max_events = max_events
         
         self.mpi = MpiComm()
-        DataSourceHelper(expstr, self) # setup dgrammanger, configs, & calib.
-        if self.nodetype == 'bd':
-            self.Detector = Detector(self.configs, calib=self.calib) 
+        ds_helper = DataSourceHelper(expstr, self)
+        ds_helper.assign_node_type()
+        
+        if self.nodetype == 'smd0':
+            ds_helper.parse_expstr()
+        ds_helper.run(job="bcast_files")
+        
+        if self.nodetype == 'smd0':
+            ds_helper.read_configs()
+        else:
+            ds_helper.init_configs()
+        ds_helper.run(job="bcast_configs")
+
+        if self.nodetype != 'smd0':
+            self.smd_dm = DgramManager(self.smd_files, configs=ds_helper.smd_configs) 
+            self.dm = DgramManager(self.xtc_files, configs=ds_helper.configs)
+        
+        if self.nodetype in ('bd', 'smd0'):
+            self.Detector = Detector(self.dm.configs, calib=self.calib) 
 
     def runs(self): 
         nruns = 1
@@ -35,6 +53,6 @@ class DataSource(object):
     
     @property
     def _configs(self):
-        assert len(self.configs) > 0
-        return self.configs
+        assert len(self.dm.configs) > 0
+        return self.dm.configs
     

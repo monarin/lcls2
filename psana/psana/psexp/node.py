@@ -3,6 +3,7 @@ import numpy as np
 from psana.smdreader import SmdReader
 from psana.eventbuilder import EventBuilder
 from psana.event import Event
+from psana.dgrammanager import DgramManager
 
 mode = os.environ.get('PS_PARALLEL', 'mpi')
 MPI = None
@@ -25,16 +26,16 @@ class Smd0(Node):
     Identifies limit timestamp of the slowest detector then
     sends all smds within that timestamp to an smd_node.
     """
-    def __init__(self, mpi, fds, n_smd_nodes, max_events=0):
-        Node.__init__(self, mpi)
-        self.fds = fds
+    def __init__(self, ds):
+        Node.__init__(self, ds.mpi)
+        self.fds = ds.smd_dm.fds
         assert len(self.fds) > 0
-        self.smdr = SmdReader(fds)
+        self.smdr = SmdReader(self.fds)
 
-        self.n_smd_nodes = n_smd_nodes
+        self.n_smd_nodes = ds.nsmds
 
         self.n_events = int(os.environ.get('PS_SMD_N_EVENTS', 100))
-        self.max_events = max_events
+        self.max_events = ds.max_events
         if self.max_events:
             if self.max_events < self.n_events:
                 self.n_events = self.max_events
@@ -88,12 +89,12 @@ class SmdNode(Node):
     Receives blocks of smds from smd_0 then assembles
     offsets and dgramsizes into a numpy array. Sends
     this np array to bd_nodes that are registered to it."""
-    def __init__(self, mpi, configs, n_bd_nodes, batch_size=1, filter=0):
-        Node.__init__(self, mpi)
-        self.configs = configs
+    def __init__(self, ds, n_bd_nodes):
+        Node.__init__(self, ds.mpi)
+        self.configs = ds.smd_dm.configs
         self.n_bd_nodes = n_bd_nodes
-        self.batch_size = batch_size
-        self.filter = filter
+        self.batch_size = ds.batch_size
+        self.filter = ds.filter
 
     def run_mpi(self):
         rank = self.mpi.rank
@@ -154,10 +155,9 @@ class SmdNode(Node):
             batch = eb.build(batch_size=self.batch_size, filter=self.filter)
 
 class BigDataNode(Node):
-    def __init__(self, mpi, smd_configs, dm, smd_node_id):
-        Node.__init__(self, mpi)
-        self.smd_configs = smd_configs
-        self.dm = dm
+    def __init__(self, ds, smd_node_id):
+        Node.__init__(self, ds.mpi)
+        self.ds = ds
         self.smd_node_id = smd_node_id
 
     def run_mpi(self):
@@ -189,9 +189,9 @@ class BigDataNode(Node):
         views = view.split(b'endofevt')
         for event_bytes in views:
             if event_bytes:
-                evt = Event().from_bytes(self.smd_configs, event_bytes)
+                evt = Event().from_bytes(self.ds.smd_dm.configs, event_bytes)
                 # get big data
                 ofsz = np.asarray([[d.info.offsetAlg.intOffset, d.info.offsetAlg.intDgramSize] \
                         for d in evt])
-                bd_evt = self.dm.next(offsets=ofsz[:,0], sizes=ofsz[:,1], read_chunk=False)
+                bd_evt = self.ds.dm.next(offsets=ofsz[:,0], sizes=ofsz[:,1], read_chunk=False)
                 yield bd_evt

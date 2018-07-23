@@ -19,15 +19,13 @@ def dumpDict(dict,indent):
 def dumpDgram(d):
     dumpDict(d.__dict__,0)
 
-FN_L = 200
-
 class DgramManager():
     """Stores variables and arrays loaded from an XTC source.\n"""
     def __init__(self, xtc_files, configs=[]):
         if isinstance(xtc_files, (str)):
-            self.xtc_files = np.array([xtc_files], dtype='U%s'%FN_L)
+            self.xtc_files = np.array([xtc_files])
         elif isinstance(xtc_files, (list, np.ndarray)):
-            self.xtc_files = np.asarray(xtc_files, dtype='U%s'%FN_L)
+            self.xtc_files = np.asarray(xtc_files)
         assert len(self.xtc_files) > 0
         
         given_configs = True if len(configs) > 0 else False

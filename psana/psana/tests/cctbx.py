@@ -11,7 +11,7 @@ os.environ['PS_CALIB_DIR'] = "/reg/d/psdm/cxi/cxid9114/scratch/mona/l2/psana-ner
 xtc_dir = "/reg/d/psdm/xpp/xpptut15/scratch/mona/cxid9114"
 ds = DataSource('exp=cxid9114:run=96:dir=%s'%(xtc_dir), filter=filter)
 det = None
-if ds.nodetype == "bd":
+if ds.nodetype in ("bd", "smd0"):
     det = ds.Detector("DsdCsPad")
 
 for run in ds.runs():
