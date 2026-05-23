@@ -230,6 +230,20 @@ py.extension_module(
  )
 
 py.extension_module(
+    'xtc1dgramlite',
+    'psana/xtc1dgramlite.pyx',
+    include_directories: [
+        psana_incdir,
+    ],
+    install: true,
+    install_rpath: libdir_install_rpath,
+    subdir: 'psana',
+    link_with: [],
+    dependencies: [],
+    override_options : ['cython_language=cpp'],
+ )
+
+py.extension_module(
     'hsd',
     'psana/hsd/hsd.pyx',
     include_directories: [
@@ -335,6 +349,8 @@ install_subdir(
     'parallelreader.pyx',
     'quadanode.pyx',
     'smdreader.pyx',
+    'xtc1dgramlite.pxd',
+    'xtc1dgramlite.pyx',
     'cydebug.pxh',
   ],
 )
