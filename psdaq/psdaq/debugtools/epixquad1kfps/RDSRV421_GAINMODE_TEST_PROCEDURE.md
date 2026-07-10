@@ -130,6 +130,21 @@ Recording sequence:
 
 Use a new output filename for each capture so the decode step is unambiguous.
 
+## Troubleshooting 1080 Hz Short Records
+
+Running the camera at 1080 Hz can leave it in a bad state where the
+StreamWriter records are only about 1600 bytes instead of full image payloads.
+If `read_xpmmini_rogue_file.py` reports only short records, recover the camera
+FPGA from the ePixQuad software directory:
+
+```bash
+cd "$SUBMODULEDIR/epix-quad-1kfps/software"
+python scripts/epixQuadRebootFpga.py --l 0 --dev /dev/datadev_0
+```
+
+After the reboot completes, reload the UED camera YAML and rerun the gain-mode
+write before recording another file.
+
 ## 4. Decode And Check The Frame Data
 
 For fixed `FL`, the expected raw gainbit is `1`:

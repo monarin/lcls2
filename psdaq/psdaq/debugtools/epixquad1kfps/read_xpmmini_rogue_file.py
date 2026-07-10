@@ -43,6 +43,38 @@ def _parse_expected_gainbit(value):
     return bool(bit)
 
 
+def _parse_inspect_pixel(value):
+    parts = [part.strip() for part in str(value).split(",")]
+    if len(parts) == 3:
+        label = None
+        coord_parts = parts
+    elif len(parts) == 4:
+        label = parts[0]
+        coord_parts = parts[1:]
+    else:
+        raise argparse.ArgumentTypeError(
+            "--inspect-pixel expects SEG,ROW,COL or LABEL,SEG,ROW,COL"
+        )
+
+    try:
+        segment, row, col = (int(part, 0) for part in coord_parts)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(
+            f"--inspect-pixel contains a non-integer coordinate: {value!r}"
+        ) from exc
+
+    if not (0 <= segment < RAW_SHAPE[0]):
+        raise argparse.ArgumentTypeError(f"inspection segment out of range: {segment}")
+    if not (0 <= row < RAW_SHAPE[1]):
+        raise argparse.ArgumentTypeError(f"inspection row out of range: {row}")
+    if not (0 <= col < RAW_SHAPE[2]):
+        raise argparse.ArgumentTypeError(f"inspection col out of range: {col}")
+
+    if not label:
+        label = f"s{segment}_r{row}_c{col}"
+    return label, segment, row, col
+
+
 def _parse_status_indices(text, nindices):
     if str(text).lower() in ("any", "all", "*"):
         return None
@@ -157,7 +189,19 @@ def _parse_args():
             "default any marks a pixel bad if any status index is nonzero"
         ),
     )
+    parser.add_argument(
+        "--inspect-pixel",
+        action="append",
+        type=_parse_inspect_pixel,
+        default=[],
+        metavar="[LABEL,]SEG,ROW,COL",
+        help=(
+            "report raw14/gainbit statistics and FM/FL pedestal deltas for a raw pixel; "
+            "repeatable. Pedestals are read from --pixel-status-npz when available"
+        ),
+    )
     args = parser.parse_args()
+    args.inspect_pixel = list(dict.fromkeys(args.inspect_pixel))
     if args.expected_gainbit is not None and args.expected_gainbit_map:
         parser.error("use only one of --expected-gainbit or --expected-gainbit-map")
     if args.fpfn_max_pixels < 0:
@@ -268,6 +312,44 @@ def _load_pixel_status_bad_mask(args):
             f"{args.pixel_status_npz} {key} has unsupported shape {bad_values.shape}; "
             f"expected {RAW_SHAPE} or (N,{RAW_SHAPE[0]},{RAW_SHAPE[1]},{RAW_SHAPE[2]})"
         )
+
+
+def _load_inspection_pedestals(args):
+    if not args.inspect_pixel or not args.pixel_status_npz:
+        return None, None
+
+    with np.load(args.pixel_status_npz, allow_pickle=False) as data:
+        if "pedestals" not in data or "mode_names" not in data:
+            return None, f"{args.pixel_status_npz} does not contain pedestals and mode_names"
+
+        pedestals = np.asarray(data["pedestals"])
+        mode_names = [str(name).upper() for name in np.asarray(data["mode_names"])]
+        if pedestals.ndim != 4 or pedestals.shape[1:] != RAW_SHAPE:
+            raise ValueError(
+                f"{args.pixel_status_npz} pedestals has unsupported shape {pedestals.shape}; "
+                f"expected (N,{RAW_SHAPE[0]},{RAW_SHAPE[1]},{RAW_SHAPE[2]})"
+            )
+        if len(mode_names) != pedestals.shape[0]:
+            raise ValueError(
+                f"{args.pixel_status_npz} mode_names length {len(mode_names)} does not match "
+                f"pedestal modes {pedestals.shape[0]}"
+            )
+
+        missing = [name for name in ("FM", "FL") if name not in mode_names]
+        if missing:
+            return None, f"{args.pixel_status_npz} is missing pedestal modes {missing}"
+
+        refs = {
+            "FM": pedestals[mode_names.index("FM")].copy(),
+            "FL": pedestals[mode_names.index("FL")].copy(),
+        }
+        if "pixel_status" in data:
+            status = np.asarray(data["pixel_status"])
+            if status.shape == pedestals.shape:
+                refs["FM_status"] = status[mode_names.index("FM")].copy()
+                refs["FL_status"] = status[mode_names.index("FL")].copy()
+
+    return refs, f"{args.pixel_status_npz} pedestal modes FM and FL"
 
 
 def _raw_area_masks():
@@ -397,6 +479,170 @@ def _print_mismatch_summary(
     )
 
 
+def _pedestal_status_text(pedestal_refs, mode, segment, row, col):
+    key = f"{mode}_status"
+    if key not in pedestal_refs:
+        return ""
+    return " status=bad" if pedestal_refs[key][segment, row, col] else " status=ok"
+
+
+def _print_inspected_pixels(
+    inspect_pixels,
+    inspection_values,
+    expected_gainbit,
+    pedestal_refs,
+    pedestal_source,
+):
+    if not inspect_pixels:
+        return
+
+    metrics_by_spec = {}
+    for spec in inspect_pixels:
+        _, segment, row, col = spec
+        values = inspection_values[spec]
+        if not values:
+            metrics_by_spec[spec] = None
+            continue
+
+        words = np.asarray(values, dtype=np.uint16)
+        raw14 = words & np.uint16(0x3FFF)
+        gainbits = (words >> np.uint16(14)) & np.uint16(0x1)
+        top2 = (words >> np.uint16(14)) & np.uint16(0x3)
+        expected = None
+        if expected_gainbit is not None:
+            expected = int(expected_gainbit[segment, row, col])
+        metrics_by_spec[spec] = {
+            "words": words,
+            "raw14": raw14,
+            "gainbits": gainbits,
+            "top2": top2,
+            "raw14_mean": float(np.mean(raw14)),
+            "expected": expected,
+        }
+
+    offset_samples = {"FM": [], "FL": []}
+    if pedestal_refs is not None:
+        for spec, metrics in metrics_by_spec.items():
+            if metrics is None or metrics["expected"] is None:
+                continue
+            expected = metrics["expected"]
+            if not np.all(metrics["gainbits"] == expected):
+                continue
+            _, segment, row, col = spec
+            mode = "FL" if expected else "FM"
+            pedestal = float(pedestal_refs[mode][segment, row, col])
+            if np.isfinite(pedestal):
+                offset_samples[mode].append(metrics["raw14_mean"] - pedestal)
+
+    pedestal_offsets = {
+        mode: float(np.median(samples))
+        for mode, samples in offset_samples.items()
+        if samples
+    }
+
+    print()
+    print("Inspected pixel values:")
+    if pedestal_source:
+        print(f"  pedestal_source: {pedestal_source}")
+    if pedestal_refs is not None:
+        print("  raw delta is raw14_mean-pedestal; adjusted delta also removes a same-run mode offset")
+        for mode in ("FM", "FL"):
+            if mode in pedestal_offsets:
+                print(
+                    f"  pedestal_offset_{mode}: {pedestal_offsets[mode]:+.3f} "
+                    f"from {len(offset_samples[mode])} matching inspected reference pixel(s)"
+                )
+            else:
+                print(f"  pedestal_offset_{mode}: unavailable")
+
+    for spec in inspect_pixels:
+        label, segment, row, col = spec
+        metrics = metrics_by_spec[spec]
+        if metrics is None:
+            print(f"  {label}: raw=({segment},{row},{col}) no decoded values")
+            continue
+
+        words = metrics["words"]
+        raw14 = metrics["raw14"]
+        gainbits = metrics["gainbits"]
+        top2 = metrics["top2"]
+        raw14_mean = metrics["raw14_mean"]
+        expected_text = (
+            "unavailable" if metrics["expected"] is None else str(metrics["expected"])
+        )
+
+        gain_counts = Counter(int(value) for value in gainbits)
+        top2_counts = Counter(int(value) for value in top2)
+        print(
+            f"  {label}: raw=({segment},{row},{col}) frames={len(words)} "
+            f"first_word=0x{int(words[0]):04x} first_raw14={int(raw14[0])} "
+            f"raw14_mean={raw14_mean:.3f} raw14_std={float(np.std(raw14)):.3f} "
+            f"raw14_range={int(np.min(raw14))}:{int(np.max(raw14))}"
+        )
+        print(
+            f"    gainbit_counts={dict(sorted(gain_counts.items()))} "
+            f"top2_counts={dict(sorted(top2_counts.items()))} expected_gainbit={expected_text}"
+        )
+
+        if pedestal_refs is None:
+            print("    FM/FL pedestal deltas unavailable")
+            continue
+
+        deltas = {}
+        adjusted_deltas = {}
+        for mode in ("FM", "FL"):
+            pedestal = float(pedestal_refs[mode][segment, row, col])
+            status_text = _pedestal_status_text(
+                pedestal_refs, mode, segment, row, col
+            )
+            if np.isfinite(pedestal):
+                delta = raw14_mean - pedestal
+                deltas[mode] = delta
+                if mode in pedestal_offsets:
+                    adjusted_delta = delta - pedestal_offsets[mode]
+                    adjusted_deltas[mode] = adjusted_delta
+                    adjusted_text = f" adjusted_delta_{mode}={adjusted_delta:+.3f}"
+                else:
+                    adjusted_text = f" adjusted_delta_{mode}=unavailable"
+                print(
+                    f"    pedestal_{mode}={pedestal:.3f} delta_{mode}={delta:+.3f} "
+                    f"abs_delta_{mode}={abs(delta):.3f}{adjusted_text}{status_text}"
+                )
+            else:
+                print(
+                    f"    pedestal_{mode}=unavailable delta_{mode}=unavailable{status_text}"
+                )
+
+        if len(adjusted_deltas) == 2:
+            if np.isclose(abs(adjusted_deltas["FM"]), abs(adjusted_deltas["FL"])):
+                looks_like = "undetermined (equal FM/FL pedestal distance)"
+            elif abs(adjusted_deltas["FM"]) < abs(adjusted_deltas["FL"]):
+                looks_like = "FM"
+            else:
+                looks_like = "FL"
+        elif len(deltas) == 2 and not pedestal_offsets:
+            if np.isclose(abs(deltas["FM"]), abs(deltas["FL"])):
+                looks_like = "undetermined (equal unadjusted FM/FL pedestal distance)"
+            elif abs(deltas["FM"]) < abs(deltas["FL"]):
+                looks_like = "FM (unadjusted pedestal distance)"
+            else:
+                looks_like = "FL (unadjusted pedestal distance)"
+        elif len(deltas) == 2:
+            missing_offsets = ",".join(
+                mode for mode in ("FM", "FL") if mode not in pedestal_offsets
+            )
+            looks_like = f"undetermined (missing {missing_offsets} same-run pedestal offset)"
+        elif len(deltas) == 1:
+            mode = next(iter(deltas))
+            missing = "FL" if mode == "FM" else "FM"
+            qualifier = "offset-corrected" if mode in adjusted_deltas else "unadjusted"
+            looks_like = f"{mode} ({qualifier}; only comparable pedestal, {missing} unavailable)"
+        else:
+            missing = ",".join(mode for mode in ("FM", "FL") if mode not in deltas)
+            looks_like = f"undetermined (missing {missing} pedestal)"
+        print(f"    looks_more_like={looks_like}")
+
+
 def main():
     args = _parse_args()
     if not os.path.exists(args.data_file):
@@ -408,6 +654,7 @@ def main():
     min_image_payload = DAQ_RAW_FRAME_BYTES
     expected_gainbit, expected_source = _load_expected_gainbit(args)
     pixel_status_bad_mask, pixel_status_source = _load_pixel_status_bad_mask(args)
+    pedestal_refs, pedestal_source = _load_inspection_pedestals(args)
     usable_mask, control_mask = _raw_area_masks()
     fp_occurrences = np.zeros(RAW_SHAPE, dtype=np.uint32) if expected_gainbit is not None else None
     fn_occurrences = np.zeros(RAW_SHAPE, dtype=np.uint32) if expected_gainbit is not None else None
@@ -427,6 +674,7 @@ def main():
     first_raw = None
     first_gainbit = None
     first_gainbit_equal = True
+    inspection_values = {spec: [] for spec in args.inspect_pixel}
 
     reader = FileReader(args.data_file)
     for header, data in reader.records():
@@ -470,6 +718,9 @@ def main():
         image_start_skip_words[skip_words] += 1
         gainbit = (raw_u16 & GAINBIT_MASK) != 0
         top2 = (raw_u16 >> np.uint16(14)) & np.uint16(0x3)
+        for spec in args.inspect_pixel:
+            _, segment, row, col = spec
+            inspection_values[spec].append(int(raw_u16[segment, row, col]))
 
         if first_raw is None:
             first_raw = raw_u16.copy()
@@ -567,6 +818,14 @@ def main():
         print("  no decoded image frames were available")
         print(f"  minimum DAQ raw image payload content: {min_image_payload} bytes")
         print("  FP/FN checks require decoded image frames, not only short packet records")
+
+    _print_inspected_pixels(
+        args.inspect_pixel,
+        inspection_values,
+        expected_gainbit,
+        pedestal_refs,
+        pedestal_source,
+    )
 
     if args.save_prefix and first_raw is not None:
         raw_path = f"{args.save_prefix}_first_raw_u16.npy"

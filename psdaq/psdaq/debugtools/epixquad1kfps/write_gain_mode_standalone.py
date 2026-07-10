@@ -3,7 +3,7 @@
 """Program ePixQuad1kfps fixed-gain test modes without DAQ or a GUI.
 
 This opens the C1100 DevRoot in standalone XpmMini mode and the ePixQuad camera
-register VC, then writes only the ASIC gain-map registers:
+register VC, then writes the ASIC gain-map registers:
 
   FH      all pixels 0xc, trbit=1
   FM      all pixels 0xc, trbit=0
@@ -14,6 +14,9 @@ register VC, then writes only the ASIC gain-map registers:
 The matrix write follows psdaq.configdb.epixquad1kfps_config:
 PrepareMultiConfig + WriteMatrixData for the full ASIC background, then
 RowCounter/ColCounter/WritePixelData for selected pixels.
+
+Optional --inject-pixel arguments preserve each pixel's programmed gain value,
+set its per-pixel T bit, and arm the ASIC automatic charge-injection pulser.
 """
 
 import argparse
@@ -28,7 +31,14 @@ _PSDAQ_PACKAGE_PARENT = os.path.abspath(os.path.join(_HERE, "..", "..", ".."))
 if _PSDAQ_PACKAGE_PARENT not in sys.path:
     sys.path.insert(0, _PSDAQ_PACKAGE_PARENT)
 
-from psdaq.configdb.epixquad_layout import RAW_ASIC_LAYOUT, RAW_SHAPE
+from psdaq.configdb.epixquad_layout import (
+    DETECTOR_VIEW_SHAPE,
+    EPIXVIEWER_DECODED_SHAPE,
+    RAW_ASIC_LAYOUT,
+    RAW_SHAPE,
+    detector_view_to_raw,
+    epixviewer_decoded_to_daq_raw,
+)
 
 
 BANK_OFFSETS = ((0xE << 7), (0xD << 7), (0xB << 7), (0x7 << 7))
@@ -145,6 +155,17 @@ def _parse_pixel(text):
     return asic, row, col
 
 
+def _parse_inject_pixel(text):
+    asic, row, col = _parse_triplet(text, "--inject-pixel")
+    _validate_direct_pixel(asic, row, col)
+    usable_rows = RAW_SHAPE[1] // 2
+    if row >= usable_rows:
+        raise argparse.ArgumentTypeError(
+            f"charge-injection pixel row {row} is a control row; use row 0-{usable_rows - 1}"
+        )
+    return asic, row, col
+
+
 def _parse_raw_pixel(text):
     seg, row, col = _parse_triplet(text, "--raw-pixel")
     if not (0 <= seg < RAW_SHAPE[0]):
@@ -216,6 +237,32 @@ def _parse_args():
         help="selected FL pixel in raw-view segment coordinates; repeatable",
     )
     parser.add_argument(
+        "--inject-pixel",
+        action="append",
+        type=_parse_inject_pixel,
+        default=[],
+        metavar="ASIC,ROW,COL",
+        help=(
+            "pixel to receive charge injection; repeatable. Preserves the pixel's "
+            "FH/FM/FL value and sets its per-pixel T bit"
+        ),
+    )
+    parser.add_argument(
+        "--injection-delay",
+        type=lambda value: int(value, 0),
+        default=0x3E8,
+        help="AcqCore.AsicSyncInjDly value; default 0x3e8 (1000)",
+    )
+    parser.add_argument(
+        "--selected-map",
+        default=None,
+        help=(
+            "optional .npy selected-FL map for Map modes; nonzero pixels are selected. "
+            "Accepts DAQ raw (4,352,384), detector-view tiled (704,768), "
+            "or ePixViewer decoded (712,768) shapes"
+        ),
+    )
+    parser.add_argument(
         "--no-default-pixels",
         action="store_true",
         help="for Map modes, do not use the built-in selected-pixel list",
@@ -271,8 +318,19 @@ def _parse_args():
     )
     parser.add_argument("--verbose", action="store_true", help="print extra progress")
     args = parser.parse_args()
+    args.inject_pixel = list(dict.fromkeys(args.inject_pixel))
+    if not (1 <= args.injection_delay <= 0xFFFFFFFF):
+        parser.error("--injection-delay must be in range 1-0xffffffff")
     if args.readback_pixel_mask_asic is not None and not (0 <= args.readback_pixel_mask_asic < ASIC_COUNT):
         parser.error(f"--readback-pixel-mask-asic must be in range 0-{ASIC_COUNT - 1}")
+    injection_outside = [pix for pix in args.inject_pixel if pix[0] not in args.asics]
+    if injection_outside:
+        parser.error(
+            "charge-injection pixels map to ASICs outside --asics: "
+            + ", ".join(f"a{a}:r{r}:c{c}" for a, r, c in injection_outside[:8])
+        )
+    if args.inject_pixel:
+        args.leave_trigger_off = True
     return args
 
 
@@ -353,14 +411,40 @@ def _raw_to_tiled(raw_pixel):
     raise ValueError(f"unexpected segment {seg}")
 
 
+def _load_selected_map_raw(path):
+    selected = np.load(path)
+    selected = np.asarray(selected) != 0
+    if selected.shape == RAW_SHAPE:
+        return selected, f"{path} DAQ raw shape {selected.shape}"
+    if selected.shape == DETECTOR_VIEW_SHAPE:
+        return detector_view_to_raw(selected), f"{path} detector-view tiled shape {selected.shape}"
+    if selected.shape == EPIXVIEWER_DECODED_SHAPE:
+        return epixviewer_decoded_to_daq_raw(selected), f"{path} ePixViewer decoded shape {selected.shape}"
+    raise ValueError(
+        "selected map has unsupported shape "
+        f"{selected.shape}; expected {RAW_SHAPE}, {DETECTOR_VIEW_SHAPE}, or {EPIXVIEWER_DECODED_SHAPE}"
+    )
+
+
+def _selected_pixels_from_map(path):
+    raw_map, source = _load_selected_map_raw(path)
+    selected = [_raw_to_direct(int(seg), int(row), int(col)) for seg, row, col in zip(*np.nonzero(raw_map))]
+    return selected, source
+
+
 def _selected_pixels(args):
     selected = []
     if args.mode.selected_value is None:
-        if args.pixel or args.raw_pixel:
+        if args.pixel or args.raw_pixel or args.selected_map:
             raise ValueError(f"{args.mode.name} is a full-matrix mode; selected pixels are only used in Map modes")
-        return selected
+        return selected, None
 
-    if not args.no_default_pixels and not args.pixel and not args.raw_pixel:
+    selected_map_source = None
+    if args.selected_map:
+        map_selected, selected_map_source = _selected_pixels_from_map(args.selected_map)
+        selected.extend(map_selected)
+
+    if not args.no_default_pixels and not args.pixel and not args.raw_pixel and not args.selected_map:
         selected.extend(DEFAULT_SELECTED_PIXELS)
 
     selected.extend(args.pixel)
@@ -374,7 +458,7 @@ def _selected_pixels(args):
             "selected pixels map to ASICs outside --asics: "
             + ", ".join(f"a{a}:r{r}:c{c}" for a, r, c in outside[:8])
         )
-    return selected
+    return selected, selected_map_source
 
 
 def _expected_raw_map(mode, selected):
@@ -392,6 +476,12 @@ def _expected_raw_map(mode, selected):
     return out
 
 
+def _programmed_pixel_value(mode, selected_set, pixel):
+    if mode.selected_value is not None and pixel in selected_set:
+        return int(mode.selected_value)
+    return int(mode.background_value)
+
+
 def _print_plan(args, selected):
     mode = args.mode
     print("ePixQuad1kfps standalone gain-mode write plan")
@@ -403,6 +493,8 @@ def _print_plan(args, selected):
     if mode.selected_value is not None:
         print(f"  selected value    : {mode.selected_value} (0x{mode.selected_value:x})")
         print(f"  selected pixels   : {len(selected)}")
+        if getattr(args, "selected_map_source", None):
+            print(f"  selected map      : {args.selected_map_source}")
         for asic, row, col in selected[:24]:
             bank = col // 48
             bank_col = col % 48
@@ -421,6 +513,24 @@ def _print_plan(args, selected):
             print(f"    ... {len(selected) - 24} more")
     else:
         print("  selected pixels   : none")
+    if args.inject_pixel:
+        selected_set = set(selected)
+        print(f"  injection pixels  : {len(args.inject_pixel)}")
+        print(f"  injection delay   : {args.injection_delay} (0x{args.injection_delay:x})")
+        for asic, row, col in args.inject_pixel:
+            pixel = (asic, row, col)
+            base_value = _programmed_pixel_value(mode, selected_set, pixel)
+            injection_value = base_value | 0x1
+            gain_region = "selected" if pixel in selected_set else "background"
+            raw_pixel = _direct_to_raw(asic, row, col)
+            raw_text = "raw=unmapped" if raw_pixel is None else "raw=s%d,r%d,c%d" % raw_pixel
+            print(
+                f"    asic={asic:2d} row={row:3d} col={col:3d} "
+                f"{gain_region} value=0x{base_value:x}->0x{injection_value:x} {raw_text}"
+            )
+        print("  trigger/readout   : leave disabled for StreamWriter handoff")
+    else:
+        print("  injection pixels  : none")
     if args.camera_yaml:
         print(f"  camera YAML       : {args.camera_yaml}")
     elif args.load_ued_yaml:
@@ -479,7 +589,7 @@ def _restore_camera_trigger(cbase, state):
         _safe_set(cbase.SystemRegs.TrigEn, state["TrigEn"], "SystemRegs.TrigEn")
 
 
-def _summarize_pixel_mask_readback(path, selected_for_asic):
+def _summarize_pixel_mask_readback(path, pixels_for_asic):
     try:
         data = np.loadtxt(path, dtype=np.uint16, delimiter=",")
     except Exception as exc:
@@ -489,11 +599,20 @@ def _summarize_pixel_mask_readback(path, selected_for_asic):
     unique, counts = np.unique(data, return_counts=True)
     summary = ", ".join(f"{int(value)}:{int(count)}" for value, count in zip(unique, counts))
     print(f"Pixel-mask readback CSV: shape={data.shape} unique_counts={summary}")
-    for _, row, col in selected_for_asic:
+    for _, row, col in pixels_for_asic:
         if row >= data.shape[0] or col >= data.shape[1]:
-            print(f"  selected row={row} col={col}: outside CSV shape {data.shape}")
+            print(f"  pixel row={row} col={col}: outside CSV shape {data.shape}")
             continue
-        print(f"  selected row={row} col={col}: readback_value={int(data[row, col])}")
+        print(f"  pixel row={row} col={col}: readback_value={int(data[row, col])}")
+
+
+def _write_pixel_value(cbase, asic, row, col, value):
+    bank = int(col) // 48
+    bank_col = int(col) % 48
+    saci = cbase.Epix10kaSaci[int(asic)]
+    _safe_set(saci.RowCounter, int(row), f"Epix10kaSaci[{asic}].RowCounter")
+    _safe_set(saci.ColCounter, BANK_OFFSETS[bank] | bank_col, f"Epix10kaSaci[{asic}].ColCounter")
+    _safe_set(saci.WritePixelData, int(value), f"Epix10kaSaci[{asic}].WritePixelData")
 
 
 def _write_gain_mode(
@@ -501,11 +620,16 @@ def _write_gain_mode(
     mode,
     asics,
     selected,
+    injection_pixels,
+    injection_delay,
     verbose=False,
     readback_pixel_mask_asic=None,
     readback_pixel_mask_csv="/tmp/pixel_mask.csv",
 ):
     t0 = time.perf_counter()
+    selected_set = set(selected)
+    injection_asics = sorted({asic for asic, _, _ in injection_pixels})
+    injection_armed = False
     for asic in asics:
         saci = cbase.Epix10kaSaci[asic]
         if verbose:
@@ -514,6 +638,14 @@ def _write_gain_mode(
         _safe_set(saci.IsEn, True, f"Epix10kaSaci[{asic}].IsEn")
 
     try:
+        if injection_pixels:
+            _safe_set(cbase.AcqCore.AsicSyncInjEn, True, "AcqCore.AsicSyncInjEn")
+            _safe_set(cbase.AcqCore.AsicSyncInjDly, int(injection_delay), "AcqCore.AsicSyncInjDly")
+            for asic in asics:
+                saci = cbase.Epix10kaSaci[asic]
+                _safe_set(saci.atest, False, f"Epix10kaSaci[{asic}].atest")
+                _safe_set(saci.test, False, f"Epix10kaSaci[{asic}].test")
+
         for asic in asics:
             saci = cbase.Epix10kaSaci[asic]
             _safe_set(saci.trbit, int(mode.trbit), f"Epix10kaSaci[{asic}].trbit")
@@ -524,12 +656,20 @@ def _write_gain_mode(
             _safe_set(saci.WriteMatrixData, int(mode.background_value), f"Epix10kaSaci[{asic}].WriteMatrixData")
 
         for asic, row, col in selected:
-            bank = int(col) // 48
-            bank_col = int(col) % 48
-            saci = cbase.Epix10kaSaci[int(asic)]
-            _safe_set(saci.RowCounter, int(row), f"Epix10kaSaci[{asic}].RowCounter")
-            _safe_set(saci.ColCounter, BANK_OFFSETS[bank] | bank_col, f"Epix10kaSaci[{asic}].ColCounter")
-            _safe_set(saci.WritePixelData, int(mode.selected_value), f"Epix10kaSaci[{asic}].WritePixelData")
+            _write_pixel_value(cbase, asic, row, col, mode.selected_value)
+
+        for pixel in injection_pixels:
+            asic, row, col = pixel
+            base_value = _programmed_pixel_value(mode, selected_set, pixel)
+            _write_pixel_value(cbase, asic, row, col, base_value | 0x1)
+
+        for asic in injection_asics:
+            saci = cbase.Epix10kaSaci[asic]
+            _safe_set(saci.PulserSync, True, f"Epix10kaSaci[{asic}].PulserSync")
+            _safe_set(saci.atest, True, f"Epix10kaSaci[{asic}].atest")
+            _safe_set(saci.test, True, f"Epix10kaSaci[{asic}].test")
+            _safe_set(saci.PulserR, True, f"Epix10kaSaci[{asic}].PulserR")
+            _safe_set(saci.PulserR, False, f"Epix10kaSaci[{asic}].PulserR")
 
         if readback_pixel_mask_asic is not None:
             asic = int(readback_pixel_mask_asic)
@@ -542,9 +682,22 @@ def _write_gain_mode(
             cbase.Epix10kaSaci[asic].GetPixelBitmap(str(readback_pixel_mask_csv))
             _summarize_pixel_mask_readback(
                 readback_pixel_mask_csv,
-                [pix for pix in selected if int(pix[0]) == asic],
+                [
+                    pix
+                    for pix in list(dict.fromkeys(selected + injection_pixels))
+                    if int(pix[0]) == asic
+                ],
             )
+        injection_armed = bool(injection_pixels)
     finally:
+        if injection_pixels and not injection_armed:
+            for asic in injection_asics:
+                saci = cbase.Epix10kaSaci[asic]
+                try:
+                    saci.atest.set(False)
+                    saci.test.set(False)
+                except Exception as exc:
+                    print(f"Warning: failed disarming injection on ASIC {asic}: {exc}", file=sys.stderr)
         for asic in asics:
             saci = cbase.Epix10kaSaci[asic]
             try:
@@ -554,9 +707,11 @@ def _write_gain_mode(
                 print(f"Warning: failed disabling ASIC {asic}: {exc}", file=sys.stderr)
 
     print(
-        "Gain write complete: mode=%s asics=%d selected_pixels=%d elapsed=%.3fs"
-        % (mode.name, len(asics), len(selected), time.perf_counter() - t0)
+        "Gain write complete: mode=%s asics=%d selected_pixels=%d injection_pixels=%d elapsed=%.3fs"
+        % (mode.name, len(asics), len(selected), len(injection_pixels), time.perf_counter() - t0)
     )
+    if injection_pixels:
+        print(f"Charge injection armed on ASICs {injection_asics}; camera trigger/readout remains disabled")
 
 
 def _open_roots(args):
@@ -610,7 +765,8 @@ def _load_camera_yaml(cbase, args):
 
 def main():
     args = _parse_args()
-    selected = _selected_pixels(args)
+    selected, selected_map_source = _selected_pixels(args)
+    args.selected_map_source = selected_map_source
     _print_plan(args, selected)
 
     if args.save_expected_map:
@@ -645,6 +801,8 @@ def main():
             args.mode,
             args.asics,
             selected,
+            args.inject_pixel,
+            args.injection_delay,
             verbose=args.verbose,
             readback_pixel_mask_asic=args.readback_pixel_mask_asic,
             readback_pixel_mask_csv=args.readback_pixel_mask_csv,

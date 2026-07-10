@@ -153,6 +153,22 @@ python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py \
   --raw-pixel 0,188,199
 ```
 
+Write every nonzero pixel from an expected/selected map:
+
+```bash
+python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py \
+  --mode MapFML \
+  --no-default-pixels \
+  --load-ued-yaml \
+  --selected-map /tmp/mapfml_expand2_rows175_176_expected.npy \
+  --save-expected-map /tmp/mapfml_expand2_rows175_176_expected_rewrite.npy
+```
+
+`--selected-map` accepts `.npy` arrays in DAQ raw shape `(4,352,384)`,
+detector-view tiled shape `(704,768)`, or ePixViewer decoded shape `(712,768)`.
+Nonzero entries become selected FL pixels in `MapFML` or `MapFHL`; zero entries
+remain in the fixed background mode.
+
 Optionally save the expected raw-view FL mask:
 
 ```bash
@@ -161,6 +177,61 @@ python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py \
   --dry-run \
   --save-expected-map /tmp/mapfml_expected_fl_mask.npy
 ```
+
+### Charge-injection pixels
+
+`--inject-pixel ASIC,ROW,COL` is separate from `--pixel`:
+
+- `--pixel` selects FL instead of the Map-mode background gain.
+- `--inject-pixel` preserves that programmed gain and sets the pixel T bit.
+
+For example, this writes two FL pixels on ASIC 12, leaves the ASIC 10 pair in
+the FM background, and enables charge injection on all four pixels:
+
+```bash
+python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py \
+  --mode MapFML \
+  --no-default-pixels \
+  --load-ued-yaml \
+  --pixel 12,70,80 \
+  --pixel 12,70,81 \
+  --inject-pixel 10,70,161 \
+  --inject-pixel 10,70,162 \
+  --inject-pixel 12,70,80 \
+  --inject-pixel 12,70,81 \
+  --save-expected-map /tmp/charge_injection_mapfml_expected.npy
+```
+
+The writer changes FM pixel value `0xc` to `0xd` and FL value `0x8` to `0x9`.
+It also enables `PulserSync`, `test`, and `atest`, toggles `PulserR`, and sets
+`AcqCore.AsicSyncInjEn=1`. Charge-injection writes always leave camera trigger
+and readout disabled. Launch `launch_xpmmini_writer_gui.py` without reloading
+the camera YAML, open the StreamWriter file, then enable camera readout and
+triggers. The saved expected gainbit map is unchanged by the T bit.
+
+Plot the frame-by-frame charge-injection response:
+
+```bash
+MPLCONFIGDIR=/tmp/epixquad_mpl \
+python psdaq/psdaq/debugtools/epixquad1kfps/plot_charge_injection_ramp.py \
+  /tmp/data_YYYYMMDD_HHMMSS_charge_injection.dat \
+  --max-frames 500 \
+  --pixel FP,2,105,30 \
+  --pixel FM-reference,2,105,29 \
+  --pixel FN,3,246,272 \
+  --pixel FL-reference,3,246,273 \
+  --output /tmp/charge_injection_ramp.png \
+  --csv /tmp/charge_injection_ramp.csv \
+  --no-show
+```
+
+With ASIC `atest` enabled, each acquisition is expected to advance the pulser.
+An injected pixel should therefore show a systematic raw14 change with decoded
+frame number. The plot includes a linear fit: a meaningful slope with high
+`r_squared` supports a working ramp, while a broad but uncorrelated trace means
+the pixel varies without following the pulser sequence. Use `--fit-start` and
+`--fit-stop` to restrict the fit before saturation, nonlinearity, or pulser
+wraparound.
 
 ## Readout Commands
 
@@ -172,6 +243,28 @@ python psdaq/psdaq/debugtools/epixquad1kfps/read_xpmmini_rogue_file.py \
   --data-channel 1 \
   --max-frames 50
 ```
+
+Inspect selected pixels across all decoded frames and compare raw14 against
+the FM/FL pseudo-pedestals supplied by `--pixel-status-npz`:
+
+```bash
+python psdaq/psdaq/debugtools/epixquad1kfps/read_xpmmini_rogue_file.py \
+  data_YYYYMMDD_HHMMSS.dat \
+  --data-channel 1 \
+  --max-frames 200 \
+  --expected-gainbit-map /tmp/mapfml_no_injection_expected.npy \
+  --pixel-status-npz /path/to/epixquad_pseudo_pedestals.npz \
+  --inspect-pixel FP,2,105,30 \
+  --inspect-pixel FM-reference,2,105,29 \
+  --inspect-pixel FN,3,246,272 \
+  --inspect-pixel FL-reference,3,246,273
+```
+
+The report estimates separate same-run FM and FL pedestal offsets from
+inspected reference pixels whose observed gainbit matches the expected map.
+`looks_more_like` uses the offset-corrected residuals. If a bad pixel's FM or
+FL pedestal was masked when the pedestal file was built, the result identifies
+the only comparable mode and states that the other pedestal is unavailable.
 
 If the script imports Qt/ePixViewer without a display, run with an offscreen Qt
 backend:
