@@ -147,3 +147,8 @@ After successful hardware tests, publish the validated superproject pins and
 required patch recipe through the agreed lcls2_submodules review, then promote
 the exact tested bundle under the production date-based name. Script commits
 and software-only tests do not constitute that promotion.
+
+The 2026-09-28 UED commissioning captured 50 full FH images at 10 Hz with
+zero gain-bit mismatches and clean shutdown after a timing-drain fix. See
+[results and restoration state](../../../../notes/ued-commissioning-20260928/README.md).
+Broader gain-map validation and first-frame ADC settling remain open.

@@ -1,0 +1,26 @@
+{
+  "started_utc": "2026-09-28T23:40:41.601318+00:00",
+  "command": [
+    "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python",
+    "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/debugtools/epixquad1kfps/capture_standalone.py",
+    "--profile",
+    "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/debugtools/epixquad1kfps/profiles/drp-ued-cmp003.json",
+    "--mode",
+    "FH",
+    "--frames",
+    "50",
+    "--timeout",
+    "30",
+    "--label",
+    "commissioning-FH-internal-10Hz",
+    "--repetition",
+    "1",
+    "--notes",
+    "First production UED commissioning capture; restore camera idle trigger state afterward",
+    "--outdir",
+    "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt01-fh"
+  ],
+  "capture_exit": 1,
+  "restore_exit": 0,
+  "finished_utc": "2026-09-28T23:42:09.877142+00:00"
+}

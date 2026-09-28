@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "drp-ued-cmp003",
   "status": "ready_for_test",
-  "notes": "Prepared for initial commissioning, not hardware acceptance. KCU1500/PGP4 lane 0 verified 2026-09-28. Mona selected internal triggering: local XpmMini plus 10 Hz camera auto-trigger. Camera baseline derives from the current UED BEAM ConfigDB snapshot. Payload sizes are acceptance criteria from the existing decoder, not yet observed on this module. PROM validation remains enabled. See notes/ued-settings-20260928/README.md for evidence and restoration.",
+  "notes": "Prepared for initial commissioning, not hardware acceptance. KCU1500/PGP4 lane 0 verified 2026-09-28. Mona selected internal triggering: local XpmMini plus 10 Hz camera auto-trigger. Camera baseline derives from the current UED BEAM ConfigDB snapshot. Both full-image payload sizes were observed in 50-frame FH commissioning on 2026-09-28; zero gain-bit mismatches and clean shutdown after the timing-drain fix. Broader gain-map acceptance remains pending. See notes/ued-commissioning-20260928/README.md. PROM validation remains enabled. See notes/ued-settings-20260928/README.md for evidence and restoration.",
   "hosts": [
     "drp-ued-cmp003"
   ],

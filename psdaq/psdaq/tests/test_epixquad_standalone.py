@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import struct
+import sys
 import tempfile
 from types import SimpleNamespace
 import unittest
@@ -121,6 +122,17 @@ class BaselineTests(unittest.TestCase):
 
 
 class CaptureTests(unittest.TestCase):
+    def test_pause_attempts_every_buffer_even_if_one_fails(self):
+        buffers = [Mock(), Mock()]
+        buffers[0].MasterEnable.set.side_effect = RuntimeError('bus failure')
+        pcie = Mock()
+        pcie.find.return_value = buffers
+        with patch.dict(sys.modules, {'l2si_core': SimpleNamespace(TriggerEventBuffer=object)}):
+            with self.assertRaisesRegex(RuntimeError, 'Could not pause'):
+                hw.pause_triggers(pcie)
+        for buffer in buffers:
+            buffer.MasterEnable.set.assert_called_once_with(False)
+
     def test_only_full_error_free_images_satisfy_target(self):
         counts = cap.ImageCounts(SIZES, 10000000)
         counts.observed(bytes(1600), 0)
@@ -148,13 +160,14 @@ class CaptureTests(unittest.TestCase):
         def fail_wait(*a):
             camera.SystemRegs.TrigEn.set.side_effect = RuntimeError('disable failed')
             raise TimeoutError('no frames')
-        with tempfile.TemporaryDirectory() as temp, patch.object(hw, 'session', session), patch.object(hw, 'load_camera_baseline'), patch.object(hw, 'runtime_snapshot', return_value={}), patch.object(hw, 'camera_identity', return_value={'adc_done': True, 'adc_failed': False}), patch.object(gain, '_write_gain_mode'), patch.object(cap, 'make_stream_writer', return_value=(writer, sink)), patch.object(cap, 'wait_for_images', side_effect=fail_wait):
+        with tempfile.TemporaryDirectory() as temp, patch.object(hw, 'session', session), patch.object(hw, 'pause_triggers') as pause, patch.object(hw, 'load_camera_baseline'), patch.object(hw, 'runtime_snapshot', return_value={}), patch.object(hw, 'camera_identity', return_value={'adc_done': True, 'adc_failed': False}), patch.object(gain, '_write_gain_mode'), patch.object(cap, 'make_stream_writer', return_value=(writer, sink)), patch.object(cap, 'wait_for_images', side_effect=fail_wait):
             record = {}
             with self.assertRaisesRegex(TimeoutError, 'no frames'):
                 cap.capture(args, profile, [], Path(temp), record)
         writer.close.assert_called_once()
         sink.disarm.assert_called_once()
         pcie.StopRun.assert_called_once()
+        pause.assert_called_once_with(pcie)
         camera.SystemRegs.AutoTrigEn.set.assert_called_with(False)
         camera.RdoutCore.RdoutEn.set.assert_called_with(False)
         self.assertTrue(record['cleanup_errors'])

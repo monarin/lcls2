@@ -208,6 +208,15 @@ def capture(args, profile, selected, outdir, record):
             errors = []
             try:
                 quiesce(camera)
+            except Exception as exc:
+                errors.append(repr(exc))
+            try:
+                # Camera-off alone leaves timing-only records flowing on VC0.
+                # Disable upstream event production before waiting for quiet.
+                hardware.pause_triggers(pcie)
+            except Exception as exc:
+                errors.append(repr(exc))
+            try:
                 # Let pending camera/PCIe frames reach the writer before blowoff.
                 deadline = time.monotonic() + args.drain_timeout
                 while counts.snapshot()['records'] and time.monotonic() - counts.snapshot()['last_receive_monotonic'] < args.drain_seconds:

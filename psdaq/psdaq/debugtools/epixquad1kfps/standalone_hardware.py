@@ -46,6 +46,22 @@ def configure_lane(pbase, profile):
     app.EventBuilder.Blowoff.set(True)
 
 
+def pause_triggers(pbase):
+    """Stop timing/event production while allowing queued frames to drain."""
+    import l2si_core
+    buffers = pbase.find(typ=l2si_core.TriggerEventBuffer)
+    if not buffers:
+        raise RuntimeError('No timing trigger buffers found for drain')
+    errors = []
+    for buffer in buffers:
+        try:
+            buffer.MasterEnable.set(False)
+        except Exception as exc:
+            errors.append(repr(exc))
+    if errors:
+        raise RuntimeError('Could not pause timing triggers: '+ '; '.join(errors))
+
+
 @contextmanager
 def session(profile, camera_vc_mask=0x2, writer=False, on_identity=None,
             poll_en=False, init_read=False):
