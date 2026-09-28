@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "name": "drp-ued-cmp003",
+  "status": "unvalidated",
+  "notes": "Rocky 9.6 and datadev_0 verified. Confirm card/firmware, lane, timing, camera configuration and payload sizes before changing status.",
+  "hosts": ["drp-ued-cmp003"],
+  "device": "/dev/datadev_0",
+  "lane": null,
+  "data_vc": 0,
+  "pgp4": null,
+  "timing": null,
+  "board_type": null,
+  "image_name_contains": null,
+  "minimum_pcie_version": 67239936,
+  "prom_bypass": false,
+  "pcie_yaml": null,
+  "camera_yaml": null,
+  "camera_trigger_source": null,
+  "camera_auto_trigger": null,
+  "rate_hz": null,
+  "event_builder_timeout": null,
+  "image_payload_bytes": null
+}

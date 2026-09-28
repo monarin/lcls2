@@ -7,6 +7,9 @@ full LCLS DAQ recording path.
 For the gain-mode write/readout mapping, expected gainbit values, and control
 row handling, see [PIXEL_GAINMODE_WRITE_READOUT.md](PIXEL_GAINMODE_WRITE_READOUT.md).
 
+For shared host profiles and headless capture with automatic test records, see
+[STANDALONE_PROFILES.md](STANDALONE_PROFILES.md). The commands below are bench-only.
+
 ## Environment
 
 After logging into the test node:
@@ -15,6 +18,7 @@ After logging into the test node:
 cd ~/lcls2_worktree/ued-epix10ka-rdsrv421-daq
 source setup_env.sh
 echo "$SUBMODULEDIR"
+epix_profile=psdaq/psdaq/debugtools/epixquad1kfps/profiles/rdsrv421.json
 ```
 
 The procedure below assumes the default device and lane:
@@ -70,21 +74,21 @@ registers; if that happens, rerun the gain-mode write before capturing data.
 Example fixed low-gain write:
 
 ```bash
-python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py \
+python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py --profile "$epix_profile" \
   --mode FL
 ```
 
 Other fixed modes:
 
 ```bash
-python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py --mode FH
-python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py --mode FM
+python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py --profile "$epix_profile" --mode FH
+python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py --profile "$epix_profile" --mode FM
 ```
 
 Example sparse map-mode write:
 
 ```bash
-python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py \
+python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py --profile "$epix_profile" \
   --mode MapFML \
   --no-default-pixels \
   --raw-pixel 1,176,0 \
@@ -103,7 +107,7 @@ python psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py \
 Start the GUI:
 
 ```bash
-python psdaq/psdaq/debugtools/epixquad1kfps/launch_xpmmini_writer_gui.py
+python psdaq/psdaq/debugtools/epixquad1kfps/launch_xpmmini_writer_gui.py --profile "$epix_profile"
 ```
 
 The launcher initializes the C1100 side, but it does not automatically load the

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "name": "rdsrv421",
+  "status": "ready_for_test",
+  "notes": "Established bench settings; the new headless lifecycle still needs hardware validation.",
+  "hosts": ["rdsrv421"],
+  "device": "/dev/datadev_0",
+  "lane": 0,
+  "data_vc": 0,
+  "pgp4": true,
+  "timing": "xpmmini",
+  "board_type": "XilinxVariumC1100",
+  "image_name_contains": "XilinxC1100Pgp4_10Gbps",
+  "minimum_pcie_version": 67239936,
+  "prom_bypass": true,
+  "pcie_yaml": "lcls2-pgp-pcie-apps/software/config/defaults_LCLS-II.yml",
+  "camera_yaml": "epix-quad-1kfps/software/yml/ued/epixQuad_ASICs_allAsics_UED_1080Hz_settings.yml",
+  "camera_trigger_source": 3,
+  "camera_auto_trigger": true,
+  "rate_hz": 10,
+  "event_builder_timeout": 144675,
+  "image_payload_bytes": [1095248, 1095288]
+}

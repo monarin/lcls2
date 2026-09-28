@@ -2,8 +2,8 @@
 
 """Program ePixQuad1kfps fixed-gain test modes without DAQ or a GUI.
 
-This opens the C1100 DevRoot in standalone XpmMini mode and the ePixQuad camera
-register VC, then writes the ASIC gain-map registers:
+A required hardware profile selects PCIe startup and the camera register VC.
+The shared writer programs the ASIC gain-map registers:
 
   FH      all pixels 0xc, trbit=1
   FM      all pixels 0xc, trbit=0
@@ -88,7 +88,12 @@ DEFAULT_SELECTED_PIXELS = (
 
 
 def _parse_bool(text):
-    return str(text).lower() in ("1", "true", "t", "yes", "y")
+    value = str(text).lower()
+    if value in ("1", "true", "t", "yes", "y"):
+        return True
+    if value in ("0", "false", "f", "no", "n"):
+        return False
+    raise argparse.ArgumentTypeError('Expected true or false')
 
 
 def _default_lcls2_yaml():
@@ -194,14 +199,15 @@ def _normalize_mode(text):
     return GAIN_MODES[key]
 
 
-def _parse_args():
-    parser = argparse.ArgumentParser(
+def _parse_args(argv=None, parser=None):
+    parser = parser or argparse.ArgumentParser(
         description="Write ePixQuad1kfps FH/FM/FL/MapFML/MapFHL gain test modes."
     )
+    parser.add_argument("--profile", help="Explicit host profile JSON; required for hardware")
     parser.add_argument("--mode", required=True, type=_normalize_mode)
-    parser.add_argument("--dev", default="/dev/datadev_0", help="datadev device path")
-    parser.add_argument("--lane", type=int, default=0, help="PGP lane connected to the camera")
-    parser.add_argument("--data-vc", type=int, default=0, help="C1100 AppLane.VcDataTap value")
+    parser.add_argument("--dev", default=None, help="datadev device path")
+    parser.add_argument("--lane", type=int, default=None, help="PGP lane connected to the camera")
+    parser.add_argument("--data-vc", type=int, default=None, help="C1100 AppLane.VcDataTap value")
     parser.add_argument(
         "--camera-vc-mask",
         type=lambda value: int(value, 0),
@@ -211,8 +217,8 @@ def _parse_args():
     parser.add_argument(
         "--prom-bypass",
         type=_parse_bool,
-        default=True,
-        help="pass promWrEn to ePixQuad.Top; default true skips startup PROM validation",
+        default=None,
+        help="override profile promWrEn (true bypasses startup PROM validation)",
     )
     parser.add_argument(
         "--asics",
@@ -269,7 +275,7 @@ def _parse_args():
     )
     parser.add_argument(
         "--lcls2-yaml",
-        default=_default_lcls2_yaml(),
+        default=None,
         help="lcls2-pgp-pcie-apps LCLS-II defaults YAML loaded at DevRoot startup",
     )
     parser.add_argument(
@@ -317,7 +323,8 @@ def _parse_args():
         help="leave camera trigger/readout disabled after writing",
     )
     parser.add_argument("--verbose", action="store_true", help="print extra progress")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
+    _resolve_profile(args)
     args.inject_pixel = list(dict.fromkeys(args.inject_pixel))
     if not (1 <= args.injection_delay <= 0xFFFFFFFF):
         parser.error("--injection-delay must be in range 1-0xffffffff")
@@ -332,21 +339,6 @@ def _parse_args():
     if args.inject_pixel:
         args.leave_trigger_off = True
     return args
-
-
-def _load_modules():
-    try:
-        from psdaq.utils import enable_lcls2_pgp_pcie_apps  # noqa: F401
-        from psdaq.utils import enable_epix_quad1kfps  # noqa: F401
-        import ePixQuad
-        import lcls2_pgp_pcie_apps
-    except Exception as exc:
-        print("Failed to import DAQ/ePixQuad hardware modules.", file=sys.stderr)
-        print("Source setup_env.sh first and confirm SUBMODULEDIR is set.", file=sys.stderr)
-        print(f"SUBMODULEDIR={os.environ.get('SUBMODULEDIR', '<unset>')}", file=sys.stderr)
-        print(f"Import error: {exc!r}", file=sys.stderr)
-        raise SystemExit(1) from exc
-    return ePixQuad, lcls2_pgp_pcie_apps
 
 
 def _raw_to_direct(seg, row, col):
@@ -538,17 +530,31 @@ def _print_plan(args, selected):
     print(f"  dry run           : {args.dry_run}")
 
 
-def _configure_app_lane(pbase, args):
-    app = getattr(pbase.DevPcie.Application, f"AppLane[{args.lane}]")
-    app.VcDataTap.set(args.data_vc)
-    app.XpmPauseThresh.set(0x20)
-    app.EventBuilder.Timeout.set(int(156.25e6 / 1080))
-    app.EventBuilder.Bypass.set(0x0)
-    app.EventBuilder.Blowoff.set(True)
-    try:
-        pbase.RunState.set(False)
-    except Exception:
-        pass
+def _resolve_profile(args):
+    from psdaq.debugtools.epixquad1kfps.standalone_profile import load_profile
+    overrides = {}
+    for arg, field in [('dev', 'device'), ('lane', 'lane'), ('data_vc', 'data_vc'),
+                       ('prom_bypass', 'prom_bypass'), ('lcls2_yaml', 'pcie_yaml'),
+                       ('camera_yaml', 'camera_yaml')]:
+        if getattr(args, arg) is not None:
+            overrides[field] = getattr(args, arg)
+    if args.no_lcls2_yaml:
+        overrides['pcie_yaml'] = None
+    args.profile_data = load_profile(args.profile, overrides) if args.profile else None
+    defaults = dict(dev='/dev/datadev_0', lane=0, data_vc=0, prom_bypass=True,
+                    lcls2_yaml=_default_lcls2_yaml())
+    for arg, field in [('dev', 'device'), ('lane', 'lane'), ('data_vc', 'data_vc'),
+                       ('prom_bypass', 'prom_bypass'), ('lcls2_yaml', 'pcie_yaml')]:
+        if args.profile_data:
+            setattr(args, arg, args.profile_data[field])
+        elif getattr(args, arg) is None:
+            setattr(args, arg, defaults[arg])
+    if args.profile_data and args.camera_yaml:
+        args.camera_yaml = args.profile_data['camera_yaml']
+    if args.profile_data and args.load_ued_yaml:
+        args.camera_yaml = args.profile_data['camera_yaml']
+        if args.camera_yaml is None:
+            raise ValueError('Profile has no camera YAML')
 
 
 def _safe_get(variable):
@@ -574,9 +580,15 @@ def _disable_camera_trigger(cbase):
         "AutoTrigEn": _safe_get(cbase.SystemRegs.AutoTrigEn),
         "RdoutEn": _safe_get(cbase.RdoutCore.RdoutEn),
     }
-    _safe_set(cbase.SystemRegs.TrigEn, False, "SystemRegs.TrigEn")
-    _safe_set(cbase.SystemRegs.AutoTrigEn, False, "SystemRegs.AutoTrigEn")
-    _safe_set(cbase.RdoutCore.RdoutEn, False, "RdoutCore.RdoutEn")
+    errors = []
+    for variable in (cbase.SystemRegs.TrigEn, cbase.SystemRegs.AutoTrigEn,
+                     cbase.RdoutCore.RdoutEn):
+        try:
+            variable.set(False)
+        except Exception as exc:
+            errors.append(repr(exc))
+    if errors:
+        raise RuntimeError('Could not disable camera: '+ '; '.join(errors))
     return state
 
 
@@ -714,39 +726,6 @@ def _write_gain_mode(
         print(f"Charge injection armed on ASICs {injection_asics}; camera trigger/readout remains disabled")
 
 
-def _open_roots(args):
-    ePixQuad, lcls2_pgp_pcie_apps = _load_modules()
-    lcls2_yaml = None if args.no_lcls2_yaml else args.lcls2_yaml
-    if lcls2_yaml is not None and not os.path.exists(lcls2_yaml):
-        raise FileNotFoundError(f"LCLS-II defaults YAML does not exist: {lcls2_yaml}")
-
-    pbase = lcls2_pgp_pcie_apps.DevRoot(
-        dev=args.dev,
-        enLclsI=False,
-        enLclsII=True,
-        yamlFileLclsI=None,
-        yamlFileLclsII=lcls2_yaml,
-        startupMode=True,
-        standAloneMode=True,
-        pgp4=True,
-        dataVc=args.data_vc,
-        pollEn=False,
-        initRead=False,
-    )
-    cbase = ePixQuad.Top(
-        dev=args.dev,
-        hwType="datadev",
-        lane=args.lane,
-        promWrEn=args.prom_bypass,
-        enVcMask=args.camera_vc_mask,
-        enWriter=False,
-        enPrbs=False,
-        pollEn=False,
-        initRead=False,
-    )
-    return pbase, cbase
-
-
 def _load_camera_yaml(cbase, args):
     yaml_path = args.camera_yaml
     if args.load_ued_yaml:
@@ -768,6 +747,9 @@ def main():
     selected, selected_map_source = _selected_pixels(args)
     args.selected_map_source = selected_map_source
     _print_plan(args, selected)
+    if args.profile_data:
+        import json
+        print(json.dumps(args.profile_data, indent=2))
 
     if args.save_expected_map:
         expected = _expected_raw_map(args.mode, selected)
@@ -777,53 +759,27 @@ def main():
     if args.dry_run:
         return 0
 
-    pbase = None
-    cbase = None
-    pbase_open = False
-    cbase_open = False
+    if args.profile_data is None:
+        raise ValueError('--profile is required for hardware access; legacy defaults are dry-run only')
+    os.environ.setdefault('QT_QPA_PLATFORM', 'offscreen')
+    from psdaq.debugtools.epixquad1kfps.standalone_hardware import session
     trigger_state = None
-    try:
-        pbase, cbase = _open_roots(args)
-        pbase.__enter__()
-        pbase_open = True
-        _configure_app_lane(pbase, args)
-
-        cbase.__enter__()
-        cbase_open = True
-        trigger_state = _disable_camera_trigger(cbase)
-        _load_camera_yaml(cbase, args)
-
-        # LoadConfig can write trigger fields, so force them off again before
-        # touching the ASIC pixel matrix.
-        _disable_camera_trigger(cbase)
-        _write_gain_mode(
-            cbase,
-            args.mode,
-            args.asics,
-            selected,
-            args.inject_pixel,
-            args.injection_delay,
-            verbose=args.verbose,
-            readback_pixel_mask_asic=args.readback_pixel_mask_asic,
-            readback_pixel_mask_csv=args.readback_pixel_mask_csv,
-        )
-
-        if not args.leave_trigger_off:
-            _restore_camera_trigger(cbase, trigger_state)
-            trigger_state = None
-            print("Restored previous camera trigger/readout state")
-        else:
-            print("Left camera trigger/readout disabled")
-    finally:
-        if trigger_state is not None and cbase_open and not args.leave_trigger_off:
-            try:
+    with session(args.profile_data, camera_vc_mask=args.camera_vc_mask) as (_, cbase):
+        try:
+            trigger_state = _disable_camera_trigger(cbase)
+            _load_camera_yaml(cbase, args)
+            _disable_camera_trigger(cbase)
+            _write_gain_mode(
+                cbase, args.mode, args.asics, selected, args.inject_pixel,
+                args.injection_delay, verbose=args.verbose,
+                readback_pixel_mask_asic=args.readback_pixel_mask_asic,
+                readback_pixel_mask_csv=args.readback_pixel_mask_csv)
+        finally:
+            if trigger_state is not None and not args.leave_trigger_off:
                 _restore_camera_trigger(cbase, trigger_state)
-            except Exception as exc:
-                print(f"Warning: failed restoring trigger state: {exc}", file=sys.stderr)
-        if cbase_open:
-            cbase.__exit__(None, None, None)
-        if pbase_open:
-            pbase.__exit__(None, None, None)
+                print('Restored previous camera trigger/readout state')
+            elif trigger_state is not None:
+                print('Left camera trigger/readout disabled')
 
     return 0
 
