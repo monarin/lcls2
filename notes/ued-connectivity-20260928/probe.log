@@ -1,0 +1,76 @@
+===============================================================================
+This is a Federal computer system and is the property of the United States
+Government. It is for authorized use only. Users (authorized or unauthorized)
+have no explicit or implicit expectation of privacy.
+
+By using this system you expressly consent to the terms and conditions in
+https://www.slac.stanford.edu/comp/policy/use.html
+===============================================================================
+{
+  "utc": "2026-09-28T23:14:58.591862+00:00",
+  "host": "drp-ued-cmp003",
+  "device": "/dev/datadev_0",
+  "lane": 0,
+  "register_writes": false,
+  "runtime": {
+    "rogue_version": "v6.1.3",
+    "module_paths": {
+      "rogue": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/lib/python3.9/site-packages/rogue.so",
+      "pyrogue": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/lib/python3.9/site-packages/pyrogue/__init__.py",
+      "ePixQuad": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/epix-quad-1kfps/software/python/ePixQuad/__init__.py",
+      "lcls2_pgp_pcie_apps": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/python/lcls2_pgp_pcie_apps/__init__.py",
+      "surf": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/epix-quad-1kfps/firmware/submodules/surf/python/surf/__init__.py",
+      "axipcie": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/epix-quad-1kfps/firmware/submodules/axi-pcie-core/python/axipcie/__init__.py",
+      "lcls2_pgp_fw_lib": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/submodules/lcls2-pgp-fw-lib/python/lcls2_pgp_fw_lib/__init__.py",
+      "l2si_core": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/submodules/l2si-core/python/l2si_core/__init__.py",
+      "LclsTimingCore": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/submodules/lcls-timing-core/python/LclsTimingCore/__init__.py"
+    }
+  },
+  "pcie": {
+    "board_type": "XilinxKcu1500",
+    "image_name": "Lcls2XilinxKcu1500Pgp4_10Gbps",
+    "fpga_version": 67239936,
+    "build_stamp": "Lcls2XilinxKcu1500Pgp4_10Gbps: Vivado v2025.1, rdsrv433 (Ubuntu 22.04.5 LTS), Built Mon Nov  3 03:42:42 PM PST 2025 by ruckman",
+    "git_hash": 1168876650673233777721039869640825330856797948389
+  },
+  "link": {
+    "rx_ready": true,
+    "remote_ready": true,
+    "tx_ready": true,
+    "rx_clock_hz": 156251000,
+    "tx_clock_hz": 156251000,
+    "link_down_count": 0,
+    "link_error_count": 0
+  },
+  "camera": {
+    "fpga_version": 33751040,
+    "build_stamp": "EpixQuadPgp4_10Gbps_1kfps: Vivado v2021.2, rdsrv403 (Ubuntu 22.04.5 LTS), Built Tue Oct 14 11:01:33 AM PDT 2025 by ruckman",
+    "git_hash": 383709318689029322121060581264501330697182647568,
+    "carrier_ids": [
+      [
+        175474177,
+        1509949462
+      ],
+      [
+        175300865,
+        1291845654
+      ],
+      [
+        175937537,
+        3774873622
+      ],
+      [
+        177133569,
+        2969567254
+      ]
+    ],
+    "adc_done": true,
+    "adc_failed": false,
+    "asic_mask": 65535,
+    "trigger_enabled": true,
+    "auto_trigger_enabled": true,
+    "trigger_source": 3
+  },
+  "status": "ok"
+}
+Rogue/pyrogue version v6.1.3. https://github.com/slaclab/rogue
