@@ -1,0 +1,10 @@
+ePixQuad1kfps standalone gain-mode write plan
+  mode              : FM (fixed medium on every pixel)
+  dev/lane          : /dev/datadev_0 lane 0
+  asics             : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  background value  : 12 (0xc)
+  trbit             : 0
+  selected pixels   : none
+  injection pixels  : none
+  dry run           : True
+Saved expected raw-view FL mask: /lscratch/monarin/tmp/ued-bundle-offline-198vh5xg/FM.npy

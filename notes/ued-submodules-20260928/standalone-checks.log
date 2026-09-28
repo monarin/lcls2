@@ -1,0 +1,19 @@
+{
+  "python": "3.9.21 | packaged by conda-forge | (main, Dec  5 2024, 13:51:40) \n[GCC 13.3.0]",
+  "python_executable": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python",
+  "rogue": "v6.1.3",
+  "submoduledir": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1",
+  "imports": {
+    "ePixQuad": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/epix-quad-1kfps/software/python/ePixQuad/__init__.py",
+    "lcls2_pgp_pcie_apps": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/python/lcls2_pgp_pcie_apps/__init__.py",
+    "surf": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/epix-quad-1kfps/firmware/submodules/surf/python/surf/__init__.py",
+    "axipcie": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/epix-quad-1kfps/firmware/submodules/axi-pcie-core/python/axipcie/__init__.py",
+    "lcls2_pgp_fw_lib": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/submodules/lcls2-pgp-fw-lib/python/lcls2_pgp_fw_lib/__init__.py",
+    "l2si_core": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/submodules/l2si-core/python/l2si_core/__init__.py",
+    "LclsTimingCore": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/submodules/lcls-timing-core/python/LclsTimingCore/__init__.py"
+  },
+  "hardware_access": false
+}
+Five gain-mode dry runs and saved expected maps passed
+Synthetic Rogue records: both headers decoded, short record excluded, zero FP/FN
+Rogue/pyrogue version v6.1.3. https://github.com/slaclab/rogue
