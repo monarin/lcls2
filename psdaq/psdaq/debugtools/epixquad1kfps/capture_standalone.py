@@ -185,7 +185,7 @@ def capture(args, profile, selected, outdir, record):
         try:
             record['runtime'] = hardware.runtime_snapshot()
             quiesce(camera)
-            camera.LoadConfig(profile['camera_yaml'])
+            hardware.load_camera_baseline(camera, profile['camera_yaml'], args.asics)
             quiesce(camera)  # YAML can re-enable triggering.
             record['camera_identity'] = hardware.camera_identity(camera)
             write_json(outdir/'test.json', record)

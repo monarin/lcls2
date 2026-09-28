@@ -1,0 +1,4 @@
+Profile schema/host settings: PASS (no hardware access)
+Headless dry run: PASS
+Manifest: 106 repositories
+Temporary artifacts: /lscratch/monarin/tmp/ued-internal-profile-f8l914qo/dry-run

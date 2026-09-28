@@ -45,9 +45,12 @@ def load_profile(path, overrides=None, bundle=None):
         if value is not None:
             target = Path(value).expanduser()
             if not target.is_absolute():
-                if not bundle:
+                if value.startswith(('./', '../')):
+                    target = path.parent / target
+                elif not bundle:
                     raise ValueError('Set SUBMODULEDIR to resolve profile YAML paths')
-                target = Path(bundle) / target
+                else:
+                    target = Path(bundle) / target
             resolved[field] = str(target.resolve())
     resolved['profile_path'] = str(path)
     resolved['profile_sha256'] = file_sha256(path)
@@ -90,7 +93,7 @@ def validate_hardware(profile, capture=False, hostname=None):
             raise ValueError('Specify a positive finite rate_hz')
         sizes = profile['image_payload_bytes']
         if not isinstance(sizes, list) or not sizes or any(type(n) is not int or n < 1081384 or n % 2 for n in sizes):
-            raise ValueError('Specify verified full-image payload byte counts')
+            raise ValueError('Specify expected full-image payload byte counts')
         if profile['data_vc'] != 0:
             raise ValueError('This recorder supports camera image VC0 only')
 

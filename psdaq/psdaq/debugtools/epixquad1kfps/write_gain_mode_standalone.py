@@ -738,7 +738,8 @@ def _load_camera_yaml(cbase, args):
     if not os.path.exists(yaml_path):
         raise FileNotFoundError(f"camera YAML does not exist: {yaml_path}")
     print(f"Loading camera YAML: {yaml_path}")
-    cbase.LoadConfig(yaml_path)
+    from psdaq.debugtools.epixquad1kfps.standalone_hardware import load_camera_baseline
+    load_camera_baseline(cbase, yaml_path, args.asics)
     print("Camera YAML loaded")
 
 

@@ -9,14 +9,23 @@ one process. It does not produce XTC2.
 | Profile | Current state |
 | --- | --- |
 | `profiles/rdsrv421.json` | Existing C1100/PGP4/XpmMini bench settings, PROM-check bypass, 10 Hz camera auto-trigger. The new capture lifecycle needs hardware validation. |
-| `profiles/drp-ued-cmp003.json` | Unvalidated; hardware execution is blocked. Card/image, lane, PGP, timing, baseline YAML, trigger choices, and full-image sizes remain explicit unknowns. |
+| `profiles/drp-ued-cmp003.json` | Prepared for the first commissioning capture: KCU1500/PGP4 lane 0, local XpmMini, 10 Hz camera auto-trigger, ConfigDB-derived baseline. PROM startup and actual image sizes still need hardware validation. |
 
-The production host uses a different environment/card. Do not copy the bench
-settings into its unknown fields. Verify them against the actual installation,
-review the resulting profile, then change `status` to `ready_for_test` in a
-separate commit. There is no command-line override for this status or host guard.
-Timing can be `xpmmini` or `external`; external timing requires a separately
-verified timing source and configuration. Neither choice starts the full DAQ.
+The production host uses a different card/environment from the bench. Its
+settings and internal-trigger choice are recorded in
+[the UED preparation report](../../../../notes/ued-settings-20260928/README.md).
+`ready_for_test` permits the first commissioning capture; it does not establish
+hardware acceptance. Payload sizes are strict acceptance criteria from the
+existing decoder, still to be checked against UED data. PROM validation remains
+enabled: failure stops startup and must not be bypassed automatically.
+There is no CLI override for profile status or the host guard.
+
+Timing can be `xpmmini` or `external`. The current shared `external` startup uses
+LCLS-II/186 MHz initialization; it does not implement UED's full 119 MHz dual
+trigger setup. The UED test intentionally uses XpmMini. A full DAQ reinitialize
+and Configure is needed to reapply the production path afterward; Enable alone
+is insufficient. Preserve/read back the saved settings as described in the
+preparation report. Neither standalone timing choice starts the full DAQ.
 
 ## Prepare and preview
 
@@ -35,7 +44,7 @@ python "$epix_tools/capture_standalone.py" \
 
 Choose a new output directory for every attempt. Dry runs save the proposed
 settings and expected map without importing hardware modules or accessing a
-device. They deliberately permit unknown UED settings; successful dry runs do
+device. They also permit incomplete profiles; successful dry runs do
 not establish hardware readiness. The environment helper currently selects a
 private SDF bundle. On a test host, source its OS-appropriate DAQ environment,
 then set `SUBMODULEDIR` to the accessible copy of the pinned bundle and put
@@ -109,7 +118,9 @@ python "$epix_tools/launch_xpmmini_writer_gui.py" \
 
 Gain-only legacy dry runs without a profile still work. Explicit CLI overrides
 for device, lane, data VC, PROM bypass and YAML are recorded by the headless
-recorder; defaults come from the selected profile. The recorder always loads
+recorder; defaults come from the selected profile. YAML paths starting with `./` or
+`../` resolve relative to the profile JSON; other relative paths resolve under
+`SUBMODULEDIR`. Absolute paths are also accepted. The recorder always loads
 its camera baseline and currently requires all 16 ASICs, without charge
 injection or bitmap readback. Use it for automatic test accounting: the GUI and
 gain-only writer do not create attempt directories. The older

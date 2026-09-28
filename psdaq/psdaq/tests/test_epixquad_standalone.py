@@ -32,7 +32,9 @@ class ProfileTests(unittest.TestCase):
         return profiles.load_profile(PROFILE_DIR/'rdsrv421.json', bundle='/unused')
 
     def test_unvalidated_and_wrong_host_never_import_hardware(self):
-        candidates = [profiles.load_profile(PROFILE_DIR/'drp-ued-cmp003.json'), self.bench()]
+        unvalidated = profiles.load_profile(PROFILE_DIR/'drp-ued-cmp003.json', bundle='/unused')
+        unvalidated['status'] = 'unvalidated'
+        candidates = [unvalidated, self.bench()]
         with patch.object(hw, 'load_modules') as load, patch.object(profiles.socket, 'gethostname', return_value='other'):
             for profile in candidates:
                 with self.assertRaises(ValueError), hw.session(profile):
@@ -46,8 +48,10 @@ class ProfileTests(unittest.TestCase):
         self.assertFalse(profile['prom_bypass'])
         self.assertTrue(profile['camera_yaml'].startswith('/bundle/'))
         args = gain._parse_args(['--mode', 'FH', '--profile', str(PROFILE_DIR/'drp-ued-cmp003.json')])
-        self.assertIsNone(args.lane)
-        self.assertIsNone(args.profile_data['camera_yaml'])
+        self.assertEqual(args.lane, 0)
+        self.assertFalse(args.prom_bypass)
+        self.assertEqual(args.profile_data['board_type'], 'XilinxKcu1500')
+        self.assertEqual(Path(args.profile_data['camera_yaml']), PROFILE_DIR.parent/'baselines/ued_beam_20260928.yml')
 
     def test_card_mismatch_prevents_root_construction(self):
         profile = self.bench()
@@ -86,6 +90,36 @@ class ProfileTests(unittest.TestCase):
             self.assertEqual(int(expected.sum()), np.prod(RAW_SHAPE) if mode == 'FL' else 1 if mode.startswith('Map') else 0)
 
 
+class BaselineTests(unittest.TestCase):
+    def test_saci_enable_precedes_load_and_failure_disables_all(self):
+        events = []
+        def variable(label):
+            return SimpleNamespace(set=lambda value: events.append((label, value)))
+        asics = {i: SimpleNamespace(enable=variable('enable%d'%i),
+                                   IsEn=variable('IsEn%d'%i)) for i in range(2)}
+        def load(path):
+            events.append(('load', path))
+            raise RuntimeError('YAML failed')
+        camera = SimpleNamespace(Epix10kaSaci=asics, LoadConfig=load)
+        with self.assertRaisesRegex(RuntimeError, 'YAML failed'):
+            hw.load_camera_baseline(camera, 'baseline', [0, 1])
+        self.assertEqual(events, [('enable0',True), ('IsEn0',True),
+                                 ('enable1',True), ('IsEn1',True), ('load','baseline'),
+                                 ('IsEn0',False), ('enable0',False),
+                                 ('IsEn1',False), ('enable1',False)])
+
+    def test_partial_saci_enable_failure_does_not_load_yaml(self):
+        asics = {0: Mock(), 1: Mock()}
+        asics[1].IsEn.set.side_effect = [RuntimeError('enable failed'), None]
+        camera = SimpleNamespace(Epix10kaSaci=asics, LoadConfig=Mock())
+        with self.assertRaisesRegex(RuntimeError, 'enable failed'):
+            hw.load_camera_baseline(camera, 'baseline', [0, 1])
+        camera.LoadConfig.assert_not_called()
+        for asic in asics.values():
+            asic.IsEn.set.assert_called_with(False)
+            asic.enable.set.assert_called_with(False)
+
+
 class CaptureTests(unittest.TestCase):
     def test_only_full_error_free_images_satisfy_target(self):
         counts = cap.ImageCounts(SIZES, 10000000)
@@ -114,7 +148,7 @@ class CaptureTests(unittest.TestCase):
         def fail_wait(*a):
             camera.SystemRegs.TrigEn.set.side_effect = RuntimeError('disable failed')
             raise TimeoutError('no frames')
-        with tempfile.TemporaryDirectory() as temp, patch.object(hw, 'session', session), patch.object(hw, 'runtime_snapshot', return_value={}), patch.object(hw, 'camera_identity', return_value={'adc_done': True, 'adc_failed': False}), patch.object(gain, '_write_gain_mode'), patch.object(cap, 'make_stream_writer', return_value=(writer, sink)), patch.object(cap, 'wait_for_images', side_effect=fail_wait):
+        with tempfile.TemporaryDirectory() as temp, patch.object(hw, 'session', session), patch.object(hw, 'load_camera_baseline'), patch.object(hw, 'runtime_snapshot', return_value={}), patch.object(hw, 'camera_identity', return_value={'adc_done': True, 'adc_failed': False}), patch.object(gain, '_write_gain_mode'), patch.object(cap, 'make_stream_writer', return_value=(writer, sink)), patch.object(cap, 'wait_for_images', side_effect=fail_wait):
             record = {}
             with self.assertRaisesRegex(TimeoutError, 'no frames'):
                 cap.capture(args, profile, [], Path(temp), record)
@@ -128,7 +162,14 @@ class CaptureTests(unittest.TestCase):
     def test_records_preserve_failed_attempt_and_prevent_overwrite(self):
         with tempfile.TemporaryDirectory() as temp, patch.object(cap, 'software_snapshot', return_value={'test': True}), patch.object(cap, 'output_log', return_value=nullcontext()), patch.dict(os.environ, {'SUBMODULEDIR': temp}), patch.object(hw, 'load_modules') as load:
             dest = Path(temp)/'attempt'
-            argv = ['--profile', str(PROFILE_DIR/'drp-ued-cmp003.json'), '--mode', 'FH',
+            baseline = Path(temp)/'lcls2-pgp-pcie-apps/software/config/defaults_LCLS-II.yml'
+            baseline.parent.mkdir(parents=True)
+            baseline.write_text('DevRoot: {}\n')
+            profile_data = json.loads((PROFILE_DIR/'drp-ued-cmp003.json').read_text())
+            profile_data.update(status='unvalidated', camera_yaml=None)
+            profile_path = Path(temp)/'unvalidated.json'
+            profile_path.write_text(json.dumps(profile_data))
+            argv = ['--profile', str(profile_path), '--mode', 'FH',
                     '--label', 'blocked-profile', '--outdir', str(dest)]
             self.assertEqual(cap.main(argv), 1)
             record = json.loads((dest/'test.json').read_text())

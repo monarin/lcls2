@@ -1,0 +1,2 @@
+PASS: baseline loaded through real PyRogue with emulated memory; all 16 ASICs configured and disabled; triggers/readout off; keyed clock and pipeline values correct
+Rogue/pyrogue version v6.1.3. https://github.com/slaclab/rogue

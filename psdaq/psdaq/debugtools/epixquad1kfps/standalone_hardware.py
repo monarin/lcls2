@@ -92,6 +92,36 @@ def camera_identity(camera):
     return result
 
 
+def load_camera_baseline(camera, path, asics):
+    """Enable SACI writes before bulk YAML loading, then disable every ASIC.
+
+    Call with camera triggers/readout disabled. Like DAQ config_expert, IsEn
+    must reach hardware before other ASIC settings, not in the same bulk write.
+    """
+    entered = []
+    try:
+        for index in asics:
+            saci = camera.Epix10kaSaci[index]
+            saci.enable.set(True)
+            entered.append(saci)
+            saci.IsEn.set(True)
+        camera.LoadConfig(path)
+    finally:
+        primary = sys.exc_info()[1]
+        errors = []
+        for saci in entered:
+            for variable in (saci.IsEn, saci.enable):
+                try:
+                    variable.set(False)
+                except Exception as exc:
+                    errors.append(repr(exc))
+        if errors:
+            message = 'ASIC cleanup after baseline load failed: '+ '; '.join(errors)
+            print(message, file=sys.stderr)
+            if primary is None:
+                raise RuntimeError(message)
+
+
 def runtime_snapshot():
     import rogue
     names = ('rogue', 'pyrogue', 'ePixQuad', 'lcls2_pgp_pcie_apps', 'surf',
