@@ -1,0 +1,24 @@
+{
+  "source_history": "/sdf/home/m/monarin/.codex/sessions/2026/06/19/rollout-2026-06-19T15-26-18-019ee1fd-f7a9-7c31-aae1-d7aea492e4a5.jsonl",
+  "excerpts": [
+    {
+      "line": 8102,
+      "timestamp": "2026-07-08T17:18:53.807Z",
+      "role": "assistant",
+      "text": "No. In this run I only see one FP pixel:\n\n`segment=2 row=105 col=30`, mapped to `asic=10 bank=3 bank_row=70 bank_col=17`\n\nThat pixel is already marked `pixel_status=bad` in our test-module pedestal/status file. I compared it against the production-module FP CSV, and there is no overlap. The production FPs are 43 pixels, all on raw rows `175` or `176`; this run\u2019s only FP is on row `105`.\n\nSo this full expand2 `MapFML` write still did not reproduce the production-module edge-row FP pixels on the rdsrv421 test module."
+    },
+    {
+      "line": 8107,
+      "timestamp": "2026-07-08T17:26:26.339Z",
+      "role": "user",
+      "text": "\n# Files mentioned by the user:\n\n## (daq_20250402_r9) monarin@rdsrv421 (features/ued-epix10ka-rdsrv421-daq *) ued-e\u2026: /sdf/home/m/monarin/.codex/attachments/54dbcdfe-d963-4987-a9bb-12cbbbdc522e/pasted-text.txt\n\n## My request for Codex:\nCorrection: the result earlier is from MapFHL mode. I changed the expected map filename accordingly. \n\nHere's the result from MapFML\n\n"
+    },
+    {
+      "line": 8124,
+      "timestamp": "2026-07-08T17:26:55.541Z",
+      "role": "assistant",
+      "text": "No production-module FP pixels show up in this MapFML result either.\n\nThis run has exactly one FP pixel:\n\n`segment=2 row=105 col=30`, `asic=10 bank=3 bank_row=70 bank_col=17`\n\nThat is the same known bad test-module pixel, marked `pixel_status=bad`. I compared it to the production FP CSV and the overlap is empty. The production FP pixels are all on raw rows `175` or `176`; this one is on row `105`.\n\nThe 22 FN pixels are also all marked `pixel_status=bad`, all on `asic=12 bank=1 bank_col=32`, so they look like known bad pixels from this rdsrv421 module rather than the production edge-row FP behavior."
+    }
+  ],
+  "interpretation": "Both corrected expand2 MapFHL and MapFML test-module captures had only test-module known-bad mismatches. Production CSV reference is ued1015980 run 2 (43 FP,68 FN)."
+}

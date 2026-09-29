@@ -1,5 +1,9 @@
 # UED 50-frame commissioning — 2026-09-28
 
+Latest: [expand2 MapFML/MapFHL results](GAIN_MAP_RESULTS.md) have no mismatches
+outside the persistent list across 50 assessed images per mode, after excluding
+frame 1 as instructed. The historical production FP pattern was not reproduced.
+
 Follow-up: [FM and FL tests](FM_FL_RESULTS.md) are complete. FM has zero
 gain-bit mismatches; FL has first-frame mismatches and 352 persistent candidates
 on ASIC 8 columns 97/98. That report records the latest hardware state.

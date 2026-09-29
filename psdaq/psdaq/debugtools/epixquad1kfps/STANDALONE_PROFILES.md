@@ -189,3 +189,8 @@ FL candidates on ASIC 8 columns 97/98. The
 confirms an exact match to the 352-pixel bad-gainbit baseline from three
 UED experiment runs. Keep that baseline separate from the startup-only
 mismatches and preserve full totals in gain-map accounting.
+The first [production expand2 MapFML/MapFHL comparison](../../../../notes/ued-commissioning-20260928/GAIN_MAP_RESULTS.md)
+found zero mismatches outside that baseline in 50 assessed frames per mode,
+excluding frame 1 by user instruction while retaining it in the raw record.
+The historical production FPs did not recur; repeatability and programming-path
+comparisons remain open.

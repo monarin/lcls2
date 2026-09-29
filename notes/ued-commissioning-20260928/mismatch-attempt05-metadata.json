@@ -1,0 +1,96 @@
+{
+  "candidate_pixels": 22395,
+  "classification": "observed candidates; not an approved known-bad list",
+  "coordinate_system": "zero-based DAQ raw (segment,row,col); ASIC programming coordinates",
+  "created_utc": "2026-09-29T00:53:20.161302+00:00",
+  "exporter_sha256": "a9d6b9321d6b2e487278041d0bb0c2a49960b37e0310b444beac9e7a389c26a2",
+  "gainbit_mask": "0x4000",
+  "has_image_evidence": true,
+  "kind_definition": "FP: expected 0, observed 1; FN: expected 1, observed 0",
+  "output_files_sha256": {
+    "known-bad-candidates.npz": "ce3f9497acedd7a696ca41ec4d605c0773356c4b0108cb01fe9acae6a71c37e6",
+    "mismatches.csv": "31674be6b909cee7502fc41c300833233bc84a3e7b0444e30a658cfebd59ba84"
+  },
+  "policy": "Any gain-bit mismatch in any valid image; no frame exclusions",
+  "raw_shape": [
+    4,
+    352,
+    384
+  ],
+  "schema_version": 1,
+  "source": {
+    "analysis": {
+      "control_row_fn_occurrences": 0,
+      "control_row_fp_occurrences": 0,
+      "false_negative_occurrences": 25558,
+      "false_negative_pixels": 22158,
+      "false_positive_occurrences": 237,
+      "false_positive_pixels": 237,
+      "invalid_records": 513,
+      "valid_images": 51
+    },
+    "analysis_error": null,
+    "camera_identity": {
+      "adc_done": true,
+      "adc_failed": false,
+      "build_stamp": "EpixQuadPgp4_10Gbps_1kfps: Vivado v2021.2, rdsrv403 (Ubuntu 22.04.5 LTS), Built Tue Oct 14 11:01:33 AM PDT 2025 by ruckman",
+      "carrier_ids": [
+        [
+          175474177,
+          1509949462
+        ],
+        [
+          175300865,
+          1291845654
+        ],
+        [
+          175937537,
+          3774873622
+        ],
+        [
+          177133569,
+          2969567254
+        ]
+      ],
+      "fpga_version": 33751040,
+      "git_hash": 383709318689029322121060581264501330697182647568
+    },
+    "cleanup_errors": [],
+    "data": {
+      "path": "capture.dat",
+      "sha256": "40a25bccabb89dedc183f0155027d3d13de854ba33e4edb12dead9b025583ec8",
+      "size": 55887144
+    },
+    "error": null,
+    "finished_utc": "2026-09-29T00:53:19.602462+00:00",
+    "host": "drp-ued-cmp003",
+    "label": "commissioning-MapFML-internal-10Hz",
+    "mode": {
+      "background_value": 12,
+      "description": "FM background with selected FL pixels",
+      "name": "MapFML",
+      "selected_value": 8,
+      "trbit": 0
+    },
+    "pcie_identity": {
+      "board_type": "XilinxKcu1500",
+      "build_stamp": "Lcls2XilinxKcu1500Pgp4_10Gbps: Vivado v2025.1, rdsrv433 (Ubuntu 22.04.5 LTS), Built Mon Nov  3 03:42:42 PM PST 2025 by ruckman",
+      "fpga_version": 67239936,
+      "git_hash": 1168876650673233777721039869640825330856797948389,
+      "image_name": "Lcls2XilinxKcu1500Pgp4_10Gbps"
+    },
+    "repetition": 5,
+    "requested_frames": 51,
+    "started_utc": "2026-09-29T00:52:09.088915+00:00",
+    "status": "completed",
+    "test_id": "attempt05-mapfml"
+  },
+  "source_attempt": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt05-mapfml",
+  "source_files_sha256": {
+    "expected-map.npy": "1739094ffe6e80a7eae0496961730399c0f1dce077f7426e445137fac4434894",
+    "mismatches.npz": "c5917c42599900a740865f7cf38d6c70d3dfbe15c772d064501ea4e737c6187d",
+    "profile.json": "b0f5b18b1423dda703a5d3072a4a24b9cc4b69c6495291beb7a2288d54fdcff1",
+    "software.json": "175e1cac1dde73a3268fb9cc6b175ff71d0aa40d891d55bd314ba52b9d0422b6"
+  },
+  "valid_images": 51
+}

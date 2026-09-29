@@ -1,0 +1,12 @@
+===============================================================================
+This is a Federal computer system and is the property of the United States
+Government. It is for authorized use only. Users (authorized or unauthorized)
+have no explicit or implicit expectation of privacy.
+
+By using this system you expressly consent to the terms and conditions in
+https://www.slac.stanford.edu/comp/policy/use.html
+===============================================================================
+usage: run_once.py [-h] --attempt ATTEMPT [--mode {FH,FM,FL,MapFML,MapFHL}]
+                   [--selected-map SELECTED_MAP] [--frames FRAMES]
+                   [--watchdog-seconds WATCHDOG_SECONDS]
+run_once.py: error: Selected map does not exist

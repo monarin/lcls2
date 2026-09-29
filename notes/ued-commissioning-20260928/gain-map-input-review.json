@@ -1,0 +1,29 @@
+{
+  "map_source": "/sdf/home/m/monarin/tmp/epix-per-pixel-gainmode/roi_ft_ued1015999_r185_t300_v2/roiFromAboveThreshold_r185_c0_calib_expand2.npy",
+  "map_sha256": "1739094ffe6e80a7eae0496961730399c0f1dce077f7426e445137fac4434894",
+  "shape": [
+    4,
+    352,
+    384
+  ],
+  "selected_pixels": 22169,
+  "selected_known_bad": 68,
+  "historical_csv_source": "/sdf/home/m/monarin/tmp/epix-per-pixel-gainmode/per_pixel_gain_diag/20260514/output_fp_fn_ued1015980_run_2_3_4.csv",
+  "historical_csv_sha256": "386468e14b462c8514aed687f040843d9e4619039f2bd2f678b49d3907949f58",
+  "historical_run2_counts": {
+    "FP": 43,
+    "FN": 68
+  },
+  "planned_modes": [
+    "MapFML",
+    "MapFHL"
+  ],
+  "frames_recorded_per_attempt": 51,
+  "acceptance_full_image_indices_1based": [
+    2,
+    51
+  ],
+  "known_bad_baseline": "fl-persistent-mismatch-candidates.csv",
+  "write_path": "matrix fill background plus selected individual-pixel writes; not a full per-pixel background write",
+  "shared_map_copy": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/map-inputs/expand2.npy"
+}
