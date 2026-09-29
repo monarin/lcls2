@@ -10,18 +10,22 @@ from datetime import datetime, timezone
 
 parser=argparse.ArgumentParser()
 parser.add_argument('--attempt',type=int,required=True)
+parser.add_argument('--mode',choices=('FH','FM','FL'),default='FH')
 args=parser.parse_args()
 if args.attempt < 1: parser.error('attempt must be positive')
 folder=Path(__file__).resolve().parent
 checkout=folder.parents[1]
 assert socket.gethostname().split('.')[0]=='drp-ued-cmp003'
 tools=checkout/'psdaq/psdaq/debugtools/epixquad1kfps'
+outdir=folder/('attempt%02d-%s' % (args.attempt,args.mode.lower()))
+if outdir.exists() or (folder/('execution-attempt%02d.json' % args.attempt)).exists():
+    parser.error('Attempt already exists; choose a new attempt number')
 command=[sys.executable,str(tools/'capture_standalone.py'),
          '--profile',str(tools/'profiles/drp-ued-cmp003.json'),
-         '--mode','FH','--frames','50','--timeout','30',
-         '--label','commissioning-FH-internal-10Hz','--repetition',str(args.attempt),
+         '--mode',args.mode,'--frames','50','--timeout','30',
+         '--label','commissioning-%s-internal-10Hz' % args.mode,'--repetition',str(args.attempt),
          '--notes','Production UED commissioning capture; restore camera idle trigger state afterward',
-         '--outdir',str(folder/('attempt%02d-fh' % args.attempt))]
+         '--outdir',str(outdir)]
 record={'started_utc':datetime.now(timezone.utc).isoformat(),'command':command}
 child=None
 try:

@@ -1,0 +1,153 @@
+===============================================================================
+This is a Federal computer system and is the property of the United States
+Government. It is for authorized use only. Users (authorized or unauthorized)
+have no explicit or implicit expectation of privacy.
+
+By using this system you expressly consent to the terms and conditions in
+https://www.slac.stanford.edu/comp/policy/use.html
+===============================================================================
+{
+  "utc": "2026-09-29T00:13:10.099901+00:00",
+  "register_writes": false,
+  "runtime": {
+    "rogue_version": "v6.1.3",
+    "module_paths": {
+      "rogue": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/lib/python3.9/site-packages/rogue.so",
+      "pyrogue": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/lib/python3.9/site-packages/pyrogue/__init__.py",
+      "ePixQuad": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/epix-quad-1kfps/software/python/ePixQuad/__init__.py",
+      "lcls2_pgp_pcie_apps": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/python/lcls2_pgp_pcie_apps/__init__.py",
+      "surf": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/epix-quad-1kfps/firmware/submodules/surf/python/surf/__init__.py",
+      "axipcie": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/epix-quad-1kfps/firmware/submodules/axi-pcie-core/python/axipcie/__init__.py",
+      "lcls2_pgp_fw_lib": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/submodules/lcls2-pgp-fw-lib/python/lcls2_pgp_fw_lib/__init__.py",
+      "l2si_core": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/submodules/l2si-core/python/l2si_core/__init__.py",
+      "LclsTimingCore": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/submodules/lcls-timing-core/python/LclsTimingCore/__init__.py"
+    }
+  },
+  "device": "/dev/datadev_0",
+  "lane": 0,
+  "pcie": {
+    "DevPcie.Hsio.TimingRx.TimingFrameRx.ClkSel": 1,
+    "DevPcie.Hsio.TimingRx.TimingFrameRx.ModeSel": 1,
+    "DevPcie.Hsio.TimingRx.TimingFrameRx.ModeSelEn": 0,
+    "DevPcie.Hsio.TimingRx.TimingFrameRx.RxLinkUp": 1,
+    "DevPcie.Hsio.TimingRx.TimingFrameRx.RxDown": 0,
+    "DevPcie.Hsio.TimingRx.TimingFrameRx.sofCount": 37041133,
+    "DevPcie.Hsio.TimingRx.TimingFrameRx.CrcErrCount": 0,
+    "DevPcie.Hsio.TimingRx.TimingFrameRx.RxDecErrCount": 0,
+    "DevPcie.Hsio.TimingRx.TimingPhyMonitor.UseMiniTpg": true,
+    "DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.HwEnable": false,
+    "DevPcie.Application.AppLane[0].VcDataTap": 0,
+    "DevPcie.Application.AppLane[0].XpmPauseThresh": 32,
+    "DevPcie.Application.AppLane[0].EventBuilder.Bypass": 0,
+    "DevPcie.Application.AppLane[0].EventBuilder.Timeout": 144675,
+    "DevPcie.Application.AppLane[0].EventBuilder.Blowoff": true,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[0].MasterEnable": false,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[0].TriggerSource": 1,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[0].TriggerDelay": 8577,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[0].Partition": 0,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[0].TriggerCount": 512,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[0].EnableReg": true,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[0].RateType": 0,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[0].RateSel": 4,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[0].DestType": 2,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].EnableTrig": true,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].Source": 0,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].Delay": 0,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].Width": 1,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].Polarity": 1,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[4].MasterEnable": false,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[4].TriggerSource": 1,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[4].TriggerDelay": 42,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[4].Partition": 0,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[4].TriggerCount": 5122,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[4].EnableReg": true,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[4].RateType": 0,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[4].RateSel": 3,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[4].DestType": 2,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].EnableTrig": true,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].Source": 4,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].Delay": 11186,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].Width": 1,
+    "DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].Polarity": 1
+  },
+  "identity": {
+    "fpga_version": 33751040,
+    "build_stamp": "EpixQuadPgp4_10Gbps_1kfps: Vivado v2021.2, rdsrv403 (Ubuntu 22.04.5 LTS), Built Tue Oct 14 11:01:33 AM PDT 2025 by ruckman",
+    "git_hash": 383709318689029322121060581264501330697182647568,
+    "carrier_ids": [
+      [
+        175474177,
+        1509949462
+      ],
+      [
+        175300865,
+        1291845654
+      ],
+      [
+        175937537,
+        3774873622
+      ],
+      [
+        177133569,
+        2969567254
+      ]
+    ],
+    "adc_done": true,
+    "adc_failed": false
+  },
+  "camera": {
+    "SystemRegs.TrigEn": true,
+    "SystemRegs.TrigSrcSel": 3,
+    "SystemRegs.AutoTrigEn": true,
+    "SystemRegs.AutoTrigPer": 15625000,
+    "SystemRegs.AutoTrigFreqHz": 10.0,
+    "SystemRegs.DcDcEnable": 15,
+    "SystemRegs.AsicAnaEn": true,
+    "SystemRegs.AsicDigEn": true,
+    "SystemRegs.DdrVttEn": false,
+    "SystemRegs.AsicMask": 65535,
+    "SystemRegs.AdcTestDone": true,
+    "SystemRegs.AdcTestFailed": false,
+    "AcqCore.AcqToAsicR0Delay": 0,
+    "AcqCore.AsicR0Width": 30,
+    "AcqCore.AsicR0ToAsicAcq": 15625,
+    "AcqCore.AsicAcqWidth": 15625,
+    "AcqCore.AsicAcqLToPPmatL": 1000,
+    "AcqCore.AsicPpmatToReadout": 0,
+    "AcqCore.AsicRoClkHalfT": 3,
+    "AcqCore.AsicSyncInjEn": false,
+    "AcqCore.AsicSyncInjDly": 1000,
+    "AcqCore.DummyAcqEn": false,
+    "RdoutCore.RdoutEn": false,
+    "RdoutCore.SeqCount": 200,
+    "RdoutCore.AdcPipelineDelay": 68,
+    "RdoutCore.BuffersRdy": false,
+    "RdoutCore.OverSampleEn": {
+      "error": "<class 'ePixQuad.RdoutCore.RdoutCore'> - Root.RdoutCore has no attribute OverSampleEn"
+    },
+    "RdoutCore.OverSampleSize": {
+      "error": "<class 'ePixQuad.RdoutCore.RdoutCore'> - Root.RdoutCore has no attribute OverSampleSize"
+    },
+    "RdoutCore.sAxisDropFrameCount": {
+      "error": "<class 'ePixQuad.RdoutCore.RdoutCore'> - Root.RdoutCore has no attribute sAxisDropFrameCount"
+    },
+    "RdoutCore.mAxisDropFrameCount": {
+      "error": "<class 'ePixQuad.RdoutCore.RdoutCore'> - Root.RdoutCore has no attribute mAxisDropFrameCount"
+    }
+  },
+  "stream_first": {
+    "RdoutStreamMonitoring.Ch[0].FrameCnt": 200,
+    "RdoutStreamMonitoring.Ch[0].FrameRate": 0,
+    "RdoutStreamMonitoring.Ch[0].FrameSize": 1095232,
+    "RdoutStreamMonitoring.Ch[0].FrameSizeMin": 1095232,
+    "RdoutStreamMonitoring.Ch[0].FrameSizeMax": 1095232
+  },
+  "stream_second": {
+    "RdoutStreamMonitoring.Ch[0].FrameCnt": 200,
+    "RdoutStreamMonitoring.Ch[0].FrameRate": 0,
+    "RdoutStreamMonitoring.Ch[0].FrameSize": 1095232,
+    "RdoutStreamMonitoring.Ch[0].FrameSizeMin": 1095232,
+    "RdoutStreamMonitoring.Ch[0].FrameSizeMax": 1095232
+  }
+}
+Rogue/pyrogue version v6.1.3. https://github.com/slaclab/rogue

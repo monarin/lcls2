@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "tests": [
+    {
+      "attempt": 3,
+      "mode": "FM",
+      "acquisition_status": "completed",
+      "gainbit_check": "pass",
+      "analysis": {
+        "control_row_fn_occurrences": 0,
+        "control_row_fp_occurrences": 0,
+        "false_negative_occurrences": 0,
+        "false_negative_pixels": 0,
+        "false_positive_occurrences": 0,
+        "false_positive_pixels": 0,
+        "invalid_records": 503,
+        "valid_images": 50
+      },
+      "data": {
+        "path": "capture.dat",
+        "sha256": "fd717025aa84318ef889986349411b057fa958a3e6a3b1ff7dfc8b2254fe1046",
+        "size": 54791328
+      },
+      "adc_mean_first": [
+        13158.36357717803,
+        13274.991055575285,
+        13338.44813861269,
+        13338.413566820549
+      ],
+      "adc_mean_second": [
+        2702.9005829782195,
+        2854.979610558712,
+        2720.8432395241475,
+        2823.027277166193
+      ],
+      "adc_mean_last": [
+        2704.9611002604165,
+        2853.76064601089,
+        2719.2765669389205,
+        2822.021329012784
+      ],
+      "records": [
+        {
+          "payload_bytes": 48,
+          "error": 0,
+          "channel": 1,
+          "count": 503
+        },
+        {
+          "payload_bytes": 1095248,
+          "error": 0,
+          "channel": 1,
+          "count": 41
+        },
+        {
+          "payload_bytes": 1095288,
+          "error": 0,
+          "channel": 1,
+          "count": 9
+        }
+      ],
+      "mismatch_artifacts": {
+        "candidate_pixels": 0,
+        "directory": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt03-fm/mismatch-records",
+        "metadata_sha256": "b0a2bed0d905cbacefa9d1041bde784cba736f0d476f964d9a314f4fe76f101a"
+      }
+    },
+    {
+      "attempt": 4,
+      "mode": "FL",
+      "acquisition_status": "completed",
+      "gainbit_check": "mismatches",
+      "analysis": {
+        "control_row_fn_occurrences": 0,
+        "control_row_fp_occurrences": 0,
+        "false_negative_occurrences": 332860,
+        "false_negative_pixels": 315612,
+        "false_positive_occurrences": 0,
+        "false_positive_pixels": 0,
+        "invalid_records": 503,
+        "valid_images": 50
+      },
+      "data": {
+        "path": "capture.dat",
+        "sha256": "7a863d78ba63b6e78c9cbfca326fb269efb1070c11cb625984eaf9202dd6b172",
+        "size": 54791328
+      },
+      "adc_mean_first": [
+        13158.677852746212,
+        13274.897446141098,
+        13338.251043146307,
+        13338.263945608429
+      ],
+      "adc_mean_second": [
+        2686.1769501657195,
+        2833.9430930397725,
+        2698.4662863991475,
+        2800.6504424124055
+      ],
+      "adc_mean_last": [
+        2686.3098662405305,
+        2833.9295469341855,
+        2698.7144368489585,
+        2800.5630326704545
+      ],
+      "records": [
+        {
+          "payload_bytes": 48,
+          "error": 0,
+          "channel": 1,
+          "count": 503
+        },
+        {
+          "payload_bytes": 1095248,
+          "error": 0,
+          "channel": 1,
+          "count": 41
+        },
+        {
+          "payload_bytes": 1095288,
+          "error": 0,
+          "channel": 1,
+          "count": 9
+        }
+      ],
+      "mismatch_artifacts": {
+        "candidate_pixels": 315612,
+        "directory": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt04-fl/mismatch-records",
+        "metadata_sha256": "7e83ca2b6538eb607584d76632db00d3de556af127cba1283844f64c795aa82b"
+      }
+    }
+  ],
+  "persistent_fl_candidates": {
+    "classification": "Repeated within this capture; pending repeat-test validation",
+    "selection": "FL occurrences == analyzed valid images == 50; original all-frame list retained",
+    "count": 352,
+    "asic": 8,
+    "asic_rows_inclusive": [
+      0,
+      175
+    ],
+    "asic_columns": [
+      97,
+      98
+    ],
+    "segment": 2,
+    "raw_rows_inclusive": [
+      176,
+      351
+    ],
+    "raw_columns": [
+      289,
+      290
+    ],
+    "coordinate_base": 0,
+    "source_csv": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt04-fl/mismatch-records/mismatches.csv",
+    "source_csv_sha256": "ef7db1b0f338a82af0c8a12490664fa6c26d9528255ed2868f8cf5fbec872a5d",
+    "subset_csv": "fl-persistent-mismatch-candidates.csv",
+    "subset_csv_sha256": "b97b7f0a14158fe14daa1e55bb1d923748632c178d47442fe84e771d04ce5856"
+  },
+  "startup_only_fl_candidates": 315260,
+  "postflight": "postflight-fm-fl.json",
+  "next_step": "Repeat FL to test reproducibility of ASIC 8 columns 97/98 and investigate first-frame behavior before gain-map acceptance",
+  "csv_note": "Tracked CSV copies use LF line endings; original capture CSVs and their checksums remain unchanged."
+}

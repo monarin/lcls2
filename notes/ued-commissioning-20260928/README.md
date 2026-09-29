@@ -1,5 +1,9 @@
 # UED 50-frame commissioning — 2026-09-28
 
+Follow-up: [FM and FL tests](FM_FL_RESULTS.md) are complete. FM has zero
+gain-bit mismatches; FL has first-frame mismatches and 352 persistent candidates
+on ASIC 8 columns 97/98. That report records the latest hardware state.
+
 The bounded FH commissioning capture passed on `drp-ued-cmp003`, using
 `/dev/datadev_0`, PGP4 lane 0, all 16 ASICs, internal camera triggering at
 10 Hz, and local XpmMini timing. No DAQ or devGui was run. Normal PROM
@@ -38,7 +42,8 @@ subsequent frames. No ADC pixels were zero. The cause of the startup
 transient has not been established; retain it and examine settling in the
 next test rather than silently excluding that frame from accounting.
 
-Next work is the remaining fixed-gain/map tests and startup-settling review.
+The following plan was recorded after FH; see the follow-up report above for
+the completed FM/FL tests and revised next check.
 Every upcoming fixed-gain capture will also export per-pixel FP/FN coordinates,
 counts/fractions, a candidate mask, and detector/mode/source provenance for
 later gain-map known-bad-list review. Candidates are observations, not automatic

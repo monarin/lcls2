@@ -1,0 +1,36 @@
+{
+  "status": "restored",
+  "scope": "camera idle triggering only; PCIe remains in standalone test configuration",
+  "readback": {
+    "SystemRegs.TrigSrcSel": 3,
+    "SystemRegs.AutoTrigPer": 15625000,
+    "SystemRegs.AutoTrigEn": true,
+    "SystemRegs.TrigEn": true,
+    "RdoutCore.RdoutEn": false
+  },
+  "identity": {
+    "fpga_version": 33751040,
+    "build_stamp": "EpixQuadPgp4_10Gbps_1kfps: Vivado v2021.2, rdsrv403 (Ubuntu 22.04.5 LTS), Built Tue Oct 14 11:01:33 AM PDT 2025 by ruckman",
+    "git_hash": 383709318689029322121060581264501330697182647568,
+    "carrier_ids": [
+      [
+        175474177,
+        1509949462
+      ],
+      [
+        175300865,
+        1291845654
+      ],
+      [
+        175937537,
+        3774873622
+      ],
+      [
+        177133569,
+        2969567254
+      ]
+    ],
+    "adc_done": true,
+    "adc_failed": false
+  }
+}

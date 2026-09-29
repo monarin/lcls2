@@ -9,14 +9,14 @@ one process. It does not produce XTC2.
 | Profile | Current state |
 | --- | --- |
 | `profiles/rdsrv421.json` | Existing C1100/PGP4/XpmMini bench settings, PROM-check bypass, 10 Hz camera auto-trigger. The new capture lifecycle needs hardware validation. |
-| `profiles/drp-ued-cmp003.json` | Prepared for the first commissioning capture: KCU1500/PGP4 lane 0, local XpmMini, 10 Hz camera auto-trigger, ConfigDB-derived baseline. PROM startup and actual image sizes still need hardware validation. |
+| `profiles/drp-ued-cmp003.json` | KCU1500/PGP4 lane 0, local XpmMini, 10 Hz camera auto-trigger, ConfigDB-derived baseline. PROM startup/full-image transport verified; FH/FM gain-bit checks pass. FL mismatches remain under investigation. |
 
 The production host uses a different card/environment from the bench. Its
 settings and internal-trigger choice are recorded in
 [the UED preparation report](../../../../notes/ued-settings-20260928/README.md).
-`ready_for_test` permits the first commissioning capture; it does not establish
-hardware acceptance. Payload sizes are strict acceptance criteria from the
-existing decoder, still to be checked against UED data. PROM validation remains
+`ready_for_test` permits commissioning tests; it does not establish
+hardware acceptance. Both accepted full-image payload sizes have been observed
+on UED in the recorded FH/FM/FL tests. PROM validation remains
 enabled: failure stops startup and must not be bypassed automatically.
 There is no CLI override for profile status or the host guard.
 
@@ -182,3 +182,7 @@ The 2026-09-28 UED commissioning captured 50 full FH images at 10 Hz with
 zero gain-bit mismatches and clean shutdown after a timing-drain fix. See
 [results and restoration state](../../../../notes/ued-commissioning-20260928/README.md).
 Broader gain-map validation and first-frame ADC settling remain open.
+The subsequent [FM/FL results](../../../../notes/ued-commissioning-20260928/FM_FL_RESULTS.md)
+record a clean FM gain-bit check, FL startup mismatches, and 352 persistent
+FL candidates on ASIC 8 columns 97/98. Review/repeat these before gain-map
+acceptance; the full mismatch totals remain preserved.
