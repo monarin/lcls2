@@ -184,5 +184,8 @@ zero gain-bit mismatches and clean shutdown after a timing-drain fix. See
 Broader gain-map validation and first-frame ADC settling remain open.
 The subsequent [FM/FL results](../../../../notes/ued-commissioning-20260928/FM_FL_RESULTS.md)
 record a clean FM gain-bit check, FL startup mismatches, and 352 persistent
-FL candidates on ASIC 8 columns 97/98. Review/repeat these before gain-map
-acceptance; the full mismatch totals remain preserved.
+FL candidates on ASIC 8 columns 97/98. The
+[historical comparison](../../../../notes/ued-commissioning-20260928/HISTORICAL_COMPARISON.md)
+confirms an exact match to the 352-pixel bad-gainbit baseline from three
+UED experiment runs. Keep that baseline separate from the startup-only
+mismatches and preserve full totals in gain-map accounting.

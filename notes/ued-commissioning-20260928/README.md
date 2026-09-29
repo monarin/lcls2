@@ -3,6 +3,8 @@
 Follow-up: [FM and FL tests](FM_FL_RESULTS.md) are complete. FM has zero
 gain-bit mismatches; FL has first-frame mismatches and 352 persistent candidates
 on ASIC 8 columns 97/98. That report records the latest hardware state.
+The [historical comparison](HISTORICAL_COMPARISON.md) confirms those same
+352 persistent pixels in three previously analyzed UED experiment runs.
 
 The bounded FH commissioning capture passed on `drp-ued-cmp003`, using
 `/dev/datadev_0`, PGP4 lane 0, all 16 ASICs, internal camera triggering at

@@ -131,7 +131,7 @@
     }
   ],
   "persistent_fl_candidates": {
-    "classification": "Repeated within this capture; pending repeat-test validation",
+    "classification": "Historically corroborated bad-gainbit baseline: exact match to ued1015999 runs 75,185,318 analyzed 2026-07-08",
     "selection": "FL occurrences == analyzed valid images == 50; original all-frame list retained",
     "count": 352,
     "asic": 8,
@@ -160,6 +160,7 @@
   },
   "startup_only_fl_candidates": 315260,
   "postflight": "postflight-fm-fl.json",
-  "next_step": "Repeat FL to test reproducibility of ASIC 8 columns 97/98 and investigate first-frame behavior before gain-map acceptance",
-  "csv_note": "Tracked CSV copies use LF line endings; original capture CSVs and their checksums remain unchanged."
+  "next_step": "Carry the corroborated 352-pixel baseline into gain-map accounting; investigate startup-only mismatches separately. Repeat writes remain part of the planned repeatability sequence.",
+  "csv_note": "Tracked CSV copies use LF line endings; original capture CSVs and their checksums remain unchanged.",
+  "historical_comparison": "fixed-gain-history-comparison.json"
 }

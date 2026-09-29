@@ -1,5 +1,9 @@
 # FM / FL 50-frame tests — 2026-09-28 PDT
 
+Historical cross-check: [the July 8 experiment-data study](HISTORICAL_COMPARISON.md)
+already found these exact 352 FL pixels in three UED runs. FH/FM also match
+that study. The extra first-frame FL mismatches remain a separate observation.
+
 Both authorized captures completed on drp-ued-cmp003 at 10 Hz with the same
 pinned bundle, UED baseline, normal PROM check and all 16 ASICs used for FH.
 No DAQ or devGui was started. FM passed the gain-bit check; FL has a startup
@@ -55,10 +59,11 @@ pixels were zero. Per-frame ADC statistics are retained in
 [FL payload review](attempt04-payload-review.json). Gain bits alone cannot
 distinguish FH from FM or validate analog gain/pedestal quality.
 
-The next proposed live check is a repeat FL capture to test whether ASIC 8
-columns 97/98 recur after another gain write, and to investigate startup
-behavior before accepting gain-map results. Keep the 352 persistent pixels
-as candidates for known-bad-list review, with mode and detector provenance.
+The historical comparison now corroborates ASIC 8 columns 97/98 as an existing
+bad-gainbit baseline. Carry those 352 pixels into gain-map accounting with
+mode/source provenance and retain both total and outside-baseline counts.
+A repeat FL capture remains useful for write repeatability; investigate startup
+behavior separately before accepting gain-map results.
 Do not promote all first-frame-only candidates to permanent exclusions.
 No extra live repeat, gain-map test, ADC training or PROM programming was run.
 
