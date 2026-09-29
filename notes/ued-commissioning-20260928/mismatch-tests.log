@@ -1,0 +1,36 @@
+test_partial_saci_enable_failure_does_not_load_yaml (test_epixquad_standalone.BaselineTests) ... ok
+test_saci_enable_precedes_load_and_failure_disables_all (test_epixquad_standalone.BaselineTests) ... ok
+test_only_full_error_free_images_satisfy_target (test_epixquad_standalone.CaptureTests) ... ok
+test_pause_attempts_every_buffer_even_if_one_fails (test_epixquad_standalone.CaptureTests) ... ok
+test_records_preserve_failed_attempt_and_prevent_overwrite (test_epixquad_standalone.CaptureTests) ... Test record: /lscratch/monarin/tmp/tmplv5nacvj/attempt
+Traceback (most recent call last):
+  File "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/debugtools/epixquad1kfps/capture_standalone.py", line 380, in main
+    validate_hardware(profile, capture=True)
+  File "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/debugtools/epixquad1kfps/standalone_profile.py", line 64, in validate_hardware
+    raise ValueError('Profile is unvalidated; hardware access is disabled')
+ValueError: Profile is unvalidated; hardware access is disabled
+ok
+test_timeout_closes_writer_and_quiesces_even_if_one_disable_fails (test_epixquad_standalone.CaptureTests) ... ok
+test_truncated_file_rejected (test_epixquad_standalone.CaptureTests) ... ok
+test_coordinates_polarity_frequency_and_provenance (test_epixquad_standalone.MismatchExportTests) ... ok
+test_no_frames_is_distinct_from_zero_mismatches (test_epixquad_standalone.MismatchExportTests) ... ok
+test_card_mismatch_prevents_root_construction (test_epixquad_standalone.ProfileTests) ... ok
+test_five_expected_gain_maps (test_epixquad_standalone.ProfileTests) ... ok
+test_override_resolution_and_no_cross_host_defaults (test_epixquad_standalone.ProfileTests) ... ok
+test_partial_startup_cleanup (test_epixquad_standalone.ProfileTests) ... ok
+test_unvalidated_and_wrong_host_never_import_hardware (test_epixquad_standalone.ProfileTests) ... ok
+test_completed_failed_and_interrupted_records_keep_data_and_analysis (test_epixquad_standalone.RogueIntegrationTests) ... failed: /lscratch/monarin/tmp/tmplv5nacvj/attempt
+Test record: /lscratch/monarin/tmp/tmpkj85fct6/attempt
+completed: /lscratch/monarin/tmp/tmpkj85fct6/attempt
+Test record: /lscratch/monarin/tmp/tmpdq1yuwl9/attempt
+failed: /lscratch/monarin/tmp/tmpdq1yuwl9/attempt
+Test record: /lscratch/monarin/tmp/tmpmipg20sl/attempt
+ok
+test_native_writer_and_analysis (test_epixquad_standalone.RogueIntegrationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.817s
+
+OK
+Rogue/pyrogue version v6.1.3. https://github.com/slaclab/rogue
+interrupted: /lscratch/monarin/tmp/tmpmipg20sl/attempt

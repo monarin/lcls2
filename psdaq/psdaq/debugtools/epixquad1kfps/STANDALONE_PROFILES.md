@@ -95,6 +95,15 @@ Each attempt contains:
   not archived; use committed dependencies for reproducible tests.
 - `console.log`; for captures, `capture.dat`, `first_raw.npy`, and
   `mismatches.npz` with per-pixel FP/FN occurrence counts when decoding succeeds.
+- `mismatch-records/mismatches.csv`: one row per mismatching pixel, with
+  zero-based raw segment/row/column and ASIC programming coordinates, FP/FN,
+  expected/observed gain bit, occurrence count, analyzed frame count and fraction.
+- `mismatch-records/known-bad-candidates.npz`: boolean `mask` in DAQ raw shape
+  `(4,352,384)`, true for every pixel with at least one gain-bit mismatch.
+- `mismatch-records/metadata.json`: detector identity, mode, source attempt
+  status, data checksum, input/output hashes and candidate policy. Records are
+  emitted for completed and failed/interrupted attempts with valid analysis.
+  Empty captures explicitly report `has_image_evidence=false`.
 
 Existing output directories are rejected. Once an attempt directory is created,
 failures retain a failed/interrupted record and any partial data. Invalid CLI
@@ -104,6 +113,27 @@ not made read-only; preserve them alongside the raw data for review. A
 mismatches passed a scientific acceptance threshold. Active/control rows are
 reported separately using the existing decoder masks. Partial or malformed
 trailing records are rejected by analysis.
+
+For the fixed-gain sequence (FH, FM, FL), retain these mismatch records for
+later gain-map known-bad-list review. Candidates include intermittent and
+first-frame mismatches; the export does not suppress them or declare them
+permanent detector defects. Gain bits alone do not distinguish FH from FM
+and do not diagnose analog/pedestal quality. Future known-bad-list construction
+should compare repeated observations for the same detector identity and retain
+the mode and source-attempt provenance. Gain-map reporting should retain total
+mismatches alongside any later known-bad classification.
+
+Existing captures can be exported offline into a **new** directory, without
+rewriting their original test records or requiring detector access:
+
+```bash
+PYTHONPATH="$PWD/psdaq${PYTHONPATH:+:$PYTHONPATH}" python -m \
+  psdaq.debugtools.epixquad1kfps.export_mismatches \
+  /path/to/attempt --outdir /path/to/new-mismatch-export
+```
+
+This reads the saved `test.json`, `expected-map.npy` and `mismatches.npz`.
+The count denominator is analyzed full images, not the requested frame target.
 
 ## Other entry points
 

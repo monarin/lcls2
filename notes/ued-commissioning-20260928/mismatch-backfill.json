@@ -1,0 +1,12 @@
+[
+  {
+    "directory": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt01-fh/mismatch-records-v1",
+    "candidate_pixels": 0,
+    "metadata_sha256": "464ca29931ceecffb6c2f14f1204644784b6f282753c8afc32bcf7201ef62899"
+  },
+  {
+    "directory": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt02-fh/mismatch-records-v1",
+    "candidate_pixels": 0,
+    "metadata_sha256": "79040586b4fa0e415b3009eca1a537b39b7f97fa946ebae1ab38733d09a77f41"
+  }
+]

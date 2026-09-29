@@ -1,5 +1,6 @@
 """Offline checks for profiled capture; no detector or PCIe roots are opened."""
 from contextlib import contextmanager, nullcontext
+import csv
 import json
 import os
 from pathlib import Path
@@ -15,6 +16,7 @@ from psdaq.debugtools.epixquad1kfps import capture_standalone as cap
 from psdaq.debugtools.epixquad1kfps import standalone_hardware as hw
 from psdaq.debugtools.epixquad1kfps import standalone_profile as profiles
 from psdaq.debugtools.epixquad1kfps import write_gain_mode_standalone as gain
+from psdaq.debugtools.epixquad1kfps.export_mismatches import export_mismatches
 from psdaq.configdb.epixquad_layout import RAW_SHAPE
 
 PROFILE_DIR = Path(cap.__file__).parent / 'profiles'
@@ -204,6 +206,67 @@ class CaptureTests(unittest.TestCase):
                     cap.check_file_integrity(path)
 
 
+class MismatchExportTests(unittest.TestCase):
+    def test_coordinates_polarity_frequency_and_provenance(self):
+        with tempfile.TemporaryDirectory() as temp:
+            attempt = Path(temp)
+            expected = np.zeros(RAW_SHAPE, dtype=bool)
+            fp = np.zeros(RAW_SHAPE, dtype=np.uint32)
+            fn = np.zeros_like(fp)
+            # Exercise all ASICs, including the rotated tiles and both edges.
+            pixels = [gain._direct_to_raw(asic, 0, 0) for asic in range(16)]
+            pixels += [gain._direct_to_raw(asic, 175, 191) for asic in range(16)]
+            for i, coord in enumerate(pixels):
+                expected[coord] = i % 2
+                (fn if i % 2 else fp)[coord] = 3 if i % 2 else 1
+            np.save(attempt/'expected-map.npy', expected)
+            np.savez_compressed(attempt/'mismatches.npz', fp=fp, fn=fn)
+            record = {'mode': {'name': 'FL'}, 'status': 'failed',
+                      'camera_identity': {'carrier_ids': [[123, 456]]},
+                      'data': {'sha256': 'source-capture-hash'},
+                      'analysis': {'valid_images': 4}}
+            result = export_mismatches(attempt, attempt/'export', record)
+            self.assertEqual(result['candidate_pixels'], 32)
+            with (attempt/'export/mismatches.csv').open() as stream:
+                rows = list(csv.DictReader(stream))
+            self.assertEqual(len(rows), 32)
+            for row in rows:
+                coord = tuple(int(row[k]) for k in ('segment', 'raw_row', 'raw_col'))
+                direct = tuple(int(row[k]) for k in ('asic', 'asic_row', 'asic_col'))
+                self.assertEqual(gain._direct_to_raw(*direct), coord)
+                is_fn = bool(expected[coord])
+                self.assertEqual(row['kind'], 'FN' if is_fn else 'FP')
+                self.assertEqual(int(row['expected_gainbit']), int(is_fn))
+                self.assertEqual(int(row['observed_gainbit']), int(not is_fn))
+                self.assertEqual(float(row['fraction']), .75 if is_fn else .25)
+            with np.load(attempt/'export/known-bad-candidates.npz') as masks:
+                np.testing.assert_array_equal(masks['mask'], (fp != 0) | (fn != 0))
+            meta = json.loads((attempt/'export/metadata.json').read_text())
+            self.assertEqual(meta['source']['camera_identity'], record['camera_identity'])
+            self.assertEqual(meta['source']['status'], 'failed')
+            self.assertEqual(meta['source']['data'], record['data'])
+            self.assertEqual(meta['source_files_sha256']['mismatches.npz'],
+                             profiles.file_sha256(attempt/'mismatches.npz'))
+            with self.assertRaises(FileExistsError):
+                export_mismatches(attempt, attempt/'export', record)
+            fp[pixels[0]] = 5
+            np.savez_compressed(attempt/'mismatches.npz', fp=fp, fn=fn)
+            with self.assertRaisesRegex(ValueError, 'frame count'):
+                export_mismatches(attempt, attempt/'invalid', record)
+            self.assertFalse((attempt/'invalid').exists())
+
+    def test_no_frames_is_distinct_from_zero_mismatches(self):
+        with tempfile.TemporaryDirectory() as temp:
+            attempt = Path(temp)
+            zeros = np.zeros(RAW_SHAPE, dtype=np.uint32)
+            np.save(attempt/'expected-map.npy', zeros.astype(bool))
+            np.savez_compressed(attempt/'mismatches.npz', fp=zeros, fn=zeros)
+            export_mismatches(attempt, attempt/'empty', {'analysis': {'valid_images': 0}})
+            meta = json.loads((attempt/'empty/metadata.json').read_text())
+            self.assertFalse(meta['has_image_evidence'])
+            self.assertEqual(meta['candidate_pixels'], 0)
+
+
 class RogueIntegrationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -242,6 +305,10 @@ class RogueIntegrationTests(unittest.TestCase):
                 self.assertEqual(record['analysis']['false_negative_occurrences'], 0)
                 self.assertEqual(record['data']['sha256'], profiles.file_sha256(out/'capture.dat'))
                 self.assertTrue((out/'console.log').exists())
+                self.assertEqual(record['mismatch_artifacts']['candidate_pixels'], 0)
+                meta = json.loads((out/'mismatch-records/metadata.json').read_text())
+                self.assertEqual(meta['source']['status'], status)
+                self.assertTrue(meta['has_image_evidence'])
 
     def test_native_writer_and_analysis(self):
         master = self.ris.Master()

@@ -1,0 +1,98 @@
+{
+  "candidate_pixels": 0,
+  "classification": "observed candidates; not an approved known-bad list",
+  "coordinate_system": "zero-based DAQ raw (segment,row,col); ASIC programming coordinates",
+  "created_utc": "2026-09-29T00:07:38.824921+00:00",
+  "exporter_sha256": "a9d6b9321d6b2e487278041d0bb0c2a49960b37e0310b444beac9e7a389c26a2",
+  "gainbit_mask": "0x4000",
+  "has_image_evidence": true,
+  "kind_definition": "FP: expected 0, observed 1; FN: expected 1, observed 0",
+  "output_files_sha256": {
+    "known-bad-candidates.npz": "8213abdf606d93d98562b2331ae58f6688b2a515e24358c39ee8ba65e6cb738d",
+    "mismatches.csv": "6dd6f604103e5bf0ec204d41cddd0795179174d412a752e1b4b3314158ad1083"
+  },
+  "policy": "Any gain-bit mismatch in any valid image; no frame exclusions",
+  "raw_shape": [
+    4,
+    352,
+    384
+  ],
+  "schema_version": 1,
+  "source": {
+    "analysis": {
+      "control_row_fn_occurrences": 0,
+      "control_row_fp_occurrences": 0,
+      "false_negative_occurrences": 0,
+      "false_negative_pixels": 0,
+      "false_positive_occurrences": 0,
+      "false_positive_pixels": 0,
+      "invalid_records": 1014,
+      "valid_images": 50
+    },
+    "analysis_error": null,
+    "camera_identity": {
+      "adc_done": true,
+      "adc_failed": false,
+      "build_stamp": "EpixQuadPgp4_10Gbps_1kfps: Vivado v2021.2, rdsrv403 (Ubuntu 22.04.5 LTS), Built Tue Oct 14 11:01:33 AM PDT 2025 by ruckman",
+      "carrier_ids": [
+        [
+          175474177,
+          1509949462
+        ],
+        [
+          175300865,
+          1291845654
+        ],
+        [
+          175937537,
+          3774873622
+        ],
+        [
+          177133569,
+          2969567254
+        ]
+      ],
+      "fpga_version": 33751040,
+      "git_hash": 383709318689029322121060581264501330697182647568
+    },
+    "cleanup_errors": [
+      "TimeoutError('Capture stream did not drain')"
+    ],
+    "data": {
+      "path": "capture.dat",
+      "sha256": "ca995df98471ee8481c85ec2396a11c8d8a0a3aeca15409abca1d17c852c143a",
+      "size": 54819984
+    },
+    "error": "RuntimeError(\"Capture cleanup failed: TimeoutError('Capture stream did not drain')\")",
+    "finished_utc": "2026-09-28T23:42:05.533819+00:00",
+    "host": "drp-ued-cmp003",
+    "label": "commissioning-FH-internal-10Hz",
+    "mode": {
+      "background_value": 12,
+      "description": "fixed high on every pixel",
+      "name": "FH",
+      "selected_value": null,
+      "trbit": 1
+    },
+    "pcie_identity": {
+      "board_type": "XilinxKcu1500",
+      "build_stamp": "Lcls2XilinxKcu1500Pgp4_10Gbps: Vivado v2025.1, rdsrv433 (Ubuntu 22.04.5 LTS), Built Mon Nov  3 03:42:42 PM PST 2025 by ruckman",
+      "fpga_version": 67239936,
+      "git_hash": 1168876650673233777721039869640825330856797948389,
+      "image_name": "Lcls2XilinxKcu1500Pgp4_10Gbps"
+    },
+    "repetition": 1,
+    "requested_frames": 50,
+    "started_utc": "2026-09-28T23:40:42.172820+00:00",
+    "status": "failed",
+    "test_id": "attempt01-fh"
+  },
+  "source_attempt": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt01-fh",
+  "source_files_sha256": {
+    "expected-map.npy": "6ce1e94586a3eb9891dd978763d804cc677e6e65c1b2ce7981676c84c55427c4",
+    "mismatches.npz": "2233f0aee3164321601fa67dfe59180dc0d75b9fd1e46d28a93d0d326f111452",
+    "profile.json": "70093c66600b4cb9a34bdd8a7d53bd634b1081a690f870780221926e28426157",
+    "software.json": "76a3c62ecae11bd9e1f5bb5c1b87a427f6b59849de5d5531602fb6afcf6c4690"
+  },
+  "valid_images": 50
+}

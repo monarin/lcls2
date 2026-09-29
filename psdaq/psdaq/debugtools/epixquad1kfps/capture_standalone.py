@@ -26,6 +26,7 @@ from psdaq.debugtools.epixquad1kfps.standalone_profile import (
     file_sha256, software_snapshot, validate_hardware,
 )
 from psdaq.configdb.epixquad_layout import rogue_payload_to_daq_raw
+from psdaq.debugtools.epixquad1kfps.export_mismatches import export_mismatches
 
 
 def utc_now():
@@ -405,6 +406,15 @@ def main(argv=None):
                         traceback.print_exc()
                         exit_code = 1
                 record['finished_utc'] = utc_now()
+                if 'analysis' in record:
+                    try:
+                        record['mismatch_artifacts'] = export_mismatches(
+                            outdir, outdir/'mismatch-records', record)
+                    except Exception as exc:
+                        record['mismatch_export_error'] = repr(exc)
+                        record['status'] = 'failed'
+                        traceback.print_exc()
+                        exit_code = 1
                 write_json(outdir/'test.json', record)
     finally:
         signal.signal(signal.SIGTERM, previous_term)

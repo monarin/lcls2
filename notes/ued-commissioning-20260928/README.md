@@ -39,6 +39,17 @@ transient has not been established; retain it and examine settling in the
 next test rather than silently excluding that frame from accounting.
 
 Next work is the remaining fixed-gain/map tests and startup-settling review.
+Every upcoming fixed-gain capture will also export per-pixel FP/FN coordinates,
+counts/fractions, a candidate mask, and detector/mode/source provenance for
+later gain-map known-bad-list review. Candidates are observations, not automatic
+exclusions. Both original FH captures were exported offline under their own
+`mismatch-records-v1/` subdirectories without modifying the original records;
+each has zero candidates across 50 images. See
+[backfill locations/checksums](mismatch-backfill.json),
+[attempt 01 metadata](mismatch-attempt01-metadata.json),
+[attempt 02 metadata](mismatch-attempt02-metadata.json), and
+[16-test verification](mismatch-tests.log).
+
 Keep the bundle in test status until that validation is complete. After
 successful testing, commit/review the validated superproject gitlinks and
 required patch recipe so others can reproduce the bundle, then promote the
