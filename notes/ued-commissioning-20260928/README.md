@@ -1,5 +1,10 @@
 # UED 50-frame commissioning — 2026-09-28
 
+Rate follow-up: the [September 30 read-only 360 Hz review](../ued-360hz-review-20260930/README.md)
+found that standalone currently reads `AsicRoClkT=6`, while full DAQ Configure
+overrides it to 3. Match and validate that clock at 10 Hz before a higher-rate
+comparison. No rate test or register change was made during this review.
+
 Latest: [September 30 DAQ-writer comparison](DAQ_WRITER_RESULTS_20260930.md)
 passed in MapFML and MapFHL at 10 Hz. Both assessed mismatch arrays exactly
 match the [same-session standalone controls](GAIN_MAP_REPEAT_20260930.md):
