@@ -13,6 +13,7 @@ from unittest.mock import Mock, patch
 
 import numpy as np
 from psdaq.debugtools.epixquad1kfps import capture_standalone as cap
+from psdaq.debugtools.epixquad1kfps import capture_diagnostics as diagnostics
 from psdaq.debugtools.epixquad1kfps import standalone_hardware as hw
 from psdaq.debugtools.epixquad1kfps import standalone_profile as profiles
 from psdaq.debugtools.epixquad1kfps import write_gain_mode_standalone as gain
@@ -28,6 +29,29 @@ def payload(extra=0):
     pixels = np.full(RAW_SHAPE, 0x4000 | 1234, dtype='<u2').tobytes()
     data[40+extra:40+extra+len(pixels)] = pixels
     return data
+
+
+class ReadoutClockTests(unittest.TestCase):
+    def test_clock_override_and_later_phase_verification(self):
+        camera = Mock()
+        camera.AcqCore.AsicRoClkT.get.return_value = 3
+        camera.AcqCore.AsicRoClkHalfT.get.return_value = 1
+        camera.RdoutCore.AdcPipelineDelay.get.return_value = 68
+        actual = diagnostics.configure_clock(camera, 3, write=True)
+        camera.AcqCore.AsicRoClkT.set.assert_called_once_with(0xAAAA0003)
+        self.assertEqual(actual['adc_pipeline_delay'], 68)
+        camera.AcqCore.AsicRoClkT.set.reset_mock()
+        diagnostics.configure_clock(camera, 3, write=False)
+        camera.AcqCore.AsicRoClkT.set.assert_not_called()
+        camera.AcqCore.AsicRoClkT.get.return_value = 6
+        camera.AcqCore.AsicRoClkHalfT.get.return_value = 3
+        with self.assertRaisesRegex(RuntimeError, 'did not match'):
+            diagnostics.configure_clock(camera, 3, write=False)
+
+    def test_unavailable_diagnostics_are_not_zero(self):
+        result = diagnostics.snapshot(SimpleNamespace(), SimpleNamespace(), 0)
+        self.assertIn('error', result['camera']['RdoutCore.LineBufErr[0]'])
+        self.assertIn('error', result['event_builder']['TimeoutDropCnt[2]'])
 
 
 class ProfileTests(unittest.TestCase):

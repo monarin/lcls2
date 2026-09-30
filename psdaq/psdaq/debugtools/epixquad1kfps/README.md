@@ -53,6 +53,15 @@ bit split.
 ## Standalone Gain-Mode Writer
 
 For bounded headless recording, `capture_standalone.py` accepts
+`--asic-ro-clk-ticks 3` to apply the full DAQ readout-clock override after
+baseline loading. It verifies full-period 3 / half-period 1 readbacks before
+each phase and records camera buffer and PCIe event-builder counters.
+Omitting this option preserves baseline clock behavior. Validate at low rate
+before increasing the camera trigger rate; the option leaves the selected
+clock loaded after capture, while the commissioning wrapper restores idle
+trigger settings.
+
+For gain-map writer comparisons, `capture_standalone.py` accepts
 `--gain-writer standalone` (default) or `--gain-writer daq`. The DAQ option
 imports the actual `epixquad1kfps_config._apply_raw_pixel_map_program` helper
 from this checkout and verifies its source path and SHA-256. It uses the same

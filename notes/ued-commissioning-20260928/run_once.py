@@ -15,6 +15,7 @@ parser.add_argument('--mode',choices=('FH','FM','FL','MapFML','MapFHL'),default=
 parser.add_argument('--selected-map',type=Path)
 parser.add_argument('--frames',type=int,default=50)
 parser.add_argument('--gain-writer',choices=('standalone','daq'),default='standalone')
+parser.add_argument('--asic-ro-clk-ticks',type=int,choices=(3,6))
 rates=parser.add_mutually_exclusive_group()
 rates.add_argument('--rate-hz',type=float,default=None)
 rates.add_argument('--rate-sequence-hz',type=float,nargs='+')
@@ -54,6 +55,8 @@ elif args.rate_hz is not None:
     command += ['--rate-hz',str(args.rate_hz)]
 if args.dry_run:
     command += ['--dry-run']
+if args.asic_ro_clk_ticks is not None:
+    command += ['--asic-ro-clk-ticks',str(args.asic_ro_clk_ticks)]
 record={'started_utc':datetime.now(timezone.utc).isoformat(),'command':command,
         'watchdog_seconds':args.watchdog_seconds}
 child=None

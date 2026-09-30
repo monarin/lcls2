@@ -23,6 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 from psdaq.debugtools.epixquad1kfps import write_gain_mode_standalone as gain
 from psdaq.debugtools.epixquad1kfps import standalone_hardware as hardware
 from psdaq.debugtools.epixquad1kfps import capture_gain_writer as gain_writer
+from psdaq.debugtools.epixquad1kfps import capture_diagnostics as diagnostics
 from psdaq.debugtools.epixquad1kfps.standalone_profile import (
     file_sha256, software_snapshot, validate_hardware,
 )
@@ -240,6 +241,10 @@ def acquire_phase(args, profile, selected, outdir, record, pcie, camera,
         if program_map:
             hardware.load_camera_baseline(camera, profile['camera_yaml'], args.asics)
             quiesce(camera)  # YAML can re-enable triggering.
+        clock_period = getattr(args, 'asic_ro_clk_ticks', None)
+        if clock_period is not None:
+            record['readout_clock'] = diagnostics.configure_clock(
+                camera, clock_period, write=program_map)
         record['camera_identity'] = hardware.camera_identity(camera)
         write_json(outdir/'test.json', record)
         if not record['camera_identity']['adc_done'] or record['camera_identity']['adc_failed']:
@@ -259,6 +264,8 @@ def acquire_phase(args, profile, selected, outdir, record, pcie, camera,
         writer, sink = make_stream_writer(camera, outdir/'capture.dat', counts)
         record['acquisition_started_utc'] = utc_now()
         pcie.StartRun()
+        if clock_period is not None:
+            record['diagnostics_before'] = diagnostics.snapshot(pcie, camera, profile['lane'])
         camera.RdoutCore.RdoutEn.set(True)
         camera.SystemRegs.AutoTrigEn.set(profile['camera_auto_trigger'])
         camera.SystemRegs.TrigEn.set(True)
@@ -283,6 +290,11 @@ def acquire_phase(args, profile, selected, outdir, record, pcie, camera,
                 if time.monotonic() >= deadline:
                     raise TimeoutError('Capture stream did not drain')
                 time.sleep(0.02)
+        except Exception as exc:
+            errors.append(repr(exc))
+        try:
+            if getattr(args, 'asic_ro_clk_ticks', None) is not None:
+                record['diagnostics_after'] = diagnostics.snapshot(pcie, camera, profile['lane'])
         except Exception as exc:
             errors.append(repr(exc))
         try:
@@ -400,6 +412,8 @@ def main(argv=None):
                         help='Native file byte limit per capture/rate phase')
     parser.add_argument('--gain-writer', choices=('standalone', 'daq'), default='standalone',
                         help='DAQ selects the actual configdb raw-map helper, not full Configure')
+    parser.add_argument('--asic-ro-clk-ticks', type=int, choices=(3, 6),
+                        help='Explicit full readout period after baseline; 3 matches DAQ Configure. Also records rate diagnostics.')
     rates = parser.add_mutually_exclusive_group()
     rates.add_argument('--rate-hz', type=float, default=None)
     rates.add_argument('--rate-sequence-hz', type=float, nargs='+',
@@ -447,6 +461,7 @@ def main(argv=None):
               'timeout_seconds': args.timeout, 'max_bytes': args.max_bytes,
               'write_path': 'matrix-fill plus selected-pixel writes',
               'gain_writer': gain_writer.describe_writer(args.gain_writer),
+              'requested_asic_ro_clk_ticks': args.asic_ro_clk_ticks,
               'rate_sequence_hz': args.rate_sequence_hz,
               'requested_rate_hz': profile['rate_hz'] if not args.rate_sequence_hz else None,
               'map_write_count_planned': 1,
