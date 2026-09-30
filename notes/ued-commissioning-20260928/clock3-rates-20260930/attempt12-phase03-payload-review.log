@@ -1,0 +1,28 @@
+{
+  "data_file": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt12-mapfhl/phase03/capture.dat",
+  "sha256": "5c1ab3468d7884ea6c4ba394bc8a9d46fe624a1b1950797c6d187e1852dcfe1e",
+  "bytes": 55887184,
+  "records": [
+    {
+      "payload_bytes": 48,
+      "error": 0,
+      "channel": 1,
+      "count": 513
+    },
+    {
+      "payload_bytes": 1095248,
+      "error": 0,
+      "channel": 1,
+      "count": 41
+    },
+    {
+      "payload_bytes": 1095288,
+      "error": 0,
+      "channel": 1,
+      "count": 10
+    }
+  ]
+}
+First image: [{'mean_by_segment': [2882.4965006510415, 3039.627012310606, 2888.9167628432765, 2993.1103293678975], 'min': 1683, 'max': 9266, 'zero_fraction': 0.0}]
+Last image: [{'mean_by_segment': [2878.2930131392045, 3047.265173709754, 2886.0705048532195, 2996.877722537879], 'min': 1681, 'max': 9268, 'zero_fraction': 0.0}]
+Rogue/pyrogue version v6.1.3. https://github.com/slaclab/rogue

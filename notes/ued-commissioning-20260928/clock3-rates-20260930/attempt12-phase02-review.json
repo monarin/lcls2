@@ -1,0 +1,686 @@
+{
+  "source_attempt": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt12-mapfhl/phase02",
+  "mode": "MapFHL",
+  "gain_writer": {
+    "function": "_apply_raw_pixel_map_program",
+    "name": "daq",
+    "scope": "gain-map programming only; standalone baseline and timing",
+    "sequence": "per-ASIC most-common background followed by exceptions",
+    "source_path": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/configdb/epixquad1kfps_config.py",
+    "source_sha256": "5a3347c509be6031df5a1f249a4ceb42efd50ea2c7d4214ed39253d8a405e9c7"
+  },
+  "requested_rate_hz": 360.0,
+  "trigger_readback": {
+    "auto_frequency_hz": 359.99981568009434,
+    "auto_period_ticks": 434028,
+    "source": 3
+  },
+  "parent_test_id": "attempt12-mapfhl",
+  "phase_index": 2,
+  "source_status": "completed",
+  "data_sha256": "08346c001ab8924d1407142ab64a05831a6a9c9466aa6a6ea53632d6b773c71a",
+  "reviewer_sha256": "6c79effa2080e4d5801fbaa2f416437a7ad2b7cee812a92d04ac523e3559d32b",
+  "policy": "First full image retained but excluded from assessment by user instruction",
+  "recorded_frames": 87,
+  "assessed_frames": 86,
+  "known_bad_pixels": 352,
+  "selected_low_pixels": 22169,
+  "selected_known_bad": 68,
+  "known_bad_csv_sha256": "b97b7f0a14158fe14daa1e55bb1d923748632c178d47442fe84e771d04ce5856",
+  "historical_run2_csv_sha256": "e310db1931b8df4e8351c7f2888a76129ca488e251e2cc89ab512b29b716fe7e",
+  "all_frames": {
+    "FP": {
+      "unique_pixels": 0,
+      "occurrences": 0,
+      "known_unique": 0,
+      "outside_known_unique": 0,
+      "outside_known_occurrences": 0,
+      "historical_run2_overlap": 0,
+      "outside_historical_run2": 0
+    },
+    "FN": {
+      "unique_pixels": 68,
+      "occurrences": 5916,
+      "known_unique": 68,
+      "outside_known_unique": 0,
+      "outside_known_occurrences": 0,
+      "historical_run2_overlap": 68,
+      "outside_historical_run2": 0
+    }
+  },
+  "after_first": {
+    "FP": {
+      "unique_pixels": 0,
+      "occurrences": 0,
+      "known_unique": 0,
+      "outside_known_unique": 0,
+      "outside_known_occurrences": 0,
+      "historical_run2_overlap": 0,
+      "outside_historical_run2": 0
+    },
+    "FN": {
+      "unique_pixels": 68,
+      "occurrences": 5848,
+      "known_unique": 68,
+      "outside_known_unique": 0,
+      "outside_known_occurrences": 0,
+      "historical_run2_overlap": 68,
+      "outside_historical_run2": 0
+    }
+  },
+  "frames": [
+    {
+      "image_1based": 1,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 2,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 3,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 4,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 5,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 6,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 7,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 8,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 9,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 10,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 11,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 12,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 13,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 14,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 15,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 16,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 17,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 18,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 19,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 20,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 21,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 22,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 23,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 24,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 25,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 26,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 27,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 28,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 29,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 30,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 31,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 32,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 33,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 34,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 35,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 36,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 37,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 38,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 39,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 40,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 41,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 42,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 43,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 44,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 45,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 46,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 47,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 48,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 49,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 50,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 51,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 52,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 53,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 54,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 55,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 56,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 57,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 58,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 59,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 60,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 61,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 62,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 63,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 64,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 65,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 66,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 67,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 68,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 69,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 70,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 71,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 72,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 73,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 74,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 75,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 76,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 77,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 78,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 79,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 80,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 81,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 82,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 83,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 84,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 85,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 86,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    },
+    {
+      "image_1based": 87,
+      "fp": 0,
+      "fn": 68,
+      "fp_outside_known": 0,
+      "fn_outside_known": 0
+    }
+  ],
+  "output_sha256": {
+    "after-first-counts.npz": "58cbcb4853c003ce6163e794d3a56db08695d1b5a31da5ae4afe186d30992771",
+    "after-first-mismatches.csv": "6afee5b071aaae51c80899238d619c1e9270d71764f8e551240aedc29ddfe17c"
+  }
+}

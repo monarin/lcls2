@@ -3,9 +3,11 @@
 Status: the first [DAQ-writer hardware pair](DAQ_WRITER_RESULTS_20260930.md)
 passed in both modes at 10 Hz and exactly matched the assessed mismatch arrays
 of the [September 30 standalone controls](GAIN_MAP_REPEAT_20260930.md).
-This covers one DAQ write per mode; repeated programming and rate comparisons
-remain pending. Historical production timing settings still need to be
-recovered before choosing a production-rate comparison.
+The subsequent [DAQ-clock rate test](clock3-rates-20260930/README.md) also passed
+in MapFHL at 10 → 360 → 10 Hz, with one map write for the sequence and no extra
+FP/FN outside the persistent list. Repeated/interleaved writer comparisons,
+MapFML at this clock/rate and sustained throughput remain pending. Historical
+production timing settings still need to be recovered for full DAQ equivalence.
 
 ## Implementation
 
@@ -44,7 +46,7 @@ through a rate change and does not reproduce production dual-trigger routing.
 2. At 10 Hz, compare standalone and DAQ writers with the exact expand2 map in
    MapFML and MapFHL. Use three independent programming attempts per combination
    (12 captures), interleaving the two writers. Assign new attempt numbers;
-   the last completed attempt is 10. Record 51 images per attempt.
+   the last completed attempt is 12. Record at least 51 images per attempt.
 3. Recover the historical run and readout trigger settings. For each writer,
    test 10 Hz → verified comparison rate → 10 Hz using one map write and 51
    images per phase. Do not assume 360 Hz or a run-clock rate is the historical
