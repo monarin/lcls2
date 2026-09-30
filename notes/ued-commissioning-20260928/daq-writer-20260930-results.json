@@ -1,0 +1,310 @@
+{
+  "scope": "DAQ map-helper comparison at 10 Hz internal triggering; not full DAQ Configure",
+  "daq_writes_per_mode": 1,
+  "captures": [
+    {
+      "attempt": 9,
+      "mode": "MapFML",
+      "status": "completed",
+      "control_attempt": 7,
+      "lcls2_commit": "88e9f0777c1c055f53467cccca23f74e5c0922b2",
+      "gain_writer": {
+        "function": "_apply_raw_pixel_map_program",
+        "name": "daq",
+        "scope": "gain-map programming only; standalone baseline and timing",
+        "sequence": "per-ASIC most-common background followed by exceptions",
+        "source_path": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/configdb/epixquad1kfps_config.py",
+        "source_sha256": "5a3347c509be6031df5a1f249a4ceb42efd50ea2c7d4214ed39253d8a405e9c7"
+      },
+      "map_write_seconds": 13.5367,
+      "assessed_arrays_identical": {
+        "fp": true,
+        "fn": true,
+        "known_bad_mask": true
+      },
+      "input_checksums_match": {
+        "camera_yaml": true,
+        "pcie_yaml": true,
+        "selected_map": true
+      },
+      "capture_scripts_match": true,
+      "bundle_commits_and_diffs_match": true,
+      "bundle_patch_script_match": true,
+      "recorded_frames": 51,
+      "assessed_frames": 50,
+      "after_first": {
+        "FP": {
+          "unique_pixels": 0,
+          "occurrences": 0,
+          "known_unique": 0,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 0,
+          "outside_historical_run2": 0
+        },
+        "FN": {
+          "unique_pixels": 68,
+          "occurrences": 3400,
+          "known_unique": 68,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 68,
+          "outside_historical_run2": 0
+        }
+      },
+      "first_frame": {
+        "image_1based": 1,
+        "fp": 237,
+        "fn": 22158,
+        "fp_outside_known": 237,
+        "fn_outside_known": 22090
+      },
+      "all_frames": {
+        "FP": {
+          "unique_pixels": 237,
+          "occurrences": 237,
+          "known_unique": 0,
+          "outside_known_unique": 237,
+          "outside_known_occurrences": 237,
+          "historical_run2_overlap": 0,
+          "outside_historical_run2": 237
+        },
+        "FN": {
+          "unique_pixels": 22158,
+          "occurrences": 25558,
+          "known_unique": 68,
+          "outside_known_unique": 22090,
+          "outside_known_occurrences": 22090,
+          "historical_run2_overlap": 68,
+          "outside_historical_run2": 22090
+        }
+      },
+      "data": {
+        "path": "capture.dat",
+        "sha256": "4c70bb1d02e78b693ff429fc860a645c3c0963a5205c1f83d3061e5a57b81634",
+        "size": 55887224
+      },
+      "trigger_readback": {
+        "auto_frequency_hz": 10.0,
+        "auto_period_ticks": 15625000,
+        "source": 3
+      },
+      "image_arrival_rate_hz": 10.00388650386362,
+      "cleanup_errors": [],
+      "restore": "restored",
+      "payload_records": [
+        {
+          "payload_bytes": 48,
+          "error": 0,
+          "channel": 1,
+          "count": 513
+        },
+        {
+          "payload_bytes": 1095248,
+          "error": 0,
+          "channel": 1,
+          "count": 40
+        },
+        {
+          "payload_bytes": 1095288,
+          "error": 0,
+          "channel": 1,
+          "count": 11
+        }
+      ]
+    },
+    {
+      "attempt": 10,
+      "mode": "MapFHL",
+      "status": "completed",
+      "control_attempt": 8,
+      "lcls2_commit": "88e9f0777c1c055f53467cccca23f74e5c0922b2",
+      "gain_writer": {
+        "function": "_apply_raw_pixel_map_program",
+        "name": "daq",
+        "scope": "gain-map programming only; standalone baseline and timing",
+        "sequence": "per-ASIC most-common background followed by exceptions",
+        "source_path": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/configdb/epixquad1kfps_config.py",
+        "source_sha256": "5a3347c509be6031df5a1f249a4ceb42efd50ea2c7d4214ed39253d8a405e9c7"
+      },
+      "map_write_seconds": 12.830639,
+      "assessed_arrays_identical": {
+        "fp": true,
+        "fn": true,
+        "known_bad_mask": true
+      },
+      "input_checksums_match": {
+        "camera_yaml": true,
+        "pcie_yaml": true,
+        "selected_map": true
+      },
+      "capture_scripts_match": true,
+      "bundle_commits_and_diffs_match": true,
+      "bundle_patch_script_match": true,
+      "recorded_frames": 51,
+      "assessed_frames": 50,
+      "after_first": {
+        "FP": {
+          "unique_pixels": 0,
+          "occurrences": 0,
+          "known_unique": 0,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 0,
+          "outside_historical_run2": 0
+        },
+        "FN": {
+          "unique_pixels": 68,
+          "occurrences": 3400,
+          "known_unique": 68,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 68,
+          "outside_historical_run2": 0
+        }
+      },
+      "first_frame": {
+        "image_1based": 1,
+        "fp": 237,
+        "fn": 22158,
+        "fp_outside_known": 237,
+        "fn_outside_known": 22090
+      },
+      "all_frames": {
+        "FP": {
+          "unique_pixels": 237,
+          "occurrences": 237,
+          "known_unique": 0,
+          "outside_known_unique": 237,
+          "outside_known_occurrences": 237,
+          "historical_run2_overlap": 0,
+          "outside_historical_run2": 237
+        },
+        "FN": {
+          "unique_pixels": 22158,
+          "occurrences": 25558,
+          "known_unique": 68,
+          "outside_known_unique": 22090,
+          "outside_known_occurrences": 22090,
+          "historical_run2_overlap": 68,
+          "outside_historical_run2": 22090
+        }
+      },
+      "data": {
+        "path": "capture.dat",
+        "sha256": "a1324bc10fdf61db507c78ec046ea954c41da06c74c5bdfb40f1b117e250a449",
+        "size": 55887128
+      },
+      "trigger_readback": {
+        "auto_frequency_hz": 10.0,
+        "auto_period_ticks": 15625000,
+        "source": 3
+      },
+      "image_arrival_rate_hz": 10.003291298881226,
+      "cleanup_errors": [],
+      "restore": "restored",
+      "payload_records": [
+        {
+          "payload_bytes": 48,
+          "error": 0,
+          "channel": 1,
+          "count": 512
+        },
+        {
+          "payload_bytes": 1095248,
+          "error": 0,
+          "channel": 1,
+          "count": 41
+        },
+        {
+          "payload_bytes": 1095288,
+          "error": 0,
+          "channel": 1,
+          "count": 10
+        }
+      ]
+    }
+  ],
+  "postflight": {
+    "utc": "2026-09-30T18:52:12.039437+00:00",
+    "identity": {
+      "fpga_version": 33751040,
+      "build_stamp": "EpixQuadPgp4_10Gbps_1kfps: Vivado v2021.2, rdsrv403 (Ubuntu 22.04.5 LTS), Built Tue Oct 14 11:01:33 AM PDT 2025 by ruckman",
+      "git_hash": 383709318689029322121060581264501330697182647568,
+      "carrier_ids": [
+        [
+          175474177,
+          1509949462
+        ],
+        [
+          175300865,
+          1291845654
+        ],
+        [
+          175937537,
+          3774873622
+        ],
+        [
+          177133569,
+          2969567254
+        ]
+      ],
+      "adc_done": true,
+      "adc_failed": false
+    },
+    "camera": {
+      "SystemRegs.TrigEn": true,
+      "SystemRegs.TrigSrcSel": 3,
+      "SystemRegs.AutoTrigEn": true,
+      "SystemRegs.AutoTrigPer": 15625000,
+      "SystemRegs.AutoTrigFreqHz": 10.0,
+      "SystemRegs.DcDcEnable": 15,
+      "SystemRegs.AsicAnaEn": true,
+      "SystemRegs.AsicDigEn": true,
+      "SystemRegs.DdrVttEn": false,
+      "SystemRegs.AsicMask": 65535,
+      "SystemRegs.AdcTestDone": true,
+      "SystemRegs.AdcTestFailed": false,
+      "AcqCore.AcqToAsicR0Delay": 0,
+      "AcqCore.AsicR0Width": 30,
+      "AcqCore.AsicR0ToAsicAcq": 15625,
+      "AcqCore.AsicAcqWidth": 15625,
+      "AcqCore.AsicAcqLToPPmatL": 1000,
+      "AcqCore.AsicPpmatToReadout": 0,
+      "AcqCore.AsicRoClkHalfT": 3,
+      "AcqCore.AsicSyncInjEn": false,
+      "AcqCore.AsicSyncInjDly": 1000,
+      "AcqCore.DummyAcqEn": false,
+      "RdoutCore.RdoutEn": false,
+      "RdoutCore.SeqCount": 204,
+      "RdoutCore.AdcPipelineDelay": 68,
+      "RdoutCore.BuffersRdy": false,
+      "RdoutCore.OverSampleEn": {
+        "error": "<class 'ePixQuad.RdoutCore.RdoutCore'> - Root.RdoutCore has no attribute OverSampleEn"
+      },
+      "RdoutCore.OverSampleSize": {
+        "error": "<class 'ePixQuad.RdoutCore.RdoutCore'> - Root.RdoutCore has no attribute OverSampleSize"
+      },
+      "RdoutCore.sAxisDropFrameCount": {
+        "error": "<class 'ePixQuad.RdoutCore.RdoutCore'> - Root.RdoutCore has no attribute sAxisDropFrameCount"
+      },
+      "RdoutCore.mAxisDropFrameCount": {
+        "error": "<class 'ePixQuad.RdoutCore.RdoutCore'> - Root.RdoutCore has no attribute mAxisDropFrameCount"
+      }
+    },
+    "stream_first": {
+      "RdoutStreamMonitoring.Ch[0].FrameCnt": 204,
+      "RdoutStreamMonitoring.Ch[0].FrameRate": 0,
+      "RdoutStreamMonitoring.Ch[0].FrameSize": 1095232,
+      "RdoutStreamMonitoring.Ch[0].FrameSizeMin": 1095232,
+      "RdoutStreamMonitoring.Ch[0].FrameSizeMax": 1095232
+    },
+    "stream_second": {
+      "RdoutStreamMonitoring.Ch[0].FrameCnt": 204,
+      "RdoutStreamMonitoring.Ch[0].FrameRate": 0,
+      "RdoutStreamMonitoring.Ch[0].FrameSize": 1095232,
+      "RdoutStreamMonitoring.Ch[0].FrameSizeMin": 1095232,
+      "RdoutStreamMonitoring.Ch[0].FrameSizeMax": 1095232
+    }
+  }
+}

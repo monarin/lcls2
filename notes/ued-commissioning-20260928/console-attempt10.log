@@ -1,0 +1,15 @@
+Start: Started zmqServer on ports 9103-9105
+    To start a gui: python -m pyrogue gui --server='localhost:9103'
+    To use a virtual client: client = pyrogue.interfaces.VirtualClient(addr='localhost', port=9103)
+ConfigureXpmMini()
+Loading /sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt10-mapfhl/pcie_yaml.yml Configuration File...
+DevRoot.DevPcie.AxiPcieCore.AxiVersion initialize called
+ClinkDev.StopRun() executed
+DevRoot.DevPcie.AxiPcieCore.AxiVersion count reset called
+Start: Started zmqServer on ports 9107-9109
+    To start a gui: python -m pyrogue gui --server='localhost:9107'
+    To use a virtual client: client = pyrogue.interfaces.VirtualClient(addr='localhost', port=9107)
+ClinkDev.StartRun() executed
+DevRoot.DevPcie.AxiPcieCore.AxiVersion count reset called
+ClinkDev.StopRun() executed
+ClinkDev.StopRun() executed

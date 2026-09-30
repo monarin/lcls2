@@ -1,10 +1,11 @@
 # UED 50-frame commissioning — 2026-09-28
 
-Latest: [September 30 standalone reproduction](GAIN_MAP_REPEAT_20260930.md)
-passed in MapFML and MapFHL after Mona powered the detector back on. Both match
-the previous assessed pixel arrays exactly. ADC is healthy and camera readout
-is off after restoration. The [DAQ-writer comparison](DAQ_WRITER_COMPARISON.md)
-is implemented and validated offline; its hardware test remains pending.
+Latest: [September 30 DAQ-writer comparison](DAQ_WRITER_RESULTS_20260930.md)
+passed in MapFML and MapFHL at 10 Hz. Both assessed mismatch arrays exactly
+match the [same-session standalone controls](GAIN_MAP_REPEAT_20260930.md):
+zero FP and 68 known FN per frame, with no extra historical FP pixels.
+ADC is healthy and readout is off after restoration. Repeated programming
+and rate comparisons in the [plan](DAQ_WRITER_COMPARISON.md) remain pending.
 
 The original [expand2 MapFML/MapFHL results](GAIN_MAP_RESULTS.md) have no mismatches
 outside the persistent list across 50 assessed images per mode, after excluding
