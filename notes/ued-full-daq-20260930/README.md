@@ -4,6 +4,11 @@ Prepared September 30, 2026. This preparation did not build an install, write
 ConfigDB, start DAQ, or change timing/hardware. The ConfigDB upload preview and
 DAQ configuration parsing passed. The commands below are for the operator.
 
+Updated for rollback protection: use **GAINMAP_TEST_20260930**, a separate
+ConfigDB alias, for this experiment. Keep BEAM unchanged. See the
+[schema/rollback review](../ued-config-rollback-20260930/README.md) before
+switching software generations. The new alias has not yet been created.
+
 ## Software selection
 
 - lcls2 source: `/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq`,
@@ -93,7 +98,7 @@ focused test. It does not restart the monitor IOC or the separate XPM services.
 A dedicated disabled debug-control file prevents an old `/tmp` pattern request
 from overriding ConfigDB. Do not add other EPIXQUAD_DEBUG overrides.
 
-## 3. Back up BEAM, then store the exact gain map
+## 3. Back up BEAM, clone a test alias, then store the map there
 
 Before editing the configuration, leave DAQ unconfigured. Save a fresh backup
 in the operator's directory (not over the recorded September 28 snapshot):
@@ -114,17 +119,48 @@ print('Saved original', cfg['detName:RO'], cfg['detId:RO'])
 PY
 ```
 
+Create the separate alias by copying all BEAM device configurations so timing
+and trigger configuration are available too. The following is an explicit
+ConfigDB write to the **new alias only**; it refuses an existing destination:
+
+```bash
+python - <<'PY'
+import json, os
+from pathlib import Path
+from psdaq.configdb.configdb import configdb
+db = configdb('https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws',
+              'ued', False, 'configDB', user='uedopr')
+alias = 'GAINMAP_TEST_20260930'
+assert alias not in db.get_aliases(), 'Alias already exists; inspect it instead of overwriting'
+names = db.get_devices('BEAM')
+assert 'epixquad1kfps_0' in names, names
+configs = [db.get_configuration('BEAM', name) for name in names]
+assert all(isinstance(c, dict) and ':types:' in c for c in configs)
+with (Path(os.environ['UED_GAINMAP_RECORD'])/'beam-all-devices.json').open('x') as f:
+    json.dump(dict(zip(names, configs)), f, indent=2)
+db.add_alias(alias)
+assert alias in db.get_aliases()
+for name, cfg in zip(names, configs):
+    db.modify_device(alias, cfg)
+    assert db.get_configuration(alias, name) == cfg, name
+print('Copied and verified', names, 'to', alias)
+PY
+```
+
+If copying fails partway, keep DAQ unconfigured and inspect the incomplete
+alias before proceeding. Do not switch the test upload back to BEAM.
+
 MapFHL matches the latest standalone control. Mask label 1 is FL, label 0 H:
 
 ```bash
 python -m psdaq.configdb.epixquad_store_gainmap \
-  --inst ued --alias BEAM --name epixquad1kfps --segm 0 \
+  --inst ued --alias GAINMAP_TEST_20260930 --name epixquad1kfps --segm 0 \
   --id serial1234 --user uedopr --file "$UED_GAINMAP_MASK" \
   --map 0:H --map 1:L --test
 ```
 
 The preview should show shape `(4,352,384)`, 22169 selected FL pixels, and
-trbit 1 for all ASICs. Run the same command **without `--test`** to write BEAM.
+trbit 1 for all ASICs. Run the same command **without `--test`** to write the test alias.
 This is an actual ConfigDB update; preview alone does not install the map.
 The current detector ConfigDB ID is `serial1234`; if the fresh backup reports
 a different ID, preserve that ID instead. Both the utility's pswww endpoint
@@ -147,7 +183,7 @@ import numpy as np
 from psdaq.configdb.configdb import configdb
 db = configdb('https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws',
               'ued', False, 'configDB', user='uedopr')
-c = db.get_configuration('BEAM', 'epixquad1kfps_0')
+c = db.get_configuration('GAINMAP_TEST_20260930', 'epixquad1kfps_0')
 mask = np.load(os.environ['UED_GAINMAP_MASK']).astype(bool)
 actual = np.asarray(c['user']['pixel_map_raw']).reshape(mask.shape)
 np.testing.assert_array_equal(actual, np.where(mask, 8, 12))
@@ -155,7 +191,7 @@ assert c['user']['gain_mode'] == 5
 assert all(c['expert']['EpixQuad']['Epix10kaSaci%d'%i]['trbit'] == 1 for i in range(16))
 assert c['expert']['EpixQuad']['RdoutCore']['AdcPipelineDelay'] == 68
 assert 'AsicMask' not in c['expert']['EpixQuad']['SystemRegs']
-with (Path(os.environ['UED_GAINMAP_RECORD'])/'beam-mapfhl.json').open('x') as f:
+with (Path(os.environ['UED_GAINMAP_RECORD'])/'test-mapfhl.json').open('x') as f:
     json.dump(c, f, indent=2)
 print('Verified MapFHL; selected FL pixels:', int(mask.sum()))
 PY
@@ -174,7 +210,7 @@ daqmgr status "$UED_GAINMAP_CNF"
 
 Starting fresh DRP processes is intentional: standalone left local-XpmMini
 timing selected, and a mere Enable does not restore the production path.
-In the control GUI, select `epixquad1kfps_0` and `timing_0`, BEAM configuration,
+In the control GUI, select `epixquad1kfps_0` and `timing_0`, GAINMAP_TEST_20260930 configuration,
 and the intended current experiment. Connect and Configure, checking the
 matched DRP/control/TEB log group under `~/daq/logs/2026/09/`.
 
@@ -218,7 +254,7 @@ not a claim that rate is the sole difference from standalone.
    Configure cycles exercise repeated gain-map writes; BeginRun alone may not.
 3. Unconfigure. Repeat the upload preview/write with `--map 0:M --map 1:L` for
    MapFML. Verify the same raw pixel codes/counts and trbit 0 for all ASICs;
-   save as `beam-mapfml.json`. Take three short runs with Configure between them.
+   save as `test-mapfml.json`. Take three short runs with Configure between them.
 4. Record experiment, run number, mode, configure cycle, measured rate, both
    software paths, configuration backup and matched DRP/control/TEB logs.
 
@@ -232,6 +268,9 @@ The standalone `.dat` review scripts are not XTC readers. Supply the recorded
 experiment/run numbers for the run-aware analysis; do not infer success from
 an image display alone.
 
-End/Unconfigure and stop this test cnf when finished. Keep the previous release
-and `beam-before.json` for deliberate rollback. This test does not promote the
-bundle; upstream pin/patch publication follows successful validation.
+End/Unconfigure and stop this test cnf when finished. Return to the previous
+complete release/bundle and its compatible alias. BEAM is unchanged by the
+isolated test, but its existing raw schema is not compatible with pre-migration
+code. `beam-before.json` restores today's BEAM, not the removed legacy schema.
+This test does not promote the bundle; upstream pin/patch publication follows
+successful validation.

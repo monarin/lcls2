@@ -23,7 +23,7 @@
       "id": "control",
       "flags": "spu",
       "env": "EPICS_PVA_ADDR_LIST=172.21.36.255 LD_LIBRARY_PATH=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/lib/linux-x86_64:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/pcas/lib/linux-x86_64",
-      "cmd": "control -P ued -B DAQ:UED -x 0 -X drp-ued-cmp001 -C BEAM  --user uedopr   --url https://pswww.slac.stanford.edu/ws-auth/lgbk/  -d https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws/configDB -t trigger -V /sdf/home/u/uedopr/daq/epics/elog_ued.txt -T 10000 -S 1"
+      "cmd": "control -P ued -B DAQ:UED -x 0 -X drp-ued-cmp001 -C GAINMAP_TEST_20260930  --user uedopr   --url https://pswww.slac.stanford.edu/ws-auth/lgbk/  -d https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws/configDB -t trigger -V /sdf/home/u/uedopr/daq/epics/elog_ued.txt -T 10000 -S 1"
     },
     {
       "id": "control_gui",
