@@ -1,8 +1,10 @@
 # Full UED DAQ gain-map test instructions
 
-Prepared September 30, 2026. This preparation did not build an install, write
-ConfigDB, start DAQ, or change timing/hardware. The ConfigDB upload preview and
-DAQ configuration parsing passed. The commands below are for the operator.
+Prepared September 30, 2026; isolated DAQ build subsequently completed successfully
+on the same day. Installed-software checks passed on `drp-ued-cmp003` and
+`ued-daq`. No ConfigDB writes, DAQ launch, or timing/hardware changes were made.
+The ConfigDB upload preview and DAQ configuration parsing passed earlier.
+The commands below are for the operator.
 
 Updated for rollback protection: use **GAINMAP_TEST_20260930**, a separate
 ConfigDB alias, for this experiment. Keep BEAM unchanged. See the
@@ -28,27 +30,48 @@ The current UED setup link selects `lcls2_091026` and the old March submodule
 bundle. Neither is the requested new combination. The private bundle has not
 been promoted to a site release or pushed upstream.
 
-## 1. Build on the Rocky 9 build host as monarin
+## 1. Build the isolated install as monarin
 
-In a fresh Bash shell on `psbuild-rocky9-01`:
+The site recipe `/sdf/group/lcls/ds/ana/sw/conda2/rel/ued/install_release_daq.sh`
+uses `source setup_env_daq.sh` followed by `build_all.sh`. We use that same DAQ
+build path in an isolated prefix. The current Meson project always includes
+psana components even with DAQ enabled; this is not a separate analysis build.
+AMI and release publication are outside this test build.
+
+The original `psbuild-rocky9-01` recommendation was checked and corrected:
+that host has no SDF group software mount or this SDF home directory. The
+isolated build uses Rocky 9.6 on `drp-ued-cmp003`, with two compiler jobs at
+nice level 15. Preflight found only the monitor IOC and its CA repeater under
+uedopr. Building does not start DAQ or open the detector.
 
 ```bash
 cd /sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq
-git status --short
-git merge-base --is-ancestor 84564f717 HEAD
-source setup_env_daq.sh
-export SUBMODULEDIR=/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1
-export BUILDDIR="$PWD/builddir-ued-gainmap-20260930"
-export TESTRELDIR="$PWD/install-ued-gainmap-20260930"
-./build_all.sh -d -j 8
-test -x "$TESTRELDIR/bin/drp"
-cmp psdaq/psdaq/configdb/epixquad1kfps_config.py \
-    "$TESTRELDIR/lib/python3.9/site-packages/psdaq/configdb/epixquad1kfps_config.py"
+nice -n 15 bash notes/ued-full-daq-20260930/build-isolated.sh
 ```
 
-Proceed only after a successful build/install and source comparison. Do not
-use `-f` or overwrite the existing shared UED release. The build above has not
-been executed as part of this instruction-preparation task.
+The helper uses `builddir-ued-gainmap-20260930` and
+`install-ued-gainmap-20260930`, leaving the old install and shared UED release
+in place. It runs Meson through `build_all.sh -d -c`, then installs the psdaq
+entry-point wheel with dependencies and network package lookup disabled.
+The root psana wheel is deliberately skipped: its packaging hard-codes
+`install/` and would pull libraries from the stale June install. Meson still
+installs the newly compiled psana libraries and Python modules; psana command
+line entry points are not part of this DAQ-specific packaging step.
+
+Build completed with exit 0 from source `60fdd7f3944edf839351d43f7e4b8d44d6b4c4b0`.
+Both hosts loaded the intended install and bundle, matched 392 installed psdaq
+Python files to source, resolved all `drp`/`teb` libraries, and passed Unix
+read/execute permission checks. Binary hashes matched across hosts.
+See [build record](build-record.json), [build log](build.log), and verification
+logs for [the detector host](verify-drp-ued-cmp003.log) and
+[the control host](verify-ued-daq.log).
+
+`groupca` import produces a nonfatal p4p `ClientProvider.close` teardown warning,
+including with the [deployed release](deployed-groupca-check.log); both exit 0.
+The warning remains documented, not fixed by this build. Imports are checked
+in separate processes to model DAQ service separation. Direct SSH to
+`drp-ued-cmp002` was blocked by host-key verification, so that host was not
+runtime-checked. These checks do not substitute for the full DAQ test below.
 
 ## 2. Select the new build in the UED operator shell
 
@@ -56,19 +79,7 @@ Use a fresh Bash shell as `uedopr` on `ued-daq`, with the normal working GUI
 display. Set the following again after sourcing any setup script:
 
 ```bash
-export UED_GAINMAP_SRC=/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq
-source "$UED_GAINMAP_SRC/setup_env_daq.sh"
-export TESTRELDIR="$UED_GAINMAP_SRC/install-ued-gainmap-20260930"
-export DAQ_TESTRELDIR="$TESTRELDIR"
-export DAQ_CONDA_PREFIX="$CONDA_PREFIX"
-export DAQ_CONDA_DEFAULT_ENV="$CONDA_DEFAULT_ENV"
-export SUBMODULEDIR=/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1
-export PATH="$TESTRELDIR/bin:$PATH"
-export PYTHONPATH="$TESTRELDIR/lib/python3.9/site-packages"
-export PYTHONDONTWRITEBYTECODE=1
-export UED_GAINMAP_CNF="$UED_GAINMAP_SRC/notes/ued-full-daq-20260930/epix_gainmap_test.py"
-export UED_GAINMAP_MASK="$UED_GAINMAP_SRC/notes/ued-commissioning-20260928/map-inputs/expand2.npy"
-hash -r
+source /sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-full-daq-20260930/setup-test.sh
 command -v drp daqmgr
 python - <<'PY'
 import os
@@ -82,6 +93,16 @@ print('ePix:', ePixQuad.__file__)
 print('PCIe:', lcls2_pgp_pcie_apps.__file__)
 PY
 test -r "$UED_GAINMAP_MASK"
+```
+
+An install owned by monarin can be run by uedopr; it needs read/execute access,
+not ownership or write permission. The build uses umask 022. Logs and data
+continue to use the operator's existing output paths. Direct SSH as uedopr was
+not available to the build task, so the operator should repeat this import
+check in their own shell. For the complete read-only installed-software check:
+
+```bash
+QT_QPA_PLATFORM=offscreen python "$UED_GAINMAP_SRC/notes/ued-full-daq-20260930/verify-install.py"
 ```
 
 The executables and psdaq import must resolve to the new install; detector

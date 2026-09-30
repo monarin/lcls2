@@ -1,0 +1,24 @@
+{
+  "source_commit": "60fdd7f3944edf839351d43f7e4b8d44d6b4c4b0",
+  "build_host": "drp-ued-cmp003",
+  "os": "Rocky Linux 9.6",
+  "environment": "daq_20250402_r9",
+  "python": "3.9.21",
+  "compiler": "conda-forge GCC 13.3.0-1",
+  "meson": "1.8.4",
+  "jobs": 2,
+  "nice": 15,
+  "install_prefix": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-gainmap-20260930",
+  "bundle": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1",
+  "bundle_commit": "4a28be03a7aa77373f0795dae7a1e0d003d4bc3c",
+  "epix_commit": "44a7c1cb9ed1869e75b16e24bb610e7e3ee53698",
+  "build_exit_code": 0,
+  "verification_hosts": [
+    "drp-ued-cmp003",
+    "ued-daq"
+  ],
+  "operator_access": "Unix read/execute checks pass; actual uedopr login unavailable",
+  "timing_host_check": "Direct SSH to drp-ued-cmp002 blocked by host-key verification; not bypassed",
+  "known_warning": "groupca p4p ClientProvider.close teardown AttributeError; reproduced with deployed lcls2_091026, exit 0",
+  "state_changes": "Build and local documentation only; no DAQ, detector, timing or ConfigDB changes"
+}

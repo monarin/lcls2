@@ -3,6 +3,8 @@ setup_env_local.sh
 build
 builddir
 install
+builddir-ued-gainmap-20260930/
+install-ued-gainmap-20260930/
 builddir_psana/
 install_psana/
 .conda-psana/

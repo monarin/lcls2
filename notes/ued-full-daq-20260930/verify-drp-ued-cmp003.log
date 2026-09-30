@@ -1,0 +1,33 @@
+{
+  "host": "drp-ued-cmp003",
+  "uid": 12682,
+  "prefix": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-gainmap-20260930",
+  "bundle": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1",
+  "modules": {
+    "psdaq.configdb.epixquad1kfps_config": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-gainmap-20260930/lib/python3.9/site-packages/psdaq/configdb/epixquad1kfps_config.py",
+    "psdaq.configdb.epixquad_store_gainmap": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-gainmap-20260930/lib/python3.9/site-packages/psdaq/configdb/epixquad_store_gainmap.py",
+    "psdaq.slurm.main": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-gainmap-20260930/lib/python3.9/site-packages/psdaq/slurm/main.py",
+    "psdaq.control.control": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-gainmap-20260930/lib/python3.9/site-packages/psdaq/control/control.py",
+    "psdaq.control_gui.app.control_gui": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-gainmap-20260930/lib/python3.9/site-packages/psdaq/control_gui/app/control_gui.py",
+    "psdaq.cas.xpmpva": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-gainmap-20260930/lib/python3.9/site-packages/psdaq/cas/xpmpva.py",
+    "psdaq.cas.groupca": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-gainmap-20260930/lib/python3.9/site-packages/psdaq/cas/groupca.py",
+    "psdaq.slurm.daqstat": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-gainmap-20260930/lib/python3.9/site-packages/psdaq/slurm/daqstat.py",
+    "ePixQuad": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/epix-quad-1kfps/software/python/ePixQuad/__init__.py",
+    "lcls2_pgp_pcie_apps": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1/lcls2-pgp-pcie-apps/firmware/python/lcls2_pgp_pcie_apps/__init__.py"
+  },
+  "import_warnings": {
+    "psdaq.cas.groupca": "Traceback (most recent call last):\n  File \"src/p4p/_p4p.pyx\", line 634, in p4p._p4p.ClientProvider.close\nAttributeError: '_ClientProvider' object has no attribute 'close'\nException ignored in: 'p4p._p4p.ClientProvider.__dealloc__'\nTraceback (most recent call last):\n  File \"src/p4p/_p4p.pyx\", line 634, in p4p._p4p.ClientProvider.close\nAttributeError: '_ClientProvider' object has no attribute 'close'"
+  },
+  "psdaq_python_files_equal_to_source": 392,
+  "artifact_sha256": {
+    "drp": "48654afc2e25239fa5f771bfe4b3b41cf21860efa7168e0449fb34c9cfe19dd8",
+    "teb": "f533c34723ad69fef9a7d41618a612881c836ee01277dcac1bf11ebe75924dfb",
+    "daqmgr": "ac859eff4f29fc6584a11dd73cb7ade818b7b0d80d852a23757df12cd10da55d",
+    "control": "4100a14d278127fb29429d271c2740312731eaeedcd716f28a23e576c0f74853",
+    "control_gui": "827f0d17f5aba73ff69ab1ff0482a473233bec34f859cedfbbdcfae39a7ba085",
+    "xpmpva": "e6f5ce2bdf021205354a025f98c980f95ecd2757327c7f15263591e8894897f0",
+    "groupca": "3e26ddba5de67973447061ab6be22026a43c7965d1a968c0798b0724961a41d2",
+    "daqstat": "cd089521e8e6eb387bea8fadfa1b5efe16b024e21d390567ac0f0ceebebdb29e"
+  },
+  "scope": "DAQ imports, source comparisons, ldd and Unix modes only; no DAQ/hardware/DB access"
+}
