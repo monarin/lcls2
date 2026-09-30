@@ -52,6 +52,39 @@ bit split.
 
 ## Standalone Gain-Mode Writer
 
+For bounded headless recording, `capture_standalone.py` accepts
+`--gain-writer standalone` (default) or `--gain-writer daq`. The DAQ option
+imports the actual `epixquad1kfps_config._apply_raw_pixel_map_program` helper
+from this checkout and verifies its source path and SHA-256. It uses the same
+standalone baseline, trigger setup, and recorder as the original writer;
+it does not execute full DAQ Configure. All 16 ASICs are required. DAQ raw maps
+cannot represent selected ghost rows 176/177, so those selections are rejected.
+
+`--rate-hz HZ` sets one internal camera rate. `--rate-sequence-hz HZ HZ ...`
+instead loads the baseline and writes the map once, then records one file per
+rate in the same hardware session. Each phase pauses/drains the stream and
+stops PCIe acquisition before the next phase. StartRun resets PCIe counters
+and the event builder; it does not reprogram the camera map. The sequence
+stops on the first acquisition or cleanup error. Rate overrides require
+camera auto-trigger source 3; they do not change XpmMini or external run/readout
+trigger rates, trigger delays, or the event-builder timeout.
+
+For a sequence, `--frames`, `--timeout`, and `--max-bytes` apply **per phase**.
+Outputs are `phase01/`, `phase02/`, etc., each with `capture.dat`, `test.json`,
+`expected-map.npy`, full-frame mismatch counts and exports. Shared profile,
+software and input artifacts remain in the parent directory. Each phase
+records its writer, requested rate, camera trigger readback, map-write phase,
+and host image-arrival rate (a transport observation, not a timing measurement
+at the detector). First frames are retained. The commissioning
+`review_gain_map.py` can assess each phase with the established first-frame
+exclusion, detector-specific persistent list and historical FP coordinates.
+
+`--dry-run` records the proposed capture and software/input provenance without
+importing the DAQ writer or opening hardware. The commissioning `run_once.py`
+also accepts these options; its dry run skips idle restoration as well.
+See [the prepared writer/rate comparison](../../../../notes/ued-commissioning-20260928/DAQ_WRITER_COMPARISON.md)
+for the pending production-module test plan.
+
 Use `write_gain_mode_standalone.py` to program the test gain modes without the
 DAQ or PyDM GUI.  Close any GUI or DAQ process using `/dev/datadev_0` first,
 because the script opens the camera register VC.

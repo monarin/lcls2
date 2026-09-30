@@ -67,6 +67,9 @@ def export_mismatches(attempt, outdir, record=None):
         'source_attempt': str(attempt),
         'source': {key: record.get(key) for key in (
             'test_id', 'status', 'host', 'label', 'repetition', 'mode',
+            'gain_writer', 'requested_rate_hz', 'trigger_readback',
+            'parent_test_id', 'phase_index', 'map_written_this_phase', 'map_write_phase',
+            'provenance_directory',
             'started_utc', 'finished_utc', 'requested_frames', 'camera_identity',
             'pcie_identity', 'data', 'analysis', 'error', 'analysis_error', 'cleanup_errors')},
         'source_files_sha256': {name: file_sha256(attempt/name) for name in (

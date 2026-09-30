@@ -1,0 +1,61 @@
+....Test record: /lscratch/monarin/tmp/tmpqv7ol773/attempt
+Traceback (most recent call last):
+  File "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/debugtools/epixquad1kfps/capture_standalone.py", line 495, in main
+    validate_hardware(profile, capture=True)
+  File "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/debugtools/epixquad1kfps/standalone_profile.py", line 64, in validate_hardware
+    raise ValueError('Profile is unvalidated; hardware access is disabled')
+ValueError: Profile is unvalidated; hardware access is disabled
+..........failed: /lscratch/monarin/tmp/tmpqv7ol773/attempt
+Test record: /lscratch/monarin/tmp/tmpznw78ge4/attempt
+completed: /lscratch/monarin/tmp/tmpznw78ge4/attempt
+Test record: /lscratch/monarin/tmp/tmpis91bit2/attempt
+failed: /lscratch/monarin/tmp/tmpis91bit2/attempt
+Test record: /lscratch/monarin/tmp/tmp6rkroj7v/attempt
+......interrupted: /lscratch/monarin/tmp/tmp6rkroj7v/attempt
+Gain write complete: mode=FH asics=16 selected_pixels=0 injection_pixels=0 elapsed=0.000s
+Gain write complete: mode=FM asics=16 selected_pixels=0 injection_pixels=0 elapsed=0.000s
+Gain write complete: mode=FL asics=16 selected_pixels=0 injection_pixels=0 elapsed=0.000s
+Gain write complete: mode=MapFML asics=16 selected_pixels=6216 injection_pixels=0 elapsed=0.016s
+Gain write complete: mode=MapFHL asics=16 selected_pixels=6216 injection_pixels=0 elapsed=0.017s
+{
+  "started_utc": "2026-09-30T00:21:11.435608+00:00",
+  "command": [
+    "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python",
+    "/lscratch/monarin/tmp/tmpqlc1ajc2/psdaq/psdaq/debugtools/epixquad1kfps/capture_standalone.py",
+    "--profile",
+    "/lscratch/monarin/tmp/tmpqlc1ajc2/psdaq/psdaq/debugtools/epixquad1kfps/profiles/drp-ued-cmp003.json",
+    "--mode",
+    "FH",
+    "--frames",
+    "50",
+    "--timeout",
+    "30",
+    "--gain-writer",
+    "daq",
+    "--label",
+    "commissioning-FH-daq-internal-10-20-10Hz",
+    "--repetition",
+    "7",
+    "--notes",
+    "Production UED commissioning capture; restore camera idle trigger state afterward",
+    "--outdir",
+    "/lscratch/monarin/tmp/tmpqlc1ajc2/notes/commissioning/attempt07-fh",
+    "--rate-sequence-hz",
+    "10.0",
+    "20.0",
+    "10.0",
+    "--dry-run"
+  ],
+  "watchdog_seconds": 180,
+  "capture_exit": 0,
+  "restore_skipped": "dry run; no hardware access",
+  "finished_utc": "2026-09-30T00:21:11.435677+00:00"
+}
+.Test record: /lscratch/monarin/tmp/tmp84c_yxhv/dry
+...
+----------------------------------------------------------------------
+Ran 24 tests in 1.722s
+
+OK
+Rogue/pyrogue version v6.1.3. https://github.com/slaclab/rogue
+dry_run: /lscratch/monarin/tmp/tmp84c_yxhv/dry

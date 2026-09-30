@@ -87,6 +87,11 @@ with (args.output/'after-first-mismatches.csv').open('w', newline='') as stream:
         writer.writerow(dict(zip(fields, [*coord, *_raw_to_direct(*coord), kind,
             count, len(frames)-1, count/(len(frames)-1), int(known[coord]), int(historical[kind][coord])])) )
 review = {'source_attempt': str(args.attempt.resolve()), 'mode': record['mode']['name'],
+          'gain_writer': record.get('gain_writer'),
+          'requested_rate_hz': record.get('requested_rate_hz'),
+          'trigger_readback': record.get('trigger_readback'),
+          'parent_test_id': record.get('parent_test_id'),
+          'phase_index': record.get('phase_index'),
           'source_status': record['status'], 'data_sha256': record['data']['sha256'],
           'reviewer_sha256': file_sha256(Path(__file__)),
           'policy': 'First full image retained but excluded from assessment by user instruction',

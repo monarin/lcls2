@@ -22,6 +22,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 from psdaq.debugtools.epixquad1kfps import write_gain_mode_standalone as gain
 from psdaq.debugtools.epixquad1kfps import standalone_hardware as hardware
+from psdaq.debugtools.epixquad1kfps import capture_gain_writer as gain_writer
 from psdaq.debugtools.epixquad1kfps.standalone_profile import (
     file_sha256, software_snapshot, validate_hardware,
 )
@@ -67,6 +68,7 @@ class ImageCounts:
         self.valid = self.records = self.invalid = self.bytes = 0
         self.fault = None
         self.last_receive = time.monotonic()
+        self.first_image_receive = self.last_image_receive = None
 
     def room(self, size):
         with self.lock:
@@ -89,11 +91,17 @@ class ImageCounts:
             self.invalid += int(not valid)
             self.bytes += len(payload) + 8
             self.last_receive = time.monotonic()
+            if valid:
+                if self.first_image_receive is None:
+                    self.first_image_receive = self.last_receive
+                self.last_image_receive = self.last_receive
 
     def snapshot(self):
         with self.lock:
+            span = (self.last_image_receive - self.first_image_receive) if self.valid > 1 else 0
             return {'valid_images': self.valid, 'records': self.records,
                     'invalid_records': self.invalid, 'bytes': self.bytes,
+                    'image_arrival_rate_hz': (self.valid - 1) / span if span > 0 else None,
                     'fault': self.fault, 'last_receive_monotonic': self.last_receive}
 
 
@@ -173,8 +181,18 @@ def wait_for_images(counts, frames, timeout, sleep=time.sleep, clock=time.monoto
         sleep(0.02)
 
 
+def trigger_snapshot(camera):
+    """Actual camera settings; rate requests do not change external timing."""
+    regs = camera.SystemRegs
+    return {'source': int(regs.TrigSrcSel.get(read=True)),
+            'auto_period_ticks': int(regs.AutoTrigPer.get(read=True)),
+            'auto_frequency_hz': float(regs.AutoTrigFreqHz.get(read=True))}
+
+
 def capture(args, profile, selected, outdir, record):
-    counts = ImageCounts(profile['image_payload_bytes'], args.max_bytes)
+    description = record.setdefault('gain_writer', gain_writer.describe_writer(args.gain_writer))
+    map_writer = gain_writer.resolve_writer(description)
+    rates = args.rate_sequence_hz or [profile['rate_hz']]
 
     def identity(value):
         record['pcie_identity'] = value
@@ -182,66 +200,110 @@ def capture(args, profile, selected, outdir, record):
         write_json(outdir/'test.json', record)
 
     with hardware.session(profile, camera_vc_mask=0x3, on_identity=identity) as (pcie, camera):
-        writer = sink = None
-        try:
-            record['runtime'] = hardware.runtime_snapshot()
-            quiesce(camera)
+        for index, rate in enumerate(rates):
+            phase_dir, phase = outdir, record
+            if args.rate_sequence_hz:
+                phase_dir = outdir / ('phase%02d' % (index + 1))
+                phase_dir.mkdir(exist_ok=False)
+                phase = {k: v for k, v in record.items() if k not in ('phases', 'inputs')}
+                phase.update(test_id=phase_dir.name, status='running',
+                             parent_test_id=record['test_id'], phase_index=index + 1,
+                             requested_rate_hz=rate, map_written_this_phase=False,
+                             map_write_phase='phase01', path=phase_dir.name,
+                             provenance_directory='..')
+                record.setdefault('phases', []).append(phase)
+                shutil.copyfile(outdir/'expected-map.npy', phase_dir/'expected-map.npy')
+            try:
+                acquire_phase(args, profile, selected, phase_dir, phase, pcie, camera,
+                              map_writer, rate, program_map=index == 0)
+                phase['status'] = 'completed'
+            except BaseException as exc:
+                phase['status'] = 'interrupted' if isinstance(exc, KeyboardInterrupt) else 'failed'
+                phase['error'] = repr(exc)
+                raise
+            finally:
+                phase['finished_utc'] = utc_now()
+                if phase is not record:
+                    write_json(phase_dir/'test.json', phase)
+                write_json(outdir/'test.json', record)
+
+
+def acquire_phase(args, profile, selected, outdir, record, pcie, camera,
+                  map_writer, rate_hz, program_map):
+    """Bounded capture; later phases reuse the configured map in this session."""
+    counts = ImageCounts(profile['image_payload_bytes'], args.max_bytes)
+    record['map_written_this_phase'] = False
+    writer = sink = None
+    try:
+        record['runtime'] = hardware.runtime_snapshot()
+        quiesce(camera)
+        if program_map:
             hardware.load_camera_baseline(camera, profile['camera_yaml'], args.asics)
             quiesce(camera)  # YAML can re-enable triggering.
-            record['camera_identity'] = hardware.camera_identity(camera)
+        record['camera_identity'] = hardware.camera_identity(camera)
+        write_json(outdir/'test.json', record)
+        if not record['camera_identity']['adc_done'] or record['camera_identity']['adc_failed']:
+            raise RuntimeError('Camera ADC status is not done/pass')
+        if program_map:
+            record['map_write_started_utc'] = utc_now()
             write_json(outdir/'test.json', record)
-            if not record['camera_identity']['adc_done'] or record['camera_identity']['adc_failed']:
-                raise RuntimeError('Camera ADC status is not done/pass')
-            gain._write_gain_mode(camera, args.mode, args.asics, selected, [],
-                                  args.injection_delay, verbose=args.verbose)
-            camera.SystemRegs.TrigSrcSel.set(profile['camera_trigger_source'])
-            if profile['camera_auto_trigger']:
-                camera.SystemRegs.AutoTrigFreqHz.set(profile['rate_hz'])
-            writer, sink = make_stream_writer(camera, outdir/'capture.dat', counts)
-            record['acquisition_started_utc'] = utc_now()
-            pcie.StartRun()
-            camera.RdoutCore.RdoutEn.set(True)
-            camera.SystemRegs.AutoTrigEn.set(profile['camera_auto_trigger'])
-            camera.SystemRegs.TrigEn.set(True)
-            wait_for_images(counts, args.frames, args.timeout)
-        finally:
-            primary_error = sys.exc_info()[1]
-            errors = []
+            gain_writer.program(camera, args, selected, record['gain_writer'], map_writer)
+            record['map_write_finished_utc'] = utc_now()
+            record['map_written_this_phase'] = True
+        record['requested_rate_hz'] = rate_hz
+        camera.SystemRegs.TrigSrcSel.set(profile['camera_trigger_source'])
+        if profile['camera_auto_trigger']:
+            camera.SystemRegs.AutoTrigFreqHz.set(rate_hz)
+        record['trigger_readback'] = trigger_snapshot(camera)
+        write_json(outdir/'test.json', record)
+        writer, sink = make_stream_writer(camera, outdir/'capture.dat', counts)
+        record['acquisition_started_utc'] = utc_now()
+        pcie.StartRun()
+        camera.RdoutCore.RdoutEn.set(True)
+        camera.SystemRegs.AutoTrigEn.set(profile['camera_auto_trigger'])
+        camera.SystemRegs.TrigEn.set(True)
+        wait_for_images(counts, args.frames, args.timeout)
+    finally:
+        primary_error = sys.exc_info()[1]
+        errors = []
+        try:
+            quiesce(camera)
+        except Exception as exc:
+            errors.append(repr(exc))
+        try:
+            # Camera-off alone leaves timing-only records flowing on VC0.
+            # Disable upstream event production before waiting for quiet.
+            hardware.pause_triggers(pcie)
+        except Exception as exc:
+            errors.append(repr(exc))
+        try:
+            # Let pending camera/PCIe frames reach the writer before blowoff.
+            deadline = time.monotonic() + args.drain_timeout
+            while counts.snapshot()['records'] and time.monotonic() - counts.snapshot()['last_receive_monotonic'] < args.drain_seconds:
+                if time.monotonic() >= deadline:
+                    raise TimeoutError('Capture stream did not drain')
+                time.sleep(0.02)
+        except Exception as exc:
+            errors.append(repr(exc))
+        try:
+            pcie.StopRun()
+        except Exception as exc:
+            errors.append(repr(exc))
+        if sink is not None:
             try:
-                quiesce(camera)
-            except Exception as exc:
-                errors.append(repr(exc))
-            try:
-                # Camera-off alone leaves timing-only records flowing on VC0.
-                # Disable upstream event production before waiting for quiet.
-                hardware.pause_triggers(pcie)
-            except Exception as exc:
-                errors.append(repr(exc))
-            try:
-                # Let pending camera/PCIe frames reach the writer before blowoff.
-                deadline = time.monotonic() + args.drain_timeout
-                while counts.snapshot()['records'] and time.monotonic() - counts.snapshot()['last_receive_monotonic'] < args.drain_seconds:
-                    if time.monotonic() >= deadline:
-                        raise TimeoutError('Capture stream did not drain')
-                    time.sleep(0.02)
-            except Exception as exc:
-                errors.append(repr(exc))
-            try:
-                pcie.StopRun()
-            except Exception as exc:
-                errors.append(repr(exc))
-            if sink is not None:
                 sink.disarm()
-            if writer is not None:
-                try:
-                    writer.close()
-                except Exception as exc:
-                    errors.append(repr(exc))
-            record['stream_counts'] = counts.snapshot()
-            record['cleanup_errors'] = errors
-            record['acquisition_stopped_utc'] = utc_now()
-            if errors and primary_error is None:
-                raise RuntimeError('Capture cleanup failed: '+ '; '.join(errors))
+            except Exception as exc:
+                errors.append(repr(exc))
+        if writer is not None:
+            try:
+                writer.close()
+            except Exception as exc:
+                errors.append(repr(exc))
+        record['stream_counts'] = counts.snapshot()
+        record['cleanup_errors'] = errors
+        record['acquisition_stopped_utc'] = utc_now()
+        if errors and primary_error is None:
+            raise RuntimeError('Capture cleanup failed: '+ '; '.join(errors))
 
 
 def check_file_integrity(path):
@@ -290,18 +352,58 @@ def analyze(path, expected, sizes, outdir):
             'control_row_fn_occurrences': int(fn[control].sum())}
 
 
+def finalize_capture(outdir, record, expected, profile, args):
+    """Analyze even partial files, preserving a separate record for each phase."""
+    exit_code = 0
+    data = outdir/'capture.dat'
+    if record['status'] == 'completed' and not data.is_file():
+        record['status'] = 'failed'
+        record['error'] = 'Capture returned without a data file'
+        exit_code = 1
+    if data.exists():
+        try:
+            record['data'] = {'path': data.name, 'size': data.stat().st_size,
+                              'sha256': file_sha256(data)}
+            record['analysis'] = analyze(data, expected, profile['image_payload_bytes'], outdir)
+            if record['status'] == 'completed' and record['analysis']['valid_images'] < args.frames:
+                raise RuntimeError('Recorded file has fewer valid images than requested')
+        except Exception as exc:
+            record['analysis_error'] = repr(exc)
+            record['status'] = 'failed'
+            traceback.print_exc()
+            exit_code = 1
+    record['finished_utc'] = utc_now()
+    if 'analysis' in record:
+        try:
+            record['mismatch_artifacts'] = export_mismatches(
+                outdir, outdir/'mismatch-records', record)
+        except Exception as exc:
+            record['mismatch_export_error'] = repr(exc)
+            record['status'] = 'failed'
+            traceback.print_exc()
+            exit_code = 1
+    write_json(outdir/'test.json', record)
+    return exit_code
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--outdir', required=True, type=Path, help='New directory for this attempt; must not exist')
     parser.add_argument('--label', required=True, help='Test step or condition')
     parser.add_argument('--repetition', type=int, default=1)
     parser.add_argument('--notes', default='')
-    parser.add_argument('--frames', type=int, default=50)
-    parser.add_argument('--timeout', type=float, default=30)
+    parser.add_argument('--frames', type=int, default=50, help='Full images requested per capture/rate phase')
+    parser.add_argument('--timeout', type=float, default=30, help='Image acquisition timeout per phase, seconds')
     parser.add_argument('--drain-seconds', type=float, default=0.25)
     parser.add_argument('--drain-timeout', type=float, default=5)
-    parser.add_argument('--max-bytes', type=int, default=512 * 1024 * 1024)
-    parser.add_argument('--rate-hz', type=float, default=None)
+    parser.add_argument('--max-bytes', type=int, default=512 * 1024 * 1024,
+                        help='Native file byte limit per capture/rate phase')
+    parser.add_argument('--gain-writer', choices=('standalone', 'daq'), default='standalone',
+                        help='DAQ selects the actual configdb raw-map helper, not full Configure')
+    rates = parser.add_mutually_exclusive_group()
+    rates.add_argument('--rate-hz', type=float, default=None)
+    rates.add_argument('--rate-sequence-hz', type=float, nargs='+',
+                       help='Internal camera rates in one session with one map write; frames per phase')
     args = gain._parse_args(argv, parser)
     if not args.profile:
         parser.error('--profile is required')
@@ -319,10 +421,19 @@ def main(argv=None):
         parser.error('Capture opens VC0 and VC1 itself; omit --camera-vc-mask')
     selected, selected_source = gain._selected_pixels(args)
     expected = gain._expected_raw_map(args.mode, selected).astype(bool)
+    if args.gain_writer == 'daq':
+        gain_writer.pixel_config_map(args.mode, selected)  # Reject unrepresentable pixels before hardware access.
     profile = args.profile_data
+    requested_rates = args.rate_sequence_hz or ([args.rate_hz] if args.rate_hz is not None else [])
+    if any(not math.isfinite(rate) or rate <= 0 for rate in requested_rates):
+        parser.error('Rates must be positive and finite')
+    if any(not 1 <= 156250000.0 / rate <= 0xffffffff for rate in requested_rates):
+        parser.error('Rate cannot be represented by the 32-bit camera auto-trigger period')
+    if requested_rates and (not profile['camera_auto_trigger'] or profile['camera_trigger_source'] != 3):
+        parser.error('Rate overrides require internal camera auto triggering (source 3)')
+    if args.rate_sequence_hz and len(args.rate_sequence_hz) < 2:
+        parser.error('--rate-sequence-hz requires at least two phases')
     if args.rate_hz is not None:
-        if not math.isfinite(args.rate_hz) or args.rate_hz <= 0:
-            parser.error('--rate-hz must be positive and finite')
         profile['rate_hz'] = args.rate_hz
         profile['overrides']['rate_hz'] = args.rate_hz
     outdir = args.outdir.expanduser().resolve()
@@ -335,6 +446,10 @@ def main(argv=None):
               'selected_map_source': selected_source, 'requested_frames': args.frames,
               'timeout_seconds': args.timeout, 'max_bytes': args.max_bytes,
               'write_path': 'matrix-fill plus selected-pixel writes',
+              'gain_writer': gain_writer.describe_writer(args.gain_writer),
+              'rate_sequence_hz': args.rate_sequence_hz,
+              'requested_rate_hz': profile['rate_hz'] if not args.rate_sequence_hz else None,
+              'map_write_count_planned': 1,
               'camera_vc_mask': 0x3,
               'os_release': Path('/etc/os-release').read_text() if Path('/etc/os-release').exists() else None,
               'uname': list(platform.uname()),
@@ -388,34 +503,20 @@ def main(argv=None):
                 traceback.print_exc()
                 exit_code = 130 if isinstance(exc, KeyboardInterrupt) else 1
             finally:
-                data = outdir/'capture.dat'
-                if record['status'] == 'completed' and not data.is_file():
-                    record['status'] = 'failed'
-                    record['error'] = 'Capture returned without a data file'
-                    exit_code = 1
-                if data.exists():
-                    try:
-                        record['data'] = {'path': data.name, 'size': data.stat().st_size,
-                                          'sha256': file_sha256(data)}
-                        record['analysis'] = analyze(data, expected, profile['image_payload_bytes'], outdir)
-                        if record['status'] == 'completed' and record['analysis']['valid_images'] < args.frames:
-                            raise RuntimeError('Recorded file has fewer valid images than requested')
-                    except Exception as exc:
-                        record['analysis_error'] = repr(exc)
-                        record['status'] = 'failed'
-                        traceback.print_exc()
-                        exit_code = 1
-                record['finished_utc'] = utc_now()
-                if 'analysis' in record:
-                    try:
-                        record['mismatch_artifacts'] = export_mismatches(
-                            outdir, outdir/'mismatch-records', record)
-                    except Exception as exc:
-                        record['mismatch_export_error'] = repr(exc)
-                        record['status'] = 'failed'
-                        traceback.print_exc()
-                        exit_code = 1
-                write_json(outdir/'test.json', record)
+                if args.rate_sequence_hz:
+                    for phase in record.get('phases', []):
+                        code = finalize_capture(outdir/phase['path'], phase, expected, profile, args)
+                        if code:
+                            record['status'] = 'failed'
+                            record['analysis_error'] = 'One or more rate phases failed analysis; see phase records'
+                            if exit_code == 0:
+                                exit_code = code
+                    record['finished_utc'] = utc_now()
+                    write_json(outdir/'test.json', record)
+                else:
+                    code = finalize_capture(outdir, record, expected, profile, args)
+                    if exit_code == 0:
+                        exit_code = code
     finally:
         signal.signal(signal.SIGTERM, previous_term)
     print('%s: %s' % (record['status'], outdir))

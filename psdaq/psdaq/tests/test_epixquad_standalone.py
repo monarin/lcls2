@@ -153,6 +153,7 @@ class CaptureTests(unittest.TestCase):
         camera, pcie, writer, sink = Mock(), Mock(), Mock(), Mock()
         args = SimpleNamespace(max_bytes=10000000, mode=gain._normalize_mode('FH'),
                                asics=list(range(16)), injection_delay=1, verbose=False,
+                               gain_writer='standalone', rate_sequence_hz=None,
                                frames=1, timeout=1, drain_timeout=0.1, drain_seconds=0.01)
         profile = {'image_payload_bytes': SIZES, 'camera_yaml': 'baseline',
                    'camera_trigger_source': 3, 'camera_auto_trigger': True, 'rate_hz': 10}
@@ -162,7 +163,7 @@ class CaptureTests(unittest.TestCase):
         def fail_wait(*a):
             camera.SystemRegs.TrigEn.set.side_effect = RuntimeError('disable failed')
             raise TimeoutError('no frames')
-        with tempfile.TemporaryDirectory() as temp, patch.object(hw, 'session', session), patch.object(hw, 'pause_triggers') as pause, patch.object(hw, 'load_camera_baseline'), patch.object(hw, 'runtime_snapshot', return_value={}), patch.object(hw, 'camera_identity', return_value={'adc_done': True, 'adc_failed': False}), patch.object(gain, '_write_gain_mode'), patch.object(cap, 'make_stream_writer', return_value=(writer, sink)), patch.object(cap, 'wait_for_images', side_effect=fail_wait):
+        with tempfile.TemporaryDirectory() as temp, patch.object(hw, 'session', session), patch.object(hw, 'pause_triggers') as pause, patch.object(hw, 'load_camera_baseline'), patch.object(hw, 'runtime_snapshot', return_value={}), patch.object(hw, 'camera_identity', return_value={'adc_done': True, 'adc_failed': False}), patch.object(gain, '_write_gain_mode'), patch.object(cap, 'trigger_snapshot', return_value={}), patch.object(cap, 'make_stream_writer', return_value=(writer, sink)), patch.object(cap, 'wait_for_images', side_effect=fail_wait):
             record = {}
             with self.assertRaisesRegex(TimeoutError, 'no frames'):
                 cap.capture(args, profile, [], Path(temp), record)

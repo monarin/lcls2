@@ -1,5 +1,9 @@
 # UED 50-frame commissioning — 2026-09-28
 
+Prepared on September 29: [DAQ-writer and trigger-rate comparison](DAQ_WRITER_COMPARISON.md).
+Implementation and offline checks are complete; no new detector test has run.
+The detector was powered off by Mona after the September 28 captures.
+
 Latest: [expand2 MapFML/MapFHL results](GAIN_MAP_RESULTS.md) have no mismatches
 outside the persistent list across 50 assessed images per mode, after excluding
 frame 1 as instructed. The historical production FP pattern was not reproduced.
