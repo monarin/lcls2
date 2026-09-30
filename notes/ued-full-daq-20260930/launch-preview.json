@@ -1,0 +1,56 @@
+{
+  "platform": "0",
+  "processes": [
+    {
+      "id": "xpmpva",
+      "flags": "s",
+      "env": "QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCALE_FACTOR=1 QT_FONT_DPI=96 EPICS_PVA_ADDR_LIST=172.21.36.255 LD_LIBRARY_PATH=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/lib/linux-x86_64:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/pcas/lib/linux-x86_64",
+      "cmd": "xpmpva DAQ:UED:XPM:0"
+    },
+    {
+      "id": "groupca",
+      "flags": "s",
+      "env": "QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCALE_FACTOR=1 QT_FONT_DPI=96 EPICS_PVA_ADDR_LIST=172.21.36.255 LD_LIBRARY_PATH=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/lib/linux-x86_64:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/pcas/lib/linux-x86_64",
+      "cmd": "groupca DAQ:UED 0 0"
+    },
+    {
+      "id": "daqstat",
+      "env": "QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCALE_FACTOR=1 QT_FONT_DPI=96 EPICS_PVA_ADDR_LIST=172.21.36.255 LD_LIBRARY_PATH=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/lib/linux-x86_64:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/pcas/lib/linux-x86_64",
+      "cmd": "daqstat -i 5"
+    },
+    {
+      "host": "drp-ued-cmp002",
+      "id": "control",
+      "flags": "spu",
+      "env": "EPICS_PVA_ADDR_LIST=172.21.36.255 LD_LIBRARY_PATH=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/lib/linux-x86_64:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/pcas/lib/linux-x86_64",
+      "cmd": "control -P ued -B DAQ:UED -x 0 -X drp-ued-cmp001 -C BEAM  --user uedopr   --url https://pswww.slac.stanford.edu/ws-auth/lgbk/  -d https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws/configDB -t trigger -V /sdf/home/u/uedopr/daq/epics/elog_ued.txt -T 10000 -S 1"
+    },
+    {
+      "id": "control_gui",
+      "flags": "p",
+      "env": "QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCALE_FACTOR=1 QT_FONT_DPI=96 EPICS_PVA_ADDR_LIST=172.21.36.255 LD_LIBRARY_PATH=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/lib/linux-x86_64:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/pcas/lib/linux-x86_64",
+      "cmd": "control_gui -H drp-ued-cmp002 --uris https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws --expert  --user uedopr  --loglevel WARNING"
+    },
+    {
+      "host": "drp-ued-cmp002",
+      "id": "teb0",
+      "flags": "spu",
+      "cmd": "teb -P ued -C drp-ued-cmp002 -M /sdf/group/lcls/ds/daq/prom/ued -k ep_provider=sockets,ep_domain=enp129s0np0 -k script_path=/sdf/home/u/uedopr/daq/trigger"
+    },
+    {
+      "host": "drp-ued-cmp003",
+      "cores": 10,
+      "id": "epixquad1kfps_0",
+      "flags": "spux",
+      "env": "QT_QPA_PLATFORM=offscreen EPICS_PVA_ADDR_LIST=172.21.36.255 LD_LIBRARY_PATH=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/lib/linux-x86_64:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/pcas/lib/linux-x86_64 EPIXQUAD_DEBUG_CONTROL_FILE=/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-full-daq-20260930/debug-disabled.json",
+      "cmd": "drp -P ued -C drp-ued-cmp002 -M /sdf/group/lcls/ds/daq/prom/ued -o /u2/pcds/pds -k ep_provider=sockets,ep_domain=ens2np0 -d /dev/datadev_0 -l 0x1 -D epixquad1kfps -k timebase=119M"
+    },
+    {
+      "host": "drp-ued-cmp002",
+      "id": "timing_0",
+      "flags": "spu",
+      "env": "QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCALE_FACTOR=1 QT_FONT_DPI=96 EPICS_PVA_ADDR_LIST=172.21.36.255 LD_LIBRARY_PATH=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/lib/linux-x86_64:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/pcas/lib/linux-x86_64",
+      "cmd": "drp -P ued -C drp-ued-cmp002 -M /sdf/group/lcls/ds/daq/prom/ued -o /u2/pcds/pds -k ep_provider=sockets,ep_domain=enp129s0np0 -d /dev/datadev_0 -l 0x2 -D ts -k timebase=119M"
+    }
+  ]
+}
