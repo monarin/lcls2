@@ -1,0 +1,76 @@
+{
+  "source_attempt": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt07-mapfml",
+  "mode": "MapFML",
+  "gain_writer": {
+    "function": "_write_gain_mode",
+    "name": "standalone",
+    "scope": "gain-map programming only; standalone baseline and timing",
+    "sequence": "all ASIC backgrounds, then selected pixels in input order",
+    "source_path": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py",
+    "source_sha256": "b8191dd350dcd7dedaa76f77c1babe517d2b40fa2fd7118fa94f8a6ac19f7008"
+  },
+  "requested_rate_hz": 10.0,
+  "trigger_readback": {
+    "auto_frequency_hz": 10.0,
+    "auto_period_ticks": 15625000,
+    "source": 3
+  },
+  "parent_test_id": null,
+  "phase_index": null,
+  "source_status": "completed",
+  "data_sha256": "1f7ed4eca66c80e0db9fbf85d1640a10f9d7dba098466120f6651404531b9926",
+  "reviewer_sha256": "6c79effa2080e4d5801fbaa2f416437a7ad2b7cee812a92d04ac523e3559d32b",
+  "policy": "First full image retained but excluded from assessment by user instruction",
+  "recorded_frames": 51,
+  "assessed_frames": 50,
+  "known_bad_pixels": 352,
+  "selected_low_pixels": 22169,
+  "selected_known_bad": 68,
+  "known_bad_csv_sha256": "b97b7f0a14158fe14daa1e55bb1d923748632c178d47442fe84e771d04ce5856",
+  "historical_run2_csv_sha256": "e310db1931b8df4e8351c7f2888a76129ca488e251e2cc89ab512b29b716fe7e",
+  "all_frames": {
+    "FP": {
+      "unique_pixels": 175,
+      "occurrences": 175,
+      "known_unique": 0,
+      "outside_known_unique": 175,
+      "outside_known_occurrences": 175,
+      "historical_run2_overlap": 0,
+      "outside_historical_run2": 175
+    },
+    "FN": {
+      "unique_pixels": 22096,
+      "occurrences": 25496,
+      "known_unique": 68,
+      "outside_known_unique": 22028,
+      "outside_known_occurrences": 22028,
+      "historical_run2_overlap": 68,
+      "outside_historical_run2": 22028
+    }
+  },
+  "after_first": {
+    "FP": {
+      "unique_pixels": 0,
+      "occurrences": 0,
+      "known_unique": 0,
+      "outside_known_unique": 0,
+      "outside_known_occurrences": 0,
+      "historical_run2_overlap": 0,
+      "outside_historical_run2": 0
+    },
+    "FN": {
+      "unique_pixels": 68,
+      "occurrences": 3400,
+      "known_unique": 68,
+      "outside_known_unique": 0,
+      "outside_known_occurrences": 0,
+      "historical_run2_overlap": 68,
+      "outside_historical_run2": 0
+    }
+  },
+  "output_sha256": {
+    "after-first-counts.npz": "a08c3faf7170b973ecff9ef075ee35ed70a7ba672262c6e6d0f3056093e3136d",
+    "after-first-mismatches.csv": "97891648070a5e549f8bb96a184dee732309dc7e323f1e9a9ec41940073b52d4"
+  }
+}
+Rogue/pyrogue version v6.1.3. https://github.com/slaclab/rogue

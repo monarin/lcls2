@@ -1,0 +1,267 @@
+{
+  "scope": "Standalone reproduction after detector power cycle; DAQ writer not used",
+  "captures": [
+    {
+      "attempt": 7,
+      "mode": "MapFML",
+      "status": "completed",
+      "lcls2_commit": "c539c20f5bffc05b773c059670abe4e5a4342971",
+      "gain_writer": {
+        "function": "_write_gain_mode",
+        "name": "standalone",
+        "scope": "gain-map programming only; standalone baseline and timing",
+        "sequence": "all ASIC backgrounds, then selected pixels in input order",
+        "source_path": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py",
+        "source_sha256": "b8191dd350dcd7dedaa76f77c1babe517d2b40fa2fd7118fa94f8a6ac19f7008"
+      },
+      "previous_attempt": 5,
+      "assessed_arrays_identical": {
+        "fp": true,
+        "fn": true,
+        "known_bad_mask": true
+      },
+      "input_checksums_match": {
+        "camera_yaml": true,
+        "pcie_yaml": true,
+        "selected_map": true
+      },
+      "bundle_commits_and_diffs_match": true,
+      "bundle_patch_script_match": true,
+      "standalone_writer_source_match": true,
+      "recorded_frames": 51,
+      "assessed_frames": 50,
+      "after_first": {
+        "FP": {
+          "unique_pixels": 0,
+          "occurrences": 0,
+          "known_unique": 0,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 0,
+          "outside_historical_run2": 0
+        },
+        "FN": {
+          "unique_pixels": 68,
+          "occurrences": 3400,
+          "known_unique": 68,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 68,
+          "outside_historical_run2": 0
+        }
+      },
+      "first_frame": {
+        "image_1based": 1,
+        "fp": 175,
+        "fn": 22096,
+        "fp_outside_known": 175,
+        "fn_outside_known": 22028
+      },
+      "data": {
+        "path": "capture.dat",
+        "sha256": "1f7ed4eca66c80e0db9fbf85d1640a10f9d7dba098466120f6651404531b9926",
+        "size": 55887184
+      },
+      "trigger_readback": {
+        "auto_frequency_hz": 10.0,
+        "auto_period_ticks": 15625000,
+        "source": 3
+      },
+      "image_arrival_rate_hz": 10.004525597336885,
+      "cleanup_errors": [],
+      "restore": "restored",
+      "payload_records": [
+        {
+          "payload_bytes": 48,
+          "error": 0,
+          "channel": 1,
+          "count": 513
+        },
+        {
+          "payload_bytes": 1095248,
+          "error": 0,
+          "channel": 1,
+          "count": 41
+        },
+        {
+          "payload_bytes": 1095288,
+          "error": 0,
+          "channel": 1,
+          "count": 10
+        }
+      ]
+    },
+    {
+      "attempt": 8,
+      "mode": "MapFHL",
+      "status": "completed",
+      "lcls2_commit": "c539c20f5bffc05b773c059670abe4e5a4342971",
+      "gain_writer": {
+        "function": "_write_gain_mode",
+        "name": "standalone",
+        "scope": "gain-map programming only; standalone baseline and timing",
+        "sequence": "all ASIC backgrounds, then selected pixels in input order",
+        "source_path": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/debugtools/epixquad1kfps/write_gain_mode_standalone.py",
+        "source_sha256": "b8191dd350dcd7dedaa76f77c1babe517d2b40fa2fd7118fa94f8a6ac19f7008"
+      },
+      "previous_attempt": 6,
+      "assessed_arrays_identical": {
+        "fp": true,
+        "fn": true,
+        "known_bad_mask": true
+      },
+      "input_checksums_match": {
+        "camera_yaml": true,
+        "pcie_yaml": true,
+        "selected_map": true
+      },
+      "bundle_commits_and_diffs_match": true,
+      "bundle_patch_script_match": true,
+      "standalone_writer_source_match": true,
+      "recorded_frames": 51,
+      "assessed_frames": 50,
+      "after_first": {
+        "FP": {
+          "unique_pixels": 0,
+          "occurrences": 0,
+          "known_unique": 0,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 0,
+          "outside_historical_run2": 0
+        },
+        "FN": {
+          "unique_pixels": 68,
+          "occurrences": 3400,
+          "known_unique": 68,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 68,
+          "outside_historical_run2": 0
+        }
+      },
+      "first_frame": {
+        "image_1based": 1,
+        "fp": 237,
+        "fn": 22158,
+        "fp_outside_known": 237,
+        "fn_outside_known": 22090
+      },
+      "data": {
+        "path": "capture.dat",
+        "sha256": "b54bf9c5d6337006173220b838cd5ba175c34be839ee3314407e0ce5a1350c1f",
+        "size": 55887184
+      },
+      "trigger_readback": {
+        "auto_frequency_hz": 10.0,
+        "auto_period_ticks": 15625000,
+        "source": 3
+      },
+      "image_arrival_rate_hz": 10.0034819877493,
+      "cleanup_errors": [],
+      "restore": "restored",
+      "payload_records": [
+        {
+          "payload_bytes": 48,
+          "error": 0,
+          "channel": 1,
+          "count": 513
+        },
+        {
+          "payload_bytes": 1095248,
+          "error": 0,
+          "channel": 1,
+          "count": 41
+        },
+        {
+          "payload_bytes": 1095288,
+          "error": 0,
+          "channel": 1,
+          "count": 10
+        }
+      ]
+    }
+  ],
+  "postflight": {
+    "utc": "2026-09-30T18:43:41.608937+00:00",
+    "identity": {
+      "fpga_version": 33751040,
+      "build_stamp": "EpixQuadPgp4_10Gbps_1kfps: Vivado v2021.2, rdsrv403 (Ubuntu 22.04.5 LTS), Built Tue Oct 14 11:01:33 AM PDT 2025 by ruckman",
+      "git_hash": 383709318689029322121060581264501330697182647568,
+      "carrier_ids": [
+        [
+          175474177,
+          1509949462
+        ],
+        [
+          175300865,
+          1291845654
+        ],
+        [
+          175937537,
+          3774873622
+        ],
+        [
+          177133569,
+          2969567254
+        ]
+      ],
+      "adc_done": true,
+      "adc_failed": false
+    },
+    "camera": {
+      "SystemRegs.TrigEn": true,
+      "SystemRegs.TrigSrcSel": 3,
+      "SystemRegs.AutoTrigEn": true,
+      "SystemRegs.AutoTrigPer": 15625000,
+      "SystemRegs.AutoTrigFreqHz": 10.0,
+      "SystemRegs.DcDcEnable": 15,
+      "SystemRegs.AsicAnaEn": true,
+      "SystemRegs.AsicDigEn": true,
+      "SystemRegs.DdrVttEn": false,
+      "SystemRegs.AsicMask": 65535,
+      "SystemRegs.AdcTestDone": true,
+      "SystemRegs.AdcTestFailed": false,
+      "AcqCore.AcqToAsicR0Delay": 0,
+      "AcqCore.AsicR0Width": 30,
+      "AcqCore.AsicR0ToAsicAcq": 15625,
+      "AcqCore.AsicAcqWidth": 15625,
+      "AcqCore.AsicAcqLToPPmatL": 1000,
+      "AcqCore.AsicPpmatToReadout": 0,
+      "AcqCore.AsicRoClkHalfT": 3,
+      "AcqCore.AsicSyncInjEn": false,
+      "AcqCore.AsicSyncInjDly": 1000,
+      "AcqCore.DummyAcqEn": false,
+      "RdoutCore.RdoutEn": false,
+      "RdoutCore.SeqCount": 102,
+      "RdoutCore.AdcPipelineDelay": 68,
+      "RdoutCore.BuffersRdy": false,
+      "RdoutCore.OverSampleEn": {
+        "error": "<class 'ePixQuad.RdoutCore.RdoutCore'> - Root.RdoutCore has no attribute OverSampleEn"
+      },
+      "RdoutCore.OverSampleSize": {
+        "error": "<class 'ePixQuad.RdoutCore.RdoutCore'> - Root.RdoutCore has no attribute OverSampleSize"
+      },
+      "RdoutCore.sAxisDropFrameCount": {
+        "error": "<class 'ePixQuad.RdoutCore.RdoutCore'> - Root.RdoutCore has no attribute sAxisDropFrameCount"
+      },
+      "RdoutCore.mAxisDropFrameCount": {
+        "error": "<class 'ePixQuad.RdoutCore.RdoutCore'> - Root.RdoutCore has no attribute mAxisDropFrameCount"
+      }
+    },
+    "stream_first": {
+      "RdoutStreamMonitoring.Ch[0].FrameCnt": 102,
+      "RdoutStreamMonitoring.Ch[0].FrameRate": 0,
+      "RdoutStreamMonitoring.Ch[0].FrameSize": 1095232,
+      "RdoutStreamMonitoring.Ch[0].FrameSizeMin": 1095232,
+      "RdoutStreamMonitoring.Ch[0].FrameSizeMax": 1095232
+    },
+    "stream_second": {
+      "RdoutStreamMonitoring.Ch[0].FrameCnt": 102,
+      "RdoutStreamMonitoring.Ch[0].FrameRate": 0,
+      "RdoutStreamMonitoring.Ch[0].FrameSize": 1095232,
+      "RdoutStreamMonitoring.Ch[0].FrameSizeMin": 1095232,
+      "RdoutStreamMonitoring.Ch[0].FrameSizeMax": 1095232
+    }
+  }
+}

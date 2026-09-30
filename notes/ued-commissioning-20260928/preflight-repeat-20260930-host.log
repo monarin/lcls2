@@ -1,0 +1,35 @@
+===============================================================================
+This is a Federal computer system and is the property of the United States
+Government. It is for authorized use only. Users (authorized or unauthorized)
+have no explicit or implicit expectation of privacy.
+
+By using this system you expressly consent to the terms and conditions in
+https://www.slac.stanford.edu/comp/policy/use.html
+===============================================================================
+drp-ued-cmp003
+NAME="Rocky Linux"
+VERSION="9.6 (Blue Onyx)"
+ID="rocky"
+ID_LIKE="rhel centos fedora"
+VERSION_ID="9.6"
+PLATFORM_ID="platform:el9"
+PRETTY_NAME="Rocky Linux 9.6 (Blue Onyx)"
+ANSI_COLOR="0;32"
+LOGO="fedora-logo-icon"
+CPE_NAME="cpe:/o:rocky:rocky:9::baseos"
+HOME_URL="https://rockylinux.org/"
+VENDOR_NAME="RESF"
+VENDOR_URL="https://resf.org/"
+BUG_REPORT_URL="https://bugs.rockylinux.org/"
+SUPPORT_END="2032-05-31"
+ROCKY_SUPPORT_PRODUCT="Rocky-Linux-9"
+ROCKY_SUPPORT_PRODUCT_VERSION="9.6"
+REDHAT_SUPPORT_PRODUCT="Rocky Linux"
+REDHAT_SUPPORT_PRODUCT_VERSION="9.6"
+uedopr    238748 srun            srun -n1 -c3 --unbuffered --job-name=ioc-ued-epix-cmp003-01 --export=HOME,USER,TESTRELDIR=/sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_092526/install,CONDA_PREFIX=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9,CONDA_DEFAULT_ENV=daq_20250402_r9,CONDA_EXE,CONFIGDB_AUTH,SUBMODULEDIR,PATH=/sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_092526/install/bin:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/bin/linux-x86_64:/usr/sbin:/usr/bin:/sbin:/bin,PYTHONPATH=/sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_092526/install/lib/python3.9/site-packages,DISPLAY,XAUTHORITY,DAQMGR_EXPORT,RDMAV_FORK_SAFE=1,RDMAV_HUGEPAGES_SAFE=1,OPENBLAS_NUM_THREADS=1,OMP_NUM_THREADS=1,NUMEXPR_NUM_THREADS=1,PS_PARALLEL=none,LD_LIBRARY_PATH=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/lib/linux-x86_64:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/pcas/lib/linux-x86_64 bash -c daqlog_header ioc-ued-epix-cmp003-01 8 drp-ued-cmp003 'epixquad_monitor_ioc --dev /dev/datadev_0 --lane 0 --prefix UED:EPIX2M:01: --no-microblaze' ; epixquad_monitor_ioc --dev /dev/datadev_0 --lane 0 --prefix UED:EPIX2M:01: --no-microblaze
+uedopr    238749 srun            srun -n1 -c3 --unbuffered --job-name=ioc-ued-epix-cmp003-01 --export=HOME,USER,TESTRELDIR=/sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_092526/install,CONDA_PREFIX=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9,CONDA_DEFAULT_ENV=daq_20250402_r9,CONDA_EXE,CONFIGDB_AUTH,SUBMODULEDIR,PATH=/sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_092526/install/bin:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/bin/linux-x86_64:/usr/sbin:/usr/bin:/sbin:/bin,PYTHONPATH=/sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_092526/install/lib/python3.9/site-packages,DISPLAY,XAUTHORITY,DAQMGR_EXPORT,RDMAV_FORK_SAFE=1,RDMAV_HUGEPAGES_SAFE=1,OPENBLAS_NUM_THREADS=1,OMP_NUM_THREADS=1,NUMEXPR_NUM_THREADS=1,PS_PARALLEL=none,LD_LIBRARY_PATH=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/lib/linux-x86_64:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/pcas/lib/linux-x86_64 bash -c daqlog_header ioc-ued-epix-cmp003-01 8 drp-ued-cmp003 'epixquad_monitor_ioc --dev /dev/datadev_0 --lane 0 --prefix UED:EPIX2M:01: --no-microblaze' ; epixquad_monitor_ioc --dev /dev/datadev_0 --lane 0 --prefix UED:EPIX2M:01: --no-microblaze
+uedopr    238794 epixquad_monito /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python3 /sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_092526/install/bin/epixquad_monitor_ioc --dev /dev/datadev_0 --lane 0 --prefix UED:EPIX2M:01: --no-microblaze
+uedopr   3181812 srun            srun -n1 -c1 --unbuffered --job-name=caRepeater_drp-ued-cmp003 --export=HOME,USER,TESTRELDIR=/sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_091626/install,CONDA_PREFIX=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9,CONDA_DEFAULT_ENV=daq_20250402_r9,CONDA_EXE,CONFIGDB_AUTH,SUBMODULEDIR,PATH=/sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_091626/install/bin:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/bin/linux-x86_64:/usr/sbin:/usr/bin:/sbin:/bin,PYTHONPATH=/sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_091626/install/lib/python3.9/site-packages,DISPLAY,XAUTHORITY,DAQMGR_EXPORT,RDMAV_FORK_SAFE=1,RDMAV_HUGEPAGES_SAFE=1,OPENBLAS_NUM_THREADS=1,OMP_NUM_THREADS=1,NUMEXPR_NUM_THREADS=1,PS_PARALLEL=none,LD_LIBRARY_PATH=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/lib/linux-x86_64:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/pcas/lib/linux-x86_64 bash -c daqlog_header caRepeater_drp-ued-cmp003 8 drp-ued-cmp003 caRepeater ; caRepeater
+uedopr   3181814 srun            srun -n1 -c1 --unbuffered --job-name=caRepeater_drp-ued-cmp003 --export=HOME,USER,TESTRELDIR=/sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_091626/install,CONDA_PREFIX=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9,CONDA_DEFAULT_ENV=daq_20250402_r9,CONDA_EXE,CONFIGDB_AUTH,SUBMODULEDIR,PATH=/sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_091626/install/bin:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/bin/linux-x86_64:/usr/sbin:/usr/bin:/sbin:/bin,PYTHONPATH=/sdf/group/lcls/ds/ana/sw/conda2/rel/ioc/lcls2_091626/install/lib/python3.9/site-packages,DISPLAY,XAUTHORITY,DAQMGR_EXPORT,RDMAV_FORK_SAFE=1,RDMAV_HUGEPAGES_SAFE=1,OPENBLAS_NUM_THREADS=1,OMP_NUM_THREADS=1,NUMEXPR_NUM_THREADS=1,PS_PARALLEL=none,LD_LIBRARY_PATH=/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/epics/lib/linux-x86_64:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/pcas/lib/linux-x86_64 bash -c daqlog_header caRepeater_drp-ued-cmp003 8 drp-ued-cmp003 caRepeater ; caRepeater
+monarin  3188578 bash            bash -c hostname; cat /etc/os-release; ps -eo user,pid,comm,args | rg epixquad_monitor\|capture_standalone\|run_once.py\|daqmgr\|devGui\|drp; fuser -v /dev/datadev_0
+monarin  3188606 rg              rg epixquad_monitor|capture_standalone|run_once.py|daqmgr|devGui|drp

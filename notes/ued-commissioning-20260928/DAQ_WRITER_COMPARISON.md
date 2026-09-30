@@ -1,9 +1,10 @@
 # DAQ-writer and trigger-rate comparison — prepared 2026-09-29
 
-Status: software prepared and validated offline. **No hardware test started.**
-Mona powered off the detector after the September 28 captures and requested
-implementation only. The historical production timing settings still need
-to be recovered before choosing a production-rate comparison.
+Status: software prepared and validated offline. **DAQ-writer hardware test
+not started.** After powering the detector on again, Mona requested repetition
+of the previous standalone control first. The [September 30 controls](GAIN_MAP_REPEAT_20260930.md)
+passed in both map modes. The historical production timing settings still
+need to be recovered before choosing a production-rate comparison.
 
 ## Implementation
 
@@ -42,7 +43,7 @@ through a rate change and does not reproduce production dual-trigger routing.
 2. At 10 Hz, compare standalone and DAQ writers with the exact expand2 map in
    MapFML and MapFHL. Use three independent programming attempts per combination
    (12 captures), interleaving the two writers. Assign new attempt numbers;
-   the last completed attempt is 06. Record 51 images per attempt.
+   the last completed attempt is 08. Record 51 images per attempt.
 3. Recover the historical run and readout trigger settings. For each writer,
    test 10 Hz → verified comparison rate → 10 Hz using one map write and 51
    images per phase. Do not assume 360 Hz or a run-clock rate is the historical
