@@ -1,0 +1,25 @@
+1686:ued-drp[3530560]: <I> received key = configure @ Wed Sep 30 23:27:04 2026
+1795:INFO:root:Setting cbase.Epix10kaSaci0.IsEn to 0
+1862:INFO:root:Setting cbase.Epix10kaSaci1.IsEn to 0
+1929:INFO:root:Setting cbase.Epix10kaSaci2.IsEn to 0
+1996:INFO:root:Setting cbase.Epix10kaSaci3.IsEn to 0
+2063:INFO:root:Setting cbase.Epix10kaSaci4.IsEn to 0
+2130:INFO:root:Setting cbase.Epix10kaSaci5.IsEn to 0
+2197:INFO:root:Setting cbase.Epix10kaSaci6.IsEn to 0
+2264:INFO:root:Setting cbase.Epix10kaSaci7.IsEn to 0
+2331:INFO:root:Setting cbase.Epix10kaSaci8.IsEn to 0
+2398:INFO:root:Setting cbase.Epix10kaSaci9.IsEn to 0
+2465:INFO:root:Setting cbase.Epix10kaSaci10.IsEn to 0
+2532:INFO:root:Setting cbase.Epix10kaSaci11.IsEn to 0
+2599:INFO:root:Setting cbase.Epix10kaSaci12.IsEn to 0
+2666:INFO:root:Setting cbase.Epix10kaSaci13.IsEn to 0
+2733:INFO:root:Setting cbase.Epix10kaSaci14.IsEn to 0
+2800:INFO:root:Setting cbase.Epix10kaSaci15.IsEn to 0
+2827:INFO:root:DAQ gain-map writer: reasserted IsEn=True after expert configuration
+2828:INFO:root:Using user.pixel_map_raw write path: shape=(4, 352, 384) nonzero_pixels=540672 unique_values=[8, 12]
+2829:INFO:root:Raw pixel_map write complete in 12.483 s (22169 pixel updates)
+2870:ued-drp[3530560]: <I> received key = beginrun @ Wed Sep 30 23:27:42 2026
+2871:Opening file /u2/pcds/pds/ued/uedc00107/xtc/uedc00107-r0007-s001-c000.xtc2
+2872:ued-drp[3530560]: <I> Opening file '/u2/pcds/pds/ued/uedc00107/xtc/uedc00107-r0007-s001-c000.xtc2'
+2873:ued-drp[3530560]: <I> Opening file '/u2/pcds/pds/ued/uedc00107/xtc/smalldata/uedc00107-r0007-s001-c000.smd.xtc2'
+2893:ued-drp[3530560]: <I> received key = endrun @ Wed Sep 30 23:27:47 2026

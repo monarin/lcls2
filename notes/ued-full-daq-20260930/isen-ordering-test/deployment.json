@@ -1,0 +1,9 @@
+{
+  "scope": "IsEn ordering fix only in original DAQ writer; standalone port preserved",
+  "config_before_sha256": "1265c5053ee84f65a6f916fc8a8a246698f767cbeb05dc1c48e2ad839fbfd646",
+  "config_after_sha256": "2bd1bdae8ea995f0b1150f72f6b5a8aea9be739e98ff2e624f5ee9f9623864dd",
+  "preserved": {
+    "debugtools/epixquad1kfps/standalone_daq_writer.py": "9931fdbacee4523f8f384be74e6cf04f63ef2bfc150c0e21dc46bf63cdf56f9b",
+    "debugtools/epixquad1kfps/write_gain_mode_standalone.py": "b8191dd350dcd7dedaa76f77c1babe517d2b40fa2fd7118fa94f8a6ac19f7008"
+  }
+}

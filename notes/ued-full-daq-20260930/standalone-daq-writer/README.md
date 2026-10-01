@@ -25,7 +25,9 @@ gating; it does not isolate which difference removes the FPs. Subsequent
 [source replay](../gain-writer-diagnosis/README.md) found a third, significant
 difference: expert ConfigDB writes reset IsEn to 0 before the original DAQ
 map helper, whereas the standalone helper reasserts IsEn=True. This confirmed
-sequencing defect is the leading explanation, pending an IsEn-only hardware test.
+sequencing defect was then isolated in [run 7](../isen-ordering-test/README.md):
+the original DAQ writer with only IsEn ordering corrected is clean outside
+known-bad. The standalone port remains unchanged and available.
 
 There is no post-Configure correction in this test. The earlier 44-pixel
 overwrite was a manual diagnostic, not a permanent hook. Its scripts/evidence

@@ -1,0 +1,8 @@
+test_full_daq_configure_writes_with_isen_enabled (__main__.OrderingTests) ... ok
+test_no_map_update_does_not_enter_programming_again (__main__.OrderingTests) ... ok
+test_standalone_port_sequence_unchanged (__main__.OrderingTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.068s
+
+OK

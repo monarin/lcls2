@@ -1,0 +1,147 @@
+{"progress_frames": 51, "latest": {"event_1based": 51, "full_image_1based": 51, "timestamp": 4980805128775058908, "assessed": true, "top2_counts": [518571, 22101, 0, 0], "FP": 0, "FP_outside_known": 0, "FN": 68, "FN_outside_known": 0}}
+{"progress_frames": 1000, "latest": {"event_1based": 1000, "full_image_1based": 1000, "timestamp": 4980805137999221445, "assessed": true, "top2_counts": [518571, 22101, 0, 0], "FP": 0, "FP_outside_known": 0, "FN": 68, "FN_outside_known": 0}}
+{
+  "input": "/sdf/data/lcls/drpsrcf/ffb/ued/uedc00107/xtc/uedc00107-r0007-s001-c000.xtc2",
+  "snapshot_bytes": 1190308972,
+  "complete_datagram_bytes": 1190308972,
+  "unprocessed_tail_bytes": 0,
+  "complete_prefix_sha256": "640c060ee9b20135c3f3ce533bb49fd6a1bbb316f94770412ab88de9cc99201c",
+  "file_bytes_after_review": 1190308972,
+  "services": {
+    "2": 1,
+    "4": 1,
+    "6": 1,
+    "8": 1,
+    "10": 4,
+    "12": 1086,
+    "9": 1,
+    "7": 1,
+    "5": 1
+  },
+  "endrun_seen": true,
+  "scope": "Complete finalized stream file through EndRun; not an event-loss audit",
+  "policy": "Exclude first full image and damaged/incomplete events from assessment",
+  "config": {
+    "mode": "MapFHL",
+    "map_matches_expand2": true,
+    "trbits": [
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "detids": [
+      "0033751040-0175474177-1509949462-0000000000-0000000000-0000000000-0000000000",
+      "0033751040-0175300865-1291845654-0000000000-0000000000-0000000000-0000000000",
+      "0033751040-0175937537-3774873622-0000000000-0000000000-0000000000-0000000000",
+      "0033751040-0177133569-2969567254-0000000000-0000000000-0000000000-0000000000"
+    ],
+    "carrier_ids_match_known_bad_detector": true,
+    "configure_sha256": "29f6d6fc5f6897e8bcd1f50302f79a29bc58697c8e18e6426fb5a7645c81225a"
+  },
+  "good_full_frames": 1086,
+  "assessed_frames": 1085,
+  "incomplete_events": [],
+  "damaged_events": [],
+  "known_bad_pixels": 352,
+  "selected_low_pixels": 22169,
+  "selected_known_bad": 68,
+  "summary": {
+    "all_good_frames": {
+      "FP": {
+        "unique_pixels": 0,
+        "occurrences": 0,
+        "known_unique": 0,
+        "outside_known_unique": 0,
+        "outside_known_occurrences": 0,
+        "historical_run2_overlap": 0
+      },
+      "FN": {
+        "unique_pixels": 68,
+        "occurrences": 73848,
+        "known_unique": 68,
+        "outside_known_unique": 0,
+        "outside_known_occurrences": 0,
+        "historical_run2_overlap": 68
+      }
+    },
+    "after_first": {
+      "FP": {
+        "unique_pixels": 0,
+        "occurrences": 0,
+        "known_unique": 0,
+        "outside_known_unique": 0,
+        "outside_known_occurrences": 0,
+        "historical_run2_overlap": 0
+      },
+      "FN": {
+        "unique_pixels": 68,
+        "occurrences": 73780,
+        "known_unique": 68,
+        "outside_known_unique": 0,
+        "outside_known_occurrences": 0,
+        "historical_run2_overlap": 68
+      }
+    }
+  },
+  "input_sha256": {
+    "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/map-inputs/expand2.npy": "1739094ffe6e80a7eae0496961730399c0f1dce077f7426e445137fac4434894",
+    "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/fl-persistent-mismatch-candidates.csv": "b97b7f0a14158fe14daa1e55bb1d923748632c178d47442fe84e771d04ce5856",
+    "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/historical-expand2-run2-mismatches.csv": "e310db1931b8df4e8351c7f2888a76129ca488e251e2cc89ab512b29b716fe7e",
+    "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-full-daq-20260930/review_xtc_gainbits.py": "32cb9cc6dbba62e9ca707b522b2b75214b14fbf41093f723bffbe4dd1b5bfa6b"
+  },
+  "first_frame": {
+    "event_1based": 1,
+    "full_image_1based": 1,
+    "timestamp": 4980805128636318426,
+    "assessed": false,
+    "top2_counts": [
+      518571,
+      22101,
+      0,
+      0
+    ],
+    "FP": 0,
+    "FP_outside_known": 0,
+    "FN": 68,
+    "FN_outside_known": 0
+  },
+  "assessed_patterns": [
+    {
+      "FP": 0,
+      "FN": 68,
+      "FP_outside_known": 0,
+      "FN_outside_known": 0,
+      "frames": 1085
+    }
+  ],
+  "python": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/ps_20241122/bin/python",
+  "dgram_module": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install/lib/python3.9/site-packages/psana/dgram.cpython-39-x86_64-linux-gnu.so",
+  "timestamp_span_seconds": 3.0118114948272705,
+  "mean_frame_rate_hz": 360.2483096513401,
+  "output_sha256": {
+    "counts.npz": "693883b3b4dccd563c7ac3545987b1271cd371c696c76b9ff2003d12fdaba3ac",
+    "after-first-mismatches.csv": "ea40424eca58c8f4b6b713d1cbfa96f4b20a65e3225511aff92fa0d033c0d9b3",
+    "frames.csv": "5c6cfcdefc01cd841383e7aaec5912ecf959ad53624b2f2c432108b22eba26f9"
+  }
+}

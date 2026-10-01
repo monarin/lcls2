@@ -1035,6 +1035,12 @@ def config_expert(base, cfg, writePixelMap=True):
         apply_dict('cbase',cbase,epixQuad)
 
     if writePixelMap:
+        if standalone_plan is None:
+            # ConfigDB carries the acquisition value IsEn=0. Reassert the
+            # programming state after expert writes, before the DAQ map writer.
+            for i in asics:
+                retry(cbase.Epix10kaSaci[i].IsEn.set, True)
+            logging.info('DAQ gain-map writer: reasserted IsEn=True after expert configuration')
         if standalone_plan is not None:
             standalone_daq_writer.program(cbase, standalone_plan)
         elif debug_override is not None and debug_override.get('override_kind') == 'direct_write':

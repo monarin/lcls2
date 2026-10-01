@@ -1,5 +1,12 @@
 # DAQ gain-map write diagnosis: IsEn overwritten before programming
 
+Follow-up: [run 7](../isen-ordering-test/README.md) tested the original DAQ
+writer with only IsEn ordering corrected. All 1,086 frames are clean outside
+known-bad and all 44 prior FP addresses read FH twice afterward. The historical
+diagnosis and candidate below describe the evidence before that validation.
+Its replay and candidate target the pre-fix source at commit `5c1800656`;
+use the follow-up regression script to test the now-corrected source.
+
 The full DAQ Configure path violates its own programming-state requirement:
 it sets ASIC `IsEn=True`, applies expert ConfigDB values containing `IsEn=0`
 for every ASIC, then programs the map without reasserting `IsEn=True`.

@@ -1,0 +1,33 @@
+{
+  "experiment": "uedc00107",
+  "run": 7,
+  "writer": "original DAQ raw-map writer, IsEn reasserted after expert configuration",
+  "good_full_frames": 1086,
+  "assessed_after_first": 1085,
+  "mean_rate_hz": 360.2483096513401,
+  "outside_known_FP": 0,
+  "outside_known_FN": 0,
+  "known_FN_each_frame": 68,
+  "undamaged_and_complete": true,
+  "endrun_seen": true,
+  "input": "/sdf/data/lcls/drpsrcf/ffb/ued/uedc00107/xtc/uedc00107-r0007-s001-c000.xtc2",
+  "input_sha256": "640c060ee9b20135c3f3ce533bb49fd6a1bbb316f94770412ab88de9cc99201c",
+  "map_matches_expand2": true,
+  "post_run_all_44_read_FH_twice": true,
+  "post_configure_repair": false,
+  "before_run_ASIC_readback": false,
+  "readback_restore_errors": [],
+  "final_daq_state": "configured",
+  "standalone_port_preserved": true,
+  "diagnostic_pairs": "No new input/pre-write pairs: rediscovery finalized one-shot capture incomplete; analysis uses finalized XTC2 and post-run ASIC readback",
+  "drp_log": "/sdf/home/u/uedopr/daq/logs/2026/09/30_23:26:24_drp-ued-cmp003:epixquad1kfps_0.log",
+  "evidence_sha256": {
+    "isen-ordering-test/deployment.json": "60feb94d5e36574006e000cc719d954bcf58a7088c12d221078dde403ce1e532",
+    "isen-ordering-test/after-run/readback.json": "e31f55db84bdc001ad4fc3485c1a43c046c286416320403e8523d82f55ea9962",
+    "run7-gainbits/review.json": "fde252d001503b340cbaaecd80f22caab4804709e38826ac1cd0b5720fa5ed7c",
+    "isen-ordering-test/configure.json": "02d83476688fbd244744af92996adfb45d44a70ccef16f88b25fb98582a1820f",
+    "isen-ordering-test/run.json": "435fdf64b06b592cdd51b52f0e3344e35ad79df92cf3bd769d82e761f99eb8a1"
+  },
+  "gain_config_fields_except_datagram_digest_equal_run6": true,
+  "configure_digest_note": "Configure datagram SHA256 differs across transitions; compared gain fields, trbits and carrier IDs are equal."
+}

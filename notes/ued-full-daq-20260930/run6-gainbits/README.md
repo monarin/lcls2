@@ -28,3 +28,7 @@ Data:
 The existing run-4/run-5 reviewer was used again, and its output hashes were
 checked. The register-write sequence and camera gating together are validated
 in this DAQ test; their individual effects have not yet been separated.
+
+Follow-up: [run 7](../isen-ordering-test/README.md) isolated an additional
+difference, IsEn ordering. Reasserting IsEn=True in the original DAQ path
+alone also produced clean frames, while retaining its write order and gates.
