@@ -190,6 +190,19 @@ def trigger_snapshot(camera):
             'auto_frequency_hz': float(regs.AutoTrigFreqHz.get(read=True))}
 
 
+def save_config_yaml(outdir, record, pcie, camera, stage, read_first):
+    """Save GUI-equivalent config fields; disabled devices retain cached values."""
+    for name, root in (('pcie', pcie), ('camera', camera)):
+        path = outdir / ('%s-%s.yml' % (name, stage))
+        path.write_text(root.getYaml(readFirst=read_first, modes=['RW', 'WO'],
+                                     excGroups='NoConfig'))
+        record.setdefault('config_snapshots', []).append({
+            'path': path.name, 'sha256': file_sha256(path), 'stage': stage,
+            'read_first': read_first, 'saved_utc': utc_now(),
+            'scope': 'SaveConfig fields; disabled devices may contain cached values; no pixel-matrix readback',
+        })
+
+
 def capture(args, profile, selected, outdir, record):
     description = record.setdefault('gain_writer', gain_writer.describe_writer(args.gain_writer))
     map_writer = gain_writer.resolve_writer(description)
@@ -260,12 +273,19 @@ def acquire_phase(args, profile, selected, outdir, record, pcie, camera,
         if profile['camera_auto_trigger']:
             camera.SystemRegs.AutoTrigFreqHz.set(rate_hz)
         record['trigger_readback'] = trigger_snapshot(camera)
+        if getattr(args, 'save_config_yaml', False):
+            # Read while quiescent, before opening the bounded capture file.
+            save_config_yaml(outdir, record, pcie, camera, 'prepared', True)
         write_json(outdir/'test.json', record)
         writer, sink = make_stream_writer(camera, outdir/'capture.dat', counts)
         record['acquisition_started_utc'] = utc_now()
         pcie.StartRun()
         if clock_period is not None:
             record['diagnostics_before'] = diagnostics.snapshot(pcie, camera, profile['lane'])
+        if getattr(args, 'save_config_yaml', False):
+            # Include StartRun changes without delaying acquisition with ReadAll.
+            # Camera triggering/readout are still disabled in this snapshot.
+            save_config_yaml(outdir, record, pcie, camera, 'armed', False)
         camera.RdoutCore.RdoutEn.set(True)
         camera.SystemRegs.AutoTrigEn.set(profile['camera_auto_trigger'])
         camera.SystemRegs.TrigEn.set(True)
@@ -412,6 +432,8 @@ def main(argv=None):
                         help='Native file byte limit per capture/rate phase')
     parser.add_argument('--gain-writer', choices=('standalone', 'daq'), default='standalone',
                         help='DAQ selects the actual configdb raw-map helper, not full Configure')
+    parser.add_argument('--save-config-yaml', action='store_true',
+                        help='Save full prepared/read-first and armed/cached config YAMLs before camera acquisition')
     parser.add_argument('--asic-ro-clk-ticks', type=int, choices=(3, 6),
                         help='Explicit full readout period after baseline; 3 matches DAQ Configure. Also records rate diagnostics.')
     rates = parser.add_mutually_exclusive_group()

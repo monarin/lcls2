@@ -408,6 +408,17 @@ the timing stream has exactly the same event timestamps. Saved hardware
 configuration matches run 2 in all 1,920 fields. The old bundle and higher
 rate are therefore insufficient explanations for the persistent 43-FP pattern.
 
+### Saved DAQ registers versus fresh standalone capture
+
+[Full YAML comparison and attempt 13](spy-comparison-1842/README.md) reproduces
+zero FP/FN outside the known-bad list in 86 assessed standalone frames using
+the DAQ map writer and internal 360-Hz period. The principal additional camera
+setting difference is `AcqCore.AsicSyncInjEn=False` standalone versus `True`
+in the saved DAQ GUI configuration. Readout clock, ADC pipeline, saved ASIC
+scalar settings, and lane-0 EventBuilder settings match. The SYNC setting is a
+candidate for a controlled follow-up, not a demonstrated cause. Camera idle
+restoration is verified; full DAQ must configure again after standalone use.
+
 ## 6. Restore TEST after the experiment
 
 End/Unconfigure and stop this test cnf before restoration. Confirm no other

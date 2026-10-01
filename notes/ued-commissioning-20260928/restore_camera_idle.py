@@ -1,5 +1,6 @@
 """Restore the preflight camera idle trigger state after this commissioning run."""
 import json
+import os
 from pathlib import Path
 import socket
 import sys
@@ -14,6 +15,7 @@ assert state['RdoutCore.RdoutEn'] is False
 assert state['SystemRegs.TrigSrcSel']==3
 assert state['SystemRegs.AutoTrigEn'] is True
 assert state['SystemRegs.TrigEn'] is True
+os.environ.setdefault('QT_QPA_PLATFORM', 'offscreen')
 hw.load_modules()
 import ePixQuad
 import pyrogue as pr

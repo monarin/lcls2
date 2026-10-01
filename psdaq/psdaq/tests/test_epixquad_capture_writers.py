@@ -7,6 +7,7 @@ import logging
 import os
 from pathlib import Path
 import runpy
+import subprocess
 import tempfile
 import time
 from types import SimpleNamespace
@@ -255,13 +256,14 @@ class RateSequenceTests(unittest.TestCase):
             resolve = stack.enter_context(patch.object(writers, 'resolve_writer', side_effect=AssertionError('writer imported')))
             argv = ['--profile',str(path),'--mode','MapFML','--no-default-pixels',
                     '--raw-pixel','2,175,30','--gain-writer','daq','--label','offline',
-                    '--outdir',str(folder/'dry'),'--dry-run']
+                    '--outdir',str(folder/'dry'),'--dry-run','--save-config-yaml']
             self.assertEqual(cap.main(argv+['--rate-sequence-hz','10','20','10']), 0)
             record = json.loads((folder/'dry/test.json').read_text())
             self.assertEqual(record['status'], 'dry_run')
             self.assertEqual(record['gain_writer']['function'], '_apply_raw_pixel_map_program')
             self.assertEqual(record['rate_sequence_hz'], [10,20,10])
             self.assertFalse((folder/'dry/capture.dat').exists())
+            self.assertFalse(list((folder/'dry').glob('*-prepared.yml')))
             for rates in (['--rate-hz','nan'], ['--rate-hz','0'], ['--rate-sequence-hz','10'],
                           ['--rate-hz','1e-30'], ['--rate-hz','1e30'],
                           ['--rate-sequence-hz','10','-2'], ['--rate-hz','10','--rate-sequence-hz','10','20']):
@@ -273,6 +275,37 @@ class RateSequenceTests(unittest.TestCase):
                 cap.main(argv+['--rate-hz','10'])
             hardware.assert_not_called()
             resolve.assert_not_called()
+
+
+class CommissioningAuditTests(unittest.TestCase):
+    def test_restore_failure_or_missing_result_preserves_audit_without_stale_json(self):
+        source = Path(cap.__file__).parents[4] / 'notes/ued-commissioning-20260928/run_once.py'
+        for result in (-6, 0, 'timeout'):
+            with self.subTest(result=result), tempfile.TemporaryDirectory() as temp, ExitStack() as stack:
+                folder = Path(temp) / 'notes/commissioning'
+                folder.mkdir(parents=True)
+                script = folder / 'run_once.py'
+                script.write_text(source.read_text())
+                (folder / 'restore.json').write_text('{"status":"stale"}')
+                stack.enter_context(patch('sys.argv', [str(script), '--attempt', '1']))
+                stack.enter_context(patch('socket.gethostname', return_value='drp-ued-cmp003'))
+                stack.enter_context(patch('subprocess.Popen', return_value=Mock(
+                    wait=Mock(return_value=0), poll=Mock(return_value=0))))
+                run = stack.enter_context(patch('subprocess.run'))
+                if result == 'timeout':
+                    run.side_effect = subprocess.TimeoutExpired('restore', 45)
+                else:
+                    run.return_value = SimpleNamespace(returncode=result)
+                with self.assertRaises(SystemExit) as exit_status:
+                    runpy.run_path(str(script), run_name='__main__')
+                self.assertEqual(exit_status.exception.code, 1)
+                audit = json.loads((folder / 'execution-attempt01.json').read_text())
+                self.assertEqual(audit['capture_exit'], 0)
+                self.assertIn('restore.json', audit['restore_missing_artifacts'])
+                self.assertFalse((folder / 'restore-attempt01.json').exists())
+                self.assertTrue((folder / 'restore-attempt01.log').exists())
+                if result == 'timeout':
+                    self.assertIn('TimeoutExpired', audit['restore_error'])
 
 
 if __name__ == '__main__':

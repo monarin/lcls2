@@ -1,0 +1,402 @@
+path,standalone,daq_spy,status,standalone_evidence
+DevPcie.Application.AppLane[0].ClinkDecaMode,null,0,no_standalone_reference,not captured
+DevPcie.Application.AppLane[0].EventBuilder.Blowoff,0,false,same,measured standalone in-run diagnostics_before
+DevPcie.Application.AppLane[0].EventBuilder.Bypass,0,0,same,measured standalone in-run diagnostics_before
+DevPcie.Application.AppLane[0].EventBuilder.Timeout,144675,144675,same,measured standalone in-run diagnostics_before
+DevPcie.Application.AppLane[0].EventBuilder.enable,null,true,no_standalone_reference,not captured
+DevPcie.Application.AppLane[0].VcDataTap,0,0,same,DevRoot.start applies dataVc=0
+DevPcie.Application.AppLane[0].XpmPauseThresh,32,32,same,standalone_hardware.configure_lane
+DevPcie.Application.AppLane[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Application.AppLane[1].ClinkDecaMode,null,0,no_standalone_reference,not captured
+DevPcie.Application.AppLane[1].EventBuilder.Blowoff,false,true,different,DevRoot.StartRun clears all lane blowoffs
+DevPcie.Application.AppLane[1].EventBuilder.Bypass,0,0,same,archived PCIe YAML input
+DevPcie.Application.AppLane[1].EventBuilder.Timeout,0,144675,different,archived PCIe YAML input
+DevPcie.Application.AppLane[1].EventBuilder.enable,null,true,no_standalone_reference,not captured
+DevPcie.Application.AppLane[1].VcDataTap,0,0,same,DevRoot.start applies dataVc=0
+DevPcie.Application.AppLane[1].XpmPauseThresh,null,32,no_standalone_reference,not captured
+DevPcie.Application.AppLane[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Application.AppLane[2].ClinkDecaMode,null,0,no_standalone_reference,not captured
+DevPcie.Application.AppLane[2].EventBuilder.Blowoff,false,true,different,DevRoot.StartRun clears all lane blowoffs
+DevPcie.Application.AppLane[2].EventBuilder.Bypass,0,0,same,archived PCIe YAML input
+DevPcie.Application.AppLane[2].EventBuilder.Timeout,0,144675,different,archived PCIe YAML input
+DevPcie.Application.AppLane[2].EventBuilder.enable,null,true,no_standalone_reference,not captured
+DevPcie.Application.AppLane[2].VcDataTap,0,0,same,DevRoot.start applies dataVc=0
+DevPcie.Application.AppLane[2].XpmPauseThresh,null,32,no_standalone_reference,not captured
+DevPcie.Application.AppLane[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Application.AppLane[3].ClinkDecaMode,null,0,no_standalone_reference,not captured
+DevPcie.Application.AppLane[3].EventBuilder.Blowoff,false,true,different,DevRoot.StartRun clears all lane blowoffs
+DevPcie.Application.AppLane[3].EventBuilder.Bypass,0,0,same,archived PCIe YAML input
+DevPcie.Application.AppLane[3].EventBuilder.Timeout,0,144675,different,archived PCIe YAML input
+DevPcie.Application.AppLane[3].EventBuilder.enable,null,true,no_standalone_reference,not captured
+DevPcie.Application.AppLane[3].VcDataTap,0,0,same,DevRoot.start applies dataVc=0
+DevPcie.Application.AppLane[3].XpmPauseThresh,null,32,no_standalone_reference,not captured
+DevPcie.Application.AppLane[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Application.enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.AxiPciePhy.enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.AxiVersion.FpgaReloadAddress,null,0,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.AxiVersion.FpgaReloadHalt,null,0,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.AxiVersion.ScratchPad,null,0,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.AxiVersion.UserReset,null,0,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.AxiVersion.enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.AxilBridge.Regs.Addr,null,0,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.AxilBridge.Regs.Data,null,0,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.AxilBridge.Regs.Resp,null,"""OK""",no_standalone_reference,not captured
+DevPcie.AxiPcieCore.AxilBridge.Regs.Rnw,null,"""Write""",no_standalone_reference,not captured
+DevPcie.AxiPcieCore.AxilBridge.Regs.enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.AxilBridge.enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.DmaIbAxisMon.Ch[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.DmaIbAxisMon.Ch[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.DmaIbAxisMon.Ch[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.DmaIbAxisMon.Ch[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.DmaIbAxisMon.enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.DmaObAxisMon.Ch[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.DmaObAxisMon.Ch[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.DmaObAxisMon.Ch[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.DmaObAxisMon.Ch[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.DmaObAxisMon.enable,null,true,no_standalone_reference,not captured
+DevPcie.AxiPcieCore.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].Ctrl.FlowControlDisable,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].Ctrl.Loopback,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].Ctrl.ResetRx,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].Ctrl.ResetTx,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].Ctrl.SkipInterval,null,5000,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].Ctrl.TxDiffCtrl,null,31,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].Ctrl.TxDisable,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].Ctrl.TxPostCursor,null,7,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].Ctrl.TxPreCursor,null,7,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].Ctrl.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].RxStatus.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].TxStatus.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].Ctrl.FlowControlDisable,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].Ctrl.Loopback,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].Ctrl.ResetRx,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].Ctrl.ResetTx,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].Ctrl.SkipInterval,null,5000,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].Ctrl.TxDiffCtrl,null,31,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].Ctrl.TxDisable,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].Ctrl.TxPostCursor,null,7,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].Ctrl.TxPreCursor,null,7,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].Ctrl.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].RxStatus.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].TxStatus.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].Ctrl.FlowControlDisable,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].Ctrl.Loopback,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].Ctrl.ResetRx,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].Ctrl.ResetTx,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].Ctrl.SkipInterval,null,5000,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].Ctrl.TxDiffCtrl,null,31,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].Ctrl.TxDisable,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].Ctrl.TxPostCursor,null,7,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].Ctrl.TxPreCursor,null,7,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].Ctrl.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].RxStatus.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].TxStatus.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].Ctrl.FlowControlDisable,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].Ctrl.Loopback,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].Ctrl.ResetRx,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].Ctrl.ResetTx,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].Ctrl.SkipInterval,null,5000,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].Ctrl.TxDiffCtrl,null,31,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].Ctrl.TxDisable,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].Ctrl.TxPostCursor,null,7,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].Ctrl.TxPreCursor,null,7,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].Ctrl.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].RxStatus.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].TxStatus.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpMon[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[0].Ch[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[0].Ch[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[0].Ch[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[0].Ch[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[1].Ch[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[1].Ch[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[1].Ch[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[1].Ch[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[2].Ch[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[2].Ch[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[2].Ch[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[2].Ch[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[3].Ch[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[3].Ch[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[3].Ch[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[3].Ch[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpRxVcMon[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[0].Ch[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[0].Ch[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[0].Ch[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[0].Ch[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[1].Ch[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[1].Ch[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[1].Ch[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[1].Ch[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[2].Ch[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[2].Ch[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[2].Ch[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[2].Ch[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[3].Ch[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[3].Ch[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[3].Ch[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[3].Ch[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.PgpTxVcMon[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.GtRxAlignCheck[0].Mask,null,126,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.GtRxAlignCheck[0].Override,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.GtRxAlignCheck[0].PhaseTarget,null,16,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.GtRxAlignCheck[0].ResetLen,null,3,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.GtRxAlignCheck[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.GtRxAlignCheck[1].Mask,null,126,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.GtRxAlignCheck[1].Override,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.GtRxAlignCheck[1].PhaseTarget,null,16,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.GtRxAlignCheck[1].ResetLen,null,3,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.GtRxAlignCheck[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TimingFrameRx.BypassRst,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TimingFrameRx.ClkSel,"""LCLS-II Clock""","""LCLS-I Clock""",different,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TimingFrameRx.ModeSel,"""Lcls2Protocol""","""Lcls2Protocol""",same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TimingFrameRx.ModeSelEn,"""UseClkSel""","""UseModeSel""",different,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TimingFrameRx.MsgDelay,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TimingFrameRx.RxDown,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TimingFrameRx.RxPllReset,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TimingFrameRx.RxPolarity,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TimingFrameRx.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TimingPhyMonitor.Loopback,null,"""No""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TimingPhyMonitor.UseMiniTpg,true,false,different,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TimingPhyMonitor.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[0].DestSel,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[0].DestType,"""All""","""All""",same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[0].EnableReg,true,true,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[0].RateSel,4,4,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[0].RateType,"""FixedRates""","""FixedRates""",same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[1].DestSel,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[1].DestType,"""All""","""All""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[1].EnableReg,1,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[1].RateSel,4,4,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[1].RateType,"""FixedRates""","""FixedRates""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[2].DestSel,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[2].DestType,"""All""","""All""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[2].EnableReg,1,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[2].RateSel,4,4,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[2].RateType,"""FixedRates""","""FixedRates""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[3].DestSel,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[3].DestType,"""All""","""All""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[3].EnableReg,1,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[3].RateSel,4,4,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[3].RateType,"""FixedRates""","""FixedRates""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[4].DestSel,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[4].DestType,"""All""","""All""",same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[4].EnableReg,true,true,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[4].RateSel,3,6,different,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[4].RateType,"""FixedRates""","""ControlWord""",different,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[4].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[5].DestSel,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[5].DestType,"""All""","""All""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[5].EnableReg,1,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[5].RateSel,3,3,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[5].RateType,"""FixedRates""","""FixedRates""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[5].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[6].DestSel,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[6].DestType,"""All""","""All""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[6].EnableReg,1,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[6].RateSel,3,3,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[6].RateType,"""FixedRates""","""FixedRates""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[6].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[7].DestSel,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[7].DestType,"""All""","""All""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[7].EnableReg,1,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[7].RateSel,3,3,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[7].RateType,"""FixedRates""","""FixedRates""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2ChannelReg[7].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].ComplAnd,null,"""LogicOR""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].ComplEn,null,"""Disabled""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].Delay,0,0,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].EnableTrig,true,true,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].Polarity,"""Rising""","""Rising""",same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].Source,0,0,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].Width,1,1,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[1].ComplAnd,null,"""LogicOR""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[1].ComplEn,null,"""Disabled""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[1].Delay,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[1].EnableTrig,1,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[1].Polarity,null,"""Rising""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[1].Source,1,1,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[1].Width,null,1,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[2].ComplAnd,null,"""LogicOR""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[2].ComplEn,null,"""Disabled""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[2].Delay,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[2].EnableTrig,1,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[2].Polarity,null,"""Rising""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[2].Source,2,2,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[2].Width,null,1,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[3].ComplAnd,null,"""LogicOR""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[3].ComplEn,null,"""Disabled""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[3].Delay,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[3].EnableTrig,1,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[3].Polarity,null,"""Rising""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[3].Source,3,3,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[3].Width,null,1,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].ComplAnd,null,"""LogicOR""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].ComplEn,null,"""Disabled""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].Delay,11186,11186,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].EnableTrig,true,true,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].Polarity,"""Rising""","""Rising""",same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].Source,4,4,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].Width,1,1,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[4].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[5].ComplAnd,null,"""LogicOR""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[5].ComplEn,null,"""Disabled""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[5].Delay,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[5].EnableTrig,1,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[5].Polarity,null,"""Rising""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[5].Source,5,5,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[5].Width,null,1,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[5].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[6].ComplAnd,null,"""LogicOR""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[6].ComplEn,null,"""Disabled""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[6].Delay,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[6].EnableTrig,1,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[6].Polarity,null,"""Rising""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[6].Source,6,6,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[6].Width,null,1,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[6].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[7].ComplAnd,null,"""LogicOR""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[7].ComplEn,null,"""Disabled""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[7].Delay,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[7].EnableTrig,1,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[7].Polarity,null,"""Rising""",no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[7].Source,7,7,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[7].Width,null,1,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.EvrV2TriggerReg[7].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.EvrV2CoreTriggers.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[0].MasterEnable,true,true,same,DevRoot.StartRun enables all timing buffers; not an in-run readback
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[0].Partition,0,0,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[0].PauseThreshold,null,16,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[0].TriggerDelay,8577,8577,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[0].TriggerSource,"""EVR""","""XPM""",different,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[0].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[1].MasterEnable,true,false,different,DevRoot.StartRun enables all timing buffers; not an in-run readback
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[1].Partition,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[1].PauseThreshold,null,16,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[1].TriggerDelay,null,42,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[1].TriggerSource,"""EVR""","""EVR""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[1].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[2].MasterEnable,true,false,different,DevRoot.StartRun enables all timing buffers; not an in-run readback
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[2].Partition,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[2].PauseThreshold,null,16,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[2].TriggerDelay,null,42,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[2].TriggerSource,"""EVR""","""EVR""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[2].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[3].MasterEnable,true,false,different,DevRoot.StartRun enables all timing buffers; not an in-run readback
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[3].Partition,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[3].PauseThreshold,null,16,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[3].TriggerDelay,null,42,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[3].TriggerSource,"""EVR""","""EVR""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[3].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[4].MasterEnable,true,true,same,DevRoot.StartRun enables all timing buffers; not an in-run readback
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[4].Partition,0,0,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[4].PauseThreshold,null,16,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[4].TriggerDelay,42,42,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[4].TriggerSource,"""EVR""","""EVR""",same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[4].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[5].MasterEnable,true,false,different,DevRoot.StartRun enables all timing buffers; not an in-run readback
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[5].Partition,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[5].PauseThreshold,null,16,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[5].TriggerDelay,null,42,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[5].TriggerSource,"""EVR""","""EVR""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[5].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[6].MasterEnable,true,false,different,DevRoot.StartRun enables all timing buffers; not an in-run readback
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[6].Partition,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[6].PauseThreshold,null,16,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[6].TriggerDelay,null,42,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[6].TriggerSource,"""EVR""","""EVR""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[6].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[7].MasterEnable,true,false,different,DevRoot.StartRun enables all timing buffers; not an in-run readback
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[7].Partition,null,0,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[7].PauseThreshold,null,16,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[7].TriggerDelay,null,42,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[7].TriggerSource,"""EVR""","""EVR""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.TriggerEventManager.TriggerEventBuffer[7].enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.XpmMessageAligner.TxId,null,4143981647,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.XpmMessageAligner.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.TriggerEventManager.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BaseControl,200,200,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaACRate[0],"""60Hz""","""60Hz""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaACTSMask[0],63,63,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaActive[0],0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaAvgToWr[0],100,100,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaCompleteWr,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaDestExclusiveMask[0],65535,65535,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaDestInclusiveMask[0],65535,65535,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaDestMode[0],"""Dont_Care""","""Dont_Care""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaFixedRate[0],"""1MHz""","""1MHz""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaMaxSeverity[0],"""Invalid""","""Invalid""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaNtoAvg[0],1,1,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaRateSelMode[0],"""FixedRate""","""FixedRate""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaSequenceBitSelect[0],0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.BsaSequenceSelect[0],0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.CountInterval,18571,18571,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.CountIntervalReset,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.FixedRateDiv[0],1,1,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.FixedRateDiv[1],13,13,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.FixedRateDiv[2],91,91,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.FixedRateDiv[3],910,910,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.FixedRateDiv[4],9100,9100,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.FixedRateDiv[5],91000,91000,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.FixedRateDiv[6],910000,910000,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.FixedRateDiv[7],0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.FixedRateDiv[8],0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.FixedRateDiv[9],0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.Lcls1BsaEdefSlot,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.Lcls1BsaNumAvgs,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.Lcls1BsaNumSamples,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.Lcls1BsaRate,"""120Hz""","""120Hz""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.Lcls1BsaSeverity,"""INVALID""","""INVALID""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.Lcls1BsaStart,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.Lcls1BsaTimeSlot,"""TS1""","""TS1""",same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.PulseIdSet,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.PulseIdWr,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.RateReload,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.TStampSet,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.TStampWr,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.TxInhibit,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.TxLoopback,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.TxPolarity,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.TxReset,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.TPGMiniCore.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.AxilRdEn,true,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.Config_L0Select_DestSel,32768,32768,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.Config_L0Select_Enabled,true,true,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.Config_L0Select_RateSel,"""10 Hz""","""100 Hz""",different,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.HwEnable,false,false,same,measured standalone postflight; stable settings retained from capture
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.Link,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.Loopback,false,false,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.PartitionMessage_Hdr,0,0,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.Pipeline_Depth_Clks,20000,20000,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.Pipeline_Depth_Fids,100,100,same,archived PCIe YAML input
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.RxPllRst,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.RxRst,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.TxPllRst,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.TxRst,null,false,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.XpmMini.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.XpmMiniWrapper.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.TimingRx.enable,null,true,no_standalone_reference,not captured
+DevPcie.Hsio.enable,null,true,no_standalone_reference,not captured
+DevPcie.enable,null,true,no_standalone_reference,not captured
+ForceWrite,null,false,no_standalone_reference,not captured
+InitAfterConfig,null,true,no_standalone_reference,not captured
+PollEn,null,false,no_standalone_reference,not captured
+enable,null,true,no_standalone_reference,not captured

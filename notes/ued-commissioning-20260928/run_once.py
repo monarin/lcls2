@@ -15,6 +15,7 @@ parser.add_argument('--mode',choices=('FH','FM','FL','MapFML','MapFHL'),default=
 parser.add_argument('--selected-map',type=Path)
 parser.add_argument('--frames',type=int,default=50)
 parser.add_argument('--gain-writer',choices=('standalone','daq'),default='standalone')
+parser.add_argument('--save-config-yaml',action='store_true')
 parser.add_argument('--asic-ro-clk-ticks',type=int,choices=(3,6))
 rates=parser.add_mutually_exclusive_group()
 rates.add_argument('--rate-hz',type=float,default=None)
@@ -55,6 +56,8 @@ elif args.rate_hz is not None:
     command += ['--rate-hz',str(args.rate_hz)]
 if args.dry_run:
     command += ['--dry-run']
+if args.save_config_yaml:
+    command += ['--save-config-yaml']
 if args.asic_ro_clk_ticks is not None:
     command += ['--asic-ro-clk-ticks',str(args.asic_ro_clk_ticks)]
 record={'started_utc':datetime.now(timezone.utc).isoformat(),'command':command,
@@ -84,14 +87,24 @@ finally:
     if args.dry_run:
         record['restore_skipped']='dry run; no hardware access'
     else:
-        with (folder/'restore.log').open('w') as log:
-            restored=subprocess.run([sys.executable,str(folder/'restore_camera_idle.py')],
-                                    stdout=log,stderr=subprocess.STDOUT,timeout=45)
-        record['restore_exit']=restored.returncode
+        # A failed restore must not prevent writing the execution audit record.
+        # Remove the previous result so it cannot be mistaken for this attempt.
+        (folder/'restore.json').unlink(missing_ok=True)
+        try:
+            with (folder/'restore.log').open('w') as log:
+                restored=subprocess.run([sys.executable,str(folder/'restore_camera_idle.py')],
+                                        stdout=log,stderr=subprocess.STDOUT,timeout=45)
+            record['restore_exit']=restored.returncode
+        except Exception as exc:
+            record['restore_error']=repr(exc)
         for name in ('restore.json','restore.log'):
             source=folder/name
-            (folder/(source.stem+'-attempt%02d' % args.attempt+source.suffix)).write_bytes(source.read_bytes())
+            if source.exists():
+                (folder/(source.stem+'-attempt%02d' % args.attempt+source.suffix)).write_bytes(source.read_bytes())
+            else:
+                record.setdefault('restore_missing_artifacts',[]).append(name)
     record['finished_utc']=datetime.now(timezone.utc).isoformat()
     (folder/('execution-attempt%02d.json' % args.attempt)).write_text(json.dumps(record,indent=2)+'\n')
     print(json.dumps(record,indent=2),flush=True)
-sys.exit(0 if record.get('capture_exit')==0 and (args.dry_run or record.get('restore_exit')==0) else 1)
+restore_ok=(record.get('restore_exit')==0 and not record.get('restore_missing_artifacts'))
+sys.exit(0 if record.get('capture_exit')==0 and (args.dry_run or restore_ok) else 1)
