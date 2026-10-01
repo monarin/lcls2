@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import socket
 import subprocess
+from psdaq.debugtools.epixquad1kfps import ued_external_timing
 
 
 def file_sha256(path):
@@ -55,6 +56,7 @@ def load_profile(path, overrides=None, bundle=None):
     resolved['profile_path'] = str(path)
     resolved['profile_sha256'] = file_sha256(path)
     resolved['overrides'] = overrides
+    ued_external_timing.validate(resolved)
     return resolved
 
 

@@ -427,6 +427,12 @@ between the False and True conditions. This setting alone is insufficient
 under standalone timing; interactions with full DAQ configuration or external
 timing remain untested.
 
+[Standalone external-timing preparation](external-timing-preparation/README.md)
+now provides an opt-in UED/groupca path with 119M timing, buffers 0/4, a visible
+ready message, separate operator-wait timeout, bounded recording, and idle
+restoration. Offline tests and a real dry run passed with the detector off;
+the first hardware validation remains pending.
+
 ## 6. Restore TEST after the experiment
 
 End/Unconfigure and stop this test cnf before restoration. Confirm no other

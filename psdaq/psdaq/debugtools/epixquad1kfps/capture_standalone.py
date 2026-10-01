@@ -24,6 +24,7 @@ from psdaq.debugtools.epixquad1kfps import write_gain_mode_standalone as gain
 from psdaq.debugtools.epixquad1kfps import standalone_hardware as hardware
 from psdaq.debugtools.epixquad1kfps import capture_gain_writer as gain_writer
 from psdaq.debugtools.epixquad1kfps import capture_diagnostics as diagnostics
+from psdaq.debugtools.epixquad1kfps import ued_external_timing as external
 from psdaq.debugtools.epixquad1kfps.standalone_profile import (
     file_sha256, software_snapshot, validate_hardware,
 )
@@ -51,7 +52,7 @@ def output_log(path):
         try:
             os.dup2(stream.fileno(), 1)
             os.dup2(stream.fileno(), 2)
-            yield
+            yield saved[0]  # A ready notification can also reach the original terminal.
         finally:
             sys.stdout.flush()
             sys.stderr.flush()
@@ -104,6 +105,31 @@ class ImageCounts:
                     'invalid_records': self.invalid, 'bytes': self.bytes,
                     'image_arrival_rate_hz': (self.valid - 1) / span if span > 0 else None,
                     'fault': self.fault, 'last_receive_monotonic': self.last_receive}
+
+
+def wait_for_external_images(counts, frames, timeout, trigger_timeout,
+                             sleep=time.sleep, clock=time.monotonic):
+    """Separate operator wait from bounded acquisition; both enforce byte faults."""
+    started = clock()
+    trigger_deadline = started + trigger_timeout
+    acquisition_deadline = None
+    first_wait = None
+    while True:
+        state = counts.snapshot()
+        if state['fault']:
+            raise RuntimeError(state['fault'])
+        now = clock()
+        if state['valid_images'] and acquisition_deadline is None:
+            first_wait = now - started
+            acquisition_deadline = now + timeout
+        if state['valid_images'] >= frames:
+            return {'first_image_wait_seconds': first_wait}
+        if acquisition_deadline is None and now >= trigger_deadline:
+            raise TimeoutError('No full image after waiting for groupca Run for %g seconds' % trigger_timeout)
+        if acquisition_deadline is not None and now >= acquisition_deadline:
+            raise TimeoutError('External acquisition timed out with %d/%d valid images' %
+                               (state['valid_images'], frames))
+        sleep(0.02)
 
 
 def make_stream_writer(camera, path, counts):
@@ -213,7 +239,12 @@ def capture(args, profile, selected, outdir, record):
         record['runtime'] = hardware.runtime_snapshot()
         write_json(outdir/'test.json', record)
 
-    with hardware.session(profile, camera_vc_mask=0x3, on_identity=identity) as (pcie, camera):
+    def timing(value):
+        record['external_timing_configuration'] = value
+        write_json(outdir/'test.json', record)
+
+    with hardware.session(profile, camera_vc_mask=0x3, on_identity=identity,
+                          on_timing=timing) as (pcie, camera):
         for index, rate in enumerate(rates):
             phase_dir, phase = outdir, record
             if args.rate_sequence_hz:
@@ -282,7 +313,10 @@ def acquire_phase(args, profile, selected, outdir, record, pcie, camera,
             record['asic_sync_inj_en']['after_map'] = actual
             if actual != bool(sync_inj):
                 raise RuntimeError('AsicSyncInjEn changed during map programming')
-        record['requested_rate_hz'] = rate_hz
+        is_external = external.enabled(profile)
+        record['requested_rate_hz'] = None if is_external else rate_hz
+        if is_external:
+            record['expected_external_rate_hz'] = profile['rate_hz']
         camera.SystemRegs.TrigSrcSel.set(profile['camera_trigger_source'])
         if profile['camera_auto_trigger']:
             camera.SystemRegs.AutoTrigFreqHz.set(rate_hz)
@@ -293,7 +327,10 @@ def acquire_phase(args, profile, selected, outdir, record, pcie, camera,
         write_json(outdir/'test.json', record)
         writer, sink = make_stream_writer(camera, outdir/'capture.dat', counts)
         record['acquisition_started_utc'] = utc_now()
-        pcie.StartRun()
+        if is_external:
+            record['external_buffer_enables'] = external.arm(pcie)
+        else:
+            pcie.StartRun()
         if clock_period is not None:
             record['diagnostics_before'] = diagnostics.snapshot(pcie, camera, profile['lane'])
         if getattr(args, 'save_config_yaml', False):
@@ -303,7 +340,31 @@ def acquire_phase(args, profile, selected, outdir, record, pcie, camera,
         camera.RdoutCore.RdoutEn.set(True)
         camera.SystemRegs.AutoTrigEn.set(profile['camera_auto_trigger'])
         camera.SystemRegs.TrigEn.set(True)
-        wait_for_images(counts, args.frames, args.timeout)
+        if is_external:
+            # Verify actual external camera state before the operator enables XPM.
+            record['external_camera_armed'] = {
+                'TrigSrcSel': int(camera.SystemRegs.TrigSrcSel.get(read=True)),
+                'AutoTrigEn': bool(camera.SystemRegs.AutoTrigEn.get(read=True)),
+                'TrigEn': bool(camera.SystemRegs.TrigEn.get(read=True)),
+                'RdoutEn': bool(camera.RdoutCore.RdoutEn.get(read=True)),
+            }
+            if record['external_camera_armed'] != dict(TrigSrcSel=0, AutoTrigEn=False, TrigEn=True, RdoutEn=True):
+                raise RuntimeError('External camera trigger/readout readback mismatch')
+            record['external_timing_before'] = external.snapshot(pcie)
+            record['ready_for_groupca_utc'] = utc_now()
+            ready = dict(state='ready', ready_utc=record['ready_for_groupca_utc'],
+                         groupca='groupca DAQ:UED 0 0', wait_seconds=args.wait_for_trigger_seconds,
+                         expected_rate_hz=profile['rate_hz'])
+            write_json(outdir/'ready.json', ready)
+            write_json(outdir/'test.json', record)
+            message = 'READY FOR GROUPCA RUN: XPM 0, group 0; waiting up to %g s for first full image.\n' % args.wait_for_trigger_seconds
+            print(message, end='', flush=True)
+            if getattr(args, 'progress_fd', None) is not None:
+                os.write(args.progress_fd, message.encode())
+            record['external_wait'] = wait_for_external_images(
+                counts, args.frames, args.timeout, args.wait_for_trigger_seconds)
+        else:
+            wait_for_images(counts, args.frames, args.timeout)
     finally:
         primary_error = sys.exc_info()[1]
         errors = []
@@ -329,6 +390,8 @@ def acquire_phase(args, profile, selected, outdir, record, pcie, camera,
         try:
             if getattr(args, 'asic_ro_clk_ticks', None) is not None:
                 record['diagnostics_after'] = diagnostics.snapshot(pcie, camera, profile['lane'])
+            if external.enabled(profile):
+                record['external_timing_after'] = external.snapshot(pcie)
         except Exception as exc:
             errors.append(repr(exc))
         try:
@@ -348,6 +411,11 @@ def acquire_phase(args, profile, selected, outdir, record, pcie, camera,
         record['stream_counts'] = counts.snapshot()
         record['cleanup_errors'] = errors
         record['acquisition_stopped_utc'] = utc_now()
+        if external.enabled(profile) and (outdir/'ready.json').exists():
+            write_json(outdir/'ready.json', dict(state='stopped',
+                stopped_utc=record['acquisition_stopped_utc'], cleanup_errors=errors,
+                capture_error=repr(primary_error) if primary_error is not None else None,
+                operator_action='Uncheck groupca Run; the script does not change XPM PVs'))
         if errors and primary_error is None:
             raise RuntimeError('Capture cleanup failed: '+ '; '.join(errors))
 
@@ -440,6 +508,8 @@ def main(argv=None):
     parser.add_argument('--notes', default='')
     parser.add_argument('--frames', type=int, default=50, help='Full images requested per capture/rate phase')
     parser.add_argument('--timeout', type=float, default=30, help='Image acquisition timeout per phase, seconds')
+    parser.add_argument('--wait-for-trigger-seconds', type=float,
+                        help='UED external mode only: wait for first full image after groupca Run (default 120 s)')
     parser.add_argument('--drain-seconds', type=float, default=0.25)
     parser.add_argument('--drain-timeout', type=float, default=5)
     parser.add_argument('--max-bytes', type=int, default=512 * 1024 * 1024,
@@ -476,6 +546,13 @@ def main(argv=None):
     if args.gain_writer == 'daq':
         gain_writer.pixel_config_map(args.mode, selected)  # Reject unrepresentable pixels before hardware access.
     profile = args.profile_data
+    if external.enabled(profile):
+        if args.wait_for_trigger_seconds is None:
+            args.wait_for_trigger_seconds = 120.
+        if not math.isfinite(args.wait_for_trigger_seconds) or args.wait_for_trigger_seconds <= 0:
+            parser.error('wait-for-trigger-seconds must be positive and finite')
+    elif args.wait_for_trigger_seconds is not None:
+        parser.error('wait-for-trigger-seconds requires the UED external timing profile')
     requested_rates = args.rate_sequence_hz or ([args.rate_hz] if args.rate_hz is not None else [])
     if any(not math.isfinite(rate) or rate <= 0 for rate in requested_rates):
         parser.error('Rates must be positive and finite')
@@ -501,7 +578,9 @@ def main(argv=None):
               'gain_writer': gain_writer.describe_writer(args.gain_writer),
               'requested_asic_ro_clk_ticks': args.asic_ro_clk_ticks,
               'rate_sequence_hz': args.rate_sequence_hz,
-              'requested_rate_hz': profile['rate_hz'] if not args.rate_sequence_hz else None,
+              'requested_rate_hz': profile['rate_hz'] if not args.rate_sequence_hz and not external.enabled(profile) else None,
+              'expected_external_rate_hz': profile['rate_hz'] if external.enabled(profile) else None,
+              'wait_for_trigger_seconds': args.wait_for_trigger_seconds,
               'map_write_count_planned': 1,
               'camera_vc_mask': 0x3,
               'os_release': Path('/etc/os-release').read_text() if Path('/etc/os-release').exists() else None,
@@ -518,7 +597,8 @@ def main(argv=None):
     signal.signal(signal.SIGTERM, interrupt)
     os.environ.setdefault('QT_QPA_PLATFORM', 'offscreen')
     try:
-        with output_log(outdir/'console.log'):
+        with output_log(outdir/'console.log') as progress_fd:
+            args.progress_fd = progress_fd
             try:
                 shutil.copyfile(args.profile, outdir/'profile.json')
                 write_json(outdir/'source-profile.json', profile)

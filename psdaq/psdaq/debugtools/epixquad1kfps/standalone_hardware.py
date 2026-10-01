@@ -4,6 +4,7 @@ No hardware imports or device access occur at module import time.
 """
 from contextlib import contextmanager, ExitStack
 import sys
+from psdaq.debugtools.epixquad1kfps import ued_external_timing as external
 
 from psdaq.debugtools.epixquad1kfps.standalone_profile import (
     check_identity, validate_hardware,
@@ -64,8 +65,9 @@ def pause_triggers(pbase):
 
 @contextmanager
 def session(profile, camera_vc_mask=0x2, writer=False, on_identity=None,
-            poll_en=False, init_read=False):
+            poll_en=False, init_read=False, on_timing=None):
     validate_hardware(profile)
+    external.validate(profile)
     if not 0 < camera_vc_mask <= 0xf or not camera_vc_mask & 0x2:
         raise ValueError('Camera VC mask must include register VC1')
     ePixQuad, pcie = load_modules()
@@ -84,6 +86,13 @@ def session(profile, camera_vc_mask=0x2, writer=False, on_identity=None,
         stack.callback(pbase.stop)
         pbase.start()
         stack.callback(pbase.StopRun)
+        if external.enabled(profile):
+            # Disable every buffer/lane before changing external timing routes.
+            pbase.StopRun()
+            pause_triggers(pbase)
+            timing = external.configure(pbase, profile)
+            if on_timing:
+                on_timing(timing)
         configure_lane(pbase, profile)
         cbase = ePixQuad.Top(
             dev=profile['device'], hwType='datadev', lane=profile['lane'],

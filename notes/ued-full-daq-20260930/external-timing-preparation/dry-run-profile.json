@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "name": "drp-ued-cmp003-external",
+  "status": "ready_for_test",
+  "notes": "Prepared for first hardware validation, not acceptance. External UED XPM0/group0; operator owns groupca Run. Reproduce 2026-09-30 DAQ timing with 119M clock, EVR code 6 run buffer 4 and XPM DAQ buffer 0. start_ns=94000 from BEAM snapshot; partition delay 11 inferred from DAQ readbacks 8577/11186 and verified live before enabling. No PCIe defaults YAML, no ConfigDB or EPICS writes. rate_hz is an expected operator setting, not a camera auto-trigger request.",
+  "hosts": ["drp-ued-cmp003"],
+  "device": "/dev/datadev_0",
+  "lane": 0,
+  "data_vc": 0,
+  "pgp4": true,
+  "timing": "external",
+  "board_type": "XilinxKcu1500",
+  "image_name_contains": "Lcls2XilinxKcu1500Pgp4_10Gbps",
+  "minimum_pcie_version": 67239936,
+  "prom_bypass": false,
+  "pcie_yaml": null,
+  "camera_yaml": "../baselines/ued_beam_20260928.yml",
+  "camera_trigger_source": 0,
+  "camera_auto_trigger": false,
+  "rate_hz": 360,
+  "event_builder_timeout": 144675,
+  "image_payload_bytes": [1095248, 1095288],
+  "ued_external_timing": {
+    "readout_group": 0,
+    "start_ns": 94000,
+    "expected_partition_delay": 11,
+    "run_buffer_delay": 42
+  }
+}

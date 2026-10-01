@@ -91,8 +91,20 @@ stops on the first acquisition or cleanup error. Rate overrides require
 camera auto-trigger source 3; they do not change XpmMini or external run/readout
 trigger rates, trigger delays, or the event-builder timeout.
 
-For a sequence, `--frames`, `--timeout`, and `--max-bytes` apply **per phase**.
-Outputs are `phase01/`, `phase02/`, etc., each with `capture.dat`, `test.json`,
+For UED fiber timing with manual groupca control, use
+`profiles/drp-ued-cmp003-external.json` and omit internal rate overrides.
+The dedicated path configures the UED 119M clock and buffers 0/4, checks link
+and delay readbacks, and emits `READY FOR GROUPCA RUN` after attaching and
+arming the recorder. `--wait-for-trigger-seconds` (default 120) bounds the wait
+for the first full image; `--timeout` then bounds acquisition. `ready.json`
+records ready/stopped state. The script never writes XPM PVs: the operator
+controls groupca Run and must turn it off afterward. The commissioning wrapper
+selects this profile with `--timing-mode ued-external`, adjusts its default
+watchdog for the operator wait, and restores camera idle settings. See the
+[UED procedure](../../../../notes/ued-full-daq-20260930/external-timing-preparation/README.md).
+
+For an internal rate sequence, `--frames`, `--timeout`, and `--max-bytes` apply
+**per phase**. Outputs are `phase01/`, `phase02/`, etc., each with `capture.dat`, `test.json`,
 `expected-map.npy`, full-frame mismatch counts and exports. Shared profile,
 software and input artifacts remain in the parent directory. Each phase
 records its writer, requested rate, camera trigger readback, map-write phase,

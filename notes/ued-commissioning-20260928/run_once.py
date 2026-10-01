@@ -18,15 +18,29 @@ parser.add_argument('--gain-writer',choices=('standalone','daq'),default='standa
 parser.add_argument('--save-config-yaml',action='store_true')
 parser.add_argument('--asic-sync-inj-en',type=int,choices=(0,1))
 parser.add_argument('--asic-ro-clk-ticks',type=int,choices=(3,6))
+parser.add_argument('--timing-mode',choices=('internal','ued-external'),default='internal')
+parser.add_argument('--wait-for-trigger-seconds',type=float)
 rates=parser.add_mutually_exclusive_group()
 rates.add_argument('--rate-hz',type=float,default=None)
 rates.add_argument('--rate-sequence-hz',type=float,nargs='+')
 parser.add_argument('--dry-run',action='store_true',help='Prepare artifacts only; no capture or restoration hardware access')
-parser.add_argument('--watchdog-seconds',type=int,default=180)
+parser.add_argument('--watchdog-seconds',type=int)
 args=parser.parse_args()
+external=args.timing_mode=='ued-external'
+if external:
+    if args.rate_hz is not None or args.rate_sequence_hz:
+        parser.error('UED external rate is set in the timing sequence/groupca; omit rate overrides')
+    if args.wait_for_trigger_seconds is None:
+        args.wait_for_trigger_seconds=120.
+    if not math.isfinite(args.wait_for_trigger_seconds) or args.wait_for_trigger_seconds<=0:
+        parser.error('wait-for-trigger-seconds must be positive and finite')
+elif args.wait_for_trigger_seconds is not None:
+    parser.error('wait-for-trigger-seconds requires ued-external timing')
+if args.watchdog_seconds is None:
+    args.watchdog_seconds=180+math.ceil(args.wait_for_trigger_seconds or 0)
 if args.attempt < 1: parser.error('attempt must be positive')
 if args.frames < 1 or args.watchdog_seconds < 1: parser.error('frames and watchdog must be positive')
-requested_rates=args.rate_sequence_hz or ([args.rate_hz] if args.rate_hz is not None else [10])
+requested_rates=args.rate_sequence_hz or ([args.rate_hz] if args.rate_hz is not None else [360 if external else 10])
 if any(not math.isfinite(v) or v <= 0 for v in requested_rates): parser.error('Rates must be positive and finite')
 if args.rate_sequence_hz and len(args.rate_sequence_hz)<2: parser.error('Rate sequence requires at least two phases')
 if args.mode.startswith('Map') != (args.selected_map is not None):
@@ -41,16 +55,19 @@ tools=checkout/'psdaq/psdaq/debugtools/epixquad1kfps'
 outdir=folder/('attempt%02d-%s' % (args.attempt,args.mode.lower()))
 if outdir.exists() or (folder/('execution-attempt%02d.json' % args.attempt)).exists():
     parser.error('Attempt already exists; choose a new attempt number')
+profile_name='drp-ued-cmp003-external.json' if external else 'drp-ued-cmp003.json'
 command=[sys.executable,str(tools/'capture_standalone.py'),
-         '--profile',str(tools/'profiles/drp-ued-cmp003.json'),
+         '--profile',str(tools/'profiles'/profile_name),
          '--mode',args.mode,'--frames',str(args.frames),'--timeout','30',
          '--gain-writer',args.gain_writer,
-         '--label','commissioning-%s-%s-internal-%sHz' % (args.mode,args.gain_writer,'-'.join('%g'%v for v in requested_rates)),
+         '--label','commissioning-%s-%s-%s-%sHz' % (args.mode,args.gain_writer,args.timing_mode,'-'.join('%g'%v for v in requested_rates)),
          '--repetition',str(args.attempt),
          '--notes','Production UED commissioning capture; restore camera idle trigger state afterward',
          '--outdir',str(outdir)]
 if args.selected_map is not None:
     command += ['--selected-map',str(args.selected_map.resolve()),'--no-default-pixels']
+if external:
+    command += ['--wait-for-trigger-seconds',str(args.wait_for_trigger_seconds)]
 if args.rate_sequence_hz:
     command += ['--rate-sequence-hz']+[str(v) for v in args.rate_sequence_hz]
 elif args.rate_hz is not None:

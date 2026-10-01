@@ -1,0 +1,37 @@
+{
+  "board_type": "XilinxKcu1500",
+  "camera_auto_trigger": false,
+  "camera_trigger_source": 0,
+  "camera_yaml": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt1700-mapfhl/camera_yaml.yml",
+  "data_vc": 0,
+  "device": "/dev/datadev_0",
+  "event_builder_timeout": 144675,
+  "hosts": [
+    "drp-ued-cmp003"
+  ],
+  "image_name_contains": "Lcls2XilinxKcu1500Pgp4_10Gbps",
+  "image_payload_bytes": [
+    1095248,
+    1095288
+  ],
+  "lane": 0,
+  "minimum_pcie_version": 67239936,
+  "name": "drp-ued-cmp003-external",
+  "notes": "Prepared for first hardware validation, not acceptance. External UED XPM0/group0; operator owns groupca Run. Reproduce 2026-09-30 DAQ timing with 119M clock, EVR code 6 run buffer 4 and XPM DAQ buffer 0. start_ns=94000 from BEAM snapshot; partition delay 11 inferred from DAQ readbacks 8577/11186 and verified live before enabling. No PCIe defaults YAML, no ConfigDB or EPICS writes. rate_hz is an expected operator setting, not a camera auto-trigger request.",
+  "overrides": {},
+  "pcie_yaml": null,
+  "pgp4": true,
+  "profile_path": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/debugtools/epixquad1kfps/profiles/drp-ued-cmp003-external.json",
+  "profile_sha256": "8a5095bd43d4b5d7e3681a46bd07d9ad431b001e3cccb94c8792e089c548c2c5",
+  "prom_bypass": false,
+  "rate_hz": 360,
+  "schema_version": 1,
+  "status": "ready_for_test",
+  "timing": "external",
+  "ued_external_timing": {
+    "expected_partition_delay": 11,
+    "readout_group": 0,
+    "run_buffer_delay": 42,
+    "start_ns": 94000
+  }
+}

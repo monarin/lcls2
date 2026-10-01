@@ -1,0 +1,42 @@
+Test record: /sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt1700-mapfhl
+dry_run: /sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt1700-mapfhl
+{
+  "started_utc": "2026-10-01T03:42:55.991963+00:00",
+  "command": [
+    "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/ps_20241122/bin/python",
+    "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/debugtools/epixquad1kfps/capture_standalone.py",
+    "--profile",
+    "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/psdaq/psdaq/debugtools/epixquad1kfps/profiles/drp-ued-cmp003-external.json",
+    "--mode",
+    "MapFHL",
+    "--frames",
+    "51",
+    "--timeout",
+    "30",
+    "--gain-writer",
+    "daq",
+    "--label",
+    "commissioning-MapFHL-daq-ued-external-360Hz",
+    "--repetition",
+    "1700",
+    "--notes",
+    "Production UED commissioning capture; restore camera idle trigger state afterward",
+    "--outdir",
+    "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt1700-mapfhl",
+    "--selected-map",
+    "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/map-inputs/expand2.npy",
+    "--no-default-pixels",
+    "--wait-for-trigger-seconds",
+    "120.0",
+    "--dry-run",
+    "--save-config-yaml",
+    "--asic-sync-inj-en",
+    "1",
+    "--asic-ro-clk-ticks",
+    "3"
+  ],
+  "watchdog_seconds": 300,
+  "capture_exit": 0,
+  "restore_skipped": "dry run; no hardware access",
+  "finished_utc": "2026-10-01T03:43:24.396843+00:00"
+}
