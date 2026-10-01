@@ -32,6 +32,7 @@ echo "$TESTRELDIR"
 echo "$SUBMODULEDIR"
 echo "$UED_GAINMAP_CNF"
 QT_QPA_PLATFORM=offscreen python "$UED_GAINMAP_SRC/notes/ued-full-daq-20260930/verify-install.py"
+python "$UED_GAINMAP_SRC/notes/ued-full-daq-20260930/diagnostic-hook/verify-launch.py"
 daqmgr start "$UED_GAINMAP_CNF"
 ```
 
@@ -136,3 +137,13 @@ three-event prefix on shared storage; [fixture provenance](replay-fixture.json)
 records its source/hash. Set UED_DIAG_TEST_XTC to that fixture to replay there.
 The final formatting rebuild is recorded in [build-final.log.gz](build-final.log.gz).
 The output directory was prepared and checked writable as uedopr.
+
+The first operator launch exposed a wrapper error: daqmgr executes configuration
+code without `__file__`, unlike the `runpy` loader used in the initial check.
+The wrapper now resolves its root from `UED_GAINMAP_SRC`, exported by setup.sh.
+`verify-launch.py` constructs the installed daqmgr `Runner` as uedopr, checks
+the TEST alias, process set, diagnostic arguments and DRP selection, and never
+submits jobs. The corrected wrapper passed this check on ued-daq; see
+[parser verification](verify-launch.log). No binary rebuild was needed.
+The original build record preserves the pre-fix helper hashes; the current
+wrapper hash is recorded separately in [launch fix](launch-fix.json).

@@ -3,8 +3,9 @@ import os
 from pathlib import Path
 import runpy
 
-_here = Path(__file__).resolve().parent
-_root = _here.parents[2]
+# daqmgr executes configurations without __file__; setup.sh exports this root.
+_root = Path(os.environ['UED_GAINMAP_SRC']).resolve()
+_here = _root/'notes/ued-full-daq-20260930/diagnostic-hook'
 _prefix = _root/'install-ued-diag-20260930'
 if Path(os.environ.get('TESTRELDIR', '/unset')) != _prefix:
     raise RuntimeError('Source diagnostic-hook/setup.sh before using this launch')

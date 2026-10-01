@@ -1,0 +1,11 @@
+{
+  "base_commit": "566f7e09a2f0e0e807cfb77ab1d84c293895a8cf",
+  "change": "Resolve launch root from exported UED_GAINMAP_SRC because daqmgr does not define __file__",
+  "helper_sha256": {
+    "epix_diagnostic.py": "efd50fd4e64365c38d00ab109ca6ca3ac305b69a0ff4d455857febbef4d24234",
+    "verify-launch.py": "d0cc3ccceef65ca82f70df189ac89525343d69573ef272671d2c7ad09af5b778"
+  },
+  "validation": "Installed psdaq.slurm.main.Runner on ued-daq as uedopr; passed; see verify-launch.log",
+  "binary_rebuild": false,
+  "live_daq_started": false
+}
