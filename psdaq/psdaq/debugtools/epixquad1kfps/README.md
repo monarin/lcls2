@@ -61,6 +61,19 @@ before increasing the camera trigger rate; the option leaves the selected
 clock loaded after capture, while the commissioning wrapper restores idle
 trigger settings.
 
+`--asic-sync-inj-en 0` or `1` explicitly sets `AcqCore.AsicSyncInjEn`
+after baseline loading and before gain-map programming. The capture verifies
+hardware readback before and after the map write, aborting on a mismatch.
+Omitting it preserves the baseline. The value remains loaded after capture;
+the commissioning wrapper restores idle trigger settings only. For a controlled
+comparison, use separate attempts with the same map, clock, rate, and writer.
+
+`--save-config-yaml` saves camera and PCIe SaveConfig-equivalent fields before
+acquisition. The `prepared` snapshot reads enabled hardware while the camera
+is quiescent; `armed` uses cached values after PCIe StartRun and before camera
+enable. Disabled-device fields may remain cached; pixel SRAM is not read.
+Both snapshots have hashes and stage metadata in `test.json`.
+
 For gain-map writer comparisons, `capture_standalone.py` accepts
 `--gain-writer standalone` (default) or `--gain-writer daq`. The DAQ option
 imports the actual `epixquad1kfps_config._apply_raw_pixel_map_program` helper

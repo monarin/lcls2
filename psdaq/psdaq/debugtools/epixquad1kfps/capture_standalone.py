@@ -262,12 +262,26 @@ def acquire_phase(args, profile, selected, outdir, record, pcie, camera,
         write_json(outdir/'test.json', record)
         if not record['camera_identity']['adc_done'] or record['camera_identity']['adc_failed']:
             raise RuntimeError('Camera ADC status is not done/pass')
+        sync_inj = getattr(args, 'asic_sync_inj_en', None)
+        if sync_inj is not None:
+            if program_map:
+                camera.AcqCore.AsicSyncInjEn.set(bool(sync_inj))
+            actual = bool(camera.AcqCore.AsicSyncInjEn.get(read=True))
+            record['asic_sync_inj_en'] = {'requested': bool(sync_inj),
+                                         'before_map': actual}
+            if actual != bool(sync_inj):
+                raise RuntimeError('AsicSyncInjEn readback differs from requested value')
         if program_map:
             record['map_write_started_utc'] = utc_now()
             write_json(outdir/'test.json', record)
             gain_writer.program(camera, args, selected, record['gain_writer'], map_writer)
             record['map_write_finished_utc'] = utc_now()
             record['map_written_this_phase'] = True
+        if sync_inj is not None:
+            actual = bool(camera.AcqCore.AsicSyncInjEn.get(read=True))
+            record['asic_sync_inj_en']['after_map'] = actual
+            if actual != bool(sync_inj):
+                raise RuntimeError('AsicSyncInjEn changed during map programming')
         record['requested_rate_hz'] = rate_hz
         camera.SystemRegs.TrigSrcSel.set(profile['camera_trigger_source'])
         if profile['camera_auto_trigger']:
@@ -434,6 +448,8 @@ def main(argv=None):
                         help='DAQ selects the actual configdb raw-map helper, not full Configure')
     parser.add_argument('--save-config-yaml', action='store_true',
                         help='Save full prepared/read-first and armed/cached config YAMLs before camera acquisition')
+    parser.add_argument('--asic-sync-inj-en', type=int, choices=(0, 1),
+                        help='Override AsicSyncInjEn after baseline and before gain-map programming; verify readback')
     parser.add_argument('--asic-ro-clk-ticks', type=int, choices=(3, 6),
                         help='Explicit full readout period after baseline; 3 matches DAQ Configure. Also records rate diagnostics.')
     rates = parser.add_mutually_exclusive_group()

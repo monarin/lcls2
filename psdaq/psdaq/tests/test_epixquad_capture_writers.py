@@ -146,6 +146,39 @@ class GainWriterTests(unittest.TestCase):
 
 
 class RateSequenceTests(unittest.TestCase):
+    def test_sync_override_precedes_map_and_bad_readback_aborts_with_cleanup(self):
+        for requested, actual in ((0, False), (1, True), (1, False)):
+            with self.subTest(requested=requested, actual=actual), tempfile.TemporaryDirectory() as temp, ExitStack() as stack:
+                camera, pcie = Mock(), Mock()
+                camera.AcqCore.AsicSyncInjEn.get.return_value = actual
+                stack.enter_context(patch.object(hw, 'runtime_snapshot', return_value={}))
+                stack.enter_context(patch.object(hw, 'camera_identity', return_value={'adc_done': True, 'adc_failed': False}))
+                stack.enter_context(patch.object(hw, 'load_camera_baseline'))
+                pause = stack.enter_context(patch.object(hw, 'pause_triggers'))
+                def program(*args):
+                    camera.AcqCore.AsicSyncInjEn.set.assert_called_once_with(bool(requested))
+                    camera.AcqCore.AsicSyncInjEn.get.assert_called_once_with(read=True)
+                writer = stack.enter_context(patch.object(writers, 'program', side_effect=program))
+                stack.enter_context(patch.object(cap, 'trigger_snapshot', return_value={}))
+                stream = stack.enter_context(patch.object(cap, 'make_stream_writer', return_value=(Mock(), Mock())))
+                stack.enter_context(patch.object(cap, 'wait_for_images'))
+                args = SimpleNamespace(max_bytes=10000, asics=list(range(16)),
+                    asic_sync_inj_en=requested, frames=51, timeout=30, drain_timeout=1, drain_seconds=.01)
+                profile = dict(image_payload_bytes=[1095248], camera_yaml='baseline',
+                    camera_trigger_source=3, camera_auto_trigger=True, lane=0)
+                record = {'gain_writer': {}}
+                if actual != bool(requested):
+                    with self.assertRaisesRegex(RuntimeError, 'readback differs'):
+                        cap.acquire_phase(args, profile, [], Path(temp), record, pcie, camera, None, 360, True)
+                    writer.assert_not_called()
+                    stream.assert_not_called()
+                else:
+                    cap.acquire_phase(args, profile, [], Path(temp), record, pcie, camera, None, 360, True)
+                    self.assertEqual(record['asic_sync_inj_en']['after_map'], actual)
+                    writer.assert_called_once()
+                pause.assert_called_once_with(pcie)
+                pcie.StopRun.assert_called_once()
+
     def test_phase_finalization_preserves_partial_failure_and_detects_missing_data(self):
         with tempfile.TemporaryDirectory() as temp:
             folder = Path(temp)

@@ -11,6 +11,10 @@ process; the monitoring IOC and CA repeater remained running.
 list after frame 1. The camera's `AsicSyncInjEn` differs from the DAQ snapshot:
 False standalone, True DAQ. This is a candidate explanation, not a proven cause.**
 
+Follow-up: the [standalone False/True/False test](../sync-aba-20260930/README.md)
+completed later that evening and remained clean in all three conditions.
+Enabling this field alone did not reproduce the DAQ FP pattern.
+
 ## Capture and assessment
 
 Attempt 13 ran 18:55:46–18:57:03 PDT with the intended September test bundle,

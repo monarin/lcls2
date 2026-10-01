@@ -419,6 +419,14 @@ scalar settings, and lane-0 EventBuilder settings match. The SYNC setting is a
 candidate for a controlled follow-up, not a demonstrated cause. Camera idle
 restoration is verified; full DAQ must configure again after standalone use.
 
+The subsequent [SYNC False/True/False comparison](sync-aba-20260930/README.md)
+did not reproduce the DAQ FP pattern: each of three captures has 86 assessed
+frames with zero FP/FN outside known-bad and the same 68 known-bad FN pixels.
+Readbacks and full YAML comparisons verify that only `AsicSyncInjEn` changed
+between the False and True conditions. This setting alone is insufficient
+under standalone timing; interactions with full DAQ configuration or external
+timing remain untested.
+
 ## 6. Restore TEST after the experiment
 
 End/Unconfigure and stop this test cnf before restoration. Confirm no other

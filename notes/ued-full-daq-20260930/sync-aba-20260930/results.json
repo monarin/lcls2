@@ -1,0 +1,1258 @@
+{
+  "results": [
+    {
+      "attempt": 14,
+      "sync_inj_en": {
+        "after_map": false,
+        "before_map": false,
+        "requested": false
+      },
+      "started_utc": "2026-10-01T02:39:53.732232+00:00",
+      "finished_utc": "2026-10-01T02:41:07.540332+00:00",
+      "data": {
+        "path": "capture.dat",
+        "sha256": "09317cc48822031d353a1b2b32f08d21fc98b44a77a13f5f15ebdca9a66e7d3e",
+        "size": 95289872
+      },
+      "selected_map": {
+        "copy": "selected_map.npy",
+        "sha256": "1739094ffe6e80a7eae0496961730399c0f1dce077f7426e445137fac4434894",
+        "source": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/map-inputs/expand2.npy"
+      },
+      "recorded_frames": 87,
+      "assessed_frames": 86,
+      "first_frame": {
+        "image_1based": 1,
+        "fp": 237,
+        "fn": 22158,
+        "fp_outside_known": 237,
+        "fn_outside_known": 22090
+      },
+      "after_first": {
+        "FP": {
+          "unique_pixels": 0,
+          "occurrences": 0,
+          "known_unique": 0,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 0,
+          "outside_historical_run2": 0
+        },
+        "FN": {
+          "unique_pixels": 68,
+          "occurrences": 5848,
+          "known_unique": 68,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 68,
+          "outside_historical_run2": 0
+        }
+      },
+      "daq43_overlap": [],
+      "daq43_missing": [
+        [
+          0,
+          175,
+          28
+        ],
+        [
+          0,
+          175,
+          34
+        ],
+        [
+          0,
+          175,
+          44
+        ],
+        [
+          0,
+          175,
+          45
+        ],
+        [
+          0,
+          175,
+          80
+        ],
+        [
+          0,
+          176,
+          14
+        ],
+        [
+          0,
+          176,
+          15
+        ],
+        [
+          0,
+          176,
+          16
+        ],
+        [
+          0,
+          176,
+          17
+        ],
+        [
+          0,
+          176,
+          18
+        ],
+        [
+          1,
+          175,
+          168
+        ],
+        [
+          1,
+          175,
+          169
+        ],
+        [
+          1,
+          175,
+          189
+        ],
+        [
+          1,
+          175,
+          218
+        ],
+        [
+          1,
+          175,
+          219
+        ],
+        [
+          1,
+          175,
+          220
+        ],
+        [
+          1,
+          175,
+          274
+        ],
+        [
+          1,
+          175,
+          275
+        ],
+        [
+          1,
+          175,
+          276
+        ],
+        [
+          1,
+          175,
+          277
+        ],
+        [
+          1,
+          175,
+          278
+        ],
+        [
+          1,
+          175,
+          318
+        ],
+        [
+          1,
+          175,
+          319
+        ],
+        [
+          1,
+          175,
+          320
+        ],
+        [
+          1,
+          175,
+          335
+        ],
+        [
+          1,
+          175,
+          367
+        ],
+        [
+          1,
+          175,
+          368
+        ],
+        [
+          1,
+          175,
+          369
+        ],
+        [
+          1,
+          175,
+          372
+        ],
+        [
+          1,
+          175,
+          373
+        ],
+        [
+          1,
+          175,
+          374
+        ],
+        [
+          1,
+          176,
+          194
+        ],
+        [
+          2,
+          175,
+          80
+        ],
+        [
+          2,
+          175,
+          81
+        ],
+        [
+          2,
+          175,
+          82
+        ],
+        [
+          2,
+          175,
+          83
+        ],
+        [
+          2,
+          175,
+          84
+        ],
+        [
+          2,
+          176,
+          192
+        ],
+        [
+          2,
+          176,
+          193
+        ],
+        [
+          2,
+          176,
+          288
+        ],
+        [
+          2,
+          176,
+          291
+        ],
+        [
+          2,
+          176,
+          292
+        ],
+        [
+          3,
+          176,
+          167
+        ]
+      ],
+      "extra_fp_not_in_daq43": [],
+      "readout_clock": {
+        "adc_pipeline_delay": 68,
+        "full_period_ticks": 3,
+        "half_period_ticks": 1
+      },
+      "trigger_readback": {
+        "auto_frequency_hz": 359.99981568009434,
+        "auto_period_ticks": 434028,
+        "source": 3
+      },
+      "stream_counts": {
+        "bytes": 95289872,
+        "fault": null,
+        "image_arrival_rate_hz": 227.7706902641324,
+        "invalid_records": 35,
+        "last_receive_monotonic": 1669362.086768113,
+        "records": 122,
+        "valid_images": 87
+      },
+      "cleanup_errors": [],
+      "sequence_first": 3669476,
+      "sequence_last": 3669562,
+      "sequence_discontinuities": [],
+      "payload_records": [
+        {
+          "payload_bytes": 48,
+          "flags": 2,
+          "error": 0,
+          "channel": 1,
+          "count": 35
+        },
+        {
+          "payload_bytes": 1095248,
+          "flags": 2,
+          "error": 0,
+          "channel": 1,
+          "count": 71
+        },
+        {
+          "payload_bytes": 1095288,
+          "flags": 2,
+          "error": 0,
+          "channel": 1,
+          "count": 16
+        }
+      ],
+      "diagnostics_before": {
+        "camera": {
+          "AcqCore.AcqCount": 3695901,
+          "RdoutCore.BuffersRdy": 0,
+          "RdoutCore.LineBufErr[0]": 0,
+          "RdoutCore.LineBufErr[1]": 0,
+          "RdoutCore.LineBufErr[2]": 0,
+          "RdoutCore.LineBufErr[3]": 0,
+          "RdoutCore.SeqCount": 3669475,
+          "SystemRegs.AdcTestDone": 1,
+          "SystemRegs.AdcTestFailed": 0,
+          "SystemRegs.TrigPeriodMax": 2533713183,
+          "SystemRegs.TrigPeriodMin": 0
+        },
+        "event_builder": {
+          "Blowoff": 0,
+          "Bypass": 0,
+          "DataCnt[0]": 0,
+          "DataCnt[1]": 0,
+          "DataCnt[2]": 0,
+          "NullCnt[0]": 0,
+          "NullCnt[1]": 0,
+          "NullCnt[2]": 0,
+          "Timeout": 144675,
+          "TimeoutDropCnt[0]": 0,
+          "TimeoutDropCnt[1]": 0,
+          "TimeoutDropCnt[2]": 0,
+          "TransactionCnt": 0
+        }
+      },
+      "diagnostics_after": {
+        "camera": {
+          "AcqCore.AcqCount": 3695988,
+          "RdoutCore.BuffersRdy": 0,
+          "RdoutCore.LineBufErr[0]": 0,
+          "RdoutCore.LineBufErr[1]": 0,
+          "RdoutCore.LineBufErr[2]": 0,
+          "RdoutCore.LineBufErr[3]": 0,
+          "RdoutCore.SeqCount": 3669562,
+          "SystemRegs.AdcTestDone": 1,
+          "SystemRegs.AdcTestFailed": 0,
+          "SystemRegs.TrigPeriodMax": 2533713183,
+          "SystemRegs.TrigPeriodMin": 0
+        },
+        "event_builder": {
+          "Blowoff": 0,
+          "Bypass": 0,
+          "DataCnt[0]": 51,
+          "DataCnt[1]": 87,
+          "DataCnt[2]": 0,
+          "NullCnt[0]": 0,
+          "NullCnt[1]": 0,
+          "NullCnt[2]": 0,
+          "Timeout": 144675,
+          "TimeoutDropCnt[0]": 71,
+          "TimeoutDropCnt[1]": 35,
+          "TimeoutDropCnt[2]": 122,
+          "TransactionCnt": 0
+        }
+      },
+      "restore": {
+        "status": "restored",
+        "scope": "camera idle triggering only; PCIe remains in standalone test configuration",
+        "readback": {
+          "SystemRegs.TrigSrcSel": 3,
+          "SystemRegs.AutoTrigPer": 15625000,
+          "SystemRegs.AutoTrigEn": true,
+          "SystemRegs.TrigEn": true,
+          "RdoutCore.RdoutEn": false
+        },
+        "identity": {
+          "fpga_version": 33751040,
+          "build_stamp": "EpixQuadPgp4_10Gbps_1kfps: Vivado v2021.2, rdsrv403 (Ubuntu 22.04.5 LTS), Built Tue Oct 14 11:01:33 AM PDT 2025 by ruckman",
+          "git_hash": 383709318689029322121060581264501330697182647568,
+          "carrier_ids": [
+            [
+              175474177,
+              1509949462
+            ],
+            [
+              175300865,
+              1291845654
+            ],
+            [
+              175937537,
+              3774873622
+            ],
+            [
+              177133569,
+              2969567254
+            ]
+          ],
+          "adc_done": true,
+          "adc_failed": false
+        }
+      }
+    },
+    {
+      "attempt": 15,
+      "sync_inj_en": {
+        "after_map": true,
+        "before_map": true,
+        "requested": true
+      },
+      "started_utc": "2026-10-01T02:41:15.943671+00:00",
+      "finished_utc": "2026-10-01T02:42:25.674535+00:00",
+      "data": {
+        "path": "capture.dat",
+        "sha256": "313e1d1bbe91d09c629b686362d180ea4b1bee6fa598e7e1b2565e2e11c611dd",
+        "size": 95289904
+      },
+      "selected_map": {
+        "copy": "selected_map.npy",
+        "sha256": "1739094ffe6e80a7eae0496961730399c0f1dce077f7426e445137fac4434894",
+        "source": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/map-inputs/expand2.npy"
+      },
+      "recorded_frames": 87,
+      "assessed_frames": 86,
+      "first_frame": {
+        "image_1based": 1,
+        "fp": 0,
+        "fn": 68,
+        "fp_outside_known": 0,
+        "fn_outside_known": 0
+      },
+      "after_first": {
+        "FP": {
+          "unique_pixels": 0,
+          "occurrences": 0,
+          "known_unique": 0,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 0,
+          "outside_historical_run2": 0
+        },
+        "FN": {
+          "unique_pixels": 68,
+          "occurrences": 5848,
+          "known_unique": 68,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 68,
+          "outside_historical_run2": 0
+        }
+      },
+      "daq43_overlap": [],
+      "daq43_missing": [
+        [
+          0,
+          175,
+          28
+        ],
+        [
+          0,
+          175,
+          34
+        ],
+        [
+          0,
+          175,
+          44
+        ],
+        [
+          0,
+          175,
+          45
+        ],
+        [
+          0,
+          175,
+          80
+        ],
+        [
+          0,
+          176,
+          14
+        ],
+        [
+          0,
+          176,
+          15
+        ],
+        [
+          0,
+          176,
+          16
+        ],
+        [
+          0,
+          176,
+          17
+        ],
+        [
+          0,
+          176,
+          18
+        ],
+        [
+          1,
+          175,
+          168
+        ],
+        [
+          1,
+          175,
+          169
+        ],
+        [
+          1,
+          175,
+          189
+        ],
+        [
+          1,
+          175,
+          218
+        ],
+        [
+          1,
+          175,
+          219
+        ],
+        [
+          1,
+          175,
+          220
+        ],
+        [
+          1,
+          175,
+          274
+        ],
+        [
+          1,
+          175,
+          275
+        ],
+        [
+          1,
+          175,
+          276
+        ],
+        [
+          1,
+          175,
+          277
+        ],
+        [
+          1,
+          175,
+          278
+        ],
+        [
+          1,
+          175,
+          318
+        ],
+        [
+          1,
+          175,
+          319
+        ],
+        [
+          1,
+          175,
+          320
+        ],
+        [
+          1,
+          175,
+          335
+        ],
+        [
+          1,
+          175,
+          367
+        ],
+        [
+          1,
+          175,
+          368
+        ],
+        [
+          1,
+          175,
+          369
+        ],
+        [
+          1,
+          175,
+          372
+        ],
+        [
+          1,
+          175,
+          373
+        ],
+        [
+          1,
+          175,
+          374
+        ],
+        [
+          1,
+          176,
+          194
+        ],
+        [
+          2,
+          175,
+          80
+        ],
+        [
+          2,
+          175,
+          81
+        ],
+        [
+          2,
+          175,
+          82
+        ],
+        [
+          2,
+          175,
+          83
+        ],
+        [
+          2,
+          175,
+          84
+        ],
+        [
+          2,
+          176,
+          192
+        ],
+        [
+          2,
+          176,
+          193
+        ],
+        [
+          2,
+          176,
+          288
+        ],
+        [
+          2,
+          176,
+          291
+        ],
+        [
+          2,
+          176,
+          292
+        ],
+        [
+          3,
+          176,
+          167
+        ]
+      ],
+      "extra_fp_not_in_daq43": [],
+      "readout_clock": {
+        "adc_pipeline_delay": 68,
+        "full_period_ticks": 3,
+        "half_period_ticks": 1
+      },
+      "trigger_readback": {
+        "auto_frequency_hz": 359.99981568009434,
+        "auto_period_ticks": 434028,
+        "source": 3
+      },
+      "stream_counts": {
+        "bytes": 95289904,
+        "fault": null,
+        "image_arrival_rate_hz": 227.18848449103166,
+        "invalid_records": 37,
+        "last_receive_monotonic": 1669440.041640479,
+        "records": 124,
+        "valid_images": 87
+      },
+      "cleanup_errors": [],
+      "sequence_first": 3669563,
+      "sequence_last": 3669649,
+      "sequence_discontinuities": [],
+      "payload_records": [
+        {
+          "payload_bytes": 48,
+          "flags": 2,
+          "error": 0,
+          "channel": 1,
+          "count": 37
+        },
+        {
+          "payload_bytes": 1095248,
+          "flags": 2,
+          "error": 0,
+          "channel": 1,
+          "count": 73
+        },
+        {
+          "payload_bytes": 1095288,
+          "flags": 2,
+          "error": 0,
+          "channel": 1,
+          "count": 14
+        }
+      ],
+      "diagnostics_before": {
+        "camera": {
+          "AcqCore.AcqCount": 3696562,
+          "RdoutCore.BuffersRdy": 0,
+          "RdoutCore.LineBufErr[0]": 0,
+          "RdoutCore.LineBufErr[1]": 0,
+          "RdoutCore.LineBufErr[2]": 0,
+          "RdoutCore.LineBufErr[3]": 0,
+          "RdoutCore.SeqCount": 3669562,
+          "SystemRegs.AdcTestDone": 1,
+          "SystemRegs.AdcTestFailed": 0,
+          "SystemRegs.TrigPeriodMax": 2533713183,
+          "SystemRegs.TrigPeriodMin": 0
+        },
+        "event_builder": {
+          "Blowoff": 0,
+          "Bypass": 0,
+          "DataCnt[0]": 0,
+          "DataCnt[1]": 0,
+          "DataCnt[2]": 0,
+          "NullCnt[0]": 0,
+          "NullCnt[1]": 0,
+          "NullCnt[2]": 0,
+          "Timeout": 144675,
+          "TimeoutDropCnt[0]": 0,
+          "TimeoutDropCnt[1]": 0,
+          "TimeoutDropCnt[2]": 0,
+          "TransactionCnt": 0
+        }
+      },
+      "diagnostics_after": {
+        "camera": {
+          "AcqCore.AcqCount": 3696649,
+          "RdoutCore.BuffersRdy": 0,
+          "RdoutCore.LineBufErr[0]": 0,
+          "RdoutCore.LineBufErr[1]": 0,
+          "RdoutCore.LineBufErr[2]": 0,
+          "RdoutCore.LineBufErr[3]": 0,
+          "RdoutCore.SeqCount": 3669649,
+          "SystemRegs.AdcTestDone": 1,
+          "SystemRegs.AdcTestFailed": 0,
+          "SystemRegs.TrigPeriodMax": 2533713183,
+          "SystemRegs.TrigPeriodMin": 0
+        },
+        "event_builder": {
+          "Blowoff": 0,
+          "Bypass": 0,
+          "DataCnt[0]": 51,
+          "DataCnt[1]": 87,
+          "DataCnt[2]": 0,
+          "NullCnt[0]": 0,
+          "NullCnt[1]": 0,
+          "NullCnt[2]": 0,
+          "Timeout": 144675,
+          "TimeoutDropCnt[0]": 73,
+          "TimeoutDropCnt[1]": 37,
+          "TimeoutDropCnt[2]": 124,
+          "TransactionCnt": 0
+        }
+      },
+      "restore": {
+        "status": "restored",
+        "scope": "camera idle triggering only; PCIe remains in standalone test configuration",
+        "readback": {
+          "SystemRegs.TrigSrcSel": 3,
+          "SystemRegs.AutoTrigPer": 15625000,
+          "SystemRegs.AutoTrigEn": true,
+          "SystemRegs.TrigEn": true,
+          "RdoutCore.RdoutEn": false
+        },
+        "identity": {
+          "fpga_version": 33751040,
+          "build_stamp": "EpixQuadPgp4_10Gbps_1kfps: Vivado v2021.2, rdsrv403 (Ubuntu 22.04.5 LTS), Built Tue Oct 14 11:01:33 AM PDT 2025 by ruckman",
+          "git_hash": 383709318689029322121060581264501330697182647568,
+          "carrier_ids": [
+            [
+              175474177,
+              1509949462
+            ],
+            [
+              175300865,
+              1291845654
+            ],
+            [
+              175937537,
+              3774873622
+            ],
+            [
+              177133569,
+              2969567254
+            ]
+          ],
+          "adc_done": true,
+          "adc_failed": false
+        }
+      }
+    },
+    {
+      "attempt": 16,
+      "sync_inj_en": {
+        "after_map": false,
+        "before_map": false,
+        "requested": false
+      },
+      "started_utc": "2026-10-01T02:42:33.799908+00:00",
+      "finished_utc": "2026-10-01T02:43:42.839690+00:00",
+      "data": {
+        "path": "capture.dat",
+        "sha256": "48344e7e1b72bdbd542842aa1bdc0d5dde3f3158700d1ffc20153ee3cf590ca2",
+        "size": 95289840
+      },
+      "selected_map": {
+        "copy": "selected_map.npy",
+        "sha256": "1739094ffe6e80a7eae0496961730399c0f1dce077f7426e445137fac4434894",
+        "source": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/map-inputs/expand2.npy"
+      },
+      "recorded_frames": 87,
+      "assessed_frames": 86,
+      "first_frame": {
+        "image_1based": 1,
+        "fp": 124,
+        "fn": 22044,
+        "fp_outside_known": 124,
+        "fn_outside_known": 21976
+      },
+      "after_first": {
+        "FP": {
+          "unique_pixels": 0,
+          "occurrences": 0,
+          "known_unique": 0,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 0,
+          "outside_historical_run2": 0
+        },
+        "FN": {
+          "unique_pixels": 68,
+          "occurrences": 5848,
+          "known_unique": 68,
+          "outside_known_unique": 0,
+          "outside_known_occurrences": 0,
+          "historical_run2_overlap": 68,
+          "outside_historical_run2": 0
+        }
+      },
+      "daq43_overlap": [],
+      "daq43_missing": [
+        [
+          0,
+          175,
+          28
+        ],
+        [
+          0,
+          175,
+          34
+        ],
+        [
+          0,
+          175,
+          44
+        ],
+        [
+          0,
+          175,
+          45
+        ],
+        [
+          0,
+          175,
+          80
+        ],
+        [
+          0,
+          176,
+          14
+        ],
+        [
+          0,
+          176,
+          15
+        ],
+        [
+          0,
+          176,
+          16
+        ],
+        [
+          0,
+          176,
+          17
+        ],
+        [
+          0,
+          176,
+          18
+        ],
+        [
+          1,
+          175,
+          168
+        ],
+        [
+          1,
+          175,
+          169
+        ],
+        [
+          1,
+          175,
+          189
+        ],
+        [
+          1,
+          175,
+          218
+        ],
+        [
+          1,
+          175,
+          219
+        ],
+        [
+          1,
+          175,
+          220
+        ],
+        [
+          1,
+          175,
+          274
+        ],
+        [
+          1,
+          175,
+          275
+        ],
+        [
+          1,
+          175,
+          276
+        ],
+        [
+          1,
+          175,
+          277
+        ],
+        [
+          1,
+          175,
+          278
+        ],
+        [
+          1,
+          175,
+          318
+        ],
+        [
+          1,
+          175,
+          319
+        ],
+        [
+          1,
+          175,
+          320
+        ],
+        [
+          1,
+          175,
+          335
+        ],
+        [
+          1,
+          175,
+          367
+        ],
+        [
+          1,
+          175,
+          368
+        ],
+        [
+          1,
+          175,
+          369
+        ],
+        [
+          1,
+          175,
+          372
+        ],
+        [
+          1,
+          175,
+          373
+        ],
+        [
+          1,
+          175,
+          374
+        ],
+        [
+          1,
+          176,
+          194
+        ],
+        [
+          2,
+          175,
+          80
+        ],
+        [
+          2,
+          175,
+          81
+        ],
+        [
+          2,
+          175,
+          82
+        ],
+        [
+          2,
+          175,
+          83
+        ],
+        [
+          2,
+          175,
+          84
+        ],
+        [
+          2,
+          176,
+          192
+        ],
+        [
+          2,
+          176,
+          193
+        ],
+        [
+          2,
+          176,
+          288
+        ],
+        [
+          2,
+          176,
+          291
+        ],
+        [
+          2,
+          176,
+          292
+        ],
+        [
+          3,
+          176,
+          167
+        ]
+      ],
+      "extra_fp_not_in_daq43": [],
+      "readout_clock": {
+        "adc_pipeline_delay": 68,
+        "full_period_ticks": 3,
+        "half_period_ticks": 1
+      },
+      "trigger_readback": {
+        "auto_frequency_hz": 359.99981568009434,
+        "auto_period_ticks": 434028,
+        "source": 3
+      },
+      "stream_counts": {
+        "bytes": 95289840,
+        "fault": null,
+        "image_arrival_rate_hz": 231.7735228505422,
+        "invalid_records": 33,
+        "last_receive_monotonic": 1669517.315618625,
+        "records": 120,
+        "valid_images": 87
+      },
+      "cleanup_errors": [],
+      "sequence_first": 3669650,
+      "sequence_last": 3669736,
+      "sequence_discontinuities": [],
+      "payload_records": [
+        {
+          "payload_bytes": 48,
+          "flags": 2,
+          "error": 0,
+          "channel": 1,
+          "count": 33
+        },
+        {
+          "payload_bytes": 1095248,
+          "flags": 2,
+          "error": 0,
+          "channel": 1,
+          "count": 69
+        },
+        {
+          "payload_bytes": 1095288,
+          "flags": 2,
+          "error": 0,
+          "channel": 1,
+          "count": 18
+        }
+      ],
+      "diagnostics_before": {
+        "camera": {
+          "AcqCore.AcqCount": 3697223,
+          "RdoutCore.BuffersRdy": 0,
+          "RdoutCore.LineBufErr[0]": 0,
+          "RdoutCore.LineBufErr[1]": 0,
+          "RdoutCore.LineBufErr[2]": 0,
+          "RdoutCore.LineBufErr[3]": 0,
+          "RdoutCore.SeqCount": 3669649,
+          "SystemRegs.AdcTestDone": 1,
+          "SystemRegs.AdcTestFailed": 0,
+          "SystemRegs.TrigPeriodMax": 2533713183,
+          "SystemRegs.TrigPeriodMin": 0
+        },
+        "event_builder": {
+          "Blowoff": 0,
+          "Bypass": 0,
+          "DataCnt[0]": 0,
+          "DataCnt[1]": 0,
+          "DataCnt[2]": 0,
+          "NullCnt[0]": 0,
+          "NullCnt[1]": 0,
+          "NullCnt[2]": 0,
+          "Timeout": 144675,
+          "TimeoutDropCnt[0]": 0,
+          "TimeoutDropCnt[1]": 0,
+          "TimeoutDropCnt[2]": 0,
+          "TransactionCnt": 0
+        }
+      },
+      "diagnostics_after": {
+        "camera": {
+          "AcqCore.AcqCount": 3697310,
+          "RdoutCore.BuffersRdy": 0,
+          "RdoutCore.LineBufErr[0]": 0,
+          "RdoutCore.LineBufErr[1]": 0,
+          "RdoutCore.LineBufErr[2]": 0,
+          "RdoutCore.LineBufErr[3]": 0,
+          "RdoutCore.SeqCount": 3669736,
+          "SystemRegs.AdcTestDone": 1,
+          "SystemRegs.AdcTestFailed": 0,
+          "SystemRegs.TrigPeriodMax": 2533713183,
+          "SystemRegs.TrigPeriodMin": 0
+        },
+        "event_builder": {
+          "Blowoff": 0,
+          "Bypass": 0,
+          "DataCnt[0]": 51,
+          "DataCnt[1]": 87,
+          "DataCnt[2]": 0,
+          "NullCnt[0]": 0,
+          "NullCnt[1]": 0,
+          "NullCnt[2]": 0,
+          "Timeout": 144675,
+          "TimeoutDropCnt[0]": 69,
+          "TimeoutDropCnt[1]": 33,
+          "TimeoutDropCnt[2]": 120,
+          "TransactionCnt": 0
+        }
+      },
+      "restore": {
+        "status": "restored",
+        "scope": "camera idle triggering only; PCIe remains in standalone test configuration",
+        "readback": {
+          "SystemRegs.TrigSrcSel": 3,
+          "SystemRegs.AutoTrigPer": 15625000,
+          "SystemRegs.AutoTrigEn": true,
+          "SystemRegs.TrigEn": true,
+          "RdoutCore.RdoutEn": false
+        },
+        "identity": {
+          "fpga_version": 33751040,
+          "build_stamp": "EpixQuadPgp4_10Gbps_1kfps: Vivado v2021.2, rdsrv403 (Ubuntu 22.04.5 LTS), Built Tue Oct 14 11:01:33 AM PDT 2025 by ruckman",
+          "git_hash": 383709318689029322121060581264501330697182647568,
+          "carrier_ids": [
+            [
+              175474177,
+              1509949462
+            ],
+            [
+              175300865,
+              1291845654
+            ],
+            [
+              175937537,
+              3774873622
+            ],
+            [
+              177133569,
+              2969567254
+            ]
+          ],
+          "adc_done": true,
+          "adc_failed": false
+        }
+      }
+    }
+  ],
+  "config_differences": {
+    "14-vs-15": {
+      "camera": [
+        {
+          "path": "AcqCore.AsicSyncInjEn",
+          "attempt14": false,
+          "other": true
+        }
+      ],
+      "pcie": []
+    },
+    "14-vs-16": {
+      "camera": [],
+      "pcie": []
+    }
+  },
+  "daq_reference": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-full-daq-20260930/run3-gainbits/after-first-mismatches.csv",
+  "daq_reference_sha256": "23b1ee1a1b6610fc42e87770dc991842b87a592732fd967b85449a64e131f688",
+  "archive_script_sha256": "3f03060b77c079b98a340f6def292a191124ffc39cb30ee6c0e3d7fc45657a0f",
+  "limitations": [
+    "First image retained but excluded from gain assessment",
+    "SaveConfig does not read pixel SRAM; disabled-device values can be cached",
+    "Independent configurations and map writes per attempt; external DAQ timing is not used"
+  ]
+}

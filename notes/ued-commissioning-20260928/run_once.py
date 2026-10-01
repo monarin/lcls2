@@ -16,6 +16,7 @@ parser.add_argument('--selected-map',type=Path)
 parser.add_argument('--frames',type=int,default=50)
 parser.add_argument('--gain-writer',choices=('standalone','daq'),default='standalone')
 parser.add_argument('--save-config-yaml',action='store_true')
+parser.add_argument('--asic-sync-inj-en',type=int,choices=(0,1))
 parser.add_argument('--asic-ro-clk-ticks',type=int,choices=(3,6))
 rates=parser.add_mutually_exclusive_group()
 rates.add_argument('--rate-hz',type=float,default=None)
@@ -58,6 +59,8 @@ if args.dry_run:
     command += ['--dry-run']
 if args.save_config_yaml:
     command += ['--save-config-yaml']
+if args.asic_sync_inj_en is not None:
+    command += ['--asic-sync-inj-en',str(args.asic_sync_inj_en)]
 if args.asic_ro_clk_ticks is not None:
     command += ['--asic-ro-clk-ticks',str(args.asic_ro_clk_ticks)]
 record={'started_utc':datetime.now(timezone.utc).isoformat(),'command':command,
