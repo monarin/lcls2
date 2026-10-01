@@ -376,6 +376,16 @@ The standalone `.dat` review scripts are not XTC readers. Supply the recorded
 experiment/run numbers for the run-aware analysis; do not infer success from
 an image display alone.
 
+### First full-DAQ result: run 1
+
+[Run 1 review](run1-gainbits/README.md) confirms 43 persistent FP pixels outside
+the known-bad list and 68 FN pixels within it across 4,898 assessed frames.
+The coordinates exactly match the historical production DAQ pattern. The
+measured rate was about 540 Hz. The DRP header shows the new test install but
+the **older `lcls2_submodules_03122026` bundle**, so this run does not validate
+the intended new install/submodule pair. The reviewed FFB file was still in
+progress; see the report for the exact complete-prefix scope.
+
 ## 6. Restore TEST after the experiment
 
 End/Unconfigure and stop this test cnf before restoration. Confirm no other
