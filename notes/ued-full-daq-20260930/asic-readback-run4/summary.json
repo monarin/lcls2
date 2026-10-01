@@ -1,0 +1,31 @@
+{
+  "pixels": 44,
+  "requested_code": 12,
+  "requested_gain": "FH",
+  "readback_code_both_passes": 8,
+  "readback_gain_with_trbit_1": "FL",
+  "asic_indices": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    10,
+    15
+  ],
+  "repeat_agreement": true,
+  "elapsed_seconds": 1.731116897892207,
+  "daq_state_before": "unallocated",
+  "daq_state_after": "unallocated",
+  "controls_restored": true,
+  "pixel_data_writes": false,
+  "map_reloaded": false,
+  "scope": "Only the 44 run-4 FP addresses; no unaffected control pixels read",
+  "files_sha256": {
+    "measurement/readback.json": "0e56f54f91f21b0901e54cf4303119d443bf81ebc8a3e677fffb438476fa73ad",
+    "measurement/pixels.csv": "0dc42960a9f94cf9e522c8a05e11e7cc275c705073c99c835103e1d5e957914c",
+    "execution.log": "d15702d11a5535ef6959b51949dbeee167e4eb7aab066b3cd02d0a9082dcf3d0",
+    "offline-tests.log": "5e7395b0aff307fef6530b9f4d42bfd7f004d022591b17f7352fac8f9828e107"
+  }
+}

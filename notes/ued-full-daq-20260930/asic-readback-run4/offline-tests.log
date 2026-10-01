@@ -1,0 +1,8 @@
+test_exact_targets (__main__.Tests) ... ok
+test_read_and_cleanup (__main__.Tests) ... ok
+test_read_failure_restores_asic (__main__.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
