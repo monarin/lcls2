@@ -1,12 +1,15 @@
 """Assess map captures after frame 1, retaining full and known-bad counts."""
 import argparse
+from collections import Counter
 import csv
 import json
 from pathlib import Path
 
 import numpy as np
 from pyrogue.utilities.fileio import FileReader
-from psdaq.configdb.epixquad_layout import RAW_SHAPE, rogue_payload_to_daq_raw
+from psdaq.configdb.epixquad_layout import (
+    RAW_SHAPE, ROGUE_IMAGE_PAYLOAD_BYTES, rogue_payload_to_daq_raw,
+)
 from psdaq.debugtools.epixquad1kfps.capture_standalone import check_file_integrity
 from psdaq.debugtools.epixquad1kfps.standalone_profile import file_sha256
 from psdaq.debugtools.epixquad1kfps.write_gain_mode_standalone import _raw_to_direct
@@ -14,9 +17,13 @@ from psdaq.debugtools.epixquad1kfps.write_gain_mode_standalone import _raw_to_di
 parser = argparse.ArgumentParser()
 parser.add_argument('attempt', type=Path)
 parser.add_argument('output', type=Path, help='New review directory')
+parser.add_argument('--redecode-failed', action='store_true',
+                    help='Reanalyze a failed capture with the current decoder; preserve original evidence')
 args = parser.parse_args()
 folder = Path(__file__).resolve().parent
 record = json.loads((args.attempt/'test.json').read_text())
+if args.redecode_failed and record['status'] != 'failed':
+    raise ValueError('--redecode-failed requires an originally failed capture')
 baseline = json.loads((folder/'test-attempt04.json').read_text())
 if record['camera_identity']['carrier_ids'] != baseline['camera_identity']['carrier_ids']:
     raise ValueError('Known-bad list belongs to a different detector')
@@ -39,11 +46,15 @@ all_fn = np.zeros_like(all_fp)
 fp = np.zeros_like(all_fp)
 fn = np.zeros_like(all_fp)
 frames = []
+histogram = Counter()
+offsets = Counter()
 for header, data in FileReader(str(data_path)).records():
     payload = np.asarray(data).view(np.uint8).tobytes()
-    if header.channel != 1 or header.error or len(payload) not in (1095248, 1095288):
+    histogram[(len(payload), int(header.error), int(header.channel))] += 1
+    if header.channel != 1 or header.error or len(payload) not in ROGUE_IMAGE_PAYLOAD_BYTES:
         continue
-    raw, _ = rogue_payload_to_daq_raw(payload)
+    raw, skip = rogue_payload_to_daq_raw(payload)
+    offsets[skip * 2] += 1
     low = (raw & 0x4000) != 0
     fpos, fneg = low & ~expected, ~low & expected
     all_fp += fpos
@@ -58,8 +69,11 @@ for header, data in FileReader(str(data_path)).records():
 if len(frames) < 2:
     raise ValueError('Need at least two full images for post-startup assessment')
 with np.load(args.attempt/'mismatches.npz', allow_pickle=False) as saved:
-    np.testing.assert_array_equal(all_fp, saved['fp'])
-    np.testing.assert_array_equal(all_fn, saved['fn'])
+    saved_counts_equal = bool(np.array_equal(all_fp, saved['fp']) and
+                              np.array_equal(all_fn, saved['fn']))
+    if not args.redecode_failed:
+        np.testing.assert_array_equal(all_fp, saved['fp'])
+        np.testing.assert_array_equal(all_fn, saved['fn'])
 
 def counts_summary(pos, neg):
     result = {}
@@ -75,6 +89,7 @@ def counts_summary(pos, neg):
 
 args.output.mkdir(parents=True, exist_ok=False)
 np.savez_compressed(args.output/'after-first-counts.npz', fp=fp, fn=fn, known_bad_mask=known)
+np.savez_compressed(args.output/'all-counts.npz', fp=all_fp, fn=all_fn)
 fields = ['segment', 'raw_row', 'raw_col', 'asic', 'asic_row', 'asic_col', 'kind',
           'occurrences', 'assessed_frames', 'fraction', 'within_known_bad', 'in_historical_run2']
 with (args.output/'after-first-mismatches.csv').open('w', newline='') as stream:
@@ -93,6 +108,16 @@ review = {'source_attempt': str(args.attempt.resolve()), 'mode': record['mode'][
           'parent_test_id': record.get('parent_test_id'),
           'phase_index': record.get('phase_index'),
           'source_status': record['status'], 'data_sha256': record['data']['sha256'],
+          'redecoded_failed_capture': args.redecode_failed,
+          'original_counts_equal': saved_counts_equal,
+          'source_test_json_sha256': file_sha256(args.attempt/'test.json'),
+          'source_mismatches_sha256': file_sha256(args.attempt/'mismatches.npz'),
+          'expected_map_sha256': file_sha256(args.attempt/'expected-map.npy'),
+          'decoder_sha256': file_sha256(Path(__import__(
+              'psdaq.configdb.epixquad_layout', fromlist=['']).__file__)),
+          'payload_histogram': [dict(bytes=size, error=error, channel=channel, count=count)
+                                for (size, error, channel), count in sorted(histogram.items())],
+          'image_offset_bytes': dict(offsets),
           'reviewer_sha256': file_sha256(Path(__file__)),
           'policy': 'First full image retained but excluded from assessment by user instruction',
           'recorded_frames': len(frames), 'assessed_frames': len(frames)-1,
@@ -103,6 +128,6 @@ review = {'source_attempt': str(args.attempt.resolve()), 'mode': record['mode'][
           'all_frames': counts_summary(all_fp, all_fn),
           'after_first': counts_summary(fp, fn), 'frames': frames,
           'output_sha256': {name: file_sha256(args.output/name) for name in
-                            ('after-first-counts.npz', 'after-first-mismatches.csv')}}
+                            ('after-first-counts.npz', 'after-first-mismatches.csv', 'all-counts.npz')}}
 (args.output/'review.json').write_text(json.dumps(review, indent=2)+'\n')
 print(json.dumps({k:v for k,v in review.items() if k!='frames'}, indent=2))

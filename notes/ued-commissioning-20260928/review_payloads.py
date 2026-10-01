@@ -6,7 +6,7 @@ from pathlib import Path
 
 import numpy as np
 from pyrogue.utilities.fileio import FileReader
-from psdaq.configdb.epixquad_layout import rogue_payload_to_daq_raw
+from psdaq.configdb.epixquad_layout import ROGUE_IMAGE_PAYLOAD_BYTES, rogue_payload_to_daq_raw
 from psdaq.debugtools.epixquad1kfps.capture_standalone import check_file_integrity
 from psdaq.debugtools.epixquad1kfps.standalone_profile import file_sha256
 
@@ -23,7 +23,7 @@ for header, data in FileReader(str(args.capture)).records():
     histogram[(len(payload), int(header.error), int(header.channel))] += 1
     if len(payload) == 48 and len(short_examples) < 3:
         short_examples.append(payload.hex())
-    if header.error or header.channel != 1 or len(payload) not in (1095248, 1095288):
+    if header.error or header.channel != 1 or len(payload) not in ROGUE_IMAGE_PAYLOAD_BYTES:
         continue
     raw, _ = rogue_payload_to_daq_raw(payload)
     adc = raw & 0x3fff

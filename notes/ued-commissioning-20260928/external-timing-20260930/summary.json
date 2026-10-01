@@ -1,0 +1,129 @@
+{
+  "native_file": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-commissioning-20260928/attempt17-mapfhl/capture.dat",
+  "native_sha256": "0b846238c4d315e153665f495ad6a2aa76ffb4b639c620a9b6aa2762c5faca46",
+  "original_status": "failed",
+  "original_stop": "Capture byte limit reached",
+  "original_record_retained": true,
+  "full_images": 490,
+  "assessed_images": 489,
+  "corrected_counter_offline_replay": {
+    "valid_images": 490,
+    "invalid_records": 2,
+    "records": 492,
+    "bytes": 536722704,
+    "fault": null
+  },
+  "first_full_subframes": {
+    "3": {
+      "offset": 1095288,
+      "size": 48,
+      "first_user": 0,
+      "last_user": 0,
+      "width": 2
+    },
+    "2": {
+      "offset": 48,
+      "size": 1095232,
+      "first_user": 2,
+      "last_user": 0,
+      "width": 2
+    },
+    "0": {
+      "offset": 8,
+      "size": 32,
+      "first_user": 0,
+      "last_user": 0,
+      "width": 2
+    }
+  },
+  "nonimage_records": [
+    {
+      "record_1based": 491,
+      "payload_bytes": 104,
+      "timing_ns": 1159675581001737668,
+      "pulse_id": 83109917600517,
+      "camera_sequence": null,
+      "subframes": {
+        "3": {
+          "offset": 48,
+          "size": 48,
+          "first_user": 0,
+          "last_user": 0,
+          "width": 2
+        },
+        "0": {
+          "offset": 8,
+          "size": 32,
+          "first_user": 0,
+          "last_user": 0,
+          "width": 2
+        }
+      }
+    },
+    {
+      "record_1based": 492,
+      "payload_bytes": 104,
+      "timing_ns": 1159675581004508559,
+      "pulse_id": 83109917601903,
+      "camera_sequence": null,
+      "subframes": {
+        "3": {
+          "offset": 48,
+          "size": 48,
+          "first_user": 0,
+          "last_user": 0,
+          "width": 2
+        },
+        "0": {
+          "offset": 8,
+          "size": 32,
+          "first_user": 0,
+          "last_user": 0,
+          "width": 2
+        }
+      }
+    }
+  ],
+  "first_timing_ns": 1159675579618256547,
+  "last_timing_ns": 1159675580976743669,
+  "observed_image_rate_hz": 359.95924590001374,
+  "timing_delta_ns_min": 2754340,
+  "timing_delta_ns_max": 2801349,
+  "camera_sequence_first": 16576,
+  "camera_sequence_last": 18043,
+  "camera_sequence_deltas": {
+    "3": 489
+  },
+  "sequence_interpretation": "Every third camera acquisition, consistent with 1080 Hz run / 360 Hz readout",
+  "daq_run3_fp_csv": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-full-daq-20260930/run3-gainbits/after-first-mismatches.csv",
+  "daq_run3_fp_csv_sha256": "23b1ee1a1b6610fc42e87770dc991842b87a592732fd967b85449a64e131f688",
+  "daq_run3_outside_known_fp_pixels": 43,
+  "daq_run3_fp_reproduced": [],
+  "after_first": {
+    "FP": {
+      "unique_pixels": 0,
+      "occurrences": 0,
+      "known_unique": 0,
+      "outside_known_unique": 0,
+      "outside_known_occurrences": 0,
+      "historical_run2_overlap": 0,
+      "outside_historical_run2": 0
+    },
+    "FN": {
+      "unique_pixels": 68,
+      "occurrences": 33252,
+      "known_unique": 68,
+      "outside_known_unique": 0,
+      "outside_known_occurrences": 0,
+      "historical_run2_overlap": 68,
+      "outside_historical_run2": 0
+    }
+  },
+  "first_frame": {
+    "image_1based": 1,
+    "fp": 0,
+    "fn": 68,
+    "fp_outside_known": 0,
+    "fn_outside_known": 0
+  }
+}

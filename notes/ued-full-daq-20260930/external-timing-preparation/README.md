@@ -1,7 +1,9 @@
 # Standalone capture with UED groupca timing
 
 Prepared offline after the detector was powered off September 30, 2026.
-Hardware acceptance is pending. This extension compares real UED external
+Attempt 17 has now run; see the [external timing result](../../ued-commissioning-20260928/external-timing-20260930/README.md).
+The 490 recovered images were clean outside known-bad; a payload-format fix
+was validated offline afterward. This extension compares real UED external
 timing against the clean internal-trigger attempt 15, while retaining the
 standalone baseline and DAQ raw gain-map writer. It does not execute full DAQ
 Configure or write ConfigDB.
@@ -36,8 +38,8 @@ every trigger transition during full DAQ Configure.
 
 ## Operator sequence for the first hardware test
 
-The following steps have **not** been executed against hardware. Use them
-after detector power-on and authorization to acquire. Keep the full DAQ and
+The sequence was exercised in attempt 17. For a future repeat, use the
+corrected decoder and a new attempt number after authorization to acquire. Keep the full DAQ and
 non-spy device GUIs stopped. Leave the monitor IOC alone.
 
 On `ued-daq` as `uedopr`, with a working GUI display:
@@ -67,13 +69,13 @@ export PYTHONPATH="$UED_GAINMAP_SRC/psdaq:$PYTHONPATH"
 export QT_QPA_PLATFORM=offscreen
 cd "$UED_GAINMAP_SRC"
 python notes/ued-commissioning-20260928/run_once.py \
-  --attempt 17 --mode MapFHL --selected-map "$UED_GAINMAP_MASK" \
+  --attempt 18 --mode MapFHL --selected-map "$UED_GAINMAP_MASK" \
   --frames 51 --gain-writer daq --asic-ro-clk-ticks 3 \
   --asic-sync-inj-en 1 --timing-mode ued-external \
   --wait-for-trigger-seconds 120 --save-config-yaml
 ```
 
-Attempt 17 must still be unused; choose a new number if it exists. Do **not**
+Attempt 18 must still be unused; choose a new number if it exists. Do **not**
 pass `--rate-hz` or `--rate-sequence-hz`; external mode rejects these internal
 camera overrides. The watchdog defaults to 300 seconds: 120 for the operator
 wait plus 180 for setup/acquisition overhead. The operator wait starts after
@@ -87,7 +89,7 @@ READY FOR GROUPCA RUN: XPM 0, group 0; waiting up to 120 s for first full image.
 ```
 
 Then check **Run** in groupca. Readiness is also recorded in
-`attempt17-mapfhl/ready.json` and `console.log`. The JSON state changes from
+`attempt18-mapfhl/ready.json` and `console.log`. The JSON state changes from
 `ready` to `stopped` on normal completion or an acquisition exception; do not
 use a stale ready message to start a completed capture.
 
@@ -111,8 +113,8 @@ Use the existing offline reviewer after capture:
 
 ```bash
 python notes/ued-commissioning-20260928/review_gain_map.py \
-  notes/ued-commissioning-20260928/attempt17-mapfhl \
-  notes/ued-commissioning-20260928/attempt17-mapfhl/review-after-first
+  notes/ued-commissioning-20260928/attempt18-mapfhl \
+  notes/ued-commissioning-20260928/attempt18-mapfhl/review-after-first
 ```
 
 Exclude the first full image from assessment but retain its counts. Compare

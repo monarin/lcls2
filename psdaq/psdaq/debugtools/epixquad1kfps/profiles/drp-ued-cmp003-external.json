@@ -19,7 +19,7 @@
   "camera_auto_trigger": false,
   "rate_hz": 360,
   "event_builder_timeout": 144675,
-  "image_payload_bytes": [1095248, 1095288],
+  "image_payload_bytes": [1095248, 1095288, 1095344],
   "ued_external_timing": {
     "readout_group": 0,
     "start_ns": 94000,

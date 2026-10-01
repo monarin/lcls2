@@ -22,6 +22,57 @@ DAQ_RAW_FRAME_BYTES = DAQ_RAW_FRAME_WORDS * 2
 # 1095288 bytes long.
 ROGUE_FULL_FRAME_BASE_BYTES = 1095248
 ROGUE_IMAGE_BASE_SKIP_WORDS = 20
+ROGUE_EXTERNAL_FRAME_BYTES = 1095344
+ROGUE_IMAGE_PAYLOAD_BYTES = (1095248, 1095288, ROGUE_EXTERNAL_FRAME_BYTES)
+
+
+def event_batcher_subframes(payload):
+    """Return v1 batcher subframes keyed by TDEST, following EventBatcher.hh.
+
+    Offsets/sizes refer to the original payload. Tails are traversed backwards;
+    their data spans are padded to the tail width, while tails occupy one
+    header-width line. No hardware or Rogue imports are required.
+    """
+    import struct
+
+    if len(payload) < 8 or payload[0] & 15 != 1:
+        raise ValueError('Expected EventBatcher version 1')
+    line = 2 << (payload[0] >> 4)
+    if line < 8 or len(payload) < 3 * line or len(payload) % line:
+        raise ValueError('Invalid EventBatcher length or header width')
+    tail = len(payload) - line
+    result = {}
+    while True:
+        if tail < line or tail + 8 > len(payload):
+            raise ValueError('EventBatcher tail outside payload')
+        size, dest, first, last, width = struct.unpack_from('<IBBBB', payload, tail)
+        if not size or width > 15:
+            raise ValueError('Invalid EventBatcher subframe size or width')
+        span = 2 << width
+        start = tail - ((size + span - 1) // span) * span
+        if start < line or start % line:
+            raise ValueError('EventBatcher subframe outside payload or unaligned')
+        if dest in result:
+            raise ValueError('Duplicate EventBatcher TDEST')
+        result[dest] = dict(offset=start, size=size, first_user=first,
+                            last_user=last, width=width)
+        if start == line:
+            return result
+        tail = start - line
+
+
+def rogue_image_offset_words(payload):
+    """Locate camera image words, including external timing's trailing data."""
+    if len(payload) != ROGUE_EXTERNAL_FRAME_BYTES:
+        return rogue_image_skip_words(len(payload))
+    frames = event_batcher_subframes(payload)
+    camera = frames.get(2)
+    if camera is None or camera['size'] != 1095232:
+        raise ValueError('Missing or incomplete external ePixQuad camera subframe')
+    if any(frame['last_user'] & 1 for frame in frames.values()):
+        raise ValueError('EventBatcher subframe reports EOFE')
+    # Same camera header skip as EpixQuad.cc: subframes[2].data() + 16 words.
+    return (camera['offset'] + 32) // 2
 
 RAW_ASIC_LAYOUT = (
     {'slot': 0, 'row_slice': (176, 352), 'col_slice': (192, 384), 'operator': 'identity'},
@@ -94,6 +145,8 @@ def rogue_image_skip_words(payload_nbytes):
     use a 20-word image offset for 1095248-byte frames and a 40-word offset for
     the 1095288-byte frames that include one extra 40-byte header.
     """
+    if payload_nbytes == ROGUE_EXTERNAL_FRAME_BYTES:
+        raise ValueError('External payload requires parsing its EventBatcher tails')
     extra = int(payload_nbytes) - ROGUE_FULL_FRAME_BASE_BYTES
     if extra <= 0:
         return ROGUE_IMAGE_BASE_SKIP_WORDS
@@ -113,7 +166,7 @@ def rogue_payload_to_daq_raw(payload, bit_mask=0xFFFF):
     import numpy as np
 
     payload_nbytes = len(payload)
-    skip_words = rogue_image_skip_words(payload_nbytes)
+    skip_words = rogue_image_offset_words(payload)
     required_nbytes = (skip_words * 2) + DAQ_RAW_FRAME_BYTES
     if payload_nbytes < required_nbytes:
         raise ValueError(

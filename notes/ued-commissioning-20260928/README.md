@@ -135,3 +135,11 @@ Attempt 01 is 54,819,984 bytes, SHA256
 `ca995df98471ee8481c85ec2396a11c8d8a0a3aeca15409abca1d17c852c143a`.
 Git preserves the summaries/manifests/logs; raw-file availability depends on
 retaining these shared-filesystem directories.
+
+## September 30 external timing follow-up
+
+[Attempt 17 with groupca](external-timing-20260930/README.md) recovered 490
+full images at 359.959 Hz. All were clean outside known-bad; none of the
+43 full-DAQ FPs reappeared. The external packet format required a decoder
+fix; original failed-capture metadata is retained alongside the corrected
+offline review. Camera idle restoration passed with readout off.
