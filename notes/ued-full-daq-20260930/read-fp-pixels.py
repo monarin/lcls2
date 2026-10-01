@@ -1,7 +1,9 @@
 """Targeted post-run ASIC readback through the existing DAQ Rogue servers.
 
 Default is preflight only. --execute pauses/restores triggers and changes SACI
-address/configuration controls, but never writes pixel data or loads a map.
+address/configuration controls. Pixel data writes additionally require
+--overwrite-fh, which writes only the 44 verified run-4 FP addresses to code 12.
+No mode loads a full map or changes ConfigDB.
 """
 import argparse
 from collections import Counter
@@ -44,7 +46,7 @@ def put(variable, value):
         raise RuntimeError('Control readback mismatch: ' + variable.path)
 
 
-def read_asic(saci, rows, state):
+def read_asic(saci, rows, state, overwrite=False):
     enabled = saci.enable.get()
     state['enable_before'] = enabled
     is_en = None
@@ -64,6 +66,22 @@ def read_asic(saci, rows, state):
                 saci.ColCounter.set(row['saci_col'])
                 row['readback_%d' % repeat] = int(saci.WritePixelData.get(read=True))
                 row['trbit'] = state['trbit_before']
+        if overwrite:
+            if state['trbit_before'] != 1 or any(
+                    r['readback_1'] != 8 or r['readback_2'] != 8 or
+                    r['expected_code'] != 12 for r in rows):
+                raise RuntimeError('Overwrite requires confirmed FL readback and FH target')
+            for row in rows:
+                saci.RowCounter.set(row['asic_row'])
+                saci.ColCounter.set(row['saci_col'])
+                row['write_attempted'] = True
+                saci.WritePixelData.set(12)
+                row['write_completed'] = True
+            for repeat in (1, 2):
+                for row in rows:
+                    saci.RowCounter.set(row['asic_row'])
+                    saci.ColCounter.set(row['saci_col'])
+                    row['immediate_%d' % repeat] = int(saci.WritePixelData.get(read=True))
     finally:
         errors = []
         for name, operation in (
@@ -87,12 +105,16 @@ def main():
     parser = argparse.ArgumentParser(__doc__)
     parser.add_argument('output', type=Path)
     parser.add_argument('--execute', action='store_true')
+    parser.add_argument('--overwrite-fh', action='store_true')
     args = parser.parse_args()
+    if args.overwrite_fh and not args.execute:
+        parser.error('--overwrite-fh requires --execute')
     root = Path(__file__).resolve().parent
     rows, digest = targets(root)
     args.output.mkdir(parents=True, exist_ok=False)
     record = dict(started_utc=datetime.now(timezone.utc).isoformat(),
                   host=socket.gethostname(), execute=args.execute,
+                  overwrite_fh=args.overwrite_fh,
                   script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                   source_csv_sha256=digest, targets=rows, asics={}, status='preflight')
     def save():
@@ -151,6 +173,32 @@ def main():
                         if state.get('cleanup_errors'):
                             asic_cleanup_ok = False
                         save()
+                if args.overwrite_fh:
+                    # Verify the complete target list before the first pixel write.
+                    if any(r['readback_1'] != 8 or r['readback_2'] != 8 or
+                           r['trbit'] != 1 for r in rows):
+                        raise RuntimeError('Target state changed; no overwrite performed')
+                    record['overwrite_asics'] = {}
+                    record['post_ready_asics'] = {}
+                    for stage in ('overwrite', 'post_ready'):
+                        for index in sorted({r['asic'] for r in rows}):
+                            if control.getState() != record['daq_state']:
+                                raise RuntimeError('DAQ state changed during overwrite test')
+                            selected = [r for r in rows if r['asic'] == index]
+                            active = selected if stage == 'overwrite' else [r.copy() for r in selected]
+                            state = record[stage+'_asics'][str(index)] = {}
+                            try:
+                                read_asic(camera.Epix10kaSaci[index], active, state,
+                                          overwrite=stage == 'overwrite')
+                                if stage == 'post_ready':
+                                    for original, result in zip(selected, active):
+                                        original['post_ready_1'] = result['readback_1']
+                                        original['post_ready_2'] = result['readback_2']
+                                        original['post_ready_trbit'] = result['trbit']
+                            finally:
+                                if state.get('cleanup_errors'):
+                                    asic_cleanup_ok = False
+                                save()
             finally:
                 # Keep triggering disabled if ASIC cleanup cannot be confirmed.
                 if asic_cleanup_ok:
@@ -169,12 +217,18 @@ def main():
             for row in rows:
                 row['repeat_agrees'] = row['readback_1'] == row['readback_2']
                 row['matches_expected'] = row['repeat_agrees'] and row['readback_1'] == 12 and row['trbit'] == 1
+                if args.overwrite_fh:
+                    row['matches_expected'] = all(row[k] == 12 for k in
+                        ('immediate_1', 'immediate_2', 'post_ready_1', 'post_ready_2')) and row['post_ready_trbit'] == 1
             with (args.output/'pixels.csv').open('x', newline='') as stream:
                 writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator='\n')
                 writer.writeheader()
                 writer.writerows(rows)
             record['status'] = 'complete'
             record['readback_counts'] = dict(Counter(r['readback_1'] for r in rows))
+            if args.overwrite_fh:
+                record['stage_counts'] = {key: dict(Counter(r[key] for r in rows)) for key in
+                    ('immediate_1', 'immediate_2', 'post_ready_1', 'post_ready_2')}
             record['matches_expected'] = sum(r['matches_expected'] for r in rows)
             record['daq_state_after'] = control.getState()
     except Exception as exc:

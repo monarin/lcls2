@@ -1,0 +1,26 @@
+{
+  "targets": 44,
+  "pixel_writes_completed": 44,
+  "before_code": 8,
+  "immediate_code_both_passes": 12,
+  "after_readout_ready_code_both_passes": 12,
+  "after_trigger_gate_restore_code_both_passes": 12,
+  "all_trbits": 1,
+  "all_controls_restored": true,
+  "daq_state": "unallocated",
+  "overwrite_elapsed_seconds": 2.211977044120431,
+  "followup_elapsed_seconds": 1.7955925518181175,
+  "seconds_between_test_starts": 28.367639,
+  "scope": "Only 44 FP addresses written once each to FH; no full map, Configure, ConfigDB changes or frame acquisition; pixel settings intentionally left FH",
+  "files_sha256": {
+    "after-trigger-restore/pixels.csv": "aec72ab22803e0e89ee357dc4c9ac6a1f5dfdf6efbb22940bd91dd523d69a939",
+    "after-trigger-restore/readback.json": "63fd4bfc26aa1d75d1d2a7c16738fe0cea4215ad3a5d3cb3911ad8041703f42b",
+    "after-trigger-restore.log": "f1545e9e0fc785747c92e2d8203d97f7862b6dad924207bc9069c34560f2ae76",
+    "execution.log": "cfd6d33416764fa77a713176ad15f870e8a9309906f680849de6e6b947707d10",
+    "measurement/pixels.csv": "f80f798b8fd42f2ad07be5ee3d71b05cbe4efca96b6e7b07681c46e18e5f0902",
+    "measurement/readback.json": "21df36e74154fecf642849ef09d383a5a176652663b82e89cd0058660d55af59",
+    "offline-tests.log": "1f573a9134cd750abd8af74f83080920d69853dc247a69d17a95f8f3f79d2d9d",
+    "preflight/readback.json": "50b2029f3bce9cd4656afd007a766b89979412205d2b3cc9b3b0e1c7ca4afb7c",
+    "preflight.log": "0e3ca5372c1360199e6c0d20607e4655548c50c057e8aef936e29a5177912c7f"
+  }
+}

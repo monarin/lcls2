@@ -74,6 +74,43 @@ class Tests(unittest.TestCase):
         self.assertEqual(saci.CmdPrepForRead.writes, [0,0])
         self.assertEqual(state['cleanup_errors'], [])
 
+    def test_targeted_overwrite_and_readout_ready_retention(self):
+        saci = self.make_saci()
+        class MemoryPixel(Pixel):
+            def __init__(self, saci):
+                super().__init__(saci)
+                self.memory, self.writes = {}, []
+
+            def get(self, read=False):
+                super().get(read=read)
+                return self.memory.get((saci.RowCounter.value, saci.ColCounter.value), 8)
+
+            def set(self, value):
+                assert saci.IsEn.value
+                address = (saci.RowCounter.value, saci.ColCounter.value)
+                self.writes.append((*address, value))
+                self.memory[address] = value
+
+        pixel = saci.WritePixelData = MemoryPixel(saci)
+        rows = [dict(asic_row=0,saci_col=0x715,expected_code=12),
+                dict(asic_row=0,saci_col=0x70f,expected_code=12)]
+        reader.read_asic(saci, rows, {}, overwrite=True)
+        self.assertEqual(pixel.writes, [(0,0x715,12),(0,0x70f,12)])
+        self.assertTrue(all(r['readback_1'] == 8 and r['immediate_1'] == 12 and
+                            r['immediate_2'] == 12 for r in rows))
+        self.assertFalse(saci.IsEn.value)
+        reader.read_asic(saci, rows, {})
+        self.assertTrue(all(r['readback_1'] == r['readback_2'] == 12 for r in rows))
+        self.assertEqual(len(pixel.writes), 2)
+
+    def test_overwrite_refused_for_wrong_trbit(self):
+        saci = self.make_saci()
+        saci.trbit.value = 0
+        with self.assertRaisesRegex(RuntimeError, 'Overwrite requires'):
+            reader.read_asic(saci, [dict(asic_row=0,saci_col=0x715,expected_code=12)], {}, overwrite=True)
+        self.assertFalse(saci.IsEn.value)
+        self.assertFalse(saci.enable.value)
+
 
 if __name__ == '__main__':
     unittest.main()
