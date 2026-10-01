@@ -150,7 +150,10 @@ def main():
               'complete_prefix_sha256': digest.hexdigest(),
               'file_bytes_after_review': args.xtc.stat().st_size,
               'services': dict(services), 'endrun_seen': bool(services[5]),
-              'scope': 'Complete datagrams present at start; in-progress file is not a finalized run',
+              'scope': ('Complete finalized stream file through EndRun; not an event-loss audit'
+                        if not str(args.xtc).endswith('.inprogress') and services[5]
+                        and offset == snapshot_size == args.xtc.stat().st_size else
+                        'Complete datagrams present at start; bounded snapshot, not a finalized run'),
               'policy': 'Exclude first full image and damaged/incomplete events from assessment',
               'config': config_summary, 'good_full_frames': len(frames),
               'assessed_frames': assessed, 'incomplete_events': incomplete, 'damaged_events': damaged,

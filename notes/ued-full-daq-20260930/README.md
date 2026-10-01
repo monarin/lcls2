@@ -397,6 +397,17 @@ This excludes the old bundle as the sole explanation for the recurring FP
 pattern; it does not isolate rate or programming/configuration sequence.
 The reviewed FFB copy was still in progress, as detailed in the report.
 
+### Run 3 at 360 Hz
+
+[Run 3 review](run3-gainbits/README.md) confirms that the 43 historical extra
+FPs persist with the intended test bundle at about 360 Hz. All 4,627 assessed
+frames have 43 FP pixels outside the known-bad list and 68 FN pixels within it.
+The additional run-2 FP is absent, but run 3 also involved a fresh Configure.
+The finalized ePix stream contains 4,628 full undamaged images through EndRun;
+the timing stream has exactly the same event timestamps. Saved hardware
+configuration matches run 2 in all 1,920 fields. The old bundle and higher
+rate are therefore insufficient explanations for the persistent 43-FP pattern.
+
 ## 6. Restore TEST after the experiment
 
 End/Unconfigure and stop this test cnf before restoration. Confirm no other
