@@ -1,0 +1,61 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-10-01T07:05:04.209376+00:00",
+  "archive_root": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930",
+  "phases": {
+    "data": {
+      "manifest": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/data-manifest.json",
+      "manifest_sha256": "0622ed1dad09a84489d3a8619d4868800cb0b4e0047140ed22018f92da606c44",
+      "checksum_file": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/data-SHA256SUMS",
+      "files": 126,
+      "bytes": 20859507976,
+      "completed_utc": "2026-10-01T06:44:29.444751+00:00"
+    },
+    "pr": {
+      "manifest": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/pr-manifest.json",
+      "manifest_sha256": "3a38ffb2e8b4c430b6f0e3ce7da7321724c2b530fc642b251c55e539e2e9a7fd",
+      "checksum_file": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/pr-SHA256SUMS",
+      "files": 2,
+      "bytes": 1188650652,
+      "completed_utc": "2026-10-01T06:59:23.975973+00:00"
+    },
+    "context": {
+      "manifest": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/context-manifest.json",
+      "manifest_sha256": "7db004de6e8fb9f0a0aafaead86cdf4a9fad57c8eaa696e050fd6c2859e4e928",
+      "checksum_file": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/context-SHA256SUMS",
+      "files": 993,
+      "bytes": 1836879872,
+      "completed_utc": "2026-10-01T07:04:04.140379+00:00"
+    }
+  },
+  "source_manifest_sha256": "2695b31a8cf9fa887c164b9708fe3ea9198c41721067d0c76b3fa67079cff204",
+  "source_snapshots": [
+    {
+      "source_root": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq",
+      "commit": "0270bf06a444d7f4b1d8e77982f9c17fd3df0b71",
+      "path": "source/diagnostic-0270bf06a.tar.gz",
+      "bytes": 13856798,
+      "sha256": "2c51df00b58d7af8977262b9a5e3fdc011e0435bff2a6b3bc27e25ca1fa48054",
+      "tar_members": 3499,
+      "config_module_verified": true
+    },
+    {
+      "source_root": "/sdf/home/m/monarin/lcls2_worktree/ued-epixquad-isen-pr",
+      "commit": "a4907da6f0b3345ec4470967db3c87a31700372a",
+      "path": "source/pr-a4907da6f.tar.gz",
+      "bytes": 11741042,
+      "sha256": "d127a04c701a0a03eb15d665b02576fbaedb5bce2c83ba1d2f74ea917c6c2a79",
+      "tar_members": 2817,
+      "config_module_verified": true
+    }
+  ],
+  "payload_files": 1123,
+  "payload_bytes": 23910636340,
+  "xtc_stream_files": 16,
+  "standalone_native_captures": 19,
+  "copy_policy": "Independent file copies; source and destination SHA256 checked. No source deletions. Source tarballs generated from recorded Git commits and inspected. Metadata/checksum/receipt files excluded from payload totals.",
+  "verification_note": "Early run-1/2 analyzed-prefix hashes verified separately from full archived-file hashes. All phase copies verified before manifests were finalized.",
+  "diagnostic_snapshot_commit": "0270bf06a444d7f4b1d8e77982f9c17fd3df0b71",
+  "pr_commit": "a4907da6f0b3345ec4470967db3c87a31700372a",
+  "receipt_note": "Receipt is added after the immutable diagnostic source snapshot; it does not change tested source."
+}
