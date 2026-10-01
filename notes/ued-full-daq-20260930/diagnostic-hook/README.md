@@ -147,3 +147,12 @@ submits jobs. The corrected wrapper passed this check on ued-daq; see
 [parser verification](verify-launch.log). No binary rebuild was needed.
 The original build record preserves the pre-fix helper hashes; the current
 wrapper hash is recorded separately in [launch fix](launch-fix.json).
+
+The 21:59 launch also exposed missing `UED_GAINMAP_SRC` in daqstat's filtered
+Slurm environment. Acquisition participants reached Ready for transitions;
+the popup concerned only process-status monitoring. The daqstat row now
+explicitly exports the source root and diagnostic destination, including custom
+destinations. Parser verification also reloads the configuration with custom
+shell variables removed and only the row's explicit environment restored.
+This fix applies on the next daqstat launch; an already failed status thread
+does not recover automatically. Acquisition need not restart for this popup.

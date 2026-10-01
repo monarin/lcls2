@@ -15,5 +15,6 @@
   "xpm": 0,
   "alias": "TEST",
   "diagnostic_frames": 51,
+  "daqstat_filtered_environment": "passed",
   "scope": "Runner construction only; no DAQ start or submission"
 }
