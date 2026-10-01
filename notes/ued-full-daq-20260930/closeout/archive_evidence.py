@@ -43,7 +43,10 @@ def entries(phase, run=None):
             expected = None
             if '-s001-' in source.name:
                 run = int(source.name.split('-r')[1].split('-')[0])
-                report = json.loads((ROOT/f'notes/ued-full-daq-20260930/run{run}-gainbits/review.json').read_text())
+                report_path = ROOT/f'notes/ued-full-daq-20260930/run{run}-gainbits/review.json'
+                if not report_path.exists():
+                    report_path = DEFAULT/report_path.relative_to(ROOT)
+                report = json.loads(report_path.read_text())
                 expected = dict(sha256=report['complete_prefix_sha256'], bytes=report['complete_datagram_bytes'])
                 if source.stat().st_size < expected['bytes']:
                     raise RuntimeError('Finalized XTC is shorter than analyzed prefix: '+str(source))

@@ -1,5 +1,0 @@
-PR20: 8 success/failure/retry scenarios passed; PROM guard, saved diagnostics, and cleanup verified
-PR21: pass/fail/timeout and both real call sites passed with fake registers/clock
-PR19 CAVEAT reproduced: direct RO AsicMask.set issues a keyed hardware write
-PR19: real Rogue v6.1.3 SystemRegs builds; WriteAll skips mask, keyed WO write/readback succeeds
-Rogue/pyrogue version v6.1.3. https://github.com/slaclab/rogue

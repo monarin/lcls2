@@ -1,5 +1,7 @@
 # Standalone capture with UED groupca timing
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Prepared offline after the detector was powered off September 30, 2026.
 Attempt 17 has now run; see the [external timing result](../../ued-commissioning-20260928/external-timing-20260930/README.md).
 The 490 recovered images were clean outside known-bad; a payload-format fix
@@ -129,11 +131,11 @@ test suites, including the real installed Rogue register descriptions without
 starting a root. Tests cover route/delay readbacks, link/partition failures,
 only-two-buffer arming, separate operator/acquisition timeouts, byte limits,
 readiness delivery to the terminal, interrupt/timeout cleanup, internal-mode
-regressions, and dry-run isolation. See [tests.log](tests.log).
+regressions, and dry-run isolation. See [tests.log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/external-timing-preparation/tests.log).
 
 The real wrapper dry run used attempt 1700 and passed without device access,
-capture output, readiness, or restoration. See [dry-run.log](dry-run.log),
-[execution](dry-run-execution.json), [metadata](dry-run-test.json.gz), and
-[software](dry-run-software.json). Attempt 1700 is an offline preparation
+capture output, readiness, or restoration. See [dry-run.log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/external-timing-preparation/dry-run.log),
+[execution](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/external-timing-preparation/dry-run-execution.json), [metadata](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/external-timing-preparation/dry-run-test.json.gz), and
+[software](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/external-timing-preparation/dry-run-software.json). Attempt 1700 is an offline preparation
 record, not a detector measurement. No ConfigDB, EPICS PV, detector, PCIe,
 timing sequence, IOC, power, or Slurm state was changed during preparation.

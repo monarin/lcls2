@@ -1,5 +1,7 @@
 # Targeted FH overwrite after UED run 4
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 All 44 FP locations accepted FH and retained it through the tested cleanup
 sequence and a later read after trigger gates had been restored.
 
@@ -47,13 +49,13 @@ Configure. No frame test was started.
 
 ## Evidence
 
-- [Summary and artifact checksums](summary.json).
-- [Overwrite CSV](measurement/pixels.csv) and [full record](measurement/readback.json).
-- [Follow-up CSV](after-trigger-restore/pixels.csv) and
-  [full follow-up record](after-trigger-restore/readback.json).
-- [Execution log](execution.log), [follow-up log](after-trigger-restore.log),
-  and [preflight](preflight/readback.json).
-- [Five passing offline checks](offline-tests.log), covering target mapping,
+- [Summary and artifact checksums](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-overwrite-run4/summary.json).
+- [Overwrite CSV](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-overwrite-run4/measurement/pixels.csv) and [full record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-overwrite-run4/measurement/readback.json).
+- [Follow-up CSV](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-overwrite-run4/after-trigger-restore/pixels.csv) and
+  [full follow-up record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-overwrite-run4/after-trigger-restore/readback.json).
+- [Execution log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-overwrite-run4/execution.log), [follow-up log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-overwrite-run4/after-trigger-restore.log),
+  and [preflight](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-overwrite-run4/preflight/readback.json).
+- [Five passing offline checks](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-overwrite-run4/offline-tests.log), covering target mapping,
   exact writes with address-specific storage, retention across cleanup,
   read-failure cleanup, and refusal with an unexpected trbit.
 

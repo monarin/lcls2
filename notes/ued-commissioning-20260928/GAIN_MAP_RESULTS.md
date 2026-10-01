@@ -1,5 +1,7 @@
 # Production UED gain-map comparison — 2026-09-28 PDT
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 The full historical expand2 pattern was captured on drp-ued-cmp003 in both
 MapFML (attempt 05) and MapFHL (attempt 06). **Neither capture has FP/FN
 outside the production persistent list after the first image.** This initial
@@ -10,7 +12,7 @@ pair did not reproduce the historical production-module edge-row FP pattern.
 The unchanged map selects 22,169 FL pixels, including 68 of the 352 known
 bad-gainbit pixels. It is the expand2 map used for ued1015980 runs 2/3/4 and
 the rdsrv421 comparison. Its exact input is archived as
-[gain-map-expand2.npy.gz](gain-map-expand2.npy.gz), with uncompressed SHA256
+[gain-map-expand2.npy.gz](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-expand2.npy.gz), with uncompressed SHA256
 `1739094ffe6e80a7eae0496961730399c0f1dce077f7426e445137fac4434894`.
 [Input review](gain-map-input-review.json) records source paths, selected count,
 coordinate round-trip validation and the historical CSV checksum.
@@ -50,9 +52,9 @@ acceptance under the stated policy.
 
 Every accepted full image decoded, every saved record had Rogue error=0,
 native file framing was complete, both shutdowns were clean, and both camera
-idle restorations succeeded. See [machine-readable results](gain-map-results.json),
-[MapFML frame-by-frame review](gain-map-attempt05-review.json) and
-[MapFHL frame-by-frame review](gain-map-attempt06-review.json).
+idle restorations succeeded. See [machine-readable results](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-results.json),
+[MapFML frame-by-frame review](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-attempt05-review.json) and
+[MapFHL frame-by-frame review](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-attempt06-review.json).
 
 ## Comparison with task history
 
@@ -68,7 +70,7 @@ had one known bad FP and 22 known bad FN pixels, with no additional production
 edge-row FPs. These are different module-specific bad coordinates; its mask
 was not applied to the production data. The original task excerpts and the
 user's MapFHL/MapFML labeling correction are in
-[gain-map-history-evidence.json](gain-map-history-evidence.json).
+[gain-map-history-evidence.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-history-evidence.json).
 
 Today's production result therefore resembles the rdsrv421 outcome **after
 each module's own known-bad accounting**, despite the earlier production data
@@ -85,7 +87,7 @@ gain-bit checks. No bundle promotion or additional live tests were performed.
 
 ## Final state and retained evidence
 
-Independent [postflight](postflight-gain-map.json) confirms readout off, the
+Independent [postflight](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/postflight-gain-map.json) confirms readout off, the
 prior source-3 internal idle triggering at 10 Hz restored, ADC done/pass, and
 frame count 302 stable across two samples with rate zero. The monitor IOC
 remains running. The last loaded map is MapFHL; PCIe remains in local timing
@@ -95,10 +97,10 @@ plus Configure/readback verification is required before returning to DAQ.
 - Raw data/copied maps/all-frame mismatch masks: `attempt05-mapfml/` and
   `attempt06-mapfhl/` on the shared workspace (excluded from Git).
 - Full test records including selected-pixel lists:
-  [attempt 05](test-attempt05.json.gz), [attempt 06](test-attempt06.json.gz).
+  [attempt 05](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/test-attempt05.json.gz), [attempt 06](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/test-attempt06.json.gz).
   These are lossless gzip copies of the original JSON files.
-- Assessed coordinate CSVs: [MapFML](gain-map-attempt05-mismatches.csv),
-  [MapFHL](gain-map-attempt06-mismatches.csv). Within-baseline and historical
+- Assessed coordinate CSVs: [MapFML](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-attempt05-mismatches.csv),
+  [MapFHL](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-attempt06-mismatches.csv). Within-baseline and historical
   membership are explicit fields, not deleted rows.
 - Original software manifests, console/launch logs and restoration readbacks
   are retained by attempt number. Data/map/review checksums are in the JSON
@@ -108,7 +110,7 @@ plus Configure/readback verification is required before returning to DAQ.
   exports post-first-frame counts. Verification used the earlier real FL
   capture plus a synthetic wire-format capture with a first-frame-only FP,
   a persistent outside-baseline FP and a persistent known FN; see
-  [validation](gain-map-review-validation.txt).
+  [validation](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-review-validation.txt).
 
 The first launch failed before hardware access because the original map path
 was not mounted on drp-ued-cmp003. The retry used a checksum-identical shared

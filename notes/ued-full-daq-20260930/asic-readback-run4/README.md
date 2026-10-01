@@ -1,5 +1,7 @@
 # Direct ASIC readback after UED run 4
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 All 44 FP locations requested as FH (pixel code 12) read back as code 8
 (FL with trbit 1) on two passes. All eight affected ASICs had trbit 1 before
 and after the read. This supports an actual retained pixel-configuration
@@ -31,13 +33,13 @@ ASIC cleanup and control restoration reported no errors.
 
 ## Evidence
 
-- [Per-pixel CSV](measurement/pixels.csv): raw and ASIC coordinates, requested
+- [Per-pixel CSV](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-readback-run4/measurement/pixels.csv): raw and ASIC coordinates, requested
   code, both hardware reads, trbit and comparison results.
-- [Full measurement](measurement/readback.json): identity, states, timestamps,
+- [Full measurement](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-readback-run4/measurement/readback.json): identity, states, timestamps,
   script hash, targets, cleanup and timing.
-- [Summary and checksums](summary.json).
-- [Execution log](execution.log), [preflight](preflight/readback.json), and
-  [three passing offline tests](offline-tests.log).
+- [Summary and checksums](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-readback-run4/summary.json).
+- [Execution log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-readback-run4/execution.log), [preflight](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-readback-run4/preflight/readback.json), and
+  [three passing offline tests](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/asic-readback-run4/offline-tests.log).
 - [Reader](../read-fp-pixels.py) and [offline tests](../test_read_fp_pixels.py).
 
 The tests check the run-4 target selection and a specific rotated coordinate,

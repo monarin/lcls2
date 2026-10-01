@@ -1,5 +1,7 @@
 # UED internal-trigger test preparation — 2026-09-28
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Mona selected internal triggering for the standalone test and requested that
 we preserve the settings or verify that DAQ configuration restores them. The
 UED profile is now `ready_for_test`: this permits an initial commissioning
@@ -8,9 +10,9 @@ in this preparation step; no images were acquired.
 
 ## Evidence and selected settings
 
-Read-only observations are in [registers.json](registers.json), with complete
-console output in [registers.log](registers.log). The first attempt used an
-incorrect PyRogue relative-node lookup; [that log](registers-path-error.log) is
+Read-only observations are in [registers.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-settings-20260928/registers.json), with complete
+console output in [registers.log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-settings-20260928/registers.log). The first attempt used an
+incorrect PyRogue relative-node lookup; [that log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-settings-20260928/registers-path-error.log) is
 retained. The corrected probe read all requested existing nodes; four readout
 fields are absent because their declarations are commented out in the pinned
 Python model, not because a hardware transaction timed out.
@@ -45,7 +47,7 @@ The revision-key endpoint returned HTTP 403, while configuration reads were
 allowed. Two successive full configuration responses matched. The content
 hash identifies this snapshot; no revision key is claimed. No serial-DB
 composition or relative configuration was required. See
-[config-summary.json](config-summary.json).
+[config-summary.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-settings-20260928/config-summary.json).
 
 The latest matched DAQ logs are the September 25, 15:11:22 group under
 `/sdf/home/u/uedopr/daq/logs/2026/09/`. The detector log records the same principal
@@ -73,7 +75,7 @@ uses the current `AsicRoClkHalfT` field, pipeline delay 68, and the configured
 ASIC registers. It omits AsicMask writes, nonexistent model fields, scope/ADC
 test commands, PixelDummy, and the same ASIC-3 fields explicitly skipped by
 `epixquad1kfps_config.apply_dict`. Every exclusion is recorded in
-[baseline-review.json](baseline-review.json).
+[baseline-review.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-settings-20260928/baseline-review.json).
 
 Test overrides disable trigger/readout during loading and disable charge
 injection. The gain writer programs the selected gain map after baseline load.

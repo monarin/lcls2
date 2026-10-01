@@ -1,2 +1,3 @@
 attempt*/
-map-inputs/
+map-inputs/*
+!map-inputs/expand2.npy

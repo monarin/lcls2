@@ -19,7 +19,7 @@ legacy_revision = subprocess.check_output(
     ['git', '-C', str(checkout), 'rev-parse', '8e6f55eb2^'], text=True).strip()
 legacy = subprocess.check_output(
     ['git', '-C', str(checkout), 'show', legacy_revision + ':' + relative], text=True)
-cfg = json.loads(gzip.decompress((folder / 'beam-current.json.gz').read_bytes()))
+cfg = json.loads(gzip.decompress((folder.parent / 'ued-settings-20260928/beam-config.json.gz').read_bytes()))
 
 
 def functions(source, names, namespace):

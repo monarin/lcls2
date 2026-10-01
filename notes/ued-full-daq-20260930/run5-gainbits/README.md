@@ -1,5 +1,7 @@
 # UED run 5: post-Configure targeted FH repair removes extra FPs
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 After normal TEST Configure, overwriting only the 44 saved FP addresses to FH
 produced 1,084 complete, undamaged frames with zero FPs and zero FNs outside
 the 352-pixel known-bad baseline. All 1,083 frames assessed after the first have
@@ -35,15 +37,15 @@ repair brings hardware into agreement with the recorded configuration.
 
 ## Evidence
 
-- [Full-run review](review.json), [per-frame counts](frames.csv),
-  [remaining known-bad coordinates](after-first-mismatches.csv), and [counts](counts.npz).
-- [Test summary](../post-configure-overwrite/summary.json).
-- [Post-Configure repair CSV](../post-configure-overwrite/repair/pixels.csv),
-  [full repair record](../post-configure-overwrite/repair/readback.json).
-- [Post-run ASIC CSV](../post-configure-overwrite/after-run/pixels.csv),
-  [full post-run record](../post-configure-overwrite/after-run/readback.json).
-- [DAQ run record](../post-configure-overwrite/run.json) and
-  [DRP transitions](../post-configure-overwrite/drp-transitions.log).
+- [Full-run review](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run5-gainbits/review.json), [per-frame counts](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run5-gainbits/frames.csv),
+  [remaining known-bad coordinates](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run5-gainbits/after-first-mismatches.csv), and [counts](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run5-gainbits/counts.npz).
+- [Test summary](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/post-configure-overwrite/summary.json).
+- [Post-Configure repair CSV](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/post-configure-overwrite/repair/pixels.csv),
+  [full repair record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/post-configure-overwrite/repair/readback.json).
+- [Post-run ASIC CSV](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/post-configure-overwrite/after-run/pixels.csv),
+  [full post-run record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/post-configure-overwrite/after-run/readback.json).
+- [DAQ run record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/post-configure-overwrite/run.json) and
+  [DRP transitions](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/post-configure-overwrite/drp-transitions.log).
 
 The finalized detector stream is
 `/sdf/data/lcls/drpsrcf/ffb/ued/uedc00107/xtc/uedc00107-r0005-s001-c000.xtc2`.

@@ -1,5 +1,7 @@
 # UED run 2 with the intended submodule bundle — September 30, 2026
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 **The extra FP pattern persists with the intended test bundle.** Experiment
 `uedc00107`, run 2 has 44 FP pixels outside the 352-pixel known-bad list and
 68 FN pixels inside it in every one of 3,428 assessed frames. The first frame
@@ -67,12 +69,12 @@ PYTHONPATH="$PWD/install/lib/python3.9/site-packages" PS_PARALLEL=none \
 
 Use a new output directory and the finalized filename after transfer finishes.
 
-- [review.json](review.json): Configure checks, counts, rate, scope and hashes.
-- [after-first-mismatches.csv](after-first-mismatches.csv): all 112 coordinates.
-- [frames.csv](frames.csv): per-frame gain-bit counts and timestamps.
-- [counts.npz](counts.npz): full-coordinate count arrays and baseline/input masks.
-- [run1-comparison.json](run1-comparison.json): exact coordinate-set comparison.
-- [config-comparison.json](config-comparison.json): saved hardware-config comparison.
+- [review.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run2-gainbits/review.json): Configure checks, counts, rate, scope and hashes.
+- [after-first-mismatches.csv](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run2-gainbits/after-first-mismatches.csv): all 112 coordinates.
+- [frames.csv](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run2-gainbits/frames.csv): per-frame gain-bit counts and timestamps.
+- [counts.npz](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run2-gainbits/counts.npz): full-coordinate count arrays and baseline/input masks.
+- [run1-comparison.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run2-gainbits/run1-comparison.json): exact coordinate-set comparison.
+- [config-comparison.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run2-gainbits/config-comparison.json): saved hardware-config comparison.
 
 Output checksums were independently verified after analysis. The coordinate
 comparison confirms no run-1 mismatch disappeared and exactly one FP was added.

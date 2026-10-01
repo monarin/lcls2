@@ -4,6 +4,7 @@ import copy
 import hashlib
 import io
 import json
+import os
 from pathlib import Path
 import runpy
 import subprocess
@@ -11,12 +12,12 @@ import subprocess
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
-PR = Path('/sdf/home/m/monarin/lcls2_worktree/ued-epixquad-isen-pr')
+PR = Path(os.environ.get('UED_PR_SOURCE', '/sdf/home/m/monarin/lcls2_worktree/ued-epixquad-isen-pr'))
 namespace = runpy.run_path(str(HERE.parent/'gain-writer-diagnosis/replay.py'))
 source = PR/'psdaq/psdaq/configdb/epixquad1kfps_config.py'
 namespace['functions'].__globals__['SOURCE'] = source
 functions = namespace['functions']()
-cfg = json.loads(namespace['CONFIG'].read_text())
+cfg = namespace['load_config']()
 expected = np.where(np.load(namespace['MASK'], allow_pickle=False), 8, 12)
 results = {}
 for write in (True, False):

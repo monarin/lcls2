@@ -1,5 +1,7 @@
 # External UED timing: attempt 17
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Captured September 30, 2026, about 21:06 PDT on drp-ued-cmp003, after Mona
 powered on the detector and authorized capture. Operator enabled groupca Run
 after READY. The same expand2 map and DAQ gain writer were used, with
@@ -66,9 +68,9 @@ The corrected recorder has not been used for another hardware capture.
 
 ## Evidence and replay
 
-[summary.json](summary.json) records timing and exact run-3 FP comparison.
-[review.json](review.json) contains all per-image gain counts and source hashes.
-[after-first-mismatches.csv](after-first-mismatches.csv) preserves all 68
+[summary.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/external-timing-20260930/summary.json) records timing and exact run-3 FP comparison.
+[review.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/external-timing-20260930/review.json) contains all per-image gain counts and source hashes.
+[after-first-mismatches.csv](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/external-timing-20260930/after-first-mismatches.csv) preserves all 68
 remaining FN coordinates. The NPZ files retain all-frame and assessed counts.
 Original metadata, profiles, YAMLs and logs are compressed here; original
 capture status and mismatch artifacts in attempt17-mapfhl were not changed.

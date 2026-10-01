@@ -1,5 +1,7 @@
 # UED standalone 360 Hz settings review — September 30, 2026
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 The standalone baseline omits a readout-clock override applied by full DAQ
 Configure. Match and validate that override at low rate before attempting
 360 Hz. This is a confirmed configuration difference, **not a proven cause
@@ -11,8 +13,8 @@ register or ConfigDB writes and did not acquire data.
 Read current UED `BEAM/epixquad1kfps_0` twice at 19:00 UTC; both responses
 matched each other and the September 28 snapshot. Canonical JSON SHA256:
 `c0d91aa6e7485ab1a2a59eea7c8a823698aeca55c5cc32b9f876b7c66f95d73a`.
-See [configuration summary](config-summary.json), [complete snapshot](beam-config.json.gz)
-and [live readback](registers.json) from `drp-ued-cmp003`, `/dev/datadev_0`, lane 0.
+See [configuration summary](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-360hz-review-20260930/config-summary.json), [complete snapshot](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-360hz-review-20260930/beam-config.json.gz)
+and [live readback](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-360hz-review-20260930/registers.json) from `drp-ued-cmp003`, `/dev/datadev_0`, lane 0.
 
 | Setting | Current standalone / database | Full DAQ or implication |
 | --- | --- | --- |
@@ -61,7 +63,7 @@ helper explicitly disables readout, so it is not by itself a recording setup.
 
 ## Historical failure and remaining uncertainty
 
-The [preserved user report](history-360hz.json) from June 29 is for the test
+The [preserved user report](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-360hz-review-20260930/history-360hz.json) from June 29 is for the test
 module on **rdsrv421**, FW 2.3.0, FL. The 360 Hz file
 `/tmp/data_20260629_150150.dat` contained 1960 channel-1 records:
 171 of 48 bytes, 1453 of 1616 bytes, and 336 of 1656 bytes; no full images
@@ -108,11 +110,11 @@ before returning to production DAQ.
 
 ## Evidence collection
 
-[fetch_config.py](fetch_config.py) and [read_settings.py](read_settings.py)
+[fetch_config.py](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-360hz-review-20260930/fetch_config.py) and [read_settings.py](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-360hz-review-20260930/read_settings.py)
 are read-only evidence collectors. Source `scripts/setup_ued_epixquad_test.sh`
 before the ConfigDB collector; this supplies the normal environment/auth.
 Initial environment/route failures are retained in `config-fetch*.log`;
-[config-fetch-setup.log](config-fetch-setup.log) records the successful fetch.
-[registers.log](registers.log) preserves the live read output. Four unavailable
+[config-fetch-setup.log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-360hz-review-20260930/config-fetch-setup.log) records the successful fetch.
+[registers.log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-360hz-review-20260930/registers.log) preserves the live read output. Four unavailable
 readout fields are reported as errors because the pinned model lacks them;
 the relevant clock, trigger, pipeline and ADC reads succeeded.

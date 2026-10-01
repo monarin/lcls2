@@ -1,9 +1,0 @@
-test_identical_standalone_register_sequence (test_epixquad_standalone_daq_writer.Tests) ... ok
-test_reject_metadata_mismatch (test_epixquad_standalone_daq_writer.Tests) ... ok
-test_reject_trbit_mismatch (test_epixquad_standalone_daq_writer.Tests) ... ok
-test_write_failure_keeps_gates_off_and_cleans_asics (test_epixquad_standalone_daq_writer.Tests) ... ok
-
-----------------------------------------------------------------------
-Ran 4 tests in 0.324s
-
-OK

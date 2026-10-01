@@ -1,1 +1,0 @@
-PASS: four captures, clock/pipeline readbacks, consecutive sequences, camera counts, zero line-buffer errors, ADC health, record errors, exact per-image gain-array equivalence with prior control, clean exits and idle restoration.

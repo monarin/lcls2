@@ -1,5 +1,7 @@
 # Comparison with the July 8 UED experiment-data study
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 The September standalone FH/FM results and persistent FL mismatch pattern
 match the earlier production experiment-data findings. In particular, all
 352 persistent FL mismatches are the previously identified UED column pair;
@@ -14,7 +16,7 @@ report is at history line 8411, timestamp 2026-07-08T17:48:04.528Z. Its
 underlying tool outputs at lines 8383, 8391, 8399 and 8400 record the actual
 run results and coordinate intersections. Relevant outputs and the nine
 fixed-mode run summaries are preserved in
-[history-fixed-gain-evidence.json](history-fixed-gain-evidence.json), with the
+[history-fixed-gain-evidence.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/history-fixed-gain-evidence.json), with the
 original history path and line numbers. This comparison recovered that
 recorded analysis; it did not reread the historical XTC files.
 
@@ -88,6 +90,6 @@ needs its own investigation.
 
 Reproduce the offline comparison with `compare_fixed_gain_history.py` in
 the DAQ Python environment and this checkout's psdaq on PYTHONPATH.
-[fixed-gain-history-comparison.json](fixed-gain-history-comparison.json)
+[fixed-gain-history-comparison.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/fixed-gain-history-comparison.json)
 records exact histograms, source checksums and coordinate comparisons. No
 detector access or live setting changes were made for this comparison.

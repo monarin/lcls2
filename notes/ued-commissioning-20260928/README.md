@@ -1,5 +1,7 @@
 # UED 50-frame commissioning — 2026-09-28
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Latest: the [DAQ-clock 10 → 360 → 10 Hz test](clock3-rates-20260930/README.md)
 passed in MapFHL after a separate 10 Hz prerequisite. At 360 Hz, 87 consecutive
 full images were saved, with zero FP and the same 68 known FN per assessed
@@ -51,7 +53,7 @@ then calls StopRun and closes the writer. It attempts every timing buffer
 even if one disable fails, and still attempts this step if camera quiesce
 fails. The second live attempt verified the corrected order. All 14 offline
 tests passed, including native Rogue writer/reader integration and failure
-cleanup. See [offline-tests.log](offline-tests.log).
+cleanup. See [offline-tests.log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/offline-tests.log).
 
 ## Scope and remaining observations
 
@@ -71,10 +73,10 @@ later gain-map known-bad-list review. Candidates are observations, not automatic
 exclusions. Both original FH captures were exported offline under their own
 `mismatch-records-v1/` subdirectories without modifying the original records;
 each has zero candidates across 50 images. See
-[backfill locations/checksums](mismatch-backfill.json),
-[attempt 01 metadata](mismatch-attempt01-metadata.json),
-[attempt 02 metadata](mismatch-attempt02-metadata.json), and
-[16-test verification](mismatch-tests.log).
+[backfill locations/checksums](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/mismatch-backfill.json),
+[attempt 01 metadata](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/mismatch-attempt01-metadata.json),
+[attempt 02 metadata](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/mismatch-attempt02-metadata.json), and
+[16-test verification](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/mismatch-tests.log).
 
 Keep the bundle in test status until that validation is complete. After
 successful testing, commit/review the validated superproject gitlinks and
@@ -87,7 +89,7 @@ commissioning is not that promotion.
 Camera identity matched before both restorations. Both readbacks restored
 the prior idle state: TrigSrcSel=3, TrigEn=true, AutoTrigEn=true,
 AutoTrigPer=15625000 (10 Hz), RdoutEn=false. ADC remained done/pass.
-The [postflight snapshot](postflight.json) independently confirms this;
+The [postflight snapshot](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/postflight.json) independently confirms this;
 camera frame count was 100 and unchanged across two samples, with rate=0.
 The monitor IOC was left running.
 
@@ -115,10 +117,10 @@ repositories, local patches, script hashes and the lcls2 diff at execution.
 The profile note was updated after capture to record the observed payloads;
 the executed profile copies remain unchanged in the attempt directories.
 
-- [Attempt 01 record](test-attempt01.json), [software](software-attempt01.json),
-  [payload review](attempt01-payload-review.json), [restoration](restore-attempt01.json).
-- [Attempt 02 record](test-attempt02.json), [software](software-attempt02.json),
-  [payload review](attempt02-payload-review.json), [restoration](restore-attempt02.json).
+- [Attempt 01 record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/test-attempt01.json), [software](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/software-attempt01.json),
+  [payload review](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/attempt01-payload-review.json), [restoration](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/restore-attempt01.json).
+- [Attempt 02 record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/test-attempt02.json), [software](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/software-attempt02.json),
+  [payload review](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/attempt02-payload-review.json), [restoration](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/restore-attempt02.json).
 - `execution-attemptNN.json` records the command and capture/restore exit codes;
   both restoration exits were 0. Attempt 02 acquisition plus drain took 5.34 s.
 - `run_once.py --attempt N` is the host-gated, bounded commissioning wrapper;

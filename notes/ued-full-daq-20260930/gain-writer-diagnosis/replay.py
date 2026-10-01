@@ -7,8 +7,8 @@ import ast
 from collections import Counter, deque
 from contextlib import redirect_stdout
 import copy
-import difflib
 import hashlib
+import gzip
 import io
 import json
 import logging
@@ -19,13 +19,16 @@ from unittest.mock import patch
 
 import numpy as np
 from psdaq.configdb.epixquad_layout import RAW_ASIC_LAYOUT, RAW_SHAPE
-from psdaq.debugtools.epixquad1kfps import capture_gain_writer as writers
 from psdaq.debugtools.epixquad1kfps import write_gain_mode_standalone as gain
 
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE = ROOT / 'psdaq/psdaq/configdb/epixquad1kfps_config.py'
-CONFIG = Path('/sdf/home/u/uedopr/daq/gainmap-test-20260930/test-mapfhl.json')
+CONFIG = Path(__file__).with_name('test-mapfhl.json.gz')
 MASK = ROOT / 'notes/ued-commissioning-20260928/map-inputs/expand2.npy'
+
+
+def load_config():
+    return json.loads(gzip.decompress(CONFIG.read_bytes()))
 
 
 class Node:
@@ -121,21 +124,8 @@ class Recorder:
                     ideal_map_mismatches=int(np.count_nonzero(raw != expected)))
 
 
-def candidate_source():
-    original = SOURCE.read_text()
-    marker = "    if writePixelMap:\n        if standalone_plan is not None:"
-    replacement = """    if writePixelMap:
-        # Expert ConfigDB includes the running value IsEn=0. Reassert the
-        # programming state after apply_dict, before any matrix/pixel writes.
-        for i in asics:
-            retry(cbase.Epix10kaSaci[i].IsEn.set, True)
-        if standalone_plan is not None:"""
-    assert original.count(marker) == 1
-    return original.replace(marker, replacement)
-
-
-def functions(candidate=False):
-    module = ast.parse(candidate_source() if candidate else SOURCE.read_text())
+def functions():
+    module = ast.parse(SOURCE.read_text())
     names = {'config_expert', 'apply_dict', 'retry', '_normalize_raw_pixel_map',
              '_raw_pixel_map_shape', '_apply_raw_pixel_map_program', 'mode',
              'get_trigger_buffers', 'epixquad_disable_runtrigger', 'epixquad_enable_runtrigger'}
@@ -149,35 +139,20 @@ def functions(candidate=False):
 
 
 def main():
-    cfg = json.loads(CONFIG.read_text())
+    cfg = load_config()
     expected = np.where(np.load(MASK, allow_pickle=False), 8, 12)
     np.testing.assert_array_equal(np.asarray(cfg['user']['pixel_map_raw']).reshape(RAW_SHAPE), expected)
-    env = functions()
     results = {}
-    for variant in ('original_daq_configure', 'standalone_adapter_configure', 'daq_helper_in_standalone', 'candidate_isen_only'):
+    for name, standalone in (('current_daq_configure', False), ('standalone_adapter_configure', True)):
         recorder = Recorder(cfg)
-        current = functions(candidate=True) if variant == 'candidate_isen_only' else env
-        selector = str(MASK) if variant == 'standalone_adapter_configure' else ''
-        with patch.dict(os.environ, EPIXQUAD_STANDALONE_GAINMAP=selector), redirect_stdout(io.StringIO()):
-            if variant == 'daq_helper_in_standalone':
-                selected, _ = gain._selected_pixels_from_map(str(MASK))
-                from types import SimpleNamespace
-                writers.program(recorder.cam, SimpleNamespace(asics=list(range(16)), mode=gain.GAIN_MODES['mapfhl']),
-                                selected, dict(name='daq'), env['_apply_raw_pixel_map_program'])
-            else:
-                current['config_expert'](recorder.base, copy.deepcopy(cfg))
-        results[variant] = recorder.result(expected)
-        assert results[variant]['ideal_map_mismatches'] == 0
-    assert results['original_daq_configure']['writes'] == {'WriteMatrixData:IsEn=0':16, 'WritePixelData:IsEn=0':22169}
-    for name in ('standalone_adapter_configure', 'daq_helper_in_standalone', 'candidate_isen_only'):
-        assert results[name]['writes'] == {'WriteMatrixData:IsEn=1':16, 'WritePixelData:IsEn=1':22169}
-    assert results['candidate_isen_only']['map_register_trace_sha256'] == results['original_daq_configure']['map_register_trace_sha256']
-    patch_path = Path(__file__).with_name('candidate-isen-only.patch')
-    patch_path.write_text(''.join(difflib.unified_diff(SOURCE.read_text().splitlines(keepends=True),
-                         candidate_source().splitlines(keepends=True),
-                         fromfile='a/psdaq/psdaq/configdb/epixquad1kfps_config.py',
-                         tofile='b/psdaq/psdaq/configdb/epixquad1kfps_config.py', n=1)))
-    print(json.dumps(dict(scope='Offline source-function replay; ideal addressing only, no electrical ASIC model or hardware access',
+        env = functions()
+        with patch.dict(os.environ, EPIXQUAD_STANDALONE_GAINMAP=str(MASK) if standalone else ''), redirect_stdout(io.StringIO()):
+            env['config_expert'](recorder.base, copy.deepcopy(cfg))
+        result = recorder.result(expected)
+        assert result['ideal_map_mismatches'] == 0
+        assert result['writes'] == {'WriteMatrixData:IsEn=1':16, 'WritePixelData:IsEn=1':22169}
+        results[name] = result
+    print(json.dumps(dict(scope='Current full Configure source replay; ideal addressing only, no electrical ASIC model or hardware access',
                          sha256={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in (SOURCE, CONFIG, MASK)},
                          results=results), indent=2))
 

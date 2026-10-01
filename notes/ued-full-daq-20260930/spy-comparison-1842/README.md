@@ -1,5 +1,7 @@
 # DAQ spy YAML versus a fresh standalone reference
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 September 30, 2026. DAQ snapshots came from `drp-ued-cmp003`:
 `/tmp/config_20260930_184051.yml` (KCU1500) and
 `/tmp/config_epixquad_20260930_184227.yml` (camera). The operator saved these
@@ -32,10 +34,10 @@ errors or line-buffer errors, and ADC status is done/pass. Host arrival rate
 over this short capture is 230.8 Hz, so this is evidence of gain correctness
 at the programmed internal period, not a sustained 360-Hz throughput test.
 
-See [gain review](attempt13-review.json), [payload sizes](attempt13-payloads.json),
-[sequences](attempt13-sequences.json), [capture metadata](attempt13-test.json.gz),
-[software provenance](attempt13-software.json), and
-[persistent mismatches](attempt13-after-first-mismatches.csv).
+See [gain review](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/spy-comparison-1842/attempt13-review.json), [payload sizes](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/spy-comparison-1842/attempt13-payloads.json),
+[sequences](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/spy-comparison-1842/attempt13-sequences.json), [capture metadata](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/spy-comparison-1842/attempt13-test.json.gz),
+[software provenance](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/spy-comparison-1842/attempt13-software.json), and
+[persistent mismatches](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/spy-comparison-1842/attempt13-after-first-mismatches.csv).
 The uncommitted native file remains under
 `../../ued-commissioning-20260928/attempt13-mapfhl/capture.dat` (95290056 bytes),
 SHA256 `dc347ebb6af02c10d6cb11ef38677c66b18f6bc231f5d9961c57d4e8b36009ad`.
@@ -52,8 +54,8 @@ values. Neither these files nor GUI SaveConfig verify pixel SRAM contents.
 All **1681 camera fields** occur in both snapshots: **1672 match**, nine differ.
 All **401 DAQ PCIe fields** occur in standalone: **382 match**, nineteen differ.
 Standalone exposes 32 additional SysMon/QSFP fields, not comparison failures.
-The machine-readable [comparison](attempt13-comparison.json) and complete CSVs
-([camera](attempt13-camera.csv), [PCIe](attempt13-pcie.csv)) preserve every field.
+The machine-readable [comparison](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/spy-comparison-1842/attempt13-comparison.json) and complete CSVs
+([camera](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/spy-comparison-1842/attempt13-camera.csv), [PCIe](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/spy-comparison-1842/attempt13-pcie.csv)) preserve every field.
 
 | Setting | Standalone | DAQ spy | Interpretation |
 |---|---|---|---|
@@ -108,8 +110,8 @@ isolation; the YAML alone cannot resolve them.
 
 Initial capture cleanup succeeded. The separate idle-restoration subprocess
 then failed before hardware access because Qt expected a display. Its log is
-preserved in [initial failure](attempt13-initial-restore-failure.log). A retry
-with `QT_QPA_PLATFORM=offscreen` succeeded; [readbacks](attempt13-restoration.json)
+preserved in [initial failure](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/spy-comparison-1842/attempt13-initial-restore-failure.log). A retry
+with `QT_QPA_PLATFORM=offscreen` succeeded; [readbacks](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/spy-comparison-1842/attempt13-restoration.json)
 confirm readout False, trigger source 3, auto period 15625000, auto trigger and
 trigger enables True (the established 10-Hz idle state), and ADC done/pass.
 PCIe remains in standalone configuration; a normal DAQ start/Configure is
@@ -124,7 +126,7 @@ attempt-13 wrapper crashed while archiving its failed restore, so its usual
 and successful manual retry are preserved separately rather than fabricating it.
 The two offline capture/writer test files pass (27 tests), including a regression
 for a restore crash, missing output, timeout, and stale-result exclusion; see
-[test log](script-tests.log). A local run initially lacked `SUBMODULEDIR`; the
+[test log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/spy-comparison-1842/script-tests.log). A local run initially lacked `SUBMODULEDIR`; the
 reported passing run used the configured DAQ environment on the detector node,
 with hardware access mocked. The source-only
 capture instrumentation does not change the installed DAQ gain writer; the

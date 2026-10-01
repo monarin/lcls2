@@ -1,1 +1,0 @@
-Synthetic review passed with wire-layout round-trip verified: first-frame-only FP retained in full totals, persistent FP remains outside baseline, persistent FN is classified within baseline. Real FL control also matched prior counts.

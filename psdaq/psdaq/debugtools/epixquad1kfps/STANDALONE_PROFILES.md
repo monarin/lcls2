@@ -1,5 +1,8 @@
 # Profiled standalone ePix Quad tests
 
+See [the repeat-test guide](../../../../notes/epixquad/README.md) for the tested
+IsEn fix, current evidence locations and module-specific validation limits.
+
 Use one implementation with version-controlled host profiles, rather than
 maintaining separate copies of scripts. These tools use Rogue directly and do
 not require the LCLS DAQ or devGui. `capture_standalone.py` programs the gain
@@ -9,7 +12,7 @@ one process. It does not produce XTC2.
 | Profile | Current state |
 | --- | --- |
 | `profiles/rdsrv421.json` | Existing C1100/PGP4/XpmMini bench settings, PROM-check bypass, 10 Hz camera auto-trigger. The new capture lifecycle needs hardware validation. |
-| `profiles/drp-ued-cmp003.json` | KCU1500/PGP4 lane 0, local XpmMini, 10 Hz camera auto-trigger, ConfigDB-derived baseline. PROM startup/full-image transport verified; FH/FM gain-bit checks pass. FL mismatches remain under investigation. |
+| `profiles/drp-ued-cmp003.json` | KCU1500/PGP4 lane 0, local XpmMini, 10 Hz camera auto-trigger, ConfigDB-derived baseline. FH/FM/FL and mixed-map captures verified in September 2026; FL established the module-specific 352-pixel known-bad list. See the repeat-test guide for scope. |
 
 The production host uses a different card/environment from the bench. Its
 settings and internal-trigger choice are recorded in
@@ -20,11 +23,12 @@ on UED in the recorded FH/FM/FL tests. PROM validation remains
 enabled: failure stops startup and must not be bypassed automatically.
 There is no CLI override for profile status or the host guard.
 
-Timing can be `xpmmini` or `external`. The current shared `external` startup uses
-LCLS-II/186 MHz initialization; it does not implement UED's full 119 MHz dual
-trigger setup. The UED test intentionally uses XpmMini. A full DAQ reinitialize
-and Configure is needed to reapply the production path afterward; Enable alone
-is insufficient. Preserve/read back the saved settings as described in the
+Timing can be `xpmmini` or `external`. The dedicated
+`profiles/drp-ued-cmp003-external.json` selects UED's 119 MHz dual-trigger
+implementation through `ued_external_timing`; generic external profiles use
+LCLS-II/186 MHz initialization. The dedicated UED path passed attempt 17 at
+360 Hz with operator groupca control. A full DAQ reinitialize and Configure
+is needed to reapply the production path afterward; Enable alone is insufficient. Preserve/read back the saved settings as described in the
 preparation report. Neither standalone timing choice starts the full DAQ.
 
 ## Prepare and preview

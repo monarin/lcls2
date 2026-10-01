@@ -1,5 +1,7 @@
 # UED run 4: incoming versus pre-write versus disk
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Run 4 (`uedc00107`, September 30, 2026) places the extra FP pixels upstream
 of DRP image conversion and disk writing in the captured sample. All 51 paired
 incoming/pre-write images have identical uint16 pixel words; all 51 pre-write
@@ -33,13 +35,13 @@ through EndRun with no partial tail. This is not an audit of upstream event loss
 
 ## Evidence and reproduction
 
-- [Full-run review](review.json), [per-frame counts](frames.csv),
-  [mismatch coordinates](after-first-mismatches.csv), [count arrays](counts.npz).
-- [Three-stage comparison](../diagnostic-hook/run4-comparison/comparison.json),
+- [Full-run review](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run4-gainbits/review.json), [per-frame counts](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run4-gainbits/frames.csv),
+  [mismatch coordinates](after-first-mismatches.csv), [count arrays](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run4-gainbits/counts.npz).
+- [Three-stage comparison](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/run4-comparison/comparison.json),
   including SHA256 checksums, timestamps, pulse IDs and per-event equality.
-- [Prior-run coordinate comparison](../diagnostic-hook/run4-comparison/prior-run-comparison.json).
-- [Capture manifest](../diagnostic-hook/run4-comparison/capture-manifest.json)
-  and [DRP log evidence](../diagnostic-hook/run4-comparison/drp-evidence.log).
+- [Prior-run coordinate comparison](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/run4-comparison/prior-run-comparison.json).
+- [Capture manifest](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/run4-comparison/capture-manifest.json)
+  and [DRP log evidence](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/run4-comparison/drp-evidence.log).
 
 The capture reports `status=complete`, `paired=51`, zero capture errors and
 finish reason EndRun. All sampled events were selected for disk writing. The

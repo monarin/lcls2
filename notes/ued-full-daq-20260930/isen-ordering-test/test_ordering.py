@@ -19,7 +19,7 @@ BASELINE = json.loads((HERE.parent/'gain-writer-diagnosis/replay.json').read_tex
 
 class OrderingTests(unittest.TestCase):
     def replay(self, standalone=False, write_map=True):
-        cfg = json.loads(REPLAY['CONFIG'].read_text())
+        cfg = REPLAY['load_config']()
         camera = REPLAY['Recorder'](cfg)
         env = REPLAY['functions']()
         with patch.dict(os.environ, EPIXQUAD_STANDALONE_GAINMAP=str(REPLAY['MASK']) if standalone else ''), contextlib.redirect_stdout(io.StringIO()):

@@ -1,5 +1,7 @@
 # UED run 3 at 360 Hz — September 30, 2026
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 **The 43 historical extra FPs persist at 360 Hz with the intended test bundle.**
 Experiment `uedc00107`, run 3 contains 4,628 complete, undamaged ePix images.
 After excluding the first image, all 4,627 assessed images have 43 FP pixels
@@ -67,13 +69,13 @@ PYTHONPATH="$PWD/install/lib/python3.9/site-packages" PS_PARALLEL=none \
 Use a new output directory. The reviewer now labels finalized-through-EndRun
 files separately from in-progress snapshots; gain-bit classification is unchanged.
 
-- [review.json](review.json): hashes, map/identity checks, counts and rate.
-- [after-first-mismatches.csv](after-first-mismatches.csv): all 111 coordinates.
-- [frames.csv](frames.csv): per-frame timestamps and gain-bit counts.
-- [counts.npz](counts.npz): full-coordinate occurrence arrays and masks.
-- [prior-run-comparison.json](prior-run-comparison.json): exact coordinate differences.
-- [config-comparison.json](config-comparison.json): run-2/run-3 Configure comparison.
-- [stream-comparison.json](stream-comparison.json): timing/ePix timestamp agreement.
+- [review.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run3-gainbits/review.json): hashes, map/identity checks, counts and rate.
+- [after-first-mismatches.csv](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run3-gainbits/after-first-mismatches.csv): all 111 coordinates.
+- [frames.csv](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run3-gainbits/frames.csv): per-frame timestamps and gain-bit counts.
+- [counts.npz](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run3-gainbits/counts.npz): full-coordinate occurrence arrays and masks.
+- [prior-run-comparison.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run3-gainbits/prior-run-comparison.json): exact coordinate differences.
+- [config-comparison.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run3-gainbits/config-comparison.json): run-2/run-3 Configure comparison.
+- [stream-comparison.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run3-gainbits/stream-comparison.json): timing/ePix timestamp agreement.
 
 All reviewer output checksums were verified after analysis. DAQ, timing,
 hardware registers and ConfigDB were not modified by this review.

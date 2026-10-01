@@ -1,5 +1,7 @@
 # UED diagnostic capture before disk writing
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 This opt-in hook copies the first 51 sampled ePixQuad events at two points:
 the lane-0 DMA payload before BEBDetector parses it, and the formatted Dgram
 after TEB damage propagation immediately before file-writer submission. It
@@ -125,17 +127,17 @@ incoming packets. Ten tests pass: byte/pixel equality while retaining the
 known 43 FPs, injected input/conversion difference, injected disk corruption,
 missing disk event, truncated file, wrong incoming identity, unselected event,
 missing EndRun, duplicate timestamp and incomplete capture. This is offline validation, not a
-new detector result. See compare-tests.log and the [build record](build-record.json), [build log](build.log.gz), and verification
-logs for [drp-ued-cmp003](verify-detector-host.log) and [uedopr](verify-operator.log).
+new detector result. See compare-tests.log and the [build record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/build-record.json), [build log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/build.log.gz), and verification
+logs for [drp-ued-cmp003](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/verify-detector-host.log) and [uedopr](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/verify-operator.log).
 Run `bash notes/ued-full-daq-20260930/diagnostic-hook/test-native.sh`
 on Rocky 9 to reproduce the sanitized native test.
 
 The same ten replay tests also pass in the final installed DAQ environment
-on drp-ued-cmp003; see [installed-runtime tests](compare-tests-installed.log).
+on drp-ued-cmp003; see [installed-runtime tests](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/compare-tests-installed.log).
 That host does not mount the SDF XTC2 path, so the test used a byte-exact
-three-event prefix on shared storage; [fixture provenance](replay-fixture.json)
+three-event prefix on shared storage; [fixture provenance](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/replay-fixture.json)
 records its source/hash. Set UED_DIAG_TEST_XTC to that fixture to replay there.
-The final formatting rebuild is recorded in [build-final.log.gz](build-final.log.gz).
+The final formatting rebuild is recorded in [build-final.log.gz](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/build-final.log.gz).
 The output directory was prepared and checked writable as uedopr.
 
 The first operator launch exposed a wrapper error: daqmgr executes configuration
@@ -144,9 +146,9 @@ The wrapper now resolves its root from `UED_GAINMAP_SRC`, exported by setup.sh.
 `verify-launch.py` constructs the installed daqmgr `Runner` as uedopr, checks
 the TEST alias, process set, diagnostic arguments and DRP selection, and never
 submits jobs. The corrected wrapper passed this check on ued-daq; see
-[parser verification](verify-launch.log). No binary rebuild was needed.
+[parser verification](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/verify-launch.log). No binary rebuild was needed.
 The original build record preserves the pre-fix helper hashes; the current
-wrapper hash is recorded separately in [launch fix](launch-fix.json).
+wrapper hash is recorded separately in [launch fix](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/diagnostic-hook/launch-fix.json).
 
 The 21:59 launch also exposed missing `UED_GAINMAP_SRC` in daqstat's filtered
 Slurm environment. Acquisition participants reached Ready for transitions;

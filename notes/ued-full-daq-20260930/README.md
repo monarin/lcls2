@@ -1,5 +1,7 @@
 # Full UED DAQ gain-map test instructions
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 See the [post-mortem](POST_MORTEM.md) and [closeout records](closeout/README.md)
 for the minimal IsEn fix, separate master-based PR branch, final validation,
 and scratch archive. The instructions below retain the historical test setup.
@@ -74,12 +76,12 @@ Build completed with exit 0 from source `60fdd7f3944edf839351d43f7e4b8d44d6b4c4b
 Both hosts loaded the intended install and bundle, matched 392 installed psdaq
 Python files to source, resolved all `drp`/`teb` libraries, and passed Unix
 read/execute permission checks. Binary hashes matched across hosts.
-See [build record](build-record.json), [build log](build.log), and verification
-logs for [the detector host](verify-drp-ued-cmp003.log) and
-[the control host](verify-ued-daq.log).
+See [build record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/build-record.json), [build log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/build.log), and verification
+logs for [the detector host](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/verify-drp-ued-cmp003.log) and
+[the control host](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/verify-ued-daq.log).
 
 `groupca` import produces a nonfatal p4p `ClientProvider.close` teardown warning,
-including with the [deployed release](deployed-groupca-check.log); both exit 0.
+including with the [deployed release](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/deployed-groupca-check.log); both exit 0.
 The warning remains documented, not fixed by this build. Imports are checked
 in separate processes to model DAQ service separation. Direct SSH to
 `drp-ued-cmp002` was blocked by host-key verification, so that host was not

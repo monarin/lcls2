@@ -1,5 +1,7 @@
 # FM / FL 50-frame tests — 2026-09-28 PDT
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Historical cross-check: [the July 8 experiment-data study](HISTORICAL_COMPARISON.md)
 already found these exact 352 FL pixels in three UED runs. FH/FM also match
 that study. The extra first-frame FL mismatches remain a separate observation.
@@ -18,7 +20,7 @@ pass, despite successful acquisition and shutdown.
 Each file contains 41 image payloads of 1,095,248 bytes, 9 of 1,095,288 bytes,
 and 503 timing-only 48-byte records. All Rogue error flags are zero. Native
 file framing is complete. Each raw file is 54,791,328 bytes. See the
-[machine-readable results](fm-fl-results.json), [FM record](test-attempt03.json)
+[machine-readable results](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/fm-fl-results.json), [FM record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/test-attempt03.json)
 and [FL record](test-attempt04.json).
 
 ## FL mismatch evidence
@@ -36,16 +38,16 @@ For those two columns, the expected low-gain bit is 1 but the observed bit is
 0. The [persistent candidate CSV](fl-persistent-mismatch-candidates.csv)
 contains the 352 coordinates, 50/50 occurrence counts and fractions. Source
 and subset checksums, selection rule and source capture are in
-[fm-fl-results.json](fm-fl-results.json). This is evidence of reproducibility
+[fm-fl-results.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/fm-fl-results.json). This is evidence of reproducibility
 within one capture, not proof of permanent bad pixels or of the cause.
 
 The original 315,612-row candidate CSV, candidate mask and provenance remain
 under `attempt04-fl/mismatch-records/`; they include every first-frame
 mismatch. No candidates were suppressed from the reported totals. Tracked
-[FL metadata](mismatch-attempt04-metadata.json) records their checksums.
-FM has an empty CSV/mask and [zero-candidate metadata](mismatch-attempt03-metadata.json).
+[FL metadata](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/mismatch-attempt04-metadata.json) records their checksums.
+FM has an empty CSV/mask and [zero-candidate metadata](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/mismatch-attempt03-metadata.json).
 
-The [per-frame report](attempt04-frame-mismatches.json) includes the file record
+The [per-frame report](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/attempt04-frame-mismatches.json) includes the file record
 index, full-image index and counts for each ASIC. Reproduce it offline with
 `review_frame_mismatches.py ATTEMPT OUTPUT_JSON` in the recorded DAQ Python
 environment and this checkout's psdaq on PYTHONPATH.
@@ -55,8 +57,8 @@ environment and this checkout's psdaq on PYTHONPATH.
 Both FM and FL again have first-frame segment means around 13.2–13.3k ADC,
 followed by roughly 2.6–2.9k. This resembles the FH startup behavior. No ADC
 pixels were zero. Per-frame ADC statistics are retained in
-[FM payload review](attempt03-payload-review.json) and
-[FL payload review](attempt04-payload-review.json). Gain bits alone cannot
+[FM payload review](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/attempt03-payload-review.json) and
+[FL payload review](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/attempt04-payload-review.json). Gain bits alone cannot
 distinguish FH from FM or validate analog gain/pedestal quality.
 
 The historical comparison now corroborates ASIC 8 columns 97/98 as an existing
@@ -71,7 +73,7 @@ No extra live repeat, gain-map test, ADC training or PROM programming was run.
 
 Both wrappers restored the prior idle camera settings with verified identity:
 TrigSrcSel=3, TrigEn=true, AutoTrigEn=true, period=15625000 (10 Hz), readout off.
-ADC remained done/pass. The independent [postflight](postflight-fm-fl.json)
+ADC remained done/pass. The independent [postflight](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/postflight-fm-fl.json)
 shows frame count 200, unchanged across two samples, and image rate zero.
 The existing monitor IOC remains running.
 

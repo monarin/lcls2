@@ -1,5 +1,7 @@
 # UED gain-map task closeout
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 The investigation and accounting branch is `features/ued-epix10ka-rdsrv421-daq`.
 Its [post-mortem](../POST_MORTEM.md) and [PR-description draft](PR_DESCRIPTION.md)
 cover the software ordering defect, evidence, correction, and remaining limits.
@@ -13,10 +15,10 @@ The standalone port and diagnostic/test scripts remain on that branch.
 - Fix commit: `a4907da6f`; one file, four added lines, [patch](PR_FIX.patch).
 - Diff scope: reassert ASIC IsEn=True after expert configuration, before map
   programming. No diagnostic code, hardcoded map or targeted overwrite.
-- [Offline actual-source replay](test_pr_source.py) passes; [record](pr-offline-tests.json).
+- [Offline actual-source replay](test_pr_source.py) passes; [record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/closeout/pr-offline-tests.json).
 - [Build recipe](build-pr.sh) builds from that worktree into its own
   `install-ued-isen-pr` prefix, with the validated UED submodule bundle.
-- [Build record](pr-build-record.json) and [operator checks](verify-pr-operator.log)
+- [Build record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/closeout/pr-build-record.json) and [operator checks](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/closeout/verify-pr-operator.log)
   passed; all 379 installed psdaq Python source comparisons matched.
 - [Run-8 validation](pr-validation.json): 1,084 complete, undamaged frames at
   360.282122 Hz; zero outside-known FP/FN including the first frame; 68 known-bad
@@ -55,7 +57,7 @@ destination, checks source size/mtime stability, and verifies recorded XTC
 analysis checksums. Existing unequal destinations are not overwritten. Each
 phase produces an immutable JSON manifest and SHA256SUMS file in scratch.
 The initial data phase verified 126 files / 20,859,507,976 bytes; see
-[the data receipt](data-archive-verified.json).
+[the data receipt](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/closeout/data-archive-verified.json).
 
 Early run-1/2 analyses covered snapshots, not their eventual complete files.
 The archive retains each full finalized file and separately verifies the
@@ -90,7 +92,7 @@ and restart, not just sourcing another setup script.
 
 The DAQ was left **Configured**, alias TEST, recording enabled, last run 8.
 Control, TEB, timing DRP and detector DRP use the clean PR install. Their
-[runtime log headers](pr-runtime-evidence.log) identify commit `a4907da6f` and
+[runtime log headers](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/closeout/pr-runtime-evidence.log) identify commit `a4907da6f` and
 the correct bundle. XPM/groupca and GUI processes were retained. Post-run
 readback restored all gates without errors. The readback client uses the
 diagnostic environment; its initial invocation under the clean PR environment

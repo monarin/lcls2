@@ -1,5 +1,7 @@
 # UED ePixQuad gain-map programming: post-mortem and PR evidence
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 The production UED detector acquired 43–44 extra low-gain pixels outside its
 known-bad list after full DAQ Configure. The requested map was correct in
 ConfigDB and Configure metadata. Direct ASIC reads showed that the extra
@@ -71,7 +73,7 @@ event-loss audit.
 
 Source evidence: [run 3](run3-gainbits/README.md), [run 4](run4-gainbits/README.md),
 [ASIC readback](asic-readback-run4/README.md),
-[overwrite experiment](post-configure-overwrite/summary.json),
+[overwrite experiment](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/post-configure-overwrite/summary.json),
 [standalone port](standalone-daq-writer/README.md),
 [IsEn-only test](isen-ordering-test/README.md),
 [external timing](../ued-commissioning-20260928/external-timing-20260930/README.md).

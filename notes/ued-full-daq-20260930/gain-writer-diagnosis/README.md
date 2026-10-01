@@ -1,5 +1,7 @@
 # DAQ gain-map write diagnosis: IsEn overwritten before programming
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Follow-up: [run 7](../isen-ordering-test/README.md) tested the original DAQ
 writer with only IsEn ordering corrected. All 1,086 frames are clean outside
 known-bad and all 44 prior FP addresses read FH twice afterward. The historical
@@ -42,7 +44,7 @@ The failing-run detector log confirms the expert writes, including:
 
 Its later normal Configure repeats the same sequence at lines 3034–4067.
 The log directory is `/sdf/home/u/uedopr/daq/logs/2026/09/`.
-[Extracted evidence](isen-log-evidence.txt) includes all 16 writes and the
+[Extracted evidence](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/gain-writer-diagnosis/isen-log-evidence.txt) includes all 16 writes and the
 successful run-6 log for comparison. These log messages record requested
 register writes; they are not independent hardware readbacks during programming.
 
@@ -107,7 +109,7 @@ row-0 FL settings while IsEn is zero.
 
 ## Smallest decisive hardware check
 
-[candidate-isen-only.patch](candidate-isen-only.patch) reasserts `IsEn=True`
+[candidate-isen-only.patch](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/gain-writer-diagnosis/candidate-isen-only.patch) reasserts `IsEn=True`
 after expert settings, immediately before the map write. It is reviewed by
 the offline replay but **not applied or deployed**. It preserves the original
 DAQ writer, pixel ordering, camera gates, timing, DB values and cleanup.
@@ -127,3 +129,12 @@ Do not change ConfigDB's running IsEn value to 1 as a workaround. The software
 must own the temporary programming state and restore the acquisition state.
 Production hardening should also ensure cleanup and trigger handling on write
 failure; that is separate from this minimal causal test.
+
+## Retained replay after cleanup
+
+`replay.py` now executes the current fixed original writer and standalone-port
+Configure paths with the committed compressed TEST fixture. It no longer
+attempts to insert the historical candidate patch into already-fixed source.
+The original pre-fix replay and candidate patch remain in the verified scratch
+archive and Git history. `replay.json` is retained as the pre-fix command-trace
+reference used by the ordering regression tests; it is not overwritten.

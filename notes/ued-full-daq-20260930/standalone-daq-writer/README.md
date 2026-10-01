@@ -1,5 +1,7 @@
 # Standalone gain writer inside DAQ Configure
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Run 6 is clean outside the existing known-bad list, without the targeted
 44-pixel repair: 1,084 complete, undamaged frames at 359.971857 Hz, zero FPs,
 zero FNs outside known-bad, and the usual 68 known-bad FNs per frame. The first
@@ -42,8 +44,8 @@ The source changes are in `psdaq.configdb.epixquad1kfps_config` and the new
 `psdaq.debugtools.epixquad1kfps.standalone_daq_writer` module. They were copied
 to the isolated `install-ued-diag-20260930` Python package while the detector
 process was stopped. C++ binaries, conda and submodule pins were unchanged;
-[deployment hashes](deployment.json) and the compressed original config module
-preserve the before/after record. [Operator verification](verify-operator.log)
+[deployment hashes](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/standalone-daq-writer/deployment.json) and the compressed original config module
+preserve the before/after record. [Operator verification](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/standalone-daq-writer/verify-operator.log)
 passed installed Runner parsing, source comparisons, imports and library checks.
 
 `EPIXQUAD_STANDALONE_GAINMAP` selects the adapter and points to the reviewed
@@ -74,12 +76,12 @@ mask hash, write count and elapsed time. The other DAQ processes retained their
 Four offline tests pass: exact ASIC register-write trace equivalence with the
 standalone helper, rejection of mismatched Configure pixel metadata, rejection
 of wrong trbits, and gate/ASIC cleanup on an injected write failure. See
-[tests.log](tests.log). No 44-pixel exception list is used by the adapter.
+[tests.log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/standalone-daq-writer/tests.log). No 44-pixel exception list is used by the adapter.
 
-- [Summary and artifact hashes](summary.json).
-- [Configure record](configure.json), [run record](run.json),
-  [DRP evidence](drp-evidence.log).
-- [Post-run ASIC CSV](after-run/pixels.csv) and [complete record](after-run/readback.json).
+- [Summary and artifact hashes](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/standalone-daq-writer/summary.json).
+- [Configure record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/standalone-daq-writer/configure.json), [run record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/standalone-daq-writer/run.json),
+  [DRP evidence](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/standalone-daq-writer/drp-evidence.log).
+- [Post-run ASIC CSV](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/standalone-daq-writer/after-run/pixels.csv) and [complete record](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/standalone-daq-writer/after-run/readback.json).
 
 The optional one-shot DMA diagnostic capture was finalized empty during DAQ
 reset/rediscovery (`disconnect-before-EndRun`, incomplete, zero pairs). No

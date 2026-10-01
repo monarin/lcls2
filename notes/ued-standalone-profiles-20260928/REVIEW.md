@@ -1,5 +1,7 @@
 # Standalone profile/capture review — 2026-09-28
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Scope: shared host profiles and startup for the gain writer, optional GUI, and
 new headless recorder. Reviewed CLI override precedence, host/card guards,
 startup failure cleanup, stream callback/file-close synchronization, timeout

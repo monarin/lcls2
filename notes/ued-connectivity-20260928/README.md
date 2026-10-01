@@ -1,5 +1,7 @@
 # UED detector connectivity — 2026-09-28 16:14 PDT
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Read-only probe on `drp-ued-cmp003`, `/dev/datadev_0`, lane 0 succeeded.
 Used the private test submodule bundle and DAQ Python/Rogue 6.1.3.
 
@@ -23,8 +25,8 @@ write, reset, training, PROM operation, timing configuration, or capture was
 performed. This proves register connectivity, not image acquisition or the
 production profile's remaining timing/configuration choices.
 
-Full output: [probe.log](probe.log). Structured readings and script checksum:
-[result.json](result.json). Reusable script:
+Full output: [probe.log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-connectivity-20260928/probe.log). Structured readings and script checksum:
+[result.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-connectivity-20260928/result.json). Reusable script:
 [probe_connection.py](../../psdaq/psdaq/debugtools/epixquad1kfps/probe_connection.py).
 
 Executed on the detector host with the selected test environment:

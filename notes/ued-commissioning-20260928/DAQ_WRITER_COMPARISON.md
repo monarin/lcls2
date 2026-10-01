@@ -1,5 +1,7 @@
 # DAQ-writer and trigger-rate comparison — prepared 2026-09-29
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Status: the first [DAQ-writer hardware pair](DAQ_WRITER_RESULTS_20260930.md)
 passed in both modes at 10 Hz and exactly matched the assessed mismatch arrays
 of the [September 30 standalone controls](GAIN_MAP_REPEAT_20260930.md).
@@ -85,7 +87,7 @@ pinned test bundle. They cover the existing native Rogue file writer/reader,
 all five gain modes, ASIC rotations, all banks and boundary rows, DAQ majority
 background selection, source-path verification, ASIC failure cleanup,
 single-map-write rate sequencing and failure abort, partial-file accounting,
-invalid rates and dry-run hardware isolation. See [offline log](daq-writer-offline-tests.log).
+invalid rates and dry-run hardware isolation. See [offline log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/daq-writer-offline-tests.log).
 
 DAQ register-model checks compile the unchanged helper from the checked-in
 source with hardware imports excluded; production uses a normal module import.

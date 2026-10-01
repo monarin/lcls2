@@ -1,5 +1,7 @@
 # DAQ clock at 10 and 360 Hz — September 30, 2026
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 The UED production module produced full images at an internal trigger setting
 of 360 Hz with `AsicRoClkT=3`, `AsicRoClkHalfT=1`, and ADC pipeline delay 68.
 No historical extra gain-map FP pixels appeared. This is a successful bounded
@@ -62,7 +64,7 @@ remained at the previous profile values. Event-builder per-input timeout
 counters are nonzero even in successful captures; they must not be presented
 as camera image-loss counts. At 360 Hz, final `DataCnt[1]=87` matches the saved
 image count, while final `TimeoutDropCnt[0:3]` values are 70, 9, 96. The complete
-before/after snapshots in [results.json](results.json) preserve startup counts
+before/after snapshots in [results.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/clock3-rates-20260930/results.json) preserve startup counts
 and distinguish these from counter increments. No timeout tuning was attempted.
 
 The historical failure was on rdsrv421 and its exact register state is unknown.
@@ -73,22 +75,22 @@ also does not validate full DAQ triggering, pedestal quality, or calibration.
 ## Final state and evidence
 
 Both wrapper capture/restoration exits were zero; every phase has an empty
-cleanup-error list. [Postflight](postflight.json) confirms readout off,
+cleanup-error list. [Postflight](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/clock3-rates-20260930/postflight.json) confirms readout off,
 source-3 idle triggering restored to 10 Hz, ADC good and frame count 444 stable
 across two samples. **Clock period 3 and MapFHL remain loaded.** PCIe stays in
 standalone local-timing mode with trigger masters off and blowoff on. Full
 reinitialization/Configure is still required before production DAQ use.
 
-[results.json](results.json) records checksums, clock/trigger readbacks,
+[results.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/clock3-rates-20260930/results.json) records checksums, clock/trigger readbacks,
 counters, sequence ranges, gain summaries and record flags. Each capture has
 a `*-review.json`, `*-after-first-mismatches.csv`, `*-payloads.json`, lossless
 `*-test.json.gz`, and software/console records here. Raw data, input copies,
 full mismatch arrays and separate after-first arrays remain in the ignored
 `../attempt11-mapfhl/` and `../attempt12-mapfhl/phaseNN/` directories.
-[archive_review.py](archive_review.py) reproduces the offline reviews without
+[archive_review.py](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/clock3-rates-20260930/archive_review.py) reproduces the offline reviews without
 hardware access. Launch/execution/restoration logs are archived by attempt
 number in the parent directory. The clock-option implementation passed
-[26 offline checks](../clock3-offline-tests.log) before hardware execution.
+[26 offline checks](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/clock3-offline-tests.log) before hardware execution.
 
 Remaining comparisons include MapFML at the new clock/rate, interleaved
 repeated programming, a longer recording-throughput check, and full

@@ -1,5 +1,7 @@
 # UED run 8: clean master-based IsEn PR branch
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 All 1,084 complete, undamaged frames have zero FP/FN outside the unchanged
 352-pixel known-bad baseline. The first frame is clean as well as the 1,083
 assessed frames after it. Each frame has the expected 68 known-bad FNs.
@@ -23,8 +25,8 @@ Data:
 Both streams are also copied and checksum-verified under
 `/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/xtc/`.
 
-- [Full review](review.json), [per-frame counts](frames.csv),
-  [remaining known-bad mismatches](after-first-mismatches.csv).
+- [Full review](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run8-gainbits/review.json), [per-frame counts](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run8-gainbits/frames.csv),
+  [remaining known-bad mismatches](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run8-gainbits/after-first-mismatches.csv).
 - [Validation record](../closeout/pr-validation.json),
-  [post-run ASIC reads](../closeout/pr-after-run/pixels.csv).
+  [post-run ASIC reads](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/closeout/pr-after-run/pixels.csv).
 - [Post-mortem and PR evidence](../POST_MORTEM.md).

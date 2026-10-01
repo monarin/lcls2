@@ -1,9 +1,0 @@
-{
-  "archive_root": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930",
-  "phase": "data",
-  "manifest_sha256": "0622ed1dad09a84489d3a8619d4868800cb0b4e0047140ed22018f92da606c44",
-  "files": 126,
-  "bytes": 20859507976,
-  "status": "verified",
-  "completed_utc": "2026-10-01T06:44:29.444751+00:00"
-}

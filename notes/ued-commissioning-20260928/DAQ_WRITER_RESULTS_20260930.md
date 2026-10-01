@@ -1,5 +1,7 @@
 # DAQ map-helper comparison — 2026-09-30 PDT
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 The first DAQ-writer expand2 capture passed in both MapFML and MapFHL at
 10 Hz internal triggering. **Both assessed mismatch arrays exactly match
 their standalone controls.** None of the historical 43 extra FP pixels
@@ -24,8 +26,8 @@ September 30 standalone controls (07/08). The checkout commit at capture was
 Preflight confirmed the same camera identity, ADC done/pass, readout off,
 source-3 10 Hz idle settings and stable frame count 102. The monitor IOC
 remained running, with no competing detector DRP, GUI or capture observed.
-See [preflight](preflight-daq-writer-20260930.json) and its
-[process/readback log](preflight-daq-writer-20260930.log).
+See [preflight](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/preflight-daq-writer-20260930.json) and its
+[process/readback log](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/preflight-daq-writer-20260930.log).
 
 ## Findings
 
@@ -75,20 +77,20 @@ change, firmware change or test-bundle promotion was performed here.
 
 ## Final state and retained evidence
 
-[Postflight](postflight-daq-writer-20260930.json) confirms ADC done/pass,
+[Postflight](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/postflight-daq-writer-20260930.json) confirms ADC done/pass,
 readout off, verified source-3 10 Hz idle settings restored, and frame count
 204 stable across two samples with rate zero. The last map is MapFHL. PCIe
 remains in standalone timing configuration with trigger masters disabled;
 full reinitialization and Configure/readback verification are required before
 returning to production DAQ operation.
 
-- [Machine-readable comparison](daq-writer-20260930-results.json) records input,
+- [Machine-readable comparison](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/daq-writer-20260930-results.json) records input,
   script and bundle equivalence, exact-array comparisons, data hashes and state.
-- Frame-by-frame reviews: [MapFML](gain-map-attempt09-review.json),
-  [MapFHL](gain-map-attempt10-review.json).
-- Assessed coordinates: [MapFML](gain-map-attempt09-mismatches.csv),
-  [MapFHL](gain-map-attempt10-mismatches.csv).
-- Lossless test records: [09](test-attempt09.json.gz), [10](test-attempt10.json.gz).
+- Frame-by-frame reviews: [MapFML](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-attempt09-review.json),
+  [MapFHL](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-attempt10-review.json).
+- Assessed coordinates: [MapFML](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-attempt09-mismatches.csv),
+  [MapFHL](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-attempt10-mismatches.csv).
+- Lossless test records: [09](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/test-attempt09.json.gz), [10](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/test-attempt10.json.gz).
 - Payload reviews, software manifests, launch/console logs, wrapper execution
   records and restoration readbacks are archived by attempt number.
 - Raw files, copied inputs, all-frame masks and `review-after-first/` arrays

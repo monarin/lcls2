@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "drp-ued-cmp003",
   "status": "ready_for_test",
-  "notes": "Prepared for initial commissioning, not hardware acceptance. KCU1500/PGP4 lane 0 verified 2026-09-28. Mona selected internal triggering: local XpmMini plus 10 Hz camera auto-trigger. Camera baseline derives from the current UED BEAM ConfigDB snapshot. Both full-image payload sizes were observed in 50-frame FH commissioning on 2026-09-28; zero gain-bit mismatches and clean shutdown after the timing-drain fix. Broader gain-map acceptance remains pending. See notes/ued-commissioning-20260928/README.md. PROM validation remains enabled. See notes/ued-settings-20260928/README.md for evidence and restoration.",
+  "notes": "September 2026 production-module tests: KCU1500/PGP4 lane 0, internal XpmMini with camera auto-trigger. ConfigDB-derived baseline and PROM validation enabled. FH/FM and mixed-map tests pass outside the detector-specific known-bad list; FL established 352 persistent locations. For 360 Hz use the separately tested full-period override --asic-ro-clk-ticks 3 after verifying full frames at 10 Hz. Full DAQ Configure additionally needs the IsEn ordering fix; testing its inner helper alone does not cover that sequence. See notes/epixquad/README.md for evidence and scope. Recheck current hardware/settings before reuse.",
   "hosts": [
     "drp-ued-cmp003"
   ],

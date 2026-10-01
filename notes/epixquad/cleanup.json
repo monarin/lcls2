@@ -1,0 +1,9 @@
+{
+  "before_commit": "965b7f85ce98ea0f9d3b54b7ff2af241c62d5df1",
+  "archive": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930",
+  "source_snapshot": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/cleanup-20261001/investigation-before-cleanup.tar",
+  "removed_tracked_files": 511,
+  "removed_verified_untracked_files": 2,
+  "removed_bytes": 6832853,
+  "scope": "Historical evidence moved out of working tree after checksum comparison; no data, installs, hardware or ConfigDB changes."
+}

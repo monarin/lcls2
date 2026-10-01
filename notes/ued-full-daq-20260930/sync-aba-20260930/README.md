@@ -1,5 +1,7 @@
 # Standalone SYNC False / True / False comparison
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 September 30, 2026, 19:39–19:43 PDT on `drp-ued-cmp003`. The user explicitly
 authorized this test with the detector on and DAQ stopped. Preflight found only
 the monitor IOC and CA repeater; no DRP, devGui, or standalone capture process.
@@ -51,7 +53,7 @@ Each native file passes length/hash checks. Image sequences are consecutive:
 are zero; additional 48-byte records are timing-only. ADC status is done/pass,
 camera line-buffer errors are zero, and capture cleanup errors are empty.
 Recorded payload sizes, sequence checks, and counter snapshots are preserved
-in [results.json](results.json).
+in [results.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/sync-aba-20260930/results.json).
 
 The first frame is retained but excluded by the existing assessment policy.
 Its FP/FN counts were 237/22158, 0/68, and 124/22044 respectively. Thus the
@@ -77,12 +79,12 @@ required before DAQ use.
 
 The new `--asic-sync-inj-en 0|1` option is opt-in and the commissioning wrapper
 passes it through. Its regression test checks write-before-map ordering,
-readback failure abort, and cleanup. [28 offline tests passed](script-tests.log)
+readback failure abort, and cleanup. [28 offline tests passed](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/sync-aba-20260930/script-tests.log)
 in the configured DAQ environment. These diagnostic source edits do not
 require or change the already installed DAQ build.
 
-[launch-record.txt](launch-record.txt) records the executed command sequence.
-[archive_compare.py](archive_compare.py) regenerates this archival comparison
+[launch-record.txt](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/sync-aba-20260930/launch-record.txt) records the executed command sequence.
+[archive_compare.py](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/sync-aba-20260930/archive_compare.py) regenerates this archival comparison
 without hardware access. It verifies native data and YAML hashes, exact SYNC
 readbacks, restore results, frame counts, and overlap with the DAQ run-3 CSV.
 Per-attempt files include full YAMLs, software provenance, compressed capture

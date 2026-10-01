@@ -1,0 +1,63 @@
+{
+  "utc": "2026-10-01T16:56:47.907737+00:00",
+  "scope": "Offline cleanup verification; no detector, DAQ, timing, power or ConfigDB operations",
+  "python_environment": "ps_20241122",
+  "pytest": {
+    "passed": 69,
+    "skipped": 3,
+    "skip_reason": "Rogue/PyRogue unavailable in this psana environment; native stream/runtime checks not rerun",
+    "instructions": "OFFLINE_CHECKS.md",
+    "initial_environment_issue": "SUBMODULEDIR missing; exported the tested bundle and reran successfully"
+  },
+  "profile_previews": [
+    "rdsrv421",
+    "drp-ued-cmp003",
+    "drp-ued-cmp003-external"
+  ],
+  "configure_replays": {
+    "investigation_source": "passed",
+    "minimal_PR_source": "passed"
+  },
+  "run8_reanalysis": {
+    "complete_frames": 1084,
+    "endrun_seen": true,
+    "outside_known_FP": 0,
+    "outside_known_FN": 0,
+    "known_FN_per_frame": 68,
+    "xtc_sha256": "208d2268f7fcb685461a1d252c3527964c2e006cb8bd20529bc63eb3f265a1f2"
+  },
+  "archive": {
+    "removed_tracked_files_verified": 511,
+    "removed_untracked_restore_records_verified": 2
+  },
+  "syntax_links_and_skill_metadata": "passed",
+  "git_diff_check": "passed",
+  "skill_commit": "3c38dd2",
+  "skill_pushed_to": "monarin/codex-skills main",
+  "records": [
+    {
+      "path": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/cleanup-20261001/validation/current-replay.json",
+      "sha256": "c76a33080887d4ac638f2a74d00aeeafc65e422015c607e34af52cf2abaa60a9"
+    },
+    {
+      "path": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/cleanup-20261001/validation/pr-replay.json",
+      "sha256": "986144d8e404e7eaea254c52cc3390b628f77315067cc810e0f76668d35174ca"
+    },
+    {
+      "path": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/cleanup-20261001/validation/run8-review.json",
+      "sha256": "211b342e3c62214075b31a6a085bc486950d59f451ff659283cdbaa4c1ce8ddb"
+    },
+    {
+      "path": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/cleanup-20261001/validation/rdsrv421-preview.json",
+      "sha256": "08429dea80ad86d65a5f5a2c22ee65caf964a69da805efa6cc51a7818ea32e6d"
+    },
+    {
+      "path": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/cleanup-20261001/validation/drp-ued-cmp003-preview.json",
+      "sha256": "3eabfc8fba0664a8a400b19c549bd736c4cad843a53f1b74bcf2c97f7d4b3ff4"
+    },
+    {
+      "path": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/cleanup-20261001/validation/drp-ued-cmp003-external-preview.json",
+      "sha256": "b9464af0f5ffd74378b51f6d44ef0b2a9bcf6a426677a242789e768b4cc9d79f"
+    }
+  ]
+}

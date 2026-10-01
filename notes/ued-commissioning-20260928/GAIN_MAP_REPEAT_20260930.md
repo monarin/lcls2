@@ -1,5 +1,7 @@
 # Standalone gain-map reproduction — 2026-09-30 PDT
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 After Mona powered the production detector on again, both standalone expand2
 captures reproduced the September 28 accepted results. **Neither capture has
 FP/FN outside the established persistent list after the first image.** The new
@@ -19,9 +21,9 @@ Camera readout was off, with source-3 internal idle triggering at 10 Hz. These
 settings matched the saved restoration target exactly. Frame count was zero
 and unchanged across two samples following the power cycle. PCIe timing was
 already in the previous standalone configuration, with trigger masters disabled
-and no timing CRC/decode errors. See the [probe](probe-repeat-20260930.json),
-[settings](preflight-repeat-20260930.json), and
-[host/process inspection](preflight-repeat-20260930-host.log).
+and no timing CRC/decode errors. See the [probe](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/probe-repeat-20260930.json),
+[settings](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/preflight-repeat-20260930.json), and
+[host/process inspection](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/preflight-repeat-20260930-host.log).
 
 ## Captures and comparison
 
@@ -56,7 +58,7 @@ variation does not extend into frames 2–51 and does not identify a cause.
 
 ## Final state and next step
 
-The independent [postflight snapshot](postflight-repeat-20260930.json) confirms
+The independent [postflight snapshot](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/postflight-repeat-20260930.json) confirms
 ADC done/pass, readout off, the verified source-3 10 Hz idle settings restored,
 and frame count 102 stable across two samples with rate zero. MapFHL remains
 loaded; PCIe remains in standalone timing configuration with trigger masters
@@ -70,13 +72,13 @@ helper at the same 10 Hz settings; no DAQ-writer or rate-sweep test was run here
 
 ## Retained evidence
 
-- [Machine-readable comparison](gain-map-repeat-20260930-results.json), including
+- [Machine-readable comparison](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-repeat-20260930-results.json), including
   exact-array equality, input/software comparisons, data hashes and final state.
-- [Attempt 07 review](gain-map-attempt07-review.json) and
-  [attempt 08 review](gain-map-attempt08-review.json), with every frame's counts.
-- [MapFML coordinates](gain-map-attempt07-mismatches.csv) and
-  [MapFHL coordinates](gain-map-attempt08-mismatches.csv).
-- Lossless full records: [07](test-attempt07.json.gz), [08](test-attempt08.json.gz).
+- [Attempt 07 review](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-attempt07-review.json) and
+  [attempt 08 review](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-attempt08-review.json), with every frame's counts.
+- [MapFML coordinates](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-attempt07-mismatches.csv) and
+  [MapFHL coordinates](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/gain-map-attempt08-mismatches.csv).
+- Lossless full records: [07](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/test-attempt07.json.gz), [08](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-commissioning-20260928/test-attempt08.json.gz).
 - Payload reviews, software manifests, console/launch logs, wrapper execution
   records and restoration readbacks are archived by attempt number.
 - Raw captures, copied inputs, all-frame masks and post-first-frame count arrays

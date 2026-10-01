@@ -1,5 +1,7 @@
 # UED run 1 gain-bit review — September 30, 2026
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 **The historical extra-FP pattern recurs in full DAQ.** In experiment
 `uedc00107`, run 1, every one of 4,898 assessed frames has 43 FP pixels outside
 the 352-pixel known-bad list and 68 FN pixels inside it. Both coordinate sets
@@ -70,11 +72,11 @@ additional complete frames may then be available. The reviewer hashes the
 complete prefix, validates detector identity and Configure against the input,
 and retains first-frame counts separately.
 
-- [review.json](review.json): checksums, Configure checks, counts, rate and scope.
-- [frames.csv](frames.csv): every analyzed frame's timestamp and mismatch counts.
-- [after-first-mismatches.csv](after-first-mismatches.csv): all 111 coordinates,
+- [review.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run1-gainbits/review.json): checksums, Configure checks, counts, rate and scope.
+- [frames.csv](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run1-gainbits/frames.csv): every analyzed frame's timestamp and mismatch counts.
+- [after-first-mismatches.csv](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run1-gainbits/after-first-mismatches.csv): all 111 coordinates,
   occurrence counts and known/historical membership.
-- [counts.npz](counts.npz): full-coordinate occurrence arrays and input masks.
+- [counts.npz](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-full-daq-20260930/run1-gainbits/counts.npz): full-coordinate occurrence arrays and input masks.
 
 Two independent executions of the reviewer produced identical summaries and
 coordinate CSV hashes. A separate set comparison confirmed exact equality to

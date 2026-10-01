@@ -1,5 +1,9 @@
 # ePix Quad 1 kfps Debug Tools
 
+Start with [the maintained repeat-test guide](../../../../notes/epixquad/README.md)
+for both modules, current test entry points, shared data and the IsEn finding.
+The detector-day material below also retains historical bench experiments.
+
 This directory contains the detector-day tools and pattern definitions used to
 locate the mapping from logical ASIC / bank coordinates to observed
 `det.raw.raw(evt)` coordinates for `epixquad1kfps`.

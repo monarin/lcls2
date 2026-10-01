@@ -1,12 +1,14 @@
 # ePixQuad ConfigDB and Configure compatibility / rollback
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Reviewed September 30, 2026. No ConfigDB, hardware or DAQ writes were made.
 Current BEAM still matches the September 28/30 snapshot byte-for-byte under
 canonical JSON serialization: SHA256
 `c0d91aa6e7485ab1a2a59eea7c8a823698aeca55c5cc32b9f876b7c66f95d73a`.
 It has `user.pixel_map_raw`, no `user.pixel_map`, and gain_mode 1. Its config
-algorithm is 3.0.0. See [fresh snapshot](beam-current.json.gz) and
-[metadata](current-summary.json), read at 22:49 UTC.
+algorithm is 3.0.0. See [fresh snapshot](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-config-rollback-20260930/beam-current.json.gz) and
+[metadata](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-config-rollback-20260930/current-summary.json), read at 22:49 UTC.
 
 ## What changed
 
@@ -47,7 +49,7 @@ The deployed UED release
 schema**, including pixel_map_raw, panel-shaped asicPixelConfig, cbitsConfig
 and raw 3.0.1. Pure schema functions from its installed Python module and the
 tested checkout produce identical arrays from today's ConfigDB snapshot.
-See [offline-check.json](offline-check.json) for exact source hashes.
+See [offline-check.json](/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/notes/ued-config-rollback-20260930/offline-check.json) for exact source hashes.
 Thus no map-schema restoration is required merely to return to that release.
 This statement does not validate its older ADC/startup behavior or make all
 code/submodule combinations equivalent.

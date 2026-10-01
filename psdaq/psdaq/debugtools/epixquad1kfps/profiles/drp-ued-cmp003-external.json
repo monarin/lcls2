@@ -2,8 +2,10 @@
   "schema_version": 1,
   "name": "drp-ued-cmp003-external",
   "status": "ready_for_test",
-  "notes": "Prepared for first hardware validation, not acceptance. External UED XPM0/group0; operator owns groupca Run. Reproduce 2026-09-30 DAQ timing with 119M clock, EVR code 6 run buffer 4 and XPM DAQ buffer 0. start_ns=94000 from BEAM snapshot; partition delay 11 inferred from DAQ readbacks 8577/11186 and verified live before enabling. No PCIe defaults YAML, no ConfigDB or EPICS writes. rate_hz is an expected operator setting, not a camera auto-trigger request.",
-  "hosts": ["drp-ued-cmp003"],
+  "notes": "Validated in September 2026 attempt 17: 490 full frames near 360 Hz, zero FP/FN outside production known-bad after startup frame. External UED XPM0/group0; operator owns groupca RUN. 119M clock, EVR code 6 run buffer 4 and XPM DAQ buffer 0. start_ns=94000 from the recorded BEAM snapshot; partition delay 11 inferred from DAQ readbacks 8577/11186 and checked live before enabling. No PCIe defaults YAML, ConfigDB or EPICS writes. rate_hz is an expected operator setting, not a camera auto-trigger request. Recheck routing and baseline for a new session. See notes/epixquad/README.md.",
+  "hosts": [
+    "drp-ued-cmp003"
+  ],
   "device": "/dev/datadev_0",
   "lane": 0,
   "data_vc": 0,
@@ -19,7 +21,11 @@
   "camera_auto_trigger": false,
   "rate_hz": 360,
   "event_builder_timeout": 144675,
-  "image_payload_bytes": [1095248, 1095288, 1095344],
+  "image_payload_bytes": [
+    1095248,
+    1095288,
+    1095344
+  ],
   "ued_external_timing": {
     "readout_group": 0,
     "start_ns": 94000,

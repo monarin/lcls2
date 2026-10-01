@@ -1,5 +1,7 @@
 Proposed title: Fix ePixQuad1kfps IsEn ordering before gain-map programming
 
+> Historical September 2026 record. For current repeat-test entry points and archived evidence, see [the repeat-test guide](../../epixquad/README.md). Process IDs, running-state statements and launch paths below describe that session.
+
 Full DAQ Configure enables ASIC IsEn, then applies expert ConfigDB settings
 that restore the acquisition value IsEn=0 before programming the pixel map.
 Reassert IsEn=True after expert settings and immediately before map writing;

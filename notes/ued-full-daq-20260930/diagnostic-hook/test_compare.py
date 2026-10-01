@@ -12,7 +12,7 @@ spec = importlib.util.spec_from_file_location('hook_compare', Path(__file__).wit
 review = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(review)
 SOURCE = Path(os.environ.get('UED_DIAG_TEST_XTC',
-    '/sdf/data/lcls/drpsrcf/ffb/ued/uedc00107/xtc/uedc00107-r0003-s001-c000.xtc2'))
+    '/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930/xtc/uedc00107-r0003-s001-c000.xtc2'))
 
 
 def input_packet(raw, pulse, timestamp):
