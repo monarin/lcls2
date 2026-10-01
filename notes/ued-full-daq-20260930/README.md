@@ -2,16 +2,18 @@
 
 Prepared September 30, 2026; isolated DAQ build subsequently completed successfully
 on the same day. Installed-software checks passed on `drp-ued-cmp003` and
-`ued-daq`. No ConfigDB writes, DAQ launch, or timing/hardware changes were made.
-The ConfigDB upload preview and DAQ configuration parsing passed earlier.
+`ued-daq`. The build did not change ConfigDB or launch DAQ. TEST backup and
+BEAM-to-TEST copying were subsequently completed as uedopr on September 30
+at 17:20 PDT; see the execution record below. No DAQ or timing/hardware changes
+were made. The ConfigDB upload preview and DAQ configuration parsing passed earlier.
 The commands below are for the operator.
 
 Use the existing **ued/TEST** ConfigDB alias for this experiment. Back up TEST,
 refresh only the three configurations needed here from BEAM, and restore TEST
 afterward. Keep BEAM unchanged. See the
 [schema/rollback review](../ued-config-rollback-20260930/README.md) before
-switching software generations. These preparation and restoration commands
-have not been executed; this update changes instructions and the local launcher.
+switching software generations. The backup and three-entry copy are complete;
+the gain-map upload and post-test restoration have not been executed.
 
 ## Software selection
 
@@ -123,6 +125,27 @@ A dedicated disabled debug-control file prevents an old `/tmp` pattern request
 from overriding ConfigDB. Do not add other EPIXQUAD_DEBUG overrides.
 
 ## 3. Back up TEST, refresh its test devices from BEAM, then store the map
+
+**Backup and copy completed September 30, 2026, 17:20 PDT.**
+TEST advanced from key **1125** to **1405**. BEAM remains at **1402**. All four
+TEST entries were read back: the three requested entries match BEAM exactly,
+and `epixquad_0` is unchanged. The original backup is
+`/sdf/home/u/uedopr/daq/gainmap-test-20260930/alias-backups.json`.
+The [execution record](test-prepared.json) includes hashes and verified values.
+DAQ had no Slurm jobs and its control endpoint did not respond before copying;
+only the monitor and timing services were running.
+
+Do not rerun the completed backup/copy blocks below or overwrite the backup.
+In the operator shell, set the existing record directory and continue at the
+MapFHL preview/upload:
+
+```bash
+export UED_GAINMAP_RECORD="$HOME/daq/gainmap-test-20260930"
+```
+
+The copied ePix settings are `gain_mode=1`, `start_ns=94000`, and
+`AdcPipelineDelay=68`; the test gain map has **not** yet been uploaded.
+The backup/copy commands below are retained as the reproducible procedure.
 
 The read-only September 30 comparison found TEST at key **1125** and BEAM at
 key **1402**. TEST already has `epixquad1kfps_0`, `epixquad_0`, `timing_0`, and

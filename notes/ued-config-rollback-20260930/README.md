@@ -74,8 +74,11 @@ then copies only `epixquad1kfps_0`, `timing_0`, and `trigger_0` from BEAM to TES
 and uploads maps only to TEST. Its prepared launch cnf selects TEST for control;
 the GUI must also select TEST. The original TEST contents are restored after
 the experiment without deleting an alias. TEST's unrelated detector entry is
-preserved. BEAM remains untouched. The database preparation and restoration
-commands are documented but have not been executed. Schema isolation does not
+preserved. BEAM remains untouched. The backup and three-entry copy completed
+September 30 at 17:20 PDT: TEST key 1125 became 1405; BEAM remained 1402.
+The original contents are saved in the operator's `alias-backups.json`, with
+hashes in the [execution record](../ued-full-daq-20260930/test-prepared.json).
+Gain-map upload and restoration remain pending. Schema isolation does not
 restore hardware settings: returning to a release still requires fresh
 detector initialization and Configure.
 

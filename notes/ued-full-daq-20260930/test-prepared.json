@@ -1,0 +1,41 @@
+{
+  "utc": "2026-10-01T00:20:14.575693+00:00",
+  "host": "ued-daq",
+  "uid": 14797,
+  "url": "https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws",
+  "hutch": "ued",
+  "target_alias": "TEST",
+  "backup_path": "/sdf/home/u/uedopr/daq/gainmap-test-20260930/alias-backups.json",
+  "backup_sha256": "cae2521662c71b79dce98f51f21998a1d963c49aeaba59b05f7ffbfa35c66cf9",
+  "keys_before": {
+    "BEAM": 1402,
+    "TEST": 1125
+  },
+  "keys_after": {
+    "BEAM": 1402,
+    "TEST": 1405
+  },
+  "copied_devices": [
+    "epixquad1kfps_0",
+    "timing_0",
+    "trigger_0"
+  ],
+  "untouched_devices": [
+    "epixquad_0"
+  ],
+  "test_config_sha256": {
+    "epixquad1kfps_0": "c0d91aa6e7485ab1a2a59eea7c8a823698aeca55c5cc32b9f876b7c66f95d73a",
+    "epixquad_0": "b72831f56b2ca278e09a2dd49417c2be90a9a881996e6641cba6f32fa5a6d6bc",
+    "timing_0": "25fb614bae33f63ec30a59502067425a5c47659e3575da3a1c7a69d90fdc45c3",
+    "trigger_0": "5c75e73d47b6a2b5f23b233037106c8b4b1cc53650f0119f474bcbace15f7e80"
+  },
+  "all_TEST_entries_verified": true,
+  "BEAM_key_unchanged": true,
+  "detector": {
+    "gain_mode": 1,
+    "start_ns": 94000,
+    "AdcPipelineDelay": 68
+  },
+  "gain_map_uploaded": false,
+  "DAQ_or_hardware_changes": false
+}
