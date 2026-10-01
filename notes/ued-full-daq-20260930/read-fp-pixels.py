@@ -46,7 +46,7 @@ def put(variable, value):
         raise RuntimeError('Control readback mismatch: ' + variable.path)
 
 
-def read_asic(saci, rows, state, overwrite=False):
+def read_asic(saci, rows, state, overwrite=False, accept_existing_fh=False):
     enabled = saci.enable.get()
     state['enable_before'] = enabled
     is_en = None
@@ -67,8 +67,9 @@ def read_asic(saci, rows, state, overwrite=False):
                 row['readback_%d' % repeat] = int(saci.WritePixelData.get(read=True))
                 row['trbit'] = state['trbit_before']
         if overwrite:
+            allowed = (8, 12) if accept_existing_fh else (8,)
             if state['trbit_before'] != 1 or any(
-                    r['readback_1'] != 8 or r['readback_2'] != 8 or
+                    r['readback_1'] not in allowed or r['readback_2'] != r['readback_1'] or
                     r['expected_code'] != 12 for r in rows):
                 raise RuntimeError('Overwrite requires confirmed FL readback and FH target')
             for row in rows:
@@ -106,15 +107,22 @@ def main():
     parser.add_argument('output', type=Path)
     parser.add_argument('--execute', action='store_true')
     parser.add_argument('--overwrite-fh', action='store_true')
+    parser.add_argument('--allow-configured', action='store_true',
+                        help='Allow quiescent Configured state for a post-Configure repair')
+    parser.add_argument('--accept-existing-fh', action='store_true',
+                        help='With overwrite, accept stable code 8 or 12; still write only the 44 FH targets')
     args = parser.parse_args()
     if args.overwrite_fh and not args.execute:
         parser.error('--overwrite-fh requires --execute')
+    if args.accept_existing_fh and not args.overwrite_fh:
+        parser.error('--accept-existing-fh requires --overwrite-fh')
     root = Path(__file__).resolve().parent
     rows, digest = targets(root)
     args.output.mkdir(parents=True, exist_ok=False)
     record = dict(started_utc=datetime.now(timezone.utc).isoformat(),
                   host=socket.gethostname(), execute=args.execute,
                   overwrite_fh=args.overwrite_fh,
+                  allow_configured=args.allow_configured, accept_existing_fh=args.accept_existing_fh,
                   script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                   source_csv_sha256=digest, targets=rows, asics={}, status='preflight')
     def save():
@@ -133,7 +141,10 @@ def main():
                 client.setTimeout(10000, False)
             camera, pcie = camera_client.root, pcie_client.root
             record['daq_state'] = control.getState()
-            if record['daq_state'] not in ('reset', 'unallocated', 'allocated', 'connected'):
+            allowed_states = ('reset', 'unallocated', 'allocated', 'connected')
+            if args.allow_configured:
+                allowed_states += ('configured',)
+            if record['daq_state'] not in allowed_states:
                 raise RuntimeError('Require DAQ below Configured and no active transitions')
             regs = camera.SystemRegs
             record['carrier_ids'] = [[int(regs.CarrierIdLow[i].get(read=True)),
@@ -175,7 +186,8 @@ def main():
                         save()
                 if args.overwrite_fh:
                     # Verify the complete target list before the first pixel write.
-                    if any(r['readback_1'] != 8 or r['readback_2'] != 8 or
+                    allowed = (8, 12) if args.accept_existing_fh else (8,)
+                    if any(r['readback_1'] not in allowed or r['readback_2'] != r['readback_1'] or
                            r['trbit'] != 1 for r in rows):
                         raise RuntimeError('Target state changed; no overwrite performed')
                     record['overwrite_asics'] = {}
@@ -189,7 +201,8 @@ def main():
                             state = record[stage+'_asics'][str(index)] = {}
                             try:
                                 read_asic(camera.Epix10kaSaci[index], active, state,
-                                          overwrite=stage == 'overwrite')
+                                          overwrite=stage == 'overwrite',
+                                          accept_existing_fh=args.accept_existing_fh)
                                 if stage == 'post_ready':
                                     for original, result in zip(selected, active):
                                         original['post_ready_1'] = result['readback_1']

@@ -102,6 +102,11 @@ class Tests(unittest.TestCase):
         reader.read_asic(saci, rows, {})
         self.assertTrue(all(r['readback_1'] == r['readback_2'] == 12 for r in rows))
         self.assertEqual(len(pixel.writes), 2)
+        with self.assertRaisesRegex(RuntimeError, 'Overwrite requires'):
+            reader.read_asic(saci, rows, {}, overwrite=True)
+        self.assertEqual(len(pixel.writes), 2)
+        reader.read_asic(saci, rows, {}, overwrite=True, accept_existing_fh=True)
+        self.assertEqual(pixel.writes, [(0,0x715,12),(0,0x70f,12)]*2)
 
     def test_overwrite_refused_for_wrong_trbit(self):
         saci = self.make_saci()

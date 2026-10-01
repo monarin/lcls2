@@ -1,0 +1,10 @@
+test_exact_targets (__main__.Tests) ... ok
+test_overwrite_refused_for_wrong_trbit (__main__.Tests) ... ok
+test_read_and_cleanup (__main__.Tests) ... ok
+test_read_failure_restores_asic (__main__.Tests) ... ok
+test_targeted_overwrite_and_readout_ready_retention (__main__.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+OK

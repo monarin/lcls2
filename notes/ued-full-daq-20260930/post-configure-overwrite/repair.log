@@ -1,0 +1,281 @@
+===============================================================================
+This is a Federal computer system and is the property of the United States
+Government. It is for authorized use only. Users (authorized or unauthorized)
+have no explicit or implicit expectation of privacy.
+
+By using this system you expressly consent to the terms and conditions in
+https://www.slac.stanford.edu/comp/policy/use.html
+===============================================================================
+Connected to Top at localhost:9107
+Connected to DevRoot at localhost:9103
+{
+  "started_utc": "2026-10-01T05:48:46.703717+00:00",
+  "host": "drp-ued-cmp003",
+  "execute": true,
+  "overwrite_fh": true,
+  "allow_configured": true,
+  "accept_existing_fh": true,
+  "script_sha256": "bc6e7cc2e63833ed2fd5a6d8e2d6afa9c446ba3ce2f68a4fd0a339afdb5e00bf",
+  "source_csv_sha256": "7bbd38857432d901ff828fe24359899f8e687ec3ee49c36a9072857a0eca9b43",
+  "asics": {
+    "2": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "3": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "4": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "5": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "6": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "8": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "10": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "15": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    }
+  },
+  "status": "complete",
+  "daq_state": "configured",
+  "carrier_ids": [
+    [
+      175474177,
+      1509949462
+    ],
+    [
+      175300865,
+      1291845654
+    ],
+    [
+      175937537,
+      3774873622
+    ],
+    [
+      177133569,
+      2969567254
+    ]
+  ],
+  "controls_before": {
+    "DAQ_MasterEnable": true,
+    "Run_MasterEnable": true,
+    "TrigEn": true,
+    "AutoTrigEn": false,
+    "RdoutEn": true
+  },
+  "overwrite_asics": {
+    "2": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "3": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "4": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "5": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "6": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "8": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "10": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "15": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    }
+  },
+  "post_ready_asics": {
+    "2": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "3": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "4": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "5": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "6": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "8": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "10": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    },
+    "15": {
+      "enable_before": false,
+      "IsEn_before": false,
+      "trbit_before": 1,
+      "address_controls": "WO; finish with CmdPrepForRead, no claim of address restoration",
+      "trbit_after": 1,
+      "cleanup_errors": []
+    }
+  },
+  "restore_errors": [],
+  "controls_after": {
+    "DAQ_MasterEnable": true,
+    "Run_MasterEnable": true,
+    "TrigEn": true,
+    "AutoTrigEn": false,
+    "RdoutEn": true
+  },
+  "readback_counts": {
+    "8": 43,
+    "12": 1
+  },
+  "stage_counts": {
+    "immediate_1": {
+      "12": 44
+    },
+    "immediate_2": {
+      "12": 44
+    },
+    "post_ready_1": {
+      "12": 44
+    },
+    "post_ready_2": {
+      "12": 44
+    }
+  },
+  "matches_expected": 44,
+  "daq_state_after": "configured",
+  "elapsed_seconds": 2.2944007739424706
+}
+Rogue/pyrogue version v6.1.3. https://github.com/slaclab/rogue
+ZmqClient::setTimeout: Setting timeout to 1000 msecs, waitRetry = 0
+ZmqClient::setTimeout: Setting timeout to 1000 msecs, waitRetry = 1
+ZmqClient::setTimeout: Setting timeout to 1000 msecs, waitRetry = 0
+ZmqClient::setTimeout: Setting timeout to 1000 msecs, waitRetry = 1
+ZmqClient::setTimeout: Setting timeout to 10000 msecs, waitRetry = 0
+ZmqClient::setTimeout: Setting timeout to 10000 msecs, waitRetry = 0
