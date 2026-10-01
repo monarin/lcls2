@@ -1,0 +1,135 @@
+{
+  "status": "passed",
+  "experiment": "uedc00107",
+  "run": 8,
+  "pr_commit": "a4907da6f0b3345ec4470967db3c87a31700372a",
+  "master_base": "a4be0f987ba5194119fed9ae5271d2ca2a245459",
+  "branch": "fix/epixquad1kfps-isen-ordering",
+  "prefix": "/sdf/home/m/monarin/lcls2_worktree/ued-epixquad-isen-pr/install-ued-isen-pr",
+  "good_full_frames": 1084,
+  "assessed_after_first": 1083,
+  "mean_rate_hz": 360.2821221854342,
+  "outside_known_FP": 0,
+  "outside_known_FN": 0,
+  "known_FN_per_frame": 68,
+  "first_frame_clean_outside_known": true,
+  "damaged_events": [],
+  "incomplete_events": [],
+  "endrun_seen": true,
+  "file_bytes": 1188121052,
+  "input_sha256": "208d2268f7fcb685461a1d252c3527964c2e006cb8bd20529bc63eb3f265a1f2",
+  "all_44_read_FH_twice": true,
+  "readback_restore_errors": [],
+  "post_configure_repair": false,
+  "before_run_asic_readback": false,
+  "standalone_port": false,
+  "diagnostic_capture_hook": false,
+  "acquisition_processes_on_pr": [
+    "control",
+    "teb0",
+    "timing_0",
+    "epixquad1kfps_0"
+  ],
+  "unchanged_interface_processes": [
+    "xpmpva",
+    "groupca",
+    "control_gui",
+    "daqstat"
+  ],
+  "post_run_read_client": "Retained diagnostic install; connects to PR process Rogue servers; initial PR-env import failed before hardware access",
+  "final_state": "configured",
+  "recording": true,
+  "alias": "TEST",
+  "live_platform": {
+    "drp": {
+      "15568383246286710574": {
+        "proc_info": {
+          "alias": "timing_0",
+          "device": "/dev/datadev_0",
+          "host": "drp-ued-cmp002",
+          "pid": 1822669
+        },
+        "hidden": 0,
+        "active": 1,
+        "det_info": {
+          "readout": 0
+        },
+        "connect_info": {
+          "drp_port": "34935",
+          "max_ev_size": 16384,
+          "max_tr_size": 8388608,
+          "nic_ip": "172.21.36.23",
+          "num_buffers": 4096,
+          "xpm_id": 0,
+          "xpm_port": 2
+        },
+        "drp_id": 0
+      },
+      "17566777846703896782": {
+        "proc_info": {
+          "alias": "epixquad1kfps_0",
+          "device": "/dev/datadev_0",
+          "host": "drp-ued-cmp003",
+          "pid": 3552886
+        },
+        "hidden": 0,
+        "active": 1,
+        "det_info": {
+          "readout": 0
+        },
+        "connect_info": {
+          "drp_port": "43417",
+          "max_ev_size": 2097152,
+          "max_tr_size": 8388608,
+          "nic_ip": "172.21.36.79",
+          "num_buffers": 1024,
+          "xpm_id": 0,
+          "xpm_port": 1
+        },
+        "drp_id": 1
+      }
+    },
+    "control": {
+      "0": {
+        "active": 1,
+        "hidden": 1,
+        "control_info": {
+          "xpm_master": 0,
+          "pv_base": "DAQ:UED",
+          "cfg_dbase": "https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws/configDB",
+          "instrument": "ued",
+          "slow_update_rate": 1
+        },
+        "proc_info": {
+          "alias": "control",
+          "host": "drp-ued-cmp002",
+          "pid": 1822670
+        }
+      }
+    },
+    "teb": {
+      "4199097076687520844": {
+        "proc_info": {
+          "alias": "teb0",
+          "device": "",
+          "host": "drp-ued-cmp002",
+          "pid": 1822671
+        },
+        "hidden": 1,
+        "active": 1,
+        "connect_info": {
+          "mrq_port": "41173",
+          "nic_ip": "172.21.36.23",
+          "teb_port": "42369"
+        },
+        "teb_id": 0
+      }
+    }
+  },
+  "evidence_sha256": {
+    "run8-gainbits/review.json": "108f6d5a0e2c0eb1139efd170f01222fe429a97807b104e914808850d1e76382",
+    "closeout/pr-after-run/readback.json": "456e496942f9ae7fcaafedd503544d0874f9b98fb3106bcdc451c97bf65f3fe7",
+    "closeout/pr-run.json": "5e17269865de48e102032f94ec0122b3777e442634f9c11611169178ba69ca81",
+    "closeout/pr-build-record.json": "9dbca787222860cca1822f4d86a17db0ab9b00f649e40f2f51e60a848c739292"
+  }
+}

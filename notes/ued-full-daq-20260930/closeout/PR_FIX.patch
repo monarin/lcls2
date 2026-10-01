@@ -1,0 +1,11 @@
+diff --git a/psdaq/psdaq/configdb/epixquad1kfps_config.py b/psdaq/psdaq/configdb/epixquad1kfps_config.py
+index 335fa7128..cd0f82792 100644
+--- a/psdaq/psdaq/configdb/epixquad1kfps_config.py
++++ b/psdaq/psdaq/configdb/epixquad1kfps_config.py
+@@ -1029,2 +1029,6 @@ def config_expert(base, cfg, writePixelMap=True):
+     if writePixelMap:
++        # Expert settings include the acquisition value IsEn=0. Reassert
++        # the programming state before writing the pixel map.
++        for i in asics:
++            retry(cbase.Epix10kaSaci[i].IsEn.set, True)
+         if debug_override is not None and debug_override.get('override_kind') == 'direct_write':

@@ -1,4 +1,4 @@
-"""Explicit staged control for the authorized post-Configure 44-pixel test."""
+"""Explicit staged control for authorized UED gain-map tests."""
 import argparse
 from datetime import datetime, timezone
 import json
@@ -9,7 +9,7 @@ from psdaq.control.DaqControl import DaqControl
 
 def main():
     parser = argparse.ArgumentParser(__doc__)
-    parser.add_argument('action', choices=('status', 'configure', 'run', 'run-unmodified', 'unallocate', 'rediscover'))
+    parser.add_argument('action', choices=('status', 'configure', 'run', 'run-unmodified', 'unallocate', 'rediscover', 'initialize'))
     parser.add_argument('output', type=Path)
     parser.add_argument('--repair-record', type=Path)
     args = parser.parse_args()
@@ -46,7 +46,11 @@ def main():
         raise RuntimeError('Timeout waiting for '+target)
     try:
         before = status()
-        if args.action == 'rediscover':
+        if args.action == 'initialize':
+            if before['state'] != 'reset':
+                raise RuntimeError('Initialization requires newly started DAQ in Reset')
+            transition('unallocated')
+        elif args.action == 'rediscover':
             if before['state'] != 'unallocated':
                 raise RuntimeError('Rediscovery requires unallocated DAQ')
             transition('reset')

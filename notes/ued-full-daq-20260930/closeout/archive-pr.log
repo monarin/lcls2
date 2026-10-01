@@ -1,0 +1,4 @@
+{"phase": "pr", "files": 2, "source_bytes": 1188650652, "destination": "/sdf/scratch/users/m/monarin/ued-epixquad-gainmap-20260930", "execute": true}
+verified xtc/uedc00107-r0008-s000-c000.xtc2 (529600 bytes)
+verified xtc/uedc00107-r0008-s001-c000.xtc2 (1188121052 bytes)
+{"status": "verified", "file_count": 2, "total_bytes": 1188650652, "completed_utc": "2026-10-01T06:59:23.975973+00:00"}

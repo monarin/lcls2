@@ -1,5 +1,9 @@
 # Full UED DAQ gain-map test instructions
 
+See the [post-mortem](POST_MORTEM.md) and [closeout records](closeout/README.md)
+for the minimal IsEn fix, separate master-based PR branch, final validation,
+and scratch archive. The instructions below retain the historical test setup.
+
 For the incoming/pre-write/XTC2 comparison, use the separate
 [diagnostic capture build and launch](diagnostic-hook/README.md).
 
