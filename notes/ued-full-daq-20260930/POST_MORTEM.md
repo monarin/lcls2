@@ -18,8 +18,9 @@ only the four-line correction, commit `a4907da6f`. A separate full build passed
 live validation in run 8: 1,084 complete, undamaged frames at 360.282122 Hz,
 zero FP/FN outside known-bad, and all 44 prior FP addresses reading FH twice
 afterward. [Clean-branch validation](closeout/pr-validation.json).
-Nothing has been pushed or opened
-as a PR. [PR description draft](closeout/PR_DESCRIPTION.md).
+The tested branch is published to `monarin/lcls2` and opened against master as
+[PR #152](https://github.com/slac-lcls/lcls2/pull/152), with the prepared
+[PR description](closeout/PR_DESCRIPTION.md). Published head and body were verified.
 
 ## Failure and impact
 
@@ -176,7 +177,7 @@ Do not substitute an unpatched recursive checkout or update dependencies with
 
 ## Remaining handoff items
 
-- Review the minimal PR and publish it separately when requested. Keep the
+- Review [PR #152](https://github.com/slac-lcls/lcls2/pull/152). Keep the
   diagnostic branch and standalone port for reference and rollback.
 - Upstream the validated ePix gitlink and necessary existing patch recipe in
   `lcls2_submodules`, so other users can reproduce the tested bundle. The local

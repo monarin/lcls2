@@ -23,7 +23,10 @@ The standalone port and diagnostic/test scripts remain on that branch.
   FNs per frame. All 44 prior FP addresses read code 12 twice after EndRun.
   [Per-frame analysis](../run8-gainbits/README.md).
 
-The PR is local only. Nothing has been pushed or submitted for review.
+Published October 1, 2026: [PR #152](https://github.com/slac-lcls/lcls2/pull/152)
+from `monarin:fix/epixquad1kfps-isen-ordering` to `slac-lcls/lcls2:master`.
+The published head, four-line diff and prepared description were verified;
+see [publication record](pr-published.json). The diagnostic branch remains local.
 Do not cherry-pick the diagnostic branch's combined code/evidence commits into
 master; use the clean branch. Further edits to its fix need validation recorded
 against the revised commit.

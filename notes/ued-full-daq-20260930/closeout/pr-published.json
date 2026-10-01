@@ -1,0 +1,26 @@
+{
+  "additions": 4,
+  "baseRefName": "master",
+  "body": "Full DAQ Configure enables ASIC IsEn, then applies expert ConfigDB settings\nthat restore the acquisition value IsEn=0 before programming the pixel map.\nReassert IsEn=True after expert settings and immediately before map writing;\nretain the existing IsEn=False cleanup for acquisition.\n\nOn the production UED module, the original sequence produced 43\u201344 extra\nlow-gain pixels outside the known-bad list. ConfigDB and recorded Configure\nmaps were correct, but direct ASIC reads returned FL code 8 at requested FH\ncode-12 locations. DMA/pre-write/disk comparisons placed the mismatch before\ndisk writing. With only the IsEn ordering correction, run 7 recorded 1,086\ncomplete, undamaged frames at approximately 360 Hz with zero FP/FN outside\nknown-bad, and all 44 prior FP addresses read FH twice after EndRun.\n\nThe change preserves the original map algorithm, write order, trigger settings\nand ConfigDB contents. Offline full-Configure replay verifies programming-state\nordering, unchanged pixel commands, final cleanup and the no-map-update path.\nThe 68 expected known-bad FNs remain. The electrical reason IsEn=0 creates\nadditional row-0 FL assignments is not yet established.\n\nClean master-based branch: `fix/epixquad1kfps-isen-ordering`, commit `a4907da6f`,\nbase `a4be0f987`. A separate full build of this branch passed run 8 with control,\nTEB, timing DRP and detector DRP all using that install: 1,084 complete,\nundamaged frames at 360.282 Hz, zero FP/FN outside known-bad including the first\nframe, and all 44 prior FP addresses reading FH twice after EndRun. No targeted\nrepair, pre-run ASIC readback, standalone adapter or diagnostic capture hook\nwas used. Diagnostic scripts, standalone-port experiments\nand hardware-test artifacts are retained on the diagnostic branch and are not\npart of the minimal code diff.\n\nFull investigation: `notes/ued-full-daq-20260930/POST_MORTEM.md` on branch\n`features/ued-epix10ka-rdsrv421-daq`.\n",
+  "deletions": 0,
+  "files": [
+    {
+      "path": "psdaq/psdaq/configdb/epixquad1kfps_config.py",
+      "additions": 4,
+      "deletions": 0,
+      "changeType": "MODIFIED"
+    }
+  ],
+  "headRefName": "fix/epixquad1kfps-isen-ordering",
+  "headRefOid": "a4907da6f0b3345ec4470967db3c87a31700372a",
+  "headRepositoryOwner": {
+    "id": "MDQ6VXNlcjE5OTgyMzAx",
+    "name": "Monarin Uervirojnangkoorn",
+    "login": "monarin"
+  },
+  "isDraft": false,
+  "number": 152,
+  "state": "OPEN",
+  "title": "Fix ePixQuad1kfps IsEn ordering before gain-map programming",
+  "url": "https://github.com/slac-lcls/lcls2/pull/152"
+}
