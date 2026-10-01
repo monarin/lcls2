@@ -1,0 +1,38 @@
+{
+  "run3_FP_outside_known": 43,
+  "run4_sample_FP_outside_known": 44,
+  "shared_FP": 43,
+  "new_FP_coordinates": [
+    [
+      1,
+      175,
+      170
+    ]
+  ],
+  "absent_FP_coordinates": [],
+  "first_sample_gainbits": {
+    "input": {
+      "FP": 44,
+      "FN": 68,
+      "FP_outside_known": 44,
+      "FN_outside_known": 0
+    },
+    "prewrite": {
+      "FP": 44,
+      "FN": 68,
+      "FP_outside_known": 44,
+      "FN_outside_known": 0
+    },
+    "disk": {
+      "FP": 44,
+      "FN": 68,
+      "FP_outside_known": 44,
+      "FN_outside_known": 0
+    }
+  },
+  "all_51_input_prewrite_pixel_words_equal": true,
+  "all_51_prewrite_disk_bytes_equal": true,
+  "full_run4_coordinates_equal_sample": true,
+  "full_run4_FP_equals_run2": true,
+  "full_run4_FN_equals_run2_and_run3": true
+}

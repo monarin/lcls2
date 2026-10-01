@@ -1,0 +1,12 @@
+Source: /sdf/home/u/uedopr/daq/logs/2026/09/30_21:59:03_drp-ued-cmp003:epixquad1kfps_0.log
+5: # CMDLINE: drp -P ued -C drp-ued-cmp002 -M /sdf/group/lcls/ds/daq/prom/ued -o /u2/pcds/pds -k ep_provider=sockets,ep_domain=ens2np0 -d /dev/datadev_0 -l 0x1 -D epixquad1kfps -k timebase=119M -k epixDiagDir=/sdf/home/u/uedopr/daq/gainmap-diagnostic-20260930,epixDiagFrames=51 -p '0' -u epixquad1kfps_0 -W 6
+8: # TESTRELDIR:/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-diag-20260930
+9: # SUBMODULEDIR:/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1
+14: # GIT_DESCRIBE:xpp-20260924-47-g869f8d758
+23: EPIX DIAGNOSTIC prepared: /sdf/home/u/uedopr/daq/gainmap-diagnostic-20260930/epix-diag-3485185-1790830746683655190 frames=51 memory_bytes=213909504; dump after EndRun
+2869: Opening file /u2/pcds/pds/ued/uedc00107/xtc/uedc00107-r0004-s001-c000.xtc2
+2870: ued-drp[3485185]: <I> Opening file '/u2/pcds/pds/ued/uedc00107/xtc/uedc00107-r0004-s001-c000.xtc2'
+2871: ued-drp[3485185]: <I> Opening file '/u2/pcds/pds/ued/uedc00107/xtc/smalldata/uedc00107-r0004-s001-c000.smd.xtc2'
+2892: ued-drp[3485185]: <I> PGPReader  saw       EndRun @ 1159679109.848301215 (004b96f2489e25)
+2894: ued-drp[3485185]: <I> TebRcvr    saw       EndRun @ 1159679109.848301215 (004b96f2489e25)
+2917: EPIX DIAGNOSTIC saved: /sdf/home/u/uedopr/daq/gainmap-diagnostic-20260930/epix-diag-3485185-1790830746683655190 status="complete" paired=51
