@@ -68,14 +68,16 @@ reader for files already recorded with the new schema.
 
 ## Prevention for the pending full-DAQ test
 
-The [full-DAQ runbook](../ued-full-daq-20260930/README.md) now clones all BEAM
-device configurations to **GAINMAP_TEST_20260930** and uploads maps only there.
-Its prepared launch cnf selects that same alias for control; the GUI must also
-select it. Timing and trigger configurations must accompany the detector.
-BEAM remains untouched by the test, and the snapshot/alias names identify the
-software generation. The alias creation commands are prepared but have not
-been executed. Schema isolation does not restore hardware settings: returning
-to a release still requires fresh detector initialization and Configure.
+The [full-DAQ runbook](../ued-full-daq-20260930/README.md) now reuses **ued/TEST**.
+It first saves TEST's complete current contents and the BEAM source entries,
+then copies only `epixquad1kfps_0`, `timing_0`, and `trigger_0` from BEAM to TEST
+and uploads maps only to TEST. Its prepared launch cnf selects TEST for control;
+the GUI must also select TEST. The original TEST contents are restored after
+the experiment without deleting an alias. TEST's unrelated detector entry is
+preserved. BEAM remains untouched. The database preparation and restoration
+commands are documented but have not been executed. Schema isolation does not
+restore hardware settings: returning to a release still requires fresh
+detector initialization and Configure.
 
 Before starting an older release, check its actual installed configuration
 module and C++/reader schema version against the selected alias. Perform that

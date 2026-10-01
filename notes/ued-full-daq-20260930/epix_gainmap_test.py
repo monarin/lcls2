@@ -20,7 +20,7 @@ for _row in _base['procmgr_config']:
             _row['cmd'] = _row['cmd'].replace('ep_domain=ens2 ', 'ep_domain=ens2np0 ')
             _row['env'] += ' EPIXQUAD_DEBUG_CONTROL_FILE=/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/notes/ued-full-daq-20260930/debug-disabled.json'
         if _row['id'] == 'control':
-            _row['cmd'] = _row['cmd'].replace(' -C BEAM ', ' -C GAINMAP_TEST_20260930 ')
+            _row['cmd'] = _row['cmd'].replace(' -C BEAM ', ' -C TEST ')
         procmgr_config.append(_row)
         _seen.add(_row['id'])
 if _seen != _wanted:

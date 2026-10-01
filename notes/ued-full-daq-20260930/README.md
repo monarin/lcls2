@@ -6,10 +6,12 @@ on the same day. Installed-software checks passed on `drp-ued-cmp003` and
 The ConfigDB upload preview and DAQ configuration parsing passed earlier.
 The commands below are for the operator.
 
-Updated for rollback protection: use **GAINMAP_TEST_20260930**, a separate
-ConfigDB alias, for this experiment. Keep BEAM unchanged. See the
+Use the existing **ued/TEST** ConfigDB alias for this experiment. Back up TEST,
+refresh only the three configurations needed here from BEAM, and restore TEST
+afterward. Keep BEAM unchanged. See the
 [schema/rollback review](../ued-config-rollback-20260930/README.md) before
-switching software generations. The new alias has not yet been created.
+switching software generations. These preparation and restoration commands
+have not been executed; this update changes instructions and the local launcher.
 
 ## Software selection
 
@@ -97,9 +99,10 @@ test -r "$UED_GAINMAP_MASK"
 
 An install owned by monarin can be run by uedopr; it needs read/execute access,
 not ownership or write permission. The build uses umask 022. Logs and data
-continue to use the operator's existing output paths. Direct SSH as uedopr was
-not available to the build task, so the operator should repeat this import
-check in their own shell. For the complete read-only installed-software check:
+continue to use the operator's existing output paths. The operator subsequently
+ran the verification as uedopr on ued-daq (UID 14797): all 392 source comparisons
+passed, artifact hashes matched, and there were no import warnings. To repeat
+the read-only installed-software check:
 
 ```bash
 QT_QPA_PLATFORM=offscreen python "$UED_GAINMAP_SRC/notes/ued-full-daq-20260930/verify-install.py"
@@ -119,63 +122,92 @@ focused test. It does not restart the monitor IOC or the separate XPM services.
 A dedicated disabled debug-control file prevents an old `/tmp` pattern request
 from overriding ConfigDB. Do not add other EPIXQUAD_DEBUG overrides.
 
-## 3. Back up BEAM, clone a test alias, then store the map there
+## 3. Back up TEST, refresh its test devices from BEAM, then store the map
 
-Before editing the configuration, leave DAQ unconfigured. Save a fresh backup
-in the operator's directory (not over the recorded September 28 snapshot):
+The read-only September 30 comparison found TEST at key **1125** and BEAM at
+key **1402**. TEST already has `epixquad1kfps_0`, `epixquad_0`, `timing_0`, and
+`trigger_0`. Its ePix configuration uses the current raw-map schema, but
+`start_ns=44000` and `AdcPipelineDelay=61`, versus BEAM's 94000 and 68. Timing
+and trigger configurations also differ. Refresh the three required entries
+before applying the map; preserve TEST's unrelated `epixquad_0` entry.
+
+Leave DAQ unconfigured and ensure TEST is available for this experiment.
+Use the same operator shell and record directory throughout preparation,
+recording, and restoration. First save all current TEST entries, the three
+BEAM source entries, and their current keys. This block is read-only for
+ConfigDB and refuses to overwrite an existing backup:
 
 ```bash
 mkdir -p "$HOME/daq/gainmap-test-20260930"
 export UED_GAINMAP_RECORD="$HOME/daq/gainmap-test-20260930"
 python - <<'PY'
 import json, os
+from datetime import datetime, timezone
 from pathlib import Path
 from psdaq.configdb.configdb import configdb
-db = configdb('https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws',
-              'ued', False, 'configDB', user='uedopr')
-cfg = db.get_configuration('BEAM', 'epixquad1kfps_0')
-with (Path(os.environ['UED_GAINMAP_RECORD'])/'beam-before.json').open('x') as f:
-    json.dump(cfg, f, indent=2)
-print('Saved original', cfg['detName:RO'], cfg['detId:RO'])
+url = 'https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws'
+db = configdb(url, 'ued', False, 'configDB', user='uedopr')
+names = ['epixquad1kfps_0', 'timing_0', 'trigger_0']
+assert {'BEAM', 'TEST'} <= set(db.get_aliases())
+keys = {alias: db.get_key(alias) for alias in ('BEAM', 'TEST')}
+assert all(key is not None for key in keys.values())
+test_names = db.get_devices('TEST')
+assert set(names) <= set(test_names), test_names
+assert set(names) <= set(db.get_devices('BEAM'))
+snapshot = {'url': url, 'hutch': 'ued', 'utc': datetime.now(timezone.utc).isoformat(),
+            'keys': keys, 'replace_devices': names, 'configs': {}}
+for alias, devices in [('TEST', test_names), ('BEAM', names)]:
+    configs = {name: db.get_configuration(alias, name) for name in devices}
+    assert all(isinstance(c, dict) and ':types:' in c and c['detName:RO'] == name
+               for name, c in configs.items())
+    snapshot['configs'][alias] = configs
+assert keys == {alias: db.get_key(alias) for alias in keys}, 'Alias changed during backup'
+with (Path(os.environ['UED_GAINMAP_RECORD'])/'alias-backups.json').open('x') as f:
+    json.dump(snapshot, f, indent=2)
+print('Saved TEST and BEAM source configurations at keys', keys)
+print('Detector ID:', snapshot['configs']['BEAM']['epixquad1kfps_0']['detId:RO'])
 PY
 ```
 
-Create the separate alias by copying all BEAM device configurations so timing
-and trigger configuration are available too. The following is an explicit
-ConfigDB write to the **new alias only**; it refuses an existing destination:
+The next block **writes only TEST**, copying the saved BEAM configurations for
+`epixquad1kfps_0`, `timing_0`, and `trigger_0`. It checks that both aliases still
+match the backup keys before the first write. If a key changed, inspect the
+change and make a fresh backup in a new record directory before proceeding.
+It does not create an alias or copy unrelated BEAM devices:
 
 ```bash
 python - <<'PY'
 import json, os
 from pathlib import Path
 from psdaq.configdb.configdb import configdb
-db = configdb('https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws',
-              'ued', False, 'configDB', user='uedopr')
-alias = 'GAINMAP_TEST_20260930'
-assert alias not in db.get_aliases(), 'Alias already exists; inspect it instead of overwriting'
-names = db.get_devices('BEAM')
-assert 'epixquad1kfps_0' in names, names
-configs = [db.get_configuration('BEAM', name) for name in names]
-assert all(isinstance(c, dict) and ':types:' in c for c in configs)
-with (Path(os.environ['UED_GAINMAP_RECORD'])/'beam-all-devices.json').open('x') as f:
-    json.dump(dict(zip(names, configs)), f, indent=2)
-db.add_alias(alias)
-assert alias in db.get_aliases()
-for name, cfg in zip(names, configs):
-    db.modify_device(alias, cfg)
-    assert db.get_configuration(alias, name) == cfg, name
-print('Copied and verified', names, 'to', alias)
+snapshot = json.loads((Path(os.environ['UED_GAINMAP_RECORD'])/'alias-backups.json').read_text())
+assert snapshot['hutch'] == 'ued'
+db = configdb(snapshot['url'], 'ued', False, 'configDB', user='uedopr')
+names = ['epixquad1kfps_0', 'timing_0', 'trigger_0']
+assert snapshot['replace_devices'] == names
+assert snapshot['keys'] == {alias: db.get_key(alias) for alias in ('BEAM', 'TEST')}, 'Alias changed since backup'
+for name in names:
+    cfg = snapshot['configs']['BEAM'][name]
+    db.modify_device('TEST', cfg)
+    assert db.get_configuration('TEST', name) == cfg, name
+for name, cfg in snapshot['configs']['TEST'].items():
+    if name not in names:
+        assert db.get_configuration('TEST', name) == cfg, name
+assert db.get_key('BEAM') == snapshot['keys']['BEAM'], 'BEAM changed during preparation; investigate'
+print('Copied and verified', names, 'to TEST; key', db.get_key('TEST'))
 PY
 ```
 
-If copying fails partway, keep DAQ unconfigured and inspect the incomplete
-alias before proceeding. Do not switch the test upload back to BEAM.
+If copying fails partway, keep DAQ unconfigured and inspect TEST. The original
+configurations are in `alias-backups.json`; section 6 restores the three
+entries even after a partial copy. Do not overwrite this backup or switch
+the test upload to BEAM.
 
 MapFHL matches the latest standalone control. Mask label 1 is FL, label 0 H:
 
 ```bash
 python -m psdaq.configdb.epixquad_store_gainmap \
-  --inst ued --alias GAINMAP_TEST_20260930 --name epixquad1kfps --segm 0 \
+  --inst ued --alias TEST --name epixquad1kfps --segm 0 \
   --id serial1234 --user uedopr --file "$UED_GAINMAP_MASK" \
   --map 0:H --map 1:L --test
 ```
@@ -204,13 +236,14 @@ import numpy as np
 from psdaq.configdb.configdb import configdb
 db = configdb('https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws',
               'ued', False, 'configDB', user='uedopr')
-c = db.get_configuration('GAINMAP_TEST_20260930', 'epixquad1kfps_0')
+c = db.get_configuration('TEST', 'epixquad1kfps_0')
 mask = np.load(os.environ['UED_GAINMAP_MASK']).astype(bool)
 actual = np.asarray(c['user']['pixel_map_raw']).reshape(mask.shape)
 np.testing.assert_array_equal(actual, np.where(mask, 8, 12))
 assert c['user']['gain_mode'] == 5
 assert all(c['expert']['EpixQuad']['Epix10kaSaci%d'%i]['trbit'] == 1 for i in range(16))
 assert c['expert']['EpixQuad']['RdoutCore']['AdcPipelineDelay'] == 68
+assert c['user']['start_ns'] == 94000
 assert 'AsicMask' not in c['expert']['EpixQuad']['SystemRegs']
 with (Path(os.environ['UED_GAINMAP_RECORD'])/'test-mapfhl.json').open('x') as f:
     json.dump(c, f, indent=2)
@@ -229,9 +262,13 @@ daqmgr start "$UED_GAINMAP_CNF"
 daqmgr status "$UED_GAINMAP_CNF"
 ```
 
+The prepared launcher sets `control -C TEST`; the normal UED launcher defaults
+to BEAM. Creating or editing configurations does not switch an already-running
+DAQ's selection. Confirm **TEST** in the control GUI before Configure.
+
 Starting fresh DRP processes is intentional: standalone left local-XpmMini
 timing selected, and a mere Enable does not restore the production path.
-In the control GUI, select `epixquad1kfps_0` and `timing_0`, GAINMAP_TEST_20260930 configuration,
+In the control GUI, select `epixquad1kfps_0` and `timing_0`, TEST configuration,
 and the intended current experiment. Connect and Configure, checking the
 matched DRP/control/TEB log group under `~/daq/logs/2026/09/`.
 
@@ -289,9 +326,54 @@ The standalone `.dat` review scripts are not XTC readers. Supply the recorded
 experiment/run numbers for the run-aware analysis; do not infer success from
 an image display alone.
 
-End/Unconfigure and stop this test cnf when finished. Return to the previous
-complete release/bundle and its compatible alias. BEAM is unchanged by the
-isolated test, but its existing raw schema is not compatible with pre-migration
-code. `beam-before.json` restores today's BEAM, not the removed legacy schema.
+## 6. Restore TEST after the experiment
+
+End/Unconfigure and stop this test cnf before restoration. Confirm no other
+operator is using or editing TEST. Preserve the final test configurations
+alongside the run records, then restore only the three entries changed by
+this experiment from `alias-backups.json`. This also recovers a partial copy
+from section 3. If TEST has acquired unrelated changes, coordinate those
+before restoring. This block writes TEST; it does not write BEAM:
+
+```bash
+python - <<'PY'
+import json, os
+from pathlib import Path
+from psdaq.configdb.configdb import configdb
+folder = Path(os.environ['UED_GAINMAP_RECORD'])
+snapshot = json.loads((folder/'alias-backups.json').read_text())
+assert snapshot['hutch'] == 'ued'
+db = configdb(snapshot['url'], 'ued', False, 'configDB', user='uedopr')
+names = ['epixquad1kfps_0', 'timing_0', 'trigger_0']
+assert snapshot['replace_devices'] == names
+original = snapshot['configs']['TEST']
+key = db.get_key('TEST')
+assert key is not None
+assert set(db.get_devices('TEST')) == set(original), 'TEST device list changed; inspect before restoring'
+current = {name: db.get_configuration('TEST', name) for name in original}
+assert all(isinstance(c, dict) and ':types:' in c for c in current.values())
+assert key == db.get_key('TEST'), 'TEST changed during readback'
+for name in set(original) - set(names):
+    assert current[name] == original[name], 'Unrelated TEST entry changed: ' + name
+with (folder/'test-before-restore.json').open('x') as f:
+    json.dump({'key': key, 'configs': current}, f, indent=2)
+for name in names:
+    db.modify_device('TEST', original[name])
+    assert db.get_configuration('TEST', name) == original[name], name
+assert all(db.get_configuration('TEST', name) == cfg for name, cfg in original.items())
+print('Restored original TEST contents; new key:', db.get_key('TEST'))
+PY
+```
+
+Restoration creates a new ConfigDB key containing the saved contents; it does
+not rewind the key number to 1125. If restoration fails partway, inspect the
+saved files and current TEST entries before retrying; the exclusive output
+file prevents silently replacing the pre-restoration record. Keep all backups,
+map snapshots, run numbers, and logs. No alias deletion is needed.
+
+Return to the previous complete release/bundle and its compatible alias
+(normally BEAM), with fresh detector initialization and Configure. BEAM's
+existing raw schema is not compatible with pre-migration code. The BEAM entry
+in `alias-backups.json` preserves today's schema, not the removed legacy schema.
 This test does not promote the bundle; upstream pin/patch publication follows
 successful validation.
