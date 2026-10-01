@@ -1,0 +1,15 @@
+{
+  "install_prefix": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-diag-20260930",
+  "scope": "Opt-in Python Configure adapter; C++ binaries unchanged; normal DAQ writer remains default",
+  "files": {
+    "configdb/epixquad1kfps_config.py": {
+      "before_sha256": "5a3347c509be6031df5a1f249a4ceb42efd50ea2c7d4214ed39253d8a405e9c7",
+      "installed_sha256": "1265c5053ee84f65a6f916fc8a8a246698f767cbeb05dc1c48e2ad839fbfd646"
+    },
+    "debugtools/epixquad1kfps/standalone_daq_writer.py": {
+      "before_sha256": null,
+      "installed_sha256": "9931fdbacee4523f8f384be74e6cf04f63ef2bfc150c0e21dc46bf63cdf56f9b"
+    }
+  },
+  "standalone_helper_sha256": "b8191dd350dcd7dedaa76f77c1babe517d2b40fa2fd7118fa94f8a6ac19f7008"
+}

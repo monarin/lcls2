@@ -995,6 +995,14 @@ def user_to_expert(base, cfg, full=False):
 #
 def config_expert(base, cfg, writePixelMap=True):
 
+    standalone_plan = None
+    standalone_mask = os.environ.get('EPIXQUAD_STANDALONE_GAINMAP')
+    if standalone_mask and writePixelMap:
+        if debug_override is not None:
+            raise ValueError('Standalone DAQ writer cannot combine with a debug map override')
+        from psdaq.debugtools.epixquad1kfps import standalone_daq_writer
+        standalone_plan = standalone_daq_writer.prepare(cfg, list(range(16)), standalone_mask)
+
     # Turn off the trigger
     epixquad_disable_runtrigger(base)
 
@@ -1027,7 +1035,9 @@ def config_expert(base, cfg, writePixelMap=True):
         apply_dict('cbase',cbase,epixQuad)
 
     if writePixelMap:
-        if debug_override is not None and debug_override.get('override_kind') == 'direct_write':
+        if standalone_plan is not None:
+            standalone_daq_writer.program(cbase, standalone_plan)
+        elif debug_override is not None and debug_override.get('override_kind') == 'direct_write':
             _apply_direct_write_program(cbase, debug_override, asics)
         elif 'user' in cfg and 'pixel_map_raw' in cfg['user']:
             pixelConfigMapRaw = _normalize_raw_pixel_map(cfg['user']['pixel_map_raw'])

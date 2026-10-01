@@ -9,7 +9,7 @@ from psdaq.control.DaqControl import DaqControl
 
 def main():
     parser = argparse.ArgumentParser(__doc__)
-    parser.add_argument('action', choices=('status', 'configure', 'run'))
+    parser.add_argument('action', choices=('status', 'configure', 'run', 'run-unmodified', 'unallocate', 'rediscover'))
     parser.add_argument('output', type=Path)
     parser.add_argument('--repair-record', type=Path)
     args = parser.parse_args()
@@ -46,19 +46,33 @@ def main():
         raise RuntimeError('Timeout waiting for '+target)
     try:
         before = status()
-        if args.action == 'configure':
+        if args.action == 'rediscover':
+            if before['state'] != 'unallocated':
+                raise RuntimeError('Rediscovery requires unallocated DAQ')
+            transition('reset')
+            transition('unallocated')
+        elif args.action == 'unallocate':
+            if before['state'] not in ('configured','connected','allocated'):
+                raise RuntimeError('Expected a stopped DAQ above unallocated')
+            transition('unallocated')
+        elif args.action == 'configure':
             if before['state'] not in ('unallocated','allocated','connected'):
                 raise RuntimeError('Expected DAQ below Configured')
             transition('configured')
-        elif args.action == 'run':
-            if before['state'] != 'configured' or args.repair_record is None:
-                raise RuntimeError('Require Configured state and repair evidence')
-            repair = json.loads(args.repair_record.read_text())
-            if not (repair['status'] == 'complete' and repair['matches_expected'] == 44
-                    and repair['daq_state'] == repair['daq_state_after'] == 'configured'
-                    and repair['overwrite_fh'] and not repair['restore_errors']):
-                raise RuntimeError('Repair did not complete in Configured state')
-            record['repair_record'] = str(args.repair_record)
+        elif args.action in ('run', 'run-unmodified'):
+            if before['state'] != 'configured':
+                raise RuntimeError('Require Configured state')
+            if args.action == 'run':
+                if args.repair_record is None:
+                    raise RuntimeError('Require repair evidence')
+                repair = json.loads(args.repair_record.read_text())
+                if not (repair['status'] == 'complete' and repair['matches_expected'] == 44
+                        and repair['daq_state'] == repair['daq_state_after'] == 'configured'
+                        and repair['overwrite_fh'] and not repair['restore_errors']):
+                    raise RuntimeError('Repair did not complete in Configured state')
+                record['repair_record'] = str(args.repair_record)
+            else:
+                record['post_configure_pixel_repair'] = False
             if not before['recording']:
                 error = control.setRecord(True)
                 if error:

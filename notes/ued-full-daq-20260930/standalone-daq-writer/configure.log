@@ -1,0 +1,413 @@
+===============================================================================
+This is a Federal computer system and is the property of the United States
+Government. It is for authorized use only. Users (authorized or unauthorized)
+have no explicit or implicit expectation of privacy.
+
+By using this system you expressly consent to the terms and conditions in
+https://www.slac.stanford.edu/comp/policy/use.html
+===============================================================================
+{
+  "action": "rediscover",
+  "started_utc": "2026-10-01T06:00:56.893704+00:00",
+  "history": [
+    {
+      "time_utc": "2026-10-01T06:00:56.896343+00:00",
+      "transition": "dealloc",
+      "state": "unallocated",
+      "alias": "TEST",
+      "recording": true,
+      "platform": {
+        "drp": {
+          "6659754885657258637": {
+            "proc_info": {
+              "alias": "timing_0",
+              "device": "/dev/datadev_0",
+              "host": "drp-ued-cmp002",
+              "pid": 1760416
+            },
+            "hidden": 0,
+            "active": 1,
+            "det_info": {
+              "readout": 0
+            },
+            "monitor": 0,
+            "connect_info": {
+              "drp_port": "43423",
+              "max_ev_size": 16384,
+              "max_tr_size": 8388608,
+              "nic_ip": "172.21.36.23",
+              "num_buffers": 4096,
+              "xpm_id": 0,
+              "xpm_port": 2
+            },
+            "drp_id": 0
+          },
+          "11364342087960490327": {
+            "proc_info": {
+              "alias": "epixquad1kfps_0",
+              "device": "/dev/datadev_0",
+              "host": "drp-ued-cmp003",
+              "pid": 3485185
+            },
+            "hidden": 0,
+            "active": 1,
+            "det_info": {
+              "readout": 0
+            },
+            "monitor": 0,
+            "connect_info": {
+              "drp_port": "39045",
+              "max_ev_size": 2097152,
+              "max_tr_size": 8388608,
+              "nic_ip": "172.21.36.79",
+              "num_buffers": 1024,
+              "xpm_id": 0,
+              "xpm_port": 1
+            },
+            "drp_id": 1
+          }
+        },
+        "teb": {
+          "2266420711629484266": {
+            "proc_info": {
+              "alias": "teb0",
+              "device": "",
+              "host": "drp-ued-cmp002",
+              "pid": 1760414
+            },
+            "hidden": 1,
+            "active": 1,
+            "monitor": 0,
+            "connect_info": {
+              "mrq_port": "34457",
+              "nic_ip": "172.21.36.23",
+              "teb_port": "40669"
+            },
+            "teb_id": 0
+          }
+        },
+        "control": {
+          "0": {
+            "active": 1,
+            "hidden": 1,
+            "control_info": {
+              "xpm_master": 0,
+              "pv_base": "DAQ:UED",
+              "cfg_dbase": "https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws/configDB",
+              "instrument": "ued",
+              "slow_update_rate": 1
+            },
+            "proc_info": {
+              "alias": "control",
+              "host": "drp-ued-cmp002",
+              "pid": 1760415
+            },
+            "monitor": 0
+          }
+        }
+      },
+      "bypass": false,
+      "experiment": "uedc00107",
+      "run": 0,
+      "last_run": 5
+    },
+    {
+      "time_utc": "2026-10-01T06:00:56.901488+00:00",
+      "transition": "reset",
+      "state": "reset",
+      "alias": "TEST",
+      "recording": true,
+      "platform": {},
+      "bypass": false,
+      "experiment": "uedc00107",
+      "run": 0,
+      "last_run": 5
+    },
+    {
+      "time_utc": "2026-10-01T06:00:57.919630+00:00",
+      "transition": "rollcall",
+      "state": "unallocated",
+      "alias": "TEST",
+      "recording": true,
+      "platform": {
+        "drp": {
+          "6659754885657258637": {
+            "proc_info": {
+              "alias": "timing_0",
+              "device": "/dev/datadev_0",
+              "host": "drp-ued-cmp002",
+              "pid": 1760416
+            },
+            "hidden": 0,
+            "active": 1,
+            "det_info": {
+              "readout": 0
+            }
+          },
+          "4325681892392117746": {
+            "proc_info": {
+              "alias": "epixquad1kfps_0",
+              "device": "/dev/datadev_0",
+              "host": "drp-ued-cmp003",
+              "pid": 3518249
+            },
+            "hidden": 0,
+            "active": 1,
+            "det_info": {
+              "readout": 0
+            }
+          }
+        },
+        "teb": {
+          "2266420711629484266": {
+            "proc_info": {
+              "alias": "teb0",
+              "device": "",
+              "host": "drp-ued-cmp002",
+              "pid": 1760414
+            },
+            "hidden": 1,
+            "active": 1
+          }
+        },
+        "control": {
+          "0": {
+            "active": 1,
+            "hidden": 1,
+            "control_info": {
+              "xpm_master": 0,
+              "pv_base": "DAQ:UED",
+              "cfg_dbase": "https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws/configDB",
+              "instrument": "ued",
+              "slow_update_rate": 1
+            },
+            "proc_info": {
+              "alias": "control",
+              "host": "drp-ued-cmp002",
+              "pid": 1760415
+            }
+          }
+        }
+      },
+      "bypass": false,
+      "experiment": "uedc00107",
+      "run": 0,
+      "last_run": 5
+    }
+  ],
+  "status": "complete"
+}
+getStatus(tcp://drp-ued-cmp002:30000) Exception: Resource temporarily unavailable
+getStatus(tcp://drp-ued-cmp002:30000) Exception: Resource temporarily unavailable
+getStatus(tcp://drp-ued-cmp002:30000) Exception: Resource temporarily unavailable
+{
+  "action": "configure",
+  "started_utc": "2026-10-01T06:00:58.229159+00:00",
+  "history": [
+    {
+      "time_utc": "2026-10-01T06:00:58.231268+00:00",
+      "transition": "rollcall",
+      "state": "unallocated",
+      "alias": "TEST",
+      "recording": true,
+      "platform": {
+        "drp": {
+          "6659754885657258637": {
+            "proc_info": {
+              "alias": "timing_0",
+              "device": "/dev/datadev_0",
+              "host": "drp-ued-cmp002",
+              "pid": 1760416
+            },
+            "hidden": 0,
+            "active": 1,
+            "det_info": {
+              "readout": 0
+            }
+          },
+          "4325681892392117746": {
+            "proc_info": {
+              "alias": "epixquad1kfps_0",
+              "device": "/dev/datadev_0",
+              "host": "drp-ued-cmp003",
+              "pid": 3518249
+            },
+            "hidden": 0,
+            "active": 1,
+            "det_info": {
+              "readout": 0
+            }
+          }
+        },
+        "teb": {
+          "2266420711629484266": {
+            "proc_info": {
+              "alias": "teb0",
+              "device": "",
+              "host": "drp-ued-cmp002",
+              "pid": 1760414
+            },
+            "hidden": 1,
+            "active": 1
+          }
+        },
+        "control": {
+          "0": {
+            "active": 1,
+            "hidden": 1,
+            "control_info": {
+              "xpm_master": 0,
+              "pv_base": "DAQ:UED",
+              "cfg_dbase": "https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws/configDB",
+              "instrument": "ued",
+              "slow_update_rate": 1
+            },
+            "proc_info": {
+              "alias": "control",
+              "host": "drp-ued-cmp002",
+              "pid": 1760415
+            }
+          }
+        }
+      },
+      "bypass": false,
+      "experiment": "uedc00107",
+      "run": 0,
+      "last_run": 5
+    },
+    {
+      "time_utc": "2026-10-01T06:01:03.242917+00:00",
+      "transition": "error",
+      "state": "error",
+      "alias": "error",
+      "recording": "error",
+      "platform": {},
+      "bypass": "error",
+      "experiment": "error",
+      "run": "error",
+      "last_run": "error"
+    },
+    {
+      "time_utc": "2026-10-01T06:01:08.752858+00:00",
+      "transition": "error",
+      "state": "error",
+      "alias": "error",
+      "recording": "error",
+      "platform": {},
+      "bypass": "error",
+      "experiment": "error",
+      "run": "error",
+      "last_run": "error"
+    },
+    {
+      "time_utc": "2026-10-01T06:01:14.261887+00:00",
+      "transition": "error",
+      "state": "error",
+      "alias": "error",
+      "recording": "error",
+      "platform": {},
+      "bypass": "error",
+      "experiment": "error",
+      "run": "error",
+      "last_run": "error"
+    },
+    {
+      "time_utc": "2026-10-01T06:01:15.640649+00:00",
+      "transition": "configure",
+      "state": "configured",
+      "alias": "TEST",
+      "recording": true,
+      "platform": {
+        "drp": {
+          "6659754885657258637": {
+            "proc_info": {
+              "alias": "timing_0",
+              "device": "/dev/datadev_0",
+              "host": "drp-ued-cmp002",
+              "pid": 1760416
+            },
+            "hidden": 0,
+            "active": 1,
+            "det_info": {
+              "readout": 0
+            },
+            "connect_info": {
+              "drp_port": "34123",
+              "max_ev_size": 16384,
+              "max_tr_size": 8388608,
+              "nic_ip": "172.21.36.23",
+              "num_buffers": 4096,
+              "xpm_id": 0,
+              "xpm_port": 2
+            },
+            "drp_id": 0
+          },
+          "4325681892392117746": {
+            "proc_info": {
+              "alias": "epixquad1kfps_0",
+              "device": "/dev/datadev_0",
+              "host": "drp-ued-cmp003",
+              "pid": 3518249
+            },
+            "hidden": 0,
+            "active": 1,
+            "det_info": {
+              "readout": 0
+            },
+            "connect_info": {
+              "drp_port": "39793",
+              "max_ev_size": 2097152,
+              "max_tr_size": 8388608,
+              "nic_ip": "172.21.36.79",
+              "num_buffers": 1024,
+              "xpm_id": 0,
+              "xpm_port": 1
+            },
+            "drp_id": 1
+          }
+        },
+        "teb": {
+          "2266420711629484266": {
+            "proc_info": {
+              "alias": "teb0",
+              "device": "",
+              "host": "drp-ued-cmp002",
+              "pid": 1760414
+            },
+            "hidden": 1,
+            "active": 1,
+            "connect_info": {
+              "mrq_port": "39193",
+              "nic_ip": "172.21.36.23",
+              "teb_port": "40495"
+            },
+            "teb_id": 0
+          }
+        },
+        "control": {
+          "0": {
+            "active": 1,
+            "hidden": 1,
+            "control_info": {
+              "xpm_master": 0,
+              "pv_base": "DAQ:UED",
+              "cfg_dbase": "https://psdmint.sdf.slac.stanford.edu/ws-auth/configdb/ws/configDB",
+              "instrument": "ued",
+              "slow_update_rate": 1
+            },
+            "proc_info": {
+              "alias": "control",
+              "host": "drp-ued-cmp002",
+              "pid": 1760415
+            }
+          }
+        }
+      },
+      "bypass": false,
+      "experiment": "uedc00107",
+      "run": 0,
+      "last_run": 5
+    }
+  ],
+  "status": "complete"
+}
