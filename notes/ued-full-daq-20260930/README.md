@@ -386,6 +386,17 @@ the **older `lcls2_submodules_03122026` bundle**, so this run does not validate
 the intended new install/submodule pair. The reviewed FFB file was still in
 progress; see the report for the exact complete-prefix scope.
 
+### Run 2 with the intended test bundle
+
+[Run 2 review](run2-gainbits/README.md) confirms the new test bundle in the DRP
+header, but the FP discrepancy persists: 44 FP pixels outside the known-bad
+list and 68 FN pixels within it in all 3,428 assessed frames at about 540 Hz.
+All 43 historical/run-1 FPs remain, plus raw `(segment=1, row=175, col=170)`.
+The saved hardware configuration is identical to run 1 in all 1,920 fields.
+This excludes the old bundle as the sole explanation for the recurring FP
+pattern; it does not isolate rate or programming/configuration sequence.
+The reviewed FFB copy was still in progress, as detailed in the report.
+
 ## 6. Restore TEST after the experiment
 
 End/Unconfigure and stop this test cnf before restoration. Confirm no other
