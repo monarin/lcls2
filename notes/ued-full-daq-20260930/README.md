@@ -311,22 +311,39 @@ SUBMODULEDIR. Require successful ADC checking and the message
 `loaded debug override` message, AsicMask verification failure, ADC timeout,
 Configure error, or missing/1600-byte image subframe stream.
 
-Use the hutch's Quad 360 Hz sequence, not the Andor exposure sequence. History
-records this operator-shell command:
+With acquisition stopped, program the Quad 360 Hz sequence from `uedopr@ued-daq`.
+The installed operator wrapper selects 360 Hz by default; it has no `--a360`
+option. `--cam 0` avoids Andor camera PV updates. Use a subshell because the
+operator setup script changes the environment, and the outer shell must retain
+our isolated DAQ test build.
 
 ```bash
-type -a ued_seq
-ued_seq --help
-# If this is the hutch wrapper exposing --a360:
-ued_seq --a360
+# Preview only: no timing writes.
+(
+  source /sdf/home/u/uedopr/daq/scripts/setup_env.sh &&
+  python /cds/group/pcds/dist/pds/ued/scripts/ued_seq_setup_new.py \
+    --cam 0 --pv DAQ:UED:XPM:0 --eng 0 --test
+)
+
+# Apply after checking the preview.
+(
+  source /sdf/home/u/uedopr/daq/scripts/setup_env.sh &&
+  python /cds/group/pcds/dist/pds/ued/scripts/ued_seq_setup_new.py \
+    --cam 0 --pv DAQ:UED:XPM:0 --eng 0
+)
 ```
 
-The exact wrapper is not present in this checkout; confirm its availability
-in the normal `uedopr` shell. Do not substitute `ued_seq_setup --a360`: the
-checked-in `ued_seq_setup` does not support that flag. If the wrapper is absent,
-the hutch timing setup must be identified before running; do not guess an XPM
-sequence engine. Verify the selected XPM sequence/readout group and measured
-DAQ event rate. The run trigger (EVR event code 6, normally 1080 Hz) and 360 Hz
+Verified on September 30, 2026 as `uedopr`: the preview printed
+`seqprogram --pv DAQ:UED:XPM:0 --seq 0:/cds/group/pcds/dist/pds/ued/scripts/ued_360Hz.py --start --reset`.
+Only the preview was executed during this verification. The apply command
+starts/resets engine 0 and sets `DAQ:UED:XPM:0:PART:0:SeqMask` to 0, removing
+DAQ control over sequence enable/disable. The sequence requests control bit 0
+and labels it `360 Hz VTS1`. The interactive `ued_seq` alias invokes this same
+wrapper after sourcing the normal operator environment.
+
+Verify successful programming, the selected XPM sequence/readout group, and
+the measured DAQ event rate after enabling acquisition. The run trigger
+(EVR event code 6, normally 1080 Hz) and 360 Hz
 DAQ/readout trigger are separate. Do not set the camera AutoTrigFreqHz for this
 full DAQ test. The expected camera mode is external source 0, AutoTrigEn=0,
 TrigEn=1, RdoutEn=1. Expected PCIe source is UseMiniTpg=false, ClkSel=0.
