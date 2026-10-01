@@ -13,7 +13,8 @@ refresh only the three configurations needed here from BEAM, and restore TEST
 afterward. Keep BEAM unchanged. See the
 [schema/rollback review](../ued-config-rollback-20260930/README.md) before
 switching software generations. The backup and three-entry copy are complete;
-the gain-map upload and post-test restoration have not been executed.
+MapFHL was subsequently uploaded by the operator and verified at TEST key 1406.
+Post-test restoration remains pending.
 
 ## Software selection
 
@@ -136,16 +137,25 @@ DAQ had no Slurm jobs and its control endpoint did not respond before copying;
 only the monitor and timing services were running.
 
 Do not rerun the completed backup/copy blocks below or overwrite the backup.
-In the operator shell, set the existing record directory and continue at the
-MapFHL preview/upload:
+In the operator shell, retain the existing record directory for all subsequent
+snapshots and restoration:
 
 ```bash
 export UED_GAINMAP_RECORD="$HOME/daq/gainmap-test-20260930"
 ```
 
-The copied ePix settings are `gain_mode=1`, `start_ns=94000`, and
-`AdcPipelineDelay=68`; the test gain map has **not** yet been uploaded.
-The backup/copy commands below are retained as the reproducible procedure.
+The initial copy had `gain_mode=1`, `start_ns=94000`, and `AdcPipelineDelay=68`.
+**MapFHL upload was verified September 30 at 17:27 PDT, TEST key 1406.** All
+540672 pixels match the mask: 22169 FL pixels (code 8) and 518503 FH pixels
+(code 12). Map mode is 5; all 16 trbits are 1. `start_ns=94000`, pipeline 68,
+and `AsicRoClkHalfT=3` remain correct; obsolete AsicMask is absent. Other TEST
+entries and BEAM (key 1402) are unchanged. See [readback details](mapfhl-readback.json).
+The full verified configuration is saved in the operator record directory as
+`test-mapfhl.json`. The uploader also regenerated the `rateEnum` metadata from
+the current template; no additional numeric timing/register changes were found.
+
+The backup, copy, and upload commands below are retained for reproducibility.
+These steps are complete for MapFHL; continue at section 4 for the DAQ test.
 
 The read-only September 30 comparison found TEST at key **1125** and BEAM at
 key **1402**. TEST already has `epixquad1kfps_0`, `epixquad_0`, `timing_0`, and

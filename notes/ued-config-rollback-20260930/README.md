@@ -78,7 +78,10 @@ preserved. BEAM remains untouched. The backup and three-entry copy completed
 September 30 at 17:20 PDT: TEST key 1125 became 1405; BEAM remained 1402.
 The original contents are saved in the operator's `alias-backups.json`, with
 hashes in the [execution record](../ued-full-daq-20260930/test-prepared.json).
-Gain-map upload and restoration remain pending. Schema isolation does not
+The operator's MapFHL upload was verified at TEST key 1406 on September 30,
+17:27 PDT; [readback details](../ued-full-daq-20260930/mapfhl-readback.json)
+confirm BEAM and the other TEST entries remain unchanged. Restoration remains
+pending. Schema isolation does not
 restore hardware settings: returning to a release still requires fresh
 detector initialization and Configure.
 
