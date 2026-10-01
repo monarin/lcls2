@@ -21,7 +21,11 @@ in turn. The adapter also disables camera TrigEn, AutoTrigEn and RdoutEn during
 programming, using the standalone gate helpers, and restores them on success.
 The existing DAQ Run-trigger disable/enable and remaining Configure sequence
 still surround the write. This test changes both write sequence and camera
-gating; it does not isolate which difference removes the FPs.
+gating; it does not isolate which difference removes the FPs. Subsequent
+[source replay](../gain-writer-diagnosis/README.md) found a third, significant
+difference: expert ConfigDB writes reset IsEn to 0 before the original DAQ
+map helper, whereas the standalone helper reasserts IsEn=True. This confirmed
+sequencing defect is the leading explanation, pending an IsEn-only hardware test.
 
 There is no post-Configure correction in this test. The earlier 44-pixel
 overwrite was a manual diagnostic, not a permanent hook. Its scripts/evidence

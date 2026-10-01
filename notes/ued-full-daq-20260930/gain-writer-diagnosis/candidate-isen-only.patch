@@ -1,0 +1,9 @@
+--- a/psdaq/psdaq/configdb/epixquad1kfps_config.py
++++ b/psdaq/psdaq/configdb/epixquad1kfps_config.py
+@@ -1037,2 +1037,6 @@
+     if writePixelMap:
++        # Expert ConfigDB includes the running value IsEn=0. Reassert the
++        # programming state after apply_dict, before any matrix/pixel writes.
++        for i in asics:
++            retry(cbase.Epix10kaSaci[i].IsEn.set, True)
+         if standalone_plan is not None:
