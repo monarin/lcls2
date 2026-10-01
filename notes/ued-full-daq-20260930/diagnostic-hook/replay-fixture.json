@@ -1,0 +1,6 @@
+{
+  "source": "/sdf/data/lcls/drpsrcf/ffb/ued/uedc00107/xtc/uedc00107-r0003-s001-c000.xtc2",
+  "scope": "Exact complete prefix through the first three L1Accept events; not a new acquisition or finalized run",
+  "bytes": 5550148,
+  "sha256": "9003fd6e81a170d4accccc131aa6add87432fc21953ca8b028e9696af4181818"
+}

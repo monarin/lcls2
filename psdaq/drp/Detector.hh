@@ -47,9 +47,11 @@ public:
     virtual void slowupdate(XtcData::Xtc& xtc, const void* bufEnd) { xtc = {{XtcData::TypeId::Parent, 0}, {nodeId}}; };
     virtual void event(XtcData::Dgram& dgram, const void* bufEnd, PGPEvent* event, uint64_t count) = 0;
     virtual void event(XtcData::Dgram& dgram, const void* bufEnd, const Pds::Eb::ResultDgram& result) {};
+    // Optional bounded diagnostic; called after TEB damage and before file submission.
+    virtual void diagnosticDgram(const XtcData::Dgram&, uint64_t pulseId, bool persist) {};
     // For binning into the cube
     virtual XtcData::Shape shapeCube(unsigned rawDefIndex, unsigned valueIndex, XtcData::DescData& rawData);
-    virtual unsigned addToCube(unsigned rawDefIndex, unsigned valueIndex, unsigned subIndex, 
+    virtual unsigned addToCube(unsigned rawDefIndex, unsigned valueIndex, unsigned subIndex,
                                double* dst, unsigned bin, XtcData::DescData& rawData);
     virtual unsigned subIndices    () { return 0; }
     virtual unsigned rawNamesIndex () { return 0; }

@@ -1,0 +1,53 @@
+{
+  "source_base_commit": "0b3fa0b6fa9583c5fd0e1bf133ea0aaadf0be7a3",
+  "source_files_sha256": {
+    "psdaq/drp/EpixQuad.cc": "ca62d82b33e11758eb62e7a17c2634afdee6a784519d01ab974f180f12184c7f",
+    "psdaq/drp/EpixQuad.hh": "fa16af10c28bfd762d7ac6d0b193845dc570590a8fe52af1e36d462a5b47a3f3",
+    "psdaq/drp/EpixQuadDiagnostic.cc": "c7602c5e7314317b9b203844981f2fedbee21108c5a0026450f93e0b71e3ad84",
+    "psdaq/drp/EpixQuadDiagnostic.hh": "f85491c1aaa0aaa01f6715077b8506e156e417996336768e414d737457e7e65c",
+    "psdaq/drp/EpixQuadDiagnosticTest.cc": "e29f8921f89e4f3668c4b37995eb33002187a55d31f879318c2e734b40122593",
+    "psdaq/drp/Detector.hh": "a6c492b5e94c6686571ad52e22ef9f6f8f89c791b2fb8b0bad604b3e737aab63",
+    "psdaq/drp/TebReceiver.cc": "0debd7afbb983ddc0d12c007b78d0ff210e84dfab6c4426508ef8c5355bc0f78",
+    "psdaq/drp/drp.cc": "c737952be65169ab9c5a83f9047fcb344a974a7ec4fdbfc2621c15cf1b99894c",
+    "psdaq/drp/meson.build": "c56ad7636a533fdbf0e31d7d31c7f4d42fb34c924eb4aa88bb348bc0f6474404",
+    "psdaq/drp/CMakeLists.txt": "84f827d04965b05c808b8f8f2fcaf2c3f43c292362284a8b054a698cf014c8d8"
+  },
+  "build_host": "drp-ued-cmp003",
+  "environment": "daq_20250402_r9",
+  "build_exit": 0,
+  "build_jobs": 4,
+  "nice": 15,
+  "build_directory": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/builddir-ued-diag-20260930",
+  "install_prefix": "/sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-diag-20260930",
+  "bundle": "/sdf/home/m/monarin/lcls2_submodules_09282026_ued_epixquad_test1",
+  "bundle_commit": "4a28be03a7aa77373f0795dae7a1e0d003d4bc3c",
+  "installed_drp_sha256": "2e5811120b1efd0666f7274404dd34949c8127f90a1f5d1c1a571cc2eb5ae386",
+  "prior_drp_sha256_unchanged": "48654afc2e25239fa5f771bfe4b3b41cf21860efa7168e0449fb34c9cfe19dd8",
+  "native_test": {
+    "status": "passed",
+    "sanitizers": [
+      "address",
+      "undefined"
+    ],
+    "compiler_flags": "-std=c++17 -O1 -g -Wall -Wextra -Werror -pthread",
+    "test_host": "drp-ued-cmp003"
+  },
+  "comparator_tests": "10 passed; retained run-3 replay plus injected discrepancies",
+  "verification_hosts": [
+    "drp-ued-cmp003",
+    "ued-daq as uedopr"
+  ],
+  "scope": "Build/import/replay tests and output directory preparation only; no DAQ start, device access or ConfigDB/PV changes",
+  "final_build_exit": 0,
+  "final_build_note": "Incremental rebuild after required trailing-whitespace cleanup; same implementation",
+  "diagnostic_helpers_sha256": {
+    "compare.py": "8d2ff0561fcba68d1f8441453b2dc0f5fb9dd083e19acd5be93994bbe7f7342d",
+    "test_compare.py": "31dadbddd2ec0a28a88172f091695c9cc8ccabc0c92048e7e063986be076d374",
+    "epix_diagnostic.py": "91116e7ab6b23a9d95762f67a471cf5c7249854277dd5f9b2589f4d280a3aa4f",
+    "setup.sh": "f90b7032e63e4df44d3768ea4125d03001fb1d969fe11676d78f44e30472478a",
+    "build.sh": "9b25895b5cf3dfcfc8e8fe9d924232675daa1f2cb85bff86dc722a7a4a9b4dea",
+    "test-native.sh": "bd4403d45edc39b7acbbb880a53b054bb12b408181ca035c40bad6b81a7413bb"
+  },
+  "installed_runtime_comparator_tests": "10 passed on drp-ued-cmp003 with diagnostic install; first-three-event run-3 prefix from shared workspace",
+  "operator_output_directory": "/sdf/home/u/uedopr/daq/gainmap-diagnostic-20260930"
+}

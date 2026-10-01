@@ -79,6 +79,9 @@ void TebReceiver::complete(unsigned index, const ResultDgram& result)
         }
     }
 
+    m_drp.detector().diagnosticDgram(*dgram, pulseId,
+                                    writing() && (result.persist() || result.prescale()));
+
     if (writing()) {                    // Won't ever be true for Configure
         // write event to file if it passes event builder or if it's a transition
         if (transitionId == TransitionId::L1Accept) {

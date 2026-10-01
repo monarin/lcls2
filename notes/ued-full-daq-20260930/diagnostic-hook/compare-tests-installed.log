@@ -1,0 +1,20 @@
+===============================================================================
+This is a Federal computer system and is the property of the United States
+Government. It is for authorized use only. Users (authorized or unauthorized)
+have no explicit or implicit expectation of privacy.
+
+By using this system you expressly consent to the terms and conditions in
+https://www.slac.stanford.edu/comp/policy/use.html
+===============================================================================
+/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/lib/python3.9/site-packages/pytest_asyncio/plugin.py:208: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+..........                                                               [100%]
+=============================== warnings summary ===============================
+install-ued-diag-20260930/lib/python3.9/site-packages/psana/detector/UtilsEpixUHR.py:209
+  /sdf/home/m/monarin/lcls2_worktree/ued-epix10ka-rdsrv421-daq/install-ued-diag-20260930/lib/python3.9/site-packages/psana/detector/UtilsEpixUHR.py:209: DeprecationWarning: invalid escape sequence \_
+    """bit massaging of panel data
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+10 passed, 1 warning in 6.58s

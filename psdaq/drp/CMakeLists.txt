@@ -40,6 +40,7 @@ add_executable(drp
     EpixUHR3x2.cc
     Epix100.cc
     EpixQuad.cc
+    EpixQuadDiagnostic.cc
     Jungfrau.cc
     JungfrauDetectorId.cc
     JungfrauEmulator.cc
@@ -305,4 +306,3 @@ install(TARGETS drp
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
 )
-

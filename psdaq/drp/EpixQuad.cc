@@ -101,6 +101,20 @@ EpixQuad::EpixQuad(Parameters* para, MemPool* pool) :
 {
     virtChan = 0;
 
+    const auto dir = para->kwargs.find("epixDiagDir");
+    const auto frames = para->kwargs.find("epixDiagFrames");
+    if (dir != para->kwargs.end()) {
+        if (para->detType != "epixquad1kfps" || para->laneMask != 1 || para->nCubeWorkers)
+            throw std::invalid_argument("ePix diagnostic requires epixquad1kfps lane 0 without cube workers");
+        size_t used = 0;
+        unsigned long n = frames == para->kwargs.end() ? 51 : std::stoul(frames->second, &used);
+        if (n < 1 || n > 64 || (frames != para->kwargs.end() && used != frames->second.size()))
+            throw std::invalid_argument("epixDiagFrames must be an integer in 1..64");
+        m_diagnostic.reset(new EpixQuadDiagnostic(dir->second, n));
+    } else if (frames != para->kwargs.end()) {
+        throw std::invalid_argument("epixDiagFrames requires epixDiagDir");
+    }
+
     _init(para->detName.c_str());  // an argument is required here
 }
 
@@ -116,7 +130,40 @@ void EpixQuad::_connectionInfo(PyObject* mbytes)
 unsigned EpixQuad::enable(XtcData::Xtc& xtc, const void* bufEnd, const nlohmann::json& info)
 {
     _monStreamDisable();
+    if (m_diagnostic) m_diagnostic->arm();
     return 0;
+}
+
+void EpixQuad::event(XtcData::Dgram& dgram, const void* bufEnd, PGPEvent* event, uint64_t count)
+{
+    if (m_diagnostic) {
+        // Copy before BEBDetector parses the DMA payload or EpixQuad reorders pixels.
+        const auto& b = event->buffers[0];
+        const bool valid = event->mask == 1 && b.size > 0;
+        const auto* eb = static_cast<const Pds::EbDgram*>(&dgram);
+        m_diagnostic->input(eb->pulseId(), dgram.time.value(),
+                            valid ? m_pool->dmaBuffers[b.index] : nullptr,
+                            valid ? b.size : 0);
+    }
+    BEBDetector::event(dgram, bufEnd, event, count);
+}
+
+void EpixQuad::diagnosticDgram(const XtcData::Dgram& dgram, uint64_t pulseId, bool persist)
+{
+    if (!m_diagnostic) return;
+    const auto size = sizeof(dgram) + dgram.xtc.sizeofPayload();
+    switch (dgram.service()) {
+    case XtcData::TransitionId::Configure:
+        m_diagnostic->configuration(&dgram, size);
+        break;
+    case XtcData::TransitionId::L1Accept:
+        m_diagnostic->prewrite(pulseId, dgram.time.value(), &dgram, size, persist);
+        break;
+    case XtcData::TransitionId::EndRun:
+        m_diagnostic->finish("EndRun");
+        break;
+    default: break;
+    }
 }
 
 unsigned EpixQuad::disable(XtcData::Xtc& xtc, const void* bufEnd, const nlohmann::json& info)
@@ -207,7 +254,7 @@ void EpixQuad::_event(XtcData::Xtc& xtc, const void* bufEnd, uint64_t l1count, s
         transitionXtc().extent = sizeof(Xtc);
     }
 #endif
-    
+
     // FIXME: New firmware shows 4 subframe
     // Expect 3 DMA lanes (0: timing/meta, 1: unused, 2: image)
 	const unsigned expected_subframes = 4;
@@ -235,7 +282,7 @@ void EpixQuad::_event(XtcData::Xtc& xtc, const void* bufEnd, uint64_t l1count, s
 		xtc.damage.increase(XtcData::Damage::MissingData);
 		return;
 	}
- 
+
     unsigned seg=0;
     for(unsigned q=0; q<4; q++) {
         CreateData cd(xtc, bufEnd, m_namesLookup, m_evtNamesId[seg]);
@@ -359,6 +406,7 @@ bool     EpixQuad::scanEnabled()
 
 void     EpixQuad::shutdown()
 {
+    if (m_diagnostic) m_diagnostic->finish("disconnect-before-EndRun");
 }
 
 void     EpixQuad::_monStreamEnable()

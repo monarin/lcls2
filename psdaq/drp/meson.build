@@ -56,6 +56,7 @@ executable('drp',
     'EpixUHR3x2.cc',
     'Epix100.cc',
     'EpixQuad.cc',
+    'EpixQuadDiagnostic.cc',
     'Jungfrau.cc',
     'JungfrauDetectorId.cc',
     'JungfrauEmulator.cc',
@@ -371,4 +372,3 @@ executable('jungfrauSim',
   install_rpath: libdir_install_rpath,
   link_with: [],
 )
-

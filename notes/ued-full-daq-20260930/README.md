@@ -1,5 +1,8 @@
 # Full UED DAQ gain-map test instructions
 
+For the incoming/pre-write/XTC2 comparison, use the separate
+[diagnostic capture build and launch](diagnostic-hook/README.md).
+
 Prepared September 30, 2026; isolated DAQ build subsequently completed successfully
 on the same day. Installed-software checks passed on `drp-ued-cmp003` and
 `ued-daq`. The build did not change ConfigDB or launch DAQ. TEST backup and
