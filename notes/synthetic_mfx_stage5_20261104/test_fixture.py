@@ -88,9 +88,32 @@ class FixtureTests(unittest.TestCase):
                         patch("pilot_admin.preflight", side_effect=AssertionError("Network must not run")), \
                         patch("pilot_admin.os.link") as link:
                     with self.assertRaisesRegex(ValueError, "Unreviewed .* provenance"):
-                        pilot_admin.publish(staging, dest / "report.json", dest / "review.json", commit, dest / "journal")
+                        pilot_admin.publish(staging, dest / "report.json", dest / "review.json", commit, dest / "journal",
+                                            dest / "acceptance.json", dest / "source.json")
                     link.assert_not_called()
                     self.assertFalse((dest / "journal").exists())
+
+    def test_acceptance_gate(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            source = {"status": "pass", "kind": "source", "script_sha256": "code",
+                      "samples": {str(i): {"calib": "hash"} for i in range(60)}}
+            source_path = root / "source.json"
+            source_path.write_text(json.dumps(source))
+            good = {"status": "pass", "kind": "destination", "root": str(root),
+                    "step_counts": [1000]*30, "event_count": 30000, "samples": source["samples"],
+                    "reference_sha256": file_sha(source_path), "script_sha256": "code"}
+            dest = root / "accepted.json"
+            dest.write_text(json.dumps(good))
+            pilot_admin.acceptance_gate(root, dest, source_path, "code")
+            for field, bad in [("status", "fail"), ("root", str(root/"wrong")),
+                               ("event_count", 29999), ("step_counts", [1000]*29),
+                               ("samples", {}), ("reference_sha256", "wrong"),
+                               ("script_sha256", "wrong")]:
+                with self.subTest(field=field):
+                    dest.write_text(json.dumps(dict(good, **{field: bad})))
+                    with self.assertRaises(ValueError):
+                        pilot_admin.acceptance_gate(root, dest, source_path, "code")
 
 
 if __name__ == "__main__":

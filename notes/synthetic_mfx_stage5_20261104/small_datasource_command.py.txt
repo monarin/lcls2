@@ -1,0 +1,15 @@
+from psana import DataSource
+import json
+root='/tmp/synthetic-mfx-stage5-small-20261104'
+counts=[]
+for run in DataSource(exp='prjdatpsana',run=2,dir=root,live=False,skip_calib_load='all').runs():
+    value=run.Detector('step_value')
+    for i,step in enumerate(run.steps()):
+        assert value(step)==i
+        n=0
+        for evt in step.events():
+            assert value(evt)==i
+            n+=1
+        counts.append(n)
+assert counts==[2,3,4], counts
+print(json.dumps({'status':'pass','counts':counts,'run':2,'scope':'small test fixture'}))

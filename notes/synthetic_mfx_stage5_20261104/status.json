@@ -1,7 +1,7 @@
 {
   "scope": "Generate run 2, 30 steps x 1000 events",
-  "phase": "preflight_and_small_checks",
-  "round": 1,
+  "phase": "generating_and_reviewing_publication_hardening",
+  "round": 2,
   "round_limit": 3,
   "base_sha": "192fa79b2",
   "full_generated": false,
@@ -13,5 +13,8 @@
     "DataSource acceptance",
     "publication"
   ],
-  "session_preference": "Use implementation-review loop for implementation/fixes"
+  "session_preference": "Use implementation-review loop for implementation/fixes",
+  "generator_reviewed_sha": "a644240e0dbdc7f2c3a39b71a08c19035da83c9b",
+  "round1_verdict": "pass",
+  "source_samples": "60 calibrated boundary samples passed; 23 frozen calibration selections"
 }

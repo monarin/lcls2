@@ -34,7 +34,23 @@ def preflight():
             "available_bytes": os.statvfs(DEST).f_bavail * os.statvfs(DEST).f_frsize}
 
 
-def publish(staging, verification, review_path, commit, journal):
+def acceptance_gate(staging, acceptance_path, reference_path, code_sha):
+    accepted = json.loads(acceptance_path.read_text())
+    reference = json.loads(reference_path.read_text())
+    require(accepted.get("status") == "pass" and accepted.get("kind") == "destination"
+            and Path(accepted.get("root", "")).resolve() == staging.resolve()
+            and accepted.get("step_counts") == COUNTS and accepted.get("event_count") == EVENTS
+            and len(accepted.get("samples", {})) == 60, "Missing full destination acceptance")
+    require(reference.get("status") == "pass" and reference.get("kind") == "source"
+            and accepted["samples"] == reference.get("samples")
+            and accepted.get("reference_sha256") == file_sha(reference_path), "Wrong source acceptance reference")
+    require(accepted.get("script_sha256") == reference.get("script_sha256") == code_sha,
+            "Unreviewed acceptance provenance")
+    return {"destination": {"path": str(acceptance_path.resolve()), "sha256": file_sha(acceptance_path)},
+            "source": {"path": str(reference_path.resolve()), "sha256": file_sha(reference_path)}}
+
+
+def publish(staging, verification, review_path, commit, journal, acceptance_path, reference_path):
     require(staging.resolve().parent == DEST.resolve() and staging.name.startswith(".synthetic-mfx-r0002-"), "Unexpected staging location")
     report = json.loads(verification.read_text())
     generation = json.loads((staging / "generation.json").read_text())
@@ -45,7 +61,7 @@ def publish(staging, verification, review_path, commit, journal):
     # Require the implementation being used to be the exact reviewed tree.
     repo = Path(__file__).resolve().parents[2]
     reviewed_hashes = {}
-    for name in ("xtc_fixture.py", "make_pilot.py", "verify_pilot.py", "pilot_admin.py"):
+    for name in ("xtc_fixture.py", "make_pilot.py", "verify_pilot.py", "pilot_admin.py", "acceptance.py"):
         p = Path(__file__).with_name(name)
         recorded = subprocess.check_output(["git", "-C", str(repo), "show", commit + ":" + str(p.relative_to(repo))])
         require(recorded == p.read_bytes(), "Unreviewed implementation change")
@@ -54,6 +70,7 @@ def publish(staging, verification, review_path, commit, journal):
         require(generation["code_sha256"].get(name) == reviewed_hashes[name], "Unreviewed generator provenance")
     for name in ("verify_pilot.py", "xtc_fixture.py"):
         require(report.get("code_sha256", {}).get(name) == reviewed_hashes[name], "Unreviewed validator provenance")
+    acceptance_records = acceptance_gate(staging, acceptance_path, reference_path, reviewed_hashes["acceptance.py"])
     checks = preflight()
     require(len(generation["streams"]) == len(report["streams"]) == 10, "Incomplete stream set")
     require(generation["destination"] == {"experiment": DEST_EXP, "run": RUN}
@@ -80,7 +97,8 @@ def publish(staging, verification, review_path, commit, journal):
             log.write(json.dumps(value) + "\n")
             log.flush()
             os.fsync(log.fileno())
-        record({"phase": "preflight", "checks": checks, "reviewed_commit": commit})
+        record({"phase": "preflight", "checks": checks, "reviewed_commit": commit,
+                "acceptance": acceptance_records})
         for kind, source, destination, item in files:
             record({"phase": "intent", "source": str(source), "destination": str(destination), "sha256": item["sha256"]})
             os.link(source, destination)
@@ -105,8 +123,10 @@ if __name__ == "__main__":
     pub.add_argument("--review", type=Path, required=True)
     pub.add_argument("--commit", required=True)
     pub.add_argument("--journal", type=Path, required=True)
+    pub.add_argument("--acceptance", type=Path, required=True)
+    pub.add_argument("--reference", type=Path, required=True)
     args = parser.parse_args()
     if args.action == "preflight":
         save_json(args.report, preflight())
     else:
-        publish(args.staging, args.verification, args.review, args.commit, args.journal)
+        publish(args.staging, args.verification, args.review, args.commit, args.journal, args.acceptance, args.reference)

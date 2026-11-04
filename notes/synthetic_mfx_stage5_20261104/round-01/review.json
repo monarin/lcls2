@@ -1,0 +1,67 @@
+{
+  "reviewed_commit": "a644240e0dbdc7f2c3a39b71a08c19035da83c9b",
+  "verdict": "pass",
+  "summary": "Stage 5 run-2 fixture code at a644240e0 is a faithful adaptation of the reviewed Stage 3 scripts and is fit to proceed to full generation. Source preservation: compare_allowed restores only timestamp, s000 scan append/extent, runinfo expt/runnum spans and SMD intOffset/intDgramSize, then requires byte equality; verify() additionally asserts source-record timestamp against the index (S3-VERIFY-01 retained), env/src/damage/type equality, nested extents, decoded runinfo/scan/smdinfo, padding, state machine, counts [1000]*30, EOF, first-30,000 event timestamps and streamed SHA256. Schedule: schedule() generalizes Stage 3 to arbitrary counts with [9,7,6,8]/[9,7,5] inserts, requires a following source record, strict timestamp ordering and exactly 30 BeginSteps; schedule_boundaries.json boundaries 1 (\u2026520547/1547/2547/3547), 15 (453 ns spacing, 2 ns before the SlowUpdate) and 30 (\u2026275771/6771/7771 with EndRun) match the independent Stage 1 audit, consistent with schedule_crosscheck.json and preflight min_adjacent_gap_ns=2. Field widths/offsets unchanged from Stage 3 (16-byte expt with fit check, UINT32 runnum, UINT64 smdinfo, 32-bit seconds overflow guard). Full-fixture safeguards: exclusive 0700 staging, exclusive file creation, PS_FAKESTEP_FLAG=0, headroom check, run-2 collision glob and logbook run-2 queries, run1 stat snapshot, 36037-event and alignment checks. Provenance/publication: publisher requires exact git blobs for all four files, generator/validator hashes in generation.json and report, matching manifests, full EVENTS/COUNTS per stream, validated size/mtime/inode re-check (replacing rehash; documented limitation), bigdata-before-SMD hard links and fsynced journal. Supplied evidence (10/10 unit tests in two logs, preflight.json exact size 1,019,012,911,780 and 30,373 records/stream, 13 calibration docs matching after.json run 1/run_end 2, small 9-event all-ten-stream pass, DataSource [2,3,4] pass, retained failed-path logs showing the r0002 snapshot error occurred before any writes) is consistent with the code. Proposal text at lines 580-584 and 830-832 correctly states 30 steps \u00d7 1,000 = 30,000 events omitting 6,037. No blocking defects. Four non-blocking suggestions: gate publication programmatically on the destination acceptance report, add the post-publication run-1 stat/smoke script, derive acceptance sample indices from COUNTS, and commit the small DataSource check script. Full generation, full validation, serial calibrated acceptance and publication remain pending and are not claimed here.",
+  "checks": [
+    "Read scope.md, README.md, status.json, round-01/context.md, runtime.sh and .gitignore for Stage 5 and compared with Stage 3 README and both Stage 3 review records to recover prior IDs S3-ADMIN-01/02 and S3-VERIFY-01",
+    "Diffed xtc_fixture.py against Stage 3: COUNTS=[1000]*30, RUN=2, EVENTS; schedule() generalized with counts validation, boundary set, template cache, require total < L1 count, step == len(counts)-1, strict ordering and exactly len(counts) BeginSteps; all wire-layout helpers (HEADER, XTC, Names 1048/524, Shapes 20, SIZES, smdinfo UINT64, to_ns/from_ns) byte-identical to the reviewed Stage 3 versions",
+    "Diffed make_pilot.py: r0002 names, RUN in rewrite_runinfo/decode checks, streamed SHA256 during write, 4-thread ThreadPoolExecutor over independent streams with per-thread file handles and read-only shared plan/scan blocks/SMD bytes; transform/append_payload/rewrite_runinfo/scan_blocks logic unchanged",
+    "Diffed verify_pilot.py: RUN/EVENTS/COUNTS substitutions, streamed digest over the contiguous record walk ending at EOF, pre/post stat capture with validated_stat in the report, source-timestamp assertion retained; compare_allowed byte-identical to Stage 3",
+    "Diffed pilot_admin.py: run-2 collision glob and logbook suffix, staging prefix .synthetic-mfx-r0002-, full-fixture identity/counts and per-stream event_count/step_counts gates, check_stat against validated_stat replacing file_sha; provenance blob gating, review gate, link order and journal retained",
+    "Checked preflight.py byte total formula (all stream bd+smd record sizes plus 2x scan Names and 2x step blocks) against README/preflight.json 1,019,012,911,780; 30,373 records = 30,254 source records + 119 inserts; 119 = 29x4 + 3",
+    "Cross-checked schedule_boundaries.json boundaries after events 1000, 15000 and 30000 against timestamp_schedule_audit.json full.boundaries (same timestamps; EndRun replaces BeginStep at 30000) and min gap 1814 ns/453 ns spacing yielding the 2 ns minimum",
+    "Checked acceptance.py: GET-only HTTP monkeypatch, PS_FAKESTEP_FLAG=0 and PS_PARALLEL=none required, 60 boundary samples via timestamps filter, 23 calibration selections (8 jungfrau + 3x5 pv) with frozen sha256 and _id/deployed id_doc checks, run 1/run_end 2 validity on destination, step/event timestamp and scan-state walk, sample equality with source reference",
+    "Checked test_small.py patches COUNTS/EVENTS/schedule in both make_pilot and verify_pilot so the small fixture carries [2,3,4] and would be rejected by publish(); confirmed small_verification.json shows ten streams pass with 25 records/9 events and validated_stat present",
+    "Matched the ten test names in test_fixture.py to unit_checks.log and unit_checks_final.log (10/10 OK)",
+    "Confirmed both retained path-error logs fail in load_sources() before any output write, and the committed SNAPSHOT is the r0001 Stage 1 path",
+    "Confirmed proposal persistent_task_state_xpp_cube.md lines 580-584 and 830-832 state 30 steps of 1,000 events (30,000) omitting the final 6,037 of 36,037",
+    "Confirmed no psana core files are touched by the Stage 5 directory"
+  ],
+  "limitations": [
+    "Read-only review with file tools only: no commands, tests, hashing, git operations or data reads were performed; all runtime outcomes (unit tests, preflight, small fixture, DataSource check) are coordinator-supplied logs",
+    "Could not independently compute SHA256 of committed files to confirm preflight.json script_sha256 or small_verification.json code_sha256 equal the reviewed blobs; publish() enforces blob equality at run time",
+    "Full generation, full verification report, acceptance source/destination reports and publication journal do not exist yet by design; this verdict covers code and pre-generation evidence only and does not claim full-run acceptance",
+    "small_datasource.log is a single JSON line; the script that produced it is not in the Stage 5 directory, so what it checked could not be inspected (see S5-EVID-01)",
+    "Thread safety of psana dgram.Dgram decoding under four concurrent threads was not verified from source; the small fixture exercised it successfully and the byte-level comparisons are pure Python and independent of decode",
+    "Weka project quota could not be confirmed (admin authentication required); filesystem free bytes are not quota proof, as documented",
+    "Stage 1 manifest.json and timestamp_schedule_audit.json were read only in the sections needed for calibration counts and the three sampled boundaries"
+  ],
+  "findings": [
+    {
+      "id": "S5-ADMIN-01",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage5_20261104/pilot_admin.py",
+      "line": 42,
+      "evidence": "publish() gates on the structural report (status pass, generation_sha256, code_sha256, validated_stat, EVENTS/COUNTS) and the review record, but takes no acceptance.py destination report as input. scope.md line 23-26 makes the full calibrated serial DataSource acceptance a publication prerequisite, and README line 49-50 defers this to coordinator records. Nothing in code prevents publishing a fixture whose destination acceptance failed or was skipped.",
+      "requested_change": "Optional hardening before publication: add a required --acceptance argument and require the JSON to have status 'pass', kind 'destination', root equal to the staging path, step_counts == COUNTS, event_count == EVENTS, len(samples) == 60 and a non-null reference_sha256, before preflight() and the journal open. If not adopted, the coordinator must record the destination acceptance report path/hash in the publication journal."
+    },
+    {
+      "id": "S5-ADMIN-02",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage5_20261104/preflight.py",
+      "line": 41,
+      "evidence": "preflight.json records size/mtime_ns/inode for all twenty run-1 files, and scope.md line 29 requires a final published DataSource smoke and unchanged run-1 file stat check, but no committed script consumes run1_files or performs the post-publication comparison.",
+      "requested_change": "Optional: add a small read-only post-publication script (or a pilot_admin subcommand) that re-stats the twenty run-1 paths against preflight.json run1_files, confirms the twenty run-2 destinations share inode with staging, and runs the normal serial DataSource smoke on the final directory; record its output in the Stage 5 directory."
+    },
+    {
+      "id": "S5-ACCEPT-01",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage5_20261104/acceptance.py",
+      "line": 53,
+      "evidence": "sample_indices uses step*1000 and (step+1)*1000-1, and expected_doc uses step_index*1000, hard-coding 1000 rather than deriving from COUNTS; verify_pilot.py line 117 derives source_event_range from sum(COUNTS[:step]). Values coincide for the current [1000]*30 but would silently diverge if COUNTS were ever changed or patched for a small-fixture run.",
+      "requested_change": "Optional: compute cumulative offsets from COUNTS (e.g. starts = itertools.accumulate([0]+COUNTS)) for sample_indices, expected_doc source_event_range and the per-step count check, so acceptance.py and verify_pilot.py share one definition."
+    },
+    {
+      "id": "S5-EVID-01",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage5_20261104/small_datasource.log",
+      "line": 1,
+      "evidence": "The log is a single line {\"status\": \"pass\", \"counts\": [2, 3, 4], \"run\": 2, \"scope\": \"small test fixture\"}. README line 32 says it checks normal run.steps() and scan values, but the script that produced it is not committed in the Stage 5 directory, so the checks it performed cannot be inspected or reproduced.",
+      "requested_change": "Optional: commit the small DataSource check script (or record its path and sha256 in README) so the evidence is reproducible. Not required for generation; acceptance.py destination mode supersedes it for the full fixture."
+    }
+  ]
+}

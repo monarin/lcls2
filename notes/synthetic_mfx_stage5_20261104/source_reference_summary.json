@@ -1,0 +1,7 @@
+{
+  "status": "pass",
+  "samples": 60,
+  "calibration_selections": 23,
+  "reference_sha256": "b3917fe92c704b5f9e1d8346ac378e353a920396cc3eee78dbea7c15c1b10756",
+  "executed_acceptance_matches_commit": "a644240e0dbdc7f2c3a39b71a08c19035da83c9b"
+}

@@ -48,3 +48,15 @@ cversion=3, cmpars=None, with NaNs normalized only for fingerprinting.
 The runtime pins the previously used psana build. No core files changed, so
 core MPI test suites are not part of this fixture-generation task. Follow the
 review/status records; no full generation/publication result is claimed yet.
+
+## Review follow-up
+
+Round 1 passed the generator/validator at a644240e0. The full write has started
+with those exact unchanged files. Source calibrated acceptance passed all 60
+samples and 23 frozen selections (source_samples.json). Publication now requires
+--acceptance and --reference, binds both reports to the reviewed acceptance code,
+and records their paths/hashes in the journal. post_publish.py checks unchanged
+run-1 stats, final run-2 hard links and a calibrated first-event read. These
+publication/final-check changes receive a focused second review while generation
+runs. The exact small DataSource stdin command is saved as
+small_datasource_command.py.txt. Acceptance remains deliberately 30 x 1000.
