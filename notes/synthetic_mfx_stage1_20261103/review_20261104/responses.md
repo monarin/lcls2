@@ -17,7 +17,7 @@ the response below addresses its explicit header-construction concern.
 | C4 | PV constants come from a RIX camera; run-2 shared fallback is live. | Accepted with provenance clarification. Manifest records `rix102353327` run 38 and `alvium3rix1`. `inline_alvium` is the destination's representative alias after deduplication, not scientific provenance. `pv_raw_1_0_0` in `misc_detectors.py` exposes raw fields, not calibrated values. Existing records stay intact. Run-2 deployment and hash/ID readback are explicitly mandatory before generation. | No claim of scientifically valid camera/QADC calibration. Stage 5 pins run 2 separately. The audit's specific latest shared pedestal candidate is time-dependent and was not re-queried here; the plan must not depend on its identity. |
 | C5 | Collaborator read access is unestablished. | Partially resolved by current evidence. Unsandboxed `id seema` includes `prjdatpsana` (5037); `getent group prjdatpsana` lists Seema. Root, XTC and SMD ACLs grant that group read/traverse; XTC/SMD defaults include it. See `access_and_git.txt`. This is account/directory evidence, not a read under Seema's login. | Keep collaborator acceptance open: check ancestor/final-file ACLs and actual listing/open plus a calibrated DataSource read under Seema's login. Do not change ACLs or claim Mona's read proves Seema's access. This does not block preparing the local pilot. |
 | C6 | Fake steps and unregistered live discovery can invalidate checks. | Accepted. Plan requires `PS_FAKESTEP_FLAG=0` before psana import on all ranks and records that setting. Examples reject a nonzero inherited value. Use explicit `dir=` and `live=False`; recheck collisions before publication. Last recorded logbook file listing was empty; it was not re-queried for this response. `smdreader.pyx` reads the flag at initialization. | Stage 4 records actual environment, disk discovery and complete counts; network errors must not be interpreted as an empty listing. |
-| C7 | Nothing is committed. | Superseded by checkpoint. `git ls-files` lists the plan and eleven Stage 1/2 note files; local HEAD and remote task branch were both `e118b3c7eec28203f06a1c9594306d59b58af4c5` at response start. `access_and_git.txt` records remote evidence. This predates these response changes. | Commit and push this response and compact review records, preserving unrelated untracked work. Large frozen snapshots remain in project storage by design. |
+| C7 | Nothing is committed. | Superseded by checkpoint. `git ls-files` lists the plan and ten Stage 1/2 note files; local HEAD and remote task branch were both `e118b3c7eec28203f06a1c9594306d59b58af4c5` at response start. `access_and_git.txt` records remote evidence. This predates these response changes. | Commit and push this response and compact review records, preserving unrelated untracked work. Large frozen snapshots remain in project storage by design. |
 
 ## Validation performed for this response
 
@@ -41,3 +41,18 @@ python notes/synthetic_mfx_stage1_20261103/review_20261104/audit_stage3_inputs.p
 The helper uses assertions as an audit and must run without Python `-O`.
 This documentation/audit-helper change does not modify psana core and does not
 require the full psana runtime suites. Stage 3/4 acceptance remains unexecuted.
+
+## Automated review follow-up
+
+Round 1 timed out at 900 seconds without a verdict; it supplies no approval.
+Round 2 reviewed `eafec66243fa387753eab37f3f8097ca2a41d860` and passed with
+one low, nonblocking finding, R1: C7 counted eleven note files instead of ten
+plus the plan. Corrected above; the original files and checkpoint are unchanged.
+
+Coordinator follow-up C3a: `configure_sizes.json` compares the Stage 1 bigdata
+Configure sizes to the freshly verified frozen SMD headers. All ten SMD
+Configures are 2,096 bytes larger. The plan now explicitly preserves both
+schemas, compares shared transition header fields, and validates each record's
+own extent rather than requiring SMD/bigdata Configure or L1 extent equality.
+This is a construction-specification clarification, not a new bigdata read or
+generated-file test. The final revision receives a focused third review.

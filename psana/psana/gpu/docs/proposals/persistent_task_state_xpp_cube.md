@@ -731,9 +731,14 @@ transition. Require a same-service template to exist; otherwise stop.
 Timestamp is the only changed field for copied header-only transitions. The
 explicit exceptions are the scan ShapesData/ancestor extents in `s000`
 BeginStep, scan Names/ancestor extents in Configure, and run identity in
-BeginRun. Use matching per-stream templates for SMD and bigdata and verify their
-outer headers agree; the SMD preflight alone is not that bigdata check. Preserve
-nonzero source damage rather than silently clearing it. Record the template
+BeginRun. Use matching per-stream templates for SMD and bigdata and compare
+transition timestamp, env, src, damage and contains. Validate each extent
+against that file's actual serialized record; do not require Configure or L1
+extents to match between SMD and bigdata. The [size comparison](../../../../../notes/synthetic_mfx_stage1_20261103/review_20261104/configure_sizes.json)
+shows source SMD Configures are 2,096 bytes larger than their bigdata counterparts. Preserve their existing stream-specific
+schemas rather than replacing either Configure with the other. The SMD
+preflight alone is not the bigdata check. Preserve nonzero source damage rather
+than silently clearing it. Record the template
 source offset/hash and an allowed-byte-change check for each generated record.
 The [source preflight](../../../../../notes/synthetic_mfx_stage1_20261103/review_20261104/source_preflight.json)
 records the frozen SMD template headers, offsets and hashes for all ten streams.
