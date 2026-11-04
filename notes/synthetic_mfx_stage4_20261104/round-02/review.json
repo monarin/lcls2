@@ -1,0 +1,83 @@
+{
+  "reviewed_commit": "0c9e57ef20bbe1d0cc4701d0325e232a11290b4d",
+  "verdict": "pass",
+  "summary": "Follow-up review of the five round-1 findings at 0c9e57ef2. All five are remedied as described in responses.md and are closed. S4-R1-01: README now has a dedicated paragraph stating that all nine MPI logs retain UCX unmatched tag-receive warnings at shutdown after report save and PASS, that the active PML was UCX and '--mca btl self,vader' did not select or constrain it, that all nine launchers exited zero, and that no MPI/psana shutdown fix is claimed; mpi_transport_probe.log shows 'selected ucx best priority 51' on both ranks, corroborating the PML claim. S4-R1-02: README binds all nine MPI cases to working-tree pilot.json SHA256 c5abc67a\u2026 (matching serial_summary.json line 392 and provenance.json line 21) and explicitly defers in-report reference-hash recording to a future driver revision; historical reports are untouched (hashes unchanged in provenance.json). S4-R1-03: status.json now reads 'superseded by archived pilot.json: eight JF types and six calibrated samples pass'. S4-R1-04: README records the reviewer cross-check, and schedule_crosscheck.json shows expected==actual for the three BeginStep timestamps, which match serial_summary.json steps and timestamp_schedule_audit.json lines 30/54 plus the original first BeginStep in the Stage 1 manifest. S4-R1-05: collaborator_check.py environment() now records sys.version, sys.executable and path+sha256 for psana, psana.dgram, psana.detector.jungfrau and psana.detector.UtilsJungfrau; it is printed before any data access and stored under 'runtime' in the success record, and README instructs that a 'Calibrated sample differs' failure under another build is inconclusive and should be returned with the environment output. collaborator_environment_probe.json exercises the collector locally and is labeled as not collaborator acceptance. The only executable change is collaborator_check.py; serial/MPI drivers retain the hashes recorded in the reports (provenance.json vs serial_summary.json code_sha256). unit_checks_followup.txt reports 6 tests OK. The collaborator own-login gate remains open and Stage 4 is not marked complete. One new low, non-blocking finding: the handoff command points at an archived copy of collaborator_check.py whose equality to the revised committed script is not evidenced in the repository.",
+  "checks": [
+    "Read round-01/review.json, round-02/context.md, responses.md, README.md, status.json, scope.md, .gitignore, collaborator_check.py, collaborator_environment_probe.json, collaborator_guard.txt, unit_checks.txt, unit_checks_followup.txt, mpi_transport_probe.log, provenance.json, schedule_crosscheck.json, access.txt, mpi/summary.json (head), mpi/n7-eb2-smd61-batch21-calib0.log, mpi_check.py (head), run_matrix.py line 21, serial_summary.json code_sha256/steps/reference sections, Stage 1 timestamp_schedule_audit.json",
+    "S4-R1-01: README lines 138-145 document post-PASS UCX warnings, UCX PML, inapplicable btl option, zero exits, no fix claimed; mpi_transport_probe.log lines 59-60 and 72-73 show 'selected ucx' on both ranks; n7-eb2-smd61-batch21-calib0.log confirms PASS at line 7 precedes all 12 UCX warnings",
+    "S4-R1-02: README lines 149-153 bind nine MPI cases to pilot.json c5abc67a6825f065229f7e9f043150bd87ee4474f1484634dab87a2a4c3f42e5; same hash in serial_summary.json line 392 and provenance.json line 21; mpi/summary.json commands reference the working-tree pilot.json path; deferral of in-report hash explicitly stated",
+    "S4-R1-03: status.json line 10 rewords normal_calibration_probe as superseded by archived pilot.json",
+    "S4-R1-04: schedule_crosscheck.json expected==actual for 4909050823917205251/4909050824086552628/4909050824253145200, status pass; values match serial_summary.json lines 739/744/749, timestamp_schedule_audit.json lines 30 and 54 (service 6 inserts), and the original BeginStep timestamp in Stage 1 manifest/Stage 3 generation_summary; README lines 154-156 record the review cross-check and defer the in-driver assertion",
+    "S4-R1-05: collaborator_check.py lines 17-26 define environment() with sys.version, sys.executable, psana.__file__ and per-module path+sha256; line 42-44 call and print it before reference load and any XTC/DataSource access; line 80 stores it as 'runtime' in the record; README lines 158-163 give the inconclusive-mismatch guidance; collaborator_environment_probe.json contains exactly the four module entries from the Stage 3 scratch install and is scoped as a Mona metadata probe only",
+    "Regression check: collaborator_check.py retains monarin refusal (line 37), PS_FAKESTEP_FLAG guard (34-35), PS_PARALLEL=none (36), exclusive-create output (85), 20-file listing/open (49-56), calibration ID and first-event calibrated digest comparison with identical NaN normalization (62-76), reference_sha256 and script_sha256 in record (83-84)",
+    "Provenance: provenance.json lists eleven reports; pilot.json bound to serial_compare.py 56fbbc84\u2026 and common.py 227bbfe1\u2026, source.json bound to history/serial_compare_source.py.txt e05643a0\u2026, all nine MPI reports bound to mpi_check.py 56f1b210\u2026, run_matrix.py 3c977b2e\u2026, common.py 227bbfe1\u2026; these equal the code_sha256 values recorded in serial_summary.json for the pilot (lines 330-333) and source (lines 562-565) runtimes",
+    "unit_checks_followup.txt: six AcceptanceChecks tests OK (same six as unit_checks.txt), 2.905 s",
+    "Overclaim check: README, status.json ('collaborator_acceptance': 'pending own-login execution'), responses.md, probe JSON and collaborator_guard.txt all state no collaborator execution has occurred; status.json 'remaining' retains independent review and collaborator own-login execution; access.txt shows seema in prjdatpsana group and group:prjdatpsana r-x ACLs on prjdatpsana, xtc, smalldata and all 20 files, but this is recorded only as a read-only audit, not acceptance",
+    "Scope check: no changes to XTC, calibration, permissions, or psana core are indicated in any Stage 4 file; .gitignore still excludes source.json/pilot.json; historical MPI/serial reports unchanged per provenance.json hashes"
+  ],
+  "limitations": [
+    "File tools are confined to the worktree; could not read the git HEAD ref or any object to independently confirm the checkout equals 0c9e57ef20bbe1d0cc4701d0325e232a11290b4d. The gitStatus snapshot lists 0c9e57ef2 as the top commit of this HEAD, which is the only evidence used.",
+    "No commands were run; could not compute SHA256 of committed files to confirm provenance.json or schedule_crosscheck.json audit_sha256 values. Consistency was assessed by cross-record comparison only.",
+    "Could not read /sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage4-20261104/ (archived pilot.json, source.json, archived collaborator_check.py). Whether the archived collaborator script equals the revised committed version is not evidenced in the repository.",
+    "mpi_transport_probe.log contains no launch command line; the statement that the probe used the same launcher/BTL flags as run_matrix.py rests on responses.md/context, not on the log.",
+    "collaborator_guard.txt predates the current collaborator_check.py (its traceback cites lines 24/76; the guard is now at line 37). The refusal path was not re-exercised against the revised script; the guard code is unchanged on inspection.",
+    "The collaborator own-login check has not been executed; this review closes the round-1 documentation/handoff findings only and does not accept collaborator access or mark Stage 4 complete.",
+    "Did not repeat the round-1 serial/MPI algorithm audit, per agreed scope."
+  ],
+  "findings": [
+    {
+      "id": "S4-R1-01",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage4_20261104/README.md",
+      "line": 138,
+      "evidence": "CLOSED. README lines 138-143 state the UCX unmatched tag-receive warnings occur at shutdown after report save and PASS in all nine logs, that the active PML was UCX and '--mca btl self,vader' did not select or constrain it, that all nine launchers exited zero with assertions passing, and that no runtime fix is included. mpi_transport_probe.log lines 59-60/72-73 show 'selected ucx best priority 51' / 'component ucx selected'.",
+      "requested_change": "None. Finding satisfied."
+    },
+    {
+      "id": "S4-R1-02",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage4_20261104/README.md",
+      "line": 149,
+      "evidence": "CLOSED. README lines 149-153 state all nine MPI cases used the working-tree pilot.json generated before the matrix with SHA256 c5abc67a6825f065229f7e9f043150bd87ee4474f1484634dab87a2a4c3f42e5, matching serial_summary.json line 392 and provenance.json line 21, and defer in-report reference-hash recording to a future driver revision without editing historical reports.",
+      "requested_change": "None for this stage. Record sha256(args.reference.read_bytes()) in mpi_check.py reports in any future rerun, as already noted in README."
+    },
+    {
+      "id": "S4-R1-03",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage4_20261104/status.json",
+      "line": 10,
+      "evidence": "CLOSED. status.json line 10 now reads \"normal_calibration_probe\": \"superseded by archived pilot.json: eight JF types and six calibrated samples pass\"; README line 163-164 repeats the supersession.",
+      "requested_change": "None. Finding satisfied."
+    },
+    {
+      "id": "S4-R1-04",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage4_20261104/schedule_crosscheck.json",
+      "line": 2,
+      "evidence": "CLOSED. schedule_crosscheck.json status pass with expected==actual [4909050823917205251, 4909050824086552628, 4909050824253145200]; values match serial_summary.json steps (lines 739/744/749), timestamp_schedule_audit.json inserted service-6 entries (lines 30, 54) and the original first BeginStep in the Stage 1 manifest. README lines 154-156 record the review cross-check and defer an in-driver assertion.",
+      "requested_change": "None for this stage. Optional future driver assertion remains documented."
+    },
+    {
+      "id": "S4-R1-05",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage4_20261104/collaborator_check.py",
+      "line": 17,
+      "evidence": "CLOSED. environment() (lines 17-26) records sys.version, sys.executable, psana.__file__ and path+sha256 for psana, psana.dgram, psana.detector.jungfrau, psana.detector.UtilsJungfrau; it is called and printed at lines 42-44 before the reference is read or any XTC/DataSource access occurs, and stored under 'runtime' in the success record (line 80). README lines 158-163 instruct that 'Calibrated sample differs' under another psana build is inconclusive and must be returned with the environment output. collaborator_environment_probe.json demonstrates the collector output locally and is labeled not collaborator acceptance.",
+      "requested_change": "None. Finding satisfied."
+    },
+    {
+      "id": "S4-R2-01",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage4_20261104/README.md",
+      "line": 125,
+      "evidence": "The handoff command instructs the collaborator to run /sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage4-20261104/collaborator_check.py, an archived copy outside Git. The committed script was revised for S4-R1-05, but no committed record states the archived copy's SHA256 or that it equals the current committed file. serial_summary.json lines 329/561 record the pre-revision collaborator_check.py hash a012ebc6\u2026 only. If the archive still holds the earlier version, the collaborator's output will lack the environment diagnostics the remedy depends on.",
+      "requested_change": "Before the handoff is sent, record in the final evidence-only status/archive record the SHA256 of the committed collaborator_check.py at this commit and confirm the archived copy has the identical hash (or update the archive). No code change or rerun required."
+    }
+  ]
+}

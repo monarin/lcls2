@@ -1,8 +1,8 @@
 # Stage 4 synthetic MFX pilot acceptance
 
 Calibrated serial comparisons and all nine MPI cases passed on
-`work/synthetic-mfx-scan`. Round 1 passed at `24c927cab7b76a18df9e48bf799df6f6651fec8b`;
-nonblocking review corrections are undergoing follow-up review. The Stage 3 files and Stage 2 calibration
+`work/synthetic-mfx-scan`. Claude passed two review rounds; the final reviewed implementation is
+`0c9e57ef20bbe1d0cc4701d0325e232a11290b4d`. The Stage 3 files and Stage 2 calibration
 records are read-only inputs. The complete Stage 4 gate also requires a test
 under the collaborator's own login; Mona's checks cannot substitute for it.
 
@@ -162,3 +162,21 @@ psana build, return the error and printed environment details: the comparison is
 inconclusive for access acceptance and does not by itself establish a fixture
 failure. The initial one-event calibration probe is superseded by the archived
 full pilot comparison (eight JF types, six calibrated samples).
+
+## Final review and archive
+
+[Round 2](round-02/review.json) closed all five original findings. Its final
+nonblocking archive request S4-R2-01 is addressed in
+[handoff_provenance.json](handoff_provenance.json): the published collaborator
+script is byte-identical to the reviewed Git blob, SHA256
+`67266a6a9f3c1bc02c2f53f5f3c711d92328aca55f1e7a81350af964f5581371`.
+The earlier archived script is preserved as `collaborator_check.round-01.py`.
+This was the requested evidence-only final archive check; no executable code
+changed after review. The revised script's refusal under Mona was also checked
+in `collaborator_guard_followup.txt`; this is not own-login acceptance.
+
+Durable results include both exact implementation archives, complete serial
+reports, MPI reports/logs, four previews, access/provenance checks, code and
+review records, with a verified `SHA256SUMS` manifest. The review branch is
+`monarin/work/synthetic-mfx-scan`. **Stage 4 remains open solely for the
+collaborator's own-login calibrated read.** No larger fixture was generated.

@@ -1,0 +1,9 @@
+Expected refusal under monarin with reviewed script; no report created. NOT collaborator acceptance.
+Traceback (most recent call last):
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/collaborator_check.py", line 92, in <module>
+    main()
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/collaborator_check.py", line 37, in main
+    require(getpass.getuser() != 'monarin', 'Run this under the collaborator login, not Mona')
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/collaborator_check.py", line 14, in require
+    raise RuntimeError(message)
+RuntimeError: Run this under the collaborator login, not Mona

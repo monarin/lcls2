@@ -1,0 +1,14 @@
+{
+  "status": "pass",
+  "finding": "S4-R2-01",
+  "reviewed_commit": "0c9e57ef20bbe1d0cc4701d0325e232a11290b4d",
+  "script_path": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage4-20261104/collaborator_check.py",
+  "script_sha256": "67266a6a9f3c1bc02c2f53f5f3c711d92328aca55f1e7a81350af964f5581371",
+  "script_bytes": 4333,
+  "archived_equals_reviewed_git_blob": true,
+  "prior_script_preserved_as": "collaborator_check.round-01.py",
+  "prior_script_sha256": "a012ebc6afdfe9c4bef741e64235387a43575a537cc07a32ec4d3802a029ff62",
+  "reference_path": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage4-20261104/pilot.json",
+  "reference_sha256": "c5abc67a6825f065229f7e9f043150bd87ee4474f1484634dab87a2a4c3f42e5",
+  "scope": "Archive synchronization only; collaborator own-login execution still pending"
+}

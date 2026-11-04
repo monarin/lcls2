@@ -17,3 +17,10 @@ serial/MPI computation drivers and their inputs are unchanged; all eleven report
 code bindings are verified in provenance.json. Six negative acceptance tests pass
 again in unit_checks_followup.txt. The collaborator script still requires its
 own-login execution before Stage 4 can be called fully complete.
+
+Round 2 passed `0c9e57ef20bbe1d0cc4701d0325e232a11290b4d` and explicitly
+closed S4-R1-01 through S4-R1-05. New nonblocking S4-R2-01 requested only the
+final archive hash check: accepted and addressed in handoff_provenance.json.
+The final archive script equals the reviewed Git blob; its old version is
+preserved. This evidence-only action was not a code revision or another review
+round. No blocking findings remain; collaborator execution remains external.

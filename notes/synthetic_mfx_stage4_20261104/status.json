@@ -1,6 +1,6 @@
 {
   "scope": "Stage 4 calibrated serial/MPI and collaborator pilot acceptance",
-  "phase": "followup_review_pending",
+  "phase": "local_acceptance_reviewed_awaiting_collaborator",
   "base_sha": "ac5609a27",
   "review_round_limit": 3,
   "review_round": 2,
@@ -16,7 +16,8 @@
     "collaborator_runtime_collector": "local metadata probe passes; no own-login acceptance",
     "mpi_transport_probe": "UCX PML selected",
     "step_schedule_crosscheck": "pass",
-    "followup_negative_tests": "6 passed"
+    "followup_negative_tests": "6 passed",
+    "collaborator_archive_provenance": "reviewed script hash equals final archive; prior version preserved"
   },
   "observations": [
     "Source encoder descriptions accessor raises for absent segments; identical exception retained in all 60 pilot events",
@@ -25,10 +26,9 @@
     "MPI shutdown emits UCX unmatched tag-receive warnings; all nine exits zero and assertions pass"
   ],
   "remaining": [
-    "independent review",
-    "collaborator own-login execution"
+    "collaborator own-login calibrated read"
   ],
-  "implementation_sha": "24c927cab7b76a18df9e48bf799df6f6651fec8b",
+  "implementation_sha": "0c9e57ef20bbe1d0cc4701d0325e232a11290b4d",
   "review_attempts": [
     {
       "round": 1,
@@ -42,6 +42,23 @@
         "S4-R1-04",
         "S4-R1-05"
       ]
+    },
+    {
+      "round": 2,
+      "verdict": "pass",
+      "reviewed_sha": "0c9e57ef20bbe1d0cc4701d0325e232a11290b4d",
+      "record": "round-02/review.json",
+      "closed_findings": [
+        "S4-R1-01",
+        "S4-R1-02",
+        "S4-R1-03",
+        "S4-R1-04",
+        "S4-R1-05"
+      ],
+      "final_archive_check": "S4-R2-01 addressed in handoff_provenance.json; evidence-only, no new code review required"
     }
-  ]
+  ],
+  "reviewed_sha": "0c9e57ef20bbe1d0cc4701d0325e232a11290b4d",
+  "unresolved_blocking_findings": [],
+  "results": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage4-20261104"
 }
