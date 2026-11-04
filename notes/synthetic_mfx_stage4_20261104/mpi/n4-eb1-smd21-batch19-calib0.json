@@ -1,0 +1,634 @@
+{
+  "batch_size": 19,
+  "calibrated": false,
+  "eb_nodes": 1,
+  "mpi_library": "Open MPI v5.0.8, package: Open MPI conda@69bcf91866a2 Distribution, ident: 5.0.8, repo rev: v5.0.8, May 30, 2025\u0000",
+  "passes": {
+    "events": {
+      "ranks": [
+        {
+          "events": [],
+          "rank": 0,
+          "role": "smd0",
+          "steps": []
+        },
+        {
+          "events": [],
+          "rank": 1,
+          "role": "eb",
+          "steps": []
+        },
+        {
+          "events": [
+            {
+              "step": 0,
+              "timestamp": 4909050823936603206
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823944991817
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823953249356
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823961637967
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823970026578
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823978284117
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823986672728
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823994930267
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824003318878
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824011576417
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824019965028
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824028222567
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824036611178
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824044999789
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824053257328
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824061645939
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824111584389
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824119841928
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824128230539
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824136619150
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824144876689
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824153265300
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824161522839
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824169911450
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824178300061
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824186557600
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824194946211
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824203203750
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824211592361
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824219849900
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824228238511
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824236496050
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824244884661
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824253142200
+            }
+          ],
+          "rank": 2,
+          "role": "bd",
+          "steps": []
+        },
+        {
+          "events": [
+            {
+              "step": 0,
+              "timestamp": 4909050824069903478
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824078292089
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824086549628
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824094938239
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824103195778
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824261530811
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824269788350
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824278176961
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824286565572
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824294823111
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824303211722
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824311469261
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824319857872
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824328115411
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824336504022
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824344892633
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824353150172
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824361538783
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824369796322
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824378184933
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824386442472
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824394831083
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824403219694
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824411477233
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824419865844
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824428123383
+            }
+          ],
+          "rank": 3,
+          "role": "bd",
+          "steps": []
+        }
+      ],
+      "step_counts": [
+        19,
+        20,
+        21
+      ]
+    },
+    "steps": {
+      "ranks": [
+        {
+          "events": [],
+          "rank": 0,
+          "role": "smd0",
+          "steps": []
+        },
+        {
+          "events": [],
+          "rank": 1,
+          "role": "eb",
+          "steps": []
+        },
+        {
+          "events": [
+            {
+              "step": 0,
+              "timestamp": 4909050823936603206
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823944991817
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823953249356
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823961637967
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823970026578
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823978284117
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823986672728
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050823994930267
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824003318878
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824011576417
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824019965028
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824028222567
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824036611178
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824044999789
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824053257328
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824061645939
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824111584389
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824119841928
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824128230539
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824136619150
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824144876689
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824153265300
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824161522839
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824169911450
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824178300061
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824186557600
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824194946211
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824203203750
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824211592361
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824219849900
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824228238511
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824236496050
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824244884661
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824253142200
+            }
+          ],
+          "rank": 2,
+          "role": "bd",
+          "steps": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "events": [
+            {
+              "step": 0,
+              "timestamp": 4909050824069903478
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824078292089
+            },
+            {
+              "step": 0,
+              "timestamp": 4909050824086549628
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824094938239
+            },
+            {
+              "step": 1,
+              "timestamp": 4909050824103195778
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824261530811
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824269788350
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824278176961
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824286565572
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824294823111
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824303211722
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824311469261
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824319857872
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824328115411
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824336504022
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824344892633
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824353150172
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824361538783
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824369796322
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824378184933
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824386442472
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824394831083
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824403219694
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824411477233
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824419865844
+            },
+            {
+              "step": 2,
+              "timestamp": 4909050824428123383
+            }
+          ],
+          "rank": 3,
+          "role": "bd",
+          "steps": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "step_counts": [
+        19,
+        20,
+        21
+      ]
+    }
+  },
+  "runtime": {
+    "code_sha256": {
+      "collaborator_check.py": "a012ebc6afdfe9c4bef741e64235387a43575a537cc07a32ec4d3802a029ff62",
+      "common.py": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553",
+      "mpi_check.py": "56f1b2108acf230ac5478716048eb3ffa38bdbf21e6ff33b5e17552db1fb44f2",
+      "run_matrix.py": "3c977b2e7f4937e68d0ae14a67a8a28c7b13d5faf43c7a251a016892d98ba958",
+      "serial_compare.py": "56fbbc84628840893a1c6f5ec876f49ba756fccbc32ae4659ef40e6597f94c9b",
+      "summarize.py": "e884638fd39c681abce50b26f36c6281ba686cfef86fefbae5656f8bcb98cef3",
+      "test_acceptance.py": "9ced47ba0af8f6512ca9ca4cbf388bf59c81f2a8118458fe7ee43494949a3df5"
+    },
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "PS_EB_NODES": "1",
+      "PS_FAKESTEP_FLAG": "0",
+      "PS_PARALLEL": "mpi",
+      "PS_SMD_CHUNKSIZE": "268435456",
+      "PS_SMD_N_EVENTS": "21",
+      "PS_SRV_NODES": "0"
+    },
+    "host": "sdfiana025",
+    "modules": {
+      "psana": {
+        "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/__init__.py",
+        "sha256": "d5940dadb8008720bc7cd40aeec2edc2dbeede820f0d86508582bfed677f710d"
+      },
+      "psana.detector.UtilsJungfrau": {
+        "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/detector/UtilsJungfrau.py",
+        "sha256": "719b72d04fb02b8a7a388ce81a9c74faf2fc863b87a26a85c4efaa7dc70c654d"
+      },
+      "psana.detector.jungfrau": {
+        "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/detector/jungfrau.py",
+        "sha256": "d25d2e0d16d59790dc87c6d35eb7aa4326e2a49c819815ff46c82a94accd9397"
+      },
+      "psana.dgram": {
+        "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/dgram.cpython-311-x86_64-linux-gnu.so",
+        "sha256": "b6f14f41ba10f86dac24556cd7ab58ba87902e936ff27dba2b7581422f432866"
+      },
+      "psana.eventbuilder": {
+        "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/eventbuilder.cpython-311-x86_64-linux-gnu.so",
+        "sha256": "914a0e7bffa0c40c06c74d1419ad51c96940953f23e2a0547936fa82d9259103"
+      },
+      "psana.parallelreader": {
+        "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/parallelreader.cpython-311-x86_64-linux-gnu.so",
+        "sha256": "da63a52c6262aef7fcad6181b38aa5e97a8a5103dd78f9b890ba9433574abd08"
+      },
+      "psana.pscalib.calib.MDBWebUtils": {
+        "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/pscalib/calib/MDBWebUtils.py",
+        "sha256": "f21dd902e814d67b82bcb8cc071dc4a9c94882d66bef113d58069b70ad010961"
+      },
+      "psana.psexp.event_manager": {
+        "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/event_manager.py",
+        "sha256": "bc7b3bdb588e4fd9675949b8f0b0a88ad0f82a9de898294a0bdc0739343776f2"
+      },
+      "psana.psexp.run": {
+        "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/run.py",
+        "sha256": "1cdb1b4e0a18cfd7ed51735cd5cb832695bc6687819f33430e7cfbd55001fb2c"
+      },
+      "psana.smdreader": {
+        "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/smdreader.cpython-311-x86_64-linux-gnu.so",
+        "sha256": "71c8e357b90aebf0a096ac30198462bb1b4160dac8db61728e78cfd4b21ccaaf"
+      }
+    },
+    "psana": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/__init__.py",
+    "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]"
+  },
+  "smd_events": 21,
+  "status": "pass",
+  "world_size": 4
+}

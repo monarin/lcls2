@@ -1,0 +1,200 @@
+"""Source/reference and pilot acceptance using normal calibrated detector APIs."""
+import argparse
+import json
+from pathlib import Path
+import time
+
+from common import (CALIB_OPTIONS, COUNTS, DEST, HERE, MANIFEST, SAMPLES, SOURCE,
+                    STAGE1, TIMES, fingerprint, payload_sha, require, runtime,
+                    save, setup, validate_events)
+setup()
+import numpy as np
+from psana import DataSource
+
+
+def calibration(detectors, kind):
+    records = []
+    journal = json.loads((STAGE1 / 'stage2_deployment_journal.json').read_text())
+    deployed = {(r['collection'], r['ctype']): r for r in journal}
+    frozen = {(r['detector'], r['source_document']['ctype']): r for r in MANIFEST['calibration']}
+    for name, det in detectors.items():
+        constants = det.calibconst or {}
+        require(set(constants) == set(MANIFEST['detectors'][name]['calibration_types']), 'Calibration type mismatch: '+name)
+        for ctype, (data, doc) in constants.items():
+            original = frozen[name, ctype]
+            expected = original['source_document'] if kind == 'source' else deployed[doc['shortname'], ctype]
+            require(doc['_id'] == expected.get('_id', expected.get('id_doc')), 'Wrong selected calibration: '+name+'/'+ctype)
+            require(doc['id_data'] == expected['id_data'], 'Wrong calibration data ID')
+            require(payload_sha(data) == original['sha256'], 'Calibration payload differs from frozen snapshot')
+            if kind == 'pilot':
+                require(doc['experiment'] == 'prjdatpsana' and doc['run'] == doc['run_end'] == 1, 'Wrong calibration validity')
+            records.append({'detector': name, 'ctype': ctype, 'id_doc': doc['_id'],
+                            'id_data': doc['id_data'], 'sha256': original['sha256']})
+    require(len(records) == 23, 'Incomplete calibration checks')
+    return records
+
+
+def metadata(run, detectors):
+    identities = {}
+    for name, det in detectors.items():
+        for (dname, alg), fields in run.detinfo.items():
+            if dname != name:
+                continue
+            api = getattr(det, alg)
+            identities[name+'/'+alg] = {'uniqueid': api._uniqueid,
+                                       'segments': list(api._sorted_segment_inds),
+                                       'fields': sorted(fields)}
+            original = MANIFEST['detectors'][name]
+            require(api._uniqueid == original['uniqueid'], 'Detector identity changed: '+name)
+            require(list(api._sorted_segment_inds) == original['segment_ids'], 'Detector segments changed: '+name)
+    return {'identities': identities, 'epicsinfo': [[list(k), v] for k, v in sorted(run.epicsinfo.items())]}
+
+
+def fields_for(run, detectors):
+    fields, algorithms = {}, {}
+    for (name, alg), names in sorted(run.detinfo.items()):
+        if name not in detectors:
+            continue
+        api = getattr(detectors[name], alg)
+        algorithms[name+'/'+alg] = api
+        for field in names:
+            if field == 'config' or (name == 'jungfrau' and field in ('calib', 'image')):
+                continue
+            fields[name+'/'+alg+'/'+field] = getattr(api, field)
+    return fields, algorithms
+
+
+def read_field(name, fn, evt, damage):
+    try:
+        return fingerprint(fn(evt))
+    except TypeError as error:
+        # Existing usdusb descriptions() dereferences _name(evt) even when
+        # that detector has no segments. Preserve this source API behavior;
+        # do not silently turn arbitrary accessor failures into missing data.
+        require(name == 'MfxUsbEncoder01/raw/descriptions' and
+                damage['MfxUsbEncoder01/raw'] is None and
+                str(error) == "'NoneType' object is not subscriptable",
+                'Unexpected detector API error: '+name+': '+str(error))
+        return {'missing_segments': True, 'source_api_exception': 'TypeError: '+str(error)}
+
+
+def event_values(evt, fields, algorithms, epics):
+    damage = {}
+    for name, api in algorithms.items():
+        segments = api._segments(evt)
+        damage[name] = None if segments is None else {str(i): int(s._xtc.damage) for i, s in segments.items()}
+    return {'timestamp': int(evt.timestamp),
+            'fields': {name: read_field(name, fn, evt, damage) for name, fn in fields.items()},
+            'epics': {name: fingerprint(fn(evt)) for name, fn in epics.items()},
+            'segments_and_damage': damage}
+
+
+def masks(jf):
+    status = jf.calibconst['pixel_status'][0]
+    require(status.shape == (3, 32, 512, 1024), 'Unexpected status dimensions')
+    answer = []
+    for gain in range(3):
+        mask = jf.raw._mask_from_status(gain_range_inds=(gain,))
+        require(mask is not None and mask.shape == (32, 512, 1024), 'Invalid status mask')
+        bad = int(np.count_nonzero(status[gain]))
+        require(bad < status[gain].size and np.isfinite(status[gain]).all(), 'Invalid pixel status')
+        require(int(np.count_nonzero(mask == 0)) == bad, 'Status mask disagrees with status')
+        answer.append({'gain': gain, 'status_nonzero': bad, 'status': fingerprint(status[gain]), 'mask': fingerprint(mask)})
+    return answer
+
+
+def calibrated(jf, evt, index, plot_dir, kind):
+    a = jf.raw.calib(evt, **CALIB_OPTIONS)
+    require(a is not None and a.shape == (32, 512, 1024) and a.dtype == np.float32, 'Unexpected calibrated output')
+    finite = np.isfinite(a)
+    require(finite.any(), 'No finite calibrated pixels')
+    result = {'calib': fingerprint(a), 'finite': int(finite.sum()), 'nan': int(np.isnan(a).sum()),
+              'min': float(a[finite].min()), 'max': float(a[finite].max())}
+    if index in (0, 59):
+        image = jf.raw.image(evt, nda=a)
+        require(image is not None and image.ndim == 2, 'Missing assembled image')
+        result['image'] = fingerprint(image)
+        import matplotlib
+        matplotlib.use('Agg')
+        import matplotlib.pyplot as plt
+        thumb = image[::8, ::8]
+        lo, hi = np.nanpercentile(thumb, [1, 99])
+        fig, ax = plt.subplots(figsize=(7, 7))
+        ax.imshow(thumb, origin='upper', vmin=lo, vmax=hi, cmap='viridis')
+        ax.set_title(f'{kind}, event {index}, timestamp {evt.timestamp}\ncalibrated image, stride 8, 1–99% display scale')
+        fig.savefig(plot_dir / f'{kind}-event-{index:02d}.png', dpi=140)
+        plt.close(fig)
+    return result
+
+
+def main(args):
+    require(args.kind == 'source' or args.reference is not None, 'Pilot requires source reference')
+    args.plots.mkdir(parents=True, exist_ok=True)
+    reference = json.loads(args.reference.read_text()) if args.reference else None
+    if reference:
+        require(reference['status'] == 'pass' and reference['kind'] == 'source', 'Invalid reference')
+    exp, runnum, directory = ('mfx101555026', 10, SOURCE) if args.kind == 'source' else ('prjdatpsana', 1, DEST)
+    kwargs = dict(exp=exp, run=runnum, dir=str(directory), live=False, batch_size=20, use_calib_cache=False)
+    if args.kind == 'source':
+        kwargs['max_events'] = 60
+    ds = DataSource(**kwargs)
+    result = {'kind': args.kind, 'status': 'running', 'calib_options': CALIB_OPTIONS, 'events': [], 'steps': []}
+    runs = 0
+    for run in ds.runs():
+        runs += 1
+        require(run.expt == exp and run.runnum == runnum, 'Wrong run identity')
+        require(set(run.detnames) == set(MANIFEST['detectors']) - {'epics'}, 'Unexpected detector inventory')
+        detectors = {name: run.Detector(name) for name in sorted(run.detnames)}
+        result['metadata'] = metadata(run, detectors)
+        result['calibration'] = calibration(detectors, args.kind)
+        result['masks'] = masks(detectors['jungfrau'])
+        fields, algorithms = fields_for(run, detectors)
+        epics = {alias: run.Detector(alias) for alias, _ in sorted(run.epicsinfo)}
+        if reference:
+            require(result['metadata'] == reference['metadata'], 'Source metadata mismatch')
+            require(result['masks'] == reference['masks'], 'Source mask mismatch')
+        print('Calibration, identities and masks checked', flush=True)
+        value = run.Detector('step_value') if reference else None
+        doc = run.Detector('step_docstring') if reference else None
+        groups = ((None, run.events()),) if not reference else ((step, step.events()) for step in run.steps())
+        for step, events in groups:
+            count = 0
+            if step is not None:
+                step_number = int(value(step))
+                require(step_number == len(result['steps']), 'Wrong step order')
+                require(json.loads(doc(step))['step'] == step_number, 'Wrong step document')
+            for evt in events:
+                index = len(result['events'])
+                require(index < 60 and int(evt.timestamp) == TIMES[index], 'Wrong serial timestamp')
+                record = event_values(evt, fields, algorithms, epics)
+                if index in SAMPLES:
+                    record['calibrated'] = calibrated(detectors['jungfrau'], evt, index, args.plots, args.kind)
+                if reference:
+                    require(record == reference['events'][index], 'Source event mismatch at index '+str(index))
+                    require(value(evt) == step_number and json.loads(doc(evt))['step'] == step_number, 'Wrong event scan state')
+                result['events'].append(record)
+                count += 1
+            if step is not None:
+                result['steps'].append({'step': step_number, 'timestamp': int(step.timestamp), 'count': count})
+    require(runs == 1 and len(result['events']) == 60, 'Incomplete serial run')
+    require(any(v is not None for e in result['events'] for v in e['epics'].values()), 'No EPICS values exercised')
+    if reference:
+        require([s['count'] for s in result['steps']] == COUNTS, 'Wrong serial step counts')
+        flat = []
+        for run in DataSource(exp=exp, run=runnum, dir=str(directory), live=False, batch_size=21, skip_calib_load='all').runs():
+            value = run.Detector('step_value')
+            flat.extend({'timestamp': int(e.timestamp), 'step': int(value(e))} for e in run.events())
+        result['flat_counts'] = validate_events(flat)
+        require([e['timestamp'] for e in flat] == TIMES, 'Flat serial order mismatch')
+    result.update(status='pass', runtime=runtime())
+    save(args.report, result)
+    print('PASS',args.kind,'60 events, six calibrated samples, two images',flush=True)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--kind', choices=['source', 'pilot'], required=True)
+    parser.add_argument('--reference', type=Path)
+    parser.add_argument('--report', type=Path, required=True)
+    parser.add_argument('--plots', type=Path, required=True)
+    main(parser.parse_args())

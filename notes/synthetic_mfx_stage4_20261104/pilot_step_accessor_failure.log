@@ -1,0 +1,8 @@
+Calibration, identities and masks checked
+Traceback (most recent call last):
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/serial_compare.py", line 200, in <module>
+    main(parser.parse_args())
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/serial_compare.py", line 178, in main
+    result['steps'].append({'step': step_number, 'timestamp': int(step.timestamp), 'count': count})
+                                                                  ^^^^^^^^^^^^^^
+AttributeError: 'Step' object has no attribute 'timestamp'

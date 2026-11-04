@@ -1,0 +1,19 @@
+[PSANA-WARNING RANK:0 1793818010.958776832] RunParallel Failed to build calibration xtc buffer: No calibration entries to convert.
+[PSANA-INFO RANK:0 1793818010.958876672] RunParallel calibconst empty on smd0; skipping shared calibration buffer
+[PSANA-INFO RANK:0 1793818010.959397888] RunParallel [MPI-role] rank=0 host=sdfiana025 numa_id=0 numa_size=7
+[PSANA-WARNING RANK:0 1793818011.905246976] RunParallel Failed to build calibration xtc buffer: No calibration entries to convert.
+[PSANA-INFO RANK:0 1793818011.905347840] RunParallel calibconst empty on smd0; skipping shared calibration buffer
+[PSANA-INFO RANK:0 1793818011.905500416] RunParallel [MPI-role] rank=0 host=sdfiana025 numa_id=0 numa_size=7
+PASS /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/mpi/n7-eb2-smd19-batch7-calib0.json
+[1793818012.879583] [sdfiana025:2812658:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x55fe11f58400 was not matched
+[1793818012.879600] [sdfiana025:2812658:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x55fe11f584c0 was not matched
+[1793818012.879627] [sdfiana025:2812660:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x565514764e00 was not matched
+[1793818012.879644] [sdfiana025:2812660:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x565514764d40 was not matched
+[1793818012.879656] [sdfiana025:2812661:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x55ab3cb82680 was not matched
+[1793818012.879675] [sdfiana025:2812661:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x55ab3cb825c0 was not matched
+[1793818012.879710] [sdfiana025:2812659:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x5574c0c5fa40 was not matched
+[1793818012.879729] [sdfiana025:2812659:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x5574c0c5f980 was not matched
+[1793818012.880252] [sdfiana025:2812655:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x55c39ca8cac0 was not matched
+[1793818012.880269] [sdfiana025:2812655:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x55c39ca8cb80 was not matched
+[1793818012.880276] [sdfiana025:2812655:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x55c39ca8c700 was not matched
+[1793818012.880282] [sdfiana025:2812655:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x55c39ca8c880 was not matched

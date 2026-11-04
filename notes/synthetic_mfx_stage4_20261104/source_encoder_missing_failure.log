@@ -1,0 +1,17 @@
+Calibration, identities and masks checked
+Traceback (most recent call last):
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/serial_compare.py", line 186, in <module>
+    main(parser.parse_args())
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/serial_compare.py", line 155, in main
+    record = event_values(evt, fields, algorithms, epics)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/serial_compare.py", line 73, in event_values
+    'fields': {name: fingerprint(fn(evt)) for name, fn in fields.items()},
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/serial_compare.py", line 73, in <dictcomp>
+    'fields': {name: fingerprint(fn(evt)) for name, fn in fields.items()},
+                                 ^^^^^^^
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/detector/bld.py", line 170, in descriptions
+    ch_desc: str = str_bytes[i*48:(i+1)*48].tobytes().decode().strip("\x00")
+                   ~~~~~~~~~^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable

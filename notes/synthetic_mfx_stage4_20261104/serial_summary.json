@@ -1,0 +1,752 @@
+{
+  "all_event_fields_epics_damage_equal": true,
+  "calibration_options": {
+    "cmpars": null,
+    "cversion": 3
+  },
+  "deployment_journal_sha256": "d882f23d7b10818ac7c689afbe2196100eada365cc63e9c0b452ed3ae39ba629",
+  "epics_per_event": 267,
+  "epics_with_nonmissing_values": 267,
+  "event_count": 60,
+  "fields_per_event": 79,
+  "fields_with_nonmissing_values": [
+    "HxxDg1BmMon/raw/peakAmplitude",
+    "HxxDg1BmMon/raw/peakTime",
+    "HxxDg1BmMon/raw/totalIntensityJoules",
+    "HxxDg1BmMon/raw/xPositionMeters",
+    "HxxDg1BmMon/raw/yPositionMeters",
+    "MfxDg1BmMon/raw/peakAmplitude",
+    "MfxDg1BmMon/raw/peakTime",
+    "MfxDg1BmMon/raw/totalIntensityJoules",
+    "MfxDg1BmMon/raw/xPositionMeters",
+    "MfxDg1BmMon/raw/yPositionMeters",
+    "MfxDg2BmMon/raw/peakAmplitude",
+    "MfxDg2BmMon/raw/peakTime",
+    "MfxDg2BmMon/raw/totalIntensityJoules",
+    "MfxDg2BmMon/raw/xPositionMeters",
+    "MfxDg2BmMon/raw/yPositionMeters",
+    "ebeamh/raw/damageMask",
+    "ebeamh/raw/ebeamCharge",
+    "ebeamh/raw/ebeamDumpCharge",
+    "ebeamh/raw/ebeamEnergyBC1",
+    "ebeamh/raw/ebeamEnergyBC2",
+    "ebeamh/raw/ebeamL3Energy",
+    "ebeamh/raw/ebeamLTU250",
+    "ebeamh/raw/ebeamLTU450",
+    "ebeamh/raw/ebeamLTUAngY",
+    "ebeamh/raw/ebeamLTUPosX",
+    "ebeamh/raw/ebeamLTUPosY",
+    "ebeamh/raw/ebeamLUTAngX",
+    "ebeamh/raw/ebeamPhotonEnergy",
+    "ebeamh/raw/ebeamPkCurrBC1",
+    "ebeamh/raw/ebeamPkCurrBC2",
+    "ebeamh/raw/ebeamUndAngX",
+    "ebeamh/raw/ebeamUndAngY",
+    "ebeamh/raw/ebeamUndPosX",
+    "ebeamh/raw/ebeamUndPosY",
+    "ebeamh/raw/ebeamXTCAVAmpl",
+    "ebeamh/raw/ebeamXTCAVPhase",
+    "feespec/raw/FWHM",
+    "feespec/raw/baseline",
+    "feespec/raw/com",
+    "feespec/raw/comRaw",
+    "feespec/raw/hproj",
+    "feespec/raw/hproj_y1",
+    "feespec/raw/hproj_y2",
+    "feespec/raw/integral",
+    "feespec/raw/nPeaks",
+    "feespec/raw/peakHeight",
+    "feespec/raw/peakPos",
+    "feespec/raw/width",
+    "gasdet/raw/f11ENRC",
+    "gasdet/raw/f12ENRC",
+    "gasdet/raw/f21ENRC",
+    "gasdet/raw/f22ENRC",
+    "gasdet/raw/f63ENRC",
+    "gasdet/raw/f64ENRC",
+    "inline_alvium/raw/value",
+    "jungfrau/raw/hot_pixel_thresh",
+    "jungfrau/raw/num_hot_pixels",
+    "jungfrau/raw/raw",
+    "pcav/raw/charge1",
+    "pcav/raw/charge2",
+    "pcav/raw/fitTime1",
+    "pcav/raw/fitTime2",
+    "qadc_ch0/raw/value",
+    "qadc_ch1/raw/value",
+    "timing/raw/destination",
+    "timing/raw/eventcodes",
+    "timing/raw/inhibitCounts",
+    "timing/raw/pulseId",
+    "timing/raw/timestamp",
+    "triginfo/triginfo/monitor",
+    "triginfo/triginfo/persist",
+    "triginfo/triginfo/prescale"
+  ],
+  "flat_counts": [
+    19,
+    20,
+    21
+  ],
+  "known_encoder_exceptions": 60,
+  "manifest_sha256": "90a27eed3679111aa24574c09b5505be6b8775429e5b8de10dc0c9de117b983d",
+  "masks": [
+    {
+      "gain": 0,
+      "mask": {
+        "dtype": "|u1",
+        "sha256": "5b72ad03d3ef1a9a64a2c5b181c7e83ef79affe19ad4bc88e5e59b8cd980d28e",
+        "shape": [
+          32,
+          512,
+          1024
+        ]
+      },
+      "status": {
+        "dtype": "<f4",
+        "sha256": "70d7b5e46f4996a11ff72be79f0d8ac33e3189020a477b5109b1090b4bcf6b55",
+        "shape": [
+          32,
+          512,
+          1024
+        ]
+      },
+      "status_nonzero": 16732
+    },
+    {
+      "gain": 1,
+      "mask": {
+        "dtype": "|u1",
+        "sha256": "091b42136eeed1e4e3eaf2b342023c9fa06684cc67db7282159aee3dbfae0040",
+        "shape": [
+          32,
+          512,
+          1024
+        ]
+      },
+      "status": {
+        "dtype": "<f4",
+        "sha256": "5b10170398850b2de7792bad5347aebca39470d95a9109b04bc91e32ec85e580",
+        "shape": [
+          32,
+          512,
+          1024
+        ]
+      },
+      "status_nonzero": 11917
+    },
+    {
+      "gain": 2,
+      "mask": {
+        "dtype": "|u1",
+        "sha256": "59d647a4ad719f7c39c246167ca8aba0f7075dc5d041ee56225ed71f1c3ecb3b",
+        "shape": [
+          32,
+          512,
+          1024
+        ]
+      },
+      "status": {
+        "dtype": "<f4",
+        "sha256": "be135da5f0faa9e748648ccfcfc6c736090ee612509a764645039028abb786be",
+        "shape": [
+          32,
+          512,
+          1024
+        ]
+      },
+      "status_nonzero": 12768
+    }
+  ],
+  "reference_reports": {
+    "pilot.json": {
+      "bytes": 1395566,
+      "calibration": [
+        {
+          "ctype": "pixel_status",
+          "detector": "inline_alvium",
+          "id_data": "6aea829ad092c2d07268b3d9",
+          "id_doc": "6aea829ad476b756da4aaa60",
+          "sha256": "75e09a9db2d1632a2c792417d8009f422b1581e59717c7f277bead5565c4367e"
+        },
+        {
+          "ctype": "pixel_min",
+          "detector": "inline_alvium",
+          "id_data": "6aea8299d092c2d07268b3d4",
+          "id_doc": "6aea8299d476b756da4aaa5f",
+          "sha256": "3f4b1bec9ead8d96d54ebf1d00701f16b3e10a70430d9f8c033bab21699070ab"
+        },
+        {
+          "ctype": "pixel_max",
+          "detector": "inline_alvium",
+          "id_data": "6aea8299d476b756da4aaa5a",
+          "id_doc": "6aea8299f22d71fd755d7171",
+          "sha256": "5be64bf57369869ee210a57c32e0b2dc82b2e38e4dd76f3df12cdcbeb184ef1a"
+        },
+        {
+          "ctype": "pixel_rms",
+          "detector": "inline_alvium",
+          "id_data": "6aea8299f22d71fd755d7172",
+          "id_doc": "6aea82991dfd063a73bd999b",
+          "sha256": "f8a1a348196e47f815c99671b22a79893db75d72b2b9fdb3cb29fb598f0a9ce4"
+        },
+        {
+          "ctype": "pedestals",
+          "detector": "inline_alvium",
+          "id_data": "6aea82992ae66c77c5fe6513",
+          "id_doc": "6aea8299d476b756da4aaa59",
+          "sha256": "7cc05de07381c6e744edda6c862262aa4287987c0026668e6afc016ce1e66b0f"
+        },
+        {
+          "ctype": "pixel_gain",
+          "detector": "jungfrau",
+          "id_data": "6aea826cf22d71fd755d6e6c",
+          "id_doc": "6aea826fdd1121bbb23cfdc7",
+          "sha256": "be2d0facb2459f0ef3de880b384b72d90170ed3d539a95c1aa8f7a6915c70db3"
+        },
+        {
+          "ctype": "pixel_status",
+          "detector": "jungfrau",
+          "id_data": "6aea8297515964208686be19",
+          "id_doc": "6aea8298515964208686c11e",
+          "sha256": "2cc09fe081ed9d2b27eb2975e43ec1922670677729e2f7b8d68df883c623fe41"
+        },
+        {
+          "ctype": "pixel_min",
+          "detector": "jungfrau",
+          "id_data": "6aea827d7ff319b928f25f9c",
+          "id_doc": "6aea8280cde0d0def8648f3a",
+          "sha256": "cae99eec482539fd673659165665bafe36ebee866d8d207a41d4a79533a6da66"
+        },
+        {
+          "ctype": "pixel_max",
+          "detector": "jungfrau",
+          "id_data": "6aea8275515964208686bb14",
+          "id_doc": "6aea8278d476b756da4aaa58",
+          "sha256": "d7ae7aef21ec1b24d35406f260551fa3d4793cf919919d6d1ea3f0517daf3150"
+        },
+        {
+          "ctype": "pixel_offset",
+          "detector": "jungfrau",
+          "id_data": "6aea82881dfd063a73bd9696",
+          "id_doc": "6aea8289130d472f06eac34a",
+          "sha256": "beb14747d1bda8078906da1aae9eac2f8cec5dd1b192efdc99f93f992195ff06"
+        },
+        {
+          "ctype": "geometry",
+          "detector": "jungfrau",
+          "id_data": "6aea825ed092c2d07268b3d2",
+          "id_doc": "6aea825ff22d71fd755d6e6b",
+          "sha256": "d359210a7f48d92afe2e50303ae3a48cc8b8706f5a0e91b66e1f6e3f251407aa"
+        },
+        {
+          "ctype": "pixel_rms",
+          "detector": "jungfrau",
+          "id_data": "6aea828f7c2de87eb3330bde",
+          "id_doc": "6aea82927ff319b928f262a1",
+          "sha256": "92ce716f3b64cda878af59e89f96e4c41ebaa07de08062c23c7f09b1999e57be"
+        },
+        {
+          "ctype": "pedestals",
+          "detector": "jungfrau",
+          "id_data": "6aea8266d476b756da4aa752",
+          "id_doc": "6aea8267d476b756da4aaa57",
+          "sha256": "da0c0e0ae7ba076be8192c6c72c635a325a422b9fc8a5dc8b50b1b9b305ead4d"
+        },
+        {
+          "ctype": "pixel_status",
+          "detector": "qadc_ch0",
+          "id_data": "6aea829ad092c2d07268b3d9",
+          "id_doc": "6aea829ad476b756da4aaa60",
+          "sha256": "75e09a9db2d1632a2c792417d8009f422b1581e59717c7f277bead5565c4367e"
+        },
+        {
+          "ctype": "pixel_min",
+          "detector": "qadc_ch0",
+          "id_data": "6aea8299d092c2d07268b3d4",
+          "id_doc": "6aea8299d476b756da4aaa5f",
+          "sha256": "3f4b1bec9ead8d96d54ebf1d00701f16b3e10a70430d9f8c033bab21699070ab"
+        },
+        {
+          "ctype": "pixel_max",
+          "detector": "qadc_ch0",
+          "id_data": "6aea8299d476b756da4aaa5a",
+          "id_doc": "6aea8299f22d71fd755d7171",
+          "sha256": "5be64bf57369869ee210a57c32e0b2dc82b2e38e4dd76f3df12cdcbeb184ef1a"
+        },
+        {
+          "ctype": "pixel_rms",
+          "detector": "qadc_ch0",
+          "id_data": "6aea8299f22d71fd755d7172",
+          "id_doc": "6aea82991dfd063a73bd999b",
+          "sha256": "f8a1a348196e47f815c99671b22a79893db75d72b2b9fdb3cb29fb598f0a9ce4"
+        },
+        {
+          "ctype": "pedestals",
+          "detector": "qadc_ch0",
+          "id_data": "6aea82992ae66c77c5fe6513",
+          "id_doc": "6aea8299d476b756da4aaa59",
+          "sha256": "7cc05de07381c6e744edda6c862262aa4287987c0026668e6afc016ce1e66b0f"
+        },
+        {
+          "ctype": "pixel_status",
+          "detector": "qadc_ch1",
+          "id_data": "6aea829ad092c2d07268b3d9",
+          "id_doc": "6aea829ad476b756da4aaa60",
+          "sha256": "75e09a9db2d1632a2c792417d8009f422b1581e59717c7f277bead5565c4367e"
+        },
+        {
+          "ctype": "pixel_min",
+          "detector": "qadc_ch1",
+          "id_data": "6aea8299d092c2d07268b3d4",
+          "id_doc": "6aea8299d476b756da4aaa5f",
+          "sha256": "3f4b1bec9ead8d96d54ebf1d00701f16b3e10a70430d9f8c033bab21699070ab"
+        },
+        {
+          "ctype": "pixel_max",
+          "detector": "qadc_ch1",
+          "id_data": "6aea8299d476b756da4aaa5a",
+          "id_doc": "6aea8299f22d71fd755d7171",
+          "sha256": "5be64bf57369869ee210a57c32e0b2dc82b2e38e4dd76f3df12cdcbeb184ef1a"
+        },
+        {
+          "ctype": "pixel_rms",
+          "detector": "qadc_ch1",
+          "id_data": "6aea8299f22d71fd755d7172",
+          "id_doc": "6aea82991dfd063a73bd999b",
+          "sha256": "f8a1a348196e47f815c99671b22a79893db75d72b2b9fdb3cb29fb598f0a9ce4"
+        },
+        {
+          "ctype": "pedestals",
+          "detector": "qadc_ch1",
+          "id_data": "6aea82992ae66c77c5fe6513",
+          "id_doc": "6aea8299d476b756da4aaa59",
+          "sha256": "7cc05de07381c6e744edda6c862262aa4287987c0026668e6afc016ce1e66b0f"
+        }
+      ],
+      "runtime": {
+        "code_sha256": {
+          "collaborator_check.py": "a012ebc6afdfe9c4bef741e64235387a43575a537cc07a32ec4d3802a029ff62",
+          "common.py": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553",
+          "mpi_check.py": "56f1b2108acf230ac5478716048eb3ffa38bdbf21e6ff33b5e17552db1fb44f2",
+          "run_matrix.py": "3c977b2e7f4937e68d0ae14a67a8a28c7b13d5faf43c7a251a016892d98ba958",
+          "serial_compare.py": "56fbbc84628840893a1c6f5ec876f49ba756fccbc32ae4659ef40e6597f94c9b",
+          "summarize.py": "e884638fd39c681abce50b26f36c6281ba686cfef86fefbae5656f8bcb98cef3",
+          "test_acceptance.py": "9ced47ba0af8f6512ca9ca4cbf388bf59c81f2a8118458fe7ee43494949a3df5"
+        },
+        "environment": {
+          "OMP_NUM_THREADS": "1",
+          "PS_EB_NODES": "1",
+          "PS_FAKESTEP_FLAG": "0",
+          "PS_PARALLEL": "none",
+          "PS_SMD_CHUNKSIZE": "268435456",
+          "PS_SMD_N_EVENTS": "20",
+          "PS_SRV_NODES": "0"
+        },
+        "host": "sdfiana025",
+        "modules": {
+          "psana": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/__init__.py",
+            "sha256": "d5940dadb8008720bc7cd40aeec2edc2dbeede820f0d86508582bfed677f710d"
+          },
+          "psana.detector.UtilsJungfrau": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/detector/UtilsJungfrau.py",
+            "sha256": "719b72d04fb02b8a7a388ce81a9c74faf2fc863b87a26a85c4efaa7dc70c654d"
+          },
+          "psana.detector.jungfrau": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/detector/jungfrau.py",
+            "sha256": "d25d2e0d16d59790dc87c6d35eb7aa4326e2a49c819815ff46c82a94accd9397"
+          },
+          "psana.dgram": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/dgram.cpython-311-x86_64-linux-gnu.so",
+            "sha256": "b6f14f41ba10f86dac24556cd7ab58ba87902e936ff27dba2b7581422f432866"
+          },
+          "psana.eventbuilder": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/eventbuilder.cpython-311-x86_64-linux-gnu.so",
+            "sha256": "914a0e7bffa0c40c06c74d1419ad51c96940953f23e2a0547936fa82d9259103"
+          },
+          "psana.parallelreader": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/parallelreader.cpython-311-x86_64-linux-gnu.so",
+            "sha256": "da63a52c6262aef7fcad6181b38aa5e97a8a5103dd78f9b890ba9433574abd08"
+          },
+          "psana.pscalib.calib.MDBWebUtils": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/pscalib/calib/MDBWebUtils.py",
+            "sha256": "f21dd902e814d67b82bcb8cc071dc4a9c94882d66bef113d58069b70ad010961"
+          },
+          "psana.psexp.event_manager": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/event_manager.py",
+            "sha256": "bc7b3bdb588e4fd9675949b8f0b0a88ad0f82a9de898294a0bdc0739343776f2"
+          },
+          "psana.psexp.run": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/run.py",
+            "sha256": "1cdb1b4e0a18cfd7ed51735cd5cb832695bc6687819f33430e7cfbd55001fb2c"
+          },
+          "psana.smdreader": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/smdreader.cpython-311-x86_64-linux-gnu.so",
+            "sha256": "71c8e357b90aebf0a096ac30198462bb1b4160dac8db61728e78cfd4b21ccaaf"
+          }
+        },
+        "psana": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/__init__.py",
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]"
+      },
+      "sha256": "c5abc67a6825f065229f7e9f043150bd87ee4474f1484634dab87a2a4c3f42e5"
+    },
+    "source.json": {
+      "bytes": 1395164,
+      "calibration": [
+        {
+          "ctype": "pedestals",
+          "detector": "inline_alvium",
+          "id_data": "6ae528abf361b346726aaead",
+          "id_doc": "6ae528ad7ff319b928f25402",
+          "sha256": "7cc05de07381c6e744edda6c862262aa4287987c0026668e6afc016ce1e66b0f"
+        },
+        {
+          "ctype": "pixel_rms",
+          "detector": "inline_alvium",
+          "id_data": "6ae528ae067420d4b08d24e8",
+          "id_doc": "6ae528b17264fb2b1b5a02f7",
+          "sha256": "f8a1a348196e47f815c99671b22a79893db75d72b2b9fdb3cb29fb598f0a9ce4"
+        },
+        {
+          "ctype": "pixel_status",
+          "detector": "inline_alvium",
+          "id_data": "6ae528b2ddfecd255e9d9692",
+          "id_doc": "6ae528b3f22d71fd755d656b",
+          "sha256": "75e09a9db2d1632a2c792417d8009f422b1581e59717c7f277bead5565c4367e"
+        },
+        {
+          "ctype": "pixel_min",
+          "detector": "inline_alvium",
+          "id_data": "6ae528b748f73b7557c67855",
+          "id_doc": "6ae528b8515964208686abf9",
+          "sha256": "3f4b1bec9ead8d96d54ebf1d00701f16b3e10a70430d9f8c033bab21699070ab"
+        },
+        {
+          "ctype": "pixel_max",
+          "detector": "inline_alvium",
+          "id_data": "6ae528b47ff319b928f25408",
+          "id_doc": "6ae528b47264fb2b1b5a02f8",
+          "sha256": "5be64bf57369869ee210a57c32e0b2dc82b2e38e4dd76f3df12cdcbeb184ef1a"
+        },
+        {
+          "ctype": "pedestals",
+          "detector": "jungfrau",
+          "id_data": "69befaf027144b038a0358fa",
+          "id_doc": "69befaf3890f6488e88c3610",
+          "sha256": "da0c0e0ae7ba076be8192c6c72c635a325a422b9fc8a5dc8b50b1b9b305ead4d"
+        },
+        {
+          "ctype": "geometry",
+          "detector": "jungfrau",
+          "id_data": "6a3ad21a719dd948fa9a78f1",
+          "id_doc": "6a3ad21b6f5e9bdd204a92d6",
+          "sha256": "d359210a7f48d92afe2e50303ae3a48cc8b8706f5a0e91b66e1f6e3f251407aa"
+        },
+        {
+          "ctype": "pixel_rms",
+          "detector": "jungfrau",
+          "id_data": "69befb2c6bf923939682306c",
+          "id_doc": "69befb30890f6488e88c3611",
+          "sha256": "92ce716f3b64cda878af59e89f96e4c41ebaa07de08062c23c7f09b1999e57be"
+        },
+        {
+          "ctype": "pixel_status",
+          "detector": "jungfrau",
+          "id_data": "69befb07167cd16f96478423",
+          "id_doc": "69befb0a32dff3fc9444fef6",
+          "sha256": "2cc09fe081ed9d2b27eb2975e43ec1922670677729e2f7b8d68df883c623fe41"
+        },
+        {
+          "ctype": "pixel_min",
+          "detector": "jungfrau",
+          "id_data": "69befb4b167cd16f96478728",
+          "id_doc": "69befb50c798ce53d7534663",
+          "sha256": "cae99eec482539fd673659165665bafe36ebee866d8d207a41d4a79533a6da66"
+        },
+        {
+          "ctype": "pixel_max",
+          "detector": "jungfrau",
+          "id_data": "69befb6b4f343ef13e4e10cf",
+          "id_doc": "69befb7064e6def9d9b66c62",
+          "sha256": "d7ae7aef21ec1b24d35406f260551fa3d4793cf919919d6d1ea3f0517daf3150"
+        },
+        {
+          "ctype": "pixel_offset",
+          "detector": "jungfrau",
+          "id_data": "6970124a86674782ebb7dd39",
+          "id_doc": "6970124d29e359d12edcbe8c",
+          "sha256": "beb14747d1bda8078906da1aae9eac2f8cec5dd1b192efdc99f93f992195ff06"
+        },
+        {
+          "ctype": "pixel_gain",
+          "detector": "jungfrau",
+          "id_data": "6942291863cd7f75ad505526",
+          "id_doc": "6942291d8feeb40dd3310ffa",
+          "sha256": "be2d0facb2459f0ef3de880b384b72d90170ed3d539a95c1aa8f7a6915c70db3"
+        },
+        {
+          "ctype": "pedestals",
+          "detector": "qadc_ch0",
+          "id_data": "6ae528abf361b346726aaead",
+          "id_doc": "6ae528ad7ff319b928f25402",
+          "sha256": "7cc05de07381c6e744edda6c862262aa4287987c0026668e6afc016ce1e66b0f"
+        },
+        {
+          "ctype": "pixel_rms",
+          "detector": "qadc_ch0",
+          "id_data": "6ae528ae067420d4b08d24e8",
+          "id_doc": "6ae528b17264fb2b1b5a02f7",
+          "sha256": "f8a1a348196e47f815c99671b22a79893db75d72b2b9fdb3cb29fb598f0a9ce4"
+        },
+        {
+          "ctype": "pixel_status",
+          "detector": "qadc_ch0",
+          "id_data": "6ae528b2ddfecd255e9d9692",
+          "id_doc": "6ae528b3f22d71fd755d656b",
+          "sha256": "75e09a9db2d1632a2c792417d8009f422b1581e59717c7f277bead5565c4367e"
+        },
+        {
+          "ctype": "pixel_min",
+          "detector": "qadc_ch0",
+          "id_data": "6ae528b748f73b7557c67855",
+          "id_doc": "6ae528b8515964208686abf9",
+          "sha256": "3f4b1bec9ead8d96d54ebf1d00701f16b3e10a70430d9f8c033bab21699070ab"
+        },
+        {
+          "ctype": "pixel_max",
+          "detector": "qadc_ch0",
+          "id_data": "6ae528b47ff319b928f25408",
+          "id_doc": "6ae528b47264fb2b1b5a02f8",
+          "sha256": "5be64bf57369869ee210a57c32e0b2dc82b2e38e4dd76f3df12cdcbeb184ef1a"
+        },
+        {
+          "ctype": "pedestals",
+          "detector": "qadc_ch1",
+          "id_data": "6ae528abf361b346726aaead",
+          "id_doc": "6ae528ad7ff319b928f25402",
+          "sha256": "7cc05de07381c6e744edda6c862262aa4287987c0026668e6afc016ce1e66b0f"
+        },
+        {
+          "ctype": "pixel_rms",
+          "detector": "qadc_ch1",
+          "id_data": "6ae528ae067420d4b08d24e8",
+          "id_doc": "6ae528b17264fb2b1b5a02f7",
+          "sha256": "f8a1a348196e47f815c99671b22a79893db75d72b2b9fdb3cb29fb598f0a9ce4"
+        },
+        {
+          "ctype": "pixel_status",
+          "detector": "qadc_ch1",
+          "id_data": "6ae528b2ddfecd255e9d9692",
+          "id_doc": "6ae528b3f22d71fd755d656b",
+          "sha256": "75e09a9db2d1632a2c792417d8009f422b1581e59717c7f277bead5565c4367e"
+        },
+        {
+          "ctype": "pixel_min",
+          "detector": "qadc_ch1",
+          "id_data": "6ae528b748f73b7557c67855",
+          "id_doc": "6ae528b8515964208686abf9",
+          "sha256": "3f4b1bec9ead8d96d54ebf1d00701f16b3e10a70430d9f8c033bab21699070ab"
+        },
+        {
+          "ctype": "pixel_max",
+          "detector": "qadc_ch1",
+          "id_data": "6ae528b47ff319b928f25408",
+          "id_doc": "6ae528b47264fb2b1b5a02f8",
+          "sha256": "5be64bf57369869ee210a57c32e0b2dc82b2e38e4dd76f3df12cdcbeb184ef1a"
+        }
+      ],
+      "runtime": {
+        "code_sha256": {
+          "collaborator_check.py": "a012ebc6afdfe9c4bef741e64235387a43575a537cc07a32ec4d3802a029ff62",
+          "common.py": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553",
+          "mpi_check.py": "ecbdb9f3b031aaa8629f2e6f8c87d57cf1ef1cabf5dcef512c225b3f05385d2a",
+          "run_matrix.py": "3c977b2e7f4937e68d0ae14a67a8a28c7b13d5faf43c7a251a016892d98ba958",
+          "serial_compare.py": "e05643a0157d24a8563c8bc6ad16a4dd17c1501ca104762d0da22d2a0655daa2",
+          "test_acceptance.py": "a86b8f30949ba975a7dd1e9269a353b1b4d632dde2476143798432ce40bd9a1f"
+        },
+        "environment": {
+          "OMP_NUM_THREADS": "1",
+          "PS_EB_NODES": "1",
+          "PS_FAKESTEP_FLAG": "0",
+          "PS_PARALLEL": "none",
+          "PS_SMD_CHUNKSIZE": "268435456",
+          "PS_SMD_N_EVENTS": "20",
+          "PS_SRV_NODES": "0"
+        },
+        "host": "sdfiana025",
+        "modules": {
+          "psana": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/__init__.py",
+            "sha256": "d5940dadb8008720bc7cd40aeec2edc2dbeede820f0d86508582bfed677f710d"
+          },
+          "psana.detector.UtilsJungfrau": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/detector/UtilsJungfrau.py",
+            "sha256": "719b72d04fb02b8a7a388ce81a9c74faf2fc863b87a26a85c4efaa7dc70c654d"
+          },
+          "psana.detector.jungfrau": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/detector/jungfrau.py",
+            "sha256": "d25d2e0d16d59790dc87c6d35eb7aa4326e2a49c819815ff46c82a94accd9397"
+          },
+          "psana.dgram": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/dgram.cpython-311-x86_64-linux-gnu.so",
+            "sha256": "b6f14f41ba10f86dac24556cd7ab58ba87902e936ff27dba2b7581422f432866"
+          },
+          "psana.eventbuilder": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/eventbuilder.cpython-311-x86_64-linux-gnu.so",
+            "sha256": "914a0e7bffa0c40c06c74d1419ad51c96940953f23e2a0547936fa82d9259103"
+          },
+          "psana.parallelreader": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/parallelreader.cpython-311-x86_64-linux-gnu.so",
+            "sha256": "da63a52c6262aef7fcad6181b38aa5e97a8a5103dd78f9b890ba9433574abd08"
+          },
+          "psana.pscalib.calib.MDBWebUtils": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/pscalib/calib/MDBWebUtils.py",
+            "sha256": "f21dd902e814d67b82bcb8cc071dc4a9c94882d66bef113d58069b70ad010961"
+          },
+          "psana.psexp.event_manager": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/event_manager.py",
+            "sha256": "bc7b3bdb588e4fd9675949b8f0b0a88ad0f82a9de898294a0bdc0739343776f2"
+          },
+          "psana.psexp.run": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/run.py",
+            "sha256": "1cdb1b4e0a18cfd7ed51735cd5cb832695bc6687819f33430e7cfbd55001fb2c"
+          },
+          "psana.smdreader": {
+            "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/smdreader.cpython-311-x86_64-linux-gnu.so",
+            "sha256": "71c8e357b90aebf0a096ac30198462bb1b4160dac8db61728e78cfd4b21ccaaf"
+          }
+        },
+        "psana": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/__init__.py",
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]"
+      },
+      "sha256": "9ca3b15a29e4b71daa51c806e1ad4e2d9c90c6eb821937741f0fe04522b9120a"
+    }
+  },
+  "samples": {
+    "0": {
+      "calib": {
+        "dtype": "<f4",
+        "sha256": "7604efc6721dc846dc98c482236e00eae252675eb79a6e62944c1ae100a15379",
+        "shape": [
+          32,
+          512,
+          1024
+        ]
+      },
+      "finite": 16777216,
+      "image": {
+        "dtype": "<f4",
+        "sha256": "32372d866551b30b78b31bbd77975dbd8c3ba7597f4b6fb326fbc131060537c2",
+        "shape": [
+          4432,
+          4216
+        ]
+      },
+      "max": 7801.5439453125,
+      "min": -57.38981628417969,
+      "nan": 0
+    },
+    "18": {
+      "calib": {
+        "dtype": "<f4",
+        "sha256": "c91a6245568e022a0d9037acb3bdbb813d147e3c3815e8557c0aff48c44b9968",
+        "shape": [
+          32,
+          512,
+          1024
+        ]
+      },
+      "finite": 16777216,
+      "max": 8496.2568359375,
+      "min": -58.2665901184082,
+      "nan": 0
+    },
+    "19": {
+      "calib": {
+        "dtype": "<f4",
+        "sha256": "6da41dceef0effb4897cfe330c076249d0fa481bd4dbf2d2ac3eedf00483419c",
+        "shape": [
+          32,
+          512,
+          1024
+        ]
+      },
+      "finite": 16777216,
+      "max": 8439.5107421875,
+      "min": -63.61911392211914,
+      "nan": 0
+    },
+    "38": {
+      "calib": {
+        "dtype": "<f4",
+        "sha256": "68de3d4704946123a5376ef040c7cd10bb4858b2e068933607beda7788a7ee16",
+        "shape": [
+          32,
+          512,
+          1024
+        ]
+      },
+      "finite": 16777216,
+      "max": 8501.46875,
+      "min": -70.06287384033203,
+      "nan": 0
+    },
+    "39": {
+      "calib": {
+        "dtype": "<f4",
+        "sha256": "67ce6fe7e1ed3df3ea4156bbb5151f8cd65a768c4bc414df6e60431f7ee4c471",
+        "shape": [
+          32,
+          512,
+          1024
+        ]
+      },
+      "finite": 16777216,
+      "max": 8494.0234375,
+      "min": -51.723262786865234,
+      "nan": 0
+    },
+    "59": {
+      "calib": {
+        "dtype": "<f4",
+        "sha256": "14698ce63c205b1da41e5a555eab9c3f6994bda1b7071c514522960b7a528754",
+        "shape": [
+          32,
+          512,
+          1024
+        ]
+      },
+      "finite": 16777216,
+      "image": {
+        "dtype": "<f4",
+        "sha256": "94a262b439cf4d73d234546c327cd8a8336a07eae097f8ac25b989fa29a899d1",
+        "shape": [
+          4432,
+          4216
+        ]
+      },
+      "max": 7608.82275390625,
+      "min": -52.76731872558594,
+      "nan": 0
+    }
+  },
+  "status": "pass",
+  "steps": [
+    {
+      "count": 19,
+      "step": 0,
+      "timestamp": 4909050823917205251
+    },
+    {
+      "count": 20,
+      "step": 1,
+      "timestamp": 4909050824086552628
+    },
+    {
+      "count": 21,
+      "step": 2,
+      "timestamp": 4909050824253145200
+    }
+  ]
+}

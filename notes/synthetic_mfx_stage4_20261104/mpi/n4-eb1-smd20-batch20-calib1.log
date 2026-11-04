@@ -1,0 +1,11 @@
+[PSANA-INFO RANK:0 1793818114.136092416] RunParallel [MPI-role] rank=0 host=sdfiana025 numa_id=0 numa_size=4
+[PSANA-WARNING RANK:0 1793818116.198822144] RunParallel Failed to build calibration xtc buffer: No calibration entries to convert.
+[PSANA-INFO RANK:0 1793818116.198924288] RunParallel calibconst empty on smd0; skipping shared calibration buffer
+[PSANA-INFO RANK:0 1793818116.199083008] RunParallel [MPI-role] rank=0 host=sdfiana025 numa_id=0 numa_size=4
+PASS /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/mpi/n4-eb1-smd20-batch20-calib1.json
+[1793818118.512219] [sdfiana025:2814305:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x564f96d48240 was not matched
+[1793818118.512237] [sdfiana025:2814305:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x564f96d48180 was not matched
+[1793818118.512782] [sdfiana025:2814302:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x562e46a76480 was not matched
+[1793818118.512799] [sdfiana025:2814302:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x562e46a763c0 was not matched
+[1793818118.514334] [sdfiana025:2814306:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x561c715afa00 was not matched
+[1793818118.514349] [sdfiana025:2814306:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x561c715af940 was not matched

@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/serial_compare.py", line 186, in <module>
+    main(parser.parse_args())
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage4_20261104/serial_compare.py", line 126, in main
+    ds = DataSource(**kwargs)
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/datasource.py", line 241, in DataSource
+    return SerialDataSource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/serial_ds.py", line 27, in __init__
+    self._setup_run()
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/serial_ds.py", line 55, in _setup_run
+    configs = self._get_configs()
+              ^^^^^^^^^^^^^^^^^^^
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/serial_ds.py", line 45, in _get_configs
+    return self.smdr_man.get_next_dgrams()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/smdreader_manager.py", line 268, in get_next_dgrams
+    self.force_read()
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/smdreader_manager.py", line 199, in force_read
+    raise ValueError(msg)
+ValueError: SmdReader found dgram (299652 MB) larger than chunksize (0.262144 MB)

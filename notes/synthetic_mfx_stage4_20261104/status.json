@@ -1,0 +1,25 @@
+{
+  "scope": "Stage 4 calibrated serial/MPI and collaborator pilot acceptance",
+  "phase": "validated_pending_review",
+  "base_sha": "ac5609a27",
+  "review_round_limit": 3,
+  "review_round": 1,
+  "session_preference": "Use implement-review-loop for all implementation/fix work this session",
+  "collaborator_acceptance": "pending own-login execution; script prepared",
+  "checks": {
+    "normal_calibration_probe": "eight JF types loaded; first calibrated event shape/dtype correct",
+    "acceptance_negative_tests": "6 passed",
+    "source_comparison": "pass",
+    "pilot_comparison": "pass",
+    "mpi_matrix": "9 cases; 18 step/event passes; calibrated samples match"
+  },
+  "observations": [
+    "Source encoder descriptions accessor raises for absent segments; identical exception retained in all 60 pilot events",
+    "Small SMD byte-buffer source probe failed; normal default buffer passes",
+    "Step timestamp test-driver accessor corrected to step.evt.timestamp; pilot rerun passed"
+  ],
+  "remaining": [
+    "independent review",
+    "collaborator own-login execution"
+  ]
+}

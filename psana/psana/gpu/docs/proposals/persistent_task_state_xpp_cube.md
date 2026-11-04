@@ -964,3 +964,22 @@ with durable artifacts and SHA256SUMS in
 No calibration records or psana core were changed. Full Stage 4 acceptance
 remains pending. Direct source ShapesData inspection corrected the earlier
 experiment-field-width assumption from 32 bytes to 16; see the Stage 3 report.
+
+### Stage 4 local acceptance — November 4, 2026
+
+The [Stage 4 drivers and evidence](../../../../../notes/synthetic_mfx_stage4_20261104/README.md)
+passed normal calibrated source/pilot comparison: 23 calibration selections and
+payloads, all 60 event records, 79 detector field interfaces, 267 EPICS aliases,
+six calibrated JF samples, per-gain status masks and two assembled images.
+Serial step/flat-event iteration and nine CPU MPI cases (18 distributed passes)
+passed with SMD/event batches straddling the step boundaries, one/two EBs and
+multiple BDs. One MPI case checked all six calibrated samples. This is recorded
+runtime/pilot acceptance, not a performance or GPU result.
+
+Encoder and user-DIO data are absent in this source interval; matching absence
+and the existing encoder descriptions accessor exception are recorded explicitly.
+The drivers made no changes to XTC, constants, permissions or psana core.
+Independent implementation review and the collaborator's own-login calibrated
+read remain pending; Stage 4 is not yet fully complete. A standalone collaborator
+check and full serial reports are available under
+`/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage4-20261104/`.
