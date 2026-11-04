@@ -949,11 +949,18 @@ XTC, redeploy constants, change permissions or establish performance results.
 ### Stage 3 pilot — November 4, 2026
 
 The [Stage 3 implementation and evidence](../../../../../notes/synthetic_mfx_stage3_20261104/README.md)
-now contain a generated 60-event pilot in staging: ten bigdata/SMD pairs,
+now contain a published 60-event pilot: ten bigdata/SMD pairs,
 76 records per stream, steps `[19, 20, 21]`, 2,040,571,066 total bytes. Every
 record passed source-byte and structural validation, and an uncalibrated
 serial DataSource smoke test passed step/event counts, scan values and original
-timestamps. Final-name publication awaits independent implementation review.
+timestamps. Claude passed two review rounds, closing all three initial
+nonblocking findings at `3c77c8b189fcdbc99a10760325f0727069e4f249`.
+Final-name publication completed without overwrites at
+`2026-11-04T18:17:09Z` under `/sdf/data/lcls/ds/prj/prjdatpsana/xtc/`;
+SMD files are in `smalldata/`. A second serial smoke from that final directory
+passed. Publication and review records are saved beside the implementation,
+with durable artifacts and SHA256SUMS in
+`/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage3-20261104/`.
 No calibration records or psana core were changed. Full Stage 4 acceptance
 remains pending. Direct source ShapesData inspection corrected the earlier
 experiment-field-width assumption from 32 bytes to 16; see the Stage 3 report.

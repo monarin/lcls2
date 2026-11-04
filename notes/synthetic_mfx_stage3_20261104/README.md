@@ -1,7 +1,7 @@
 # Stage 3 synthetic MFX pilot
 
-The 60-event pilot is generated and validated in staging. Final-name publication
-is pending independent review. No calibration DB writes or psana core changes.
+Stage 3 is complete: the 60-event pilot is generated, validated, independently
+reviewed and published. No calibration DB writes or psana core changes.
 
 - Destination identity: `prjdatpsana`, run 1.
 - Source: first 60 correlated events of public `mfx101555026`, run 10.
@@ -107,3 +107,29 @@ the new all-record pass report and the publication input.
 rejection subcases and missing/unwritable-directory checks before any
 authentication or links. Original reports are retained for the audit trail.
 The generated files and their hashes are unchanged. See `responses.md`.
+
+Round 2 passed and closed all three findings at implementation commit
+`3c77c8b189fcdbc99a10760325f0727069e4f249`; see
+[the final review](round-02/review.json). Subsequent commits record evidence only.
+
+## Publication and handoff
+
+Publication completed at `2026-11-04T18:17:09Z`: all ten bigdata and ten SMD
+files have canonical `prjdatpsana-r0001-sNNN-c000[.smd].xtc2` names. The fresh
+preflight found no conflicting files or logbook entries. The publisher checked
+generator/validator hashes against the reviewed commit and rehashed every
+staged file before linking. All published files share device/inode/size with
+their staged counterparts. See [the publication journal](publication.jsonl).
+
+[The final-directory smoke test](published_smoke.json) passed normal serial
+DataSource discovery, both step/event iteration paths, counts `[19, 20, 21]`,
+scan values and original timestamps. It skips calibration and does not replace
+Stage 4. Use `exp="prjdatpsana", run=1`, explicit
+`dir="/sdf/data/lcls/ds/prj/prjdatpsana/xtc"`, and `live=False`; no logbook
+registration was performed. Set `PS_FAKESTEP_FLAG=0` before importing psana.
+
+[Published ACLs](published_acls.txt) show read access for `prjdatpsana` on all
+twenty outputs and traverse permission on the experiment/XTC/SMD directories.
+Actual collaborator-login readback remains pending. Durable results include
+the implementation archives, generation trace, both verification reports,
+reviews, journal, smoke results and `SHA256SUMS`.

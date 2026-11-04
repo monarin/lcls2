@@ -12,3 +12,9 @@ three nonblocking safeguards. All are accepted for the next revision.
 Generated data and the generator/helper implementation stay unchanged. The
 first verification report and round-1 pass remain preserved as historical
 evidence. The revised validation report is used for final publication.
+
+Round 2 independently closed all three findings and passed commit
+`3c77c8b189fcdbc99a10760325f0727069e4f249`. No unresolved findings remain.
+Publication exercised the real Git-blob provenance checks and completed all
+twenty links; final-directory serial smoke passed. See `round-02/review.json`,
+`publication.jsonl`, and `published_smoke.json`.
