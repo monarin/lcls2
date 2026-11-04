@@ -1,0 +1,152 @@
+{
+  "checked_utc": "2026-11-04T20:00:33.667602+00:00",
+  "destination": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc",
+  "collisions": [],
+  "logbook": {
+    "runs": [],
+    "files": []
+  },
+  "available_bytes": 499005582557184,
+  "calibration": "All 13 live documents exactly match verified validity-1-2 snapshot",
+  "total_bytes": 1019012911780,
+  "records_per_stream": 30373,
+  "step_counts": [
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000
+  ],
+  "inserted_transitions": 119,
+  "scan_names_id": 253,
+  "min_adjacent_gap_ns": 2,
+  "quota": "Weka quota query requires admin authentication; filesystem free bytes are not project quota proof",
+  "run1_files": {
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s009-c000.xtc2": {
+      "size": 440619566,
+      "mtime_ns": 1793814562487771449,
+      "inode": 9247425712853483522
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s000-c000.xtc2": {
+      "size": 23776188,
+      "mtime_ns": 1793814532630385984,
+      "inode": 9056940763137638402
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s002-c000.xtc2": {
+      "size": 587464,
+      "mtime_ns": 1793814532752383541,
+      "inode": 6729363969665335298
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s003-c000.xtc2": {
+      "size": 302245,
+      "mtime_ns": 1793814532780382896,
+      "inode": 17853695931512455170
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s001-c000.xtc2": {
+      "size": 210180,
+      "mtime_ns": 1793814532720384233,
+      "inode": 3141863830929342466
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s005-c000.xtc2": {
+      "size": 314730002,
+      "mtime_ns": 1793814533308372029,
+      "inode": 5150686000976101378
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s006-c000.xtc2": {
+      "size": 377674784,
+      "mtime_ns": 1793814542448183911,
+      "inode": 16225698394869923842
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s007-c000.xtc2": {
+      "size": 440619566,
+      "mtime_ns": 1793814546413102303,
+      "inode": 14683638849689747458
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s008-c000.xtc2": {
+      "size": 440619566,
+      "mtime_ns": 1793814551981987683,
+      "inode": 17361997301117026306
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s004-c000.xtc2": {
+      "size": 90460,
+      "mtime_ns": 1793814532816382172,
+      "inode": 6224551874349301762
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s007-c000.smd.xtc2": {
+      "size": 188422,
+      "mtime_ns": 1793814546521100081,
+      "inode": 9965967535928901634
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s003-c000.smd.xtc2": {
+      "size": 307461,
+      "mtime_ns": 1793814532781382876,
+      "inode": 5339024690837782530
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s006-c000.smd.xtc2": {
+      "size": 163120,
+      "mtime_ns": 1793814542579181215,
+      "inode": 18416312322809790466
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s002-c000.smd.xtc2": {
+      "size": 60564,
+      "mtime_ns": 1793814532761383287,
+      "inode": 4994011598059798530
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s004-c000.smd.xtc2": {
+      "size": 72336,
+      "mtime_ns": 1793814532817382135,
+      "inode": 9164687223250288642
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s008-c000.smd.xtc2": {
+      "size": 188422,
+      "mtime_ns": 1793814552097985295,
+      "inode": 5212588084200341506
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s001-c000.smd.xtc2": {
+      "size": 16676,
+      "mtime_ns": 1793814532721384111,
+      "inode": 8016886143692963842
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s000-c000.smd.xtc2": {
+      "size": 17804,
+      "mtime_ns": 1793814532645385675,
+      "inode": 2722932008154038274
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s009-c000.smd.xtc2": {
+      "size": 188422,
+      "mtime_ns": 1793814562585769432,
+      "inode": 2503958457702809602
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s005-c000.smd.xtc2": {
+      "size": 137818,
+      "mtime_ns": 1793814533394370259,
+      "inode": 14549164630548873218
+    }
+  },
+  "script_sha256": "c2d8ed750c892c33115edd0f82bf94ad7227c4dec212621cfb2268223713dc1d"
+}

@@ -1,0 +1,48 @@
+Indexed frozen SMD and source transition headers: stream 0
+Indexed frozen SMD and source transition headers: stream 1
+Indexed frozen SMD and source transition headers: stream 2
+Indexed frozen SMD and source transition headers: stream 3
+Indexed frozen SMD and source transition headers: stream 4
+Indexed frozen SMD and source transition headers: stream 5
+Indexed frozen SMD and source transition headers: stream 6
+Indexed frozen SMD and source transition headers: stream 7
+Indexed frozen SMD and source transition headers: stream 8
+Indexed frozen SMD and source transition headers: stream 9
+{
+  "total_bytes": 1019012911780,
+  "records_per_stream": 30373,
+  "step_counts": [
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000
+  ],
+  "inserted_transitions": 119,
+  "min_adjacent_gap_ns": 2
+}

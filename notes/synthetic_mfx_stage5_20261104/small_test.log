@@ -1,0 +1,50 @@
+Indexed frozen SMD and source transition headers: stream 0
+Indexed frozen SMD and source transition headers: stream 1
+Indexed frozen SMD and source transition headers: stream 2
+Indexed frozen SMD and source transition headers: stream 3
+Indexed frozen SMD and source transition headers: stream 4
+Indexed frozen SMD and source transition headers: stream 5
+Indexed frozen SMD and source transition headers: stream 6
+Indexed frozen SMD and source transition headers: stream 7
+Indexed frozen SMD and source transition headers: stream 8
+Indexed frozen SMD and source transition headers: stream 9
+Stream 2: record 0/25Stream 0: record 0/25
+Stream 1: record 0/25
+
+Stream 3: record 0/25
+Wrote and hashed stream 1: 25 records, 9 events
+Wrote and hashed stream 3: 25 records, 9 events
+Stream 4: record 0/25Wrote and hashed stream 2: 25 records, 9 events
+
+Stream 5: record 0/25
+Stream 6: record 0/25
+Wrote and hashed stream 4: 25 records, 9 events
+Wrote and hashed stream 0: 25 records, 9 events
+Stream 8: record 0/25
+Stream 7: record 0/25
+Wrote and hashed stream 5: 25 records, 9 eventsWrote and hashed stream 6: 25 records, 9 events
+
+Wrote and hashed stream 7: 25 records, 9 events
+Stream 9: record 0/25
+Wrote and hashed stream 8: 25 records, 9 events
+Wrote and hashed stream 9: 25 records, 9 events
+Verify stream 1: record 0/25Verify stream 3: record 0/25
+
+Verify stream 2: record 0/25Verify stream 0: record 0/25
+
+Verified stream 3: all source bytes, decoded metadata and SMD offsets
+Verify stream 4: record 0/25
+Verified stream 1: all source bytes, decoded metadata and SMD offsets
+Verify stream 5: record 0/25
+Verified stream 2: all source bytes, decoded metadata and SMD offsetsVerified stream 4: all source bytes, decoded metadata and SMD offsets
+
+Verified stream 0: all source bytes, decoded metadata and SMD offsets
+Verify stream 6: record 0/25Verify stream 7: record 0/25
+
+Verify stream 8: record 0/25
+Verified stream 5: all source bytes, decoded metadata and SMD offsets
+Verify stream 9: record 0/25
+Verified stream 6: all source bytes, decoded metadata and SMD offsets
+Verified stream 7: all source bytes, decoded metadata and SMD offsets
+Verified stream 8: all source bytes, decoded metadata and SMD offsets
+Verified stream 9: all source bytes, decoded metadata and SMD offsets

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage5_20261104/test_small.py", line 17, in <module>
+    sources = load_sources()
+              ^^^^^^^^^^^^^^
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage5_20261104/xtc_fixture.py", line 237, in load_sources
+    raw = (snapshot / "manifest.json").read_bytes()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/lib/python3.11/pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0002/stage1-20261103/manifest.json'

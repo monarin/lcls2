@@ -1,0 +1,17 @@
+{
+  "scope": "Generate run 2, 30 steps x 1000 events",
+  "phase": "preflight_and_small_checks",
+  "round": 1,
+  "round_limit": 3,
+  "base_sha": "192fa79b2",
+  "full_generated": false,
+  "published": false,
+  "remaining": [
+    "independent review",
+    "full generation",
+    "full validation",
+    "DataSource acceptance",
+    "publication"
+  ],
+  "session_preference": "Use implementation-review loop for implementation/fixes"
+}

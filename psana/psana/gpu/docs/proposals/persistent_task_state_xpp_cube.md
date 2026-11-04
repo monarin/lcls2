@@ -580,8 +580,8 @@ repetition is needed.
 | Full performance fixture | `prjdatpsana`, run 2 | 30 steps of 1,000 events | about 1.02 TB |
 
 Sizes extrapolate the source's average across all streams; measure the actual
-pilot output. The full fixture uses the first 36,000 source events and omits
-the final 37. Keep the pilot as a reproducible fixture instead of overwriting
+pilot output. The full fixture uses the first 30,000 source events and omits
+the final 6,037. Keep the pilot as a reproducible fixture instead of overwriting
 run 1 with the full dataset. Check run-number availability before publication.
 Add empty-step and other boundary cases as separate small correctness fixtures
 after the first inspection, without making them prerequisites for inspecting
