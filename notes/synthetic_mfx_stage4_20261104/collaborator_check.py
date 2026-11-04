@@ -6,11 +6,24 @@ import json
 import os
 from pathlib import Path
 import platform
+import sys
 
 
 def require(condition, message):
     if not condition:
         raise RuntimeError(message)
+
+
+def environment():
+    import psana
+    from psana import dgram
+    from psana.detector import jungfrau, UtilsJungfrau
+    modules = (psana, dgram, jungfrau, UtilsJungfrau)
+    return {'python': sys.version, 'python_executable': sys.executable,
+            'psana': psana.__file__,
+            'module_files': {m.__name__: {'path': m.__file__,
+                             'sha256': hashlib.sha256(Path(m.__file__).read_bytes()).hexdigest()}
+                             for m in modules}}
 
 
 def main():
@@ -26,6 +39,9 @@ def main():
     import numpy as np
     import psana
     from psana import DataSource
+    runtime = environment()
+    # Print before reads/calibration so a failed check still identifies its build.
+    print('Environment: '+json.dumps(runtime, sort_keys=True), flush=True)
     reference = json.loads(args.reference.read_text())
     require(reference['status'] == 'pass' and reference['kind'] == 'pilot', 'Invalid reference')
     root = Path('/sdf/data/lcls/ds/prj/prjdatpsana/xtc')
@@ -61,7 +77,7 @@ def main():
         require(events == 1, 'Wrong event count')
     require(runs == 1, 'Wrong run count')
     record = {'status': 'pass', 'user': getpass.getuser(), 'uid': os.getuid(),
-              'groups': os.getgroups(), 'host': platform.node(), 'psana': psana.__file__,
+              'groups': os.getgroups(), 'host': platform.node(), 'runtime': runtime,
               'opened_files': opened, 'calibration_ids': ids, 'calibrated': digest,
               'PS_FAKESTEP_FLAG': os.environ['PS_FAKESTEP_FLAG'],
               'script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),

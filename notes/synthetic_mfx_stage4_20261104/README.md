@@ -1,7 +1,8 @@
 # Stage 4 synthetic MFX pilot acceptance
 
 Calibrated serial comparisons and all nine MPI cases passed on
-`work/synthetic-mfx-scan`. Independent review is pending. The Stage 3 files and Stage 2 calibration
+`work/synthetic-mfx-scan`. Round 1 passed at `24c927cab7b76a18df9e48bf799df6f6651fec8b`;
+nonblocking review corrections are undergoing follow-up review. The Stage 3 files and Stage 2 calibration
 records are read-only inputs. The complete Stage 4 gate also requires a test
 under the collaborator's own login; Mona's checks cannot substitute for it.
 
@@ -67,7 +68,9 @@ fixture when repeating acceptance.
 ## Observations and limitations
 
 - A preliminary `PS_SMD_CHUNKSIZE=262144` read failed on the original source
-  Configure with an oversized-dgram error. The acceptance uses psana's standard
+  Configure with an oversized-dgram error: the EPICS SMD Configure is 299,652
+  bytes (larger than 262,144). The runtime message incorrectly labels that raw
+  byte count as MB. The acceptance uses psana's standard
   268435456-byte buffer. This is not a claim that small byte buffers are supported;
   event-count batch sizes are varied independently. Original failure log retained.
 - Source `MfxUsbEncoder01.raw.descriptions()` raises a TypeError when encoder
@@ -131,3 +134,31 @@ All nine MPI cases passed both iteration paths (18 distributed passes), includin
 the six calibrated samples in the four-rank case. No duplicated/missing timestamps,
 misplaced steps, raw mismatches or calibrated mismatches were observed. This
 checks the recorded CPU runtime and pilot; it is not throughput evidence.
+
+All nine MPI logs retain UCX unmatched tag-receive descriptor warnings at
+shutdown, after the report was saved and PASS printed. The active PML was UCX;
+the launch option `--mca btl self,vader` did not select the PML or constrain that
+UCX transport. All nine launchers exited zero and all assertions passed; this is not a claim of
+warning-free MPI shutdown. Calibration-empty warnings are from the explicitly
+calibration-skipped passes. No MPI runtime or psana shutdown fix is included.
+`provenance.json` verifies all eleven run reports against the committed code
+actually used, with the preserved source script noted above.
+
+## Review provenance clarifications
+
+All nine MPI cases used the working-tree `pilot.json` generated before the matrix,
+SHA256 `c5abc67a6825f065229f7e9f043150bd87ee4474f1484634dab87a2a4c3f42e5`.
+The same bytes are archived in results and identified in `serial_summary.json`.
+The historical MPI reports do not embed this input hash; a future MPI driver
+revision should record the reference hash directly. No retrospective edit to
+those reports is made. The reviewer cross-checked all three recorded BeginStep
+timestamps against the Stage 1 schedule and original first BeginStep; they match.
+An explicit schedule assertion can be added in a future driver revision.
+
+The collaborator script now prints Python executable/version and hashes/paths
+for psana, Dgram, Jungfrau and UtilsJungfrau before data access, and includes them
+in a successful report. If `Calibrated sample differs` occurs under a different
+psana build, return the error and printed environment details: the comparison is
+inconclusive for access acceptance and does not by itself establish a fixture
+failure. The initial one-event calibration probe is superseded by the archived
+full pilot comparison (eight JF types, six calibrated samples).

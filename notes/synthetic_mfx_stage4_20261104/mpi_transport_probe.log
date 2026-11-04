@@ -1,0 +1,86 @@
+[sdfiana025:2887272] mca: base: components_register: registering framework pml components
+[sdfiana025:2887272] mca: base: components_register: found loaded component cm
+[sdfiana025:2887272] mca: base: components_register: component cm register function successful
+[sdfiana025:2887272] mca: base: components_register: found loaded component monitoring
+[sdfiana025:2887272] mca: base: components_register: component monitoring register function successful
+[sdfiana025:2887272] mca: base: components_register: found loaded component ob1
+[sdfiana025:2887272] mca: base: components_register: component ob1 register function successful
+[sdfiana025:2887272] mca: base: components_register: found loaded component ucx
+[sdfiana025:2887272] mca: base: components_register: component ucx register function successful
+[sdfiana025:2887272] mca: base: components_register: found loaded component v
+[sdfiana025:2887272] mca: base: components_register: component v register function successful
+[sdfiana025:2887272] mca: base: components_open: opening pml components
+[sdfiana025:2887272] mca: base: components_open: found loaded component cm
+[sdfiana025:2887272] mca: base: components_open: component cm open function successful
+[sdfiana025:2887272] mca: base: components_open: found loaded component monitoring
+[sdfiana025:2887272] mca: base: components_open: component monitoring open function successful
+[sdfiana025:2887272] mca: base: components_open: found loaded component ob1
+[sdfiana025:2887272] mca: base: components_open: component ob1 open function successful
+[sdfiana025:2887272] mca: base: components_open: found loaded component ucx
+[sdfiana025:2887273] mca: base: components_register: registering framework pml components
+[sdfiana025:2887273] mca: base: components_register: found loaded component cm
+[sdfiana025:2887273] mca: base: components_register: component cm register function successful
+[sdfiana025:2887273] mca: base: components_register: found loaded component monitoring
+[sdfiana025:2887273] mca: base: components_register: component monitoring register function successful
+[sdfiana025:2887273] mca: base: components_register: found loaded component ob1
+[sdfiana025:2887273] mca: base: components_register: component ob1 register function successful
+[sdfiana025:2887273] mca: base: components_register: found loaded component ucx
+[sdfiana025:2887273] mca: base: components_register: component ucx register function successful
+[sdfiana025:2887273] mca: base: components_register: found loaded component v
+[sdfiana025:2887273] mca: base: components_register: component v register function successful
+[sdfiana025:2887273] mca: base: components_open: opening pml components
+[sdfiana025:2887273] mca: base: components_open: found loaded component cm
+[sdfiana025:2887273] mca: base: components_open: component cm open function successful
+[sdfiana025:2887273] mca: base: components_open: found loaded component monitoring
+[sdfiana025:2887273] mca: base: components_open: component monitoring open function successful
+[sdfiana025:2887273] mca: base: components_open: found loaded component ob1
+[sdfiana025:2887273] mca: base: components_open: component ob1 open function successful
+[sdfiana025:2887273] mca: base: components_open: found loaded component ucx
+[sdfiana025:2887272] mca: base: components_open: component ucx open function successful
+[sdfiana025:2887272] mca: base: components_open: found loaded component v
+[sdfiana025:2887272] mca: base: components_open: component v open function successful
+[sdfiana025:2887272] select: initializing pml component cm
+[sdfiana025:2887273] mca: base: components_open: component ucx open function successful
+[sdfiana025:2887273] mca: base: components_open: found loaded component v
+[sdfiana025:2887273] mca: base: components_open: component v open function successful
+[sdfiana025:2887273] select: initializing pml component cm
+[sdfiana025:2887273] select: init returned priority 25
+[sdfiana025:2887273] select: component monitoring not in the include list
+[sdfiana025:2887273] select: initializing pml component ob1
+[sdfiana025:2887272] select: init returned priority 25
+[sdfiana025:2887272] select: component monitoring not in the include list
+[sdfiana025:2887272] select: initializing pml component ob1
+[sdfiana025:2887273] select: init returned priority 20
+[sdfiana025:2887273] select: initializing pml component ucx
+[sdfiana025:2887272] select: init returned priority 20
+[sdfiana025:2887272] select: initializing pml component ucx
+[sdfiana025:2887272] select: init returned priority 51
+[sdfiana025:2887272] select: component v not in the include list
+[sdfiana025:2887272] selected ucx best priority 51
+[sdfiana025:2887272] select: component ucx selected
+[sdfiana025:2887272] select: component cm not selected / finalized
+[sdfiana025:2887272] select: component ob1 not selected / finalized
+[sdfiana025:2887272] mca: base: close: component cm closed
+[sdfiana025:2887272] mca: base: close: unloading component cm
+[sdfiana025:2887272] mca: base: close: unloading component monitoring
+[sdfiana025:2887272] mca: base: close: component ob1 closed
+[sdfiana025:2887272] mca: base: close: unloading component ob1
+[sdfiana025:2887272] mca: base: close: component v closed
+[sdfiana025:2887272] mca: base: close: unloading component v
+[sdfiana025:2887273] select: init returned priority 51
+[sdfiana025:2887273] select: component v not in the include list
+[sdfiana025:2887273] selected ucx best priority 51
+[sdfiana025:2887273] select: component ucx selected
+[sdfiana025:2887273] select: component cm not selected / finalized
+[sdfiana025:2887273] select: component ob1 not selected / finalized
+[sdfiana025:2887273] mca: base: close: component cm closed
+[sdfiana025:2887273] mca: base: close: unloading component cm
+[sdfiana025:2887273] mca: base: close: unloading component monitoring
+[sdfiana025:2887273] mca: base: close: component ob1 closed
+[sdfiana025:2887273] mca: base: close: unloading component ob1
+[sdfiana025:2887273] mca: base: close: component v closed
+[sdfiana025:2887273] mca: base: close: unloading component v
+[sdfiana025:2887273] mca: base: close: component ucx closed
+[sdfiana025:2887273] mca: base: close: unloading component ucx
+[sdfiana025:2887272] mca: base: close: component ucx closed
+[sdfiana025:2887272] mca: base: close: unloading component ucx

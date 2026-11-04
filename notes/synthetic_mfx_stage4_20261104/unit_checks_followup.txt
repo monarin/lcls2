@@ -1,0 +1,17 @@
+test_distributed_order_is_not_required (__main__.AcceptanceChecks.test_distributed_order_is_not_required) ... ok
+test_duplicate_rejected (__main__.AcceptanceChecks.test_duplicate_rejected) ... ok
+test_misplaced_step_rejected (__main__.AcceptanceChecks.test_misplaced_step_rejected) ... ok
+test_missing_tail_rejected (__main__.AcceptanceChecks.test_missing_tail_rejected) ... ok
+test_nan_payload_normalization_and_value_sensitivity (__main__.AcceptanceChecks.test_nan_payload_normalization_and_value_sensitivity) ... ok
+test_only_known_missing_encoder_error_is_recorded (__main__.AcceptanceChecks.test_only_known_missing_encoder_error_is_recorded) ... /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/lib/python3.11/site-packages/amitypes/hsd.py:24: DeprecationWarning: mypy_extensions.TypedDict is deprecated, and will be removed in a future version. Use typing.TypedDict or typing_extensions.TypedDict instead.
+  HSDSegementPeakTimes = TypedDict(
+/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/lib/python3.11/site-packages/amitypes/hsd.py:52: DeprecationWarning: mypy_extensions.TypedDict is deprecated, and will be removed in a future version. Use typing.TypedDict or typing_extensions.TypedDict instead.
+  HSDSegmentPeaks = TypedDict(
+/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/lib/python3.11/site-packages/amitypes/hsd.py:78: DeprecationWarning: mypy_extensions.TypedDict is deprecated, and will be removed in a future version. Use typing.TypedDict or typing_extensions.TypedDict instead.
+  HSDSegmentWaveforms = TypedDict(
+ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 2.905s
+
+OK

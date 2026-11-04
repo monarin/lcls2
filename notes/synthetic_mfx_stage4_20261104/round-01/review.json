@@ -1,0 +1,79 @@
+{
+  "reviewed_commit": "24c927cab7b76a18df9e48bf799df6f6651fec8b",
+  "verdict": "pass",
+  "summary": "Stage 4 implementation and executed local acceptance evidence pass review for this commit, with the collaborator own-login check explicitly retained as an open external gate (not run, not claimed). The serial driver validates all 23 calibration selections against frozen source document IDs or deployed journal IDs plus original payload hashes, requires exact per-event record equality (79 detector fields, 267 EPICS aliases, segment/damage maps) across all 60 original timestamps, enforces three steps of 19/20/21 via run.steps() plus a separate calibration-skipped flat pass, and fingerprints six calibrated JF samples, per-gain masks and two assembled images with dtype/shape included. The MPI driver aggregates world-rank records, rejects duplicate/missing/foreign timestamps and misassigned steps, checks topology and per-rank ordering, compares every raw JF fingerprint, and in the ninth case compares all six calibrated samples; all nine committed reports show status pass, aggregate counts 19/20/21 in both passes, returncode 0, and matching runtime module paths/hashes from the Stage 3 scratch install. The known encoder descriptions() TypeError is recorded only under narrow conditions and tested negatively; failed probes are retained as separate logs and not counted. No writes to XTC, calibration, or permissions; HTTP is guarded to GET, calib cache disabled, reports use exclusive-create. UCX unmatched tag-receive warnings appear in all nine MPI logs strictly after the PASS line and report save; they are a non-clean shutdown diagnostic, not evidence of event loss, but are not yet documented in README at this commit. Five low-severity, non-blocking findings concern documentation/provenance tightening only.",
+  "checks": [
+    "Read scope.md, README.md, status.json, serial_summary.json, unit_checks.txt, runtime.sh, common.py, serial_compare.py, mpi_check.py, run_matrix.py, summarize.py, test_acceptance.py, collaborator_check.py, history/serial_compare_source.py.txt, all failure logs, matrix.log, mpi/summary.json, and mpi reports n4-eb1-smd20-batch20-calib1, n7-eb2-smd61-batch21-calib0, n7-eb2-smd19-batch7-calib0 plus two logs",
+    "Verified serial_compare.calibration() checks doc _id and id_data against frozen source_document (source) or deployment journal keyed by (collection, ctype) (pilot), payload sha256 against frozen manifest, pilot validity run==run_end==1, and exactly 23 records",
+    "Verified serial_summary.json lists 23 pilot and 23 source calibration records with pairwise identical payload sha256 per detector/ctype and distinct deployed IDs",
+    "Verified event loop requires evt.timestamp == manifest pilot_timestamps[index] for all 60, record equality to source reference, step_value/step_docstring consistency, three steps with counts 19/20/21, and separate skip_calib_load flat pass with validate_events plus ordered timestamps",
+    "Verified six calibrated samples (0,18,19,38,39,59) are float32 (32,512,1024), 16777216 finite, 0 NaN, with image digests at 0 and 59 and three per-gain mask/status fingerprints with status_nonzero 16732/11917/12768",
+    "Verified step BeginStep timestamps 4909050823917205251/4909050824086552628/4909050824253145200 lie between the expected event indices and match notes/synthetic_mfx_stage1_20261103/timestamp_schedule_audit.json",
+    "Verified read_field only records TypeError for MfxUsbEncoder01/raw/descriptions when segments are None and message matches; checked bld.py usdusb descriptions() dereferences _name(evt) explaining the source behavior; negative test covers wrong name and present segments",
+    "Verified common.validate_events rejects wrong count, duplicate/omitted/foreign timestamps, wrong step, wrong aggregate counts; six unit tests reported OK in unit_checks.txt",
+    "Verified mpi_check requires RunParallel, explicit PS_PARALLEL=mpi, world size match, EB/SMD0 topology, helper ranks receive no events, per-rank ordered timestamps and non-repeated steps, raw fingerprint equality for every event, step timestamp/docstring consistency, and all six calibrated samples present in calibrated steps pass; failures Abort(1)",
+    "Verified run_matrix runs nine cases sequentially with 600 s timeout, exclusive-create logs/dir, requires returncode 0 and report existence, and all nine mpi/*.json show status pass, step_counts [19,20,21] for both passes, correct world_size/eb_nodes/smd_events/batch_size/calibrated flags",
+    "Verified calibrated MPI case report shows calibrated_sample markers 0,18,19,38,39,59 across BD ranks 2 and 3 and its log has one calibration-empty warning (events pass only) versus two in calib0 logs",
+    "Verified all nine MPI logs print PASS before any UCX tag-receive warnings; no Traceback/Abort/Error strings in any MPI log",
+    "Verified runtime.sh refuses inherited nonzero PS_FAKESTEP_FLAG, pins PYTHONPATH/LD_LIBRARY_PATH to the Stage 3 scratch install, and all reports record identical module paths/hashes and PS_FAKESTEP_FLAG=0",
+    "Verified safety: requests Session.request patched to GET-only, use_calib_cache=False, save() uses open('x'), mpi dir mkdir(exist_ok=False), no XTC/calibration/permission writes in any driver",
+    "Verified code_sha256 provenance: pilot report and all MPI reports share identical driver hashes; source report shows earlier mpi_check.py/test_acceptance.py/serial_compare.py hashes consistent with the documented accessor fix and history file",
+    "Verified collaborator_check.py refuses user monarin, lists/opens 20 expected files, checks eight JF calibration IDs and first-event calibrated digest with the same NaN normalization, records user/uid/groups/host, and writes only to a new output file",
+    "Verified README/status.json do not claim collaborator execution or Stage 4 completion; counts 72/79 fields, 267 EPICS, 60 encoder exceptions consistent with serial_summary"
+  ],
+  "limitations": [
+    "File tools are restricted to the worktree; could not read /sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage4-20261104/ (full source.json, pilot.json, PNG previews, archived collaborator_check.py). Relied on serial_summary.json hashes and compact records.",
+    "No commands were run; could not compute sha256 of committed driver files to confirm they equal the code_sha256 values recorded in the reports, nor confirm history/serial_compare_source.py.txt hashes to e05643a0\u2026. Consistency was assessed by cross-report comparison only.",
+    "Did not inspect the Stage 3 scratch psana install; runtime claims rest on recorded module paths/hashes in the reports.",
+    "Did not re-audit Stage 3 generator or Stage 1/2 manifest and journal contents beyond spot checks of pilot_timestamps and journal key structure.",
+    "The collaborator own-login check has not been executed; this review approves the handoff script and executed local checks only, not collaborator access acceptance.",
+    "Interpreted the UCX warnings from logs only; no MPI runtime diagnosis was performed."
+  ],
+  "findings": [
+    {
+      "id": "S4-R1-01",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage4_20261104/README.md",
+      "line": 67,
+      "evidence": "All nine mpi/*.log files contain 6 or 12 'UCX WARN unexpected tag-receive descriptor ... was not matched' lines after the PASS line (e.g. n7-eb2-smd61-batch21-calib0.log lines 7-19), yet the 'Observations and limitations' section does not mention them. run_matrix.py line 21 passes '--mca btl self,vader', which does not govern the UCX pml actually in use per the log output.",
+      "requested_change": "Add an Observations bullet stating that UCX unmatched tag-receive warnings occur at MPI shutdown in every case, after the report was saved and PASS printed, with exit code 0 and all aggregate assertions satisfied; characterize as a non-clean shutdown diagnostic, not event loss, and note that the transport was the UCX pml (the btl selection did not apply). Reference the committed logs."
+    },
+    {
+      "id": "S4-R1-02",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage4_20261104/mpi_check.py",
+      "line": 20,
+      "evidence": "mpi_check reads args.reference (pilot.json) and asserts status/kind but does not record its sha256; mpi/*.json and mpi/summary.json carry no reference hash. serial_summary.json line 392 records pilot.json sha256 c5abc67a\u2026 independently.",
+      "requested_change": "In the final documentation state explicitly that all nine MPI cases used the working-tree pilot.json with sha256 c5abc67a6825f065229f7e9f043150bd87ee4474f1484634dab87a2a4c3f42e5 produced before run_matrix. For any future rerun, record sha(args.reference.read_bytes()) in the MPI report."
+    },
+    {
+      "id": "S4-R1-03",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage4_20261104/status.json",
+      "line": 10,
+      "evidence": "\"normal_calibration_probe\": \"eight JF types loaded; first calibrated event shape/dtype correct\" has no corresponding committed log or report in the Stage 4 directory, unlike the three retained failure probes.",
+      "requested_change": "Either commit the probe output log or reword the entry to indicate the probe was superseded by the serial_compare pilot report (which checks all eight JF types and six calibrated events)."
+    },
+    {
+      "id": "S4-R1-04",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage4_20261104/serial_compare.py",
+      "line": 178,
+      "evidence": "Pilot BeginStep timestamps are recorded from step.evt.timestamp but not asserted against the Stage 1 schedule; they serve only as the MPI reference. Manual inspection shows they match notes/synthetic_mfx_stage1_20261103/timestamp_schedule_audit.json (4909050824086552628 line 30, 4909050824253145200 line 54) and lie between the correct event indices.",
+      "requested_change": "Record in the final notes that the three pilot step timestamps were cross-checked against timestamp_schedule_audit.json by review; optionally add an assertion in a future driver revision. No rerun required."
+    },
+    {
+      "id": "S4-R1-05",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_mfx_stage4_20261104/collaborator_check.py",
+      "line": 63,
+      "evidence": "The record stores psana.__file__ but not a hash or version of the collaborator's psana build or Python version. A calibrated digest mismatch under a different psana release would be indistinguishable in the report from an access or data problem.",
+      "requested_change": "Add psana module sha256 (or version string) and sys.version to the output record, and note in the README handoff that a 'Calibrated sample differs' failure under a different psana build should be treated as inconclusive for access and reported with the environment details rather than as a fixture failure."
+    }
+  ]
+}

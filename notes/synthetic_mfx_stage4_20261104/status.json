@@ -1,25 +1,47 @@
 {
   "scope": "Stage 4 calibrated serial/MPI and collaborator pilot acceptance",
-  "phase": "validated_pending_review",
+  "phase": "followup_review_pending",
   "base_sha": "ac5609a27",
   "review_round_limit": 3,
-  "review_round": 1,
+  "review_round": 2,
   "session_preference": "Use implement-review-loop for all implementation/fix work this session",
   "collaborator_acceptance": "pending own-login execution; script prepared",
   "checks": {
-    "normal_calibration_probe": "eight JF types loaded; first calibrated event shape/dtype correct",
+    "normal_calibration_probe": "superseded by archived pilot.json: eight JF types and six calibrated samples pass",
     "acceptance_negative_tests": "6 passed",
     "source_comparison": "pass",
     "pilot_comparison": "pass",
-    "mpi_matrix": "9 cases; 18 step/event passes; calibrated samples match"
+    "mpi_matrix": "9 cases; 18 step/event passes; calibrated samples match",
+    "code_provenance": "all eleven run reports match committed executed code",
+    "collaborator_runtime_collector": "local metadata probe passes; no own-login acceptance",
+    "mpi_transport_probe": "UCX PML selected",
+    "step_schedule_crosscheck": "pass",
+    "followup_negative_tests": "6 passed"
   },
   "observations": [
     "Source encoder descriptions accessor raises for absent segments; identical exception retained in all 60 pilot events",
     "Small SMD byte-buffer source probe failed; normal default buffer passes",
-    "Step timestamp test-driver accessor corrected to step.evt.timestamp; pilot rerun passed"
+    "Step timestamp test-driver accessor corrected to step.evt.timestamp; pilot rerun passed",
+    "MPI shutdown emits UCX unmatched tag-receive warnings; all nine exits zero and assertions pass"
   ],
   "remaining": [
     "independent review",
     "collaborator own-login execution"
+  ],
+  "implementation_sha": "24c927cab7b76a18df9e48bf799df6f6651fec8b",
+  "review_attempts": [
+    {
+      "round": 1,
+      "verdict": "pass",
+      "reviewed_sha": "24c927cab7b76a18df9e48bf799df6f6651fec8b",
+      "record": "round-01/review.json",
+      "nonblocking_findings": [
+        "S4-R1-01",
+        "S4-R1-02",
+        "S4-R1-03",
+        "S4-R1-04",
+        "S4-R1-05"
+      ]
+    }
   ]
 }

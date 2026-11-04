@@ -1,0 +1,196 @@
+{
+  "status": "pass",
+  "review_commit": "24c927cab7b76a18df9e48bf799df6f6651fec8b",
+  "records": [
+    {
+      "report": "source.json",
+      "sha256": "9ca3b15a29e4b71daa51c806e1ad4e2d9c90c6eb821937741f0fe04522b9120a",
+      "implementation": {
+        "common.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/common.py",
+          "sha256": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553"
+        },
+        "serial_compare.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/history/serial_compare_source.py.txt",
+          "sha256": "e05643a0157d24a8563c8bc6ad16a4dd17c1501ca104762d0da22d2a0655daa2"
+        }
+      }
+    },
+    {
+      "report": "pilot.json",
+      "sha256": "c5abc67a6825f065229f7e9f043150bd87ee4474f1484634dab87a2a4c3f42e5",
+      "implementation": {
+        "common.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/common.py",
+          "sha256": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553"
+        },
+        "serial_compare.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/serial_compare.py",
+          "sha256": "56fbbc84628840893a1c6f5ec876f49ba756fccbc32ae4659ef40e6597f94c9b"
+        }
+      }
+    },
+    {
+      "report": "mpi/n4-eb1-smd19-batch7-calib0.json",
+      "sha256": "14035b881d64d33657631f41712be04362f65e9ee497353d243353b4b6e4ae4d",
+      "implementation": {
+        "common.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/common.py",
+          "sha256": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553"
+        },
+        "mpi_check.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/mpi_check.py",
+          "sha256": "56f1b2108acf230ac5478716048eb3ffa38bdbf21e6ff33b5e17552db1fb44f2"
+        },
+        "run_matrix.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/run_matrix.py",
+          "sha256": "3c977b2e7f4937e68d0ae14a67a8a28c7b13d5faf43c7a251a016892d98ba958"
+        }
+      }
+    },
+    {
+      "report": "mpi/n4-eb1-smd20-batch20-calib0.json",
+      "sha256": "e6538fdecf8971791d11e15038dd79bb994bcd07b780b8f69c7ab160b374e469",
+      "implementation": {
+        "common.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/common.py",
+          "sha256": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553"
+        },
+        "mpi_check.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/mpi_check.py",
+          "sha256": "56f1b2108acf230ac5478716048eb3ffa38bdbf21e6ff33b5e17552db1fb44f2"
+        },
+        "run_matrix.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/run_matrix.py",
+          "sha256": "3c977b2e7f4937e68d0ae14a67a8a28c7b13d5faf43c7a251a016892d98ba958"
+        }
+      }
+    },
+    {
+      "report": "mpi/n4-eb1-smd20-batch20-calib1.json",
+      "sha256": "25e012f5b0dce712fef787f78ce714af18bd3f574c2b1e74684ba546734c5f43",
+      "implementation": {
+        "common.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/common.py",
+          "sha256": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553"
+        },
+        "mpi_check.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/mpi_check.py",
+          "sha256": "56f1b2108acf230ac5478716048eb3ffa38bdbf21e6ff33b5e17552db1fb44f2"
+        },
+        "run_matrix.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/run_matrix.py",
+          "sha256": "3c977b2e7f4937e68d0ae14a67a8a28c7b13d5faf43c7a251a016892d98ba958"
+        }
+      }
+    },
+    {
+      "report": "mpi/n4-eb1-smd21-batch19-calib0.json",
+      "sha256": "b7fffc9f70f3d2d96d30a8ee5a13ac1cb0108c99ca19f342ccdce47ef102d521",
+      "implementation": {
+        "common.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/common.py",
+          "sha256": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553"
+        },
+        "mpi_check.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/mpi_check.py",
+          "sha256": "56f1b2108acf230ac5478716048eb3ffa38bdbf21e6ff33b5e17552db1fb44f2"
+        },
+        "run_matrix.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/run_matrix.py",
+          "sha256": "3c977b2e7f4937e68d0ae14a67a8a28c7b13d5faf43c7a251a016892d98ba958"
+        }
+      }
+    },
+    {
+      "report": "mpi/n4-eb1-smd61-batch21-calib0.json",
+      "sha256": "a5799d9cf05cfafecc4c56f57bf9752f38ce4c3afda8bedce85f53790d6d63d7",
+      "implementation": {
+        "common.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/common.py",
+          "sha256": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553"
+        },
+        "mpi_check.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/mpi_check.py",
+          "sha256": "56f1b2108acf230ac5478716048eb3ffa38bdbf21e6ff33b5e17552db1fb44f2"
+        },
+        "run_matrix.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/run_matrix.py",
+          "sha256": "3c977b2e7f4937e68d0ae14a67a8a28c7b13d5faf43c7a251a016892d98ba958"
+        }
+      }
+    },
+    {
+      "report": "mpi/n7-eb2-smd19-batch7-calib0.json",
+      "sha256": "672f7c040528e325e8510039fe7c65673da98d33c50b554b837501769d680e8a",
+      "implementation": {
+        "common.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/common.py",
+          "sha256": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553"
+        },
+        "mpi_check.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/mpi_check.py",
+          "sha256": "56f1b2108acf230ac5478716048eb3ffa38bdbf21e6ff33b5e17552db1fb44f2"
+        },
+        "run_matrix.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/run_matrix.py",
+          "sha256": "3c977b2e7f4937e68d0ae14a67a8a28c7b13d5faf43c7a251a016892d98ba958"
+        }
+      }
+    },
+    {
+      "report": "mpi/n7-eb2-smd20-batch20-calib0.json",
+      "sha256": "2e894f309f1f9cb8f42077d10413ef5e8f0d769ca75a23a4136b39b691ab0384",
+      "implementation": {
+        "common.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/common.py",
+          "sha256": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553"
+        },
+        "mpi_check.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/mpi_check.py",
+          "sha256": "56f1b2108acf230ac5478716048eb3ffa38bdbf21e6ff33b5e17552db1fb44f2"
+        },
+        "run_matrix.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/run_matrix.py",
+          "sha256": "3c977b2e7f4937e68d0ae14a67a8a28c7b13d5faf43c7a251a016892d98ba958"
+        }
+      }
+    },
+    {
+      "report": "mpi/n7-eb2-smd21-batch19-calib0.json",
+      "sha256": "980886d4340d156655401e3b55a5e416f1cd12541a240e64a8f7b830b09c4fcf",
+      "implementation": {
+        "common.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/common.py",
+          "sha256": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553"
+        },
+        "mpi_check.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/mpi_check.py",
+          "sha256": "56f1b2108acf230ac5478716048eb3ffa38bdbf21e6ff33b5e17552db1fb44f2"
+        },
+        "run_matrix.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/run_matrix.py",
+          "sha256": "3c977b2e7f4937e68d0ae14a67a8a28c7b13d5faf43c7a251a016892d98ba958"
+        }
+      }
+    },
+    {
+      "report": "mpi/n7-eb2-smd61-batch21-calib0.json",
+      "sha256": "f5d2af4223c01490f3b2369e789f8ba33bdbc1475d09d9a0b1b3508b282146bd",
+      "implementation": {
+        "common.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/common.py",
+          "sha256": "227bbfe1dcbef4d5a4b3ce230e0634745790789b6c36f1befa2063f3d0488553"
+        },
+        "mpi_check.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/mpi_check.py",
+          "sha256": "56f1b2108acf230ac5478716048eb3ffa38bdbf21e6ff33b5e17552db1fb44f2"
+        },
+        "run_matrix.py": {
+          "committed_path": "notes/synthetic_mfx_stage4_20261104/run_matrix.py",
+          "sha256": "3c977b2e7f4937e68d0ae14a67a8a28c7b13d5faf43c7a251a016892d98ba958"
+        }
+      }
+    }
+  ]
+}
