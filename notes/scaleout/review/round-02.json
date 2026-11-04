@@ -1,0 +1,39 @@
+{
+  "reviewed_commit": "998cbe6a0ce244f73d52f16c363b456488ddffdd",
+  "verdict": "pass",
+  "summary": "All six round-1 findings (S1-S6) are fixed in the committed plan. S1: active OST capacity now grows with N. Each stream gets N*s0 stripes over N*P1 distinct OSTs, with a 128-stripe cap, OST/OSS inventory, overlap rejection, a check that the expanded layout is actually exercised, and the same files for replay and application (test-plan.md:223-249). S2: B_pattern is exact descriptor replay with its own concurrency plateau. Coalesced replay is diagnostic only, and a lower-bound reference withholds the saturation claim (15-26, Phase C at 161). S3: the cold-read check needs OSC/RPC or other validated wire-level counters. llite is application-level only, and expected bytes = bigdata + a readahead allowance fixed in preflight + SMD, with SMD kept out of the numerator (131-146). S4: a D_node-sized corpus is required before sustained Phases B-E, and short pilot runs cannot pass the plateau or saturation gates (166-170). S5: confidence intervals use a Student-t interval on paired log-ratios, fixed in advance, with at least five independent blocks, a leave-one-block-out check and an 'inconclusive' outcome (292-301). S6: PS_EB_NODE_LOCAL is a separately costed topology with its own N=1 reference, and cache-residency checks cover every range a node could be sent under dynamic scheduling (120-124, 205-210). I found no regressions. The baseline SHA is unchanged in test-plan.md and baseline.json. The plan does not claim any current measurement. Host, staging and calibration stay separate. Quota math still holds: 11.52 TB at 20 GB/s fits in the roughly 16.4 TB left after 20% headroom and existing use, and the plan correctly says 40 GB/s does not fit. One new non-blocking clarification (S7): it is not specified which layout the paired one-worker weak-scaling reference B_1 reads. This is document-level approval only. No runtime test, benchmark, staging or job has run.",
+  "checks": [
+    "Baseline SHA 5b082e0fdfcefc36ea208c0954aab6548aa6bdb7 unchanged in test-plan.md:4 and baseline.json:4; branch, fork and worktree match scope.md: PASS",
+    "No false claim of a current measurement (test-plan.md:3,320; baseline.json:9,31): PASS",
+    "S1 layout grows with N (test-plan.md:223-249): RESOLVED",
+    "S2 B_pattern plateau and exact-replay reference (test-plan.md:15-26,161): RESOLVED",
+    "S3 wire-level counters, llite application-level only, expected-byte terms (test-plan.md:131-146): RESOLVED",
+    "S4 sustained B-E need a D_node corpus; short pilots cannot pass gates (test-plan.md:166-170): RESOLVED",
+    "S5 Student-t on paired log-ratios, fixed in advance, with sensitivity check (test-plan.md:292-301): RESOLVED",
+    "S6 PS_EB_NODE_LOCAL variant and residency on every reachable range (test-plan.md:120-124,205-210): RESOLVED",
+    "Headline rate = useful bytes / slowest rank's time from a common barrier through drain; no summed overlapping intervals; KvikIO total_ns not used as a denominator: PASS",
+    "Adaptive CPU/GPU matrix bounds cores, threads and memory; OOM/retry runs invalid; Pareto selection of active GPUs and cores: PASS",
+    "Physical data expansion (non-sparse, no links, replay builder with rebuilt SMD) and application weak scaling blocked without valid XTC: PASS",
+    "128-stripe cap consistent with the NERSC guidance cited and with N*s0 for s0<=16 at N<=8: PASS",
+    "Quota arithmetic and headroom rule consistent: PASS",
+    "Perlmutter adaptation (Cray MPICH, lcls_g, premium, Iris balance, reserved vs active accounting): PASS",
+    "Weak-scaling B_1 reference layout specified: UNCLEAR (S7, non-blocking)"
+  ],
+  "limitations": [
+    "Only the provided file-reading tools were used. No commands, git checks, tests or jobs were run.",
+    "Coordinator results (git diff --check passing, PR head, stat/quota output, NERSC pages) were taken as given and not re-run.",
+    "Source files (bench.py, gpu_kvikio_read.py, node.py) were not re-read this round. The only changes since round 1 are in the notes, and the round-1 source checks still apply.",
+    "Did not verify that unprivileged users on Perlmutter can read Lustre OSC/RPC counters, or that psana2 can consume the planned large single-chunk layouts. The plan itself gates on both."
+  ],
+  "findings": [
+    {
+      "id": "S7",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/scaleout/test-plan.md",
+      "line": 303,
+      "evidence": "E(N)=B(N)/(N*B(1)) (line 43). Each N uses its own layout with N*s0 stripes over N*P1 OSTs (lines 223-231). Weak-scaling blocks pair the N-node rate with 'a one-worker reference on the same allocation' (303-306), but nothing says which layout that reference reads. If it reads the N=1 layout (s0 stripes over P1 OSTs), the reference layout must also be staged next to the N layout, which strains 'stage one large layout at a time' (264). If it reads a 1/N slice of the N layout, the reference touches up to N*P1 OSTs and B_1 can differ from the N=1 series point. The two readings give different E(N) values, and results could mix them across N.",
+      "requested_change": "Choose and record one B_1 definition per series. Recommended: a one-worker run on the frozen N=1 layout, staged alongside each N layout and counted in the quota budget. Optionally also report the 1/N-slice-of-N-layout reference as a labeled diagnostic. Record the reference layout hash in every weak-scaling block."
+    }
+  ]
+}

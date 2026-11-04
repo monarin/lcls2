@@ -251,7 +251,13 @@ retain their narrower scope. Do not disguise this as a software scaling failure.
 Prepare a hashed range manifest and size the unique corpus per worker as:
 
     D_node >= max(2 * host_RAM, 1.2 * B_est * T)
-    D_total = N_workers * D_node + metadata/warmup/reference space
+    D_primary = N_workers * D_node
+    D_total = D_primary + D_node_reference + metadata/warmup space
+
+For N>1, D_node_reference=D_node is a separately retained N=1 layout used for
+paired reference runs. At N=1, the primary corpus itself is the reference and
+need not be duplicated. Include source/preparation copies and existing scratch
+usage separately in the peak quota calculation.
 
 Target T=60 seconds, with 30 seconds minimum for an accepted sustained sample.
 Expand data if the actual run finishes sooner. B_est comes from the pilot, not
@@ -259,9 +265,12 @@ link specifications. Hold D_node, event count and work fixed across N in a
 series. Size for both host and application controls; enlarge and restart a
 series if necessary. At 20/40/80 GB/s, 60-second sizing requires respectively
 1.44/2.88/5.76 TB per node, or 11.52/23.04/46.08 TB at eight nodes. These are
-examples, not forecasts. The current 20 TiB soft quota cannot fit every case.
-Maintain >=20% soft-quota headroom including existing usage, preparation copies
-and retained layouts. Stage one large layout at a time. Reduce N or obtain
+examples, not forecasts. Retaining the additional N=1 reference makes the eight
+worker totals 12.96/25.92/51.84 TB before metadata, warmup and preparation space.
+The current 20 TiB soft quota cannot fit every case. Maintain >=20% soft-quota
+headroom including existing usage, preparation copies and retained layouts.
+Retain the frozen N=1 layout plus only one current N>1 layout at a time; budget
+both. Do not retain other large stripe-sweep alternatives concurrently. Reduce N or obtain
 project storage before exceeding that budget; never reduce timing below the
 minimum to make a larger scaling chart. Refresh quota and file presence first.
 
@@ -300,9 +309,13 @@ and increase independent blocks rather than substituting a narrower bootstrap.
 Do not treat repeated events within one run as replicates. Apply the same method
 to plateau increments, application/replay ratios and weak-scaling ratios.
 
-For weak scaling, each block pairs the N-node rate with a one-worker reference
-on the same allocation, using a predeclared rotating worker-node selection; form
-log(B_N/(N*B_1)). State elapsed separation and node identities, balance N order
+For weak scaling, B_1 always means one worker consuming D_node bytes from the
+frozen N=1 corpus with s0 stripes/stream over P1 OSTs, never a slice of the N-node
+layout. Stage and hash this reference alongside the current N layout and include
+both in quota accounting. Every block records both layout hashes and pairs the
+N-node rate with this one-worker reference on the same allocation, using a
+predeclared rotating worker-node selection; form log(B_N/(N*B_1)). A one-worker
+slice of the N-layout is an optional separately labeled diagnostic, not B_1. State elapsed separation and node identities, balance N order
 across blocks and retain all valid nodes. Storage and application each get their
 own paired reference. Do not cherry-pick the fastest N=1 node. Keep slow valid samples. Failed
 cache/correctness/provenance checks invalidate samples with recorded reasons;
