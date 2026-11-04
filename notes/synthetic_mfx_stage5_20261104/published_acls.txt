@@ -1,0 +1,219 @@
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s000-c000.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s001-c000.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s002-c000.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s003-c000.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s004-c000.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s005-c000.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s006-c000.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s007-c000.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s008-c000.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s009-c000.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s000-c000.smd.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s001-c000.smd.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s002-c000.smd.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s003-c000.smd.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s004-c000.smd.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s005-c000.smd.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s006-c000.smd.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s007-c000.smd.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s008-c000.smd.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s009-c000.smd.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---

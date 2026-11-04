@@ -1,0 +1,90 @@
+Indexed frozen SMD and source transition headers: stream 0
+Indexed frozen SMD and source transition headers: stream 1
+Indexed frozen SMD and source transition headers: stream 2
+Indexed frozen SMD and source transition headers: stream 3
+Indexed frozen SMD and source transition headers: stream 4
+Indexed frozen SMD and source transition headers: stream 5
+Indexed frozen SMD and source transition headers: stream 6
+Indexed frozen SMD and source transition headers: stream 7
+Indexed frozen SMD and source transition headers: stream 8
+Indexed frozen SMD and source transition headers: stream 9
+Stream 1: record 0/30373
+Stream 2: record 0/30373
+Stream 3: record 0/30373
+Stream 0: record 0/30373
+Stream 3: record 5000/30373
+Stream 3: record 10000/30373
+Stream 3: record 15000/30373
+Stream 3: record 20000/30373
+Stream 3: record 25000/30373
+Stream 3: record 30000/30373
+Wrote and hashed stream 3: 30373 records, 30000 events
+Stream 4: record 0/30373
+Stream 4: record 5000/30373
+Stream 4: record 10000/30373
+Stream 4: record 15000/30373
+Stream 4: record 20000/30373
+Stream 4: record 25000/30373
+Stream 4: record 30000/30373
+Wrote and hashed stream 4: 30373 records, 30000 events
+Stream 5: record 0/30373
+Stream 1: record 5000/30373
+Stream 2: record 5000/30373
+Stream 1: record 10000/30373
+Stream 1: record 15000/30373
+Stream 2: record 10000/30373
+Stream 0: record 5000/30373
+Stream 1: record 20000/30373
+Stream 2: record 15000/30373
+Stream 1: record 25000/30373
+Stream 1: record 30000/30373
+Wrote and hashed stream 1: 30373 records, 30000 events
+Stream 6: record 0/30373
+Stream 2: record 20000/30373
+Stream 2: record 25000/30373
+Stream 2: record 30000/30373
+Stream 0: record 10000/30373
+Wrote and hashed stream 2: 30373 records, 30000 events
+Stream 7: record 0/30373
+Stream 0: record 15000/30373
+Stream 0: record 20000/30373
+Stream 0: record 25000/30373
+Stream 0: record 30000/30373
+Wrote and hashed stream 0: 30373 records, 30000 events
+Stream 8: record 0/30373
+Stream 5: record 5000/30373
+Stream 6: record 5000/30373
+Stream 7: record 5000/30373
+Stream 8: record 5000/30373
+Stream 5: record 10000/30373
+Stream 6: record 10000/30373
+Stream 5: record 15000/30373
+Stream 7: record 10000/30373
+Stream 8: record 10000/30373
+Stream 6: record 15000/30373
+Stream 5: record 20000/30373
+Stream 7: record 15000/30373
+Stream 8: record 15000/30373
+Stream 5: record 25000/30373
+Stream 6: record 20000/30373
+Stream 5: record 30000/30373
+Wrote and hashed stream 5: 30373 records, 30000 events
+Stream 9: record 0/30373
+Stream 8: record 20000/30373
+Stream 7: record 20000/30373
+Stream 6: record 25000/30373
+Stream 9: record 5000/30373
+Stream 8: record 25000/30373
+Stream 7: record 25000/30373
+Stream 6: record 30000/30373
+Wrote and hashed stream 6: 30373 records, 30000 events
+Stream 9: record 10000/30373
+Stream 8: record 30000/30373
+Wrote and hashed stream 8: 30373 records, 30000 events
+Stream 7: record 30000/30373
+Wrote and hashed stream 7: 30373 records, 30000 events
+Stream 9: record 15000/30373
+Stream 9: record 20000/30373
+Stream 9: record 25000/30373
+Stream 9: record 30000/30373
+Wrote and hashed stream 9: 30373 records, 30000 events

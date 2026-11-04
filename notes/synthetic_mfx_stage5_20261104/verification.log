@@ -1,0 +1,90 @@
+Indexed frozen SMD and source transition headers: stream 0
+Indexed frozen SMD and source transition headers: stream 1
+Indexed frozen SMD and source transition headers: stream 2
+Indexed frozen SMD and source transition headers: stream 3
+Indexed frozen SMD and source transition headers: stream 4
+Indexed frozen SMD and source transition headers: stream 5
+Indexed frozen SMD and source transition headers: stream 6
+Indexed frozen SMD and source transition headers: stream 7
+Indexed frozen SMD and source transition headers: stream 8
+Indexed frozen SMD and source transition headers: stream 9
+Verify stream 0: record 0/30373
+Verify stream 1: record 0/30373
+Verify stream 2: record 0/30373
+Verify stream 3: record 0/30373
+Verify stream 3: record 5000/30373
+Verify stream 3: record 10000/30373
+Verify stream 3: record 15000/30373
+Verify stream 3: record 20000/30373
+Verify stream 3: record 25000/30373
+Verify stream 3: record 30000/30373
+Verified stream 3: all source bytes, decoded metadata and SMD offsets
+Verify stream 4: record 0/30373
+Verify stream 4: record 5000/30373
+Verify stream 4: record 10000/30373
+Verify stream 4: record 15000/30373
+Verify stream 4: record 20000/30373
+Verify stream 4: record 25000/30373
+Verify stream 4: record 30000/30373
+Verified stream 4: all source bytes, decoded metadata and SMD offsets
+Verify stream 1: record 5000/30373
+Verify stream 5: record 0/30373
+Verify stream 1: record 10000/30373
+Verify stream 2: record 5000/30373
+Verify stream 1: record 15000/30373
+Verify stream 0: record 5000/30373
+Verify stream 1: record 20000/30373
+Verify stream 2: record 10000/30373
+Verify stream 1: record 25000/30373
+Verify stream 1: record 30000/30373
+Verified stream 1: all source bytes, decoded metadata and SMD offsets
+Verify stream 6: record 0/30373
+Verify stream 2: record 15000/30373
+Verify stream 2: record 20000/30373
+Verify stream 0: record 10000/30373
+Verify stream 2: record 25000/30373
+Verify stream 2: record 30000/30373
+Verified stream 2: all source bytes, decoded metadata and SMD offsets
+Verify stream 7: record 0/30373
+Verify stream 0: record 15000/30373
+Verify stream 0: record 20000/30373
+Verify stream 0: record 25000/30373
+Verify stream 0: record 30000/30373
+Verified stream 0: all source bytes, decoded metadata and SMD offsets
+Verify stream 8: record 0/30373
+Verify stream 5: record 5000/30373
+Verify stream 6: record 5000/30373
+Verify stream 7: record 5000/30373
+Verify stream 5: record 10000/30373
+Verify stream 8: record 5000/30373
+Verify stream 6: record 10000/30373
+Verify stream 5: record 15000/30373
+Verify stream 7: record 10000/30373
+Verify stream 8: record 10000/30373
+Verify stream 5: record 20000/30373
+Verify stream 6: record 15000/30373
+Verify stream 7: record 15000/30373
+Verify stream 8: record 15000/30373
+Verify stream 5: record 25000/30373
+Verify stream 6: record 20000/30373
+Verify stream 5: record 30000/30373
+Verified stream 5: all source bytes, decoded metadata and SMD offsets
+Verify stream 9: record 0/30373
+Verify stream 8: record 20000/30373
+Verify stream 7: record 20000/30373
+Verify stream 6: record 25000/30373
+Verify stream 7: record 25000/30373
+Verify stream 8: record 25000/30373
+Verify stream 9: record 5000/30373
+Verify stream 6: record 30000/30373
+Verified stream 6: all source bytes, decoded metadata and SMD offsets
+Verify stream 8: record 30000/30373
+Verified stream 8: all source bytes, decoded metadata and SMD offsets
+Verify stream 7: record 30000/30373
+Verify stream 9: record 10000/30373
+Verified stream 7: all source bytes, decoded metadata and SMD offsets
+Verify stream 9: record 15000/30373
+Verify stream 9: record 20000/30373
+Verify stream 9: record 25000/30373
+Verify stream 9: record 30000/30373
+Verified stream 9: all source bytes, decoded metadata and SMD offsets

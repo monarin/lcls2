@@ -991,3 +991,33 @@ their assertions. The final collaborator script was synchronized to the reviewed
 Git blob and its hash recorded. A standalone collaborator
 check and full serial reports are available under
 `/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage4-20261104/`.
+
+### Stage 5 full run 2 — November 4, 2026
+
+The [Stage 5 implementation and results](../../../../../notes/synthetic_mfx_stage5_20261104/README.md)
+contain the published `prjdatpsana` run 2: 30 steps of 1,000 events, ten
+bigdata/SMD pairs, 30,373 records per stream and 1,019,012,911,780 bytes.
+The first 30,000 source events retain their detector payloads and timestamps;
+all streams share the inserted transition schedule and standard scan metadata.
+Existing experiment calibration records cover runs 1–2, with unchanged IDs and
+payloads. Stage 5 made no calibration writes.
+
+Every output record passed source-byte, schema, timestamp/state, SMD-offset,
+hash and EOF validation. Normal serial DataSource acceptance passed all 30,000
+events and scan states, 60 raw/calibrated boundary samples and 23 frozen
+calibration selections, with SMD batches crossing the step boundaries.
+Claude passed two review rounds, final code
+`a3852808ada2032a7e6893bbd74bda0a028f8662`; no executable changes followed.
+These full runtime outcomes were recorded by the coordinator after code review.
+
+Publication completed at `2026-11-04T22:24:12Z` under
+`/sdf/data/lcls/ds/prj/prjdatpsana/xtc/`, with SMD files in `smalldata/`.
+Final-path calibrated smoke, all 20 hard links and all 20 unchanged run-1 file
+stats passed. The final ACLs retain collaborator group read access. Use
+`DataSource(exp='prjdatpsana', run=2, dir='/sdf/data/lcls/ds/prj/prjdatpsana/xtc', live=False)`
+and `PS_FAKESTEP_FLAG=0`; logbook registration was not performed.
+Durable reports, full generation trace, reviewed implementation archives and
+checksums are in
+`/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0002/stage5-20261104/`.
+Full-run MPI/GPU performance measurement remains subsequent work; run-2
+collaborator own-login acceptance has not been repeated.

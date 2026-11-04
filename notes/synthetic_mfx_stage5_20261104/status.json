@@ -1,18 +1,12 @@
 {
   "scope": "Generate run 2, 30 steps x 1000 events",
-  "phase": "generating",
+  "phase": "complete",
   "round": 2,
   "round_limit": 3,
   "base_sha": "192fa79b2",
-  "full_generated": false,
-  "published": false,
-  "remaining": [
-    "full generation",
-    "full validation",
-    "DataSource acceptance",
-    "publication",
-    "post-publication check"
-  ],
+  "full_generated": true,
+  "published": true,
+  "remaining": [],
   "session_preference": "Use implementation-review loop for implementation/fixes",
   "generator_reviewed_sha": "a644240e0dbdc7f2c3a39b71a08c19035da83c9b",
   "round1_verdict": "pass",
@@ -23,5 +17,16 @@
   "deferred": [
     "S5-ACCEPT-01 fixed-count generalization",
     "S5-TEST-01 optional extra acceptance gate cases"
+  ],
+  "total_bytes": 1019012911780,
+  "destination_acceptance": "pass: 30000 events, 30 x 1000, 60 source/calibrated samples, 23 calibration selections",
+  "full_validation": "pass",
+  "published_smoke": "pass",
+  "completed_utc": "2026-11-04T22:27:27.092683+00:00",
+  "results": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0002/stage5-20261104",
+  "limitations": [
+    "No full-run MPI/GPU performance measurement",
+    "No logbook file registration; use explicit dir and live=False",
+    "Run-2 collaborator own-login check not repeated; final group ACLs verified"
   ]
 }

@@ -1,0 +1,49 @@
+{
+  "status": "pass",
+  "run1_files_unchanged": 20,
+  "published_links": [
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s000-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s000-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s001-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s001-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s002-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s002-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s003-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s003-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s004-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s004-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s005-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s005-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s006-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s006-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s007-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s007-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s008-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s008-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s009-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s009-c000.smd.xtc2"
+  ],
+  "first_timestamp": "4909050823936603206",
+  "sample": {
+    "raw": {
+      "shape": [
+        32,
+        512,
+        1024
+      ],
+      "dtype": "<u2",
+      "sha256": "a3d85a7a167ae4d8a003bf9ae30b84fa7d3c86bcf28987245d274d5d3b8b975c"
+    },
+    "calib": {
+      "shape": [
+        32,
+        512,
+        1024
+      ],
+      "dtype": "<f4",
+      "sha256": "7604efc6721dc846dc98c482236e00eae252675eb79a6e62944c1ae100a15379"
+    }
+  },
+  "source_sha256": "b3917fe92c704b5f9e1d8346ac378e353a920396cc3eee78dbea7c15c1b10756",
+  "script_sha256": "10d65746850a8c36cb8985d317bc92d4d4af1eded02a1b59ca6bbc3544591522"
+}

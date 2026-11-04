@@ -1,0 +1,634 @@
+{
+  "completed_utc": "2026-11-04T22:02:58.299787+00:00",
+  "root": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/.synthetic-mfx-r0002-stage5-20261104",
+  "generation_sha256": "85a492c2a9f17829d64d750a66c19e966ea1e0661f2ab5ffb9ce0e458343ec18",
+  "code_sha256": {
+    "verify_pilot.py": "51e2dfd5fc1bc2352bc4e02bc6d92dfa31917698c0602e41d49a3c29e44aaddc",
+    "xtc_fixture.py": "eeaf8bbac0a713796cb84f6e0158877fb579d08792c1e1a15175548f9fc2ff0a"
+  },
+  "scope": "Every record, source bytes, schemas, offsets and transition state; not calibrated/MPI acceptance.",
+  "streams": [
+    {
+      "stream": 0,
+      "records": 30373,
+      "event_count": 30000,
+      "step_counts": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "checks": "pass",
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0002-s000-c000.xtc2",
+          "size": 11882545428,
+          "sha256": "ff4bfa6538238bfe5f547c1a8438a8c5901d5b3b60eab1623efcefee82b6b7c0"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0002-s000-c000.smd.xtc2",
+          "size": 2307524,
+          "sha256": "6c990f20b1c7206df684747b415a84cefba7eaaee1ab526fc966e14629e0193c"
+        }
+      },
+      "validated_stat": {
+        "bd": {
+          "size": 11882545428,
+          "mtime_ns": 1793823463056177011,
+          "inode": 11272258579282329602
+        },
+        "smd": {
+          "size": 2307524,
+          "mtime_ns": 1793823463177174542,
+          "inode": 9581563244069388290
+        }
+      }
+    },
+    {
+      "stream": 1,
+      "records": 30373,
+      "event_count": 30000,
+      "step_counts": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "checks": "pass",
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0002-s001-c000.xtc2",
+          "size": 100098588,
+          "sha256": "56803be858ee19d716191ca989eebae9268718689c03c2987fa44ef1ddd8a18e"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0002-s001-c000.smd.xtc2",
+          "size": 2300684,
+          "sha256": "a951bfd8bd11b7b7af1c9123be0c0a7ee65a55ebab7d77cc360ee7fcef2e6d48"
+        }
+      },
+      "validated_stat": {
+        "bd": {
+          "size": 100098588,
+          "mtime_ns": 1793823437676694967,
+          "inode": 16762527430586990594
+        },
+        "smd": {
+          "size": 2300684,
+          "mtime_ns": 1793823437718694110,
+          "inode": 909871404635324418
+        }
+      }
+    },
+    {
+      "stream": 2,
+      "records": 30373,
+      "event_count": 30000,
+      "step_counts": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "checks": "pass",
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0002-s002-c000.xtc2",
+          "size": 275030668,
+          "sha256": "b677ccf80557a84b46b8f4489cf6ab9a574a0651ad16739bf01b23a8e2d973b4"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0002-s002-c000.smd.xtc2",
+          "size": 2344572,
+          "sha256": "025cf29ba4ee20f626aa0ab83f293384771c02444513d067c9587587b91fb0c2"
+        }
+      },
+      "validated_stat": {
+        "bd": {
+          "size": 275030668,
+          "mtime_ns": 1793823440293641610,
+          "inode": 10014770386988564482
+        },
+        "smd": {
+          "size": 2344572,
+          "mtime_ns": 1793823440365640090,
+          "inode": 12912988703871729666
+        }
+      }
+    },
+    {
+      "stream": 3,
+      "records": 30373,
+      "event_count": 30000,
+      "step_counts": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "checks": "pass",
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0002-s003-c000.xtc2",
+          "size": 1729810,
+          "sha256": "0a83ceebd1b1558c059b44613e081e39a2fb7404bff61bb3b59781838995169e"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0002-s003-c000.smd.xtc2",
+          "size": 3291906,
+          "sha256": "83159e875b408d9ae0717af5037ae6f4b3d59f1ce3431634a87679cef7a605eb"
+        }
+      },
+      "validated_stat": {
+        "bd": {
+          "size": 1729810,
+          "mtime_ns": 1793823428154889292,
+          "inode": 7675609146734477314
+        },
+        "smd": {
+          "size": 3291906,
+          "mtime_ns": 1793823428159889190,
+          "inode": 6992280052382498818
+        }
+      }
+    },
+    {
+      "stream": 4,
+      "records": 30373,
+      "event_count": 30000,
+      "step_counts": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "checks": "pass",
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0002-s004-c000.xtc2",
+          "size": 12464248,
+          "sha256": "13c84f0650e809435d761e59717470f89e4931051c88f340951f15e2cdbcae43"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0002-s004-c000.smd.xtc2",
+          "size": 2356344,
+          "sha256": "54e807d6bc85f55bf49e5eae9738a7dfa7e7eba86290a36343c5027a30f52516"
+        }
+      },
+      "validated_stat": {
+        "bd": {
+          "size": 12464248,
+          "mtime_ns": 1793823431423822595,
+          "inode": 9987704091146977282
+        },
+        "smd": {
+          "size": 2356344,
+          "mtime_ns": 1793823431432822394,
+          "inode": 2598121665053065218
+        }
+      }
+    },
+    {
+      "stream": 5,
+      "records": 30373,
+      "event_count": 30000,
+      "step_counts": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "checks": "pass",
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0002-s005-c000.xtc2",
+          "size": 157299559730,
+          "sha256": "309b5f7eb8a49c8c56de465136a0b96ceced32788c07ac07a5bf8f793da93b98"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0002-s005-c000.smd.xtc2",
+          "size": 2421826,
+          "sha256": "9675954bec9363a375d221d9710efd6f6e691a1d9d257f54e25209d56210ebba"
+        }
+      },
+      "validated_stat": {
+        "bd": {
+          "size": 157299559730,
+          "mtime_ns": 1793825698495027631,
+          "inode": 6112957195538333698
+        },
+        "smd": {
+          "size": 2421826,
+          "mtime_ns": 1793825698623025050,
+          "inode": 9690423176112242690
+        }
+      }
+    },
+    {
+      "stream": 6,
+      "records": 30373,
+      "event_count": 30000,
+      "step_counts": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "checks": "pass",
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0002-s006-c000.xtc2",
+          "size": 188759325032,
+          "sha256": "c6ae8b3d3bcf5457169b52c64db0dfa3930acbecd0442f3463ab01d176b5c64f"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0002-s006-c000.smd.xtc2",
+          "size": 2447128,
+          "sha256": "42ef649293bd79eeebe587902e4cf712cc56a2bca860e03f99dcf3204f44d256"
+        }
+      },
+      "validated_stat": {
+        "bd": {
+          "size": 188759325032,
+          "mtime_ns": 1793826603104746188,
+          "inode": 448185012071235586
+        },
+        "smd": {
+          "size": 2447128,
+          "mtime_ns": 1793826603217743905,
+          "inode": 11099052120810717186
+        }
+      }
+    },
+    {
+      "stream": 7,
+      "records": 30373,
+      "event_count": 30000,
+      "step_counts": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "checks": "pass",
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0002-s007-c000.xtc2",
+          "size": 220219090334,
+          "sha256": "6ef86867febae7e385d2c81d64b901798df3afbc983751a330e9f4fe75f98087"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0002-s007-c000.smd.xtc2",
+          "size": 2472430,
+          "sha256": "8be3becb1b9826d546be20ea1b846138d97aab0a8bcace7a984349f646ac4771"
+        }
+      },
+      "validated_stat": {
+        "bd": {
+          "size": 220219090334,
+          "mtime_ns": 1793827226367137772,
+          "inode": 18161158511419260930
+        },
+        "smd": {
+          "size": 2472430,
+          "mtime_ns": 1793827226808128782,
+          "inode": 5432443569431642114
+        }
+      }
+    },
+    {
+      "stream": 8,
+      "records": 30373,
+      "event_count": 30000,
+      "step_counts": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "checks": "pass",
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0002-s008-c000.xtc2",
+          "size": 220219090334,
+          "sha256": "2f393d99467ea45318cc8d5a89944c91685f8b6474944257173ed10a4fd3dace"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0002-s008-c000.smd.xtc2",
+          "size": 2472430,
+          "sha256": "2d38dcd4045a9fd18d534722f1b274b1c548600f3cee285adc6962ccf6b689ad"
+        }
+      },
+      "validated_stat": {
+        "bd": {
+          "size": 220219090334,
+          "mtime_ns": 1793827115082391621,
+          "inode": 3165710148290084866
+        },
+        "smd": {
+          "size": 2472430,
+          "mtime_ns": 1793827115179389657,
+          "inode": 17189085111309172738
+        }
+      }
+    },
+    {
+      "stream": 9,
+      "records": 30373,
+      "event_count": 30000,
+      "step_counts": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "checks": "pass",
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0002-s009-c000.xtc2",
+          "size": 220219090334,
+          "sha256": "7e39e6eb5e5a5b9edf0d3e76cc9a19df95daaeb9ca2556c9f9d4ded7f95671a9"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0002-s009-c000.smd.xtc2",
+          "size": 2472430,
+          "sha256": "7636ff2f7e83151e08e5c6cede1e28e5e41641cec3ef8f29b76c4c1c8105049f"
+        }
+      },
+      "validated_stat": {
+        "bd": {
+          "size": 220219090334,
+          "mtime_ns": 1793829719716714624,
+          "inode": 4980033919906414594
+        },
+        "smd": {
+          "size": 2472430,
+          "mtime_ns": 1793829720264703683,
+          "inode": 10300555635737034754
+        }
+      }
+    }
+  ],
+  "status": "pass",
+  "total_bytes": 1019012911780
+}

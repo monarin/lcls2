@@ -1,0 +1,28 @@
+{
+  "status": "pass",
+  "checked_utc": "2026-11-04T22:27:27.089954+00:00",
+  "reviewed_commit": "a3852808ada2032a7e6893bbd74bda0a028f8662",
+  "code_sha256": {
+    "xtc_fixture.py": "eeaf8bbac0a713796cb84f6e0158877fb579d08792c1e1a15175548f9fc2ff0a",
+    "make_pilot.py": "412917d84243b1646be3a2ef38e8dad356dd8b38a2959f55bdd6fa0430ea22c0",
+    "verify_pilot.py": "51e2dfd5fc1bc2352bc4e02bc6d92dfa31917698c0602e41d49a3c29e44aaddc",
+    "pilot_admin.py": "b3c7aa3828c48f8da27ee7df62be37f62e0b2d482d066249f69226e564777fe0",
+    "acceptance.py": "b184888d7a2d64b382bc0a18350bf366e2db0c54225b2f8c25a580d0401e1adb",
+    "post_publish.py": "10d65746850a8c36cb8985d317bc92d4d4af1eded02a1b59ca6bbc3544591522",
+    "runtime.sh": "cfdd3881457394eefdd4618caae6f4105b1ff602650cea405b89f950b5c6f121"
+  },
+  "full_validation": "pass, 10 streams, every record and source byte",
+  "full_datasource": "pass, 30 x 1000 events, 60 calibrated samples, 23 calibration selections",
+  "publication": "20 no-overwrite hard links",
+  "published_smoke": "pass, calibrated first event and run-1 stats",
+  "final_acl_files": 20,
+  "reports_sha256": {
+    "verification.json": "c8da74c16f68468f56d30c5542011683565bb634eb99b67e4b30fab358184c70",
+    "source_samples.json": "b3917fe92c704b5f9e1d8346ac378e353a920396cc3eee78dbea7c15c1b10756",
+    "destination_acceptance.json": "b1695afcf5c48c472adc076b81e0e3803a9886011d7e183c2c7bf4892a53c4f2",
+    "publication.jsonl": "f4b0c9bbfde18b2771b753f44d908bb5a474adc784ff9d55f36176eedde72a67",
+    "published_smoke.json": "9204d884dd35fc1ef473efe6ed9b07195a80fe5fde23b4794ede337d2b0d0914",
+    "published_acls.txt": "07bc52deb79fa9c5c9349f3ff21f9ee26b8519b7207ffec7c0570e4cfb8874c4",
+    "round-02/review.json": "6958aa2f0193bcc880bca4174a0c6631d0f11da3b4553136963a01e5d47a04af"
+  }
+}

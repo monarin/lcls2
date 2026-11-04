@@ -5,13 +5,12 @@ Do not restart over its staging directory. Writer: make_pilot.py; exact reviewed
 code at a644240e0, unchanged in final reviewed commit a3852808ada2032a7e6893bbd74bda0a028f8662.
 Staging: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/.synthetic-mfx-r0002-stage5-20261104
 Expected files: 20, total bytes 1019012911780, 30373 records per stream.
-The code review is complete (both rounds PASS). Generation is still in progress
-as of this note. Source calibrated acceptance is complete, source_samples.json.
+Complete: both code reviews PASS, full generation/validation/acceptance PASS,
+20 files published, and final calibrated smoke plus unchanged-run-1 checks PASS.
 
-After the writer exits successfully, confirm generation.json is complete and
-file sizes total exactly the preflight estimate; save a compact generation
-summary, keeping the large full trace in staging and durable results, not Git.
-Then run these individually, inspecting success before dependent operations:
+The generation, validation, acceptance and publication operations below have
+completed successfully. These commands are a historical record, not a restart
+recipe. Do not rerun generation or publication over the existing files.
 
 ```bash
 bash notes/synthetic_mfx_stage5_20261104/runtime.sh \
@@ -42,10 +41,7 @@ bash notes/synthetic_mfx_stage5_20261104/runtime.sh \
   --report notes/synthetic_mfx_stage5_20261104/published_smoke.json
 ```
 
-Redirect each operation to its own log. Publication is authorized by the user;
-no extra confirmation is needed. If any step fails, inspect before retrying;
-never replay publication blindly. Record post_publish.py's Git/blob provenance,
-all final ACLs, durable results with SHA256SUMS, final status/README/proposal,
-and an evidence-only commit/push. No run-2 MPI/GPU benchmark is part of this
-request. No DB writes or logbook registration. Review loop remains required
-for any executable fix; max three rounds, two already completed.
+All operation logs and reports are saved alongside this file. The final
+reviewed code is unchanged. See README.md and completion_checks.json for
+results and provenance, and results_SHA256SUMS for the durable archive manifest.
+Any later implementation/fix in this session must still use the review loop.

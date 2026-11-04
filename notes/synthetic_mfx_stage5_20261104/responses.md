@@ -28,3 +28,12 @@ S5-TEST-01 additional reference-side failure variants are deferred as optional;
 existing valid/seven-negative gate tests pass, and actual paired source/full
 acceptance reports will be checked before publication. No code changed after
 this review. Publication must use this round's full commit SHA and review JSON.
+
+## Final operational evidence
+
+S5-ADMIN-02 is now executed: published_smoke.json passes all 20 final links,
+all 20 run-1 file stats and the source-matching first calibrated event. Its
+script hash matches the reviewed a3852808ada2032a7e6893bbd74bda0a028f8662 blob.
+Publication completed only after full structural and calibrated acceptance
+passed; publication.jsonl records both report hashes. No executable code changed
+after round 2. The two optional deferrals above remain unchanged.
