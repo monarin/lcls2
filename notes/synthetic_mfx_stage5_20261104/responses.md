@@ -18,3 +18,13 @@ these files remain unchanged. Source acceptance also passed at that commit.
   script and reference provenance. Generalized counts are future scope.
 - S5-EVID-01: adopted as evidence-only: small_datasource_command.py.txt is the
   exact executed stdin script, now saved for inspection/reproduction.
+
+## Round 2
+
+PASS at a3852808ada2032a7e6893bbd74bda0a028f8662 with no blocking findings.
+S5-ADMIN-01 and S5-EVID-01 resolved. S5-ADMIN-02 code accepted; final execution
+and report remain required after publication. S5-ACCEPT-01 deferral accepted.
+S5-TEST-01 additional reference-side failure variants are deferred as optional;
+existing valid/seven-negative gate tests pass, and actual paired source/full
+acceptance reports will be checked before publication. No code changed after
+this review. Publication must use this round's full commit SHA and review JSON.

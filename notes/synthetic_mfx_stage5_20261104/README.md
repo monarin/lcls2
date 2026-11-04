@@ -60,3 +60,10 @@ run-1 stats, final run-2 hard links and a calibrated first-event read. These
 publication/final-check changes receive a focused second review while generation
 runs. The exact small DataSource stdin command is saved as
 small_datasource_command.py.txt. Acceptance remains deliberately 30 x 1000.
+
+Round 2 also passed at a3852808ada2032a7e6893bbd74bda0a028f8662, no blockers.
+Use that commit and round-02/review.json for publication. The generator,
+validator, helper and acceptance files remain identical to round 1. Full
+operational outcomes remain pending while the write runs; status.json tracks
+those separately from code review. Optional additional gate negative cases are
+deferred; no executable changes follow round 2.

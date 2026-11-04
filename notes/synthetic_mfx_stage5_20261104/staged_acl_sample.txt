@@ -1,0 +1,10 @@
+# file: /sdf/data/lcls/ds/prj/prjdatpsana/xtc/.synthetic-mfx-r0002-stage5-20261104/prjdatpsana-r0002-s005-c000.xtc2
+# owner: monarin
+# group: ps-data
+user::rw-
+group::r-x	#effective:r--
+group:ps-data:rwx	#effective:rw-
+group:ps-prj:r-x	#effective:r--
+group:prjdatpsana:r-x	#effective:r--
+mask::rw-
+other::---

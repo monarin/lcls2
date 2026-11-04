@@ -1,20 +1,27 @@
 {
   "scope": "Generate run 2, 30 steps x 1000 events",
-  "phase": "generating_and_reviewing_publication_hardening",
+  "phase": "generating",
   "round": 2,
   "round_limit": 3,
   "base_sha": "192fa79b2",
   "full_generated": false,
   "published": false,
   "remaining": [
-    "independent review",
     "full generation",
     "full validation",
     "DataSource acceptance",
-    "publication"
+    "publication",
+    "post-publication check"
   ],
   "session_preference": "Use implementation-review loop for implementation/fixes",
   "generator_reviewed_sha": "a644240e0dbdc7f2c3a39b71a08c19035da83c9b",
   "round1_verdict": "pass",
-  "source_samples": "60 calibrated boundary samples passed; 23 frozen calibration selections"
+  "source_samples": "60 calibrated boundary samples passed; 23 frozen calibration selections",
+  "reviewed_sha": "a3852808ada2032a7e6893bbd74bda0a028f8662",
+  "round2_verdict": "pass",
+  "unresolved_blocking_findings": [],
+  "deferred": [
+    "S5-ACCEPT-01 fixed-count generalization",
+    "S5-TEST-01 optional extra acceptance gate cases"
+  ]
 }
