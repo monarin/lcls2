@@ -3,10 +3,16 @@
 Calibrated serial comparisons and all nine MPI cases passed on
 `work/synthetic-mfx-scan`. Claude passed two review rounds; the final reviewed implementation is
 `0c9e57ef20bbe1d0cc4701d0325e232a11290b4d`. The Stage 3 files and Stage 2 calibration
-records are read-only inputs. The complete Stage 4 gate also requires a test
-under the collaborator's own login; Mona's checks cannot substitute for it.
+records were read-only inputs during Stage 4. Seema's own-login report has now
+passed the remaining collaborator gate; Stage 4 is complete. See the
+[report verification](collaborator/verification.json).
 
 ## Validation
+
+The historical `serial_compare.py` asserts `run_end=1`; after the
+[validity extension to 1–2](../synthetic_mfx_calib_range_20261104/README.md), that
+assertion is obsolete. Use the extension's read-only checker for current
+calibration validity; historical test reports remain unchanged.
 
 `serial_compare.py` reads the original first 60 events and then the complete
 pilot with normal live calibration selection (no calibration transport or
@@ -128,7 +134,8 @@ python /sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage4-2026
 ```
 
 Return that JSON (or the error output). Reading the script/reference also tests
-access to the results area. No collaborator execution has been claimed yet.
+access to the results area. This handoff has now been completed by Seema; see
+the acceptance addendum below.
 
 All nine MPI cases passed both iteration paths (18 distributed passes), including
 the six calibrated samples in the four-rank case. No duplicated/missing timestamps,
@@ -178,5 +185,27 @@ in `collaborator_guard_followup.txt`; this is not own-login acceptance.
 Durable results include both exact implementation archives, complete serial
 reports, MPI reports/logs, four previews, access/provenance checks, code and
 review records, with a verified `SHA256SUMS` manifest. The review branch is
-`monarin/work/synthetic-mfx-scan`. **Stage 4 remains open solely for the
-collaborator's own-login calibrated read.** No larger fixture was generated.
+`monarin/work/synthetic-mfx-scan`. The original archive predates the collaborator
+report and retains its historical pending status. No larger fixture was generated.
+
+## Collaborator acceptance addendum
+
+Mona supplied Seema's successful own-login report from `sdfiana004` (UID 15821,
+including project group 5037). The [transcribed report](collaborator/seema_report.json)
+matches the reviewed script hash, archived pilot reference hash, all 20 expected
+XTC/SMD file names, all eight Jungfrau calibration IDs, and the exact first
+calibrated image (32×512×1024 float32). Fake steps were disabled. Her Python
+3.9.20 installation therefore passes this access and calibrated-read check.
+This closes the remaining Stage 4 gate alongside the earlier serial/MPI results.
+
+This is user-supplied execution evidence, not a coordinator login as Seema or a
+full MPI run by Seema. JSON whitespace was normalized when saving the report;
+the supplied `_init_.py` path spelling is preserved, and her installed module
+files were not independently inspected. See the verification record for the
+comparison scope. Historical run reports and the original archive remain unchanged.
+The separate calibration extension now covers runs 1–2; its metadata-only
+change preserves the IDs and payloads used by this collaborator check.
+
+The collaborator report, comparison record, and updated acceptance status are
+archived separately at
+`/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage4-collaborator-20261104/`.

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "source": "User supplied Seema report in this conversation; JSON whitespace normalized during transcription. Not a coordinator-run login test.",
+  "report_sha256": "60c63763b72de96ceda2d32f1a3808d59e736767d761cabef7d2922b6bc79dbe",
+  "script_sha256": "67266a6a9f3c1bc02c2f53f5f3c711d92328aca55f1e7a81350af964f5581371",
+  "reference_sha256": "c5abc67a6825f065229f7e9f043150bd87ee4474f1484634dab87a2a4c3f42e5",
+  "checks": {
+    "own_login_report": "seema / uid 15821 / sdfiana004",
+    "project_group": 5037,
+    "opened_files": 20,
+    "jungfrau_calibration_ids_match": 8,
+    "first_calibrated_array_matches": true,
+    "fake_steps_disabled": true,
+    "reviewed_script_matches": true,
+    "reference_matches": true
+  },
+  "scope": "Collaborator access and first calibrated event using her Python 3.9 build; not a collaborator full-run/MPI test. Prior coordinator serial/MPI acceptance remains separate.",
+  "transcription_note": "The supplied psana module path ends in _init_.py (single underscores), preserved verbatim; module paths/hashes are reported evidence, not independently read from Seema filesystem. No original raw report file was provided."
+}

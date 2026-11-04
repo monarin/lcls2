@@ -981,8 +981,11 @@ Encoder and user-DIO data are absent in this source interval; matching absence
 and the existing encoder descriptions accessor exception are recorded explicitly.
 The drivers made no changes to XTC, constants, permissions or psana core.
 Claude passed two implementation review rounds, with final reviewed commit
-`0c9e57ef20bbe1d0cc4701d0325e232a11290b4d`. The collaborator's own-login
-calibrated read remains pending; Stage 4 is not yet fully complete. MPI shutdown
+`0c9e57ef20bbe1d0cc4701d0325e232a11290b4d`. Seema's subsequently supplied own-login
+report passed the archived script/reference hashes, all 20 file names, eight
+Jungfrau calibration IDs and the exact first calibrated image. This closes
+Stage 4; see the [collaborator evidence](../../../../../notes/synthetic_mfx_stage4_20261104/collaborator/verification.json).
+MPI shutdown
 UCX warnings are retained and documented; all nine jobs exited zero after passing
 their assertions. The final collaborator script was synchronized to the reviewed
 Git blob and its hash recorded. A standalone collaborator

@@ -1,0 +1,70 @@
+{
+  "status": "pass",
+  "user": "seema",
+  "uid": 15821,
+  "groups": [1122, 4240, 5037, 10000],
+  "host": "sdfiana004",
+  "runtime": {
+    "python": "3.9.20 | packaged by conda-forge | (main, Sep 30 2024, 17:49:10) \n[GCC 13.3.0]",
+    "python_executable": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/ps_20241122/bin/python",
+    "psana": "/sdf/scratch/users/s/seema/lcls-issue-153/install/lib/python3.9/site-packages/psana/_init_.py",
+    "module_files": {
+      "psana": {
+        "path": "/sdf/scratch/users/s/seema/lcls-issue-153/install/lib/python3.9/site-packages/psana/_init_.py",
+        "sha256": "d5940dadb8008720bc7cd40aeec2edc2dbeede820f0d86508582bfed677f710d"
+      },
+      "psana.dgram": {
+        "path": "/sdf/scratch/users/s/seema/lcls-issue-153/install/lib/python3.9/site-packages/psana/dgram.cpython-39-x86_64-linux-gnu.so",
+        "sha256": "1dc19fae310793fd498ef400bd5f72798cb3b26b23c4d7a35ca1dfcd257c7474"
+      },
+      "psana.detector.jungfrau": {
+        "path": "/sdf/scratch/users/s/seema/lcls-issue-153/install/lib/python3.9/site-packages/psana/detector/jungfrau.py",
+        "sha256": "d25d2e0d16d59790dc87c6d35eb7aa4326e2a49c819815ff46c82a94accd9397"
+      },
+      "psana.detector.UtilsJungfrau": {
+        "path": "/sdf/scratch/users/s/seema/lcls-issue-153/install/lib/python3.9/site-packages/psana/detector/UtilsJungfrau.py",
+        "sha256": "719b72d04fb02b8a7a388ce81a9c74faf2fc863b87a26a85c4efaa7dc70c654d"
+      }
+    }
+  },
+  "opened_files": [
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s000-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s001-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s002-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s003-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s004-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s005-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s006-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s007-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s008-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s009-c000.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s000-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s001-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s002-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s003-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s004-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s005-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s006-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s007-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s008-c000.smd.xtc2",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s009-c000.smd.xtc2"
+  ],
+  "calibration_ids": {
+    "pixel_rms": "6aea82927ff319b928f262a1",
+    "pixel_offset": "6aea8289130d472f06eac34a",
+    "pedestals": "6aea8267d476b756da4aaa57",
+    "pixel_min": "6aea8280cde0d0def8648f3a",
+    "pixel_gain": "6aea826fdd1121bbb23cfdc7",
+    "pixel_status": "6aea8298515964208686c11e",
+    "geometry": "6aea825ff22d71fd755d6e6b",
+    "pixel_max": "6aea8278d476b756da4aaa58"
+  },
+  "calibrated": {
+    "shape": [32, 512, 1024],
+    "dtype": "<f4",
+    "sha256": "7604efc6721dc846dc98c482236e00eae252675eb79a6e62944c1ae100a15379"
+  },
+  "PS_FAKESTEP_FLAG": "0",
+  "script_sha256": "67266a6a9f3c1bc02c2f53f5f3c711d92328aca55f1e7a81350af964f5581371",
+  "reference_sha256": "c5abc67a6825f065229f7e9f043150bd87ee4474f1484634dab87a2a4c3f42e5"
+}

@@ -1,11 +1,11 @@
 {
   "scope": "Stage 4 calibrated serial/MPI and collaborator pilot acceptance",
-  "phase": "local_acceptance_reviewed_awaiting_collaborator",
+  "phase": "complete",
   "base_sha": "ac5609a27",
   "review_round_limit": 3,
   "review_round": 2,
   "session_preference": "Use implement-review-loop for all implementation/fix work this session",
-  "collaborator_acceptance": "pending own-login execution; script prepared",
+  "collaborator_acceptance": "pass: user-supplied Seema own-login report, locally cross-checked with reviewed script and pilot reference",
   "checks": {
     "normal_calibration_probe": "superseded by archived pilot.json: eight JF types and six calibrated samples pass",
     "acceptance_negative_tests": "6 passed",
@@ -17,7 +17,8 @@
     "mpi_transport_probe": "UCX PML selected",
     "step_schedule_crosscheck": "pass",
     "followup_negative_tests": "6 passed",
-    "collaborator_archive_provenance": "reviewed script hash equals final archive; prior version preserved"
+    "collaborator_archive_provenance": "reviewed script hash equals final archive; prior version preserved",
+    "collaborator_report": "pass: 20 file headers, 8 JF IDs, exact first calibrated array"
   },
   "observations": [
     "Source encoder descriptions accessor raises for absent segments; identical exception retained in all 60 pilot events",
@@ -25,9 +26,7 @@
     "Step timestamp test-driver accessor corrected to step.evt.timestamp; pilot rerun passed",
     "MPI shutdown emits UCX unmatched tag-receive warnings; all nine exits zero and assertions pass"
   ],
-  "remaining": [
-    "collaborator own-login calibrated read"
-  ],
+  "remaining": [],
   "implementation_sha": "0c9e57ef20bbe1d0cc4701d0325e232a11290b4d",
   "review_attempts": [
     {
@@ -60,5 +59,6 @@
   ],
   "reviewed_sha": "0c9e57ef20bbe1d0cc4701d0325e232a11290b4d",
   "unresolved_blocking_findings": [],
-  "results": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage4-20261104"
+  "results": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage4-20261104",
+  "collaborator_evidence": "collaborator/verification.json"
 }

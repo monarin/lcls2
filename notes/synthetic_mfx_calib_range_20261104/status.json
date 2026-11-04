@@ -1,6 +1,6 @@
 {
   "scope": "Extend prjdatpsana validity to runs 1-2",
-  "phase": "applied_verified_review_awaiting_transfer_approval",
+  "phase": "complete",
   "round": 1,
   "round_limit": 3,
   "base_sha": "9e269e38db7fd0b893e657ed0390acd25adf38fc",
@@ -9,10 +9,15 @@
     "normal_selections": 46,
     "compile": "PASS"
   },
-  "unresolved": [
-    "REVIEW-TRANSFER-APPROVAL"
-  ],
+  "unresolved": [],
   "implementation_sha": "27c853b2902f7c6e5c5adecec197f27424fddbe7",
-  "reviewer_verdict": null,
-  "archive": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/calib-range-20261104"
+  "reviewer_verdict": "pass",
+  "archive": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/calib-range-20261104",
+  "transfer_authorization": "User explicitly approved sending the update script and calibration metadata to Claude in the next conversation turn.",
+  "reviewed_sha": "27c853b2902f7c6e5c5adecec197f27424fddbe7",
+  "findings": {
+    "CR-01": "addressed: recorded review artifacts and implementation/reviewed SHA",
+    "CR-02": "addressed: Stage 4 README caveat added"
+  },
+  "final_review_archive": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/calib-range-review-20261104"
 }

@@ -1,0 +1,8 @@
+{
+  "reviewed_sha": "27c853b2902f7c6e5c5adecec197f27424fddbe7",
+  "executed_script_sha256": "14c0225fdc5f9481c91d726d5a5f452e267f477540552408fbf233f8cf35d533",
+  "git_blob_equals_executed_script": true,
+  "reviewer_verdict": "pass",
+  "independent_review_limitations": "Read-only reviewer could not access gitdir or compute hashes; coordinator verified detached HEAD and Git script blob against execution evidence. Live DB validation was performed by coordinator, not reviewer.",
+  "collaborator_report": "Arrived after reviewed commit; separately cross-checked as evidence-only Stage 4 completion."
+}

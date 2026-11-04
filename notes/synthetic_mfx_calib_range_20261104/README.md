@@ -25,7 +25,8 @@ The foreign RIX provenance of the PV constants is unchanged; PV raw interfaces
 do not consume those constants (see prior audit).
 
 This completes the calibration prerequisite for run 2. It does not generate
-run-2 XTC or establish Seema's own-login acceptance. Her existing Stage 4 check
+run-2 XTC. Seema's own-login acceptance is recorded separately in the Stage 4
+collaborator addendum. Her existing Stage 4 check
 compares document IDs and calibrated values, so it remains applicable.
 Historical Stage 1–4 evidence is unchanged. The original Stage 4 serial driver
 asserts run_end=1 and should not be used unchanged to test current validity.
@@ -44,11 +45,18 @@ selection. The first bare `python -m py_compile` command could not run because
 `python` was not on PATH; compilation was then successful using the pinned
 conda Python. The actual update/verification used the pinned runtime throughout.
 
-Live update and all 46 calibration selections passed. Implementation commit:
-`27c853b2902f7c6e5c5adecec197f27424fddbe7`. Independent Claude review has
-not run: automatic approval review requires explicit permission to transfer
-repository/calibration metadata to the Claude service. The question is pending;
-this is not a review pass. See `round-01/review_blocked.json`.
+Live update and all 46 calibration selections passed. Claude independently
+reviewed implementation commit `27c853b2902f7c6e5c5adecec197f27424fddbe7`
+and returned PASS with no blocking findings. Both low documentation findings
+are addressed in the final evidence records; see `responses.md` and
+`round-01/review.json`. The initial transfer rejection was resolved by Mona's
+explicit approval; it is retained as history in `round-01/review_blocked.json`.
+Seema's subsequently supplied own-login report also passed the Stage 4 reference
+comparison; see the Stage 4 collaborator addendum.
 
 Durable archive:
 `/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/calib-range-20261104`.
+
+The original archive retains the initial pending-review state. The final review
+and response archive is
+`/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/calib-range-review-20261104`.
