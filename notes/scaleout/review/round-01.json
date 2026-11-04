@@ -1,0 +1,85 @@
+{
+  "reviewed_commit": "87df2ce2b9d685a49e65782a301377590b48d8c0",
+  "verdict": "changes_requested",
+  "summary": "The plan is mostly careful and internally consistent. It keeps the baseline SHA 5b082e0f fixed and the same in all three notes files. It says plainly that nothing has been measured yet. Lustre/host, GPU staging and calibration are measured separately. The headline rate divides useful bytes by the slowest rank's time from a common barrier through the final drain, and it does not sum overlapping intervals or treat KvikIO total_ns as throughput. Cache checks use per-file residency and never drop global caches. CPU, memory and control-rank costs are counted, and the plan describes the harness hardcodes correctly. Two design gaps would make the main conclusions invalid. (S1) Nothing says how the file/OST layout grows with the number of worker nodes N. If the corpus stays at five stream files, total storage targets stay fixed while load grows N-fold, so 'weak scaling' would really measure a fixed layout. (S2) B_pattern, the denominator of the 0.90 saturation gate, is not defined as a concurrency plateau, and the plan does not say which replay variant (exact or coalesced) is the reference. Medium issues: which Lustre counter level is used, whether the pilot corpus is large enough for single-node phases D/E, and confidence intervals from only five pairs.",
+  "checks": [
+    "Baseline SHA 5b082e0fdfcefc36ea208c0954aab6548aa6bdb7 matches in test-plan.md:4 and baseline.json:4, consistent with scope.md; branch, fork and worktree path match: PASS",
+    "No false claim of a current measurement (test-plan.md:3,245; baseline.json:10,31): PASS",
+    "Lustre/host (Phase B/C), GPU staging (D) and calibration (E) measured separately; full-image D2H optional: PASS",
+    "Headline numerator/denominator: useful bytes over the slowest rank's time from a common barrier; steady-state window counts bytes completed in that window; no summing of overlapping intervals: PASS",
+    "KvikIO io_stats claims checked against gpu_kvikio_read.py:107,140-167 (total_ns is wait-only; io_path comes from is_gds_available): PASS",
+    "Harness hardcodes checked against bench.py:9-14,27,112-114 (OMPI env vars, run387, PS_EB_NODES=1, GPU index (rank-2)%ngpus, batch 20): PASS",
+    "MPI role description checked against node.py:166-205,327-357 (roles come from communicator membership; EB=bd_rank 0 within each bd_comm): PASS",
+    "Client cache vs server cache vs network attribution: mostly PASS; which Lustre counter level is used is unspecified (S3)",
+    "Adaptive CPU/GPU matrix is feasible and avoids a full Cartesian sweep; cores, threads and memory counted; OOM/retry runs invalid: PASS",
+    "Physical data expansion: non-sparse independent extents, a real XTC replay builder, application scaling blocked without valid data: PASS",
+    "Weak-scaling layout/OST scaling with N: FAIL (S1)",
+    "Saturation-gate denominator B_pattern definition: FAIL (S2)",
+    "Statistics: screening and confirmation kept apart, paired, randomized, sentinel interleaved; small-sample CI method weak (S5)",
+    "Perlmutter adaptation: Cray MPICH, account lcls_g, premium QoS, Iris balance checks, quota headroom math (20 GB/s x 8 nodes = 11.52 TB fits; 40 GB/s does not, as stated): PASS",
+    "NIC arithmetic: 4 x 200 Gbit/s = 100 GB/s link rate, marked as a specification only: PASS"
+  ],
+  "limitations": [
+    "Only the provided file-reading tools were used; no commands, tests, git checks or job launches were run.",
+    "The coordinator's results (git diff --check, PR head, stat/quota output, NERSC pages) were taken as given and not re-run.",
+    "Did not read gpu_mpi_benchmark, the historical evidence files, or all of issue159_stage7_performance_20261029.md beyond a targeted search (it confirms the prior results were SDF and warm/cold file-cache only).",
+    "Did not verify whether Perlmutter exposes Lustre osc RPC stats or Slingshot NIC counters to unprivileged users.",
+    "Did not check whether psana2 handles multi-chunk XTC/SMD layouts for the replay builder."
+  ],
+  "findings": [
+    {
+      "id": "S1",
+      "severity": "high",
+      "blocking": true,
+      "file": "notes/scaleout/test-plan.md",
+      "line": 148,
+      "evidence": "Layout is frozen for comparisons (lines 148-152), and the source/staged s004 files use stripe count 1 (lines 63-64). Application weak scaling uses one DataSource over a global run of N*D_node bytes (lines 171, 193), and the replay builder rebuilds SMD indexes for new files (lines 214-217). Nothing requires the number of files, chunks or OSTs to grow with N. With five stream files of fixed stripe count, 8 nodes put 8x the load on the same OSTs as N=1. E(N) would then measure a fixed storage layout, not software or per-node scaling. Separately, storage scaling uses 'disjoint physical file ranges per node' (line 168) but does not fix OSTs per node or rule out OST collisions between nodes.",
+      "requested_change": "Add a layout-scaling rule kept constant per worker. Example: the corpus is K stream-chunk files per worker node (chunks, more files, or stripe count proportional to N) so distinct OSTs per worker is constant at every N. Record every file's OST list (lfs getstripe) and reject or redo layouts where OSTs are shared or collide. Use exactly the same files and layout for the storage-scaling and application-scaling series at each N, so the application/storage ratio is attributable. If psana chunking or the builder cannot produce this, say so and limit weak-scaling claims to storage."
+    },
+    {
+      "id": "S2",
+      "severity": "medium",
+      "blocking": true,
+      "file": "notes/scaleout/test-plan.md",
+      "line": 16,
+      "evidence": "B_storage is the 'best reproducible sequential host-read plateau', but B_pattern is only 'host replay of psana's actual descriptor ranges'. Phase C (line 143) compares sequential, exact replay and explicit coalescing with no concurrency sweep and no plateau rule. B_pattern is the denominator of the >=0.90 near-saturation gate (lines 27-29). If replay runs at too little concurrency, or uses an unspecified variant, the gate could pass trivially or the ratio could exceed 1.",
+      "requested_change": "Define B_pattern as exact descriptor-range replay (same useful ranges, stream interleaving, batch boundaries and completion boundary as the application), swept over reader concurrency with the same plateau rule as B_storage. Report coalesced replay as a diagnostic, not the reference. Record its fetched/useful amplification. Specify that the gate uses the confirmed plateau value, or a labeled lower bound if no plateau is reached."
+    },
+    {
+      "id": "S3",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/scaleout/test-plan.md",
+      "line": 120,
+      "evidence": "The cold-path check requires 'attributable Lustre read bytes >=95% of expected storage bytes' but does not say which counter. llite-level read_bytes counts bytes delivered to applications, including page-cache hits, so it can pass with warm data. Only OSC/RPC-level counters (osc.*.stats ost_read, rpc_stats) or OSS-side data show bytes actually sent over the wire. Expected storage bytes also do not say whether SMD file reads by Smd0 are included.",
+      "requested_change": "Require client OSC/RPC-level read bytes and RPC counts (or an equivalent wire-level source) for the >=95% storage-traffic gate; treat llite counters as application-level only. Define expected storage bytes = bigdata submitted bytes + readahead allowance + SMD file bytes, with SMD shown separately and excluded from the useful-byte numerator."
+    },
+    {
+      "id": "S4",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/scaleout/test-plan.md",
+      "line": 111,
+      "evidence": "Primary runs must read distinct ranges in one pass, and accepted sustained samples need at least 30 s (line 195). The pilot is about 335.6 GB, which lasts only about 17 s at 20 GB/s. The data-expansion and builder plan appears only in the weak-scaling section, but single-node Phases B-E also need a larger corpus to reach 30 s once throughput exceeds about 11 GB/s.",
+      "requested_change": "State that Phases B-E use a D_node-sized corpus of the same layout (raw files for B, valid real/replayed XTC for C-E) prepared before sustained acceptance. Pilot-sized runs under 30 s are labeled short and cannot confirm a plateau or saturation gate. Alternatively, allow re-reading evicted extents only with the server-cache caveat and a separate label."
+    },
+    {
+      "id": "S5",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/scaleout/test-plan.md",
+      "line": 227,
+      "evidence": "The gates use 95% confidence bounds (plateau upper bound <5%, saturation lower bound >=0.90, E(N) lower bound >=0.80) computed by pair bootstrap from at least five pairs. Percentile bootstrap intervals with n=5 are known to be too narrow, so gates may pass on noise.",
+      "requested_change": "For n<10, use a t-interval on paired log-ratios (or BCa/studentized bootstrap with a stated small-sample caveat), or raise the minimum repetition count for gate decisions. Fix the method before data collection and report how sensitive the conclusion is to it."
+    },
+    {
+      "id": "S6",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/scaleout/test-plan.md",
+      "line": 172,
+      "evidence": "With PS_EB_NODES=1 and non-local mode (node.py:189-190), one EB on node0 sends every batch to BDs on all N nodes. node.py:159-187 also offers PS_EB_NODE_LOCAL (one EB per node via Split_type), which the plan does not mention. Line 111 also limits residency checks to 'private-file' ranges, but in application scaling any node may read any shared-file range.",
+      "requested_change": "List PS_EB_NODE_LOCAL as a separately labeled topology variant (counting its extra control cores), with matching role verification. Require residency checks on every reader node for all ranges that node could read, not only node-private files."
+    }
+  ]
+}
