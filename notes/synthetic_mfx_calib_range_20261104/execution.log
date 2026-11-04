@@ -1,0 +1,22 @@
+Extended jungfrau_000009 geometry
+Extended jungfrau_000009 pedestals
+Extended jungfrau_000009 pixel_gain
+Extended jungfrau_000009 pixel_max
+Extended jungfrau_000009 pixel_min
+Extended jungfrau_000009 pixel_offset
+Extended jungfrau_000009 pixel_rms
+Extended jungfrau_000009 pixel_status
+Extended pv_000001 pixel_rms
+Extended pv_000001 pedestals
+Extended pv_000001 pixel_min
+Extended pv_000001 pixel_max
+Extended pv_000001 pixel_status
+Verified run 1 inline_alvium
+Verified run 1 jungfrau
+Verified run 1 qadc_ch0
+Verified run 1 qadc_ch1
+Verified run 2 inline_alvium
+Verified run 2 jungfrau
+Verified run 2 qadc_ch0
+Verified run 2 qadc_ch1
+PASS: 13 records, 46 frozen-payload selections, range 1–2

@@ -1,0 +1,138 @@
+{
+  "status": "PASS",
+  "changes": [
+    {
+      "collection": "jungfrau_000009",
+      "id": "6aea825ff22d71fd755d6e6b",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "collection": "jungfrau_000009",
+      "id": "6aea8267d476b756da4aaa57",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "collection": "jungfrau_000009",
+      "id": "6aea826fdd1121bbb23cfdc7",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "collection": "jungfrau_000009",
+      "id": "6aea8278d476b756da4aaa58",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "collection": "jungfrau_000009",
+      "id": "6aea8280cde0d0def8648f3a",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "collection": "jungfrau_000009",
+      "id": "6aea8289130d472f06eac34a",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "collection": "jungfrau_000009",
+      "id": "6aea82927ff319b928f262a1",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "collection": "jungfrau_000009",
+      "id": "6aea8298515964208686c11e",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "collection": "pv_000001",
+      "id": "6aea82991dfd063a73bd999b",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "collection": "pv_000001",
+      "id": "6aea8299d476b756da4aaa59",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "collection": "pv_000001",
+      "id": "6aea8299d476b756da4aaa5f",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "collection": "pv_000001",
+      "id": "6aea8299f22d71fd755d7171",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "collection": "pv_000001",
+      "id": "6aea829ad476b756da4aaa60",
+      "diff": {
+        "run_end": [
+          1,
+          2
+        ]
+      }
+    }
+  ],
+  "selections_per_run": 23,
+  "same_ids_and_hashes": true,
+  "script_hash_matches_execution": true
+}

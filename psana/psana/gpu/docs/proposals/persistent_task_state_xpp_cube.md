@@ -577,7 +577,7 @@ repetition is needed.
 | Stage | Proposed destination | Step event counts | Approximate XTC size |
 | --- | --- | --- | --- |
 | First pilot | `prjdatpsana`, run 1 | `[19, 20, 21]`, 60 events total | 2.04 GB |
-| Full performance fixture | `prjdatpsana`, run 2 | 36 steps of 1,000 events | 1.22 TB |
+| Full performance fixture | `prjdatpsana`, run 2 | 30 steps of 1,000 events | about 1.02 TB |
 
 Sizes extrapolate the source's average across all streams; measure the actual
 pilot output. The full fixture uses the first 36,000 source events and omits
@@ -646,8 +646,9 @@ interfaces resolve. Retain original detector unique IDs in the XTC Configure.
 4. Read back through normal run-1 lookup and verify every selected type is
    explicitly present in the destination, with matching payload hashes. Do not
    accept success that depends on unrelated shared-detector fallback constants.
-5. Before generating run 2, deploy and verify the same frozen snapshot with
-   run-2 validity. Keep the initial run-1 deployment limited to run 1.
+5. Before generating run 2, extend the existing experiment records to validity
+   1–2 and verify both runs select the same frozen payloads. This supersedes the
+   original separate run-2 deployment plan; no duplicate payload upload is needed.
 
 Allow roughly 5–10 GB of working space for the pilot, calibration snapshot and
 validation artifacts, subject to the supporting-detector inventory. The full
@@ -826,12 +827,12 @@ GPU transition tests follow this CPU/reference acceptance and use the current
 GPU event API; public GPU `run.steps()` support is not assumed. GPU failures
 must be distinguished from malformed fixtures. This first pilot establishes
 data/calibration correctness, not throughput or complete transition coverage.
-Only then produce the 36,000-event fixture for GPU correctness and performance
-work, with its own verified run identity and calibration validity. Stage 5's
-run-2 calibration deployment/readback is mandatory **before generation**: run-1
-records have validity 1–1 and do not pin run 2. Shared fallback can select other
-experiments' newer constants. Require the run-2 selection IDs and payload hashes
-to match a separately journaled deployment of the frozen snapshot.
+The latest requested full fixture is 30 steps of 1,000 events (30,000 total),
+superseding the earlier 36,000-event target. It needs its own verified run
+identity. Before generation, extend calibration validity to 1–2 and verify that
+both runs select the existing experiment document IDs and frozen payload hashes.
+Shared fallback can otherwise select other experiments' newer constants.
+See the [validity extension records](../../../../../notes/synthetic_mfx_calib_range_20261104/README.md).
 
 ### Stage 1 execution record — November 3, 2026
 
@@ -895,9 +896,9 @@ succeeded; new data/document IDs and source provenance were recorded.
 Normal `calib_constants_all_types(..., exp="prjdatpsana", run=1)` readback passed
 for `jungfrau`, `inline_alvium`, `qadc_ch0`, and `qadc_ch1`: all 23 detector/type
 selections resolved to the new destination document IDs, with exact payload
-hashes, shapes, and dtypes matching Stage 1. These experiment records are out of
-range for run 2; run-2 lookup may still use shared-detector fallback, so Stage 5
-must explicitly deploy the pinned snapshot for that run.
+hashes, shapes, and dtypes matching Stage 1. At Stage 2 completion these records
+were out of range for run 2. The subsequent authorized validity extension to
+1–2 supersedes that restriction; the Stage 2 reports remain historical evidence.
 
 See the [readback verification](../../../../../notes/synthetic_mfx_stage1_20261103/stage2_readback_verification.json)
 and [deployment journal](../../../../../notes/synthetic_mfx_stage1_20261103/stage2_deployment_journal.json).

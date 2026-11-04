@@ -1,0 +1,13 @@
+{
+  "scope": "Extend prjdatpsana validity to runs 1-2",
+  "phase": "verified_awaiting_review",
+  "round": 1,
+  "round_limit": 3,
+  "base_sha": "9e269e38db7fd0b893e657ed0390acd25adf38fc",
+  "checks": {
+    "metadata_only": 13,
+    "normal_selections": 46,
+    "compile": "PASS"
+  },
+  "unresolved": []
+}
