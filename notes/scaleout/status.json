@@ -1,0 +1,22 @@
+{
+  "phase": "plan_review_complete",
+  "round": 3,
+  "round_limit": 3,
+  "scope": "/global/u2/m/monarin/lcls2_worktree/codex/psana2-gpu-scaleout/notes/scaleout/scope.md",
+  "base_sha": "5b082e0fdfcefc36ea208c0954aab6548aa6bdb7",
+  "implementation_sha": "e9cdaff4b00e564160452854896dcfabb30aed5e",
+  "review_sha": "e9cdaff4b00e564160452854896dcfabb30aed5e",
+  "unresolved_ids": [],
+  "checks": {
+    "diff_check": "passed",
+    "document_only": true,
+    "runtime_benchmarks": "not run; planning phase",
+    "review_worktrees": "all clean and unchanged",
+    "permission_denials": []
+  },
+  "artifacts": "/pscratch/sd/m/monarin/psana2-gpu/scaleout-plan-20261104",
+  "reviewer_verdict": "pass",
+  "execution_status": "not_started",
+  "branch": "codex/psana2-gpu-scaleout",
+  "fork": "monarin/lcls2"
+}

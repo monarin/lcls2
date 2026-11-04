@@ -1,0 +1,24 @@
+{
+  "reviewed_commit": "e9cdaff4b00e564160452854896dcfabb30aed5e",
+  "verdict": "pass",
+  "summary": "S7 is resolved and I found no new contradictions. The plan is approved at the document level only. No benchmark, staging, build or job has run, and the plan does not claim any current measurement.\n\nWhat now settles S7:\n- test-plan.md:312-318 defines B_1 as one worker reading D_node bytes from the frozen N=1 corpus (s0 stripes per stream over P1 OSTs). It is never a slice of the N-node layout.\n- That reference is staged and hashed alongside the current N layout and counted in the quota.\n- Every block records both layout hashes and pairs the N-node rate with B_1 on the same allocation, using a predeclared rotating choice of worker node.\n- A one-worker slice of the N layout is allowed only as a separately labeled diagnostic.\n\nThe rest of the plan agrees with this:\n- The sizing formula (lines 254-259) sets D_total = D_primary + D_node_reference + metadata/warmup, with D_node_reference = D_node for N>1 and no duplicate at N=1.\n- The retention rule (lines 272-273) keeps the frozen N=1 layout plus one current N>1 layout, budgets both, and forbids keeping other large layouts at the same time. This replaces the round-2 wording that caused the conflict.\n- The eight-worker examples (lines 268-269) add up: 9 \u00d7 1.44, 2.88 and 5.76 TB gives 12.96, 25.92 and 51.84 TB.\n- Quota check: 1,127,844,184 KiB used is about 1.155 TB. 80% of the 20 TiB soft limit is about 17.59 TB, so about 16.4 TB is usable. The 12.96 TB case fits, but preparation copies and metadata still need their separate check. The plan correctly says the larger cases do not fit.\n\nEarlier fixes still hold:\n- Baseline SHA 5b082e0fdfcefc36ea208c0954aab6548aa6bdb7 is unchanged in test-plan.md:4 and baseline.json:4. Branch, fork and worktree match scope.md.\n- Fixes for S1-S6 are intact: N-scaled active OST layout, exact-replay B_pattern plateau, wire-level cache attribution, a D_node-sized corpus before sustained phases, a Student-t interval on paired log ratios, and the EB-node-local variant with residency checks on every reachable range.\n- Host Lustre reads, GPU staging and calibration remain separate workloads.",
+  "checks": [
+    "S7: B_1 always reads the frozen N=1 layout; N-layout slice is diagnostic only; both layout hashes recorded per block (test-plan.md:312-318): RESOLVED",
+    "Sizing formula includes D_node_reference for N>1 and omits the duplicate at N=1 (test-plan.md:251-260): PASS",
+    "Retention rule keeps N=1 plus one current N>1 layout and budgets both; agrees with S7 text (test-plan.md:272-273 vs 313-315): PASS",
+    "Example totals with the reference included (9 x 1.44/2.88/5.76 = 12.96/25.92/51.84 TB) are correct (test-plan.md:266-270): PASS",
+    "Quota headroom: about 16.4 TB usable at 80% of soft limit after existing usage; 12.96 TB case fits subject to the separate preparation/metadata check; plan correctly says the larger cases do not fit: PASS",
+    "Baseline SHA 5b082e0fdfcefc36ea208c0954aab6548aa6bdb7 unchanged (test-plan.md:4, baseline.json:4); scope.md consistent: PASS",
+    "No false claim of current measurement (test-plan.md:3,333; baseline.json:9,31): PASS",
+    "S1-S6 resolutions still intact (test-plan.md:15-26,120-146,166-170,205-249,296-310): PASS",
+    "Weak-scaling statistics: per-block log(B_N/(N*B_1)), balanced N order, rotating reference node, no cherry-picking (test-plan.md:302-323): PASS",
+    "Separate storage and application paired references kept (test-plan.md:320): PASS"
+  ],
+  "limitations": [
+    "Used only the provided file-reading tools. No commands, git operations, tests or jobs were run.",
+    "Took the coordinator's evidence as given (git diff --check, PR head, stat/quota snapshot, NERSC specifications, doc-only diff) without re-running it.",
+    "Did not re-read the source files (bench.py, gpu_kvikio_read.py, node.py) this round. Only the notes changed, so the earlier source checks still apply.",
+    "Approval covers the plan document only. Whether OSC/RPC counters are accessible, whether a large valid XTC corpus can be built, and how much allocation is available all remain runtime gates already written into the plan."
+  ],
+  "findings": []
+}
