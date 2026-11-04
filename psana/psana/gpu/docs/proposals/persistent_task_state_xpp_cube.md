@@ -558,8 +558,8 @@ layout, I/O mode, cold/warm conditions, export traffic, and final drain time.
 
 ## Synthetic MFX scan dataset: calibrated pilot first
 
-Plan revised November 3, 2026. The first deliverable is a small, calibrated
-dataset that can be inspected through the normal CPU DataSource pipeline.
+Plan revised November 4, 2026 after independent review. The first deliverable is
+a small, calibrated dataset that can be inspected through the normal CPU DataSource pipeline.
 The full dataset follows only after this pilot passes. This section records
 planned work; it does not report generated files or deployed constants.
 
@@ -597,9 +597,18 @@ smalldata/prjdatpsana-r0001-s000-c000.smd.xtc2
 ```
 
 Retain ten streams and one initial chunk per stream. Steps are transitions
-inside the files, not separate files. Update BeginRun `runinfo` and embedded
-`chunkinfo` filenames consistently. Rebuild SMD offsets and preserve required
-small-detector content; the original SMD files cannot simply be copied.
+inside the files, not separate files. Update BeginRun `runinfo` in **all ten**
+streams and assert that all decode to the destination experiment/run; psana's
+`DataSourceBase._get_runinfo()` reads only the first stream. The source experiment
+string occupies a 32-byte field: write `prjdatpsana` with a terminating NUL and
+zero-fill the remaining bytes, preserve its shape/field width, and change the
+run number using its declared type. Verify the decoded result, not just bytes.
+
+Configure declares `chunkinfo`, but no source Enable contains a `chunkinfo`
+payload. Keep those Names and do not invent a filename payload. If another source
+has such payloads, rewrite and validate them against the destination `c000`
+filenames. Rebuild SMD offsets and preserve required small-detector content;
+the original SMD files cannot simply be copied.
 
 ### Calibration is part of the pilot
 
@@ -645,13 +654,30 @@ calibration must be available even though the pilot contains only 60 events.
 ### Generate and inspect the pilot
 
 Use the first 60 correlated source events. Retain source configuration and
-necessary environment state/SlowUpdates. Define a CPU-visible `step_index`
-scan field and insert the following sequence coherently across all streams:
+necessary environment state/SlowUpdates. None of the ten source Configures has
+scan Names, and each source BeginStep is header-only. Add a scan detector to
+stream `s000` in both its bigdata and SMD Configure, preserving existing Names
+and payloads. Use the DAQ convention from `psdaq/psdaq/control/BlueskyScan.py`:
+`detname="scan"`, `dettype="scan"`, serial `"1234"`, algorithm `raw` version
+`1.0.0`, segment 0. Define `step_value` as an integer scalar (INT64 for this
+fixture) and `step_docstring` as a CHARSTR string. Use values 0, 1, 2 for the
+pilot. The JSON docstring includes `detname: "scan"`,
+`scantype: "synthetic_mfx"`, and `step` equal to `step_value`; source experiment,
+run and event-index range may be additional provenance fields.
+
+Allocate a free `(nodeId, namesId)` after inspecting all existing Names in that
+stream; assert no collision and the NamesId bit limits. Use the same identity
+and schema in SMD and bigdata. Append matching ShapesData to **every** BeginStep
+in `s000`, including the reused opening BeginStep. Other streams retain their
+own header-only BeginStep. Recompute all affected extents and decode each new
+payload against the modified Configure before writing. Use DgramEdit or the XTC
+Names/CreateData APIs, with buffers sized for the added content. A header service
+change alone cannot create this scan payload. Insert this sequence in all streams:
 
 ```text
 Configure -> BeginRun(prjdatpsana, 1)
-for step_index, count in enumerate([19, 20, 21]):
-    BeginStep(step_index) -> Enable
+for step_value, count in enumerate([19, 20, 21]):
+    BeginStep(step_value, step_docstring) -> Enable
     copy count source events, retaining their original timestamps and payloads
     Disable -> EndStep
 EndRun
@@ -691,14 +717,35 @@ event timestamp. The detailed construction rule is:
   timestamp across a second boundary. No L1 or embedded timing payload shifts
   are needed for this source.
 - Use identical outer timestamps/services in SMD and bigdata, regenerate
-  offsets, and keep Enable chunk metadata consistent with the destination's
-  `c000` files. A new step does not imply a new file chunk.
+  offsets, and validate any Enable chunk payload against the destination's
+  `c000` files. This source has no Enable chunk payload. A new step does not
+  imply a new file chunk.
+
+For each stream, construct inserted Disable, EndStep, BeginStep, Enable and
+EndRun from that stream's own source datagram of the **same service**. Preserve
+its complete `env` word (service, transition type, readout-group/control bits),
+outer XTC `src`, `damage`, `contains` type/version, and any payload. Do not borrow
+another stream's header, zero unknown fields, or turn an L1 header into a
+transition. Require a same-service template to exist; otherwise stop.
+
+Timestamp is the only changed field for copied header-only transitions. The
+explicit exceptions are the scan ShapesData/ancestor extents in `s000`
+BeginStep, scan Names/ancestor extents in Configure, and run identity in
+BeginRun. Use matching per-stream templates for SMD and bigdata and verify their
+outer headers agree; the SMD preflight alone is not that bigdata check. Preserve
+nonzero source damage rather than silently clearing it. Record the template
+source offset/hash and an allowed-byte-change check for each generated record.
+The [source preflight](../../../../../notes/synthetic_mfx_stage1_20261103/review_20261104/source_preflight.json)
+records the frozen SMD template headers, offsets and hashes for all ten streams.
 
 Measured pilot gaps after events 19, 39, and 60 are all 8,388,611 ns, so 1,000 ns
 spacing works. For the full fixture, the smallest gap to the next source record
 is 1,814 ns due to a nearby SlowUpdate; adaptive spacing drops to 453 ns there.
 The header/state-machine audit yields the intended counts and strict timestamp
-ordering for both schedules. This is not yet an EventBuilder execution test.
+ordering for both schedules. No inserted timestamp crosses a second boundary
+in this input; Stage 3 arithmetic checks must also cover a constructed rollover
+case so normalized nanosecond conversion is exercised. This is not yet an
+EventBuilder execution test.
 
 The writer must assert `BeginStep < Enable < each L1 < Disable < EndStep`,
 strict per-stream ordering, transition completeness and service agreement across
@@ -707,19 +754,36 @@ timestamps and rejects incomplete transitions; it does not repair or sort a
 malformed input timeline. Serial and MPI DataSource tests in Stage 4 must still
 verify the generated files, including boundaries split across SMD/event batches.
 
-Inspect using the standard experiment/run path, with calibration enabled:
+Inspect using the standard experiment/run path, with calibration enabled.
+Launch serial and MPI checks with `PS_FAKESTEP_FLAG=0` (set it before importing
+psana, and record it); fail acceptance setup if a nonzero value is inherited.
+The SMD reader otherwise injects artificial step pairs. Use explicit `dir=` and
+`live=False`: the last verified logbook file list for run 1 is empty. Recheck
+run/file collisions immediately before publication. Disk discovery still makes
+a service query; a network failure is not an empty-file result.
 
 ```python
+import json
+import os
+assert int(os.environ.get("PS_FAKESTEP_FLAG", "0")) == 0
+from psana import DataSource
+
 ds = DataSource(
     exp="prjdatpsana", run=1,
-    dir="/sdf/data/lcls/ds/prj/prjdatpsana/xtc",
+    dir="/sdf/data/lcls/ds/prj/prjdatpsana/xtc", live=False,
 )
 for run in ds.runs():
+    step_value = run.Detector("step_value")
+    step_docstring = run.Detector("step_docstring")
     jf = run.Detector("jungfrau")
     counts = []
-    for step in run.steps():
+    for index, step in enumerate(run.steps()):
+        assert step_value(step) == index
+        assert json.loads(step_docstring(step))["step"] == index
         count = 0
         for evt in step.events():
+            assert step_value(evt) == index
+            assert json.loads(step_docstring(evt))["step"] == index
             raw = jf.raw.raw(evt)
             calibrated = jf.raw.calib(evt)
             # Compare against the matching source event/reference.
@@ -744,8 +808,11 @@ Acceptance before scaling up:
   counts must match, with no duplicates, omissions, hangs, or misplaced steps.
   Do not apply the serial per-rank count assertion to MPI. Vary SMD/event batch
   sizes around 20 to exercise boundaries inside batches and final tails.
-- Record results and loaded psana version, and verify intended collaborator
-  read access. Offline `dir=` discovery can be used before logbook registration;
+- Record results, loaded psana version and `PS_FAKESTEP_FLAG`. Check final-file
+  ACLs and ancestor traversal, then verify listing/opening XTC and SMD plus a
+  small calibrated DataSource read under the collaborator's own login. Group
+  membership and Mona's successful reads alone do not complete this check.
+  Offline `dir=` discovery can be used before logbook registration;
   it still queries the service, and `live=True` requires a registered file list.
 
 GPU transition tests follow this CPU/reference acceptance and use the current
@@ -753,7 +820,11 @@ GPU event API; public GPU `run.steps()` support is not assumed. GPU failures
 must be distinguished from malformed fixtures. This first pilot establishes
 data/calibration correctness, not throughput or complete transition coverage.
 Only then produce the 36,000-event fixture for GPU correctness and performance
-work, with its own verified run identity and calibration validity.
+work, with its own verified run identity and calibration validity. Stage 5's
+run-2 calibration deployment/readback is mandatory **before generation**: run-1
+records have validity 1–1 and do not pin run 2. Shared fallback can select other
+experiments' newer constants. Require the run-2 selection IDs and payload hashes
+to match a separately journaled deployment of the frozen snapshot.
 
 ### Stage 1 execution record — November 3, 2026
 
@@ -782,6 +853,13 @@ The snapshot, preparation script, selection source, and SHA256SUMS are stored in
   five payloads. Stage 2 must deduplicate insertions by collection/type and
   source document, rather than inserting once per user-facing detector name.
   Preserve this source behavior and inspect the consumers in Stage 4.
+  These five PV payloads originate from `rix102353327` run 38 (`alvium3rix1`),
+  not a detector-specific MFX calibration. The shared `pv_` identity caused the
+  source lookup. The destination `detname="inline_alvium"` labels the first
+  deduplicated consumer, not all three consumers or physical calibration
+  provenance. Current `pv_raw_1_0_0` exposes raw fields and does not apply these
+  constants. Keep the frozen provenance and existing run-1 records unchanged;
+  do not describe these as scientifically valid camera/QADC calibration.
 - JF `pixel_status` has 16,732 / 11,917 / 12,768 nonzero pixels in its three gain
   planes, each containing 16,777,216 pixels, with no nonfinite values. The
   all-pixels-flagged problem is absent in this snapshot. Calibrated-image
@@ -848,3 +926,14 @@ evidence. Save audit and response files beside the existing reports and commit
 them so each reviewer sees the same findings and resolutions. Avoid concurrent
 edits in this shared worktree. This handoff does not authorize additional
 database writes or generation of the larger dataset during an audit.
+
+### Response to independent audit — November 4, 2026
+
+The [finding responses and evidence](../../../../../notes/synthetic_mfx_stage1_20261103/review_20261104/responses.md)
+close the construction-specification gaps; implementation and output checks
+remain Stage 3/4 work. Seema is currently listed in `prjdatpsana`, and the
+experiment root, XTC and SMD directory ACLs grant that group read/traverse.
+Actual collaborator-session readback remains pending. Stage 1/2 artifacts and
+this plan were already committed and pushed at `e118b3c7e`; the report that they
+were untracked predates that checkpoint. This audit response does not generate
+XTC, redeploy constants, change permissions or establish performance results.
