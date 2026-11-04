@@ -600,8 +600,10 @@ Retain ten streams and one initial chunk per stream. Steps are transitions
 inside the files, not separate files. Update BeginRun `runinfo` in **all ten**
 streams and assert that all decode to the destination experiment/run; psana's
 `DataSourceBase._get_runinfo()` reads only the first stream. The source experiment
-string occupies a 32-byte field: write `prjdatpsana` with a terminating NUL and
-zero-fill the remaining bytes, preserve its shape/field width, and change the
+string field width must be read from ShapesData: Stage 3 measured **16 bytes**
+in this source, correcting the earlier 32-byte assumption. Write `prjdatpsana`
+with a terminating NUL, zero-fill the remaining bytes, preserve its shape/field
+width, and change the
 run number using its declared type. Verify the decoded result, not just bytes.
 
 Configure declares `chunkinfo`, but no source Enable contains a `chunkinfo`
@@ -942,3 +944,16 @@ Actual collaborator-session readback remains pending. Stage 1/2 artifacts and
 this plan were already committed and pushed at `e118b3c7e`; the report that they
 were untracked predates that checkpoint. This audit response does not generate
 XTC, redeploy constants, change permissions or establish performance results.
+
+
+### Stage 3 pilot — November 4, 2026
+
+The [Stage 3 implementation and evidence](../../../../../notes/synthetic_mfx_stage3_20261104/README.md)
+now contain a generated 60-event pilot in staging: ten bigdata/SMD pairs,
+76 records per stream, steps `[19, 20, 21]`, 2,040,571,066 total bytes. Every
+record passed source-byte and structural validation, and an uncalibrated
+serial DataSource smoke test passed step/event counts, scan values and original
+timestamps. Final-name publication awaits independent implementation review.
+No calibration records or psana core were changed. Full Stage 4 acceptance
+remains pending. Direct source ShapesData inspection corrected the earlier
+experiment-field-width assumption from 32 bytes to 16; see the Stage 3 report.

@@ -1,0 +1,24 @@
+{
+  "scope": "Stage 3 60-event pilot generation and structural validation",
+  "phase": "validated_review_pending",
+  "base_sha": "81c88de94",
+  "implementation_sha": null,
+  "reviewed_sha": null,
+  "review_round": 0,
+  "review_round_limit": 3,
+  "staging": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/.synthetic-mfx-r0001-stage3-20261104",
+  "checks": {
+    "disk_logbook_collision_preflight": "pass",
+    "runinfo_field_width": "16 bytes in all twenty source BeginRuns",
+    "unit_checks": "7 passed",
+    "generation": "pass",
+    "structural_validation": "pass",
+    "serial_uncalibrated_smoke": "pass"
+  },
+  "pending": [
+    "Claude review",
+    "no-overwrite publication"
+  ],
+  "stage4_acceptance": "not run",
+  "generated_bytes": 2040571066
+}
