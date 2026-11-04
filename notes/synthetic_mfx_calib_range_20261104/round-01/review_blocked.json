@@ -1,0 +1,6 @@
+{
+  "status": "NOT_RUN",
+  "reason": "Automatic approval review rejected the Claude command because repository files and calibration metadata may be sent to an external Claude service; explicit transfer approval requested.",
+  "reviewed_sha": null,
+  "intended_sha": "27c853b2902f7c6e5c5adecec197f27424fddbe7"
+}

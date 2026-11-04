@@ -43,3 +43,12 @@ No psana core code changed; verification is scoped to live metadata and payload
 selection. The first bare `python -m py_compile` command could not run because
 `python` was not on PATH; compilation was then successful using the pinned
 conda Python. The actual update/verification used the pinned runtime throughout.
+
+Live update and all 46 calibration selections passed. Implementation commit:
+`27c853b2902f7c6e5c5adecec197f27424fddbe7`. Independent Claude review has
+not run: automatic approval review requires explicit permission to transfer
+repository/calibration metadata to the Claude service. The question is pending;
+this is not a review pass. See `round-01/review_blocked.json`.
+
+Durable archive:
+`/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/calib-range-20261104`.

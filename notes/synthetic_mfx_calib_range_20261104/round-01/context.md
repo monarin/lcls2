@@ -1,0 +1,33 @@
+Review the exact commit supplied by the helper, against base
+9e269e38db7fd0b893e657ed0390acd25adf38fc. Scope: user explicitly authorized extending
+existing prjdatpsana calibration records from validity 1-1 to 1-2. Review only
+notes/synthetic_mfx_calib_range_20261104/ and the relevant proposal diff.
+Read scope.md, README.md, extend.py, execution/before.json, after.json,
+verification.json, per-write intents/responses, execution.log and
+independent_check.json. Compare the Stage 1 manifest and Stage 2 journal as
+needed. No core psana changes. This task is completed DB metadata work, not new
+run-2 XTC generation; Seema own-login acceptance remains outstanding.
+
+The 13 PUTs have already executed once, each HTTP 200; full metadata readback
+shows run_end 1->2 is the ONLY field change. Normal unmodified
+calib_constants_all_types and transport then verified 23 selections per run,
+all IDs/payload SHA256s matching the frozen Stage 2 journal. Experiment records
+are excluded at run 3 (shared fallback may still apply). No source/shared DB or
+XTC mutations. Script guard allows only exact 13 destination URLs and current
+planned JSON, with no redirects/retries. Records are preserved before writes.
+The service lacks atomic multi-document or compare-and-swap; limitations are
+explicit in README. The old comment mentions run 1 and is deliberately retained
+as original deployment provenance. The old Stage 4 serial driver asserts
+run_end=1 and is documented historical; collaborator driver uses IDs/digests and
+is unaffected. No need to rewrite historical results.
+
+Checks: successful pinned Python compilation; live verification exit 0;
+separate coordinator artifact check confirms 13 exact metadata diffs, matching
+execution script hash, all response status 200, both runs' 23 selections equal.
+Initial bare python compilation command failed because python was not on PATH;
+it was rerun with the pinned conda executable. No calibration check failed.
+No core test suite needed for this scoped operational script. Source/historical
+records available in this checkout. Reviewer must use file tools only: no
+execution, edits, DB actions, recursive review or delegation. Flag missing
+evidence as limitations; do not infer that artifacts prove more than they do.
+Use stable finding IDs, distinguish blocking issues from optional improvements.

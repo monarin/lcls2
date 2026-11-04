@@ -1,6 +1,6 @@
 {
   "scope": "Extend prjdatpsana validity to runs 1-2",
-  "phase": "verified_awaiting_review",
+  "phase": "applied_verified_review_awaiting_transfer_approval",
   "round": 1,
   "round_limit": 3,
   "base_sha": "9e269e38db7fd0b893e657ed0390acd25adf38fc",
@@ -9,5 +9,10 @@
     "normal_selections": 46,
     "compile": "PASS"
   },
-  "unresolved": []
+  "unresolved": [
+    "REVIEW-TRANSFER-APPROVAL"
+  ],
+  "implementation_sha": "27c853b2902f7c6e5c5adecec197f27424fddbe7",
+  "reviewer_verdict": null,
+  "archive": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/calib-range-20261104"
 }
