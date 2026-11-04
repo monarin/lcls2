@@ -6,12 +6,15 @@ import os
 from pathlib import Path
 import subprocess
 
-from xtc_fixture import DEST, DEST_EXP, file_sha, require, save_json
+from xtc_fixture import DEST, DEST_EXP, file_sha, require, save_json, sha
 
 
 def preflight():
     import requests
     from krtc import KerberosTicket
+    for folder in (DEST, DEST / "smalldata"):
+        require(folder.is_dir() and os.access(folder, os.W_OK | os.X_OK),
+                "Missing or unwritable destination directory: " + str(folder))
     collisions = [str(p) for folder in (DEST, DEST / "smalldata") for p in folder.glob("*r0001*.xtc2*")]
     require(not collisions, "Existing run-1 paths: " + repr(collisions))
     endpoint = f"https://pswww.slac.stanford.edu/ws-kerb/lgbk/lgbk/{DEST_EXP}/ws/"
@@ -41,10 +44,16 @@ def publish(staging, verification, review_path, commit, journal):
             not any(f["blocking"] for f in review["findings"]), "Missing successful code review")
     # Require the implementation being used to be the exact reviewed tree.
     repo = Path(__file__).resolve().parents[2]
+    reviewed_hashes = {}
     for name in ("xtc_fixture.py", "make_pilot.py", "verify_pilot.py", "pilot_admin.py"):
         p = Path(__file__).with_name(name)
         recorded = subprocess.check_output(["git", "-C", str(repo), "show", commit + ":" + str(p.relative_to(repo))])
         require(recorded == p.read_bytes(), "Unreviewed implementation change")
+        reviewed_hashes[name] = sha(recorded)
+    for name in ("make_pilot.py", "xtc_fixture.py"):
+        require(generation["code_sha256"].get(name) == reviewed_hashes[name], "Unreviewed generator provenance")
+    for name in ("verify_pilot.py", "xtc_fixture.py"):
+        require(report.get("code_sha256", {}).get(name) == reviewed_hashes[name], "Unreviewed validator provenance")
     checks = preflight()
     require(len(generation["streams"]) == len(report["streams"]) == 10, "Incomplete stream set")
     files = []

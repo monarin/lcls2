@@ -1,10 +1,10 @@
 {
   "scope": "Stage 3 60-event pilot generation and structural validation",
-  "phase": "validated_review_pending",
+  "phase": "review_corrections_validated",
   "base_sha": "81c88de94",
-  "implementation_sha": null,
+  "implementation_sha": "eef35c7a0977ae3c2ccf11131199a4de996ef4e3",
   "reviewed_sha": null,
-  "review_round": 0,
+  "review_round": 1,
   "review_round_limit": 3,
   "staging": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/.synthetic-mfx-r0001-stage3-20261104",
   "checks": {
@@ -13,12 +13,26 @@
     "unit_checks": "7 passed",
     "generation": "pass",
     "structural_validation": "pass",
-    "serial_uncalibrated_smoke": "pass"
+    "serial_uncalibrated_smoke": "pass",
+    "revised_structural_validation": "pass",
+    "revised_unit_checks": "10 tests passed, including 3 provenance subcases"
   },
   "pending": [
     "Claude review",
     "no-overwrite publication"
   ],
   "stage4_acceptance": "not run",
-  "generated_bytes": 2040571066
+  "generated_bytes": 2040571066,
+  "review_attempts": [
+    {
+      "round": 1,
+      "verdict": "pass",
+      "record": "round-01/review.json",
+      "nonblocking_findings": [
+        "S3-ADMIN-01",
+        "S3-VERIFY-01",
+        "S3-ADMIN-02"
+      ]
+    }
+  ]
 }

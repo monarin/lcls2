@@ -46,6 +46,8 @@ def verify(root, sources):
     scan_id = generation["scan_names_id"]
     report = {"completed_utc": datetime.now(timezone.utc).isoformat(), "root": str(root.resolve()),
               "generation_sha256": file_sha(root / "generation.json"),
+              "code_sha256": {p.name: file_sha(p) for p in
+                  [Path(__file__), Path(__file__).with_name("xtc_fixture.py")]},
               "scope": "Every record, source bytes, schemas, offsets and transition state; not calibrated/MPI acceptance.",
               "streams": []}
     for stream, (source, saved) in enumerate(zip(sources, generation["streams"])):
@@ -72,6 +74,7 @@ def verify(root, sources):
                 data = {"bd": read_record(bd, cursors["bd"]), "smd": read_record(smd, cursors["smd"])}
                 for kind in ("bd", "smd"):
                     raw, old = data[kind], originals[kind]
+                    require(header(old)[0] == row["timestamp"], "Source record timestamp mismatch")
                     require(header(raw)[0] == ts and (header(raw)[1] >> 24) & 15 == svc, "Output timeline mismatch")
                     require(header(raw)[1:5] == header(old)[1:5], "env/src/damage/type changed")
                     require(trace[kind + "_offset"] == cursors[kind] and trace[kind + "_size"] == len(raw), "Wrong output mapping")

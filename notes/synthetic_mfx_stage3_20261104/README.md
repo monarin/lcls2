@@ -48,6 +48,8 @@ Calibration is intentionally skipped; this does not complete Stage 4.
 no-overwrite publication, requiring a passing structural report and a passing
 review at an exact implementation commit. It rehashes staged files, checks
 implementation bytes against that commit, rechecks disk/logbook collisions,
+checks that both target directories exist and are writable/traversable,
+compares the recorded generator/validator hashes with the reviewed Git blobs,
 and hard-links bigdata before SMD. The twenty-file set is **not atomically
 published**. A fsynced intent/completion journal records each link, and a
 partial failure must be inspected rather than retried blindly. No existing
@@ -93,3 +95,15 @@ changes no psana core code. Stage 4 still requires calibrated image/reference
 comparisons, supporting-detector/EPICS checks, CPU MPI/batch-boundary coverage,
 and collaborator-session readback. Run-2 generation/deployment is outside this
 stage. Review results and publication state are recorded in `status.json`.
+
+## Review corrections
+
+Round 1 passed with three nonblocking safeguards, all implemented: generator
+and validator provenance must match the reviewed commit; the independent
+validator checks source-record timestamps against the index; both destination
+directories are checked before publication. `verification_reviewed.json` is
+the new all-record pass report and the publication input.
+`unit_checks_reviewed.txt` records ten passing tests, including three provenance
+rejection subcases and missing/unwritable-directory checks before any
+authentication or links. Original reports are retained for the audit trail.
+The generated files and their hashes are unchanged. See `responses.md`.
