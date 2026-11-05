@@ -47,7 +47,7 @@ Stage 4 prerequisite. No logbook registration or human messages are included.
 
 Validation commands are recorded in logs; do not blindly replay writers or
 exclusive report creation. Use runtime.sh for the pinned Python/psana install.
-The nine focused tests cover disallowed/mutated HTTP writes, one-shot request
+The thirteen focused tests cover disallowed/mutated HTTP writes, one-shot request
 consumption, timestamp/offset edits, header/payload/run corruption, both production
 maps and repeated/truncated source cycles across a second boundary.
 
@@ -65,3 +65,21 @@ Review uses the requested Codex/Claude loop, at most three rounds. Round 1 revie
 code, the actual private pilot and raw DataSource evidence, and the dry-run plan.
 After it passes, the authorized plan is executed once and complete calibrated
 acceptance/evidence are reviewed again. No core psana implementation is changed.
+
+Round 1 passed with seven nonblocking findings. `round-01/responses.md` records
+six fixes and the intentionally fresh destination metadata. Round 2 reviews
+these fixes and the regenerated plan before the authorized deployment.
+
+If an upload stops, preserve the deployment directory and private response bodies.
+Inspect each intent, HTTP result, returned GridFS/document ID and completed pair;
+use GETs to reconcile the destination collection and `fs.files`, then retrieve
+candidate data IDs and compare payload hashes to the frozen plan. A data POST
+without a matching document may leave an orphan blob; a lost response may instead
+hide a successful write. Never delete evidence, rerun deploy, or infer absence
+from a missing response. Any repair needs a concrete scoped plan after readback;
+the current writer offers no automatic cleanup/retry.
+
+`fixture_contract.json` is a metadata sidecar: native uint16 JF1M input and a future
+`repeat16-v1` expansion into 32 panels. Its fly-scan bin rule uses the global logical
+event index modulo 30, independent of the single native DAQ step. Neither GPU
+expansion nor cube kernels are implemented in this stage.

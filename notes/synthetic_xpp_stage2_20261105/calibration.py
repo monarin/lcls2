@@ -9,7 +9,7 @@ import time
 
 import requests
 
-from fixture import HERE, ROOT, SNAPSHOT, frozen_report, create_root, payload_hash, wire, check_stat
+from fixture import HERE, ROOT, SNAPSHOT, frozen_report, create_root, payload_hash, wire, check_stat, private_dir, private_output
 
 RO='https://pswww.slac.stanford.edu/ws/calib_ws/'
 RW='https://pswww.slac.stanford.edu/ws-kerb/calib_ws/'
@@ -89,6 +89,14 @@ def check_existing(expected, current):
         check_stat(r)
 
 
+def check_run_slots(headers):
+    lgbk='https://pswww.slac.stanford.edu/ws-kerb/lgbk/lgbk/prjdatpsana/ws/'
+    runs=get(lgbk+'runs',headers=headers)
+    wire.require(runs.get('success') is True and not any(r['num'] in (3,4) for r in runs['value']), 'Run 3/4 already registered')
+    from fixture import DEST
+    wire.require(not [p for folder in (DEST,DEST/'smalldata') for n in (3,4) for p in folder.glob(f'*r{n:04d}*.xtc2*')], 'Published run-3/4 file collision')
+
+
 def prepare():
     from krtc import KerberosTicket
     from psana.pscalib.calib import MDBUtils as mu, MDBWebUtils as wu, CalibConstants as cc
@@ -97,17 +105,15 @@ def prepare():
     source=frozen_report('calibration')
     wire.require(source['shortname']==COLLECTION and len(source['records'])==8,'Wrong frozen detector')
     wire.require(wu.pro_detector_name(source['uniqueid'],add_shortname=False)==COLLECTION,'Detector name mapping changed')
-    baseline=json.loads((SNAPSHOT/'destination_calibration_before.json').read_text())
+    baseline_path=SNAPSHOT/'destination_calibration_before.json'
+    wire.require(wire.file_sha(baseline_path)==frozen_report('admin_checks')['destination_calibration_sha256'],'Baseline snapshot hash changed')
+    baseline=json.loads(baseline_path.read_text())
     wire.require(destination()==baseline,'Destination changed since Stage 1 or target collection already exists')
     check_existing(baseline,baseline)
     headers=KerberosTicket('HTTP@pswww.slac.stanford.edu').getAuthHeaders()
     privilege=get(RW+DB+'/test_post_privilege',headers=headers)
     wire.require(privilege.get('status') is True,'No destination write privilege')
-    lgbk='https://pswww.slac.stanford.edu/ws-kerb/lgbk/lgbk/prjdatpsana/ws/'
-    runs=get(lgbk+'runs',headers=headers)
-    wire.require(runs.get('success') is True and not any(r['num'] in (3,4) for r in runs['value']), 'Run 3/4 already registered')
-    from fixture import DEST
-    wire.require(not [p for folder in (DEST,DEST/'smalldata') for n in (3,4) for p in folder.glob(f'*r{n:04d}*.xtc2*')], 'Published run-3/4 file collision')
+    check_run_slots(headers)
     now=int(time.time())
     items=[]
     for record in source['records']:
@@ -134,6 +140,29 @@ def prepare():
     print('PASS deployment plan:',len(items),'documents,',sum(i['bytes'] for i in items),'bytes; SHA256',wire.file_sha(PLAN),flush=True)
 
 
+def post_one(guard,prefix,url,kwargs,ctype,auth_factory,response_root):
+    headers=auth_factory()
+    if 'data' in kwargs:
+        headers=dict(headers, **{'Content-Type':'application/octet-stream'})
+    digest=body_hash(kwargs)
+    save(prefix.with_suffix('.intent.json'),dict(url=url,method='POST',ctype=ctype,
+         body_sha256=digest,utc=datetime.now(timezone.utc).isoformat()))
+    guard.pending=(url,digest)
+    response=requests.post(url,headers=headers,**kwargs)
+    # Preserve the exact body privately before status checks or JSON parsing.
+    raw_path=response_root/(prefix.name+'.http.bin')
+    with private_output(raw_path) as f:
+        f.write(response.content);f.flush();os.fsync(f.fileno())
+    safe_headers={k:response.headers[k] for k in ('Content-Type','Content-Length','Date','X-Request-ID') if k in response.headers}
+    save(prefix.with_suffix('.http.json'),dict(status=response.status_code,headers=safe_headers,
+         body_path=str(raw_path),body_sha256=wire.sha(response.content)))
+    wire.require(not response.is_redirect and 200<=response.status_code<300,'Upload HTTP failure; inspect saved response, do not retry')
+    result=response.json()
+    wire.require(isinstance(result,dict) and isinstance(result.get('_id'),str),'Missing upload ID')
+    save(prefix.with_suffix('.response.json'),dict(status=response.status_code,response={'_id':result['_id']}))
+    return result['_id']
+
+
 def deploy(guard,expected_sha):
     from krtc import KerberosTicket
     wire.require(expected_sha and wire.file_sha(PLAN)==expected_sha,'Deployment plan not the reviewed hash')
@@ -147,7 +176,10 @@ def deploy(guard,expected_sha):
         wire.require(wire.file_sha(SNAPSHOT/item['file'])==item['sha256'],'Frozen payload changed')
     headers=KerberosTicket('HTTP@pswww.slac.stanford.edu').getAuthHeaders()
     wire.require(get(RW+DB+'/test_post_privilege',headers=headers).get('status') is True,'Write privilege lost')
+    check_run_slots(headers)
     EXECUTION.mkdir(exist_ok=False)  # Any prior attempt requires inspection, never retry blindly.
+    response_root=ROOT/'deployment_responses'
+    private_dir(response_root)
     save(EXECUTION/'attempt.json',dict(plan_sha256=expected_sha,started_utc=datetime.now(timezone.utc).isoformat()))
     journal=[]
     for n,item in enumerate(plan['items']):
@@ -160,22 +192,15 @@ def deploy(guard,expected_sha):
                 url=RW+DB+'/'+COLLECTION+'/'
                 doc=dict(item['document'],id_data=results[0])
                 kwargs=dict(json=doc)
-            digest=body_hash(kwargs)
             prefix=EXECUTION/f'{n:02d}-{kind}'
-            save(prefix.with_suffix('.intent.json'),dict(url=url,method='POST',ctype=item['document']['ctype'],body_sha256=digest,
-                                                       utc=datetime.now(timezone.utc).isoformat()))
-            guard.pending=(url,digest)
-            response=requests.post(url,headers=headers,**kwargs)
-            result=response.json()
-            save(prefix.with_suffix('.response.json'),dict(status=response.status_code,response=result))
-            response.raise_for_status()
-            wire.require(200<=response.status_code<300 and isinstance(result.get('_id'),str),'Missing upload ID')
-            results.append(result['_id'])
+            result=post_one(guard,prefix,url,kwargs,item['document']['ctype'],
+                lambda:KerberosTicket('HTTP@pswww.slac.stanford.edu').getAuthHeaders(),response_root)
+            results.append(result)
         journal.append(dict(ctype=item['document']['ctype'],id_data=results[0],id_doc=results[1],sha256=item['sha256']))
         save(EXECUTION/f'{n:02d}-completed.json',journal[-1])
         print('Deployed',item['document']['ctype'],results[1],flush=True)
     save(EXECUTION/'journal.json',journal)
-    print('Completed eight experiment-only uploads; readback is required',flush=True)
+    print('Completed',len(journal),'experiment-only uploads; readback is required',flush=True)
 
 
 def verify():
@@ -204,8 +229,10 @@ def verify():
     for ct in ids:
         for excluded in (1,2,5):
             wire.require(wu.select_doc_in_run_range([d for d in docs if d['ctype']==ct],excluded) is None,'New experiment record leaks outside 3-4')
-    save(HERE/'calibration_readback.json',dict(status='pass',checks=checks,document_count=8,post_requests=16,
-        existing_documents_unchanged=13,existing_run1_2_selections_unchanged=True,protected_metadata_unchanged=True,
+    requests_count=len(list(EXECUTION.glob('*.intent.json')))
+    wire.require(requests_count==len(list(EXECUTION.glob('*.response.json')))==len(list(EXECUTION.glob('*.http.json')))==2*len(journal),'Incomplete request evidence')
+    save(HERE/'calibration_readback.json',dict(status='pass',checks=checks,document_count=len(docs),post_requests=requests_count,
+        existing_documents_unchanged=sum(len(v) for k,v in current.items() if k!=COLLECTION),existing_run1_2_selections_unchanged=True,protected_metadata_unchanged=True,
         new_experiment_records_excluded_for_runs=[1,2,5],payload_bytes=sum(i['bytes'] for i in plan['items']),
         script_sha256=wire.file_sha(HERE/'calibration.py')))
     print('PASS run-3/4 normal calibration lookup, payload readback and preservation',flush=True)

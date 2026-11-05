@@ -1,0 +1,7 @@
+{
+  "status": "timeout",
+  "seconds": 900,
+  "approval": false,
+  "reviewed_commit": "57495428124d135e67d3651a1351d3a0e807b74e",
+  "note": "No structured result. Reviewer made 191 session records and searched for unavailable submodule sources. Retry focuses on new Stage 2 code; no DB mutation occurred."
+}

@@ -1,21 +1,28 @@
 {
   "stage": 2,
-  "phase": "round1_code_and_deployment_plan_review",
+  "phase": "round2_fixes_and_refreshed_plan_review",
   "branch": "work/synthetic-mfx-scan",
   "base_sha": "07cff96d5079527663344ac60356a574124c18b0",
-  "round": 1,
+  "round": 2,
   "round_limit": 3,
   "generated": true,
   "calibration_deployed": false,
   "published": false,
-  "plan_sha256": "045f55a2c79656db79938c7fae741e061e7c5d66757e024e0fdec4786826d5f6",
+  "plan_sha256": "0fe56e202307ea7b796db95ae943c76d292c69410b7f7831e036b358f6e47c77",
   "checks": {
-    "unit_tests": "9 passed",
+    "unit_tests": "13 passed",
     "seam_bytes": "pass",
     "seam_raw_datasource": "pass",
     "source_samples": "6 passed",
     "pilot_bytes": "pass",
     "pilot_raw_datasource": "pass: 2400 events, one step"
   },
-  "unresolved_findings": []
+  "unresolved_findings": [],
+  "implementation_sha": "57495428124d135e67d3651a1351d3a0e807b74e",
+  "review_output": "/tmp/synthetic-xpp-stage2-review-20261105-round-01-retry",
+  "review_attempts": 2,
+  "review_attempt_1": "timeout/no verdict",
+  "reviewed_sha": "57495428124d135e67d3651a1351d3a0e807b74e",
+  "review_verdict": "pass_with_nonblocking_findings",
+  "responses": "round-01/responses.md"
 }
