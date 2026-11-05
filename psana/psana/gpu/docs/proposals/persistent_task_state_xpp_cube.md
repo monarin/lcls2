@@ -1,5 +1,11 @@
 # Persistent GPU task state for XPP cubes
 
+The [November 5 plan for JF expansion and fly-scan fixtures](synthetic_jungfrau_decompression_cube.md)
+uses XPP run 311 as 1M input, with one step in each destination run: run 3
+(2,400-event pilot) and run 4 (400,000 events). It supersedes the conversational
+run-216 source proposal for these new fixtures and leaves the completed MFX
+run-1/2 records below unchanged.
+
 **Proposed, not implemented.** Reviewed against checkout `87bce00cb` on
 2026-10-28. API names below are a design sketch, not executable examples for the
 current release. The implemented interfaces remain in [user kernels](../user_kernels.md)
