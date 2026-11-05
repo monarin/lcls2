@@ -1,0 +1,7 @@
+{
+  "url": "https://pswww.slac.stanford.edu/ws-kerb/calib_ws/cdb_prjdatpsana/gridfs/",
+  "method": "POST",
+  "ctype": "pixel_min",
+  "body_sha256": "95aeaae03b56c171cf88753c821630a3c24f1fcf406cec3e17d56781aa3f8369",
+  "utc": "2026-11-05T19:56:35.722069+00:00"
+}

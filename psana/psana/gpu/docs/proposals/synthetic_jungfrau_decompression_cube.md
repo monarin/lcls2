@@ -1,7 +1,9 @@
 # Synthetic JF 1M input for expansion and fly-scan cubes
 
-Status: revised plan, November 5, 2026. No run-3/4 fixture or calibration
-deployment has been performed. This replaces the conversational proposal to
+Status: Stage 2 execution and acceptance passed, November 5, 2026; final evidence
+review pending. Run 3 exists privately (2,400 events, one native step), and eight
+experiment-only calibration types are deployed for runs 3–4. Neither run 3 nor
+run 4 is published in final `xtc/`. This replaces the conversational proposal to
 use XPP run 216 and repeat its native steps.
 
 ## Source and destination
@@ -123,10 +125,19 @@ Stage 1 completed on November 5, 2026, with independent review passing at
 `786938d79`. All 151,152 source events have both JF segments and zero XTC
 damage. Exact output sizes are 5,039,830,328 bytes (run 3) and 839,913,818,464
 bytes (run 4). Calibration snapshots are frozen privately; no destination
-constants or synthetic XTC were written. See the
+constants or synthetic XTC were written during Stage 1. See the
 [Stage 1 results](../../../../../notes/synthetic_xpp_stage1_20261105/README.md)
 for manifests, validation, private archive and review records. Project quota
 confirmation and source-sharing authorization remain later-stage prerequisites.
+
+Stage 2 generated and verified the 5,039,830,328-byte private run-3 pilot.
+Normal calibrated DataSource passes for all 2,400 events and six source-matched
+raw/calibrated samples, plus an eight-event repetition/second-rollover fixture.
+All eight calibration types resolve correctly for runs 3 and 4. Existing runs
+1–2, source files and source/shared calibration metadata are unchanged. See
+[Stage 2 results](../../../../../notes/synthetic_xpp_stage2_20261105/README.md)
+for private location, journals, acceptance and review records. Final evidence
+review is pending; publication remains Stage 3 and run-4 generation Stage 4.
 
 1. **Read-only source preflight.** Freeze file/configuration/transition inventory,
    exact source-event mapping, selected detector fields and calibration manifest.
@@ -160,8 +171,9 @@ confirmation and source-sharing authorization remain later-stage prerequisites.
 
 Use the session's implementation → independent Claude review → response/fix →
 re-review loop for executable changes. Preserve exact reviewed commits and
-compact evidence alongside the existing synthetic-data records. This revision
-authorizes planning only; generation and DB writes await execution instructions.
+compact evidence alongside the existing synthetic-data records. The original revision
+was planning-only; subsequent explicit Stage 1 and Stage 2 instructions authorized
+the completed preflight, scoped calibration deployment and private generation.
 
 ## Sharing and scope
 
@@ -170,7 +182,9 @@ preparation can proceed, but authorization to share its payloads and constants
 through `prjdatpsana` must be established before collaborator-accessible
 publication/deployment. A renamed or repeated copy is still derived from the
 private source. No permission changes or external messages are part of this
-plan revision.
+plan revision. The later explicit Stage 2 instruction authorizes the scoped
+calibration deployment and private generation; event-payload publication remains
+a separate Stage 3 action.
 
 The completed MFX runs 1–2 and their historical plans/results remain unchanged.
 See [persistent task state and XPP cubes](persistent_task_state_xpp_cube.md)

@@ -1,0 +1,10 @@
+{
+  "status": 200,
+  "headers": {
+    "Content-Type": "text/html; charset=utf-8",
+    "Content-Length": "35",
+    "Date": "Thu, 05 Nov 2026 19:56:37 GMT"
+  },
+  "body_path": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105/deployment_responses/07-data.http.bin",
+  "body_sha256": "0019fa3cd756f909b9fd6ce8d37b4550b6c78fbc044d2a11291979492c71d1e4"
+}

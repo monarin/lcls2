@@ -1,0 +1,7 @@
+{
+  "url": "https://pswww.slac.stanford.edu/ws-kerb/calib_ws/cdb_prjdatpsana/jungfrau_000010/",
+  "method": "POST",
+  "ctype": "pixel_gain",
+  "body_sha256": "25e8579e07f1e6878acd1db6b3eff390ef610f6fa831dd6062dc033711662c3a",
+  "utc": "2026-11-05T19:56:34.812071+00:00"
+}

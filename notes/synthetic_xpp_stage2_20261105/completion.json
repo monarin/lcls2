@@ -1,0 +1,45 @@
+{
+  "status": "pass",
+  "completed_utc": "2026-11-05T19:58:06.277188+00:00",
+  "root": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105",
+  "pilot": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105/pilot",
+  "events": 2400,
+  "steps": 1,
+  "pilot_bytes": 5039830328,
+  "calibration_validity": [
+    3,
+    4
+  ],
+  "documents_deployed": 8,
+  "private_directory_modes": {
+    "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105": "0o700",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105/pilot": "0o700",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105/pilot/smalldata": "0o700",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105/seam": "0o700",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105/seam/smalldata": "0o700"
+  },
+  "acl": "# file: /sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105\n# owner: monarin\n# group: ps-data\n# flags: -s-\nuser::rwx\ngroup::rwx\t#effective:---\ngroup:ps-data:rwx\t#effective:---\ngroup:ps-prj:rwx\t#effective:---\ngroup:prjdatpsana:rwx\t#effective:---\nmask::---\nother::---\ndefault:user::rwx\ndefault:group::rwx\ndefault:group:ps-data:rwx\ndefault:group:ps-prj:rwx\ndefault:group:prjdatpsana:rwx\ndefault:mask::rwx\ndefault:other::---\n\n# file: /sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105/pilot\n# owner: monarin\n# group: ps-data\n# flags: -s-\nuser::rwx\ngroup::rwx\t#effective:---\ngroup:ps-data:rwx\t#effective:---\ngroup:ps-prj:rwx\t#effective:---\ngroup:prjdatpsana:rwx\t#effective:---\nmask::---\nother::---\ndefault:user::rwx\ndefault:group::rwx\ndefault:group:ps-data:rwx\ndefault:group:ps-prj:rwx\ndefault:group:prjdatpsana:rwx\ndefault:mask::rwx\ndefault:other::---\n\n",
+  "existing_run1_2_files_unchanged": 40,
+  "source_file_stats_unchanged": 14,
+  "final_xtc_published": false,
+  "output_hashes": "Every byte validated before deployment; output size/mode and manifests rechecked here.",
+  "evidence_sha256": {
+    "pilot_verification": "6370f55384298f6e0d0f584efc642b529e8eecbbd143398616703d9a09c50cec",
+    "seam_verification": "e86f96b1d4cc9b6f066c21e548697cb6cc99437a8e67f1d5ab24e61653a753c2",
+    "pilot_raw_acceptance": "5669062cf535f4c635924783f341431397a65839788622d3eefe49e3f3487469",
+    "seam_raw_acceptance": "86179f917fc7116012bc385be609beaaae28b7a41f92031dc49f73bf09b91b91",
+    "source_samples": "759d16496410274942668753edd9093b3481c8d01cc4e13953d28002569527c7",
+    "calibration_readback": "a6ac7391fcfd2afc07b1fb61486d7c562bf66aa5676779b42511c6d86f051436",
+    "pilot_acceptance": "a822f0de41da2d4142f3fa9e944fa7d9d893729477abac873f0e32b49df5e074",
+    "seam_acceptance": "6477e766c6b519fde3b3461afbfc816c8a3b3bc00132e6e9b8e35eee50a490dd"
+  },
+  "code_sha256": {
+    "completion.py": "4103074c54c8a597f3f1b528b7b67993313a3ffbd146c1de26354f76352d5cc4",
+    "fixture.py": "af9ef6d178cd3a60e7f182c629fcd317433d1dbb37b0c2daaab47b247ca3a29d",
+    "acceptance.py": "14e43f64657f2f3b869ce461980ea0f1387794d43a805cb79784ee9bb139a813",
+    "generate.py": "49d2e710e6db2a6d55b0b95aa4fd02aa5e1f4576375e36c16f7b6908edbdcd27",
+    "verify.py": "e85921c777c9639a2368a92d769e42cc6c8461d7d8e1f86cce84dfa8b222e88d",
+    "calibration.py": "a23230fb3e2a467244678c8b23577f45f9c899a267e83f99457bfdfdd7920f0b",
+    "test_stage2.py": "0277de2c2f6306db62bf70fdb8fb033930b183e9621aa8b1b3974a850c18b6e1"
+  }
+}

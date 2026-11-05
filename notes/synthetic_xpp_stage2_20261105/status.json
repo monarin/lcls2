@@ -1,12 +1,12 @@
 {
   "stage": 2,
-  "phase": "round2_fixes_and_refreshed_plan_review",
+  "phase": "round3_execution_evidence_review",
   "branch": "work/synthetic-mfx-scan",
   "base_sha": "07cff96d5079527663344ac60356a574124c18b0",
-  "round": 2,
+  "round": 3,
   "round_limit": 3,
   "generated": true,
-  "calibration_deployed": false,
+  "calibration_deployed": true,
   "published": false,
   "plan_sha256": "0fe56e202307ea7b796db95ae943c76d292c69410b7f7831e036b358f6e47c77",
   "checks": {
@@ -15,14 +15,18 @@
     "seam_raw_datasource": "pass",
     "source_samples": "6 passed",
     "pilot_bytes": "pass",
-    "pilot_raw_datasource": "pass: 2400 events, one step"
+    "pilot_raw_datasource": "pass: 2400 events, one step",
+    "calibration_readback": "pass: 8 types, runs 3 and 4",
+    "pilot_calibrated_datasource": "pass: 2400 events, one step, 6 matching samples",
+    "seam_calibrated_datasource": "pass: 8 events, one step, matching repeated samples",
+    "completion": "pass"
   },
   "unresolved_findings": [],
-  "implementation_sha": "57495428124d135e67d3651a1351d3a0e807b74e",
-  "review_output": "/tmp/synthetic-xpp-stage2-review-20261105-round-01-retry",
-  "review_attempts": 2,
-  "review_attempt_1": "timeout/no verdict",
-  "reviewed_sha": "57495428124d135e67d3651a1351d3a0e807b74e",
-  "review_verdict": "pass_with_nonblocking_findings",
-  "responses": "round-01/responses.md"
+  "implementation_sha": "89801cc72f11aaf4b47bb5b8b6b8227a90f27ffb",
+  "review_output": "/tmp/synthetic-xpp-stage2-review-20261105-round-02",
+  "review_attempts": 1,
+  "reviewed_sha": "89801cc72f11aaf4b47bb5b8b6b8227a90f27ffb",
+  "review_verdict": "pass",
+  "responses": "round-02/responses.md",
+  "review_round1_attempts": 2
 }

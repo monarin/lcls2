@@ -1,8 +1,9 @@
 # XPP Stage 2: run-3 pilot and calibration 3–4
 
-In progress: private generation and deployment preparation. Database deployment
-and calibrated destination acceptance have not run yet. Stage 3 publication to
-`/sdf/data/lcls/ds/prj/prjdatpsana/xtc/` is excluded from this stage.
+Stage 2 execution and all acceptance checks passed. Final independent evidence
+review is pending. Eight experiment-only calibration documents are deployed for
+runs 3–4; the private run-3 pilot contains 2,400 events in one native step.
+Stage 3 publication to `/sdf/data/lcls/ds/prj/prjdatpsana/xtc/` is excluded.
 
 Private run-3 pilot directory:
 `/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105/pilot/`.
@@ -42,7 +43,7 @@ and unchanged source/shared metadata. No detector-shared DB is written.
 The user's explicit Stage 2 instruction authorizes this calibration deployment
 and private generation. Collaborator-facing event-payload publication remains a
 separate stage. Pilot allocation is bounded to about 5 GB and successful writes
-will establish capacity for this pilot; full-run quota confirmation remains a
+established capacity for this pilot; full-run quota confirmation remains a
 Stage 4 prerequisite. No logbook registration or human messages are included.
 
 Validation commands are recorded in logs; do not blindly replay writers or
@@ -83,3 +84,40 @@ the current writer offers no automatic cleanup/retry.
 `repeat16-v1` expansion into 32 panels. Its fly-scan bin rule uses the global logical
 event index modulo 30, independent of the single native DAQ step. Neither GPU
 expansion nor cube kernels are implemented in this stage.
+
+## Execution results
+
+- Sixteen POSTs returned HTTP 200: eight data blobs plus eight documents. Every
+  intent, safe HTTP result, allocated ID and completed pair is in `deployment/`.
+  Raw HTTP bodies are kept only in the private results directory.
+- `calibration_readback.json` verifies all eight types for both runs 3 and 4,
+  exact metadata/payload hashes, unchanged 13 existing documents and run-1/2
+  selections, and unchanged source/shared metadata. New records do not match
+  runs 1, 2 or 5 (shared fallback outside 3–4 is still possible).
+- `pilot_acceptance.json`: 2,400 events, one step, raw shape (2,512,1024), all six
+  raw/calibrated samples identical to source. Batch size 37 and SMD batch 29.
+- `seam_acceptance.json`: eight events, one step, repeated raw/calibrated samples
+  identical, with a second-boundary rollover. Batch size 3 and SMD batch 2.
+- `completion.json`: all 40 run-1/2 files and 14 source-file stats unchanged;
+  output/manifests and owner-only access checked; no run-3/4 final XTC published.
+
+Example for the owner using an activated psana environment:
+
+```python
+from psana import DataSource
+
+ds = DataSource(
+    exp="prjdatpsana", run=3,
+    dir="/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105/pilot",
+    live=False,
+)
+for run in ds.runs():
+    jf = run.Detector("jungfrau1M")
+    for step in run.steps():
+        count = sum(1 for evt in step.events())
+        print(count)  # 2400
+```
+
+Set `PS_FAKESTEP_FLAG=0`. The directory remains private: collaborator publication
+and access validation are Stage 3. Run 4 has calibration ready but no generated
+XTC yet. No GPU decompression/cube implementation or throughput claim is made.

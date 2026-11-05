@@ -1,0 +1,50 @@
+[
+  {
+    "ctype": "geometry",
+    "id_data": "6aecdf71d476b756da4aac94",
+    "id_doc": "6aecdf71d476b756da4aac96",
+    "sha256": "6c87d308a5c9a8d54f33962d693e32b1c590df001fb115f02c430714e5ab5589"
+  },
+  {
+    "ctype": "pedestals",
+    "id_data": "6aecdf7241d1da027c3bcfab",
+    "id_doc": "6aecdf726728bca27f093277",
+    "sha256": "70c99a66706b1890882b2f024e9eeadce2c496e14f3bd7c4b02883026a940540"
+  },
+  {
+    "ctype": "pixel_gain",
+    "id_data": "6aecdf72d476b756da4aac97",
+    "id_doc": "6aecdf721dfd063a73bd9b15",
+    "sha256": "0274aea1c78a5b96bced42e9c848881953fef3d7a17a846eee400585085c267a"
+  },
+  {
+    "ctype": "pixel_max",
+    "id_data": "6aecdf737b3d4f37736d77eb",
+    "id_doc": "6aecdf731dfd063a73bd9b16",
+    "sha256": "70f12f4d6b3d7fbbb4237fa4358775ef7ce0786a07e197f6d31004d4959630c6"
+  },
+  {
+    "ctype": "pixel_min",
+    "id_data": "6aecdf737b3d4f37736d784d",
+    "id_doc": "6aecdf74d476b756da4aacc9",
+    "sha256": "95aeaae03b56c171cf88753c821630a3c24f1fcf406cec3e17d56781aa3f8369"
+  },
+  {
+    "ctype": "pixel_offset",
+    "id_data": "6aecdf741dfd063a73bd9b17",
+    "id_doc": "6aecdf747b3d4f37736d78af",
+    "sha256": "568eb70a99f13733b3475ab371552e14211197eea64da447235b789d50ca86fb"
+  },
+  {
+    "ctype": "pixel_rms",
+    "id_data": "6aecdf74446ce7da7a4f8a40",
+    "id_doc": "6aecdf757b3d4f37736d78b0",
+    "sha256": "6caaf167d9f3a35fc9cbae9038458ce84f15289e489e2da2e7649bcd9a6ea648"
+  },
+  {
+    "ctype": "pixel_status",
+    "id_data": "6aecdf751dfd063a73bd9b49",
+    "id_doc": "6aecdf75d476b756da4aacca",
+    "sha256": "fcf4ac50b06b17fe274ecd6b4a997fd0063ee763cf43253c7314beae1efa2c10"
+  }
+]

@@ -1,0 +1,107 @@
+{
+  "reviewed_commit": "89801cc72f11aaf4b47bb5b8b6b8227a90f27ffb",
+  "verdict": "pass",
+  "summary": "Round 2 passes. All seven round-1 findings are resolved: XPP-S2-01/02/03/04/06/07 are fixed in the inspected code and XPP-S2-05 is documented as an intentional, accepted choice that does not affect run-3/4 selection under the pinned runtime path (Run._get_calibconst calls calib_constants_all_types with exp/run only; MDBUtils query is run<=N and select_doc_in_run_range filters begin<=N<=end). post_one now sets application/octet-stream on the GridFS POST, regenerates Kerberos headers per request, persists the exact response body privately plus status/safe headers before any status check or JSON parse, and rejects redirects. deploy() re-runs check_run_slots before writing, keeps the one-shot EXECUTION directory and intent-before-POST journaling. Four new DeploymentTests exercise the real deploy loop (success with id_data substitution, HTTP 500, non-JSON 200, 302) and confirm no retry and orphan evidence preservation; unit_checks.log shows 13 tests OK. completion.py and verify() now derive counts from checked data. prepare() pins the baseline snapshot to the Stage 1 admin_checks digest. The refreshed deployment_plan.json hash 0fe56e20... matches calibration_prepare.log and status.json; 8 items sum to 125830928 bytes, run=3/run_end=4, destination only cdb_prjdatpsana/jungfrau_000010, 13 prior documents unchanged, new time_sec 1793908159 differs only as expected from the superseded round-1 plan. fixture_contract.json is metadata only and references the pilot generation manifest hash. Two new low non-blocking observations (document POST Content-Type differs from psana's proven octet-stream header; status.json implementation_sha is stale). Post-deployment readback and calibrated acceptance remain pending for round 3 and are not claimed passed.",
+  "checks": [
+    "Read round-01/review.json and responses.md; mapped each of XPP-S2-01..07 to a concrete code location in the new commit",
+    "calibration.py post_one: octet-stream header on data POST (l.145-146), auth_factory per request (l.144, l.197), intent saved before guard.pending/POST (l.148-151), raw body saved via O_EXCL private file then status/safe headers before require/json (l.153-159), is_redirect rejected (l.159)",
+    "deploy(): plan hash, script hash, destination/protected equality, payload hash precheck, privilege recheck, new check_run_slots call (l.179), EXECUTION.mkdir(exist_ok=False), per-item completed records and journal",
+    "verify(): request evidence counts intent==response==http==2*journal (l.232-233); existing_documents_unchanged and post_requests derived not literal; run 3/4 exact IDs and payload hashes; exclusion for runs 1/2/5",
+    "completion.py: documents_deployed, pilot_bytes, existing_run1_2_files_unchanged, source_file_stats_unchanged derived from readback/generation/frozen reports (l.46-48)",
+    "prepare(): baseline snapshot hash checked against frozen admin_checks destination_calibration_sha256 (l.109); Stage 1 admin_checks.json contains that key",
+    "test_stage2.py DeploymentTests: real deploy loop with mocked transport/auth/GET checks; asserts intent hash before POST, allow_redirects False, octet-stream on data, id_data substitution, 5 auth header calls, failure cases http/json/redirect stop after blob, no journal, body preserved, Set-Cookie excluded, FileExistsError on re-run; unit_checks.log: Ran 13 tests OK",
+    "deployment_plan.json: 8 items, bytes 1808+4*12582912+3*25165824=125830928, run 3/run_end 4, id_doc_exp/id_data_exp 0, placeholder id_data, extpars carry source IDs; protected_before counts 20/161 unchanged vs round-1 plan; existing_before 5+8=13 docs; plan SHA in calibration_prepare.log equals status.json and scope",
+    "psana runtime path: run.py l.291 calib_constants_all_types(det_uniqueid, exp, run, dbsuffix) without time_sec; MDBUtils.dbnames_collection_query l.401 run<=N; select_doc_in_run_range begin<=N<=end; supports XPP-S2-05 acceptance",
+    "README and fixture_contract.json: orphan reconciliation procedure documented; sidecar is metadata only, no payloads, generation_manifest_sha256 equals pilot_generation.json generation_sha256; 13-test count matches log"
+  ],
+  "limitations": [
+    "Did not run tests or compute hashes; the plan's script_sha256 a23230fb... matching calibration.py and the plan file hash 0fe56e20... are taken from calibration_prepare.log/status.json and enforced at deploy time",
+    "Private binary payloads, Stage 1 snapshot files and private generation manifests not read, per scope",
+    "Server-side behavior of pswww calib_ws (Content-Type acceptance, response body formats) cannot be inspected; XPP-S2-08 is an interface observation",
+    "gitdir/submodules not inspected; SHA and cleanliness taken from harness",
+    "Post-deployment artifacts (deployment/journal.json, calibration_readback.json, pilot/seam acceptance, completion.json) do not exist yet by design and are not assessed"
+  ],
+  "findings": [
+    {
+      "id": "XPP-S2-01",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_xpp_stage2_20261105/calibration.py",
+      "line": 146,
+      "evidence": "Resolved. post_one adds 'Content-Type': 'application/octet-stream' when kwargs contains 'data'; DeploymentTests asserts the header on every data POST. Plan regenerated afterwards (new script_sha256 and plan hash 0fe56e20...).",
+      "requested_change": "None; fixed."
+    },
+    {
+      "id": "XPP-S2-02",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_xpp_stage2_20261105/calibration.py",
+      "line": 153,
+      "evidence": "Resolved. Exact response body written to a private O_EXCL file and status/safe headers saved to .http.json before wire.require on status and before response.json(); not response.is_redirect enforced. Tests cover 500, non-JSON 200 and 302 after a successful blob, confirming body preservation and stop.",
+      "requested_change": "None; fixed."
+    },
+    {
+      "id": "XPP-S2-03",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_xpp_stage2_20261105/calibration.py",
+      "line": 197,
+      "evidence": "Resolved. deploy passes a lambda creating a fresh KerberosTicket header set per POST; test asserts getAuthHeaders called 5 times for 1 privilege GET plus 4 POSTs.",
+      "requested_change": "None; fixed."
+    },
+    {
+      "id": "XPP-S2-04",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_xpp_stage2_20261105/completion.py",
+      "line": 46,
+      "evidence": "Resolved. completion.json values now come from pilot_generation total_bytes, readback document_count, len(run1_2_files_before) and 2*len(inventory streams); verify() derives post_requests and existing_documents_unchanged and requires intent/response/http counts equal 2*len(journal).",
+      "requested_change": "None; fixed."
+    },
+    {
+      "id": "XPP-S2-05",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_xpp_stage2_20261105/calibration.py",
+      "line": 127,
+      "evidence": "Accepted, intentionally unchanged, documented in responses.md. Fresh time_sec/time_stamp, run_orig=0, tstamp_orig='' retained; source provenance in extpars. Pinned runtime run.py l.291 passes exp/run only, MDBUtils query run<=N and select_doc_in_run_range begin<=N<=end, so selection for runs 3/4 is unaffected; calibrated acceptance remains a required post-deployment check.",
+      "requested_change": "None for this pilot; confirm via round-3 calibrated acceptance evidence."
+    },
+    {
+      "id": "XPP-S2-06",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_xpp_stage2_20261105/test_stage2.py",
+      "line": 90,
+      "evidence": "Resolved. DeploymentTests.exercise runs calibration.deploy with patched externals and a transport that checks intent-before-POST, URL, allow_redirects, Content-Type and id_data substitution; failure variants assert stop after the blob, no journal, preserved body, excluded Set-Cookie, and FileExistsError on re-run. README documents read-only orphan reconciliation.",
+      "requested_change": "None; fixed."
+    },
+    {
+      "id": "XPP-S2-07",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_xpp_stage2_20261105/calibration.py",
+      "line": 109,
+      "evidence": "Resolved. prepare() requires wire.file_sha(SNAPSHOT/destination_calibration_before.json) == frozen_report('admin_checks')['destination_calibration_sha256'] before using it as baseline; key present in Stage 1 admin_checks.json (7d5cc1e5...).",
+      "requested_change": "None; fixed."
+    },
+    {
+      "id": "XPP-S2-08",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_xpp_stage2_20261105/calibration.py",
+      "line": 194,
+      "evidence": "Document POST uses kwargs=dict(json=doc) so requests sends Content-Type: application/json, whereas psana's proven path (MDBWebUtils.post with cc.krbheaders) sends every write, including document POSTs, with application/octet-stream. Server acceptance of application/json for the collection endpoint cannot be verified from the repository; an unexpected rejection would stop after the first GridFS blob, which the no-retry design handles safely and tests cover.",
+      "requested_change": "Accept as-is (recommended; no re-prepare needed) or, if a future re-prepare occurs anyway, consider matching psana's header on document POSTs. Not required for this deployment."
+    },
+    {
+      "id": "XPP-S2-09",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/synthetic_xpp_stage2_20261105/status.json",
+      "line": 21,
+      "evidence": "status.json phase is round2_fixes_and_refreshed_plan_review and plan_sha256 is the new 0fe56e20..., but implementation_sha and reviewed_sha still read 57495428..., the round-1 commit, not 89801cc7....",
+      "requested_change": "Update implementation_sha/reviewed_sha when recording round-2 results; documentation only."
+    }
+  ]
+}
