@@ -1,0 +1,16 @@
+{
+  "scope": "scope.md",
+  "phase": "review-1-and-full-sample-validation",
+  "base_commit": "00ae929b9cbb50d33246dbe30e6e28f5cb6b4afe",
+  "round": 1,
+  "round_limit": 3,
+  "checks": {
+    "unit_tests": "2 passed",
+    "one_event_mfx": "pass",
+    "1000_event_mfx": "running job 43382526",
+    "edge_diagnostic": "GPU decoder failure, retained as known codec limitation",
+    "saved_readback": "pending full trial"
+  },
+  "artifacts": "/sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1",
+  "unresolved_ids": []
+}

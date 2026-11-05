@@ -1,0 +1,276 @@
+{
+  "status": "pass",
+  "events_requested": 1,
+  "events_completed": 1,
+  "source": {
+    "exp": "mfx101555026",
+    "run": 10,
+    "dir": "/sdf/data/lcls/ds/prj/public01/xtc"
+  },
+  "calibration": {
+    "pedestals": {
+      "id": "69befaf3890f6488e88c3610",
+      "sha256": "da0c0e0ae7ba076be8192c6c72c635a325a422b9fc8a5dc8b50b1b9b305ead4d",
+      "file": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage1-20261103/calibration/jungfrau_000009-pedestals-69befaf3890f6488e88c3610.bin"
+    },
+    "pixel_offset": {
+      "id": "6970124d29e359d12edcbe8c",
+      "sha256": "beb14747d1bda8078906da1aae9eac2f8cec5dd1b192efdc99f93f992195ff06",
+      "file": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage1-20261103/calibration/jungfrau_000009-pixel_offset-6970124d29e359d12edcbe8c.bin"
+    },
+    "pixel_gain": {
+      "id": "6942291d8feeb40dd3310ffa",
+      "sha256": "be2d0facb2459f0ef3de880b384b72d90170ed3d539a95c1aa8f7a6915c70db3",
+      "file": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_mfx/r0001/stage1-20261103/calibration/jungfrau_000009-pixel_gain-6942291d8feeb40dd3310ffa.bin"
+    }
+  },
+  "settings": {
+    "use_offset": true,
+    "status": false,
+    "cmpars": null
+  },
+  "bound": 3.0,
+  "panel_order": {
+    "5": [
+      3,
+      7,
+      0,
+      1,
+      2
+    ],
+    "6": [
+      19,
+      15,
+      11,
+      31,
+      27,
+      23
+    ],
+    "7": [
+      18,
+      14,
+      10,
+      6,
+      30,
+      26,
+      22
+    ],
+    "8": [
+      16,
+      12,
+      8,
+      4,
+      28,
+      24,
+      20
+    ],
+    "9": [
+      17,
+      13,
+      9,
+      5,
+      29,
+      25,
+      21
+    ]
+  },
+  "cupy": "13.6.0",
+  "cuda_runtime": 12090,
+  "kernel_sha256": "5a2590f1b0efa0ff79cf3c6b8f9e8544a226b50f9616635f816783a31cb24993",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "records": [
+    {
+      "event": 0,
+      "timestamp": 4909050823936603206,
+      "stream": 5,
+      "panels": [
+        3,
+        7,
+        0,
+        1,
+        2
+      ],
+      "raw_sha256": "ccf698323d55aa5436195d888dbc90805d3c1dc3e92c66e13e148f6ea11c382d",
+      "calibrated_sha256": "6501eb7f29b676895d130d04d068070e8b3475b2e233c671325105eb6b812e8b",
+      "calibration_bitwise_equal": true,
+      "compressed_sha256": "b8f7140fb30e8a14dda617c51188262877da97bc50fd8cad99ff813e9d4f1942",
+      "compressed_bytes": 1797176,
+      "decoded_shape": [
+        5,
+        512,
+        1024
+      ],
+      "decoded_dtype": "<f4",
+      "decoded_bytes": 10485760,
+      "cpu": {
+        "max_abs_error": 2.0,
+        "bound_violations": 0,
+        "nonfinite_mismatches": 0,
+        "pass": true
+      },
+      "gpu": {
+        "max_abs_error": 2.0,
+        "bound_violations": 0,
+        "nonfinite_mismatches": 0,
+        "pass": true
+      },
+      "decoder_bit_mismatches": 0
+    },
+    {
+      "event": 0,
+      "timestamp": 4909050823936603206,
+      "stream": 6,
+      "panels": [
+        19,
+        15,
+        11,
+        31,
+        27,
+        23
+      ],
+      "raw_sha256": "10c775ac72886b6b0b6a02bc30ffdda014386449b460d0c9c191ef4cd3414d07",
+      "calibrated_sha256": "0a053570663a1d532e69610b4c9ccf6f4a316048a026ff64d5a5576a82528d9f",
+      "calibration_bitwise_equal": true,
+      "compressed_sha256": "eeade9dbb5e6ae2b90438f33e31a7c41657eeb829639045be86c6f638bc09dec",
+      "compressed_bytes": 2476328,
+      "decoded_shape": [
+        6,
+        512,
+        1024
+      ],
+      "decoded_dtype": "<f4",
+      "decoded_bytes": 12582912,
+      "cpu": {
+        "max_abs_error": 2.0,
+        "bound_violations": 0,
+        "nonfinite_mismatches": 0,
+        "pass": true
+      },
+      "gpu": {
+        "max_abs_error": 2.0,
+        "bound_violations": 0,
+        "nonfinite_mismatches": 0,
+        "pass": true
+      },
+      "decoder_bit_mismatches": 0
+    },
+    {
+      "event": 0,
+      "timestamp": 4909050823936603206,
+      "stream": 7,
+      "panels": [
+        18,
+        14,
+        10,
+        6,
+        30,
+        26,
+        22
+      ],
+      "raw_sha256": "cf916d1f9a9ec1c891b6d4196b2f09f2269cd9e5ea8159db1609460fd2670466",
+      "calibrated_sha256": "0731d407942f1f06baddd34d85290a2a28437abc54f99fa4179eff15193eb150",
+      "calibration_bitwise_equal": true,
+      "compressed_sha256": "24ee9ea307836e8502ce2dd6e90a325d7fda8cd9327a4cca062a458d670ffd0b",
+      "compressed_bytes": 3534072,
+      "decoded_shape": [
+        7,
+        512,
+        1024
+      ],
+      "decoded_dtype": "<f4",
+      "decoded_bytes": 14680064,
+      "cpu": {
+        "max_abs_error": 2.0,
+        "bound_violations": 0,
+        "nonfinite_mismatches": 0,
+        "pass": true
+      },
+      "gpu": {
+        "max_abs_error": 2.0,
+        "bound_violations": 0,
+        "nonfinite_mismatches": 0,
+        "pass": true
+      },
+      "decoder_bit_mismatches": 0
+    },
+    {
+      "event": 0,
+      "timestamp": 4909050823936603206,
+      "stream": 8,
+      "panels": [
+        16,
+        12,
+        8,
+        4,
+        28,
+        24,
+        20
+      ],
+      "raw_sha256": "83dfab677d579cc1c82976281852f3901480ce597eafe834eaf2539a8383a29b",
+      "calibrated_sha256": "49c5cddf83b73de4a6b72bd8247a59bb2f78318a4a452c5ac69f6385ca804a63",
+      "calibration_bitwise_equal": true,
+      "compressed_sha256": "7251a7d61d9fd657e2f8607ed4b68e7e2975017c0f37b32b142a914b9731929b",
+      "compressed_bytes": 2838824,
+      "decoded_shape": [
+        7,
+        512,
+        1024
+      ],
+      "decoded_dtype": "<f4",
+      "decoded_bytes": 14680064,
+      "cpu": {
+        "max_abs_error": 2.0,
+        "bound_violations": 0,
+        "nonfinite_mismatches": 0,
+        "pass": true
+      },
+      "gpu": {
+        "max_abs_error": 2.0,
+        "bound_violations": 0,
+        "nonfinite_mismatches": 0,
+        "pass": true
+      },
+      "decoder_bit_mismatches": 0
+    },
+    {
+      "event": 0,
+      "timestamp": 4909050823936603206,
+      "stream": 9,
+      "panels": [
+        17,
+        13,
+        9,
+        5,
+        29,
+        25,
+        21
+      ],
+      "raw_sha256": "81e4ec8170104b6dbedcef9eedb47960f57843310664c20d88c223c52be70256",
+      "calibrated_sha256": "d309d4269705aefab2cfba49788a17c75f6b03d88312b642a9c3b01a12882f92",
+      "calibration_bitwise_equal": true,
+      "compressed_sha256": "b12b0de5b0e4531c67992f5db8fab479564ca69f1d1955db2a002905adf83094",
+      "compressed_bytes": 3367432,
+      "decoded_shape": [
+        7,
+        512,
+        1024
+      ],
+      "decoded_dtype": "<f4",
+      "decoded_bytes": 14680064,
+      "cpu": {
+        "max_abs_error": 2.0,
+        "bound_violations": 0,
+        "nonfinite_mismatches": 0,
+        "pass": true
+      },
+      "gpu": {
+        "max_abs_error": 2.0,
+        "bound_violations": 0,
+        "nonfinite_mismatches": 0,
+        "pass": true
+      },
+      "decoder_bit_mismatches": 0
+    }
+  ],
+  "elapsed_seconds": 3.639335951767862
+}

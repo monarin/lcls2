@@ -1,0 +1,25 @@
+{
+  "sha256": {
+    "notes/mfx_real_codec_20261105/trial.py": "7355e3201f9c8dab5d4b174d560fd3942d62d90fb61dfeb60edd61717275d473",
+    "notes/mfx_real_codec_20261105/test_trial.py": "0a618a0b7085801f511a11b3e7166700c943da2bc3e6c0b2de422ed3e7c891bc",
+    "notes/mfx_real_codec_20261105/verify_saved.py": "ccf194d20eeb71ef6139f321881230e28f46f0186810c2c3f4ab5ed493c5bf5d",
+    "notes/mfx_real_codec_20261105/probe_edges.py": "36b7d3c6a472dcdc265aa65c46191ef050d6ed2a39fef5ce4f2b345e04f8f197",
+    "notes/mfx_real_codec_20261105/decode_gpu_bridge.cu": "556ae6337ab5a7bb8702f49e0f0460aaf80ea78ba53898870bbc00af13200a5c",
+    "notes/mfx_real_codec_20261105/encode_bridge.cu": "6d07df5a7e2563f3e2c23652f2a5874ce78e9366ee6cbf66aa0d41196172736d",
+    "notes/mfx_real_codec_20261105/decode_cpu_bridge.cpp": "32a1b83b327da677073f6d3c265372612b003b99fc31dbdb139378e0f4110445",
+    "/sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1/libcodec_gpu.so": "1448cea42bb838cb5cf7e48bddd1695cc984acd0ea9dc82cd984b52136ed8daf",
+    "/sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1/libcodec_cpu.so": "b6b0838f358dbeafeeb06c1a3f0d5717ba89ebd2a6791725370f8efda62c2851",
+    "/sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1/SingleCompressorLossy.cu": "4bd1569684dee1a298ef8cf62a4cb4e92430506ad407d160968e97e279615848",
+    "/sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1/SingleCompressorLossy.hh": "30aebdb2a8cabab248a69b0983cb5e0ff4fc1babb912dd79afa36c724004287e",
+    "/sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1/SLEEK/lossy_compressors_gpu/sleek_single_decompressor_lossy.cu": "4e620ed5254ea1bbb0448660e48821f43381e8d076ad134818e637c06998aea6",
+    "/sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1/SLEEK/lossy_compressors_cpu/sleek_single_decompressor_lossy.cpp": "18827459a14fffe1ffcb26dc507636ce115ec6799d413db40e7a788d54c03a1d"
+  },
+  "source_base": "00ae929b9cbb50d33246dbe30e6e28f5cb6b4afe",
+  "jobs": {
+    "gate": 43382364,
+    "pilot": 43382526,
+    "edge": 43382608
+  },
+  "drp_commit": "9f7391c091d21afe585165d5ee72ca057ed98e4a",
+  "sleek_commit": "00ff130d8d3182204b6b63fc22d5c85ad6b5f2e1"
+}
