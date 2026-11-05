@@ -44,6 +44,7 @@ def schedule(index, event_count):
 
 
 def main():
+    wire.require(not (HERE / 'layout.json').exists(), 'Final layout report already exists')
     inventory = json.loads((HERE / 'inventory.json').read_text())
     indexes = {s: np.load(ARTIFACTS / 'indexes' / f's{s:03d}.npy', allow_pickle=False) for s in SELECTED}
     for s, index in indexes.items():
@@ -69,11 +70,20 @@ def main():
     for run, count in ((3, 2400), (4, 400000)):
         rec, ts, cyc, period = schedule(indexes[SELECTED[0]], count)
         mapping = ARTIFACTS / f'run{run}_mapping.npz'
-        np.savez(mapping, source_record=rec, timestamp=ts, cycle=cyc)
+        # Preserve the original archive bytes when verifying a completed map.
+        expected = dict(source_record=rec, timestamp=ts, cycle=cyc)
+        if mapping.exists():
+            with np.load(mapping, allow_pickle=False) as saved:
+                wire.require(set(saved.files) == set(expected), 'Mapping keys changed')
+                for key, value in expected.items():
+                    wire.require(np.array_equal(saved[key], value), 'Mapping changed: ' + key)
+        else:
+            with mapping.open('xb') as output:
+                np.savez(output, **expected)
         services = indexes[SELECTED[0]]['service'][rec]
         output_event_rows = np.flatnonzero(services == 12)
         boundaries = []
-        for n in (0, 2399, 2400, 151151, 151152, 302303, 302304, count-1):
+        for n in sorted(set((0, 2399, 2400, 151151, 151152, 302303, 302304, count-1))):
             if 0 <= n < count:
                 i = output_event_rows[n]
                 boundaries.append({'output_event_index': n, 'source_event_index': n % SOURCE_EVENTS,

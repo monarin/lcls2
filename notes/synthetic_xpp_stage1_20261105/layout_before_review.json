@@ -1,0 +1,279 @@
+{
+  "status": "pass",
+  "selected_source_streams": [
+    2,
+    3,
+    5,
+    6
+  ],
+  "excluded_source_streams": {
+    "0": "alvium_1 image",
+    "1": "epix100 image",
+    "4": "alvium_tt camera data"
+  },
+  "source_stream_ids_preserved": true,
+  "chunk_count_per_stream": 1,
+  "runinfo": [
+    {
+      "stream": 2,
+      "experiment_field_bytes": 16,
+      "run_number_bytes": 4
+    },
+    {
+      "stream": 3,
+      "experiment_field_bytes": 16,
+      "run_number_bytes": 4
+    },
+    {
+      "stream": 5,
+      "experiment_field_bytes": 16,
+      "run_number_bytes": 4
+    },
+    {
+      "stream": 6,
+      "experiment_field_bytes": 16,
+      "run_number_bytes": 4
+    }
+  ],
+  "native_step_payload": "empty 24-byte BeginStep/EndStep; no scan Names added",
+  "enable_chunkinfo_payload": "absent; no payload string to rename",
+  "size_contract": "Whole selected streams, byte-length-preserving identity/time/offset edits only; no additional bin payload or Names. Stage 2 must match exactly or revise estimate.",
+  "plans": [
+    {
+      "run": 3,
+      "events": 2400,
+      "records_per_stream": 2428,
+      "step_count": 1,
+      "service_counts": {
+        "2": 1,
+        "4": 1,
+        "6": 1,
+        "8": 1,
+        "10": 21,
+        "12": 2400,
+        "9": 1,
+        "7": 1,
+        "5": 1
+      },
+      "files": [
+        {
+          "stream": 2,
+          "kind": "bd",
+          "relative_path": "prjdatpsana-r0003-s002-c000.xtc2",
+          "bytes": 1024616
+        },
+        {
+          "stream": 2,
+          "kind": "smd",
+          "relative_path": "smalldata/prjdatpsana-r0003-s002-c000.smd.xtc2",
+          "bytes": 217912
+        },
+        {
+          "stream": 3,
+          "kind": "bd",
+          "relative_path": "prjdatpsana-r0003-s003-c000.xtc2",
+          "bytes": 5033671544
+        },
+        {
+          "stream": 3,
+          "kind": "smd",
+          "relative_path": "smalldata/prjdatpsana-r0003-s003-c000.smd.xtc2",
+          "bytes": 240040
+        },
+        {
+          "stream": 5,
+          "kind": "bd",
+          "relative_path": "prjdatpsana-r0003-s005-c000.xtc2",
+          "bytes": 94784
+        },
+        {
+          "stream": 5,
+          "kind": "smd",
+          "relative_path": "smalldata/prjdatpsana-r0003-s005-c000.smd.xtc2",
+          "bytes": 221680
+        },
+        {
+          "stream": 6,
+          "kind": "bd",
+          "relative_path": "prjdatpsana-r0003-s006-c000.xtc2",
+          "bytes": 4124728
+        },
+        {
+          "stream": 6,
+          "kind": "smd",
+          "relative_path": "smalldata/prjdatpsana-r0003-s006-c000.smd.xtc2",
+          "bytes": 235024
+        }
+      ],
+      "total_bytes": 5039830328,
+      "mapping_sha256": "223b7c218351c0f749ed21d4fc1ae5dc0f1cea8eeff14a2835664af9700f24eb",
+      "mapping_path": "/sdf/scratch/users/m/monarin/gpu-validation/synthetic-xpp/stage1-20261105/run3_mapping.npz",
+      "source_cycle_offset_ns": 1259698068452,
+      "min_adjacent_gap_ns": 285,
+      "boundary_events": [
+        {
+          "output_event_index": 0,
+          "source_event_index": 0,
+          "source_cycle": 0,
+          "timestamp": 4947036704591409201,
+          "source_record": 5
+        },
+        {
+          "output_event_index": 2399,
+          "source_event_index": 2399,
+          "source_cycle": 0,
+          "timestamp": 4947036790483553358,
+          "source_record": 2424
+        },
+        {
+          "output_event_index": 2399,
+          "source_event_index": 2399,
+          "source_cycle": 0,
+          "timestamp": 4947036790483553358,
+          "source_record": 2424
+        }
+      ],
+      "closing_timestamps": [
+        4947036790483554358,
+        4947036790483555358,
+        4947036790483556358
+      ]
+    },
+    {
+      "run": 4,
+      "events": 400000,
+      "records_per_stream": 403342,
+      "step_count": 1,
+      "service_counts": {
+        "2": 1,
+        "4": 1,
+        "6": 1,
+        "8": 1,
+        "10": 3335,
+        "12": 400000,
+        "9": 1,
+        "7": 1,
+        "5": 1
+      },
+      "files": [
+        {
+          "stream": 2,
+          "kind": "bd",
+          "relative_path": "prjdatpsana-r0004-s002-c000.xtc2",
+          "bytes": 165312952
+        },
+        {
+          "stream": 2,
+          "kind": "smd",
+          "relative_path": "smalldata/prjdatpsana-r0004-s002-c000.smd.xtc2",
+          "bytes": 30515048
+        },
+        {
+          "stream": 3,
+          "kind": "bd",
+          "relative_path": "prjdatpsana-r0004-s003-c000.xtc2",
+          "bytes": 838936135080
+        },
+        {
+          "stream": 3,
+          "kind": "smd",
+          "relative_path": "smalldata/prjdatpsana-r0004-s003-c000.smd.xtc2",
+          "bytes": 30537176
+        },
+        {
+          "stream": 5,
+          "kind": "bd",
+          "relative_path": "prjdatpsana-r0004-s005-c000.xtc2",
+          "bytes": 10498824
+        },
+        {
+          "stream": 5,
+          "kind": "smd",
+          "relative_path": "smalldata/prjdatpsana-r0004-s005-c000.smd.xtc2",
+          "bytes": 31300920
+        },
+        {
+          "stream": 6,
+          "kind": "bd",
+          "relative_path": "prjdatpsana-r0004-s006-c000.xtc2",
+          "bytes": 678986304
+        },
+        {
+          "stream": 6,
+          "kind": "smd",
+          "relative_path": "smalldata/prjdatpsana-r0004-s006-c000.smd.xtc2",
+          "bytes": 30532160
+        }
+      ],
+      "total_bytes": 839913818464,
+      "mapping_sha256": "2adf850178f33eb6c3ef6026b5ca80024636803d434056d34e03d6d383d29f74",
+      "mapping_path": "/sdf/scratch/users/m/monarin/gpu-validation/synthetic-xpp/stage1-20261105/run4_mapping.npz",
+      "source_cycle_offset_ns": 1259698068452,
+      "min_adjacent_gap_ns": 4,
+      "boundary_events": [
+        {
+          "output_event_index": 0,
+          "source_event_index": 0,
+          "source_cycle": 0,
+          "timestamp": 4947036704591409201,
+          "source_record": 5
+        },
+        {
+          "output_event_index": 2399,
+          "source_event_index": 2399,
+          "source_cycle": 0,
+          "timestamp": 4947036790483553358,
+          "source_record": 2424
+        },
+        {
+          "output_event_index": 2400,
+          "source_event_index": 2400,
+          "source_cycle": 0,
+          "timestamp": 4947036790491941969,
+          "source_record": 2425
+        },
+        {
+          "output_event_index": 151151,
+          "source_event_index": 151151,
+          "source_cycle": 0,
+          "timestamp": 4947042115923237886,
+          "source_record": 152415
+        },
+        {
+          "output_event_index": 151152,
+          "source_event_index": 0,
+          "source_cycle": 1,
+          "timestamp": 4947042115948270613,
+          "source_record": 5
+        },
+        {
+          "output_event_index": 302303,
+          "source_event_index": 151151,
+          "source_cycle": 1,
+          "timestamp": 4947047523985132002,
+          "source_record": 152415
+        },
+        {
+          "output_event_index": 302304,
+          "source_event_index": 0,
+          "source_cycle": 2,
+          "timestamp": 4947047524010164729,
+          "source_record": 5
+        },
+        {
+          "output_event_index": 399999,
+          "source_event_index": 97695,
+          "source_cycle": 2,
+          "timestamp": 4947051023613669654,
+          "source_record": 98514
+        }
+      ],
+      "closing_timestamps": [
+        4947051023613670654,
+        4947051023613671654,
+        4947051023613672654
+      ]
+    }
+  ],
+  "script_sha256": "e4dd6149b5afe45060208e504dbad783da665886b90e811e6cfbe4898337627d"
+}

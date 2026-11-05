@@ -1,0 +1,301 @@
+{
+  "status": "pass",
+  "checked_utc": "2026-11-05T17:21:58.460594+00:00",
+  "checks": [
+    {
+      "stream": 0,
+      "service": 4,
+      "smd_bytes": 100,
+      "bigdata_bytes": 100,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 0,
+      "service": 6,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 0,
+      "service": 8,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 0,
+      "service": 9,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 0,
+      "service": 7,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 0,
+      "service": 5,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "header-only EndRun"
+    },
+    {
+      "stream": 1,
+      "service": 4,
+      "smd_bytes": 100,
+      "bigdata_bytes": 100,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 1,
+      "service": 6,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 1,
+      "service": 8,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 1,
+      "service": 9,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 1,
+      "service": 7,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 1,
+      "service": 5,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "header-only EndRun"
+    },
+    {
+      "stream": 2,
+      "service": 4,
+      "smd_bytes": 100,
+      "bigdata_bytes": 100,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 2,
+      "service": 6,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 2,
+      "service": 8,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 2,
+      "service": 9,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 2,
+      "service": 7,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 2,
+      "service": 5,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "header-only EndRun"
+    },
+    {
+      "stream": 3,
+      "service": 4,
+      "smd_bytes": 100,
+      "bigdata_bytes": 100,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 3,
+      "service": 6,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 3,
+      "service": 8,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 3,
+      "service": 9,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 3,
+      "service": 7,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 3,
+      "service": 5,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "header-only EndRun"
+    },
+    {
+      "stream": 4,
+      "service": 4,
+      "smd_bytes": 100,
+      "bigdata_bytes": 100,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 4,
+      "service": 6,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 4,
+      "service": 8,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 4,
+      "service": 9,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 4,
+      "service": 7,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 4,
+      "service": 5,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "header-only EndRun"
+    },
+    {
+      "stream": 5,
+      "service": 4,
+      "smd_bytes": 100,
+      "bigdata_bytes": 100,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 5,
+      "service": 6,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 5,
+      "service": 8,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 5,
+      "service": 9,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 5,
+      "service": 7,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 5,
+      "service": 5,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "header-only EndRun"
+    },
+    {
+      "stream": 6,
+      "service": 4,
+      "smd_bytes": 100,
+      "bigdata_bytes": 100,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 6,
+      "service": 6,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 6,
+      "service": 8,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 6,
+      "service": 9,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 6,
+      "service": 7,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "byte-identical"
+    },
+    {
+      "stream": 6,
+      "service": 5,
+      "smd_bytes": 24,
+      "bigdata_bytes": 24,
+      "check": "header-only EndRun"
+    }
+  ],
+  "script_sha256": "17511da95b8b329a67573c90818cd0a2ace044320f422b92cc46a8f8c067625d"
+}

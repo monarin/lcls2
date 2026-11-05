@@ -1,0 +1,19 @@
+{
+  "status": "audit_complete",
+  "checked_utc": "2026-11-05T17:46:35.452282+00:00",
+  "events": 151152,
+  "damage_histogram": {
+    "0": 151152
+  },
+  "segment_presence": {
+    "(0, 1)": 151152
+  },
+  "issue_events": 0,
+  "first_issues": [],
+  "issues_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "schema_and_bounds_checks": "pass for every source JF L1Accept",
+  "pixel_data_audited": "All source bytes read and block-hashed for efficient I/O; pixel values interpreted only in representative samples.json.",
+  "source_block_hashes_sha256": "908953c72bfa14ea68291ffde43c94cd2b0034a6c6605abc8452fab112f8835d",
+  "source_bytes_read_and_hashed": 317017220960,
+  "script_sha256": "ba9fc60ab942a8a497156efccb403384ed2a4822a14c5fabd1e993e410013d93"
+}

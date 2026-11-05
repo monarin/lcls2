@@ -70,7 +70,8 @@ def main():
     wire.save_json(HERE / 'quota_probe.json', quota_record)
     acl_paths = [SOURCE, SOURCE / 'xpp101605526-r0311-s003-c000.xtc2', DEST, DEST / 'smalldata', ARTIFACTS]
     acl = subprocess.check_output(['getfacl', '-p', *map(str, acl_paths)], text=True)
-    (HERE / 'access.txt').write_text(acl.rstrip() + '\n')
+    with (HERE / 'access.txt').open('x') as output:
+        output.write(acl.rstrip() + '\n')
     report = {'status': 'pass_with_quota_and_sharing_prerequisites',
               'checked_utc': datetime.now(timezone.utc).isoformat(),
               'catalog_files': catalog, 'source_catalog_sha256': wire.file_sha(ARTIFACTS / 'source_catalog.json'),

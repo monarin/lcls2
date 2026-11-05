@@ -1,0 +1,68 @@
+# Independent Stage 1 review
+
+Review commit 343f26bc3d7f8b0760744a427115731668e50453, base 744470e3a,
+in /tmp/synthetic-xpp-stage1-review-20261105. Scope is read-only XPP run-311
+preflight for destination runs 3 (2,400 events) and 4 (400,000 events), one
+step each. Read scope.md and README.md in notes/synthetic_xpp_stage1_20261105.
+User explicitly requests the Codex implementation/Claude review loop and has
+authorized sending code/calibration metadata to Claude in this session.
+
+You are the independent reviewer only. Do not implement, execute scripts,
+launch another reviewer, generate XTC, fetch live services, write calibration,
+or expand scope. Review correctness of the scripts, evidence interpretation,
+limitations and proposed construction contract. Use stable finding IDs XPP-S1-xx.
+Return the structured schema and exact reviewed commit. Do not assume approval.
+
+Files: common.py (pins previously reviewed wire parser), inventory.py,
+audit_jungfrau.py, calibration.py, admin_checks.py, samples.py, plan_layout.py,
+test_preflight.py, runtime.sh, and associated JSON/log/README evidence in that
+notes directory. The dependency is notes/synthetic_mfx_stage5_20261104/xtc_fixture.py;
+it is unchanged and only read helpers are imported. The proposal is
+psana/psana/gpu/docs/proposals/synthetic_jungfrau_decompression_cube.md.
+Relevant primary source: xtcdata/xtcdata/xtc/src/Smd.cc (reconstructed L1 Src),
+ShapesData.hh, Damage.hh; psana/psana/pscalib/calib/MDBWebUtils.py and MDBUtils.py.
+No psana core changes: core MPI suites are not required for these standalone
+preflight drivers. They use the pinned runtime.sh installation, whose selection
+source hashes are recorded; current checkout is not silently substituted.
+
+Completed evidence: all seven SMD timestamp/service timelines agree; one step,
+one enabled interval, 151152 events, 1260 SlowUpdates. Four selected streams
+2/3/5/6 are copied whole; camera/epix streams 0/1/4 excluded. No scan Names or
+Enable chunkinfo payload. All selected runinfo identity fields fit in-place.
+Exact sizes/maps: pilot 5039830328 bytes, full 839913818464 bytes. Full schedule
+uses two complete bodies plus 97696 events, no seam transitions; cycle shift
+is source Disable-minus-Enable duration. Min gaps 285 ns/4 ns, closing templates
+retimed +1/+2/+3 us. Eight actual psana-selected calibration payloads frozen
+privately, destination planned collection jungfrau_000010 valid 3–4. Normal
+DataSource checked 22 source samples and independently matched those IDs/hashes;
+finite calibrated outputs, status masks and sparse threshold/gain distributions
+reported. Eleven focused unit tests passed. Commit hooks passed.
+
+The full JF audit is still RUNNING with this exact committed code and is NOT
+claimed as passed. It reads/hashes 317GB in 64MiB blocks and checks every frame's
+XTC shape/bounds/presence/damage, with source-stat checks and block coverage.
+Review its implementation now; final runtime results will be separately
+required before Stage 1 is called complete. No pixel-value exhaustive scientific
+validation is planned. Other-stream L1 headers/payloads are not exhaustively
+read at Stage 1; their SMD offset extents are indexed and transitions sampled as
+documented. Stage 2 must compare every retained output payload to source.
+
+Private snapshot path is recorded in README; binary payloads are not needed
+for this code review and should not be read/uploaded. Compact source metadata,
+hashes and sample summaries are committed. No public result copy is made.
+Project quota could not be queried without Weka authentication; filesystem
+available bytes alone are not quota proof. Source redistribution authorization
+is not established, and deployment/publication are later prerequisites. These
+do not block completion of the current read-only audit.
+
+Failed attempts are retained: initial sparse inventory was terminated for slow
+I/O and resumed with identical snapshot verification; admin initially queried
+internal fs.chunks and got HTTP500 (now excludes internals); initial JF audit
+incorrectly demanded identical SMD/bigdata Src (now compares time/env and
+validates bigdata-specific Src/type/extent, audits actual damage). Do assess the
+corrected contracts and meaningful negative tests rather than hiding failures.
+
+Focus on any unsupported claim of exactness, missed malformed-frame condition,
+wrong calibration selection/encoding, unsafe timestamp reuse, accidental writes,
+or implementation/evidence mismatch. Separate blockers in this stage from
+optional later writer/benchmark enhancements. Review round 1 of maximum 3.

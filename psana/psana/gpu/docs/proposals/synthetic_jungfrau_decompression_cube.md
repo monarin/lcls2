@@ -74,6 +74,13 @@ the generated Configure. Preserve source/shared DBs and existing run-1/2
 records. Record source/destination IDs, metadata, payload hashes and a deployment
 journal. Avoid deploying irrelevant constants for retained scalar detectors.
 
+Build fresh destination documents from the frozen payloads and their encoding
+metadata (`ctype`, `dtype`, applicable `data_*` fields), with experiment
+`prjdatpsana`, run 3 and run_end 4. Let the destination assign new document/data
+IDs. Do not copy source DB object IDs, reference fields, or the transient
+`tsec_id`/`tstamp_id` selection fields. Preserve source IDs and payload hashes
+only as clearly named provenance. Verify the detector identity independently.
+
 Verify normal destination lookup for both runs 3 and 4, including payload
 equality and validity-range selection. Recheck run-1/2 selection remains
 unchanged. Constants represent the stored **1M** detector. The GPU simulation

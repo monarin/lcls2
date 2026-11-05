@@ -124,13 +124,6 @@
           "source_cycle": 0,
           "timestamp": 4947036790483553358,
           "source_record": 2424
-        },
-        {
-          "output_event_index": 2399,
-          "source_event_index": 2399,
-          "source_cycle": 0,
-          "timestamp": 4947036790483553358,
-          "source_record": 2424
         }
       ],
       "closing_timestamps": [
@@ -275,5 +268,5 @@
       ]
     }
   ],
-  "script_sha256": "e4dd6149b5afe45060208e504dbad783da665886b90e811e6cfbe4898337627d"
+  "script_sha256": "4c2551d5fc226e4fdfe12cd35b22ea3b147c74c008336dd5203a920ddb57694a"
 }

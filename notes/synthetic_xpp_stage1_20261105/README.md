@@ -1,19 +1,20 @@
 # XPP run-311 Stage 1 preflight
 
-In progress. Source inventory, calibration snapshot, representative samples,
-layout computation and administrative checks have passed. The full Jungfrau
-frame audit and independent review remain pending. This is read-only preparation:
+All Stage 1 validation checks have passed; independent re-review is pending.
+The full source audit found 151,152 complete two-segment frames with zero XTC
+damage or missing-frame issues. This is read-only preparation:
 no run-3/4 XTC files, database records or permission changes have been made.
 
 Source: `/sdf/data/lcls/ds/xpp/xpp101605526/xtc/`, run 311, 151,152 events.
 Private snapshot (mode 0700):
 `/sdf/scratch/users/m/monarin/gpu-validation/synthetic-xpp/stage1-20261105/`.
 SMD/configuration/transition copies, indexes, calibration bytes, source mapping
-arrays and catalog snapshots stay there, outside Git and public results. Scratch
-is working storage; preserve on an approved private durable destination before
-purge. Compact manifests, scripts, hashes and review evidence live here.
+arrays and catalog snapshots stay outside Git and public results. The verified owner-only
+durable archive is at
+`/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage1_private_20261105/`.
+Compact manifests, scripts, hashes and review evidence live here.
 
-## Findings established so far
+## Verified findings
 
 - All seven SMD streams have exactly the same 152,419 timestamp/service pairs:
   151,152 events, 1,260 SlowUpdates and seven opening/closing transitions. The
@@ -86,6 +87,9 @@ bash notes/synthetic_xpp_stage1_20261105/runtime.sh notes/synthetic_xpp_stage1_2
 bash notes/synthetic_xpp_stage1_20261105/runtime.sh notes/synthetic_xpp_stage1_20261105/samples.py
 bash notes/synthetic_xpp_stage1_20261105/runtime.sh notes/synthetic_xpp_stage1_20261105/plan_layout.py
 bash notes/synthetic_xpp_stage1_20261105/runtime.sh notes/synthetic_xpp_stage1_20261105/test_preflight.py
+bash notes/synthetic_xpp_stage1_20261105/runtime.sh notes/synthetic_xpp_stage1_20261105/transition_checks.py
+bash notes/synthetic_xpp_stage1_20261105/runtime.sh notes/synthetic_xpp_stage1_20261105/completion_checks.py
+bash notes/synthetic_xpp_stage1_20261105/runtime.sh notes/synthetic_xpp_stage1_20261105/archive_snapshot.py
 ```
 
 The snapshot/report writers refuse existing final report names. These commands
@@ -93,12 +97,22 @@ record how checks were run, not an instruction to overwrite/replay completed
 artifacts. Inventory supports verification of partial snapshots after interruption.
 The runtime pins the previous psana installation, serial mode and fake-step=0.
 The wire parser is reused from reviewed Stage 5 and pinned by SHA256 in common.py.
-Eleven focused tests cover malformed/missing/damaged frames, differing SMD Src,
+Eleven focused tests (rerun after the review fixes) cover malformed/missing/damaged frames, differing SMD Src,
 repetition/prefix schedules, second rollover and prohibited HTTP writes.
+
+The full audit is accepted only when `events == 151152`, `issue_events == 0`,
+`damage_histogram == {"0": 151152}` and
+`segment_presence == {"(0, 1)": 151152}`. The label `audit_complete` by itself
+is not a quality verdict. Any issue requires explicit disposition before
+generation; no silent dropping, replacing or changing counts.
 
 The full JF audit reads bounded 64 MiB blocks and records block hashes, checks
 every L1 header, both segment ShapesData extents/shapes/damage and Data lengths,
 and reports missing/damaged frames. It does not interpret every pixel value.
+The additional transition_checks.json verifies byte equality of services
+4/6/7/8/9 between frozen SMD and independently read bigdata templates on all
+seven streams, plus header-only SMD EndRun. Stage 2 must repeat these checks
+before editing identity or constructing output transitions.
 Other source streams are indexed from frozen SMD: non-SlowUpdate transition
 bytes and first/last SlowUpdate copies are checked, remaining SlowUpdate lengths
 are inferred and bounded by following offsets/EOF. Full retained-payload source
@@ -111,6 +125,28 @@ GridFS collections and returned HTTP 500; those collections are now excluded.
 The first JF audit rejected the expected SMD-vs-bigdata Src distinction; the
 corrected check follows the source SMD generator and separately validates
 bigdata Src while preserving actual damage. No scientific data were altered.
+
+## Review fixes and calibration deployment contract
+
+Round 1 findings and responses are in round-01/. The full audit runs with the
+unchanged script from commit 343f26bc3d7f8b0760744a427115731668e50453. Its
+completed result is independently interpreted by completion_checks.py, which
+verified all 88 private artifacts, all 14 source file stats and all 40 existing
+run-1/2 file stats. The audit read and block-hashed 317,017,220,960 source bytes;
+these are per-block hashes, not a canonical single-file SHA256.
+Administrative evidence comes from that same commit; the later access.txt
+exclusive-create fix does not imply the administrative queries were replayed.
+The original layout report is retained as layout_before_review.json; the
+revised report removes a duplicated boundary example and verifies the existing
+mapping arrays without changing their bytes or hashes.
+
+Stage 2 must build fresh destination calibration documents from frozen payload
+bytes and encoding metadata (`ctype`, `dtype`, applicable `data_*` fields),
+using experiment `prjdatpsana`, run 3, run_end 4, and the verified detector
+identity. Destination document/data IDs are assigned anew. Source object IDs,
+DB reference fields, and transient `tsec_id`/`tstamp_id` fields must not be
+copied into the operational metadata. Source IDs and hashes belong only in
+explicit provenance. No constants have been deployed by Stage 1.
 
 ## Later-stage prerequisites
 
