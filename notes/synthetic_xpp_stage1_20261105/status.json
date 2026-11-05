@@ -1,0 +1,27 @@
+{
+  "stage": "Read-only XPP run-311 preflight",
+  "phase": "auditing_source_and_preparing_review",
+  "round": 0,
+  "round_limit": 3,
+  "source": {
+    "experiment": "xpp101605526",
+    "run": 311
+  },
+  "destination_runs": [
+    3,
+    4
+  ],
+  "generated": false,
+  "calibration_deployed": false,
+  "review_verdict": "pending",
+  "checks": {
+    "inventory": "pass",
+    "calibration": "pass",
+    "samples": "pass (22 events)",
+    "layout": "pass",
+    "administrative": "pass with quota/sharing prerequisites",
+    "unit_tests": "11 passed",
+    "full_jungfrau_audit": "running"
+  },
+  "snapshot": "/sdf/scratch/users/m/monarin/gpu-validation/synthetic-xpp/stage1-20261105"
+}

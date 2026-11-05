@@ -1,0 +1,372 @@
+{
+  "status": "pass_with_quota_and_sharing_prerequisites",
+  "checked_utc": "2026-11-05T16:47:21.888380+00:00",
+  "catalog_files": [
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/xpp101605526-r0311-s000-c000.xtc2",
+      "catalog_bytes": 380915170620
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/smalldata/xpp101605526-r0311-s000-c000.smd.xtc2",
+      "catalog_bytes": 11528108
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/xpp101605526-r0311-s001-c000.xtc2",
+      "catalog_bytes": 163459661180
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/smalldata/xpp101605526-r0311-s001-c000.smd.xtc2",
+      "catalog_bytes": 11750380
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/xpp101605526-r0311-s006-c000.xtc2",
+      "catalog_bytes": 256600184
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/smalldata/xpp101605526-r0311-s006-c000.smd.xtc2",
+      "catalog_bytes": 11569912
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/xpp101605526-r0311-s003-c000.xtc2",
+      "catalog_bytes": 317017220960
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/smalldata/xpp101605526-r0311-s003-c000.smd.xtc2",
+      "catalog_bytes": 11574928
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/xpp101605526-r0311-s005-c000.xtc2",
+      "catalog_bytes": 3986972
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/smalldata/xpp101605526-r0311-s005-c000.smd.xtc2",
+      "catalog_bytes": 11848972
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/xpp101605526-r0311-s002-c000.xtc2",
+      "catalog_bytes": 62488928
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/smalldata/xpp101605526-r0311-s002-c000.smd.xtc2",
+      "catalog_bytes": 11552800
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/xpp101605526-r0311-s004-c000.xtc2",
+      "catalog_bytes": 19385908
+    },
+    {
+      "file": "/sdf/data/lcls/ds/xpp/xpp101605526/xtc/smalldata/xpp101605526-r0311-s004-c000.smd.xtc2",
+      "catalog_bytes": 11528100
+    }
+  ],
+  "source_catalog_sha256": "6638c8340e6e1ed51446011e8efabe776fa5cf1b36b36f4dce7e7764dc54bff7",
+  "disk_collisions": [],
+  "registered_destination_files": {
+    "3": {
+      "success": true,
+      "value": []
+    },
+    "4": {
+      "success": true,
+      "value": []
+    }
+  },
+  "registered_runs": {
+    "success": true,
+    "value": []
+  },
+  "filesystem_available_bytes": 455846709506048,
+  "directory_write_access_observed": {
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc": true,
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata": true
+  },
+  "write_probe_performed": false,
+  "quota": "Read-only probe recorded separately; filesystem availability is not quota confirmation.",
+  "existing_calibration_documents": 13,
+  "existing_calibration_matches_run1_2_snapshot": true,
+  "destination_calibration_sha256": "7d5cc1e594b2c3f46203d2ab1cec9c4726ca28033f3e2fb483df258f2c2c657a",
+  "run1_2_files_before": {
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s009-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s009-c000.xtc2",
+      "size": 440619566,
+      "mtime_ns": 1793814562487771449,
+      "inode": 9247425712853483522,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s000-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s000-c000.xtc2",
+      "size": 23776188,
+      "mtime_ns": 1793814532630385984,
+      "inode": 9056940763137638402,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s002-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s002-c000.xtc2",
+      "size": 587464,
+      "mtime_ns": 1793814532752383541,
+      "inode": 6729363969665335298,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s003-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s003-c000.xtc2",
+      "size": 302245,
+      "mtime_ns": 1793814532780382896,
+      "inode": 17853695931512455170,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s001-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s001-c000.xtc2",
+      "size": 210180,
+      "mtime_ns": 1793814532720384233,
+      "inode": 3141863830929342466,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s005-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s005-c000.xtc2",
+      "size": 314730002,
+      "mtime_ns": 1793814533308372029,
+      "inode": 5150686000976101378,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s006-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s006-c000.xtc2",
+      "size": 377674784,
+      "mtime_ns": 1793814542448183911,
+      "inode": 16225698394869923842,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s007-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s007-c000.xtc2",
+      "size": 440619566,
+      "mtime_ns": 1793814546413102303,
+      "inode": 14683638849689747458,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s008-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s008-c000.xtc2",
+      "size": 440619566,
+      "mtime_ns": 1793814551981987683,
+      "inode": 17361997301117026306,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s004-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0001-s004-c000.xtc2",
+      "size": 90460,
+      "mtime_ns": 1793814532816382172,
+      "inode": 6224551874349301762,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s004-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s004-c000.xtc2",
+      "size": 12464248,
+      "mtime_ns": 1793823431423822595,
+      "inode": 9987704091146977282,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s003-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s003-c000.xtc2",
+      "size": 1729810,
+      "mtime_ns": 1793823428154889292,
+      "inode": 7675609146734477314,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s008-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s008-c000.xtc2",
+      "size": 220219090334,
+      "mtime_ns": 1793827115082391621,
+      "inode": 3165710148290084866,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s007-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s007-c000.xtc2",
+      "size": 220219090334,
+      "mtime_ns": 1793827226367137772,
+      "inode": 18161158511419260930,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s000-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s000-c000.xtc2",
+      "size": 11882545428,
+      "mtime_ns": 1793823463056177011,
+      "inode": 11272258579282329602,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s005-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s005-c000.xtc2",
+      "size": 157299559730,
+      "mtime_ns": 1793825698495027631,
+      "inode": 6112957195538333698,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s002-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s002-c000.xtc2",
+      "size": 275030668,
+      "mtime_ns": 1793823440293641610,
+      "inode": 10014770386988564482,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s009-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s009-c000.xtc2",
+      "size": 220219090334,
+      "mtime_ns": 1793829719716714624,
+      "inode": 4980033919906414594,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s001-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s001-c000.xtc2",
+      "size": 100098588,
+      "mtime_ns": 1793823437676694967,
+      "inode": 16762527430586990594,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s006-c000.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/prjdatpsana-r0002-s006-c000.xtc2",
+      "size": 188759325032,
+      "mtime_ns": 1793826603104746188,
+      "inode": 448185012071235586,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s007-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s007-c000.smd.xtc2",
+      "size": 188422,
+      "mtime_ns": 1793814546521100081,
+      "inode": 9965967535928901634,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s003-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s003-c000.smd.xtc2",
+      "size": 307461,
+      "mtime_ns": 1793814532781382876,
+      "inode": 5339024690837782530,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s006-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s006-c000.smd.xtc2",
+      "size": 163120,
+      "mtime_ns": 1793814542579181215,
+      "inode": 18416312322809790466,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s002-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s002-c000.smd.xtc2",
+      "size": 60564,
+      "mtime_ns": 1793814532761383287,
+      "inode": 4994011598059798530,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s004-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s004-c000.smd.xtc2",
+      "size": 72336,
+      "mtime_ns": 1793814532817382135,
+      "inode": 9164687223250288642,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s008-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s008-c000.smd.xtc2",
+      "size": 188422,
+      "mtime_ns": 1793814552097985295,
+      "inode": 5212588084200341506,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s001-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s001-c000.smd.xtc2",
+      "size": 16676,
+      "mtime_ns": 1793814532721384111,
+      "inode": 8016886143692963842,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s000-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s000-c000.smd.xtc2",
+      "size": 17804,
+      "mtime_ns": 1793814532645385675,
+      "inode": 2722932008154038274,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s009-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s009-c000.smd.xtc2",
+      "size": 188422,
+      "mtime_ns": 1793814562585769432,
+      "inode": 2503958457702809602,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s005-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0001-s005-c000.smd.xtc2",
+      "size": 137818,
+      "mtime_ns": 1793814533394370259,
+      "inode": 14549164630548873218,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s004-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s004-c000.smd.xtc2",
+      "size": 2356344,
+      "mtime_ns": 1793823431432822394,
+      "inode": 2598121665053065218,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s009-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s009-c000.smd.xtc2",
+      "size": 2472430,
+      "mtime_ns": 1793829720264703683,
+      "inode": 10300555635737034754,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s006-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s006-c000.smd.xtc2",
+      "size": 2447128,
+      "mtime_ns": 1793826603217743905,
+      "inode": 11099052120810717186,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s008-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s008-c000.smd.xtc2",
+      "size": 2472430,
+      "mtime_ns": 1793827115179389657,
+      "inode": 17189085111309172738,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s001-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s001-c000.smd.xtc2",
+      "size": 2300684,
+      "mtime_ns": 1793823437718694110,
+      "inode": 909871404635324418,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s003-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s003-c000.smd.xtc2",
+      "size": 3291906,
+      "mtime_ns": 1793823428159889190,
+      "inode": 6992280052382498818,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s000-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s000-c000.smd.xtc2",
+      "size": 2307524,
+      "mtime_ns": 1793823463177174542,
+      "inode": 9581563244069388290,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s002-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s002-c000.smd.xtc2",
+      "size": 2344572,
+      "mtime_ns": 1793823440365640090,
+      "inode": 12912988703871729666,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s007-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s007-c000.smd.xtc2",
+      "size": 2472430,
+      "mtime_ns": 1793827226808128782,
+      "inode": 5432443569431642114,
+      "device": 26345731
+    },
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s005-c000.smd.xtc2": {
+      "path": "/sdf/data/lcls/ds/prj/prjdatpsana/xtc/smalldata/prjdatpsana-r0002-s005-c000.smd.xtc2",
+      "size": 2421826,
+      "mtime_ns": 1793825698623025050,
+      "inode": 9690423176112242690,
+      "device": 26345731
+    }
+  },
+  "sharing": "Private source; authorization to redistribute pixels/constants not established by this read-only stage.",
+  "script_sha256": "7b4e818fe42ce2e4e7089095006c835d586cdcb2302c9da32d8da63f5150b3b2"
+}

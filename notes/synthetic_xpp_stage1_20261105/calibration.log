@@ -1,0 +1,9 @@
+Frozen pedestals: cdb_xpp101605526/6a3dc23aafaa5886e5ef5b24, 12582912 bytes
+Frozen pixel_max: cdb_xpp101605526/6a3dc246d2875ada43d72754, 25165824 bytes
+Frozen pixel_status: cdb_xpp101605526/6a3dc23dafaa5886e5ef5b25, 25165824 bytes
+Frozen pixel_min: cdb_xpp101605526/6a3dc243afaa5886e5ef5b26, 25165824 bytes
+Frozen pixel_rms: cdb_xpp101605526/6a3dc240e2b4ca57700310fc, 12582912 bytes
+Frozen pixel_offset: cdb_jungfrau_000010/69e10769079ce3d5814264e7, 12582912 bytes
+Frozen geometry: cdb_jungfrau_000010/69e039ecdc909be09223b88f, 1808 bytes
+Frozen pixel_gain: cdb_jungfrau_000010/69e1076070907649871ab58e, 12582912 bytes
+PASS frozen calibration selection; no DB writes

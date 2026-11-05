@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "weka",
+    "fs",
+    "quota",
+    "list",
+    "/sdf/data/lcls/ds/prj/prjdatpsana/xtc"
+  ],
+  "returncode": 41,
+  "stdout": "",
+  "stderr": "error: Authentication Failed: \nPlease run this command to login to your cluster:\n\n    weka user login\n\nIf you pass your credentials using environment variables, please make sure\nto pass them in the WEKA_USERNAME/WEKA_PASSWORD environment variables.\nYou may also need to pass WEKA_ORG to specify your organization ID or name.\nYou may also need to pass profile through --profile option in multi-cluster environment.\n\n\u0000"
+}
