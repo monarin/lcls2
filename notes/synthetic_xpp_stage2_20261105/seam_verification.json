@@ -1,0 +1,71 @@
+{
+  "status": "pass",
+  "checked_utc": "2026-11-05T18:59:46.906270+00:00",
+  "mode": "seam",
+  "streams": [
+    {
+      "stream": 2,
+      "counts": {
+        "2": 1,
+        "4": 1,
+        "6": 1,
+        "8": 1,
+        "10": 3,
+        "12": 8,
+        "9": 1,
+        "7": 1,
+        "5": 1
+      },
+      "records": 18
+    },
+    {
+      "stream": 3,
+      "counts": {
+        "2": 1,
+        "4": 1,
+        "6": 1,
+        "8": 1,
+        "10": 3,
+        "12": 8,
+        "9": 1,
+        "7": 1,
+        "5": 1
+      },
+      "records": 18
+    },
+    {
+      "stream": 5,
+      "counts": {
+        "2": 1,
+        "4": 1,
+        "6": 1,
+        "8": 1,
+        "10": 3,
+        "12": 8,
+        "9": 1,
+        "7": 1,
+        "5": 1
+      },
+      "records": 18
+    },
+    {
+      "stream": 6,
+      "counts": {
+        "2": 1,
+        "4": 1,
+        "6": 1,
+        "8": 1,
+        "10": 3,
+        "12": 8,
+        "9": 1,
+        "7": 1,
+        "5": 1
+      },
+      "records": 18
+    }
+  ],
+  "total_bytes": 17148024,
+  "every_retained_byte_compared": true,
+  "timestamp_service_alignment": "all four streams match the same independently reconstructed schedule",
+  "script_sha256": "e85921c777c9639a2368a92d769e42cc6c8461d7d8e1f86cce84dfa8b222e88d"
+}

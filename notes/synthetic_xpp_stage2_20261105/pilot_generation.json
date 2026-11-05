@@ -1,0 +1,76 @@
+{
+  "status": "generated",
+  "created_utc": "2026-11-05T18:59:18.783350+00:00",
+  "run": 3,
+  "folder": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105/pilot",
+  "streams": [
+    {
+      "stream": 2,
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0003-s002-c000.xtc2",
+          "bytes": 1024616,
+          "sha256": "fce0a9371148253c836b31283f723bc279f53600dde62c3ba041f195c3ad71ca"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0003-s002-c000.smd.xtc2",
+          "bytes": 217912,
+          "sha256": "f5587d2876fb411ccc7ca1e7f5c733cdbc90c1f7321662d0769266979835a6f6"
+        }
+      }
+    },
+    {
+      "stream": 3,
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0003-s003-c000.xtc2",
+          "bytes": 5033671544,
+          "sha256": "921c6337c4d366fb36bf60dc50c026e39655ee9ffe22cfa91f3b27ab6c705e2b"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0003-s003-c000.smd.xtc2",
+          "bytes": 240040,
+          "sha256": "5a407cdc65bbf2030135e0466e0a1e8b634d3baf0700c2638c86c0addcfab683"
+        }
+      }
+    },
+    {
+      "stream": 5,
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0003-s005-c000.xtc2",
+          "bytes": 94784,
+          "sha256": "0b2f34137ab3b087d3fa68788face7d41a5b09f686b59505dd78411f28b18ec0"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0003-s005-c000.smd.xtc2",
+          "bytes": 221680,
+          "sha256": "7a3d80ce288e86259eeff5274dccc91e22ee89f6b187d8b937ca657a18d24f59"
+        }
+      }
+    },
+    {
+      "stream": 6,
+      "files": {
+        "bd": {
+          "relative_path": "prjdatpsana-r0003-s006-c000.xtc2",
+          "bytes": 4124728,
+          "sha256": "1024109b458861d00552bb930208540138e3ef9f2a89b4cc55c93a34c5a7d009"
+        },
+        "smd": {
+          "relative_path": "smalldata/prjdatpsana-r0003-s006-c000.smd.xtc2",
+          "bytes": 235024,
+          "sha256": "2bd0845249452836af3cdd5577fb8f7c75ad1b7d91fa8d67e4a33cec12d6e8ab"
+        }
+      }
+    }
+  ],
+  "total_bytes": 5039830328,
+  "code_sha256": {
+    "fixture.py": "af9ef6d178cd3a60e7f182c629fcd317433d1dbb37b0c2daaab47b247ca3a29d",
+    "generate.py": "49d2e710e6db2a6d55b0b95aa4fd02aa5e1f4576375e36c16f7b6908edbdcd27"
+  },
+  "events": 2400,
+  "records_per_stream": 2428,
+  "generation_sha256": "f8dd197c23e32292170cafa5fa2d01833b65ab66a34ddcf329751b699905f72b"
+}

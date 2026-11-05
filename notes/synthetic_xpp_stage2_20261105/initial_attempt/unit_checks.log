@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_xpp_stage2_20261105/test_stage2.py", line 13, in <module>
+    from calibration import Guard, ALLOWED, body_hash
+ImportError: cannot import name 'Guard' from 'calibration' (/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_xpp_stage1_20261105/calibration.py)

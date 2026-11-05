@@ -1,0 +1,23 @@
+E.......
+======================================================================
+ERROR: test_only_one_predeclared_post_can_pass (__main__.GuardTests.test_only_one_predeclared_post_can_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_xpp_stage2_20261105/test_stage2.py", line 75, in test_only_one_predeclared_post_can_pass
+    requests.post(url,**kwargs)
+  File "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/lib/python3.11/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_xpp_stage2_20261105/calibration.py", line 45, in request
+    wire.require(method=='POST' and url in ALLOWED and guard.pending==(url,body_hash(kwargs)), 'Disallowed calibration mutation')
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage5_20261104/xtc_fixture.py", line 23, in require
+    raise ValueError(message)
+ValueError: Disallowed calibration mutation
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.944s
+
+FAILED (errors=1)

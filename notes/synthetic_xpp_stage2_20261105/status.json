@@ -1,0 +1,21 @@
+{
+  "stage": 2,
+  "phase": "round1_code_and_deployment_plan_review",
+  "branch": "work/synthetic-mfx-scan",
+  "base_sha": "07cff96d5079527663344ac60356a574124c18b0",
+  "round": 1,
+  "round_limit": 3,
+  "generated": true,
+  "calibration_deployed": false,
+  "published": false,
+  "plan_sha256": "045f55a2c79656db79938c7fae741e061e7c5d66757e024e0fdec4786826d5f6",
+  "checks": {
+    "unit_tests": "9 passed",
+    "seam_bytes": "pass",
+    "seam_raw_datasource": "pass",
+    "source_samples": "6 passed",
+    "pilot_bytes": "pass",
+    "pilot_raw_datasource": "pass: 2400 events, one step"
+  },
+  "unresolved_findings": []
+}

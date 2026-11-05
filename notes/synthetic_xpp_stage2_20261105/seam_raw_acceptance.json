@@ -1,0 +1,64 @@
+{
+  "status": "pass",
+  "kind": "seam_raw",
+  "events": 8,
+  "step_counts": [
+    8
+  ],
+  "detectors": [
+    "Em3l0BmMon",
+    "Sp1L2Wv8",
+    "XppSb2BmMon",
+    "XppSb3BmMon",
+    "XppUsbEncoder02",
+    "XppUsrDio",
+    "ebeamh",
+    "epicsinfo",
+    "gasdet",
+    "jungfrau1M",
+    "pcavs",
+    "timing",
+    "triginfo"
+  ],
+  "samples": {
+    "0": {
+      "raw": {
+        "shape": [
+          2,
+          512,
+          1024
+        ],
+        "dtype": "<u2",
+        "sha256": "65e15c82137a718810ebf7dab8aa22172d71b5568b35fdcefc4cc34c607bdeb9"
+      }
+    },
+    "1": {
+      "raw": {
+        "shape": [
+          2,
+          512,
+          1024
+        ],
+        "dtype": "<u2",
+        "sha256": "5673ff7ef429ef9411fdf207845e1c8e4612f964a4da1c8b64bf0f35e2c0c6f8"
+      }
+    },
+    "2": {
+      "raw": {
+        "shape": [
+          2,
+          512,
+          1024
+        ],
+        "dtype": "<u2",
+        "sha256": "ecb1c523d99afa83dc89a0571956f7d4b939022967000d99fb01f51cbe91a5bd"
+      }
+    }
+  },
+  "calibration": [],
+  "batch_size": 3,
+  "PS_SMD_N_EVENTS": "2",
+  "PS_FAKESTEP_FLAG": "0",
+  "psana": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/__init__.py",
+  "script_sha256": "14e43f64657f2f3b869ce461980ea0f1387794d43a805cb79784ee9bb139a813"
+}

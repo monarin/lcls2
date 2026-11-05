@@ -1,0 +1,67 @@
+# XPP Stage 2: run-3 pilot and calibration 3–4
+
+In progress: private generation and deployment preparation. Database deployment
+and calibrated destination acceptance have not run yet. Stage 3 publication to
+`/sdf/data/lcls/ds/prj/prjdatpsana/xtc/` is excluded from this stage.
+
+Private run-3 pilot directory:
+`/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage2_private_20261105/pilot/`.
+The root and subdirectories are mode 0700; XTC files are explicitly mode 0600.
+Inherited group ACL entries have no effective directory access under this mask;
+preserve that mask and the explicit modes. No existing permissions were changed.
+
+The pilot stores 2400 JF1M events in one step across source streams 2/3/5/6:
+timing/triginfo, Jungfrau, EPICS and BLD. Eight files total 5,039,830,328 bytes.
+No 16M materialization or bin payload is stored. The original source-event data
+remain unchanged, with experiment/run identity, closing timestamps and SMD
+references rewritten as specified by Stage 1. The eight-event `seam/` fixture
+uses a shortened three-event source cycle twice plus a two-event prefix and
+forces a second rollover. It is only a validation fixture, never a published run.
+The production pilot/full schedules are checked against both frozen Stage 1 maps.
+
+`generate.py` writes exclusively into new directories. `verify.py` compares every
+retained datagram against the actual source, permitting only timestamp, runinfo
+and SMD-reference edits; it checks each field's new value, exact totals, EOF and
+the enabled one-step state machine. `acceptance.py` uses normal serial DataSource
+with fake steps disabled, non-dividing batch sizes, all selected small detectors,
+complete event counts, and source raw/calibrated sample comparisons. Calibrated
+checks use CPU-v3 with cmpars=None, matching Stage 1. Scientific equivalence to
+real decompression or a physical cube is not claimed.
+
+`calibration.py prepare` performs GET-only checks and saves a concrete eight-doc
+plan, source/shared metadata fingerprints, original 13 destination documents and
+run-1/2 selection IDs. `deploy --plan-sha HASH` permits only one explicitly
+hashed POST at a time, only to the destination experiment's GridFS and
+jungfrau_000010 collection. Each request has a durable intent before sending,
+then a response/ID record. Any prior deployment attempt makes another deployment
+refuse; partial/uncertain requests require inspection, not an automatic retry.
+Readback verifies normal run-3 and run-4 resolution, all payload hashes, fresh
+destination metadata, exclusion outside 3–4, unchanged old documents/selections
+and unchanged source/shared metadata. No detector-shared DB is written.
+
+The user's explicit Stage 2 instruction authorizes this calibration deployment
+and private generation. Collaborator-facing event-payload publication remains a
+separate stage. Pilot allocation is bounded to about 5 GB and successful writes
+will establish capacity for this pilot; full-run quota confirmation remains a
+Stage 4 prerequisite. No logbook registration or human messages are included.
+
+Validation commands are recorded in logs; do not blindly replay writers or
+exclusive report creation. Use runtime.sh for the pinned Python/psana install.
+The nine focused tests cover disallowed/mutated HTTP writes, one-shot request
+consumption, timestamp/offset edits, header/payload/run corruption, both production
+maps and repeated/truncated source cycles across a second boundary.
+
+Initial diagnostics are preserved in `initial_attempt/`: a test import selected
+the Stage 1 calibration module because the temporary helper path was not removed;
+fixture.py now restores the caller's module priority. The initial tiny fixture
+is preserved separately, and the final one was generated with the corrected
+code. A subsequent guard test caught requests' automatic `json=None` argument
+being hashed instead of the binary body. The guard was fixed and the read-only
+deployment plan regenerated before any remote mutation. No failed test caused a
+DB request to be sent. The source reference samples remain valid across the
+import-path fix; their acceptance driver was unchanged.
+
+Review uses the requested Codex/Claude loop, at most three rounds. Round 1 reviews
+code, the actual private pilot and raw DataSource evidence, and the dry-run plan.
+After it passes, the authorized plan is executed once and complete calibrated
+acceptance/evidence are reviewed again. No core psana implementation is changed.
