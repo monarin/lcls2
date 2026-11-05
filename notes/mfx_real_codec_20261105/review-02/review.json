@@ -1,0 +1,73 @@
+{
+  "reviewed_commit": "ebd9c2d78e134bcc0648a552c4f1c7d51e703b92",
+  "verdict": "pass",
+  "summary": "The previously blocking MRC-001 is closed: readback-result.json records status pass, 1000 events, 5000 blobs, max error 2.0, per-file sizes and SHA256 values, report SHA256 and the source SMD hash; status.json and README record job 43382526 and the completed checks consistently. The only functional delta, check_source_timestamps() in verify_saved.py, is correct: its 24-byte '<QIIHHI' unpack matches the XtcData Dgram layout (TimeStamp low/high as one little-endian uint64 equal to time.value(), env, then Src/Damage/TypeId/extent), datagram size extent+12 is right, (env>>24)&15==12 selects L1Accept, the SMD is re-verified by size and SHA256 against the Stage 1 manifest, and exact list equality fails closed. The readback numbers are internally consistent (file sizes sum to the total, mean/ratios follow, corrected edge counts 32768+49152 equal the 81920 bit mismatches). The pinned decoder excerpts confirm the offs-shadowing diagnosis: subtracting the correct quantization offset 0x4B800000 from 1e9/inf/NaN reproduces exactly the GPU hex outputs 02ee6b28/34000000/34400000, i.e. offs==0 reached deQuantize via the shadowed byte/block offsets at lines 336/348 and 188/191. MRC-002 is addressed by the retained witness and README caveat, MRC-005 is addressed, and the MRC-003 deferral is acceptable because every exception path leaves a non-pass report that verify_saved rejects. One new non-blocking inconsistency: provenance.json assigns the committed trial.py the same hash as the frozen original-counter driver while the committed file visibly contains the corrected counter; one label is wrong and should be fixed in an evidence-only commit. No general codec acceptance is claimed and the upstream GPU decoder failure remains documented and unresolved, as scoped.",
+  "checks": [
+    "check_source_timestamps struct layout vs xtcdata/xtcdata/xtc/{Dgram,TimeStamp,Xtc,Src,Damage,TypeId,TransitionId}.hh: '<QIIHHI' = TimeStamp(_low,_high) as LE uint64 == time.value(), env uint32, Src uint32, Damage uint16, TypeId uint16, extent uint32; size = extent+12; service (env>>24)&15 == 12 (L1Accept)",
+    "Timestamp source parity: trial.py row timestamp is int(evt.timestamp) -> utils.first_timestamp -> dgram time.value(), same quantity the verifier reads from the SMD header",
+    "Source SMD pinning: manifest.json streams[0].smd path/sha256/size match readback-result.json source_smd; verifier requires length and SHA256 equality before parsing; 'ended early' and extent guards present; exact list equality rejects shifted sequences (negative test consistent)",
+    "readback-result.json arithmetic: five file sizes sum to 12,414,931,792; mean 12,414,931.792; raw 33,554,432 and decoded 67,108,864 per event give README ratios 2.70:1 and 5.41:1; first_timestamp later than manifest BeginRun stamp 4909050823844984566",
+    "verify_saved.py gating: requires report status pass, events_completed == requested, 5*N records, stream order, equal per-event timestamps, numerical flags, layout, filenames, contiguous offsets, per-blob SHA256, framing, trailing-data, monotonic timestamps, then source comparison; output opened with 'x' (no overwrite)",
+    "MRC-002 witness: first-event-values.json gain counts sum to 16,777,216 = 32*512*1024; nonfinite 0; abs>=2^25 (33,554,432) count 0; README lines 80-83 state full-trial branch counts were not recorded and pass does not show defective-branch coverage",
+    "edges-corrected.json: 32,768 finite violations (1e9/-1e9) + 49,152 nonfinite mismatches (inf/-inf/nan) = 81,920 bit mismatches; CPU pass; GPU fail retained; no acceptance claimed",
+    "codec-source-excerpts.md diagnosis: d_decode param offs shadowed by long long byte offset at line 336 and passed at 348; d_iSLEEK local offs at 188 passed to deQuantize at 191 in the logn==TB lossless path; CPU h_decode passes the parameter offs unchanged; 0x4e6e6b28-0x4b800000=0x02ee6b28, 0x7f800000-0x4b800000=0x34000000, 0x7fc00000-0x4b800000=0x34400000 match GPU witnesses exactly",
+    "MRC-003 deferral: trial.py require() raises RuntimeError before report rewrite; verify_saved rejects any non-pass status, so no false-pass path exists; deferral acceptable for a completed bounded fixture",
+    "provenance.json: frozen/reviewed/initial-gate driver versions labeled with artifact associations; compiled DRP sources hash-identical to repository copies; hash-label inconsistency noted in MRC-004",
+    "status.json/README/response.md consistency: jobs 43382364/43382526/43382608/43384088, counts, and dispositions agree; README names edges-original.json and scratch edges01.json identity (MRC-005)",
+    "Scope: no codec, bridge, calibration kernel or core code changes claimed or observed in the delta; no publication/DB changes"
+  ],
+  "limitations": [
+    "No commands were run; SHA256 values, unit-test results, shell syntax, pre-commit results, Slurm completion and the negative timestamp test are taken from supplied evidence in the checkout.",
+    "Scratch artifacts (report.json, harness-used/trial.py, full decoder sources, .sleek payloads, job logs) were not read per instruction; the readback JSON and excerpts were used as the compact evidence.",
+    "The README median compressed event size (13.722 MB) is not derivable from readback-result.json and was not verified.",
+    "The provenance hash discrepancy (MRC-004) could not be resolved by hashing; it is reported as a label inconsistency based on the visible file content versus the stated version notes.",
+    "Git history (hash of trial.py at 9452d8d) was not inspected because that requires running git."
+  ],
+  "findings": [
+    {
+      "id": "MRC-001",
+      "severity": "high",
+      "blocking": false,
+      "file": "notes/mfx_real_codec_20261105/readback-result.json",
+      "line": 2,
+      "evidence": "Closed. readback-result.json records status pass, events 1000, blobs 5000, max_error 2.0, five file sizes and SHA256 values, report SHA256 and the SHA256-pinned source SMD; status.json records job 43382526 pass and the readback pass; edges-corrected.json records the repeat edge diagnostic (job 43384088). Numbers are internally consistent with the README table.",
+      "requested_change": "None; finding resolved."
+    },
+    {
+      "id": "MRC-002",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/mfx_real_codec_20261105/first-event-values.json",
+      "line": 14,
+      "evidence": "Closed via the offered retained-witness option. first-event-values.json records 0 nonfinite and 0 finite |x| >= 2^25 inputs for event 0 and states the coverage scope; README lines 80-83 state the full trial did not record branch counts and that its pass does not demonstrate coverage of the defective branch.",
+      "requested_change": "None; finding resolved. If the harness is reused for a new producer, add per-record branch counts as originally suggested."
+    },
+    {
+      "id": "MRC-003",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_real_codec_20261105/trial.py",
+      "line": 29,
+      "evidence": "Deferred, accepted. require() raises RuntimeError before the record append and report rewrite, so report.json stays non-pass, and verify_saved.py line 40 rejects any non-pass status; no false-pass path exists for the completed fixture.",
+      "requested_change": "Keep deferred; add structured exception journaling before this harness becomes a reusable producer."
+    },
+    {
+      "id": "MRC-004",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/mfx_real_codec_20261105/provenance.json",
+      "line": 3,
+      "evidence": "Partially addressed. The committed trial.py hash on line 3 (7355e320...) equals the frozen_full_trial hash on line 29, whose note says it 'uses original nonfinite counter', while reviewed_trial (line 38, 7b01f82f...) is described as the corrected counter. The committed trial.py in this checkout contains the corrected comparison() (same_class partition, max(initial=0), lines 49-60) and the brief states trial.py is unchanged since 9452d8d. Both labels cannot be true: either line 3 is stale or the frozen/reviewed hashes are swapped.",
+      "requested_change": "In an evidence-only commit, recompute and correct the committed trial.py hash on line 3 (or the frozen_full_trial hash) so that the committed-corrected and frozen-original versions carry distinct, correctly labeled SHA256 values, and state which version produced pilot01/report.json."
+    },
+    {
+      "id": "MRC-005",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_real_codec_20261105/README.md",
+      "line": 97,
+      "evidence": "Closed. README names the committed edges-original.json and states it is byte-identical to scratch edges01.json; edges-corrected.json is named for job 43384088 and provenance.json associates the reviewed driver with edges02.json.",
+      "requested_change": "None; optionally state in README that edges-corrected.json corresponds to scratch edges02.json."
+    }
+  ]
+}

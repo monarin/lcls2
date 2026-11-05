@@ -1,0 +1,24 @@
+{
+  "source_report_sha256": "f725da440e3531649cd9b05a38ea0f1ffb8b185190c9d4afb6b5f1a2d6b05495",
+  "events": 1000,
+  "percentiles": [
+    0,
+    1,
+    10,
+    50,
+    90,
+    99,
+    100
+  ],
+  "percentile_bytes": [
+    1461208.0,
+    1472056.0,
+    9209368.0,
+    13722024.0,
+    14357467.2,
+    14703428.16,
+    15040200.0
+  ],
+  "mean_bytes": 12414931.792,
+  "all_zero_raw_drp_blobs": 0
+}

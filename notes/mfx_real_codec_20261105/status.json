@@ -1,6 +1,6 @@
 {
   "scope": "scope.md",
-  "phase": "re-review",
+  "phase": "complete-with-known-upstream-codec-limitation",
   "base_commit": "00ae929b9cbb50d33246dbe30e6e28f5cb6b4afe",
   "round": 2,
   "round_limit": 3,
@@ -14,11 +14,14 @@
     "edge_diagnostic": "known upstream GPU decoder failure reproduced, job 43384088; CPU decoder passes"
   },
   "artifacts": "/sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1",
-  "unresolved_ids": [
-    "MRC-001 pending reviewer closure"
-  ],
-  "implementation_reviewed_sha": "9452d8d123e8513a1c2d91efd8cfb81d720efd37",
+  "unresolved_ids": [],
+  "implementation_reviewed_sha": "ebd9c2d78e134bcc0648a552c4f1c7d51e703b92",
   "deferred_ids": [
     "MRC-003"
-  ]
+  ],
+  "review_verdict": "pass",
+  "review_rounds_completed": 2,
+  "evidence_correction_after_review": "MRC-004: sha256 map recomputed from git blobs and checked against working files; original frozen mapping retained separately. No implementation change.",
+  "fixture": "/sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1/pilot01",
+  "known_codec_limitation": "Unchanged upstream GPU decoder corrupts large float32/nonfinite values. Edge reproducer retained; no general codec acceptance or XTC publication."
 }

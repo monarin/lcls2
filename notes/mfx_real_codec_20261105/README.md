@@ -5,6 +5,10 @@ benchmark. The unchanged DRP SLEEK compressor consumes **calibrated float32**.
 Its decoded output feeds a cube directly; applying raw calibration again would
 be incorrect. Original uint16 events remain the calibration-kernel reference.
 
+Implementation and fixture validation passed Claude re-review on
+`ebd9c2d78e134bcc0648a552c4f1c7d51e703b92`; see `review-02/review.json` and
+`review-02/response.md`. The upstream GPU decoder limitation below remains open.
+
 ## Sources and representation
 
 - DRP master: `9f7391c091d21afe585165d5ee72ca057ed98e4a`.
@@ -89,6 +93,8 @@ The real ratio is substantially smaller than the earlier simulated 16:1
 expansion assumption. A 1,000-event fixture covers only 28.6 ms at that target
 rate, so it serves correctness testing; sustained performance needs a separate
 benchmark and working-set decision.
+`size-distribution.json` records the size percentiles derived from the pinned
+full report, including the median used above.
 
 **Separate decoder failure:** `probe_edges.py`, job 43382608, tests repeated
 `[0, 1, -3, 1e9, -1e9, +inf, -inf, nan]`. The CPU decoder passed; the unchanged
