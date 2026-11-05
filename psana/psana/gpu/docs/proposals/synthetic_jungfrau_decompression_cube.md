@@ -119,6 +119,15 @@ execution batch sizes, expansion/calibration scope and aggregate export cost.
 
 ## Staged execution
 
+Stage 1 completed on November 5, 2026, with independent review passing at
+`786938d79`. All 151,152 source events have both JF segments and zero XTC
+damage. Exact output sizes are 5,039,830,328 bytes (run 3) and 839,913,818,464
+bytes (run 4). Calibration snapshots are frozen privately; no destination
+constants or synthetic XTC were written. See the
+[Stage 1 results](../../../../../notes/synthetic_xpp_stage1_20261105/README.md)
+for manifests, validation, private archive and review records. Project quota
+confirmation and source-sharing authorization remain later-stage prerequisites.
+
 1. **Read-only source preflight.** Freeze file/configuration/transition inventory,
    exact source-event mapping, selected detector fields and calibration manifest.
    Audit missing/damaged JF frames and inspect representative ADC/gain/mask/

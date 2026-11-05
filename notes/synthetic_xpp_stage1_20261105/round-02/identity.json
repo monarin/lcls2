@@ -1,0 +1,6 @@
+{
+  "requested_sha": "786938d797e5c831977d57a86d36ca9f40b7b6f2",
+  "coordinator_verified_review_worktree_sha": "786938d797e5c831977d57a86d36ca9f40b7b6f2",
+  "reviewer_gitdir_read_denied": true,
+  "meaning": "Coordinator verified the exact detached revision; reviewer disclosed restricted gitdir access and evaluated committed files."
+}

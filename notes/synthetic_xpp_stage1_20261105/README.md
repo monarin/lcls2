@@ -1,6 +1,7 @@
 # XPP run-311 Stage 1 preflight
 
-All Stage 1 validation checks have passed; independent re-review is pending.
+Stage 1 complete. All validation checks passed, and Claude passed round 2 at
+`786938d797e5c831977d57a86d36ca9f40b7b6f2`, resolving all six original findings.
 The full source audit found 151,152 complete two-segment frames with zero XTC
 damage or missing-frame issues. This is read-only preparation:
 no run-3/4 XTC files, database records or permission changes have been made.
@@ -13,6 +14,14 @@ arrays and catalog snapshots stay outside Git and public results. The verified o
 durable archive is at
 `/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage1_private_20261105/`.
 Compact manifests, scripts, hashes and review evidence live here.
+
+The archive is private because its root is mode 0700 with ACL `mask::---`;
+inherited named groups have no effective access. It retains broader default
+ACL entries from the parent, so preserve the restrictive mask and explicit
+0600 payload modes. Any later authorized permission change must first review
+those inherited ACLs (removing them if appropriate) or re-verify the root mask
+and payload modes. Keep this evidence archive private. This documents the
+nonblocking round-2 finding XPP-S1-07; no permission change was performed.
 
 ## Verified findings
 
@@ -128,7 +137,7 @@ bigdata Src while preserving actual damage. No scientific data were altered.
 
 ## Review fixes and calibration deployment contract
 
-Round 1 findings and responses are in round-01/. The full audit runs with the
+Findings, responses and exact reviewed revisions are in round-01/ and round-02/. The full audit runs with the
 unchanged script from commit 343f26bc3d7f8b0760744a427115731668e50453. Its
 completed result is independently interpreted by completion_checks.py, which
 verified all 88 private artifacts, all 14 source file stats and all 40 existing

@@ -1,6 +1,6 @@
 {
   "stage": "Read-only XPP run-311 preflight",
-  "phase": "ready_for_round2",
+  "phase": "complete",
   "round": 2,
   "round_limit": 3,
   "source": {
@@ -13,7 +13,7 @@
   ],
   "generated": false,
   "calibration_deployed": false,
-  "review_verdict": "pending",
+  "review_verdict": "pass",
   "checks": {
     "inventory": "pass",
     "calibration": "pass",
@@ -27,8 +27,8 @@
     "private_archive": "pass: 88 artifacts, 266551327 bytes; mode 0700, checksums verified"
   },
   "snapshot": "/sdf/scratch/users/m/monarin/gpu-validation/synthetic-xpp/stage1-20261105",
-  "reviewed_sha": "343f26bc3d7f8b0760744a427115731668e50453",
-  "review_output": "/tmp/synthetic-xpp-stage1-review-20261105-round-01",
+  "reviewed_sha": "786938d797e5c831977d57a86d36ca9f40b7b6f2",
+  "review_output": "notes/synthetic_xpp_stage1_20261105/round-02",
   "unresolved_findings": [],
   "addressed_findings": [
     "XPP-S1-01",
@@ -38,5 +38,9 @@
     "XPP-S1-05",
     "XPP-S1-06"
   ],
-  "archive": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage1_private_20261105"
+  "archive": "/sdf/data/lcls/ds/prj/prjdatpsana/results/synthetic_xpp_stage1_private_20261105",
+  "implementation_sha": "786938d797e5c831977d57a86d36ca9f40b7b6f2",
+  "nonblocking_followup": {
+    "XPP-S1-07": "Documented inherited-ACL maintenance requirement; no permission change required for Stage 1."
+  }
 }
