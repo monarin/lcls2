@@ -1,7 +1,7 @@
 # Synthetic JF 1M input for expansion and fly-scan cubes
 
-Status: Stage 2 execution and acceptance passed, November 5, 2026; final evidence
-review pending. Run 3 exists privately (2,400 events, one native step), and eight
+Status: Stage 2 complete, November 5, 2026, with independent Claude review
+passing at `30305b95b`. Run 3 exists privately (2,400 events, one native step), and eight
 experiment-only calibration types are deployed for runs 3–4. Neither run 3 nor
 run 4 is published in final `xtc/`. This replaces the conversational proposal to
 use XPP run 216 and repeat its native steps.
@@ -136,8 +136,8 @@ raw/calibrated samples, plus an eight-event repetition/second-rollover fixture.
 All eight calibration types resolve correctly for runs 3 and 4. Existing runs
 1–2, source files and source/shared calibration metadata are unchanged. See
 [Stage 2 results](../../../../../notes/synthetic_xpp_stage2_20261105/README.md)
-for private location, journals, acceptance and review records. Final evidence
-review is pending; publication remains Stage 3 and run-4 generation Stage 4.
+for private location, journals, acceptance and review records. Final independent review passed at `30305b95b`; publication remains Stage 3
+and run-4 generation Stage 4.
 
 1. **Read-only source preflight.** Freeze file/configuration/transition inventory,
    exact source-event mapping, selected detector fields and calibration manifest.

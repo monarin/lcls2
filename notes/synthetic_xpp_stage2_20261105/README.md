@@ -1,7 +1,7 @@
 # XPP Stage 2: run-3 pilot and calibration 3–4
 
-Stage 2 execution and all acceptance checks passed. Final independent evidence
-review is pending. Eight experiment-only calibration documents are deployed for
+Stage 2 is complete. All acceptance checks and the final independent Claude
+review passed at `30305b95b`; implementation code was approved at `89801cc72`. Eight experiment-only calibration documents are deployed for
 runs 3–4; the private run-3 pilot contains 2,400 events in one native step.
 Stage 3 publication to `/sdf/data/lcls/ds/prj/prjdatpsana/xtc/` is excluded.
 
@@ -121,3 +121,9 @@ for run in ds.runs():
 Set `PS_FAKESTEP_FLAG=0`. The directory remains private: collaborator publication
 and access validation are Stage 3. Run 4 has calibration ready but no generated
 XTC yet. No GPU decompression/cube implementation or throughput claim is made.
+
+Final review and responses are in `round-03/`. `SHA256SUMS` covers the compact
+Stage 2 records. An owner-only evidence copy is saved beside the private pilot
+under `results/synthetic_xpp_stage2_private_20261105/evidence/`. The branch is
+`work/synthetic-mfx-scan` on the `monarin/lcls2` fork. The final commit adds review
+records/status only; it does not change the reviewed implementation.
