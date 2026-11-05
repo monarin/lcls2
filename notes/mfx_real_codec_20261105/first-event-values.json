@@ -1,0 +1,16 @@
+{
+  "raw_gain_bit_counts": {
+    "00": 16727564,
+    "01": 41361,
+    "10": 122,
+    "11": 8169
+  },
+  "calibrated_min": -745590.875,
+  "calibrated_max": 99124.7265625,
+  "calibrated_nonfinite": 0,
+  "calibrated_zero": 226,
+  "pixels": 16777216,
+  "lossless_branch_threshold": 33554432,
+  "finite_inputs_abs_ge_threshold": 0,
+  "coverage_scope": "Retained event 0 only. Full 1000-event input branch counts were not recorded."
+}

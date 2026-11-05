@@ -18,8 +18,42 @@
   "jobs": {
     "gate": 43382364,
     "pilot": 43382526,
-    "edge": 43382608
+    "edge": 43382608,
+    "edge_counter_recheck": 43384088
   },
   "drp_commit": "9f7391c091d21afe585165d5ee72ca057ed98e4a",
-  "sleek_commit": "00ff130d8d3182204b6b63fc22d5c85ad6b5f2e1"
+  "sleek_commit": "00ff130d8d3182204b6b63fc22d5c85ad6b5f2e1",
+  "trial_versions": {
+    "frozen_full_trial": {
+      "path": "/sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1/harness-used/trial.py",
+      "sha256": "7355e3201f9c8dab5d4b174d560fd3942d62d90fb61dfeb60edd61717275d473",
+      "artifacts": [
+        "pilot01/report.json",
+        "edges01.json"
+      ],
+      "note": "Frozen after changing gate per-event files to five concatenated pilot files; uses original nonfinite counter."
+    },
+    "reviewed_trial": {
+      "commit": "9452d8d123e8513a1c2d91efd8cfb81d720efd37",
+      "sha256": "7b01f82f8b81f273646ebe2fe9aab07acb67c226479171a7d1860d90890999f1",
+      "artifact": "edges02.json",
+      "note": "Corrected nonfinite counter; passing finite comparisons unchanged."
+    },
+    "initial_gate": {
+      "artifact": "gate01/report.json",
+      "note": "Driver not separately frozen before initial one-event gate. Original nonfinite counter, per-event files. Codec bridges and binaries unchanged across all runs."
+    }
+  },
+  "compiled_source_vs_repository": {
+    "SingleCompressorLossy.cu": {
+      "repository_sha256": "4bd1569684dee1a298ef8cf62a4cb4e92430506ad407d160968e97e279615848",
+      "compiled_source_sha256": "4bd1569684dee1a298ef8cf62a4cb4e92430506ad407d160968e97e279615848",
+      "identical": true
+    },
+    "SingleCompressorLossy.hh": {
+      "repository_sha256": "30aebdb2a8cabab248a69b0983cb5e0ff4fc1babb912dd79afa36c724004287e",
+      "compiled_source_sha256": "30aebdb2a8cabab248a69b0983cb5e0ff4fc1babb912dd79afa36c724004287e",
+      "identical": true
+    }
+  }
 }

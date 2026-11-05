@@ -1,0 +1,73 @@
+{
+  "reviewed_commit": "9452d8d123e8513a1c2d91efd8cfb81d720efd37",
+  "verdict": "changes_requested",
+  "summary": "The standalone real-codec harness is correct and transparent for what it claims. The encoder bridge calls the unmodified DRP SingleCompressorLossy wrapper with the same state/index/size-prefix convention SleekReducer uses, and the decoder bridges derive the threshold exponent and lossless offset exactly as the compressor's _initialize does (eb_e+24, (thr_e<<23)-(1<<23)). Outer blob framing validation matches the encoder's int64 header plus uint16 per-chunk sizes layout. The trial compares both decoders against the compressor input, asserts GPU calibration bitwise equal to CPU v3, checks every pixel against the 3.0 bound, checks CPU/GPU decoded bits, enforces source panel order per DRP, and refuses to overwrite outputs. The corrected comparison() no longer double-counts nonfinite mismatches and cannot emit nonfinite JSON maxima; the unit test covers this. The one-event gate evidence is internally consistent (5 records, 32 panels, max error 2.0, zero bit mismatches, hashes and offsets present). The README represents the GPU decoder boundary-value failure as a retained, unresolved upstream defect and does not claim general codec acceptance. No core code or calibration kernel changed. The verdict is changes_requested only because the scope marks the final 1,000-event result and verify_saved readback as REQUIRED and they are not yet recorded in this commit; no blocking implementation defect was found. Remaining findings are non-blocking transparency/coverage improvements.",
+  "checks": [
+    "Encoder bridge ABI vs vendored subprojects/packagefiles/sleek/app/SingleCompressorLossy.{cu,hh}: updateGraph argument order, state==1 gate, state=2 completion, outsize written just before output, header int64 insize + uint16 chunk sizes + data; trial.py buffer layout (capacity+8, data at +8) matches",
+    "Decoder bridge quantization parameters: exponent=((bits>>23)&255)+24 and offset=(exponent<<23)-(1<<23) match compressor _eb_e/_thr_e/_offs for bound 3.0",
+    "validate_blob framing math vs encoder: chunks=ceil(n/16384), sizes in (0, min(16384, remaining)], total length equality; unit test covers truncation/extension/zero-size/wrong header",
+    "comparison(): finite-vs-nonfinite partition is disjoint (no double counting), float64 error, max(initial=0) finite; test_trial.py asserts nonfinite_mismatches==1 and finite max for mixed case",
+    "trial.py pixel checks: CPU v3 vs GPU calibration bitwise, both decoders vs compressor input within BOUND for all pixels, CPU/GPU decoded bit equality, decoded size equality, source dgram panel order equals PANELS plan, dense segment order 0..31",
+    "Calibration injection: frozen constants SHA256-verified against notes/synthetic_mfx_stage1_20261103/manifest.json (jungfrau pedestals/pixel_gain/pixel_offset entries present with matching ids/hashes in gate-result.json); det.raw._calibconst set before DetCache creation; PS_PARALLEL=none so no MPI shared-constant cache path; kernel use_offset=True, status off, cmpars None consistent with CPU call",
+    "SleekReducer.cu uses bound 3.0 and whole-calib-buffer inBufSize; trial uses per-DRP float32 buffer with same bound",
+    "gate-result.json consistency: 5 records, panel counts 5/6/7/7/7 = 32, decoded_bytes = panels*512*1024*4, same timestamp, max_abs_error 2.0 <= 3.0, zero violations and zero bit mismatches, compressed total 14,013,832 matches README",
+    "edges-original.json: 81,920 bit mismatches; cpu pass; gpu max error 1e9; hex witnesses show GPU exponent field shifted for 1e9/inf/nan (lossless branch) while lossy-branch values match CPU, consistent with the README offs-shadowing diagnosis; README correctly warns that the old category counts (32768+98304) double-count",
+    "verify_saved.py: requires status pass, 5*N records, contiguous offsets, per-blob SHA256, framing, trailing-data check, monotonic timestamps, refuses to infer pass from exit code",
+    "build.sh: pinned DRP and SLEEK commits, no source patching, set -euo pipefail, new directory only, hashes recorded",
+    "runtime.sh enforces PS_FAKESTEP_FLAG=0, PS_PARALLEL default none, OMP_NUM_THREADS=1 as README states",
+    "Scope compliance: no DB/publication/XTC changes, no core code changed, codec not patched, failure retained"
+  ],
+  "limitations": [
+    "File tools are confined to /tmp/mfx-codec-review-20261105-r1; all reads under /sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1 were denied (SingleCompressorLossy.cu/.hh copies, SLEEK lossy_compressors_{gpu,cpu} decoder sources, harness-used/trial.py, job outputs, build-sha256.txt). The upstream decoder's d_decode/h_decode signatures and the shadowed-offs diagnosis could not be independently verified from source; the diagnosis is assessed only as consistent with the hex witnesses in edges-original.json.",
+    "No commands were run: provenance.json hashes, unit test results, shell syntax and pre-commit results are taken from supplied evidence, not reproduced.",
+    "Full 1,000-event pilot (job 43382526) result, verify_saved readback output, and the repeat edge diagnostic are not present in this commit and were not reviewed.",
+    "The vendored repo copy of SingleCompressorLossy.{cu,hh} was used as a stand-in for the DRP commit 9f7391c0 copy named in build.sh; the two were not hash-compared."
+  ],
+  "findings": [
+    {
+      "id": "MRC-001",
+      "severity": "high",
+      "blocking": true,
+      "file": "notes/mfx_real_codec_20261105/status.json",
+      "line": 11,
+      "evidence": "status.json records \"1000_event_mfx\": \"running job 43382526\" and \"saved_readback\": \"pending full trial\". scope.md requires scaling to ~1,000 events and README.md lines 58-59 defer final results to a separate record. The review brief states these are REQUIRED coordinator checks and a missing required test result prevents a pass.",
+      "requested_change": "Record in the follow-up evidence-only commit: final report.json status 'pass' with events_completed equal to the requested count, the verify_saved.py output JSON (status, blobs, per-file SHA256, max_error), the Slurm job ids, and the result of the queued repeat edge diagnostic. Update status.json accordingly. No implementation change required."
+    },
+    {
+      "id": "MRC-002",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/mfx_real_codec_20261105/trial.py",
+      "line": 188,
+      "evidence": "For bound 3.0 the compressor's lossless branch applies to |x| >= 2^25 and to nonfinite values (thr_e = 152). That is exactly the branch the GPU decoder fails on in edges-original.json. The per-record row does not record how many compressor-input values fell into that branch, so the pilot's coverage of the defective path is only implied by zero bit mismatches, not stated.",
+      "requested_change": "Add to each record (or the readback summary) counts of nonfinite inputs and of finite inputs with |x| >= 2^(thr_e-127), and state in README that a passing pilot with zero of these means the defective lossless branch was not exercised by MFX data. If the frozen harness cannot change for the running job, compute these counts in verify_saved.py or a post-hoc pass over the retained calibrated-event0 witness and document the limitation."
+    },
+    {
+      "id": "MRC-003",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_real_codec_20261105/trial.py",
+      "line": 199,
+      "evidence": "If any require() inside the per-stream loop fails (e.g. 'GPU decoder size mismatch', 'source event panel order differs'), the exception propagates before the record is appended and before report.json is rewritten, so report.json keeps status 'running'/'incomplete' with no failure reason; the reason exists only in the job's stderr.",
+      "requested_change": "Wrap the per-event body so a failing require writes status 'harness_error' with the message, event index and stream into report.json before re-raising. Not required for the current running job; apply to the committed harness."
+    },
+    {
+      "id": "MRC-004",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_real_codec_20261105/provenance.json",
+      "line": 3,
+      "evidence": "provenance.json lists a single sha256 for notes/mfx_real_codec_20261105/trial.py, but the brief states the running pilot uses a frozen copy under harness-used/ and that trial.py was changed afterward (nonfinite double-count fix). It is ambiguous whether the recorded hash is the frozen or the committed version; the frozen copy was unreadable in this review.",
+      "requested_change": "In the evidence commit, record both hashes explicitly (harness-used/trial.py and committed trial.py) and note that gate-result.json and edges-original.json were produced by the earlier comparison() while the finite checks are identical."
+    },
+    {
+      "id": "MRC-005",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_real_codec_20261105/README.md",
+      "line": 64,
+      "evidence": "README refers to `edges01.json` as retaining the original diagnostic, but the committed artifact is named edges-original.json; the scratch-side filename is not readable here.",
+      "requested_change": "Name the committed file (edges-original.json) in README, and if edges01.json is the scratch artifact, say so and that the two are identical by hash."
+    }
+  ]
+}

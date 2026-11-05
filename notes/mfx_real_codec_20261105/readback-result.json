@@ -1,0 +1,41 @@
+{
+  "status": "pass",
+  "events": 1000,
+  "blobs": 5000,
+  "compressed_bytes": 12414931792,
+  "mean_bytes_per_event": 12414931.792,
+  "min_bytes_per_event": 1461208,
+  "max_bytes_per_event": 15040200,
+  "raw_bytes_per_event": 33554432,
+  "decoded_bytes_per_event": 67108864,
+  "first_timestamp": 4909050823936603206,
+  "last_timestamp": 4909050858618519547,
+  "source_smd": {
+    "path": "/sdf/data/lcls/ds/prj/public01/xtc/smalldata/mfx101555026-r0010-s000-c000.smd.xtc2",
+    "sha256": "4197937defbd470e1691b51b8fb41a89ceb0ac8710beebe50caa2b31d55ed030"
+  },
+  "max_error": 2.0,
+  "files": {
+    "s005.sleek": {
+      "bytes": 1580877744,
+      "sha256": "4d151892b5977d6562fb2cc04b70d414bb0a05ec67a8ee2040b8fb272e866f0a"
+    },
+    "s006.sleek": {
+      "bytes": 2171280720,
+      "sha256": "7bd8135e989571bcd78fb2a1ac1b4157a7100f2b6725c054e12757f1b84a3595"
+    },
+    "s007.sleek": {
+      "bytes": 3156588864,
+      "sha256": "c3558bdcac590ddcd32b379ff37cbd2823702363909d58533dd32ba9214f1372"
+    },
+    "s008.sleek": {
+      "bytes": 2488745696,
+      "sha256": "e8dbd7922c798262c7cbf5504f68fc09cfee675617fc1d01d702ca4a995cbdf0"
+    },
+    "s009.sleek": {
+      "bytes": 3017438768,
+      "sha256": "30fdea9c9f18c8ee0cc3aeda8ca4095397cbab0e818fe77e2a2bd7d080afab04"
+    }
+  },
+  "report_sha256": "f725da440e3531649cd9b05a38ea0f1ffb8b185190c9d4afb6b5f1a2d6b05495"
+}

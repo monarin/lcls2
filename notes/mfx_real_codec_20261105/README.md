@@ -55,16 +55,51 @@ The one-event gate (`gate01`, job 43382364) passed across all 32 panels:
 GPU calibration matched CPU v3 bitwise, both decoders agreed bitwise, and every
 decoded pixel was within the configured absolute bound 3.0 (observed max 2.0).
 The five blobs totaled 14,013,832 bytes, compared with 33,554,432 raw bytes and
-67,108,864 decoded float32 bytes. The 1,000-event trial is job 43382526 (`pilot01`);
-its final results and readback are recorded separately when complete.
+67,108,864 decoded float32 bytes.
+
+The **1,000-event trial passed** (job 43382526, `pilot01`), as did the complete
+disk readback of all 5,000 blobs. All 16,777,216,000 pixels were checked for
+bitwise CPU/GPU calibration equality and decoder equality; maximum compression
+error was 2.0. The original first 1,000 event timestamps also match the
+independently hash-verified source SMD sequence. See `readback-result.json`.
+
+| Measurement | Result |
+|---|---:|
+| Five payload files, total | 12,414,931,792 bytes (12.415 GB) |
+| Mean compressed event | 12.415 MB |
+| Median compressed event | 13.722 MB |
+| Minimum / maximum compressed event | 1.461 / 15.040 MB |
+| Ratio relative to uint16 raw | 2.70:1 |
+| Ratio relative to calibrated float32 | 5.41:1 |
+
+None of the 5,000 source DRP raw arrays was entirely zero (checked by hash).
+The first event contains all four gain-bit patterns, including 122 invalid
+`10` pixels; its calibrated range is -745590.875 to 99124.7265625 with no
+nonfinite values. This demonstrates arithmetic coverage, not scientific
+acceptance of those values. See `first-event-values.json`.
+For bound 3.0, the defective codec branch concerns finite magnitudes at least
+2^25 and nonfinite inputs. The retained first event has zero such inputs.
+The full trial did not record input counts for that branch; its pass alone
+does not demonstrate coverage of it. The separate edge probe does.
+
+At 35,000 events/s this particular sample's average compressed input alone
+would require **434.5 GB/s aggregate I/O**, before XTC overhead; decoded writes
+would be 2.35 TB/s. This is a size-based estimate, not measured throughput.
+The real ratio is substantially smaller than the earlier simulated 16:1
+expansion assumption. A 1,000-event fixture covers only 28.6 ms at that target
+rate, so it serves correctness testing; sustained performance needs a separate
+benchmark and working-set decision.
 
 **Separate decoder failure:** `probe_edges.py`, job 43382608, tests repeated
 `[0, 1, -3, 1e9, -1e9, +inf, -inf, nan]`. The CPU decoder passed; the unchanged
 GPU decoder differed from the CPU on 81,920 of 131,072 values, with finite
-absolute errors up to 1e9 and corrupted nonfinite values. `edges01.json` retains
-the original diagnostic, including hexadecimal input/output witnesses.
-The initial diagnostic double-counts some nonfinite mismatches; use the exact
-bit-mismatch count and witnesses rather than summing its mismatch categories.
+absolute errors up to 1e9 and corrupted nonfinite values. `edges-original.json`
+retains the original diagnostic, including hexadecimal input/output witnesses;
+it is byte-identical to scratch `edges01.json`.
+The initial diagnostic double-counts some nonfinite mismatches; the corrected
+counter was re-tested in job 43384088 (`edges-corrected.json`): 32,768 finite
+bound violations and 49,152 nonfinite mismatches, with the same 81,920 bit
+mismatches. Both diagnostic versions are retained.
 
 Source inspection identifies two shadowed `offs` variables in the GPU decoder:
 the compressed-chunk byte offset in `d_decode` is passed to `d_iSLEEK` instead
@@ -80,6 +115,13 @@ reads every stored blob back, checking hashes, framing, file/index coverage,
 shape, panel order and timestamp alignment. It does not infer a pass from the
 Slurm exit code alone. The numerical trial validates all pixels in every blob.
 Two CPU unit tests check framing rejection and finite/nonfinite error detection.
+The full trial used the frozen `harness-used/trial.py` in `provenance.json`;
+the later counter correction changes failing nonfinite diagnostics, not passing
+finite comparisons. Its unit tests and repeated GPU diagnostic passed their
+expected checks. The repeat diagnostic still reports the upstream GPU failure.
+`provenance.json` labels both driver hashes explicitly. The initial gate's
+driver was not frozen separately before the output packing was changed for
+the full trial; the codec sources, bridges and binaries were unchanged.
 
 ## Reproduction
 

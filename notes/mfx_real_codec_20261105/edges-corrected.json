@@ -1,0 +1,49 @@
+{
+  "decoded_bytes": 524288,
+  "compressed_bytes": 509064,
+  "cpu": {
+    "max_abs_error": 1.0,
+    "bound_violations": 0,
+    "nonfinite_mismatches": 0,
+    "pass": true
+  },
+  "gpu": {
+    "max_abs_error": 1000000000.0,
+    "bound_violations": 32768,
+    "nonfinite_mismatches": 49152,
+    "pass": false
+  },
+  "decoder_bit_mismatches": 81920,
+  "first_eight_bits": {
+    "input": [
+      "00000000",
+      "3f800000",
+      "c0400000",
+      "4e6e6b28",
+      "ce6e6b28",
+      "7f800000",
+      "ff800000",
+      "7fc00000"
+    ],
+    "cpu": [
+      "00000000",
+      "00000000",
+      "c0800000",
+      "4e6e6b28",
+      "ce6e6b28",
+      "7f800000",
+      "ff800000",
+      "7fc00000"
+    ],
+    "gpu": [
+      "00000000",
+      "00000000",
+      "c0800000",
+      "02ee6b28",
+      "82ee6b28",
+      "34000000",
+      "b4000000",
+      "34400000"
+    ]
+  }
+}

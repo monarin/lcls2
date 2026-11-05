@@ -3,10 +3,32 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import struct
 
 import numpy as np
 
 from trial import PANELS, require, validate_blob
+
+
+def check_source_timestamps(timestamps):
+    """Compare with independently frozen/hash-verified source SMD headers."""
+    repo = Path(__file__).resolve().parents[2]
+    manifest = json.loads((repo / 'notes/synthetic_mfx_stage1_20261103/manifest.json').read_text())
+    source = manifest['streams'][0]['smd']
+    data = Path(source['path']).read_bytes()
+    require(len(data) == source['size'] and hashlib.sha256(data).hexdigest() == source['sha256'],
+            'source SMD changed since Stage 1')
+    observed, offset = [], 0
+    while len(observed) < len(timestamps):
+        require(offset + 24 <= len(data), 'source SMD ended early')
+        stamp, env, _, _, _, extent = struct.unpack_from('<QIIHHI', data, offset)
+        size = extent + 12
+        require(size >= 24 and offset + size <= len(data), 'invalid source SMD extent')
+        if (env >> 24) & 15 == 12:
+            observed.append(stamp)
+        offset += size
+    require(observed == timestamps, 'fixture is not the first requested source events')
+    return {'path': source['path'], 'sha256': source['sha256']}
 
 
 def main():
@@ -45,6 +67,7 @@ def main():
             hashes.setdefault(stream, hashlib.sha256()).update(blob)
             positions[stream] += len(blob)
     require(all(a < b for a, b in zip(timestamps, timestamps[1:])), 'nonmonotonic timestamps')
+    source_smd = check_source_timestamps(timestamps)
     for stream, size in positions.items():
         require((args.directory / f's{stream:03d}.sleek').stat().st_size == size, 'trailing data')
     per_event = np.array([sum(r['compressed_bytes'] for r in report['records'][i:i + 5])
@@ -55,6 +78,7 @@ def main():
               'raw_bytes_per_event': 32 * 512 * 1024 * 2,
               'decoded_bytes_per_event': 32 * 512 * 1024 * 4,
               'first_timestamp': timestamps[0], 'last_timestamp': timestamps[-1],
+              'source_smd': source_smd,
               'max_error': max(r['gpu']['max_abs_error'] for r in report['records']),
               'files': {f's{s:03d}.sleek': {'bytes': positions[s], 'sha256': hashes[s].hexdigest()}
                         for s in PANELS},

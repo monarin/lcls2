@@ -1,16 +1,24 @@
 {
   "scope": "scope.md",
-  "phase": "review-1-and-full-sample-validation",
+  "phase": "re-review",
   "base_commit": "00ae929b9cbb50d33246dbe30e6e28f5cb6b4afe",
-  "round": 1,
+  "round": 2,
   "round_limit": 3,
   "checks": {
     "unit_tests": "2 passed",
-    "one_event_mfx": "pass",
-    "1000_event_mfx": "running job 43382526",
-    "edge_diagnostic": "GPU decoder failure, retained as known codec limitation",
-    "saved_readback": "pending full trial"
+    "shell_syntax": "pass",
+    "one_event_mfx": "pass, job 43382364",
+    "1000_event_mfx": "pass, job 43382526, 1000 events and 5000 blobs",
+    "saved_readback": "pass, every blob hash/framing/index and original source timestamps",
+    "source_timestamp_negative_test": "omitted first event rejected",
+    "edge_diagnostic": "known upstream GPU decoder failure reproduced, job 43384088; CPU decoder passes"
   },
   "artifacts": "/sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1",
-  "unresolved_ids": []
+  "unresolved_ids": [
+    "MRC-001 pending reviewer closure"
+  ],
+  "implementation_reviewed_sha": "9452d8d123e8513a1c2d91efd8cfb81d720efd37",
+  "deferred_ids": [
+    "MRC-003"
+  ]
 }
