@@ -1,0 +1,115 @@
+{
+  "status": "pass",
+  "events": 1,
+  "timestamp": 4909050823936603206,
+  "source": "/sdf/scratch/users/m/monarin/gpu-validation/mfx-real-codec/20261105-r1/pilot01/raw-event0.npy",
+  "source_raw_sha256": "a3d85a7a167ae4d8a003bf9ae30b84fa7d3c86bcf28987245d274d5d3b8b975c",
+  "reference_sha256": "3a672f03527891f2a0ee85d05799d3e1db4fe2919c8a3cf664d8431708ac16d4",
+  "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+  "host": "sdfiana025",
+  "numpy": "2.3.5",
+  "bitshuffle": "0.5.2",
+  "lz4": "4.4.5",
+  "lz4_library": "1.9.4",
+  "bitshuffle_extension_sha256": "73d217339564f8ac40336a33a8756aeaa117b0c59da431f5f72cbed7fd81f350",
+  "script_sha256": "1000e98579fb29f13f42836d65df3f3ad37fc9c10cbae0b38aa75e4bb90832c3",
+  "block_bytes": 8192,
+  "block_elements": 4096,
+  "size_accounting": "Codec bytes plus four-byte length per 8KiB block; excludes XTC and external shape/index metadata.",
+  "scope": "CPU libraries, one original event, five original DRP panel groups; not nvCOMP or a throughput measurement.",
+  "records": [
+    {
+      "stream": 5,
+      "panels": [
+        3,
+        7,
+        0,
+        1,
+        2
+      ],
+      "raw_sha256": "ccf698323d55aa5436195d888dbc90805d3c1dc3e92c66e13e148f6ea11c382d",
+      "raw_bytes": 5242880,
+      "lz4_bytes": 5267196,
+      "bitshuffle_lz4_bytes": 4241837,
+      "roundtrip_bitwise_equal": true
+    },
+    {
+      "stream": 6,
+      "panels": [
+        19,
+        15,
+        11,
+        31,
+        27,
+        23
+      ],
+      "raw_sha256": "10c775ac72886b6b0b6a02bc30ffdda014386449b460d0c9c191ef4cd3414d07",
+      "raw_bytes": 6291456,
+      "lz4_bytes": 6320628,
+      "bitshuffle_lz4_bytes": 5184740,
+      "roundtrip_bitwise_equal": true
+    },
+    {
+      "stream": 7,
+      "panels": [
+        18,
+        14,
+        10,
+        6,
+        30,
+        26,
+        22
+      ],
+      "raw_sha256": "cf916d1f9a9ec1c891b6d4196b2f09f2269cd9e5ea8159db1609460fd2670466",
+      "raw_bytes": 7340032,
+      "lz4_bytes": 7374076,
+      "bitshuffle_lz4_bytes": 6329364,
+      "roundtrip_bitwise_equal": true
+    },
+    {
+      "stream": 8,
+      "panels": [
+        16,
+        12,
+        8,
+        4,
+        28,
+        24,
+        20
+      ],
+      "raw_sha256": "83dfab677d579cc1c82976281852f3901480ce597eafe834eaf2539a8383a29b",
+      "raw_bytes": 7340032,
+      "lz4_bytes": 7374080,
+      "bitshuffle_lz4_bytes": 6051136,
+      "roundtrip_bitwise_equal": true
+    },
+    {
+      "stream": 9,
+      "panels": [
+        17,
+        13,
+        9,
+        5,
+        29,
+        25,
+        21
+      ],
+      "raw_sha256": "81e4ec8170104b6dbedcef9eedb47960f57843310664c20d88c223c52be70256",
+      "raw_bytes": 7340032,
+      "lz4_bytes": 7374057,
+      "bitshuffle_lz4_bytes": 6133085,
+      "roundtrip_bitwise_equal": true
+    }
+  ],
+  "totals": {
+    "raw_bytes": 33554432,
+    "lz4": {
+      "bytes": 33710037,
+      "factor": 0.9953840157458148
+    },
+    "bitshuffle_lz4": {
+      "bytes": 27940162,
+      "factor": 1.200939063989679
+    }
+  }
+}

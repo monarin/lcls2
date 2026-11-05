@@ -1,0 +1,11 @@
+{
+  "phase": "independent-review",
+  "round": 1,
+  "round_limit": 3,
+  "checks": {
+    "input": "all five DRP hashes match validated reference",
+    "roundtrip": "all 16777216 uint16 pixels exact for both codecs"
+  },
+  "artifact_root": "/sdf/scratch/users/m/monarin/gpu-validation/raw-compression-factor/20261105-r1",
+  "unresolved_ids": []
+}
