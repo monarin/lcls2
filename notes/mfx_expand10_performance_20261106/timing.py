@@ -164,11 +164,24 @@ class Recorder:
                 stack.enter_context(patch.object(GpuXtcBatchPool, attr, parse))
             original_metadata = BatchInputContext._ensure_metadata
             def metadata(batch):
-                if batch._metadata_ready or not batch.size:
+                if batch._metadata_ready or not batch.size or not batch._metadata_open:
                     return original_metadata(batch)
                 return self.device_call('descriptor_build_upload_call', batch._stream, original_metadata, batch)
             stack.enter_context(patch.object(BatchInputContext, '_ensure_metadata', metadata))
             yield
+
+
+@contextmanager
+def admission_counts(window):
+    """Count the frozen runtime's pressure-only trim path; no clocks or CUDA."""
+    from psana.gpu.gpu_events import GpuEventManager
+    original = GpuEventManager._trim_gpu_caches
+    counts = dict(warmup=0, steady=0)
+    def counted(manager):
+        counts[window.phase] += 1
+        return original(manager)
+    with patch.object(GpuEventManager, '_trim_gpu_caches', counted):
+        yield counts
 
 
 class Kernel:

@@ -1,10 +1,10 @@
 {
   "status": "pass",
-  "scope": "preparation acceptance, not 10k performance campaign",
-  "job": "43548178",
-  "host": "sdfampere035",
-  "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/performance_prep_20261106_r3",
-  "host_tests": 7,
+  "scope": "post-review preparation acceptance, not 10k performance campaign",
+  "job": "43548551",
+  "host": "sdfampere011",
+  "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/performance_prep_20261106_r4",
+  "host_tests": 9,
   "cases": {
     "throughput-1": {
       "status": "pass",
@@ -17,14 +17,14 @@
       "window": {
         "warmup_events": 100,
         "steady_events": 900,
-        "boundary_join_seconds": 9.01985913515091e-06,
-        "submission_seconds": 1.9974453928880394,
-        "tail_completion_seconds": 0.010457975324243307,
-        "completed_window_seconds": 2.0079033682122827,
-        "completed_events_per_second": 448.2287416058803
+        "boundary_join_seconds": 8.190050721168518e-06,
+        "submission_seconds": 2.029646393377334,
+        "tail_completion_seconds": 0.015759164933115244,
+        "completed_window_seconds": 2.045405558310449,
+        "completed_events_per_second": 440.0105379313725
       },
-      "iteration_completed_seconds": 2.607713906094432,
-      "explicit_final_join_seconds": 1.9759871065616608e-05,
+      "iteration_completed_seconds": 2.6152269006706774,
+      "explicit_final_join_seconds": 2.253986895084381e-05,
       "bank_events": [
         1000
       ],
@@ -269,6 +269,10 @@
         "total_device_bytes": 42405855232,
         "framework_budget_gib": 4
       },
+      "admission_pressure_trims": {
+        "warmup": 0,
+        "steady": 0
+      },
       "callback_sizes": [
         1,
         2,
@@ -289,14 +293,14 @@
       "window": {
         "warmup_events": 100,
         "steady_events": 900,
-        "boundary_join_seconds": 1.1999625712633133e-05,
-        "submission_seconds": 2.023754172027111,
-        "tail_completion_seconds": 0.010279098059982061,
-        "completed_window_seconds": 2.034033270087093,
-        "completed_events_per_second": 442.47063862503285
+        "boundary_join_seconds": 1.0990072041749954e-05,
+        "submission_seconds": 2.062209414783865,
+        "tail_completion_seconds": 0.010470500215888023,
+        "completed_window_seconds": 2.0726799149997532,
+        "completed_events_per_second": 434.22044739605013
       },
-      "iteration_completed_seconds": 2.344093973748386,
-      "explicit_final_join_seconds": 2.3730099201202393e-05,
+      "iteration_completed_seconds": 2.391089458949864,
+      "explicit_final_join_seconds": 1.889001578092575e-05,
       "bank_events": [
         501,
         499
@@ -644,6 +648,10 @@
         "total_device_bytes": 42405855232,
         "framework_budget_gib": 4
       },
+      "admission_pressure_trims": {
+        "warmup": 15,
+        "steady": 142
+      },
       "callback_sizes": [
         1,
         2,
@@ -664,14 +672,14 @@
       "window": {
         "warmup_events": 100,
         "steady_events": 900,
-        "boundary_join_seconds": 1.6459263861179352e-05,
-        "submission_seconds": 2.158145770896226,
-        "tail_completion_seconds": 0.010409364942461252,
-        "completed_window_seconds": 2.1685551358386874,
-        "completed_events_per_second": 415.0228809616711
+        "boundary_join_seconds": 1.0200310498476028e-05,
+        "submission_seconds": 2.1225585942156613,
+        "tail_completion_seconds": 0.010412520729005337,
+        "completed_window_seconds": 2.1329711149446666,
+        "completed_events_per_second": 421.94664226540533
       },
-      "iteration_completed_seconds": 2.4824560028500855,
-      "explicit_final_join_seconds": 1.7568934708833694e-05,
+      "iteration_completed_seconds": 2.454209705814719,
+      "explicit_final_join_seconds": 1.2260396033525467e-05,
       "bank_events": [
         501,
         499
@@ -996,13 +1004,13 @@
       },
       "read_stats": {
         "submit_calls": 790,
-        "submit_wall_seconds": 0.09952314430847764,
+        "submit_wall_seconds": 0.11050487030297518,
         "total_requests": 790,
         "requested_bytes": 3358200000,
         "total_bytes": 3358200000,
         "useful_bytes": 3358200000,
-        "total_ns": 18936267,
-        "issue_to_complete_ns": 3924407763,
+        "total_ns": 5405064,
+        "issue_to_complete_ns": 3802445067,
         "io_path": "CPU-fallback",
         "compat_mode": true,
         "interpretation": "Reader wait ns and submission-to-observed-completion ns are summed; concurrent reads overlap, and neither is standalone I/O throughput. Counters accumulated across framework resets."
@@ -1031,6 +1039,10 @@
         "total_device_bytes": 42405855232,
         "framework_budget_gib": 4
       },
+      "admission_pressure_trims": {
+        "warmup": 15,
+        "steady": 142
+      },
       "callback_sizes": [
         1,
         2,
@@ -1041,5 +1053,5 @@
       "callback_count": 158
     }
   },
-  "profile_observation": "142 steady-window cache trims following GpuMemoryPressureError under 4 GiB framework budget; investigate in next campaign, not optimized here."
+  "pressure_observation": "Zero pressure trims for clean one-stream run; 15 warmup and 142 steady trims for both clean and profile two-stream runs under 4 GiB framework budget."
 }

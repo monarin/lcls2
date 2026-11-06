@@ -43,10 +43,11 @@ all source/CPU comparisons and serial DataSource checks passed in job 43538554;
 independent review passed on `738058473` with no blockers.
 The [performance preparation](../../../../../notes/mfx_expand10_performance_20261106/README.md)
 now separates clean throughput from CPU/CUDA profiling and optional export;
-seven host tests, controlled device checks and 1k one/two-stream A100 smoke cases
-passed (job 43548178). Independent review status is recorded with that stage.
-The profile exposes frequent admission-pressure flushes at the existing 4 GiB
-framework budget, to investigate during the next campaign. No 10k performance
+nine host tests, controlled device checks and 1k one/two-stream A100 smoke cases
+passed after review improvements (job 43548551). Independent review status is
+recorded with that stage. Count-only diagnostics confirm frequent two-stream
+admission-pressure flushes at the existing 4 GiB framework budget (none in the
+one-stream smoke), to investigate during the next campaign. No 10k performance
 run has been launched. Next establish one-GPU stream/batch performance, then scale BDs
 and GPUs within one node. Increase event count only if the measured interval is
 too short or variable. The repeated 400k fixture and multi-node work remain

@@ -11,7 +11,7 @@ import time
 from unittest.mock import patch
 
 from perf_cube import Cube, dense_cube
-from timing import Recorder
+from timing import Recorder, admission_counts
 from fixture_check import ROOT, check_10k
 import measure
 import gpu_accept as stage2
@@ -54,7 +54,9 @@ def run(args):
         report['runtime_files'] = {name:dict(path=importlib.import_module(name).__file__, sha256=file_sha(importlib.import_module(name).__file__)) for name in modules}
         paths = list(Path(__file__).parent.glob('*.py')) + [dense_cube.REFERENCE_FILE, Path(dense_cube.__file__),
                  dense_cube.STAGE2/'adapter.py', dense_cube.adapter.CALIBRATION_FILE,
-                 dense_cube.STAGE2/'gpu_accept.py', dense_cube.STAGE2/'runtime.sh', Path(measure.__file__)]
+                 dense_cube.STAGE2/'gpu_accept.py', dense_cube.STAGE2/'runtime.sh', Path(measure.__file__),
+                 Path(stage2.fixture.__file__), Path(stage2.verify.__file__),
+                 Path(importlib.import_module('xtc_fixture').__file__)]
         report['code_sha256'] = {str(p):file_sha(p) for p in paths}
         t = time.perf_counter()
         if args.root.resolve() == PILOT.resolve():
@@ -90,7 +92,7 @@ def run(args):
         report['datasource_setup_seconds'] = time.perf_counter()-t
         memory.sample('before_iteration')
         t = time.perf_counter()
-        with recorder.framework(), (measure.read_stats() if recorder.enabled else nullcontext(None)) as io:
+        with admission_counts(task.window) as pressure, recorder.framework(), (measure.read_stats() if recorder.enabled else nullcontext(None)) as io:
             with closing(run.events()) as events:
                 for event in events:
                     i = report['delivered_events']
@@ -101,6 +103,7 @@ def run(args):
             report['explicit_final_join_seconds'] = time.perf_counter()-eof
             report['window'] = task.window.finish()
         report['iteration_completed_seconds'] = time.perf_counter()-t
+        report['admission_pressure_trims'] = pressure
         require(report['delivered_events'] == len(stamps), 'Incomplete delivered events')
         memory.sample('after_completion')
         report['checks'] = task.check_counts()
@@ -112,6 +115,7 @@ def run(args):
         report['timing_contract'] = ('Warmup rounded up to a whole callback; prior bank streams joined once before next callback. '
                                     'Steady wall ends after EOF and bank joins, includes tail delivery/drain. Input for boundary batch may already be prefetched/parsed. '
                                     'Whole iteration includes startup warmup. No per-event D2H, CUDA timing events or framework timer patches in throughput mode. '
+                                    'Both modes count pressure-path trims without timers; nonzero counts indicate forced pool drains before retries. '
                                     'Profile mode is diagnostic, not the throughput baseline.')
         if args.export is not None:
             import shutil

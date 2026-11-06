@@ -27,6 +27,8 @@ class Cube(dense_cube.Cube):
         self.callbacks = []
 
     def prepare(self):
+        if self.kernel is not None or self.seen:
+            raise RuntimeError('Prepare once before processing')
         import cupy as cp
         for name, source, symbol, owner, attr, options in (
             ('expansion_kernel', dense_cube.adapter.kernel_source(), 'expand10', self.sample10, 'kernel', ('--std=c++17',)),

@@ -7,8 +7,8 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
-from timing import Recorder, Window
-from perf_cube import Capture
+from timing import Recorder, Window, admission_counts
+from perf_cube import Capture, Cube
 import fixture_check
 
 
@@ -105,6 +105,33 @@ class Tests(unittest.TestCase):
                 self.assertIsNot(BatchInputContext._ensure_metadata,original[2])
                 raise RuntimeError('injected')
         self.assertEqual(original,(EventPool.flush,GpuXtcBatchPool.parse_groups,BatchInputContext._ensure_metadata))
+        sealed=SimpleNamespace(_metadata_ready=False,size=1,_metadata_open=False,_stream=None)
+        with Recorder(True).framework():
+            with self.assertRaisesRegex(RuntimeError,'during the callback'):
+                BatchInputContext._ensure_metadata(sealed)
+
+    def test_pressure_counter_no_clocks_and_restores(self):
+        from psana.gpu.gpu_events import GpuEventManager
+        clock=Clock(); window=Window(2,4,clock)
+        with patch.object(GpuEventManager,'_trim_gpu_caches',lambda manager:17):
+            original=GpuEventManager._trim_gpu_caches
+            with self.assertRaisesRegex(RuntimeError,'injected'):
+                with admission_counts(window) as counts, patch('timing.time.perf_counter',side_effect=AssertionError('timer used')):
+                    self.assertEqual(GpuEventManager._trim_gpu_caches(None),17)
+                    window.after(2); window.before(lambda:None)
+                    self.assertEqual(GpuEventManager._trim_gpu_caches(None),17)
+                    raise RuntimeError('injected')
+            self.assertEqual(counts,{'warmup':1,'steady':1})
+            self.assertIs(GpuEventManager._trim_gpu_caches,original)
+
+    def test_prepare_rejects_repeat_or_existing_events_without_cuda(self):
+        cube=Cube(range(4),warmup=2,recorder=Recorder(False),nbins=3,active_bins=2,
+                  shape=(2,3,5),max_state_bytes=1<<20)
+        cube.kernel=object()
+        with patch.dict('sys.modules',{'cupy':None}):
+            with self.assertRaisesRegex(RuntimeError,'Prepare once'):cube.prepare()
+            cube.kernel=None; cube.seen.add(0)
+            with self.assertRaisesRegex(RuntimeError,'Prepare once'):cube.prepare()
 
     def test_10k_manifest_receipt_size_and_optional_fresh_hash(self):
         def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()

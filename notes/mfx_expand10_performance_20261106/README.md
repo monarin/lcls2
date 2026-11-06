@@ -5,8 +5,8 @@ Implementation, device smoke and independent review status are in status.json.
 The reviewed expansion, calibration and accumulation CUDA sources are reused;
 psana core and the frozen installed runtime are unchanged.
 
-Preparation validation passed in job 43548178 on sdfampere035, A100-SXM4-40GB
-(COMPLETED, exit 0, 46 seconds): seven host tests, four controlled GPU cases,
+Post-review preparation validation passed in job 43548551 on sdfampere011,
+A100-SXM4-40GB (COMPLETED, exit 0, 50 seconds): nine host tests, four controlled GPU cases,
 and 1,000-event throughput cases with one/two streams plus a two-stream profile.
 All exact event/bin counts passed; two banks handled 501/499 events. Actual
 callback sizes were 1, 2, 5, 6 and 7, with 158 callbacks. The three smoke windows
@@ -14,11 +14,15 @@ contained 100 warmup and 900 measured events. These single small runs do not
 establish a stable 10k rate or a stream-scaling conclusion. See
 validation-summary.json, device-checks.json and artifacts.json.
 
-The smoke profile observed 142 steady-window cache trims after framework
-GpuMemoryPressureError, with the inherited 4 GiB framework budget. The frozen
+Both clean and profile two-stream cases observed 15 warmup and 142 steady-window
+cache trims after framework GpuMemoryPressureError, with the inherited 4 GiB
+framework budget. The clean one-stream case observed zero. The frozen
 runtime calls `_trim_gpu_caches` only on this admission-failure path. Treat
 budget-driven flushes as a concrete next-campaign diagnostic; this preparation
-does not change the budget or core admission behavior. CUDA/CPU profile totals
+does not change the budget or core admission behavior. Initial smoke job
+43548178 on sdfampere035 also passed before the review improvements; its logs
+are retained and the original reports remain referenced by review-01/copy-index.json.
+CUDA/CPU profile totals
 remain overlapping/inclusive, not a critical-path attribution.
 
 Default case: 10,000 original events, 100 bins (99 populated plus an empty
@@ -33,7 +37,11 @@ pipeline window, not a cold full-file I/O measurement. The uninterrupted whole
 iteration is also reported (it contains the intentional warmup-boundary join).
 
 `throughput` mode has no per-event D2H, memory sampling, CUDA timing events, or
-framework timer patches. It retains host timestamp checks, callback sizes,
+framework timer patches. Both modes install one count-only observer on the
+pressure-only cache-trim path; `admission_pressure_trims` reports warmup and
+steady counts. Nonzero values flag forced pool drains that can suppress stream
+overlap; do not interpret those cases as unconstrained stream scaling.
+The throughput loop retains host timestamp checks, callback sizes,
 bank identities and the reviewed adapter's inexpensive CuPy pool accounting.
 Memory is sampled only outside iteration; those samples are not peak tracking.
 All panel errors feed the existing device acceptance kernel. After completion,
