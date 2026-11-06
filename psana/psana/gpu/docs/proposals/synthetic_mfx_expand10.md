@@ -4,6 +4,12 @@ Status: proposed, November 5, 2026. This is the active dataset direction.
 Stop further real-codec exploration and the XPP repeat16 fixture path. Preserve
 those results and existing datasets; this plan does not generate or publish data.
 
+Execution update: [Stage 1](../../../../../notes/mfx_expand10_stage1_20261105/README.md)
+completed with 10 events in private scratch, all 320 CPU panel comparisons and
+serial DataSource checks passing, and independent review passing at
+`3d21547ce5f55c9b38775c7bed2a631789d62577`. GPU/calibration integration remains
+Stage 2; no public fixture or new calibration records have been deployed.
+
 ## Layout and calibration
 
 Use public `mfx101555026` run 10, the same source as prjdatpsana runs 1–2:

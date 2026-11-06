@@ -1,9 +1,16 @@
 {
-  "phase": "independent-review",
+  "phase": "complete",
   "round": 1,
   "round_limit": 3,
   "artifact_root": "/sdf/scratch/users/m/monarin/gpu-validation/mfx-expand10/20261105-stage1-r2",
   "checks": "10 events; 320 panel comparisons; 20 files; serial DataSource; six boundary/rejection tests",
   "unresolved_ids": [],
-  "limitations": "Stage 1 only: GPU and calibration acceptance remain Stage 2"
+  "limitations": "Stage 1 only: GPU and calibration acceptance remain Stage 2",
+  "reviewed_commit": "3d21547ce5f55c9b38775c7bed2a631789d62577",
+  "review_verdict": "pass",
+  "completed_rounds": 1,
+  "deferred_nonblocking_ids": [
+    "F-002",
+    "F-004"
+  ]
 }

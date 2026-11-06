@@ -89,3 +89,25 @@ the data. Both logs are retained in scratch.
 Plan: [five-stream MFX expansion](../../psana/psana/gpu/docs/proposals/synthetic_mfx_expand10.md).
 Independent review records are under `review-01/`. Large arrays are not saved;
 the expanded reference is regenerable from the retained seed files.
+
+## Review and Stage 2 handoff
+
+Independent Claude review passed on `3d21547ce5f55c9b38775c7bed2a631789d62577`
+with no blocking findings. See [review](review-01/review.json) and
+[response](review-01/response.md). The independent
+[provenance audit](provenance-audit.json) confirms the recorded code hashes match
+the reviewed Git blobs, and the frozen calibration manifest/report hashes match.
+The tested source archive is identified in `source-archive.json`.
+
+The seed's 104,858 bytes leave the trailing `frame_cnt` and `timestamp` UINT64
+fields at offsets that are **2 modulo 8 relative to the Data payload**, rather
+than aligned to eight bytes. The tested x86 host Dgram path handles these fields.
+Stage 2 should retain host Dgram access to these scalars; any future device
+access must use explicitly unaligned-safe loads, not assume a uint64 pointer is
+aligned. The seed itself remains a UINT16 array.
+
+Before reusing/extending the writer, address deferred low findings F-002
+(explicit Shapes-before-Data guard) and F-004 (enforce writer/manifest hash binding
+inside the validator). Neither affects this exhaustively checked fixture.
+`gain-distribution.json` summarizes all 320 recorded panel comparisons; it is a
+value-distribution check, not calibration acceptance.

@@ -1,0 +1,39 @@
+{
+  "status": "pass",
+  "reviewed_commit": "3d21547ce5f55c9b38775c7bed2a631789d62577",
+  "code": [
+    {
+      "report": "generation",
+      "path": "notes/mfx_expand10_stage1_20261105/fixture.py",
+      "sha256": "a028341739c16795a595db82484412bbcbdc5c30844721c9eed9e2efa6ebaa06",
+      "matches_worktree_and_reviewed_commit": true
+    },
+    {
+      "report": "generation",
+      "path": "notes/synthetic_mfx_stage3_20261104/xtc_fixture.py",
+      "sha256": "2cc9b2e976a53ccd2e880312013f2d32cc1d8909c1ce94ca1e6c94004395d148",
+      "matches_worktree_and_reviewed_commit": true
+    },
+    {
+      "report": "verification",
+      "path": "notes/mfx_expand10_stage1_20261105/verify.py",
+      "sha256": "bce5e571aa48aa329fd07772e337304b693e4f1fed43d2c3f7c2934bcd8bcaa8",
+      "matches_worktree_and_reviewed_commit": true
+    },
+    {
+      "report": "verification",
+      "path": "notes/mfx_expand10_stage1_20261105/fixture.py",
+      "sha256": "a028341739c16795a595db82484412bbcbdc5c30844721c9eed9e2efa6ebaa06",
+      "matches_worktree_and_reviewed_commit": true
+    },
+    {
+      "report": "verification",
+      "path": "notes/synthetic_mfx_stage3_20261104/xtc_fixture.py",
+      "sha256": "2cc9b2e976a53ccd2e880312013f2d32cc1d8909c1ce94ca1e6c94004395d148",
+      "matches_worktree_and_reviewed_commit": true
+    }
+  ],
+  "calibration_manifest_sha256": "90a27eed3679111aa24574c09b5505be6b8775429e5b8de10dc0c9de117b983d",
+  "generation_sha256": "37caae57732f88a57ab8660af4641028b8f8c476efd5b309b6c9eb7f8deeb798",
+  "scope": "Independent evidence audit; verifier does not yet enforce these bindings itself (F-004 deferred)."
+}

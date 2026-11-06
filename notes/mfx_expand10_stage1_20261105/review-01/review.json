@@ -1,0 +1,62 @@
+{
+  "reviewed_commit": "3d21547ce5f55c9b38775c7bed2a631789d62577",
+  "verdict": "pass",
+  "summary": "Stage 1 of the MFX sample10 plan is implemented within the agreed scope. The writer (fixture.py) rewrites only the declared Names bytes (alg name at 784, version at 1040, field-0 name at 1048+260, rank at 1048+520), which match the NameInfo/Name layouts in ShapesData.hh (numArrays 4, three 256-byte strings, Alg 256+4, segment 4 = 1048; Name = 260+256+4+4 = 524) and the MaxRank=5 Shape (20 bytes). Seed is raw.reshape(-1)[::10] of 52429 uint16 words; scalar bytes after the array are preserved; Shapes/Data/ShapesData/root extents are recomputed; SMD intOffset/intDgramSize are rewritten per output; a node-0 sim10meta.config record with factor/rows/columns/dtype_code/encoding_version is appended at a NamesId checked free in both BD and SMD Configure. Schedule keeps the native Configure/BeginRun/BeginStep/Enable/SlowUpdate prefix and the first ten source L1 timestamps, then closes with Disable/EndStep/EndRun from each stream's own templates at integer-ns offsets (+1000/+2000/+3000 ns per generation.json). verify.py is reasonably independent: it decodes both source and output with psana Dgram, checks seed equality, independent expansion indexing (arange//10*10), per-field scalar equality, byte-for-byte non-JF leaves, restore-and-compare of Names bytes, env/src/damage/type per output vs its own source, full file hash/size, trace offsets, strict identical ten-stream timelines, transition state machine, no stray steps, EOF, and serial DataSource traversal of 320 panel-events with skip_calib_load='all' (confirmed supported in psexp/run.py). Supplied evidence (verification.json status pass, 20 files, 40,280,528 bytes, seed 33,554,560, expanded 335,544,320, 320 panel checks, step_counts [10]; unit-checks.log 6 tests OK) is consistent with the code and with the plan's panel mapping (also matches mfx_real_codec_20261105/gate-result.json panel_order). Prior F-001 terminology is fixed in the plan ('seed input buffers'). Remaining findings are low and non-blocking. No GPU, calibration, DB, run-allocation or publication acceptance is implied.",
+  "checks": [
+    "Read scope.md, README.md, fixture.py, verify.py, test_fixture.py, runtime.sh, provenance.json, unit-checks.log, verification.log, status.json; targeted inspection of generation.json and verification.json (totals, schedule, stream 5 records, panel lists, code hashes, runtime block).",
+    "Cross-checked Names/Name/Shape wire offsets used by fixture.py and verify.py against xtcdata ShapesData.hh (NameInfo order, MaxNameSize=256, AlgVersion major<<16, MaxRank=5 from 32-byte Shapes extent) and NamesId.hh (nodeId<<8|namesId, so node-0 key 255 is comparable to raw src values).",
+    "Confirmed DescData.hh offset computation (consecutive shapes, rank-0 sizes) is compatible with a rank-1 seed followed by unchanged scalars; dgram.cc reads scalars via get_value and arrays via PyArray_New.",
+    "Confirmed stream->panel mapping in fixture.PANELS equals the plan table and gate-result.json panel_order; verifier also checks it against decoded source dgrams.",
+    "Arithmetic: 10*32*52429*2 = 33,554,560 seed bytes; 10*32*524288*2 = 335,544,320 expanded; stream 5 L1 record 524,724 = 24 + 5*(36+20+104858+26); last group 524288-52428*10 = 8 pixels.",
+    "Schedule evidence: generation.json shows services 2,4,6,8,10,12x10,9,7,5 with original L1 timestamps and inserted closing transitions at +1000/+2000/+3000 ns; verification.json timeline identical, step_counts [10], PS_FAKESTEP_FLAG=0, PS_PARALLEL=none.",
+    "Confirmed skip_calib_load='all' is honored in psana/psana/psexp/run.py:287 and ds_base.py.",
+    "Checked helper runtime.sh (frozen Python 3.11 env, PS_FAKESTEP_FLAG=0, PS_PARALLEL=none) and provenance.json hashes are consistent across generation.json/verification.json for xtc_fixture.py.",
+    "Confirmed prior finding F-001 is resolved in synthetic_mfx_expand10.md line 95 ('seed input buffers')."
+  ],
+  "limitations": [
+    "Read-only review: no commands run, no tests executed. Test and verification results are taken from the supplied logs and JSON, not reproduced.",
+    "The scratch artifact at /sdf/scratch/users/m/monarin/gpu-validation/mfx-expand10/20261105-stage1-r2/xtc, the failed stage1-r1 attempt/log, and the first verification pass log are outside the checkout and were not inspected; their description rests on README and the supplied reports.",
+    "Could not compute SHA-256 of the committed fixture.py/verify.py/generation.json to confirm they match the code_sha256/generation_sha256 values recorded in generation.json and verification.json (a028\u2026, bce5\u2026, 37ca\u2026). Hash consistency between the two reports was checked; identity with the committed files was not.",
+    "Could not run git to confirm the commit diff touches only notes/mfx_expand10_stage1_20261105 and the plan document; the 'no core psana changes' claim rests on the stated scope and the files inspected.",
+    "The large JSON reports were inspected by targeted greps/slices (totals, stream 5 record list, panel lists, timeline, code hashes), not read exhaustively.",
+    "No statement is made about GPU expansion, calibration resolution for alg sim10, destination run allocation, or publication; those are Stage 2+ and were not evidenced."
+  ],
+  "findings": [
+    {
+      "id": "F-002",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_expand10_stage1_20261105/fixture.py",
+      "line": 129,
+      "evidence": "event_transform records shapes position q and data position data_pos before shrinking the Data payload, then writes the new shape at q+12 and the new Data extent at data_pos+8. This is only correct if the Shapes child precedes the Data child; ShapesData.hh (data()/_firstIsShapes) permits either order and no require() asserts Shapes-first. The verifier would detect the resulting corruption (shape words, Dgram decode, seed equality), so this is a robustness gap in the writer, not an observed defect.",
+      "requested_change": "Add require(shapes[0][0] < payloads[0][0], 'Expected Shapes before Data') in event_transform (or recompute q from the rewritten buffer) before packing the shape words."
+    },
+    {
+      "id": "F-003",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_expand10_stage1_20261105/README.md",
+      "line": 42,
+      "evidence": "After the rewrite the seed occupies 104,858 bytes, so frame_cnt/timestamp (UINT64) now start at Data payload offset 104858 (2 mod 8) instead of 1048576 (0 mod 8). DescData::get_value does an unaligned reinterpret_cast read, which is fine on x86 and passed in the DataSource traversal, but a Stage 2 adapter or device-side reader must not assume 8-byte alignment of the trailing scalars.",
+      "requested_change": "Document in README/plan that sim10 scalar fields are not 8-byte aligned within the Data payload, and have the Stage 2 reader adapter read them via the normal DescData/Dgram path (host side) rather than raw pointer casts."
+    },
+    {
+      "id": "F-004",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_expand10_stage1_20261105/verify.py",
+      "line": 229,
+      "evidence": "verify.py records code_sha256 and generation_sha256 but does not compare generation.json's code_sha256 for fixture.py/xtc_fixture.py against the files actually imported, nor its calibration_manifest_sha256 against the frozen manifest. The reviewer likewise cannot confirm the committed sources match the recorded a028\u2026/bce5\u2026 hashes without executing code.",
+      "requested_change": "In verify(), require that generation['code_sha256'] entries equal file_sha of the imported fixture.py and xtc_fixture.py, and that generation['calibration_manifest_sha256'] equals file_sha(SNAPSHOT/'manifest.json'), so the report binds the artifact to the exact writer code and manifest."
+    },
+    {
+      "id": "F-005",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_expand10_stage1_20261105/README.md",
+      "line": 90,
+      "evidence": "README states 'Independent review records are under review-01/' but no review-01 directory exists at commit 3d21547c (Glob of notes/mfx_expand10_stage1_20261105/** returns no such path).",
+      "requested_change": "Add the review-01/ record when this review is filed, or reword to indicate the directory is created by the review step."
+    }
+  ]
+}

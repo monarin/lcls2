@@ -7,7 +7,8 @@
   "reviewed_commit": "b73f0dfe75e39a947bccfc9a7eb70b34b23fbfce",
   "review_verdict": "pass",
   "completed_rounds": 1,
-  "deferred_nonblocking_ids": [
-    "F-001"
-  ]
+  "deferred_nonblocking_ids": [],
+  "resolved_in_stage1": {
+    "F-001": "3d21547ce5f55c9b38775c7bed2a631789d62577"
+  }
 }

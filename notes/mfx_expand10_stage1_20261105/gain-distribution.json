@@ -1,0 +1,32 @@
+{
+  "panel_events": 320,
+  "counts_by_encoded_gain_state_00_01_10_11": {
+    "raw_gain_counts": [
+      166927382,
+      761870,
+      1220,
+      81688
+    ],
+    "expanded_gain_counts": [
+      166930330,
+      762410,
+      1100,
+      78320
+    ]
+  },
+  "fractions": {
+    "raw_gain_counts": [
+      0.9949647307395935,
+      0.0045410990715026855,
+      7.271766662597656e-06,
+      0.00048689842224121095
+    ],
+    "expanded_gain_counts": [
+      0.9949823021888733,
+      0.004544317722320557,
+      6.556510925292969e-06,
+      0.0004668235778808594
+    ]
+  },
+  "interpretation": "Distribution check only. Pixel pairing and spatial correlations are synthetic; no calibration acceptance is claimed."
+}
