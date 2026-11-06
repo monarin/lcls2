@@ -1,0 +1,24 @@
+{
+  "phase": "validation_complete_review_pending",
+  "base": "f1b8bb7e5265e7044f6a27289b65c9285f09c703",
+  "round": 1,
+  "round_limit": 3,
+  "root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sample10_10k",
+  "evidence": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sample10_10k_evidence_20261106",
+  "unresolved_findings": [],
+  "job": "43538554",
+  "expected_file_bytes": 37682986080,
+  "unit_tests": "10 passed",
+  "host": "sdfmilan271",
+  "runtime_core_changed": false,
+  "new_public_run": false,
+  "checks": {
+    "unit_tests": 10,
+    "events": 10000,
+    "panel_events": 320000,
+    "native_steps": 1,
+    "streams": 10,
+    "xtc_smd_bytes": 37682986080,
+    "source_and_datasource": "pass"
+  }
+}
