@@ -36,7 +36,7 @@
         "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/mfx_expand10_stage2_20261105/fixture.py": true,
         "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage3_20261104/xtc_fixture.py": true
       },
-      "source_start_event": null,
+      "source_start_event": 0,
       "generation_hash_matches": true
     },
     "tail": {
@@ -65,7 +65,7 @@
         "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/mfx_expand10_stage2_20261105/fixture.py": true,
         "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage3_20261104/xtc_fixture.py": true
       },
-      "source_start_event": null,
+      "source_start_event": 36034,
       "generation_hash_matches": true
     },
     "pilot": {
@@ -94,7 +94,7 @@
         "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/mfx_expand10_stage2_20261105/fixture.py": true,
         "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage3_20261104/xtc_fixture.py": true
       },
-      "source_start_event": null,
+      "source_start_event": 0,
       "generation_hash_matches": true
     }
   },

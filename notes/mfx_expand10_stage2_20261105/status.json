@@ -1,6 +1,6 @@
 {
-  "phase": "ready-for-independent-review",
-  "round": 1,
+  "phase": "evidence-corrections-ready-for-follow-up",
+  "round": 2,
   "round_limit": 3,
   "artifact_root": "/sdf/scratch/users/m/monarin/gpu-validation/mfx-expand10/20261105-stage2-r1",
   "gpu_jobs": [
@@ -23,7 +23,10 @@
     "pilot_cpu": "pass: 32,000 panel-event source/format checks",
     "source_provenance": "all final report code hashes match current source"
   },
-  "unresolved_ids": [],
+  "unresolved_ids": [
+    "F-006",
+    "F-007"
+  ],
   "prior_findings_to_close": [
     "F-002",
     "F-004"
@@ -61,5 +64,8 @@
       "job": 43404422,
       "result": "pass: 1,000 events, 158 callbacks, all raw/calibrated pixels bitwise exact"
     }
-  ]
+  ],
+  "implementation_commit": "11f2f804a0f9968d6210d8a6bfed584691b101d3",
+  "review_output": "/tmp/mfx-expand10-stage2-review-20261105-r1",
+  "prior_review_verdict": "pass"
 }

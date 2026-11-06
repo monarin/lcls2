@@ -59,8 +59,8 @@ All final checks passed before independent review:
 | Native tail | 3 | 96 | 50,331,648 | 15,338,533 |
 | Pilot | 1,000 | 32,000 | 16,777,216,000 | 3,770,582,982 |
 
-Pilot: 158 callbacks (sizes 1, 2, 5, 6 and 7), two CUDA streams, and a final
-one-event callback. Peak CuPy pool allocation was 2,040,194,560 bytes. Every raw
+Pilot: 158 callbacks (sizes 1, 2, 5, 6 and 7), two CUDA streams, including one one-event
+callback and a six-event final partial callback. Peak CuPy pool allocation was 2,040,194,560 bytes. Every raw
 word and calibrated float32 bit matched; all calibration outputs were finite.
 Eight focused CPU tests and all ten CUDA guard cases passed.
 
