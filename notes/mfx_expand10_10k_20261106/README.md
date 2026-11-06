@@ -1,8 +1,10 @@
 # 10,000-event sample10 fixture for single-node measurements
 
 Generation and full CPU validation passed November 6, 2026 in Slurm job
-43538554 on sdfmilan271 (COMPLETED, exit 0, 56m46s). Independent review pending.
-See status.json for current review state and validation-summary.json for results.
+43538554 on sdfmilan271 (COMPLETED, exit 0, 56m46s). Independent Claude review
+passed implementation commit `738058473bf73601fd978c67179f2e9d7efff05b` with no
+blocking findings. See [review closure](review-01/response.md), status.json and
+validation-summary.json for the verdict, limitations and results.
 
 Fixture:
 `/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sample10_10k/`
@@ -25,6 +27,10 @@ inherits project group ACLs. A partial directory is not an accepted fixture:
 require evidence/status.json with phase complete and accepted true, plus passing
 summary/verification reports. The controller marks acceptance after full readback.
 Existing output directories are rejected, not overwritten or silently resumed.
+On preemption, time-limit termination or SIGKILL, the phase can remain
+`generating` or `verifying` with accepted false: check Slurm state and the job
+log to distinguish an active job from an interrupted one. Such a directory is
+not accepted. The controller does not install signal handlers or auto-resume.
 
 The writer and verifier are frozen copies of the reviewed Stage 2 tools with
 the bounded changes described in scope.md. Historical Stage 2 hashes remain
@@ -40,6 +46,12 @@ bash "$runtime" "$stage/test_fixture.py"
 bash "$runtime" "$stage/campaign.py" preflight
 sbatch --output="$PWD/$stage/job-%j.log" "$stage/run.sbatch" "$PWD/$stage"
 ```
+
+Use campaign.py/run.sbatch for the project-shared fixture. The campaign sets
+umask 0007 before creation; the low-level fixture.py standalone entry point
+does not set it, so callers must arrange the intended permissions themselves.
+The accepted job's ACLs are recorded in access.txt. Standalone permission
+generalization is deferred; it is not required to use the generated fixture.
 
 Preflight checks source identities, exact per-stream output sizes, available
 filesystem space plus 5 GiB headroom, and SHA256/shape/size of frozen pedestals,
