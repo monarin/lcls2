@@ -5,6 +5,8 @@ costs **64 MiB per logical bin**. Two independent stream banks cost **128 MiB pe
 bin** before other memory. Input sample10 compression does not shrink these sums.
 
 This is an analytic projection, not a GPU OOM experiment or performance result.
+It extrapolates beyond the current prototype's explicit 30-bin limit; raising
+that limit or adding these memory policies is not part of this change.
 [Figure](hypercube_memory.png), [PDF](hypercube_memory.pdf),
 [numeric assumptions/results](projection.json), [examples CSV](examples.csv),
 and [reproduction script](projection.py) accompany this note.
@@ -39,11 +41,13 @@ export/merge staging; it is not guaranteed sufficient. It generally grows with
 BD count, stream count and batch size. Lines changing R hold the reserve fixed
 only to isolate the cost of cube replication.
 
-In the accepted prototype, 30 bins × two banks used 4,026,532,320 bytes of
-persistent state, while observed CuPy pool peak was 6,064,654,848 bytes. The
+For the accepted prototype, persistent state is **calculated** from Cube's
+allocation formula: two banks × 30 × (64 MiB + 8 B) = 4,026,532,320 bytes.
+The **measured** CuPy pool peak was 6,064,654,848 bytes. The
 ~1.90 GiB difference is only pool-accounted non-cube storage for that small
 configuration; it is not total-device overhead and does not validate the 8 GiB
-reserve for larger configurations. Source: ../mfx_expand10_prototype_20261106/smoke-report.json.
+reserve for larger configurations. Sources: [Cube allocation formula](../mfx_expand10_stage3a_20261105/cube.py)
+and [measured pool report](../mfx_expand10_prototype_20261106/smoke-report.json).
 
 | Independent full banks/GPU | Max bins: 40 GiB, 8 GiB reserve | Max bins: 80 GiB, 8 GiB reserve |
 |---:|---:|---:|
@@ -168,6 +172,8 @@ implicit zeros with occupancy metadata if the output format permits.
 
 Let q be accepted events accumulated per exported float32 bin partial, aggregated
 across all workers. At rate F, sum-only export traffic is `F * 64 MiB / q`.
+Traffic units GB/s and TB/s here and above are decimal (10^9 and 10^12 bytes/s);
+memory capacities throughout the note use binary MiB and GiB.
 At F=35,000/s this is 2,348.8 GB/s for q=1, 234.9 GB/s for q=10,
 23.49 GB/s for q=100, and 2.349 GB/s for q=1,000. Counts are negligible here;
 this excludes host merge reads/writes and storage overhead. The cache must achieve
@@ -192,6 +198,7 @@ Reproduce with the recorded Stage 2 Python runtime and matplotlib, setting
 MPLCONFIGDIR to scratch:
 
 ```
+MPLCONFIGDIR=/sdf/scratch/users/m/monarin/gpu-validation/hypercube-memory/mpl-cache \
 bash notes/mfx_expand10_stage2_20261105/runtime.sh \
   notes/hypercube_memory_20261106/projection.py --output NEW_OUTPUT_DIRECTORY
 ```
@@ -200,3 +207,7 @@ At runtime query actual free/total bytes and maintain owned reservations; a free
 memory snapshot is not an allocation guarantee, especially with other processes.
 [NVIDIA memory API documentation](https://docs.nvidia.com/cuda/archive/12.9.2/cuda-driver-api/group__CUDA__MEM.html)
 describes this limitation. The arithmetic here uses explicit budgets instead.
+
+Independent Claude review passed model/plot commit `9d555787d` with no blocking
+findings. [Review responses](review-01/response.md) record documentation-only
+clarifications and the distinction between reviewer and coordinator checks.

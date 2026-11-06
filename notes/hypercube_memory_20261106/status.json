@@ -1,9 +1,16 @@
 {
-  "phase": "projection-verified-review-pending",
+  "phase": "complete",
   "base": "3c025ce18",
   "round": 1,
   "round_limit": 3,
   "runtime_changes": false,
   "new_data_generated": false,
-  "unresolved_findings": []
+  "unresolved_findings": [],
+  "model_commit": "9d555787df1f632d647019b7cc95346babfe6c17",
+  "reviewed_commit": "9d555787df1f632d647019b7cc95346babfe6c17",
+  "review_verdict": "pass",
+  "findings_addressed_in_documentation": [
+    "HC-001",
+    "HC-002"
+  ]
 }

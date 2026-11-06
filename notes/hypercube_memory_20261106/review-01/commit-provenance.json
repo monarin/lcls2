@@ -1,0 +1,54 @@
+{
+  "reviewed_commit": "9d555787df1f632d647019b7cc95346babfe6c17",
+  "all_recorded_hashes_match_git_blobs": true,
+  "sha256": {
+    "projection.py": "d457e77e7b3537dc6b53202a029d39bf38169c7a7fa2694b89616aa7bcc5ec15",
+    "hypercube_memory.png": "7bef9c4ba6a0ac4f1788911090e4b79c274eafc0193c85618a08e909bd7539a0",
+    "hypercube_memory.pdf": "72246c742dfb7ef67d5dc38640f3d297152953b29179d5efc0c363517433d001",
+    "hypercube_memory.svg": "2ea15a8391f62c5c4a3b0ff59bd0094f2c2fc904ee2cc70bc2932b5e7465ccbc",
+    "projection.json": "49f03770977f6a8747d7819619396b03cfb988b440deb6d55903261be9ccd4f4",
+    "examples.csv": "1916511c810c7b67436ea4f7e82a7c53a76055cb50d2f0a79868c3766bfa7504"
+  },
+  "first_over_budget_excess_bytes": [
+    {
+      "device_gib": 40,
+      "replicas": 1,
+      "excess": 4096
+    },
+    {
+      "device_gib": 40,
+      "replicas": 2,
+      "excess": 4096
+    },
+    {
+      "device_gib": 40,
+      "replicas": 4,
+      "excess": 4096
+    },
+    {
+      "device_gib": 40,
+      "replicas": 8,
+      "excess": 4096
+    },
+    {
+      "device_gib": 80,
+      "replicas": 1,
+      "excess": 9216
+    },
+    {
+      "device_gib": 80,
+      "replicas": 2,
+      "excess": 9216
+    },
+    {
+      "device_gib": 80,
+      "replicas": 4,
+      "excess": 9216
+    },
+    {
+      "device_gib": 80,
+      "replicas": 8,
+      "excess": 9216
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "reviewed_commit": "9d555787df1f632d647019b7cc95346babfe6c17",
+  "verdict": "pass",
+  "summary": "The hypercube memory projection at 9d555787d is internally consistent and candid. All in-scope artifacts (scope.md, projection.py, projection.json, examples.csv, README.md, validation.json, status.json, PNG/PDF/SVG) are present with matching numbers. Hand recomputation confirms: 32*512*1024 pixels = 32 MiB uint16 / 64 MiB float32 per bin; A = 67,108,872 bytes; state_bytes(1000,2) = 125 GiB + 16,000 B; every one of the eight integer capacity boundaries (511/255/127/63 at 40 GiB, 1151/575/287/143 at 80 GiB) is count-inclusive and exact, with the first-over-budget bin exceeding the budget by 4,096 bytes in each case; float64 two-bank limits 127/287 are correct; sum-only rounded limits 256/576 correctly stated as just over budget; ideal GPU counts ceil(B/B_max) for 400/900/1000/10000/1e6 bins match the CSV/JSON (4 x 40 GiB or 2 x 80 GiB for 1,000 bins; 40/18 for 10,000); host float64 result 125 GiB / 1,250 GiB matches the Stage 3A Cube.finish() np.zeros float64 allocation; export traffic 35,000 x 64 MiB = 2,348.8 GB/s (decimal) and the q=10/100/1000 scalings are correct; the prototype cross-reference (30 bins x 2 banks = 4,026,532,320 B persistent, pool peak 6,064,654,848 B, ~1.90 GiB difference) agrees with cube.py's state formula and smoke-report.json. Plot labels in the SVG match the code and the README (bins as product of dimensions, banks per physical GPU, 32/72 GiB cube allowances, 255/575 bins per GPU). The README separates assumption from measurement (8 GiB reserve and 40/80 GiB budgets explicitly illustrative, reserve held fixed only to isolate replication cost), does not claim BD scheduling colocates bins or that streams/MPS/IPC pool memory, and treats precision, exactly-once partial reduction, completion, slot ownership/event leases, backpressure, cache thrashing, hot-bin skew, and bounded host output candidly. No performance or hardware OOM claim is made; all policies are proposed. Two low, nonblocking documentation findings.",
+  "checks": [
+    "Read all seven in-scope files plus review-01/context.md and grepped SVG text labels; all artifacts listed in validation.json exist locally",
+    "Units: PIXELS*2 = 33,554,432 (32 MiB), PIXELS*4 = 67,108,864 (64 MiB); A = PIXELS*4 + 8 = 67,108,872 B; uint64 per-pixel count image = 128 MiB/bin/replica as stated",
+    "Hand check: state_bytes(1000, 2) = 134,217,744,000 B = 125 GiB + 16,000 B, matching the script assertion",
+    "Integer boundaries: for all eight (budget, replicas) cases, max_bins*R*A <= (budget-8) GiB and (max_bins+1)*R*A exceeds it by exactly 4,096 B; values 511/255/127/63 and 1151/575/287/143 confirmed; first_over_budget_bin = max_bins+1 consistent",
+    "Float64 two-bank limits: 128*268,435,472 > 32 GiB and 288*268,435,472 > 72 GiB, so 127/287 as README states; sum-only rounded 256/576 correctly described as just over budget",
+    "Examples table and CSV/JSON: two-bank state for 30/100/400/900/1000/10000/1e6 bins = 3.75/12.5/50/112.5/125/1250/125000 GiB (+8 reserve) confirmed",
+    "Ideal GPU counts ceil(B/B_max): 400->2/1, 900->4/2, 1000->4/2, 10000->40/18, 1e6->3922/1740 all confirmed; panel C annotation '1,000 bins: 4 or 2 GPUs' consistent",
+    "Host float64 output: bins*PIXELS*8 gives 125 GiB (1,000 bins) and 1,250 GiB (10,000); Stage 3A cube.py:158 finish() does allocate np.zeros((nbins,*shape), float64) on host as README states",
+    "Export traffic: 35,000/s * 67,108,864 B = 2,348,810,240,000 B/s = 2,348.8 GB/s (decimal) = 2.349 TB/s; q=10/100/1000 scalings 234.9/23.49/2.349 GB/s correct",
+    "Prototype cross-reference: 30*2*(PIXELS*4+8) = 4,026,532,320 B matches cube.py state_bytes_per_stream*2 and the prototype README's 4.03 GB; smoke-report.json pool_peak_bytes = 6,064,654,848; difference 2,038,122,528 B = 1.898 GiB matches '~1.90 GiB'",
+    "Plot code: panel A plots cube state only against 32/72 GiB allowances (budget minus reserve) with 255/575 markers; panel B LogNorm range 8..6000 covers 11.1..5008 GiB for 5..200 bins/dim; panel C ylim 0.8..600 covers max 393 owners; panel D 8+state(n^x) semilogy; SVG labels match code and README",
+    "Model text: B = L*prod(ni), M_cube = R*B*A, B_max = floor((budget-M_other)/(R*A)) matches bin_capacity(); R defined as banks per physical GPU, not GPU count; reserve explicitly held fixed only to isolate replication",
+    "Policy text: states BD distribution does not colocate bins, MPI/CUDA IPC memory is not shared state, sharing banks across processes is an IPC problem, streams do not inherently require separate banks; precision, exactly-once partial addition, completion, slot reuse/event leases, backpressure, thrashing, hot-bin skew, bounded host output all addressed; no throughput or OOM claim",
+    "status.json: round 1 of 3, runtime_changes false, new_data_generated false, no unresolved findings; validation.json status pass with coordinator checks recorded",
+    "Scope compliance: no runtime/GPU/dataset/DB changes in the reviewed note directory; deferred F-008 untouched"
+  ],
+  "limitations": [
+    "Did not run projection.py, matplotlib, or any command; arithmetic verified by hand from source and recorded outputs only",
+    "Did not compute or verify any SHA-256 in validation.json or smoke-report.json, and did not verify byte-identity of committed artifacts to the scratch copies",
+    "Did not view PNG/PDF pixels; plot content checked only via code and SVG text labels",
+    "Did not access the scratch artifact_root or NVIDIA documentation links; neither was required for the arithmetic review",
+    "Could not verify that the Stage 2 runtime.sh environment actually provides matplotlib 3.11.2; runtime.sh pins PYTHONPATH to the install prefix, so matplotlib availability rests on the coordinator's recorded run"
+  ],
+  "findings": [
+    {
+      "id": "HC-001",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/hypercube_memory_20261106/README.md",
+      "line": 42,
+      "evidence": "README states '30 bins x two banks used 4,026,532,320 bytes of persistent state' and cites smoke-report.json as the source. smoke-report.json records nbins=30, n_gpu_streams=2 and pool_peak_bytes=6064654848 but does not contain the 4,026,532,320 figure; it is derived from cube.py:72 state_bytes_per_stream = nbins*(prod(shape)*4+8) times two banks (the prototype README rounds it to 4.03 GB). The number is correct but is a computed value, not a recorded measurement.",
+      "requested_change": "Say the persistent-state bytes are computed from the prototype Cube state formula (two banks of 30 x (64 MiB + 8 B)), with the pool peak being the only measured value from smoke-report.json, so the assumption/measurement separation the note otherwise maintains is explicit here too."
+    },
+    {
+      "id": "HC-002",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/hypercube_memory_20261106/README.md",
+      "line": 191,
+      "evidence": "Prose says 'Reproduce with the recorded Stage 2 Python runtime and matplotlib, setting MPLCONFIGDIR to scratch', but the fenced command on lines 195-196 does not set MPLCONFIGDIR and runtime.sh does not export it. Separately, export-rate figures on lines 139 and 171 use decimal GB/TB while the rest of the note uses binary GiB; the values are correct for decimal units but the switch is not called out.",
+      "requested_change": "Add MPLCONFIGDIR=<scratch> to the reproduction command (or drop the sentence), and add a brief note that GB/TB in the traffic section are decimal (10^9/10^12) to avoid a reader mistaking them for GiB."
+    }
+  ]
+}
