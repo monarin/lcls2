@@ -1,5 +1,10 @@
 # MFX sample10 Stage 2: native GPU correctness
 
+Completed November 5, 2026. Independent Claude review passed, with all findings
+closed. Tested implementation: `11f2f804a0f9968d6210d8a6bfed584691b101d3`;
+final evidence follow-up: `b0b946f41ef82e3b33fbdf8c64f2a69a565ad1c2`.
+See [review closure](review-02/response.md).
+
 The task reads `jungfrau.sim10.seed` through psana's generic GPU field API,
 expands all physical panels into contiguous uint16 `(N,32,512,1024)` storage,
 then calls the unchanged Jungfrau calibration example. Outputs use normal GPU

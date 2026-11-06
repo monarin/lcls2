@@ -1,6 +1,6 @@
 # MFX five-stream input with synthetic 10x GPU expansion
 
-Status: Stage 2 correctness implementation, November 5, 2026. This is the active dataset direction.
+Status: Stage 2 correctness complete, November 5, 2026. This is the active dataset direction.
 Stop further real-codec exploration and the XPP repeat16 fixture path. Preserve
 those results and existing datasets. Only private scratch pilots have been generated.
 
@@ -8,8 +8,9 @@ Execution update: [Stage 1](../../../../../notes/mfx_expand10_stage1_20261105/RE
 completed with 10 events in private scratch, all 320 CPU panel comparisons and
 serial DataSource checks passing, and independent review passing at
 `3d21547ce5f55c9b38775c7bed2a631789d62577`. The [Stage 2 adapter and correctness campaign](../../../../../notes/mfx_expand10_stage2_20261105/README.md)
-cover native GPU expansion and full calibration with frozen constants. See its
-status and review records for acceptance. No public fixture or new calibration
+passed native GPU expansion and full calibration checks for 10, 3 and 1,000
+events using frozen constants, with independent review passing and all findings
+closed. Tested code is `11f2f804a`; final evidence review is `b0b946f41`. No public fixture or new calibration
 records have been deployed.
 
 ## Layout and calibration
