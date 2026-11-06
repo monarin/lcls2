@@ -1,0 +1,22 @@
+{
+  "reviewed_commit": "a98c01fafa9ee2d254bee35aa95c7ab1e298d1b5",
+  "verdict": "pass",
+  "summary": "The bounded measurement at a98c01f is internally consistent and correctly scoped. measure.py verifies raw layout (32,512,1024) little-endian uint16, checks five reference groups covering panels 0..31 exactly once, requires each group's SHA256 to match the earlier reviewed gate-result.json, and enforces lossless round trips for both codecs before counting bytes (plain LZ4 per 8 KiB block via decompress-equality; bitshuffle via dtype/shape/np.array_equal on the full group). Framing is accounted symmetrically: plain LZ4 uses store_size=False plus 4 bytes per block, bitshuffle's native output already carries 4-byte block lengths; all group sizes are exact multiples of 8192 so no partial-block asymmetry arises. result.json per-stream panels and raw hashes match gate-result.json for all five streams and the same timestamp/event 0. Sums and ratios recomputed by hand match: raw 33,554,432; LZ4 33,710,037 (0.99538x); bitshuffle+LZ4 27,940,162 (1.20094x, 16.7% savings); SLEEK same-event 14,013,832 gives 2.394x and matches the prior codec README. README and scope.md state the limitations required: CPU only, one event, no nvCOMP equivalence, no throughput, not run-wide, lossy-vs-lossless comparison qualified. No findings.",
+  "checks": [
+    "measure.py read in full: layout/dtype guard, 5-group panel coverage guard, per-group raw SHA256 match against gate-result.json, same-timestamp/event-0 guard",
+    "Lossless round-trip logic: plain LZ4 decompress(uncompressed_size)==block per 8 KiB block; bitshuffle decompress_lz4 compared with dtype, shape and np.array_equal",
+    "Framing accounting: store_size=False + 4 bytes/block for plain LZ4; bitshuffle native output includes 4-byte block lengths; group byte counts (5242880, 6291456, 7340032) are exact multiples of 8192, so no partial-block asymmetry",
+    "result.json per-stream panels and raw_sha256 for streams 5-9 cross-checked against notes/mfx_real_codec_20261105/gate-result.json records: all five match, same timestamp 4909050823936603206, event 0",
+    "Arithmetic recomputed: raw sum 33,554,432 = 32*512*1024*2; LZ4 sum 33,710,037; bitshuffle+LZ4 sum 27,940,162; factors 0.995384 and 1.200939; savings 16.7%; 33,554,432/14,013,832 = 2.394",
+    "SLEEK same-event 14,013,832 bytes and 1k-event 2.70x figures cross-checked against notes/mfx_real_codec_20261105/README.md and review-01/02 JSON",
+    "README/scope limitations verified present: CPU libraries only, single event, no nvCOMP bitstream equivalence, no throughput, no run-wide generalization, lossy-vs-lossless distinction, isolated scratch dependencies, output file must be new (open('x'))",
+    "Recorded environment metadata present in result.json: python, host sdfiana025, numpy, bitshuffle 0.5.2, lz4 4.4.5 / lib 1.9.4, extension and script SHA256"
+  ],
+  "limitations": [
+    "Read-only review: did not execute measure.py or recompute any SHA256; script_sha256, bitshuffle_extension_sha256, source_raw_sha256 and reference_sha256 in result.json are taken as supplied execution evidence",
+    "Scratch paths under /sdf/scratch (raw witness, installed packages) are outside the checkout and were not read, per scope",
+    "Upstream bitshuffle.c blob SHA cited in README was not fetched; the 4-byte block-length framing is accepted on the basis of the README statement and the matching per-block accounting in the script",
+    "No prior finding IDs exist for this new measurement directory, so none were reused"
+  ],
+  "findings": []
+}

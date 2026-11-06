@@ -1,5 +1,5 @@
 {
-  "phase": "independent-review",
+  "phase": "complete",
   "round": 1,
   "round_limit": 3,
   "checks": {
@@ -7,5 +7,8 @@
     "roundtrip": "all 16777216 uint16 pixels exact for both codecs"
   },
   "artifact_root": "/sdf/scratch/users/m/monarin/gpu-validation/raw-compression-factor/20261105-r1",
-  "unresolved_ids": []
+  "unresolved_ids": [],
+  "reviewed_commit": "a98c01fafa9ee2d254bee35aa95c7ab1e298d1b5",
+  "review_verdict": "pass",
+  "completed_rounds": 1
 }

@@ -48,3 +48,6 @@ python notes/raw_compression_factor_20261105/measure.py \
 
 The output file must be new. Validation is the full lossless round trip and
 reference hashes; no new unit tests or GPU jobs were needed for this size check.
+
+Independent Claude review of `a98c01fafa9ee2d254bee35aa95c7ab1e298d1b5`
+passed with no findings; see [review record](review-01/review.json).
