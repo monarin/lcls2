@@ -15,8 +15,8 @@ records have been deployed.
 
 Stage 3A update: the [application-owned cube pilot](../../../../../notes/mfx_expand10_stage3a_20261105/README.md)
 passed native tiny/tail/1,000-event checks with exact counts and all 30-bin cube
-pixels within a documented float32 accumulation bound; independent review is
-pending. This is an explicit per-run/per-stream prototype with application
+pixels within a documented float32 accumulation bound. Independent review passed
+on `444a695e2` with no blocking findings. This is an explicit per-run/per-stream prototype with application
 finalization after EOF. The managed lifecycle/factory/state allocator remains
 proposed. Controlled step-label tests do not establish native multi-step support.
 

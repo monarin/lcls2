@@ -1,6 +1,9 @@
 # Stage 3A: sample10 fly-scan cube correctness
 
-Native and controlled validation passed; independent review pending.
+Completed November 5, 2026. Native and controlled validation passed; independent
+Claude review passed on `444a695e25b4141fd41fd4feafd28ad3a5d57ae8` with no blocking
+findings. One optional third-stream rejection test is deferred before broadening
+stream configuration; see [review response](review-01/response.md).
 This is a bounded application-owned prototype on the existing Stage 2 fixtures.
 It does not implement the proposed managed GpuTask factory/lifecycle API.
 
