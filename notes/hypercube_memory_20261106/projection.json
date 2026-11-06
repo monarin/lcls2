@@ -1,0 +1,163 @@
+{
+  "kind": "analytic projection; not measured OOM or throughput",
+  "raw_bytes": 33554432,
+  "pixels": 16777216,
+  "float32_sum_bytes_per_bin": 67108864,
+  "scalar_count_bytes_per_bin": 8,
+  "reserve_gib": 8,
+  "capacity_unit": "GiB, illustrative budgets; query actual device and account all users",
+  "replicas": "independent complete banks per physical GPU, e.g. BD processes times streams",
+  "assumptions": [
+    "full dense image per bin",
+    "float32 sums except dtype comparison",
+    "fixed 8 GiB non-cube reserve for illustration; may need to grow with replicas",
+    "GPU sharding has balanced bin counts and two banks per owner GPU",
+    "no pixel masks/counts, variance, labels, allocator padding or extra output staging in cube term"
+  ],
+  "checks": "hand values and every integer capacity boundary passed",
+  "capacities": [
+    {
+      "device_budget_gib": 40,
+      "reserve_gib": 8,
+      "replicas": 1,
+      "max_bins": 511,
+      "first_over_budget_bin": 512
+    },
+    {
+      "device_budget_gib": 40,
+      "reserve_gib": 8,
+      "replicas": 2,
+      "max_bins": 255,
+      "first_over_budget_bin": 256
+    },
+    {
+      "device_budget_gib": 40,
+      "reserve_gib": 8,
+      "replicas": 4,
+      "max_bins": 127,
+      "first_over_budget_bin": 128
+    },
+    {
+      "device_budget_gib": 40,
+      "reserve_gib": 8,
+      "replicas": 8,
+      "max_bins": 63,
+      "first_over_budget_bin": 64
+    },
+    {
+      "device_budget_gib": 80,
+      "reserve_gib": 8,
+      "replicas": 1,
+      "max_bins": 1151,
+      "first_over_budget_bin": 1152
+    },
+    {
+      "device_budget_gib": 80,
+      "reserve_gib": 8,
+      "replicas": 2,
+      "max_bins": 575,
+      "first_over_budget_bin": 576
+    },
+    {
+      "device_budget_gib": 80,
+      "reserve_gib": 8,
+      "replicas": 4,
+      "max_bins": 287,
+      "first_over_budget_bin": 288
+    },
+    {
+      "device_budget_gib": 80,
+      "reserve_gib": 8,
+      "replicas": 8,
+      "max_bins": 143,
+      "first_over_budget_bin": 144
+    }
+  ],
+  "examples": [
+    {
+      "dimensions": [
+        30
+      ],
+      "bins": 30,
+      "two_replica_state_gib": 3.750000447034836,
+      "with_reserve_gib": 11.750000447034836,
+      "cpu_float64_result_gib": 3.75,
+      "ideal_gpus_40": 1,
+      "ideal_gpus_80": 1
+    },
+    {
+      "dimensions": [
+        10,
+        10
+      ],
+      "bins": 100,
+      "two_replica_state_gib": 12.50000149011612,
+      "with_reserve_gib": 20.50000149011612,
+      "cpu_float64_result_gib": 12.5,
+      "ideal_gpus_40": 1,
+      "ideal_gpus_80": 1
+    },
+    {
+      "dimensions": [
+        20,
+        20
+      ],
+      "bins": 400,
+      "two_replica_state_gib": 50.00000596046448,
+      "with_reserve_gib": 58.00000596046448,
+      "cpu_float64_result_gib": 50.0,
+      "ideal_gpus_40": 2,
+      "ideal_gpus_80": 1
+    },
+    {
+      "dimensions": [
+        30,
+        30
+      ],
+      "bins": 900,
+      "two_replica_state_gib": 112.50001341104507,
+      "with_reserve_gib": 120.50001341104507,
+      "cpu_float64_result_gib": 112.5,
+      "ideal_gpus_40": 4,
+      "ideal_gpus_80": 2
+    },
+    {
+      "dimensions": [
+        10,
+        10,
+        10
+      ],
+      "bins": 1000,
+      "two_replica_state_gib": 125.0000149011612,
+      "with_reserve_gib": 133.0000149011612,
+      "cpu_float64_result_gib": 125.0,
+      "ideal_gpus_40": 4,
+      "ideal_gpus_80": 2
+    },
+    {
+      "dimensions": [
+        100,
+        100
+      ],
+      "bins": 10000,
+      "two_replica_state_gib": 1250.000149011612,
+      "with_reserve_gib": 1258.000149011612,
+      "cpu_float64_result_gib": 1250.0,
+      "ideal_gpus_40": 40,
+      "ideal_gpus_80": 18
+    },
+    {
+      "dimensions": [
+        100,
+        100,
+        100
+      ],
+      "bins": 1000000,
+      "two_replica_state_gib": 125000.0149011612,
+      "with_reserve_gib": 125008.0149011612,
+      "cpu_float64_result_gib": 125000.0,
+      "ideal_gpus_40": 3922,
+      "ideal_gpus_80": 1740
+    }
+  ]
+}

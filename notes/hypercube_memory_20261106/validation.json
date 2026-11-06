@@ -1,0 +1,36 @@
+{
+  "status": "pass",
+  "checks": [
+    "Detector size and hand-calculated 1000-bin memory",
+    "Integer boundaries for all eight capacity cases",
+    "1000-bin and 10000-bin GPU owner counts",
+    "PNG visually inspected: labels and four panels readable",
+    "Scratch artifact copies byte-identical",
+    "Final PNG byte-identical to visually inspected first rendering; SVG whitespace normalized"
+  ],
+  "artifact_root": "/sdf/scratch/users/m/monarin/gpu-validation/hypercube-memory/20261106-r1/plots02",
+  "script_sha256": "d457e77e7b3537dc6b53202a029d39bf38169c7a7fa2694b89616aa7bcc5ec15",
+  "artifacts": {
+    "hypercube_memory.png": {
+      "sha256": "7bef9c4ba6a0ac4f1788911090e4b79c274eafc0193c85618a08e909bd7539a0",
+      "bytes": 447608
+    },
+    "hypercube_memory.pdf": {
+      "sha256": "72246c742dfb7ef67d5dc38640f3d297152953b29179d5efc0c363517433d001",
+      "bytes": 42108
+    },
+    "hypercube_memory.svg": {
+      "sha256": "2ea15a8391f62c5c4a3b0ff59bd0094f2c2fc904ee2cc70bc2932b5e7465ccbc",
+      "bytes": 222557
+    },
+    "projection.json": {
+      "sha256": "49f03770977f6a8747d7819619396b03cfb988b440deb6d55903261be9ccd4f4",
+      "bytes": 3975
+    },
+    "examples.csv": {
+      "sha256": "1916511c810c7b67436ea4f7e82a7c53a76055cb50d2f0a79868c3766bfa7504",
+      "bytes": 566
+    }
+  },
+  "runtime": "Stage 2 runtime.sh, Python 3.11; matplotlib 3.11.2"
+}

@@ -1,0 +1,9 @@
+{
+  "phase": "projection-verified-review-pending",
+  "base": "3c025ce18",
+  "round": 1,
+  "round_limit": 3,
+  "runtime_changes": false,
+  "new_data_generated": false,
+  "unresolved_findings": []
+}
