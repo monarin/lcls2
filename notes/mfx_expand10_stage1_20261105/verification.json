@@ -1,0 +1,6101 @@
+{
+  "status": "pass",
+  "scope": "Stage 1 CPU/format acceptance; GPU and calibration remain Stage 2",
+  "root": "/sdf/scratch/users/m/monarin/gpu-validation/mfx-expand10/20261105-stage1-r2/xtc",
+  "event_count": 10,
+  "step_counts": [
+    10
+  ],
+  "stream_count": 10,
+  "jf_stream_count": 5,
+  "panel_events_checked": 320,
+  "total_file_bytes": 40280528,
+  "seed_bytes": 33554560,
+  "expanded_bytes": 335544320,
+  "timestamps": [
+    4909050823936603206,
+    4909050823944991817,
+    4909050823953249356,
+    4909050823961637967,
+    4909050823970026578,
+    4909050823978284117,
+    4909050823986672728,
+    4909050823994930267,
+    4909050824003318878,
+    4909050824011576417
+  ],
+  "timeline": [
+    [
+      4909030212777547746,
+      2
+    ],
+    [
+      4909050823844984566,
+      4
+    ],
+    [
+      4909050823917205251,
+      6
+    ],
+    [
+      4909050823928345754,
+      8
+    ],
+    [
+      4909050823928347914,
+      10
+    ],
+    [
+      4909050823936603206,
+      12
+    ],
+    [
+      4909050823944991817,
+      12
+    ],
+    [
+      4909050823953249356,
+      12
+    ],
+    [
+      4909050823961637967,
+      12
+    ],
+    [
+      4909050823970026578,
+      12
+    ],
+    [
+      4909050823978284117,
+      12
+    ],
+    [
+      4909050823986672728,
+      12
+    ],
+    [
+      4909050823994930267,
+      12
+    ],
+    [
+      4909050824003318878,
+      12
+    ],
+    [
+      4909050824011576417,
+      12
+    ],
+    [
+      4909050824011577417,
+      9
+    ],
+    [
+      4909050824011578417,
+      7
+    ],
+    [
+      4909050824011579417,
+      5
+    ]
+  ],
+  "samples": [
+    {
+      "stream": 0,
+      "timestamp": 4909050823936603206,
+      "panels": []
+    },
+    {
+      "stream": 0,
+      "timestamp": 4909050823944991817,
+      "panels": []
+    },
+    {
+      "stream": 0,
+      "timestamp": 4909050823953249356,
+      "panels": []
+    },
+    {
+      "stream": 0,
+      "timestamp": 4909050823961637967,
+      "panels": []
+    },
+    {
+      "stream": 0,
+      "timestamp": 4909050823970026578,
+      "panels": []
+    },
+    {
+      "stream": 0,
+      "timestamp": 4909050823978284117,
+      "panels": []
+    },
+    {
+      "stream": 0,
+      "timestamp": 4909050823986672728,
+      "panels": []
+    },
+    {
+      "stream": 0,
+      "timestamp": 4909050823994930267,
+      "panels": []
+    },
+    {
+      "stream": 0,
+      "timestamp": 4909050824003318878,
+      "panels": []
+    },
+    {
+      "stream": 0,
+      "timestamp": 4909050824011576417,
+      "panels": []
+    },
+    {
+      "stream": 1,
+      "timestamp": 4909050823936603206,
+      "panels": []
+    },
+    {
+      "stream": 1,
+      "timestamp": 4909050823944991817,
+      "panels": []
+    },
+    {
+      "stream": 1,
+      "timestamp": 4909050823953249356,
+      "panels": []
+    },
+    {
+      "stream": 1,
+      "timestamp": 4909050823961637967,
+      "panels": []
+    },
+    {
+      "stream": 1,
+      "timestamp": 4909050823970026578,
+      "panels": []
+    },
+    {
+      "stream": 1,
+      "timestamp": 4909050823978284117,
+      "panels": []
+    },
+    {
+      "stream": 1,
+      "timestamp": 4909050823986672728,
+      "panels": []
+    },
+    {
+      "stream": 1,
+      "timestamp": 4909050823994930267,
+      "panels": []
+    },
+    {
+      "stream": 1,
+      "timestamp": 4909050824003318878,
+      "panels": []
+    },
+    {
+      "stream": 1,
+      "timestamp": 4909050824011576417,
+      "panels": []
+    },
+    {
+      "stream": 2,
+      "timestamp": 4909050823936603206,
+      "panels": []
+    },
+    {
+      "stream": 2,
+      "timestamp": 4909050823944991817,
+      "panels": []
+    },
+    {
+      "stream": 2,
+      "timestamp": 4909050823953249356,
+      "panels": []
+    },
+    {
+      "stream": 2,
+      "timestamp": 4909050823961637967,
+      "panels": []
+    },
+    {
+      "stream": 2,
+      "timestamp": 4909050823970026578,
+      "panels": []
+    },
+    {
+      "stream": 2,
+      "timestamp": 4909050823978284117,
+      "panels": []
+    },
+    {
+      "stream": 2,
+      "timestamp": 4909050823986672728,
+      "panels": []
+    },
+    {
+      "stream": 2,
+      "timestamp": 4909050823994930267,
+      "panels": []
+    },
+    {
+      "stream": 2,
+      "timestamp": 4909050824003318878,
+      "panels": []
+    },
+    {
+      "stream": 2,
+      "timestamp": 4909050824011576417,
+      "panels": []
+    },
+    {
+      "stream": 3,
+      "timestamp": 4909050823936603206,
+      "panels": []
+    },
+    {
+      "stream": 3,
+      "timestamp": 4909050823944991817,
+      "panels": []
+    },
+    {
+      "stream": 3,
+      "timestamp": 4909050823953249356,
+      "panels": []
+    },
+    {
+      "stream": 3,
+      "timestamp": 4909050823961637967,
+      "panels": []
+    },
+    {
+      "stream": 3,
+      "timestamp": 4909050823970026578,
+      "panels": []
+    },
+    {
+      "stream": 3,
+      "timestamp": 4909050823978284117,
+      "panels": []
+    },
+    {
+      "stream": 3,
+      "timestamp": 4909050823986672728,
+      "panels": []
+    },
+    {
+      "stream": 3,
+      "timestamp": 4909050823994930267,
+      "panels": []
+    },
+    {
+      "stream": 3,
+      "timestamp": 4909050824003318878,
+      "panels": []
+    },
+    {
+      "stream": 3,
+      "timestamp": 4909050824011576417,
+      "panels": []
+    },
+    {
+      "stream": 4,
+      "timestamp": 4909050823936603206,
+      "panels": []
+    },
+    {
+      "stream": 4,
+      "timestamp": 4909050823944991817,
+      "panels": []
+    },
+    {
+      "stream": 4,
+      "timestamp": 4909050823953249356,
+      "panels": []
+    },
+    {
+      "stream": 4,
+      "timestamp": 4909050823961637967,
+      "panels": []
+    },
+    {
+      "stream": 4,
+      "timestamp": 4909050823970026578,
+      "panels": []
+    },
+    {
+      "stream": 4,
+      "timestamp": 4909050823978284117,
+      "panels": []
+    },
+    {
+      "stream": 4,
+      "timestamp": 4909050823986672728,
+      "panels": []
+    },
+    {
+      "stream": 4,
+      "timestamp": 4909050823994930267,
+      "panels": []
+    },
+    {
+      "stream": 4,
+      "timestamp": 4909050824003318878,
+      "panels": []
+    },
+    {
+      "stream": 4,
+      "timestamp": 4909050824011576417,
+      "panels": []
+    },
+    {
+      "stream": 5,
+      "timestamp": 4909050823936603206,
+      "panels": [
+        {
+          "panel": 3,
+          "seed_sha256": "11c217a616ed7b1a9833a73016de50893d1f35b2352948def03e6f24c4cc58c6",
+          "expanded_sha256": "3387f72b4f7064baa8e760729d3cd2d641dcadeb6f61d53e96acfd99563d3a93",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 7,
+          "seed_sha256": "5483603b8d341ca54b9f3fea0644fdba2709d8a21e55b959bcc0c85142319657",
+          "expanded_sha256": "7162e22f3b3ee6b24891b2cb04789a5bde22b3b3a8e5005847b0208deb51813b",
+          "raw_gain_counts": [
+            524280,
+            0,
+            0,
+            8
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 0,
+          "seed_sha256": "e257840cf6d82980cdce062637c413cd205dd65ee2047bba26dca0c619fefd1a",
+          "expanded_sha256": "2e74656ac9924b59bb2a2480fd9361e500c11cd74b5043aac94cf2715c49c0ab",
+          "raw_gain_counts": [
+            524275,
+            0,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 1,
+          "seed_sha256": "5d9cca0570848255f6cb59c7927f53513e2762ac717cedac348bebad98932639",
+          "expanded_sha256": "95d37612ede0afb366f717672e1d93480b23c6d2c14b549d7fac61bafc05225a",
+          "raw_gain_counts": [
+            524264,
+            5,
+            0,
+            19
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 2,
+          "seed_sha256": "5995694a6f9e0de9f2b794835def664ce00556153f4f119114bfb79356bf9d4d",
+          "expanded_sha256": "a948e0b87e768af97c594ef893167769a433d2137cd9beed5ae9c7fb7912da23",
+          "raw_gain_counts": [
+            524268,
+            7,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 5,
+      "timestamp": 4909050823944991817,
+      "panels": [
+        {
+          "panel": 3,
+          "seed_sha256": "9aa76aedb4b88c7ced53b3e33d3d25f5928e4e6940998d9cae06514eade7641b",
+          "expanded_sha256": "fb6b36272528b9a69ec21a9f02046ddb87fc4ee1bc18b6af404f25ca9373fc87",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 7,
+          "seed_sha256": "c978a90ba93da033ac742c020873be6edf948cb75972d22bab8e420d248efe3a",
+          "expanded_sha256": "2c0f8a854d9759b86a1dd8e2c4ca3ac1bedfd049318b827d3d01caf1d118a672",
+          "raw_gain_counts": [
+            524280,
+            0,
+            0,
+            8
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 0,
+          "seed_sha256": "36377390775ef435c6e2d6a56306cfeadefb67a211785d5665709108e0b4704f",
+          "expanded_sha256": "beafc8abf3224fa360609b9f354d6240a032b66933c7ffa675bfb1b09cb8f07e",
+          "raw_gain_counts": [
+            524275,
+            0,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 1,
+          "seed_sha256": "b412bc14233622ffb1aa867bf2599886c8407c690283568d9efb4f6aa550fd07",
+          "expanded_sha256": "18ccbda949915b0e6447c19e5ea2fa6e89717e643d0f718133a7e13d00514b7d",
+          "raw_gain_counts": [
+            524264,
+            5,
+            0,
+            19
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 2,
+          "seed_sha256": "622337d0f708c452243b3b3ce99b5c292133cae03c3645eed8c24c4349ac6f93",
+          "expanded_sha256": "af07e192653771163d527aeccba423ccfd2acbcb41266972e8cc0936804b298f",
+          "raw_gain_counts": [
+            524270,
+            5,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 5,
+      "timestamp": 4909050823953249356,
+      "panels": [
+        {
+          "panel": 3,
+          "seed_sha256": "0c6b6d31dd41de087729f8b31a07893d6ef41aaa33194e5c3d42c87fa927ae6f",
+          "expanded_sha256": "414a073550dcaf919f3e45f0d4c2202f9bedd5ec0a3b37f6ea8506ccbde1bca0",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 7,
+          "seed_sha256": "13015a5d6b441fe8aa591530ef9148e7662de31a77e036e52a3ced5d48119660",
+          "expanded_sha256": "870b8f8d34dc02e5f3dda0af9599a86f3b165f887a8ad1e6d19351160008a79a",
+          "raw_gain_counts": [
+            524280,
+            0,
+            0,
+            8
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 0,
+          "seed_sha256": "d03ed9d3d0e8d701abbaec1085c69715e82e005139bed5033c85a805138cc48c",
+          "expanded_sha256": "b3826d538c3d711d25fd41cb10bdffaf13c36d3ab66c2564b9d9809efbfff0da",
+          "raw_gain_counts": [
+            524275,
+            0,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 1,
+          "seed_sha256": "fe52012c0df06e56df0cfab60d022a175352840f2000e3d9c998d1b134cde012",
+          "expanded_sha256": "8bd3afd67d69eaaa05c11c5c25caa74d1b18aaa7bfcb4823c74e9223f0969b21",
+          "raw_gain_counts": [
+            524264,
+            5,
+            0,
+            19
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 2,
+          "seed_sha256": "902de10616b9246849a9a649201fff8d0b84345b8c13afdf5f8b1c3cf51dfdb5",
+          "expanded_sha256": "9a2fa9d94e495a23010136aa5cfc403086d34c1e047a42e1d6c6e18232232b90",
+          "raw_gain_counts": [
+            524269,
+            6,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 5,
+      "timestamp": 4909050823961637967,
+      "panels": [
+        {
+          "panel": 3,
+          "seed_sha256": "6b38fb4f8231cde5a2fb3f27182461d551fd738998627e52450e48bafb8c2400",
+          "expanded_sha256": "1598fdd82ec0692865ba2876517ae837ea8b12dc6182f58f6f9b335223deceae",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 7,
+          "seed_sha256": "efc5487610412004445640e0b9e403f7a021ea699192bccebbf3e78ed90184e0",
+          "expanded_sha256": "6f748b59ea11514adde2cb29f20f8cf8c355f5bb9f7ad6a12795b03bdb9e0179",
+          "raw_gain_counts": [
+            524280,
+            0,
+            0,
+            8
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 0,
+          "seed_sha256": "ab95324981b3e96cd7a508b7a0ee9709a63a0b6b505fea0272e9a0b1a30c74b0",
+          "expanded_sha256": "4eed1478c3a436689c93ce4514b9bba072cfb3c77dde3323b537ef852777e1a2",
+          "raw_gain_counts": [
+            524275,
+            0,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 1,
+          "seed_sha256": "6e5ffdbad325ab78e0d30c6f08945c562baec0b2a025727f8716c85caf11f7c2",
+          "expanded_sha256": "49a8817d8091bc68d72905c2962d2eb01ecfc2d2a39986c56ddc4e42d8cbb6a3",
+          "raw_gain_counts": [
+            524264,
+            5,
+            0,
+            19
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 2,
+          "seed_sha256": "af6b9891f9994c9d9692dd8e51afd0a9bb17693a6762828d8af7fc4ded8d9bf5",
+          "expanded_sha256": "10b9ea354d30cd45cfe9c914b53fe8ab0a5ce9916101f895e1094f59c9c1f285",
+          "raw_gain_counts": [
+            524268,
+            7,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 5,
+      "timestamp": 4909050823970026578,
+      "panels": [
+        {
+          "panel": 3,
+          "seed_sha256": "3e845baf7f5015f485b1211daa3b397a5efc376a2748f5872f4bd1d128ddb7c0",
+          "expanded_sha256": "8f31403de525fa0692c2097922b211c334e29224878f352ea7859463c5a534e5",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 7,
+          "seed_sha256": "9403323661b6008c4da9df0e616ae7458294c753970fa17c374293279305a0a1",
+          "expanded_sha256": "9f56e627a3a2f15121d9febc658f5f881820e7a4fa1c411b4d4e12377ca0e6e6",
+          "raw_gain_counts": [
+            524279,
+            1,
+            0,
+            8
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 0,
+          "seed_sha256": "7078a6f74339be1040de4a2839cd6e1cc0c39fe323a8f3a439929c7470e55586",
+          "expanded_sha256": "d5446a8e534e6761630dd57ed036d380af04c9ebec949c691d24c6a33e14a9f5",
+          "raw_gain_counts": [
+            524275,
+            0,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 1,
+          "seed_sha256": "ef9c6a5db2be152622028e5aee9c9738c56bedade1856b74672d15df32ce4c71",
+          "expanded_sha256": "807c0080ee065d4bc7b29c230ac58e7fe25963075a770538bd04731f7fc6dbc6",
+          "raw_gain_counts": [
+            524264,
+            5,
+            0,
+            19
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 2,
+          "seed_sha256": "bd4721baca1b6c42eb9589870455e0536969ec7eb26ada36be78eb90da94388b",
+          "expanded_sha256": "c4ea1e1de6ff8dcb89e506e3a85be78ebdfb2c07841eb5962e51adb0dbb6d6ac",
+          "raw_gain_counts": [
+            524268,
+            7,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 5,
+      "timestamp": 4909050823978284117,
+      "panels": [
+        {
+          "panel": 3,
+          "seed_sha256": "1e9d00108f00951bb67088863f0080c3a7be500544d63b8f9e4d90af5cc8c79d",
+          "expanded_sha256": "59e85d39df7e06594dcfbf34357c697b3eaea1063115692cfa065829bda8c492",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 7,
+          "seed_sha256": "db8aa7b45939239a8dee79ca86336e409f4d824803f473a53e11417fd59c4146",
+          "expanded_sha256": "c1db5494c79d681278f3da2f640bd01ba3097602c05a75fcb92271ab7b34fb36",
+          "raw_gain_counts": [
+            524280,
+            0,
+            0,
+            8
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 0,
+          "seed_sha256": "6bfd6de3ba7a69f5bcb0afc6664d3fb91628ae0ed2b220b0cffb8be217993437",
+          "expanded_sha256": "3eb51ef2888ac74698bcbc80e0998975f96f542be78f8a99e2539d1ec339e510",
+          "raw_gain_counts": [
+            524275,
+            0,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 1,
+          "seed_sha256": "6d2a9c551f656d3d9229b4942e0d878ca49eb8b7338cdfbbf994ceffca7ef5ea",
+          "expanded_sha256": "d181f7dab57235c7c7c595a0581740208220e2dadd40b6ff30442e56355b8ac9",
+          "raw_gain_counts": [
+            524264,
+            5,
+            0,
+            19
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 2,
+          "seed_sha256": "32111fd89b4c093e9e7bf8c34f5f9dd61d1702b12bb9bf31b2861030447b3bf4",
+          "expanded_sha256": "d9e0c9507ddd1d25fb4082b3c214ab94598da16cd74e6592ee8cc0275ddaa4e4",
+          "raw_gain_counts": [
+            524269,
+            6,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 5,
+      "timestamp": 4909050823986672728,
+      "panels": [
+        {
+          "panel": 3,
+          "seed_sha256": "b817d30835fb2bbbeb35dc8468a2ef25dfb066699cd9b33cdec84e4375707fc5",
+          "expanded_sha256": "7d06c4fae76464e8291c1b9870a3a61342142290f836d907fe736ffed4b212c0",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 7,
+          "seed_sha256": "848ba3de3e643c70d2fe0e061441501afe9cf24d51e51c0522199766e631b430",
+          "expanded_sha256": "0a6ea48c28c89cd309d326ccc45d100dc776df2ca4ad69a9496a505123eb62ea",
+          "raw_gain_counts": [
+            524280,
+            0,
+            0,
+            8
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 0,
+          "seed_sha256": "0180fac08469917b9dc30b278d8fffa0bb5b74e0d6a263e04fed38776310be09",
+          "expanded_sha256": "3881b614994de997e6b59c8a53696e4a867a53a5b08b685fc9dc23e4815f230d",
+          "raw_gain_counts": [
+            524275,
+            0,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 1,
+          "seed_sha256": "7608f22ede2314311cc7d119d920c6bb0419c0ec4d3d9ced94b448a6a355bf8d",
+          "expanded_sha256": "7d390056918b8b52dee8a5f08af7da34a29e23559959aa3e4e250f0b628abba5",
+          "raw_gain_counts": [
+            524264,
+            5,
+            0,
+            19
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 2,
+          "seed_sha256": "53a1bf589e721f0b0d843f09943466f278a5e6185a79339f5e93e3a4a70a1222",
+          "expanded_sha256": "22fbced2595889b45d21e3604610d461cec0ba3ac2b35dcb304adc5df87ec569",
+          "raw_gain_counts": [
+            524270,
+            5,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 5,
+      "timestamp": 4909050823994930267,
+      "panels": [
+        {
+          "panel": 3,
+          "seed_sha256": "4f66016f13e7455b6c10931bb287632b8636497547cc78d1382aeafaed99b5d7",
+          "expanded_sha256": "ebe9f9c51b6685a8a38ffdc9920d91b201de87c694ec8121bcc33d0162f0d2e8",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 7,
+          "seed_sha256": "3a8746dc5cdeba86347ef2acb677d189d5219c571ab69d64f59249163de6d29b",
+          "expanded_sha256": "c546aeaed8143a20db9c178612c8607fd60650e7f6fcbbf56cb728762c1ef582",
+          "raw_gain_counts": [
+            524280,
+            0,
+            0,
+            8
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 0,
+          "seed_sha256": "525cfe262623b9fbc17081682d3b1c6ff95b86d77296e10bd3dc8c791bb7be9e",
+          "expanded_sha256": "eb60487240ba699103e855926c56ca3357a367d4d770d8899a80e4aa469435c4",
+          "raw_gain_counts": [
+            524275,
+            0,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 1,
+          "seed_sha256": "2bb2877086460a8ccab955850065ee2b609de2643c0ac7aff83841b2bf5eebce",
+          "expanded_sha256": "de56002f4bee7be0a7fd7e1fd7192e19d3ba34882e7892a89e18dd6bb7a5fde1",
+          "raw_gain_counts": [
+            524264,
+            5,
+            0,
+            19
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 2,
+          "seed_sha256": "1ff681906949013bb13aef745c81ca7384f53c682d8716f629e668cfa61f8c03",
+          "expanded_sha256": "52211a895e991d677990daf496af9874cf32e871b984ca5bc24abbdf7e3c3669",
+          "raw_gain_counts": [
+            524270,
+            5,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 5,
+      "timestamp": 4909050824003318878,
+      "panels": [
+        {
+          "panel": 3,
+          "seed_sha256": "393db58128504d863730a4f88287b87d3de2daac1bf375440b283854f764ad91",
+          "expanded_sha256": "f0193ca00b7d7cf2fcfde3546eede3db9ccea0c69aa06e1a8f9da9772bd3cf09",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 7,
+          "seed_sha256": "9d927b54f9a5df06d94001e3d6ccbd1d62d062aa88e62a1b45630861eb072820",
+          "expanded_sha256": "393721740a4bfb4bd3bb4dd408276b4986107316b19f41f7ccd27c51dde2c9bd",
+          "raw_gain_counts": [
+            524278,
+            2,
+            0,
+            8
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 0,
+          "seed_sha256": "6cd6ebf876a33087d0b33828252cad1ddd2f261d083000d11f9e2887c16f6caa",
+          "expanded_sha256": "352a0d77add6be98fa2a37dd38460aceff323bc9a4626b657fc679641f228e75",
+          "raw_gain_counts": [
+            524275,
+            0,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 1,
+          "seed_sha256": "dcd16672c586d67f7bcf6933ec449f4ec563395115e34316470f922938d8979d",
+          "expanded_sha256": "d7102c0f457c1a6a4238182981352349bcc6c4c7058ac027bf84f99d5365242b",
+          "raw_gain_counts": [
+            524264,
+            5,
+            0,
+            19
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 2,
+          "seed_sha256": "b512a706837c3e3f5c66c49096ef9a7b773e613dbb22d31bc8d098328c69a946",
+          "expanded_sha256": "ca9d771a2ea06e646e2c37e337e424a16b9ae7a2a5ff6b6deb9bfb004dbc52ab",
+          "raw_gain_counts": [
+            524268,
+            7,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 5,
+      "timestamp": 4909050824011576417,
+      "panels": [
+        {
+          "panel": 3,
+          "seed_sha256": "a5033903d2d819d1caaf913483c829e2dd9c6c5d91063e90693a7fd5e1aa8896",
+          "expanded_sha256": "94c2911553b63e2d03512ef384675a1df7e44f678fd02c44ba9b0ef920e3ca7a",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 7,
+          "seed_sha256": "0c1d94f7f282b091e3b6718a04bba785d09b2eab207c7f36b5bf62f2f6d2d92b",
+          "expanded_sha256": "8e918a03ad5143755f2742e6bb7cb6474051c8ac1af7f77590e844043b7897ec",
+          "raw_gain_counts": [
+            524280,
+            0,
+            0,
+            8
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 0,
+          "seed_sha256": "5529adc319890177d56ef2598160f47060fc7dd56f7c23c1135f07ec75708441",
+          "expanded_sha256": "aed2a641069abbe4342ea0fdcf71e3f13fe623cb54641444f33965f2af41e214",
+          "raw_gain_counts": [
+            524275,
+            0,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 1,
+          "seed_sha256": "9aae5404f0d5802710e161ae601667dbb190f8bb21bd8c50655590e0df034d97",
+          "expanded_sha256": "65fd67aa2f75470c206b4e00a3df22ffca2c0d8e55e85d2a823edc2156991959",
+          "raw_gain_counts": [
+            524264,
+            5,
+            0,
+            19
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 2,
+          "seed_sha256": "4d9fa6ba4fabe6783de50266b07664ebb008703c92260cb36231c59191fa2ae3",
+          "expanded_sha256": "1b94d0eeb8b967aca82c7c7d1868cd97c0f004cbc79d8d82a0f8233ba4239153",
+          "raw_gain_counts": [
+            524268,
+            7,
+            0,
+            13
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 6,
+      "timestamp": 4909050823936603206,
+      "panels": [
+        {
+          "panel": 19,
+          "seed_sha256": "227c401cb6f95cb44be88f7766996a978a7d60200d0c437a6d0bc28881132278",
+          "expanded_sha256": "cbe2cc4613f210f18a934c2578fec38540c89a61f238e2a81ebfd795146fbf54",
+          "raw_gain_counts": [
+            523598,
+            632,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            523578,
+            660,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 15,
+          "seed_sha256": "387d323a521f057d4eb1ecd5358f8a2f0f3f9e393413956e0ea4701e6db39449",
+          "expanded_sha256": "f282f43dfedc886b1649fd96f3120aaddf644f72a034b7325e9d9a5ea6cad3e0",
+          "raw_gain_counts": [
+            523760,
+            470,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            523578,
+            660,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 11,
+          "seed_sha256": "45db99e0051361a40d18d3e3ef01f7467b097d1726db44edc1be38a2b8b8b7fb",
+          "expanded_sha256": "01858d3091987d49bfde74269845ccf11e4d817c62b442d46fc0236d3c9b5496",
+          "raw_gain_counts": [
+            524209,
+            57,
+            0,
+            22
+          ],
+          "expanded_gain_counts": [
+            524218,
+            40,
+            0,
+            30
+          ]
+        },
+        {
+          "panel": 31,
+          "seed_sha256": "1e4daefb0b1f9d28cee24f2cbf44187977ef7547fab00b9fe97bea5fa67850cb",
+          "expanded_sha256": "4b2837b2e26ccf5f6575e550c6f0a6c41dbce57224130ab22cb545b6038a8488",
+          "raw_gain_counts": [
+            524274,
+            0,
+            1,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 27,
+          "seed_sha256": "8785486b677e909d72eaeef8fa7f0cbfdb67a45b4a8f5384c8bdba7935b75c2a",
+          "expanded_sha256": "2596165356f55b9a60a78fa316ad8d4c44a4eea6eab16510c970f1d2ffc2539c",
+          "raw_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 23,
+          "seed_sha256": "beed868398f2555ce647c07fb5ff8469a9725627b8983d9fdb684861f97841cb",
+          "expanded_sha256": "89520a264f189894efe00369aa22f11924819edaa2b65e287069be0ef825905f",
+          "raw_gain_counts": [
+            524245,
+            29,
+            0,
+            14
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 6,
+      "timestamp": 4909050823944991817,
+      "panels": [
+        {
+          "panel": 19,
+          "seed_sha256": "f9b9738d1ecb375561d7c7e46e5d91cb99be4f59cfd7a8fc14100670cee27c5f",
+          "expanded_sha256": "5a3a603fffa10ef9ad440efde8b8c9023ad57873d6500d26521a642de953d338",
+          "raw_gain_counts": [
+            524227,
+            3,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            524228,
+            10,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 15,
+          "seed_sha256": "1d78c1937ab9d1312eec57bea2659c126876464be6153bd909365dcbe0994f58",
+          "expanded_sha256": "dfe4764bf21addbf47db9147b48907a327dd960a9299e3d3dcbfcb7358b6a616",
+          "raw_gain_counts": [
+            524230,
+            0,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            524238,
+            0,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 11,
+          "seed_sha256": "c3ff182bea3a152efdb7e74368bbb3b8a42b6ff0a33c6f55a3d6d90aa71ba44f",
+          "expanded_sha256": "90b3d40a039823ead7fc254dda8b9037069be45b1fb2ed28537636ae875508dd",
+          "raw_gain_counts": [
+            524266,
+            0,
+            0,
+            22
+          ],
+          "expanded_gain_counts": [
+            524258,
+            0,
+            0,
+            30
+          ]
+        },
+        {
+          "panel": 31,
+          "seed_sha256": "2317f59521a85ce39bcb883fe670292590ef3f33467714a7a45b35e13c47018d",
+          "expanded_sha256": "fe1d778c07c91d6a8ec4128cc3c2d1716bb5d0e9311d89fc3af66467dfe0208c",
+          "raw_gain_counts": [
+            524274,
+            0,
+            1,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 27,
+          "seed_sha256": "734135f12ad84a86033aec4a8a9175bbebabd4456971d2fdc2a21c54f35cb160",
+          "expanded_sha256": "2bb84eecadad3fd6c2eac304f65fa8f625e431d3e6d295e0d339d78d6d92b507",
+          "raw_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 23,
+          "seed_sha256": "5d113b26725b07a02bffce2bf4d254992e412a72f461bd9701b86938e2a01166",
+          "expanded_sha256": "ab1704b868aa5288ef5c2cc05182d0eea360e0fad8f611141f6e623c45cc615e",
+          "raw_gain_counts": [
+            524273,
+            1,
+            0,
+            14
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 6,
+      "timestamp": 4909050823953249356,
+      "panels": [
+        {
+          "panel": 19,
+          "seed_sha256": "390ac3d2909b6aee5f3e7347fd9b3e4d467493ddaede90827222cd6837153dbb",
+          "expanded_sha256": "d829f3595f791661fd2c8521c3ca37e1adc8331a496a3beff792983a2efc6dc1",
+          "raw_gain_counts": [
+            524224,
+            6,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            524228,
+            10,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 15,
+          "seed_sha256": "7f622c78387db2b1b1eca94d33f10c7e0d505616198b0057c978ed2c19a6b469",
+          "expanded_sha256": "697d07fb4290e177cbb2f27366788269539e9668c2a66397034d79c45153337c",
+          "raw_gain_counts": [
+            524225,
+            5,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            524218,
+            20,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 11,
+          "seed_sha256": "66f570d2c99d87b932d85c7ed19b374ad9881abcb5028b043c8dd4117ddebf0c",
+          "expanded_sha256": "8462200a2ba9cdea02ce7205682dc3808423be3729aad6e56bb56c6608250935",
+          "raw_gain_counts": [
+            524266,
+            0,
+            0,
+            22
+          ],
+          "expanded_gain_counts": [
+            524258,
+            0,
+            0,
+            30
+          ]
+        },
+        {
+          "panel": 31,
+          "seed_sha256": "50c14b0e26bd19ea9b8ad61d0abfc7e580178625af5e6ac2b9513c33d3ddd42c",
+          "expanded_sha256": "8bd13077907518124c8642ef0401f9bf79f3eee046d90968a69bf89920afa2b7",
+          "raw_gain_counts": [
+            524274,
+            0,
+            1,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 27,
+          "seed_sha256": "58d8ce7042873d12f859aa96f1951b4ab0b80f8b41d634589638df86ff9edfaf",
+          "expanded_sha256": "630cd2414e338e2be6563ecd38424317028f64c8527e25ff72335950ebafe12a",
+          "raw_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 23,
+          "seed_sha256": "9deda4610cc2f13e14ee57818ad34b8595137d86d56c24f097ed26004f18f5bc",
+          "expanded_sha256": "ac2ac37b6eb98d3977acd0371923f768c7573652815bf841cf0cd61716d81e25",
+          "raw_gain_counts": [
+            524273,
+            1,
+            0,
+            14
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 6,
+      "timestamp": 4909050823961637967,
+      "panels": [
+        {
+          "panel": 19,
+          "seed_sha256": "603a59bcfef4e1a5420513a66355aa78e3119c431ac5661d578076f1bb16c60f",
+          "expanded_sha256": "715abbc1ede992e99e067ee459866ba8ed050235bcc0ae68cb7e62c5e32149ae",
+          "raw_gain_counts": [
+            522742,
+            1488,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            522418,
+            1820,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 15,
+          "seed_sha256": "cf685184c589479f9f9894b5c80cdcd1086c3fdd713c767afda4d41c4e97324e",
+          "expanded_sha256": "c3bd6599442ee8f5576f146335c47a0c1dfafd922f545a1ec17a867c977b2aad",
+          "raw_gain_counts": [
+            523126,
+            1104,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            522768,
+            1470,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 11,
+          "seed_sha256": "d09c1bd55ce8b75646cbc39fb8bf35cc4c29379c184504c59613680874e2926e",
+          "expanded_sha256": "da3f3271137e74f0f1a34ccd998a90ec186070d000d9e2421bfff7d7feb4503b",
+          "raw_gain_counts": [
+            524103,
+            163,
+            0,
+            22
+          ],
+          "expanded_gain_counts": [
+            524068,
+            190,
+            0,
+            30
+          ]
+        },
+        {
+          "panel": 31,
+          "seed_sha256": "9bfe9241816c6f681581829b08573d6f4460541e5d07df69074d4343cb112e61",
+          "expanded_sha256": "31699d612d64c15e2ef4a9fa39c9b7b22b93524a862bf265aa63e38eaedea81a",
+          "raw_gain_counts": [
+            524274,
+            0,
+            1,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 27,
+          "seed_sha256": "d4cc1e033e0c8f1d0536dc57239a5ef27346b82caca248baaa6ecb39ce74bf3c",
+          "expanded_sha256": "b72d55e92297eac595c635882ad7bab2dcc16e82bf1d2ee989e4ac04a666302c",
+          "raw_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 23,
+          "seed_sha256": "eebe156509ef1bfc11c9978dcda3e7598054a26e381a43d6e8bd79ff5b743bb1",
+          "expanded_sha256": "1eee9b61a9a83c4da1268afaba815c65975ab6fb087af638eae1e216c6d6d260",
+          "raw_gain_counts": [
+            524170,
+            104,
+            0,
+            14
+          ],
+          "expanded_gain_counts": [
+            524098,
+            170,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 6,
+      "timestamp": 4909050823970026578,
+      "panels": [
+        {
+          "panel": 19,
+          "seed_sha256": "279259a7d3a817890b1021d2438e27c2bc378b92417afc4a3d034cb88d047eca",
+          "expanded_sha256": "6529f0150897ddab37fb2cb1ddd7e2f5007f43626781a92c34ba8cdccb30e850",
+          "raw_gain_counts": [
+            521106,
+            3124,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            520818,
+            3420,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 15,
+          "seed_sha256": "acf0cbd3d2216158a44ba99eb66150278e73b66b6b16c9ae93d5420f6425dea0",
+          "expanded_sha256": "d9c240a890eacf8cc8f3914358e44bb36ebd564615526d3609ba7a4fb1d2c205",
+          "raw_gain_counts": [
+            521960,
+            2270,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            521728,
+            2510,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 11,
+          "seed_sha256": "ecc56a880d905adb831d7cc74c47892d6da0ac10c50fa0425a0c15bbc0ab2ef7",
+          "expanded_sha256": "631cc98c3d3b08692a41cd64a495920e6f0671f509fe9305980267d3427463a6",
+          "raw_gain_counts": [
+            523918,
+            348,
+            0,
+            22
+          ],
+          "expanded_gain_counts": [
+            523878,
+            380,
+            0,
+            30
+          ]
+        },
+        {
+          "panel": 31,
+          "seed_sha256": "c38bac3ce5bdfcebf8bfcb6a5f4b3eef6cc8a36374aec98cf1d1435d6dfaf110",
+          "expanded_sha256": "0188ce92853bdb186183f96c66a31dfcfe31e38483b0835c9be95fd0a79df0fc",
+          "raw_gain_counts": [
+            524274,
+            0,
+            1,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 27,
+          "seed_sha256": "6bc9ccabc6d86d4d85bf9757f731daf6e1dfd790d2a8e3867952316d1d6830d4",
+          "expanded_sha256": "27ebe073458e63727b41cea4d05e08b175973f6014692c4a3ad7bef2045c2b44",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 23,
+          "seed_sha256": "edbc6ff0fe8d5b26b207e9847827cd61176850332e8ba4e42d9cddd6906710d9",
+          "expanded_sha256": "fb6e61ba9c24a2ec2ffc9709443a1fc9e98cf7d02abc114bfd28c6f72e06b430",
+          "raw_gain_counts": [
+            523999,
+            275,
+            0,
+            14
+          ],
+          "expanded_gain_counts": [
+            523958,
+            310,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 6,
+      "timestamp": 4909050823978284117,
+      "panels": [
+        {
+          "panel": 19,
+          "seed_sha256": "a24b9f8d5583438312c7c3bb5200db7345117434c6ab2e9d1021a8f0a21de1f9",
+          "expanded_sha256": "b47cd24c81516b7194a3a34240f13b08f1521cbf90a57d8786a8df35e0d5fc17",
+          "raw_gain_counts": [
+            523042,
+            1188,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            522948,
+            1290,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 15,
+          "seed_sha256": "fb063868dea50d73bcc6a2b9203346959cb73304891fb48f46df58242e0f4197",
+          "expanded_sha256": "129d8adb261281538c1a3a958127589dc0714588cea29c0cd117ef2c7aa4b9e2",
+          "raw_gain_counts": [
+            523362,
+            868,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            523158,
+            1080,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 11,
+          "seed_sha256": "b7792151a1b966e9ce2617fd48ba728467ad5146383e8ff6fc229741f0cc601b",
+          "expanded_sha256": "968fd401885eb2e3e2f1c472b00bfd07f39774ee6cbfef5cdaf567fc0ef3883f",
+          "raw_gain_counts": [
+            524150,
+            116,
+            0,
+            22
+          ],
+          "expanded_gain_counts": [
+            524058,
+            200,
+            0,
+            30
+          ]
+        },
+        {
+          "panel": 31,
+          "seed_sha256": "43c7424f0c5635ee61b14375b2feaa27ee29d610e9610edf5793478ad00f6231",
+          "expanded_sha256": "aba21202bc1130ad2f42436f370849d8d041fc3e946082d76e9dfef0f5bb166c",
+          "raw_gain_counts": [
+            524274,
+            0,
+            1,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 27,
+          "seed_sha256": "143bfc4ca05db0315ebbf1b147ede70aa8d83e5377760f2a14bc9700ba3f4983",
+          "expanded_sha256": "acd2c79760b674903eafcc4dc21206807a7ced89f670df5050e4925cd568122f",
+          "raw_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 23,
+          "seed_sha256": "f0af4b480d851702bdb329ddedd1ae3ca78f6a730c3e121f17d6e316be2ced2a",
+          "expanded_sha256": "23013794fc9686823970cd54e6b267ae0934e7ffc048f0052f24aaf93c86142a",
+          "raw_gain_counts": [
+            524207,
+            67,
+            0,
+            14
+          ],
+          "expanded_gain_counts": [
+            524198,
+            70,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 6,
+      "timestamp": 4909050823986672728,
+      "panels": [
+        {
+          "panel": 19,
+          "seed_sha256": "e95466fd5e2492ef8d23dbd1b2496f2298eede0e61835233df03338efc77e050",
+          "expanded_sha256": "9cf3fc0207c78d085ba37a3777fb6a9dfadd8e10021d5e54ec46479206759f52",
+          "raw_gain_counts": [
+            523205,
+            1025,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            522928,
+            1310,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 15,
+          "seed_sha256": "e993b470dc67a62f49e296125a68440eb990f6b531bf5abff5d5c88450f11268",
+          "expanded_sha256": "48019ad698b5129ceadeefca882250cd3c0cc5dc5b803fd84168a82ee68d0241",
+          "raw_gain_counts": [
+            523471,
+            759,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            523268,
+            970,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 11,
+          "seed_sha256": "1cdeb7820911906be874c2975f9f37fdae42f9ae46d3d049401fb3efd1444b35",
+          "expanded_sha256": "fffd134141ae8418641cf38851f09194ec79038e023cdea7c0cf6bc3eaa97dc0",
+          "raw_gain_counts": [
+            524155,
+            111,
+            0,
+            22
+          ],
+          "expanded_gain_counts": [
+            524148,
+            110,
+            0,
+            30
+          ]
+        },
+        {
+          "panel": 31,
+          "seed_sha256": "cf5cab1cef60ae03a9eee595c05173e1ed050ad3ad750e6fc97544c0f686e570",
+          "expanded_sha256": "03e3e407bf9304f98b8b0451d74439b8a7f78bc3f678596286f6a7b63860212f",
+          "raw_gain_counts": [
+            524274,
+            0,
+            1,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 27,
+          "seed_sha256": "bd0e43de775930e4708f82e05a19068dea7ffc0fd2a5812b0ccbd8d69c9a7764",
+          "expanded_sha256": "aa11a24cf51003eb8f9dccb0fa8f1e2990310a5365498bb73aaeebff077c1f9c",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 23,
+          "seed_sha256": "be58a6511d85a06b0fb579fa89af665187c34b1af039e890fb7b0229b620ce4e",
+          "expanded_sha256": "b34d720ee67ecdf1ab5c6c18cfe85f193ea34907d93e5764c5fa62028adfa175",
+          "raw_gain_counts": [
+            524216,
+            58,
+            0,
+            14
+          ],
+          "expanded_gain_counts": [
+            524208,
+            60,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 6,
+      "timestamp": 4909050823994930267,
+      "panels": [
+        {
+          "panel": 19,
+          "seed_sha256": "fbfcf1ad459102249bdb06d82ccd8bb84670950f302acee15b1c027bd611d9d5",
+          "expanded_sha256": "71657a3ecc68a67b81f0ac9c67b2274d7f075f92d8d8d6a57ab4628801a6c86e",
+          "raw_gain_counts": [
+            522890,
+            1340,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            522608,
+            1630,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 15,
+          "seed_sha256": "d29ce48b2d08bb79d6e7b6bd26bdb3c2f90ba326593e281cc508c27de01ce5cd",
+          "expanded_sha256": "7b826641cbdcf4dede28ac4f16571ea77bc8a3a9abfe7ed17e997f3dc6b185f8",
+          "raw_gain_counts": [
+            523237,
+            993,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            523048,
+            1190,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 11,
+          "seed_sha256": "79c44ec46472525555d7927b2037200178b421fe4bf96f4771d7431725d9efa1",
+          "expanded_sha256": "c724a287261454cdc9b7913c6ecd9f4c08e27156751f2601548c344a059a88e0",
+          "raw_gain_counts": [
+            524155,
+            111,
+            0,
+            22
+          ],
+          "expanded_gain_counts": [
+            524098,
+            160,
+            0,
+            30
+          ]
+        },
+        {
+          "panel": 31,
+          "seed_sha256": "ae057e2bf45310badcc76eb079cf0b34f86fc1a2d81c53f3108f4aaf26527bff",
+          "expanded_sha256": "c7b1be09f00a0fd68b11b2d7e4d4fc69dfd046ddf275e71a5610f253907742ac",
+          "raw_gain_counts": [
+            524274,
+            0,
+            1,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 27,
+          "seed_sha256": "641baa200460022c34f603a5537550ad7a7a9b64a8e69fde8558ce2194a8c627",
+          "expanded_sha256": "006e47581233cb3787dbabb6c0d788a6ec1120874c9f90acf3897aef5ee3e214",
+          "raw_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 23,
+          "seed_sha256": "fd528eacfc3fc98c2d30d28ec585609d1da4459e062bcc41847006eeb978c321",
+          "expanded_sha256": "03f634100278aca69c5911aad2b9da37ff97d3fe2457b6da2a84045e78fb356e",
+          "raw_gain_counts": [
+            524189,
+            85,
+            0,
+            14
+          ],
+          "expanded_gain_counts": [
+            524158,
+            110,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 6,
+      "timestamp": 4909050824003318878,
+      "panels": [
+        {
+          "panel": 19,
+          "seed_sha256": "1dce8a04382997354a286740296e396e242149db4ef50e355195c31fdea39883",
+          "expanded_sha256": "678bcb2d5ddfbc5a8171ef64cdc99f1843793fb28499b4ae3ea2a84f46e2c529",
+          "raw_gain_counts": [
+            522140,
+            2090,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            521898,
+            2340,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 15,
+          "seed_sha256": "5382396e5eddc12cccb0a9d9cbcae06524625db551896b6c0940c8037663cf90",
+          "expanded_sha256": "cbeeebbf95c229c779e4b7127edee0dbd21900e064118169aa7004e6c33cddcc",
+          "raw_gain_counts": [
+            522625,
+            1605,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            522328,
+            1910,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 11,
+          "seed_sha256": "1e8e4f308cef1053dcb81e1e11a36169d357587bd44e409aee639315ba807b97",
+          "expanded_sha256": "96433bd225b463e7a7c69758b9c28ef77fa5ef9dd40088c54c4f7af08efebbdc",
+          "raw_gain_counts": [
+            524025,
+            241,
+            0,
+            22
+          ],
+          "expanded_gain_counts": [
+            524028,
+            230,
+            0,
+            30
+          ]
+        },
+        {
+          "panel": 31,
+          "seed_sha256": "9f22d3c5d2b5a80edf309829f001f4ba0e89771c47a78ba1c86009868f96c01a",
+          "expanded_sha256": "8be2a761d2622c73c4a21287e886249c3d74f2d80f67c72cf2e26a68c66cb0b2",
+          "raw_gain_counts": [
+            524274,
+            0,
+            1,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 27,
+          "seed_sha256": "377dba76fab86798b1acf8d67906aa2ea612a5b3bb9a3c7f28607cc2eb989f7e",
+          "expanded_sha256": "f5d82aa2f82c7f2044ad402b0e4b1528738628635ded71cc3dca5daa4eb147b5",
+          "raw_gain_counts": [
+            524277,
+            1,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 23,
+          "seed_sha256": "375107a9a3013d5c2730ea02e54f8b08db6b27393742c4fbb1c02e4a94958c2d",
+          "expanded_sha256": "c0116b978c1567c69aee3b83cbeb206080161e05fa468f9506e4aa7f38b0f562",
+          "raw_gain_counts": [
+            524117,
+            157,
+            0,
+            14
+          ],
+          "expanded_gain_counts": [
+            524108,
+            160,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 6,
+      "timestamp": 4909050824011576417,
+      "panels": [
+        {
+          "panel": 19,
+          "seed_sha256": "53780424c39d98e3bf3aa7c9759bfd276c8d95e7248103dfeb3e4b5ef824d783",
+          "expanded_sha256": "1366e0c03c5c558b781cf4caea92e97c3a27204cdd703e33868cfb3a5b866b2d",
+          "raw_gain_counts": [
+            523856,
+            374,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            523788,
+            450,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 15,
+          "seed_sha256": "194a55462aa2d973f01c5538ed72d8ff30aa4d97276866ce1ff8ebf759ad3035",
+          "expanded_sha256": "cdb6506265e0e395d91b4630ae5a9f2830972ab9f4f1fe9e2e9a0f6140c04237",
+          "raw_gain_counts": [
+            523956,
+            274,
+            0,
+            58
+          ],
+          "expanded_gain_counts": [
+            523898,
+            340,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 11,
+          "seed_sha256": "566b3f16d0e40fae21d838a61ae2cf44ecd46fc5b35877311c377bf61a0fce25",
+          "expanded_sha256": "3e149070b16321d16023a3077e658bf3c8ec199c3381d9b7f1e7bf46ad2b9d5b",
+          "raw_gain_counts": [
+            524233,
+            33,
+            0,
+            22
+          ],
+          "expanded_gain_counts": [
+            524218,
+            40,
+            0,
+            30
+          ]
+        },
+        {
+          "panel": 31,
+          "seed_sha256": "72334fd7463e8ecc900f3ffa1a8c0ea1a3aa8d9b9476ee20733ecfb97b6b6402",
+          "expanded_sha256": "f8b5ddac0c45062c1e7591a0b34f05f5f932891c4debcadbb0af436e9a92a07d",
+          "raw_gain_counts": [
+            524274,
+            0,
+            1,
+            13
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 27,
+          "seed_sha256": "60f4844be6ac86661e3be118b3f062b50ea43f2c98d04c2bb12de062f7a39497",
+          "expanded_sha256": "417f6700afb3579c8826ab49e74e57fc24e56b8784e7794d9fd04a8d29a0cb33",
+          "raw_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 23,
+          "seed_sha256": "228d12e1a19f983ff736a5e54d021d4f0822d3a811a62993ac7375425ce2fa26",
+          "expanded_sha256": "572fb4ad1bba1afb446b83d64747cc52c4fabcca0ebc8acb1c6717ab0a09a2c1",
+          "raw_gain_counts": [
+            524254,
+            20,
+            0,
+            14
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 7,
+      "timestamp": 4909050823936603206,
+      "panels": [
+        {
+          "panel": 18,
+          "seed_sha256": "00a5a1a9f9cbf312d4e0d37761d65139efbc594a5faa2c4f6f7dca4f50473322",
+          "expanded_sha256": "a0d3a10389af62072b197af59f0dd662e26bb0ed74ff2033f773cbae84dfb609",
+          "raw_gain_counts": [
+            517021,
+            5468,
+            114,
+            1685
+          ],
+          "expanded_gain_counts": [
+            517388,
+            5450,
+            110,
+            1340
+          ]
+        },
+        {
+          "panel": 14,
+          "seed_sha256": "fc7b7777a321e56b96f9dcf88fe15ac33b0a1c27f5c7eec9f5bbc57ed22425fa",
+          "expanded_sha256": "90dff0106796a9fe9b0633f28f898a5cfefa495defbae0934a235058137ecb4c",
+          "raw_gain_counts": [
+            517497,
+            5092,
+            1,
+            1698
+          ],
+          "expanded_gain_counts": [
+            517630,
+            5058,
+            0,
+            1600
+          ]
+        },
+        {
+          "panel": 10,
+          "seed_sha256": "31ece3c40dc7c5a32b77e19814a61323b97a6f220102f334f7b86a5c14ec882a",
+          "expanded_sha256": "5a3b448fa5c1f6579b59d1549ebe898cd2ddee46216f01d26d51fe1d7f261c9e",
+          "raw_gain_counts": [
+            519363,
+            4762,
+            0,
+            163
+          ],
+          "expanded_gain_counts": [
+            519038,
+            5030,
+            0,
+            220
+          ]
+        },
+        {
+          "panel": 6,
+          "seed_sha256": "298739af0f309487cafb432526218fae2b93fdde2ee254d1283b6695eddace43",
+          "expanded_sha256": "16aaccb5a04a1ad8b99f0746d301fdee9661bd2959c83c3bdb6eb01987876a2d",
+          "raw_gain_counts": [
+            524181,
+            82,
+            1,
+            24
+          ],
+          "expanded_gain_counts": [
+            524158,
+            80,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 30,
+          "seed_sha256": "1b3ffa47b8fb56baeb029f56766353c5cf1ca796ae595980cce1b9f730285e97",
+          "expanded_sha256": "adcf0f192a8bf429f85e1b2b9948962ff69a6bd6559547a3d50bc24a7db3a6d0",
+          "raw_gain_counts": [
+            524269,
+            2,
+            0,
+            17
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 26,
+          "seed_sha256": "eee7a4e6ef4eec4ec37d7da52e520d5468163893fe78d59727992580895606bc",
+          "expanded_sha256": "5cf1a12677143b0ab71944f121968cedc1692d63d4cd14be098dca8054f19a7c",
+          "raw_gain_counts": [
+            524231,
+            15,
+            0,
+            42
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 22,
+          "seed_sha256": "dfbf4ba800bf77b6c0b1bf549eb055d92b490a8ad6e8a86a29432e2f6ee52376",
+          "expanded_sha256": "1f3bd6201e53199144685ddfe2247b1ba5c8daddbae8c738a41718e312b44a23",
+          "raw_gain_counts": [
+            518864,
+            5339,
+            0,
+            85
+          ],
+          "expanded_gain_counts": [
+            518898,
+            5320,
+            0,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 7,
+      "timestamp": 4909050823944991817,
+      "panels": [
+        {
+          "panel": 18,
+          "seed_sha256": "dc5af4c3fa93057e41e220ac2e52ce99aaf75666f7978b89d313fecd1856bdc7",
+          "expanded_sha256": "f096b23000a455ccc467b964c2751261a91ded621a9d2c2ca4d4fd99fb25b99b",
+          "raw_gain_counts": [
+            522428,
+            63,
+            114,
+            1683
+          ],
+          "expanded_gain_counts": [
+            522778,
+            60,
+            110,
+            1340
+          ]
+        },
+        {
+          "panel": 14,
+          "seed_sha256": "86c5dfe41b1c63a79d08747347f615c1d38ef2821cf113db5f6ee8346eb7dc13",
+          "expanded_sha256": "66d5aa08f1d7a3e7abcd040eb2f3494721ca703221a163a3c665cde62e7f5158",
+          "raw_gain_counts": [
+            522585,
+            5,
+            1,
+            1697
+          ],
+          "expanded_gain_counts": [
+            522688,
+            0,
+            0,
+            1600
+          ]
+        },
+        {
+          "panel": 10,
+          "seed_sha256": "b0e553e6e0411fc96e254844fdbe8d1fba25691a13a182ad960b0c4ee54648c4",
+          "expanded_sha256": "8a6a4cb39ead18a949643a908a653d4406511a368a60dc17963d5311cea185fa",
+          "raw_gain_counts": [
+            524125,
+            0,
+            0,
+            163
+          ],
+          "expanded_gain_counts": [
+            524068,
+            0,
+            0,
+            220
+          ]
+        },
+        {
+          "panel": 6,
+          "seed_sha256": "bab732bce6ba8024b2234ba4686daec9b7bc275b203d280ca98480ec9206aec8",
+          "expanded_sha256": "7a04dfa05f96443fa811d206300a27672dfba9cb4659680e2bf95d4242783940",
+          "raw_gain_counts": [
+            524262,
+            1,
+            1,
+            24
+          ],
+          "expanded_gain_counts": [
+            524238,
+            0,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 30,
+          "seed_sha256": "78f0e58383551ab1f7a25bb98efe895c218c307a4870839b9ab5d36fa19006b5",
+          "expanded_sha256": "457bd691ef68d6493119c8770a3ffd8ba70222d281a6c941dfd7f716cda76de9",
+          "raw_gain_counts": [
+            524269,
+            2,
+            0,
+            17
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 26,
+          "seed_sha256": "54cd8869e3e60f2786697f2ed18789038967b45b53c32d713900fd51933f5b0f",
+          "expanded_sha256": "f8616b11cbf8f494e2049d4d5417f5fc78036df92ba9496a30020d244ffd3a91",
+          "raw_gain_counts": [
+            524245,
+            1,
+            0,
+            42
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 22,
+          "seed_sha256": "ee9aff38a67377bf08ac470bcbf549d90f6868b2e17de27a0f6165b48876cf27",
+          "expanded_sha256": "42e7eb02f8f2158310487b378d4458aa162aca6d418b4ed83faf935766916c41",
+          "raw_gain_counts": [
+            524200,
+            3,
+            0,
+            85
+          ],
+          "expanded_gain_counts": [
+            524218,
+            0,
+            0,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 7,
+      "timestamp": 4909050823953249356,
+      "panels": [
+        {
+          "panel": 18,
+          "seed_sha256": "acd69200cd40bc48f74f01ec14260161ba64fdf464c9be84f4af149027832df0",
+          "expanded_sha256": "15d72dead0a0bee611d20ea85415e1d3039e87657ffcc12ba3d81d38a666bfdb",
+          "raw_gain_counts": [
+            522313,
+            171,
+            114,
+            1690
+          ],
+          "expanded_gain_counts": [
+            522708,
+            130,
+            110,
+            1340
+          ]
+        },
+        {
+          "panel": 14,
+          "seed_sha256": "af895f69de0bcd2cdad77fabc9586e88bc433897a7f83c16c2c70aac0e2efdc9",
+          "expanded_sha256": "56931bac315cc6d7d47c1acba22227c05157fd241c4a38d2268a6716881555fc",
+          "raw_gain_counts": [
+            522483,
+            105,
+            1,
+            1699
+          ],
+          "expanded_gain_counts": [
+            522608,
+            70,
+            0,
+            1610
+          ]
+        },
+        {
+          "panel": 10,
+          "seed_sha256": "dae0452f943133a00af71e37c9fd7aff5e17de9fd38523db3384c6dcb4193947",
+          "expanded_sha256": "c657f781a986135d91949081cc6138510440f7014366af950c219f321848c5d5",
+          "raw_gain_counts": [
+            524049,
+            76,
+            0,
+            163
+          ],
+          "expanded_gain_counts": [
+            523988,
+            80,
+            0,
+            220
+          ]
+        },
+        {
+          "panel": 6,
+          "seed_sha256": "b9ca52477398ea0a58e3fed045e8103d22b98db5ea0c24c3bfcbb1bed66ac607",
+          "expanded_sha256": "727e98c7a98b07a90340016cb3c71bb9248b5dc95fa2ea176f89db1509ffb313",
+          "raw_gain_counts": [
+            524252,
+            11,
+            1,
+            24
+          ],
+          "expanded_gain_counts": [
+            524228,
+            10,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 30,
+          "seed_sha256": "89d3d619fad761a7ce55975eb1b97744d74051b699e91428fc322527de1dd91e",
+          "expanded_sha256": "11ed785e48429062da9af39fe30797e83e919477aec2f5e8c2070b8ee6cf32fa",
+          "raw_gain_counts": [
+            524269,
+            2,
+            0,
+            17
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 26,
+          "seed_sha256": "14e421cfc514181178aa6427761d89cd4ae8d813a1c5d278c9510d6e718956c4",
+          "expanded_sha256": "16156f12a19d5396d615498c0411789fc4ac1f6846502d831937e6c4a7fac2d6",
+          "raw_gain_counts": [
+            524239,
+            7,
+            0,
+            42
+          ],
+          "expanded_gain_counts": [
+            524258,
+            10,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 22,
+          "seed_sha256": "1167598d74694185c7d0a5cd30898dcebbfdbb4b38fde33bc000e65fa5113ae0",
+          "expanded_sha256": "ffcdffc7f26e1426d3b12abfc90c847b79c865bebeae331bee5b9a061620759f",
+          "raw_gain_counts": [
+            524073,
+            130,
+            0,
+            85
+          ],
+          "expanded_gain_counts": [
+            524088,
+            130,
+            0,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 7,
+      "timestamp": 4909050823961637967,
+      "panels": [
+        {
+          "panel": 18,
+          "seed_sha256": "de448c87a8df3f0d27014c3fa92e0baa6e40f8917c79f69a843eaedda8aab6f7",
+          "expanded_sha256": "9ddc554afe9ed887d441b37cffbfa0d7402a1045941b13f26892dee1a94880ef",
+          "raw_gain_counts": [
+            508169,
+            14321,
+            114,
+            1684
+          ],
+          "expanded_gain_counts": [
+            508528,
+            14310,
+            110,
+            1340
+          ]
+        },
+        {
+          "panel": 14,
+          "seed_sha256": "64e0fc13ff4d35a1ba273dec55800aff673a896dc0d768988b777781a4336b7a",
+          "expanded_sha256": "92e6a2c574bb9f6b4995b3b71728e874bb9775182940cad4b5ab6f95a1214138",
+          "raw_gain_counts": [
+            509004,
+            13586,
+            1,
+            1697
+          ],
+          "expanded_gain_counts": [
+            508858,
+            13830,
+            0,
+            1600
+          ]
+        },
+        {
+          "panel": 10,
+          "seed_sha256": "11a52cc37d04663472791c658d3ee2d5fe0bccd41f206cf2ee998c7de5af349c",
+          "expanded_sha256": "b8a9fcf72bbad07e49597ad7ed99e42c4cacf0cdbb949b1d114de6c7e4707732",
+          "raw_gain_counts": [
+            512799,
+            11326,
+            0,
+            163
+          ],
+          "expanded_gain_counts": [
+            512818,
+            11250,
+            0,
+            220
+          ]
+        },
+        {
+          "panel": 6,
+          "seed_sha256": "869c11fe060950ca65d48eaa0d956b35ad730e9045fe9b55e5c06a77ca5bc94c",
+          "expanded_sha256": "6acd54b1c731f0b2bd624cc3eca6699c2cf180696773551e33a8b625e8675284",
+          "raw_gain_counts": [
+            524029,
+            234,
+            1,
+            24
+          ],
+          "expanded_gain_counts": [
+            523888,
+            350,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 30,
+          "seed_sha256": "ce260e917b5cff73fe74449e7a8150f9c3f94b7737d54374dca72241d56a8ca1",
+          "expanded_sha256": "5b46a63a55d121ec1cfa65a8ef5af1230ab178956c9e4fbdb4799512b31fa1d8",
+          "raw_gain_counts": [
+            524269,
+            2,
+            0,
+            17
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 26,
+          "seed_sha256": "52c5d21e856846cdf043e37efaeeb4863e1a3780bcd94a811c3731cea32a5589",
+          "expanded_sha256": "8b611202f016de30e08e227b4c1398645d56f8e878e97e474f854557a0f798fa",
+          "raw_gain_counts": [
+            524168,
+            78,
+            0,
+            42
+          ],
+          "expanded_gain_counts": [
+            524208,
+            60,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 22,
+          "seed_sha256": "f0348110fd84d46d286fe51610ac414644535c1c6dc3bcdf40100621b3f0638d",
+          "expanded_sha256": "618d5330b6d4fe10274ac53d5b364384f8b234843b9ee465fa3705fc7414a151",
+          "raw_gain_counts": [
+            511406,
+            12797,
+            0,
+            85
+          ],
+          "expanded_gain_counts": [
+            511208,
+            13010,
+            0,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 7,
+      "timestamp": 4909050823970026578,
+      "panels": [
+        {
+          "panel": 18,
+          "seed_sha256": "d080893b5e7841b6e2ff7628727e27af943da4238301f9c8462e78765fc148c6",
+          "expanded_sha256": "51f8ab1d9b718855ae20e22428081c7ddc577d48c7b10e4e94b9533bc3ff1391",
+          "raw_gain_counts": [
+            491984,
+            30505,
+            114,
+            1685
+          ],
+          "expanded_gain_counts": [
+            492788,
+            30050,
+            110,
+            1340
+          ]
+        },
+        {
+          "panel": 14,
+          "seed_sha256": "bb9a371691936c50f7218c7193b5df6aa6f26c7fc816ebc9a497f17b6c735597",
+          "expanded_sha256": "16059deabb0ca9644a97d62c9b10390b7bfbbe70dfb8642a2c5732e904ce2230",
+          "raw_gain_counts": [
+            493612,
+            28977,
+            1,
+            1698
+          ],
+          "expanded_gain_counts": [
+            494540,
+            28148,
+            0,
+            1600
+          ]
+        },
+        {
+          "panel": 10,
+          "seed_sha256": "1c7d0d6b777b4c4b17d319f856fe6f75fe4280f859b079f71e76598bd9cc79aa",
+          "expanded_sha256": "e6dfd61067cb2ee848ac08e29aae6cd458adab632a58dcdd812e994dbf736898",
+          "raw_gain_counts": [
+            499432,
+            24693,
+            0,
+            163
+          ],
+          "expanded_gain_counts": [
+            498798,
+            25270,
+            0,
+            220
+          ]
+        },
+        {
+          "panel": 6,
+          "seed_sha256": "1f1a55d2aae21ce34b67522f2c05e98cfbddf2d648fd95dd5aa23349666d1c21",
+          "expanded_sha256": "f7f907a976c1a44c548ccd962d2a7dc8ef9378ad1ed5077edb0123bbeccd60f6",
+          "raw_gain_counts": [
+            523765,
+            498,
+            1,
+            24
+          ],
+          "expanded_gain_counts": [
+            523668,
+            570,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 30,
+          "seed_sha256": "569c2a680688872f91b4d79ff855e8aff09ec1607d750bfc43f98eb6d65cd311",
+          "expanded_sha256": "512f11996f6fd3daa423658ba3bd6fa3dea7c7e764a770ac02f98578b1f84c0f",
+          "raw_gain_counts": [
+            524269,
+            2,
+            0,
+            17
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 26,
+          "seed_sha256": "f57e6cf20e375913b6bd5373051e9e44165fe09d75d2744b95f6d5e069dc5c3b",
+          "expanded_sha256": "6631eaba17fdb538dc4a5b93ca5792edae9516fd7d9054eae747116a3115a079",
+          "raw_gain_counts": [
+            524063,
+            183,
+            0,
+            42
+          ],
+          "expanded_gain_counts": [
+            524148,
+            120,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 22,
+          "seed_sha256": "1e6e28dae860e2773436615f565287b4c0e1484c850fec47ff9a2e4afbb73561",
+          "expanded_sha256": "1fd374da217ee2cdc355ef48d68f4948dd6dcdadcd205ba33ea2169ee74f528a",
+          "raw_gain_counts": [
+            496882,
+            27321,
+            0,
+            85
+          ],
+          "expanded_gain_counts": [
+            496748,
+            27470,
+            0,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 7,
+      "timestamp": 4909050823978284117,
+      "panels": [
+        {
+          "panel": 18,
+          "seed_sha256": "0e5b7952c09c33ecd93340362889e2ae03d74d0855c5330821cea281f1e5ffa1",
+          "expanded_sha256": "cd49c5edb39292d40f73fd8fefa817aa7bc55ab50baf381d35c2443877c2c0dc",
+          "raw_gain_counts": [
+            512046,
+            10444,
+            114,
+            1684
+          ],
+          "expanded_gain_counts": [
+            512488,
+            10350,
+            110,
+            1340
+          ]
+        },
+        {
+          "panel": 14,
+          "seed_sha256": "ba5b665b4e56c907dedc98c5df67fcb2a24f85c068611ff76132a9cf625baa67",
+          "expanded_sha256": "76ebca3925df0eddc2b2ed625ca798895303e26646e9afdd7b52c42a80c86081",
+          "raw_gain_counts": [
+            512977,
+            9612,
+            1,
+            1698
+          ],
+          "expanded_gain_counts": [
+            513148,
+            9540,
+            0,
+            1600
+          ]
+        },
+        {
+          "panel": 10,
+          "seed_sha256": "28e514c0f1b343d71fd947f67d91ca3765a8cfe975ef67f8367d463f646f5117",
+          "expanded_sha256": "1d308c8c468cdcc236b640071510b479a8ee6d3128881978f79ff0d9ce6bf929",
+          "raw_gain_counts": [
+            515700,
+            8425,
+            0,
+            163
+          ],
+          "expanded_gain_counts": [
+            515398,
+            8670,
+            0,
+            220
+          ]
+        },
+        {
+          "panel": 6,
+          "seed_sha256": "73b43b0ea05a2fab256feb53e3f88cdebbaf3a20b11749be66ce2eb4e7d6d638",
+          "expanded_sha256": "10dca397928e3bbec2cb1cc8b2e075f4e95c8dfc959d5a17a2cb4f9e06088797",
+          "raw_gain_counts": [
+            524125,
+            138,
+            1,
+            24
+          ],
+          "expanded_gain_counts": [
+            524048,
+            190,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 30,
+          "seed_sha256": "2e98859892ca879d1946070ec75422bcc17804cc8cf1a0c42ee47857b5345110",
+          "expanded_sha256": "ac88cca2741aec61803e4497978b60402baf83e706a667eecc054b0986969f25",
+          "raw_gain_counts": [
+            524269,
+            2,
+            0,
+            17
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 26,
+          "seed_sha256": "5d52f916728a0d61444b78138dce696f1a458bfe112af84bc7b03a498521ea2f",
+          "expanded_sha256": "02ee6d91e104d1f42094142573088177600764f035dcf6da9d420f6fc770a274",
+          "raw_gain_counts": [
+            524194,
+            52,
+            0,
+            42
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 22,
+          "seed_sha256": "4fef08fb0c7b68e20ad8e6132eb67d76026e46c99515861e3dcde865fa1f1b19",
+          "expanded_sha256": "fd0018c6b41b21ea75f7eb76357fa0677557bb6c00f73e6537866eb87b0be37c",
+          "raw_gain_counts": [
+            514878,
+            9325,
+            0,
+            85
+          ],
+          "expanded_gain_counts": [
+            515238,
+            8980,
+            0,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 7,
+      "timestamp": 4909050823986672728,
+      "panels": [
+        {
+          "panel": 18,
+          "seed_sha256": "b9211efa8c789cf1e0696ddfc7e9a1ef64ce7fe723f4c11a82993be1f33b55f4",
+          "expanded_sha256": "329234c1c2a90a723ed628e6f2940fa5f7c3a3b4d8e0a693bf602cd04726ad83",
+          "raw_gain_counts": [
+            513547,
+            8943,
+            114,
+            1684
+          ],
+          "expanded_gain_counts": [
+            514158,
+            8680,
+            110,
+            1340
+          ]
+        },
+        {
+          "panel": 14,
+          "seed_sha256": "3f8dd15fa1b13a69c5fb77717aab7306b87d5101c9a1f31d38993dfd4fefd59b",
+          "expanded_sha256": "1a431e20e883828ca78af423abb2911ce1c63c68b7d05431281dd5e037644086",
+          "raw_gain_counts": [
+            514252,
+            8339,
+            1,
+            1696
+          ],
+          "expanded_gain_counts": [
+            514248,
+            8440,
+            0,
+            1600
+          ]
+        },
+        {
+          "panel": 10,
+          "seed_sha256": "50046a9154127fba0b918d9519cbdeb72927fbd0d805090d50f45d2d92a27b7a",
+          "expanded_sha256": "674c320a18aa5ffeb770a28c0b5dfe3d036d3af688bfb5cf406835cd86567da2",
+          "raw_gain_counts": [
+            516813,
+            7312,
+            0,
+            163
+          ],
+          "expanded_gain_counts": [
+            516718,
+            7350,
+            0,
+            220
+          ]
+        },
+        {
+          "panel": 6,
+          "seed_sha256": "b1f160be403a3429a264d8fbcd6d58649e1355784b0bfb126312f5cb9385e0de",
+          "expanded_sha256": "d3fa9f56f01f27db18e735c9d3bf73e27c9ccf0106960a6eb971c472fd016ab0",
+          "raw_gain_counts": [
+            524132,
+            131,
+            1,
+            24
+          ],
+          "expanded_gain_counts": [
+            524128,
+            110,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 30,
+          "seed_sha256": "c0e52570e3891db184a0df35a1eb84b1bcb9c42dd5468ce05161df689cd6a5c4",
+          "expanded_sha256": "4772fc890030e42ab9b1a7edfc508de8f43062021fbd6567ec2d32d3eb6aa64e",
+          "raw_gain_counts": [
+            524269,
+            2,
+            0,
+            17
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 26,
+          "seed_sha256": "e47f5ce20890d4752bbff6bb6ca8b09c19ab097c3fd67f0870b0f64644c3586f",
+          "expanded_sha256": "7f7bc1981be1f1f354cf7de41d418c6e11ddaea10ee86403487d96feb2f004ac",
+          "raw_gain_counts": [
+            524205,
+            41,
+            0,
+            42
+          ],
+          "expanded_gain_counts": [
+            524248,
+            20,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 22,
+          "seed_sha256": "7aa0a4427c10661b150b5bd75b0e173642d96128b8081ab754f35a506dd7e60b",
+          "expanded_sha256": "d961ba053e06a9289b28197e42da655d6dbc0c5fb0f69d497e54ee8a27b1fc19",
+          "raw_gain_counts": [
+            515917,
+            8286,
+            0,
+            85
+          ],
+          "expanded_gain_counts": [
+            516028,
+            8190,
+            0,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 7,
+      "timestamp": 4909050823994930267,
+      "panels": [
+        {
+          "panel": 18,
+          "seed_sha256": "02c3870e12d3d29d771e47a02ee4d61c5e4e30009d9612126a8a650b20e8fd7d",
+          "expanded_sha256": "f7ddb9f2afc41cd356d3f69248059da9499b961124bd52afcf61b33cd1c6f05a",
+          "raw_gain_counts": [
+            510136,
+            12354,
+            114,
+            1684
+          ],
+          "expanded_gain_counts": [
+            510088,
+            12750,
+            110,
+            1340
+          ]
+        },
+        {
+          "panel": 14,
+          "seed_sha256": "449e21d066ad8a94c428d4e6f23b7b2a47a16fc03b2adc84711b3d5d5f3f66f3",
+          "expanded_sha256": "2e271d15433c6d6ebad632b76c76e736559360e8101dfefe67472a73eb2630e7",
+          "raw_gain_counts": [
+            511169,
+            11420,
+            1,
+            1698
+          ],
+          "expanded_gain_counts": [
+            511818,
+            10870,
+            0,
+            1600
+          ]
+        },
+        {
+          "panel": 10,
+          "seed_sha256": "bfdf42c0d8de037771f914406e5e4c49f1388f030c899e5efd7762fa5baf7a1b",
+          "expanded_sha256": "e247fda4d360e1ca059b4afde657c9bdf67f5eaf79b6277e5c3109f414782c26",
+          "raw_gain_counts": [
+            514320,
+            9805,
+            0,
+            163
+          ],
+          "expanded_gain_counts": [
+            514768,
+            9300,
+            0,
+            220
+          ]
+        },
+        {
+          "panel": 6,
+          "seed_sha256": "7ed119ec443a53a301f931ab0dd5fe91a24ffeea97317ed1302441ae3adabc06",
+          "expanded_sha256": "3d57686cabbfc2237c7278be10659bf20b0a9d9e4295a84ff5e9684596fa4a56",
+          "raw_gain_counts": [
+            524070,
+            193,
+            1,
+            24
+          ],
+          "expanded_gain_counts": [
+            523978,
+            260,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 30,
+          "seed_sha256": "66af5f325724a2d2205ed6129b9aba31349c904d1471af0fbf7da517fab14502",
+          "expanded_sha256": "496762307bf8fff7e03503456ed137bb2d07e30fc96f4345a5e108a3fc1e752d",
+          "raw_gain_counts": [
+            524268,
+            3,
+            0,
+            17
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 26,
+          "seed_sha256": "fa4072c728dfa01746df4ca92f5b66f3f11b1a4094e5ae4d6ddb560f3739205f",
+          "expanded_sha256": "7b4b2dbd7b157d0b54e51167311ee84de49ea79b96bffffb18fd30f386b14cae",
+          "raw_gain_counts": [
+            524187,
+            59,
+            0,
+            42
+          ],
+          "expanded_gain_counts": [
+            524218,
+            50,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 22,
+          "seed_sha256": "f2df5b9b9a04ecbee49b037fae311174c56302a086b9855274ad6f0964345ee0",
+          "expanded_sha256": "44100d394a800b6bd804a74e59033c9e82c4a4db09f2bd60bd6c21980e9a2fc2",
+          "raw_gain_counts": [
+            513102,
+            11101,
+            0,
+            85
+          ],
+          "expanded_gain_counts": [
+            513088,
+            11130,
+            0,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 7,
+      "timestamp": 4909050824003318878,
+      "panels": [
+        {
+          "panel": 18,
+          "seed_sha256": "16b7228f40abfda1f3c43adcd7d067ec3b5cca01630a4161789a1ccb8388d984",
+          "expanded_sha256": "32c9f4f3b0ceeff908cf029574d312ed11ccfdbb199d5082109fceb7ef337a3f",
+          "raw_gain_counts": [
+            502061,
+            20428,
+            114,
+            1685
+          ],
+          "expanded_gain_counts": [
+            502548,
+            20290,
+            110,
+            1340
+          ]
+        },
+        {
+          "panel": 14,
+          "seed_sha256": "46354c4e38c3c394c5ed25cc1c452b5dcae8756a12cdc29d21ed391766938605",
+          "expanded_sha256": "c7021536fdef070067e9411d05d1dcdadd72e17525c5b6ced9fe407e2192202c",
+          "raw_gain_counts": [
+            503530,
+            19059,
+            1,
+            1698
+          ],
+          "expanded_gain_counts": [
+            504060,
+            18628,
+            0,
+            1600
+          ]
+        },
+        {
+          "panel": 10,
+          "seed_sha256": "2ae48e9ff8ec964cbfb8fb58a340ad39fe3ca3478c674ed5e2d3a52f49e8decc",
+          "expanded_sha256": "c562d2ed22a29df1156dfd1b6438a1985502ecf813e21bb048fccfa09d20e93c",
+          "raw_gain_counts": [
+            508242,
+            15883,
+            0,
+            163
+          ],
+          "expanded_gain_counts": [
+            508568,
+            15500,
+            0,
+            220
+          ]
+        },
+        {
+          "panel": 6,
+          "seed_sha256": "5c8c035b29b2a675c60b06fac22e90ff81463ea65fd0686410aed22042a03b7f",
+          "expanded_sha256": "dae962e7fecd2eafd4d6b697f7aa1ead38f6c700011a314124acead368172d0c",
+          "raw_gain_counts": [
+            523913,
+            350,
+            1,
+            24
+          ],
+          "expanded_gain_counts": [
+            523768,
+            470,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 30,
+          "seed_sha256": "9a8ffdeeeb032583bc5c8deba2b22c78f45b8e16b430886a581b9ce965a57685",
+          "expanded_sha256": "2d49edea9454dcf8d71ef93540df0f69df6930c95bc99f43532520663478cfb9",
+          "raw_gain_counts": [
+            524269,
+            2,
+            0,
+            17
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 26,
+          "seed_sha256": "6a8056e9f73d0154ca5f7c1d6a19fb122b1cb849a97a3163d9f6da324fab42d7",
+          "expanded_sha256": "f9ee38d229358e5b23acdb3cfb1b8cf4c67126cdded8520f24a9d5ff4e701bf2",
+          "raw_gain_counts": [
+            524120,
+            126,
+            0,
+            42
+          ],
+          "expanded_gain_counts": [
+            524198,
+            70,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 22,
+          "seed_sha256": "6904c15f81d8f32d89043201860bbe4370af4c510d7ed466cecf86e3179a3b76",
+          "expanded_sha256": "a4821b19b72e70c3a64bdeb058850755f914e9a999f5a2213692e378d1a578fc",
+          "raw_gain_counts": [
+            506309,
+            17894,
+            0,
+            85
+          ],
+          "expanded_gain_counts": [
+            505788,
+            18430,
+            0,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 7,
+      "timestamp": 4909050824011576417,
+      "panels": [
+        {
+          "panel": 18,
+          "seed_sha256": "a71cb90c5bb96278cda06c3e76441ab679bd9f2c59722d7d349fc07ac0930b90",
+          "expanded_sha256": "755f2a2448cf5ccb93d4cadca27166f5c8249d890af9ea2aa72f8f994e398e22",
+          "raw_gain_counts": [
+            518981,
+            3509,
+            114,
+            1684
+          ],
+          "expanded_gain_counts": [
+            519608,
+            3230,
+            110,
+            1340
+          ]
+        },
+        {
+          "panel": 14,
+          "seed_sha256": "dde57a33e273ac3e0ea88adbbfab94537c356677c34bf614009631feef419e38",
+          "expanded_sha256": "30261b3ccfe167227a995c5d92b84674a7b24861ad8d78802e5b1e1dd0a1f46a",
+          "raw_gain_counts": [
+            519353,
+            3236,
+            1,
+            1698
+          ],
+          "expanded_gain_counts": [
+            519398,
+            3290,
+            0,
+            1600
+          ]
+        },
+        {
+          "panel": 10,
+          "seed_sha256": "d8933faabd98f77b457cb0d96549f25b812a73b7f28dcab523f1f5ad29a219d8",
+          "expanded_sha256": "b613a0f72f0bf6b2aadae5e888f56de9db9ac95cda32684aad080c7736c3899b",
+          "raw_gain_counts": [
+            520823,
+            3302,
+            0,
+            163
+          ],
+          "expanded_gain_counts": [
+            520508,
+            3560,
+            0,
+            220
+          ]
+        },
+        {
+          "panel": 6,
+          "seed_sha256": "093211c4e0a4a7d09ff45c1e36d3f5420b0ea2ccea5e5d83f2930f5b983a00fd",
+          "expanded_sha256": "4e6b67781baf83aa7fe03292b05316a5f57d729e3325b6c4df7109f4a164c1f0",
+          "raw_gain_counts": [
+            524225,
+            38,
+            1,
+            24
+          ],
+          "expanded_gain_counts": [
+            524208,
+            30,
+            0,
+            50
+          ]
+        },
+        {
+          "panel": 30,
+          "seed_sha256": "ff660dcd86aa7db0d6dbd5b9c7818345f80ebc6652ff365eca71cc5bc7114b8c",
+          "expanded_sha256": "08edd0b08779c39b03b10c4eb4764339d820eb9cf2d115f3ea97bb10201cd438",
+          "raw_gain_counts": [
+            524269,
+            2,
+            0,
+            17
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 26,
+          "seed_sha256": "5981babbb659102bf224f55c3c7ea2a467f415d7d4cedb7fceeb9e2a0899441f",
+          "expanded_sha256": "201cdf356d82b1122df968320db0c9ceb4a299de61f473bfeec86ce71002165b",
+          "raw_gain_counts": [
+            524236,
+            10,
+            0,
+            42
+          ],
+          "expanded_gain_counts": [
+            524258,
+            10,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 22,
+          "seed_sha256": "c5ca869e6711d1603be4b8f6b64f69d89665e4a8f011db0e19387389f6c0e6b6",
+          "expanded_sha256": "e68bbfac9c6acc398fceeccc68f9e2422cfa6a3909d1745f90216bc4745fa21b",
+          "raw_gain_counts": [
+            520571,
+            3632,
+            0,
+            85
+          ],
+          "expanded_gain_counts": [
+            520438,
+            3780,
+            0,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 8,
+      "timestamp": 4909050823936603206,
+      "panels": [
+        {
+          "panel": 16,
+          "seed_sha256": "dfbcac66808c06b7665d5d7280a5cb06df9d69c540fa84d28dfa6fbe751867fa",
+          "expanded_sha256": "40e3e97db3f3a8c47faafe92148575349a8ec408aa42da89d5315b71edd473bc",
+          "raw_gain_counts": [
+            523854,
+            410,
+            0,
+            24
+          ],
+          "expanded_gain_counts": [
+            523958,
+            330,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 12,
+          "seed_sha256": "62d10b1cb08a59da5b3fe1b614abcecb4b622ba4d5d70943f1d4fb2d2164c641",
+          "expanded_sha256": "1bb6684523cd570a078dc50f4401ceceb08ee0c5ae1799eb30c50a91d06b1adb",
+          "raw_gain_counts": [
+            523728,
+            542,
+            0,
+            18
+          ],
+          "expanded_gain_counts": [
+            523938,
+            330,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 8,
+          "seed_sha256": "c21b850c67e5282458d2d485308fecf4975337c809ade00a308b8453afb8fa23",
+          "expanded_sha256": "6fefd07fc6e476eccd8b9eb3447a17774ed13ba0b0ec2e3e952fd336916efbac",
+          "raw_gain_counts": [
+            524229,
+            44,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524218,
+            50,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 4,
+          "seed_sha256": "7a195cdc974d80d2fa5e8ba53d32af870dc5ffefea3f59e90fd910065990ae4e",
+          "expanded_sha256": "42623d00dcfe3dd8c49819beb51b373537b686070fbc9ad22cde11c80ac3b5d5",
+          "raw_gain_counts": [
+            524274,
+            1,
+            3,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 28,
+          "seed_sha256": "8ad505022a238105109893bc4fdcff0778d44ded7322794bded0c94af9ec2873",
+          "expanded_sha256": "fba6ba74a6381993d3f5c1913e2fc4eb7106981573542d9426765bd389094357",
+          "raw_gain_counts": [
+            524281,
+            4,
+            0,
+            3
+          ],
+          "expanded_gain_counts": [
+            524288,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 24,
+          "seed_sha256": "355816c84a6fc3ef511ae1532f264064ec1aa5bb0ebc4bc949adf02e5725ab1a",
+          "expanded_sha256": "b1d3ac75ef7ab02d868fd40d9086900cb5019dd249753aeaeee8a8f37db3e9ef",
+          "raw_gain_counts": [
+            524258,
+            0,
+            1,
+            29
+          ],
+          "expanded_gain_counts": [
+            524248,
+            0,
+            0,
+            40
+          ]
+        },
+        {
+          "panel": 20,
+          "seed_sha256": "5a88a6e62c2766783473022f754bc5ed5e56c16f0074e2d21efa4f83d9264254",
+          "expanded_sha256": "abc725674aecad874d23ace5340167afe375f31410320cb3880fc02b13f3fb5e",
+          "raw_gain_counts": [
+            524244,
+            32,
+            0,
+            12
+          ],
+          "expanded_gain_counts": [
+            524258,
+            20,
+            0,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 8,
+      "timestamp": 4909050823944991817,
+      "panels": [
+        {
+          "panel": 16,
+          "seed_sha256": "2f05e0f32a6bffb59ebc735d0141d918487ef6960752bf103a53b9e63395185f",
+          "expanded_sha256": "2bae72e771c79f92bde3473dcee7fe5e2f1b34f40e6f3d7601d6b3805748e163",
+          "raw_gain_counts": [
+            524264,
+            0,
+            0,
+            24
+          ],
+          "expanded_gain_counts": [
+            524288,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 12,
+          "seed_sha256": "05e1ddc72d1781db1e1f6b7f1b425a8bbdea5d7af7155388e742fb89e69cfae2",
+          "expanded_sha256": "602178f71590b4a139f2207c71c3ffae39ea5af7ecf52e1f8a2b96ff318ef160",
+          "raw_gain_counts": [
+            524270,
+            0,
+            0,
+            18
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 8,
+          "seed_sha256": "c63d6a436b37fcd5994b0e8619dede7a453812f0010821dbd36359ac04cdd8e1",
+          "expanded_sha256": "5e68ae74e0046ecf2b7088271ebb3e202b9b9d3d1b1b9e66852bf8cdabb07e6f",
+          "raw_gain_counts": [
+            524272,
+            1,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 4,
+          "seed_sha256": "fa4e1a4b8164e9d917e97e5151cc9cfafd637e0ed31859f715196fef0197c444",
+          "expanded_sha256": "d58120cafb838fc975abc592788f8aadd69b7050d1fcb6e89216da7e37f1d1ec",
+          "raw_gain_counts": [
+            524274,
+            1,
+            3,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 28,
+          "seed_sha256": "f0e0e1fc5126ccb4bf3364035018b9154ebabae4548e14c52829a1106237c231",
+          "expanded_sha256": "3cab98d9b4085eb093bbdb8e27dbc3f4c115eedf2881cccdb107e9050543c456",
+          "raw_gain_counts": [
+            524281,
+            4,
+            0,
+            3
+          ],
+          "expanded_gain_counts": [
+            524288,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 24,
+          "seed_sha256": "eda8c4ea1afd731785a62d9bbfbbde611de0aaacbe096478a03830331ee8cde6",
+          "expanded_sha256": "39dbcdacfd30ed653ec782f04b00ed6a7f0befcf77d75efd822e0a3187f57dd9",
+          "raw_gain_counts": [
+            524258,
+            0,
+            1,
+            29
+          ],
+          "expanded_gain_counts": [
+            524248,
+            0,
+            0,
+            40
+          ]
+        },
+        {
+          "panel": 20,
+          "seed_sha256": "5c3e7c0b482b66970fb5f727b8f629db6733b45436a84673aeba6cc492d310b1",
+          "expanded_sha256": "92cf2f8cfb4abfcb0ff3b7f84d1ddbec8d30dea18eccc83d65b485d3016054ee",
+          "raw_gain_counts": [
+            524276,
+            0,
+            0,
+            12
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 8,
+      "timestamp": 4909050823953249356,
+      "panels": [
+        {
+          "panel": 16,
+          "seed_sha256": "50fddd75bd86e396735914c181da054f9ab1661e148223bfe2d54f0ba253eb63",
+          "expanded_sha256": "530c1f3e9f2e33dca646059a3cc603b49a5db67eb97cdbfa4c713219bad976f8",
+          "raw_gain_counts": [
+            524258,
+            6,
+            0,
+            24
+          ],
+          "expanded_gain_counts": [
+            524288,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 12,
+          "seed_sha256": "fcca99c64651a7d22318564c51ce208163b362042a2fc44d170097c0a9c567d2",
+          "expanded_sha256": "122c76bad3f0f57726f1c269b19d291eda9ddf31098045fbec220a549bfac6aa",
+          "raw_gain_counts": [
+            524260,
+            10,
+            0,
+            18
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 8,
+          "seed_sha256": "c2ea0c9ae1324eda92bab23f1d1e22ddb5b63aff42a146bcccc2e248944bed51",
+          "expanded_sha256": "be9fa349526a07fc7b28c0045a8fbab3bad18f60568118cd374b8a8e538c3ae2",
+          "raw_gain_counts": [
+            524271,
+            2,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 4,
+          "seed_sha256": "548f67147ebabccd0bed7f0e7628651bbce71c7470cdcd9e5ea8eb1516878e9e",
+          "expanded_sha256": "19944c3c8a217009d31200c6a37e0072e24cb82a3877b9871952b98e78854dfe",
+          "raw_gain_counts": [
+            524274,
+            1,
+            3,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 28,
+          "seed_sha256": "63f98ac1341a423d589caa2c1784234cb083bd32f1a4692caf3ae57ad5776d48",
+          "expanded_sha256": "acf100b30394f354ad8722ebd1763e6a018427fb80bada4daeaa25836a0e9256",
+          "raw_gain_counts": [
+            524281,
+            4,
+            0,
+            3
+          ],
+          "expanded_gain_counts": [
+            524288,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 24,
+          "seed_sha256": "1cb867272076f3492a54a8ecdee8037bd24f79efb5579dccb2d2665ce173c7b2",
+          "expanded_sha256": "498f734510a2f4dc9ef9dc6f241dcb4482ffd2e20a84d2c4c644c31b31aa685a",
+          "raw_gain_counts": [
+            524258,
+            0,
+            1,
+            29
+          ],
+          "expanded_gain_counts": [
+            524248,
+            0,
+            0,
+            40
+          ]
+        },
+        {
+          "panel": 20,
+          "seed_sha256": "31dc5e33eb4db388724c2a131209583cd7da97a4bdfa515d49b9f22076ce7ca9",
+          "expanded_sha256": "ec15ad0711d0bb84ffac6a26d02b0a8e5735e17d6c5e5c50594ac8eb33b8c749",
+          "raw_gain_counts": [
+            524272,
+            4,
+            0,
+            12
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 8,
+      "timestamp": 4909050823961637967,
+      "panels": [
+        {
+          "panel": 16,
+          "seed_sha256": "1c158fdb86d11a6bb686d0a34d97e1b8385521d8aad49c3e00e888413986f0d3",
+          "expanded_sha256": "e763ab243f341b19614e1be09643265e630619a630d1db7c8a80a5a59d7779b1",
+          "raw_gain_counts": [
+            523330,
+            934,
+            0,
+            24
+          ],
+          "expanded_gain_counts": [
+            523518,
+            770,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 12,
+          "seed_sha256": "182fd94a6dbb86921c6c328f5f0d882c7ab18d2830feb5924f791583258bba9f",
+          "expanded_sha256": "5fc00dec12c772bd662e74818de117a910bd8f83ea6099368f0755b5e1ec8077",
+          "raw_gain_counts": [
+            523099,
+            1171,
+            0,
+            18
+          ],
+          "expanded_gain_counts": [
+            523420,
+            848,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 8,
+          "seed_sha256": "4d82632a3aff70db7cff5db5958d73dce75ea8c5b1719b85f1de08abf79ef809",
+          "expanded_sha256": "57827ce6f8c6bec6d852e0913fee3502625d9555c72e6f14c60ef64eca314619",
+          "raw_gain_counts": [
+            524104,
+            169,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524100,
+            168,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 4,
+          "seed_sha256": "9040043c9a8edbfd3f788e78eaf0c01f26d3e3971d44873ec52fdbc32183b042",
+          "expanded_sha256": "7fb67b36f6c96f6b21da4e8e81549fa57cd093201f4d9b5554a92c1df70ac6ba",
+          "raw_gain_counts": [
+            524274,
+            1,
+            3,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 28,
+          "seed_sha256": "e50a79d5501086fafc579ad4a42ef5597bc0bd453306f784e4497fc736cbde01",
+          "expanded_sha256": "e5468ce42b83192a60e1d2e2d25f0b54f8471e14c12ec41af4250da7dc787e09",
+          "raw_gain_counts": [
+            524281,
+            4,
+            0,
+            3
+          ],
+          "expanded_gain_counts": [
+            524288,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 24,
+          "seed_sha256": "9ec84b10350cd46d985a68c1238a6b5605682986535e61aeb13db6cf0e44b181",
+          "expanded_sha256": "91774f9b176bfb39dfaef7cdcabb4b3990a87cb44187aea260dafccaf976484b",
+          "raw_gain_counts": [
+            524258,
+            0,
+            1,
+            29
+          ],
+          "expanded_gain_counts": [
+            524248,
+            0,
+            0,
+            40
+          ]
+        },
+        {
+          "panel": 20,
+          "seed_sha256": "a3694cf0f449658e659f275b2967ccea3dd00fa790f1eb8c7a6eb21c68ee4e41",
+          "expanded_sha256": "cab8a3b9f20164ad32c79c774a8a5ffa777e2d77ea0228d0924436e36508a206",
+          "raw_gain_counts": [
+            524190,
+            86,
+            0,
+            12
+          ],
+          "expanded_gain_counts": [
+            524178,
+            100,
+            0,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 8,
+      "timestamp": 4909050823970026578,
+      "panels": [
+        {
+          "panel": 16,
+          "seed_sha256": "79a8d7123171378f57041f05f4d72f3ba3581232d7ba22dfdae6f05663f1b7e4",
+          "expanded_sha256": "a0df9de4b013c204757535642a8943487bbe5ec59667d83f08f0d4789c7d3c82",
+          "raw_gain_counts": [
+            522468,
+            1796,
+            0,
+            24
+          ],
+          "expanded_gain_counts": [
+            522878,
+            1410,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 12,
+          "seed_sha256": "2f283f77ab8174bc523430d96e7a1472402ba9510304b852dc6befe3966e39ea",
+          "expanded_sha256": "7cfc42ba41325d9826f2ae2ceaba7ef7807d983d2931a18bfc8bc9f12570bb99",
+          "raw_gain_counts": [
+            521908,
+            2362,
+            0,
+            18
+          ],
+          "expanded_gain_counts": [
+            522430,
+            1838,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 8,
+          "seed_sha256": "eff5cc817467606c929bf1987fd8f6dcfe79f172ef24260f1ee9ef22db0db438",
+          "expanded_sha256": "4ed442ee0a08bcb937d25af0e6f6cc11e53894ade5ebeffebc44b139c0a6d9aa",
+          "raw_gain_counts": [
+            523886,
+            387,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            523870,
+            398,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 4,
+          "seed_sha256": "1f690a694dec7689b9d2678c8b9b167c8f77169850e06b8438eb3bbdd9c528c2",
+          "expanded_sha256": "5e1c69c2e308f62e64edb110db8d6040e6d056b5bcaa56385c7d33612b249a81",
+          "raw_gain_counts": [
+            524274,
+            1,
+            3,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 28,
+          "seed_sha256": "a43fd3ef932440dfe5f925881fa1befaf8b58741611f4546ef97c0882e41f3b4",
+          "expanded_sha256": "1833b9ebd4c8dd1531901b1249969ca9eeaaa80a1e15f6fa9239993a2ca2ebbe",
+          "raw_gain_counts": [
+            524281,
+            4,
+            0,
+            3
+          ],
+          "expanded_gain_counts": [
+            524288,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 24,
+          "seed_sha256": "5f5e9502a36eda4e05d3df152d2ed41215fc4a339da24f0cad3b018b850caef1",
+          "expanded_sha256": "b21a405650219bf2086fa75f66c69cbfef7c7c0f48771d9afd8abe61f114bcac",
+          "raw_gain_counts": [
+            524258,
+            0,
+            1,
+            29
+          ],
+          "expanded_gain_counts": [
+            524248,
+            0,
+            0,
+            40
+          ]
+        },
+        {
+          "panel": 20,
+          "seed_sha256": "e89cc91c72dd6cdbcc543c5aab964d418f86aa81cba06b61a48470b6de8cb577",
+          "expanded_sha256": "cc5bca35daecf00d52a40c3d0f04586cc876cf984ae531ac24a329d1213e1ce4",
+          "raw_gain_counts": [
+            524021,
+            255,
+            0,
+            12
+          ],
+          "expanded_gain_counts": [
+            524108,
+            170,
+            0,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 8,
+      "timestamp": 4909050823978284117,
+      "panels": [
+        {
+          "panel": 16,
+          "seed_sha256": "fc51a6db6e4aa9fbf72a66fd1085a23ae293bdf33d4c070d8cbe657a20e03bb8",
+          "expanded_sha256": "db0c7cb438ec7ea5fabda2fb7524ea52816a79c4dd918af4ef5af8a87a738ca1",
+          "raw_gain_counts": [
+            523573,
+            691,
+            0,
+            24
+          ],
+          "expanded_gain_counts": [
+            523568,
+            720,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 12,
+          "seed_sha256": "890ff3589bcb6c3161abddd7df0da15dea0aaa7b67f6f00e38465115a6f2c4ef",
+          "expanded_sha256": "5d152296ed177f7d89c19112f69da24de9c95d7077e8cd5085b11119ca700932",
+          "raw_gain_counts": [
+            523423,
+            847,
+            0,
+            18
+          ],
+          "expanded_gain_counts": [
+            523660,
+            608,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 8,
+          "seed_sha256": "0ecfc588fa5ece7f3a05bc0ce3f19a6503a27b3ca37580a3fca8dfdf30174b76",
+          "expanded_sha256": "9931a48284ac13525999d9547551ddbadce1f6cea4f3c8665ae54d162d3c437a",
+          "raw_gain_counts": [
+            524160,
+            113,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524218,
+            50,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 4,
+          "seed_sha256": "f7cc29b75edbd7cde083fcefd61fff02805251f5202e612abd93fa50bdbc2b4b",
+          "expanded_sha256": "647e65fa51707c97d821dbde72ce924ceec6bbe4cef34b5e7ddaa4e183a3e5fd",
+          "raw_gain_counts": [
+            524274,
+            1,
+            3,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 28,
+          "seed_sha256": "eba467247f31680afec27037f0021241c4812ed04ca531071deb85d6e47a26df",
+          "expanded_sha256": "251e31919fad66437d134a8415568258f8664c415e73f3c8c9c18a7c064cbb00",
+          "raw_gain_counts": [
+            524281,
+            4,
+            0,
+            3
+          ],
+          "expanded_gain_counts": [
+            524288,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 24,
+          "seed_sha256": "03402bad6f06565ec3f207fc6d8e0b832325b98c0081baac425489b7b0988272",
+          "expanded_sha256": "5fa434e8d1a7786e7ea248572151075a9427086b39819e6d2074c61df24a7ec3",
+          "raw_gain_counts": [
+            524257,
+            1,
+            1,
+            29
+          ],
+          "expanded_gain_counts": [
+            524248,
+            0,
+            0,
+            40
+          ]
+        },
+        {
+          "panel": 20,
+          "seed_sha256": "104f8b44102b598029fdaf8957485360e9322fcd5354e4e486193d0e8e095c12",
+          "expanded_sha256": "276dd69c46bd74547bb5f76d42aa3ef9570a0c3f92bd89c47e735c2fbcdf8a9f",
+          "raw_gain_counts": [
+            524213,
+            63,
+            0,
+            12
+          ],
+          "expanded_gain_counts": [
+            524218,
+            60,
+            0,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 8,
+      "timestamp": 4909050823986672728,
+      "panels": [
+        {
+          "panel": 16,
+          "seed_sha256": "de6ab9f2db0757d4e30372901f9a2de22c4545f3b92183b5f85dc385b9f977fc",
+          "expanded_sha256": "69eb4fa7d769bac570ea3878e16837693905652cbdef24c74460dd93c819ba9e",
+          "raw_gain_counts": [
+            523644,
+            620,
+            0,
+            24
+          ],
+          "expanded_gain_counts": [
+            523838,
+            450,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 12,
+          "seed_sha256": "d041e48b775cdd2c660f63a81cb461425a15e10f241185205639492888f27b5e",
+          "expanded_sha256": "1b1105f2843b9590bd095db96a87b95d92b240f61bed6c62458086d2f8f97d08",
+          "raw_gain_counts": [
+            523507,
+            763,
+            0,
+            18
+          ],
+          "expanded_gain_counts": [
+            523698,
+            570,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 8,
+          "seed_sha256": "f671525c75a535f515feab5a0c6269b83875a054c4dea72310f9ba164ed7ce2d",
+          "expanded_sha256": "70894d75cf8fa06fd24c9f31ba9b3fe81e1625a4dfd8c7385a8fde5a8c0fb387",
+          "raw_gain_counts": [
+            524177,
+            96,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524168,
+            100,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 4,
+          "seed_sha256": "e71a382177d471dd7c8e08ac33c6dce7ac80826004b264f36054db3d88c81588",
+          "expanded_sha256": "5e6ef24c6ed4c99e336c81a823236a1f98773266ac97ecf5e67b5a84c6925fd2",
+          "raw_gain_counts": [
+            524274,
+            1,
+            3,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 28,
+          "seed_sha256": "6b8bc8dbca0c05c0accb5021ec88e074e28bbd60b8c8428f390a25ba119f119f",
+          "expanded_sha256": "af992f86e7bc85ec9dbcfd3bb4818092bb4d52172f13d5b038319f9727a64288",
+          "raw_gain_counts": [
+            524281,
+            4,
+            0,
+            3
+          ],
+          "expanded_gain_counts": [
+            524288,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 24,
+          "seed_sha256": "1b6567fff957a7b9ab78f2bf3f01e69d46c5dd7c53787cebeb24d61f443e3a6d",
+          "expanded_sha256": "482089a931579abe622f6cc40043bd3ce872407ed2f7861bc74136c51b05cfa9",
+          "raw_gain_counts": [
+            524258,
+            0,
+            1,
+            29
+          ],
+          "expanded_gain_counts": [
+            524248,
+            0,
+            0,
+            40
+          ]
+        },
+        {
+          "panel": 20,
+          "seed_sha256": "23ab3247c3e470674a043fd177c1f526bf67598c9bef865e1a3247770ad524ee",
+          "expanded_sha256": "5a5e881c67a363d8bafe131fe0a4c3db17e856375a25e03208b9ece07a5e6a3d",
+          "raw_gain_counts": [
+            524220,
+            56,
+            0,
+            12
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 8,
+      "timestamp": 4909050823994930267,
+      "panels": [
+        {
+          "panel": 16,
+          "seed_sha256": "acee44c6d6f1a475c1e70c315053e679f941b891e825d0a002076d03b5bd4fa6",
+          "expanded_sha256": "09a7358cbcd90b5cf3c9817ca2a3a974661f59de967a1ce8ffc209f30a8b7a4b",
+          "raw_gain_counts": [
+            523433,
+            831,
+            0,
+            24
+          ],
+          "expanded_gain_counts": [
+            523728,
+            560,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 12,
+          "seed_sha256": "1f429eab824fb934f39d033e6283a55f446f448a4960ecf00b4ffab070fcd127",
+          "expanded_sha256": "186f9decb8f760b2f765a21d9735eb4fcf8eec9e0b3bfe52a783cbc132902a50",
+          "raw_gain_counts": [
+            523213,
+            1057,
+            0,
+            18
+          ],
+          "expanded_gain_counts": [
+            523588,
+            680,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 8,
+          "seed_sha256": "fcd3da0f727d3221ebf6e42e03ee2cd31007beba23804d6b0285974d6a2925b6",
+          "expanded_sha256": "5541aff8a97601cecbc3f145c151b044c52d02152cbf399bed90169125b74598",
+          "raw_gain_counts": [
+            524140,
+            133,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524158,
+            110,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 4,
+          "seed_sha256": "5dcdbbc7b2a947f935b35e47dde751d0669ec7c3b05efe67c178b2b1113f60e9",
+          "expanded_sha256": "813eac819508cdcc03554dc34119ea031b1fada207cd7f2885eb359748a43a75",
+          "raw_gain_counts": [
+            524273,
+            2,
+            3,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 28,
+          "seed_sha256": "bc682cfe7b5cc910f7b0ef00a041d0fd87b87fe6ef486169cf42bad2b1db64cc",
+          "expanded_sha256": "689af6c2e40d5bc6f38768755ba75245f0cc727c154e1428eb402c5124af629e",
+          "raw_gain_counts": [
+            524281,
+            4,
+            0,
+            3
+          ],
+          "expanded_gain_counts": [
+            524288,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 24,
+          "seed_sha256": "4b2ce00981f96434653998c8bed01d640f16d44cfa10544c36d441d542602a05",
+          "expanded_sha256": "16234133e5bc4400601816e4955186f8356ed50e21237ad6ca8848ed202ae2ba",
+          "raw_gain_counts": [
+            524258,
+            0,
+            1,
+            29
+          ],
+          "expanded_gain_counts": [
+            524248,
+            0,
+            0,
+            40
+          ]
+        },
+        {
+          "panel": 20,
+          "seed_sha256": "e8d082c5cfdcace580b82b2a36bf0a9e6973b28f3d3bd1f68c0d1ff944ca4787",
+          "expanded_sha256": "c0e51b02689b4df23d304c7cf5079ef55264670c933c398c4fbc84b7d28b019c",
+          "raw_gain_counts": [
+            524182,
+            94,
+            0,
+            12
+          ],
+          "expanded_gain_counts": [
+            524208,
+            70,
+            0,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 8,
+      "timestamp": 4909050824003318878,
+      "panels": [
+        {
+          "panel": 16,
+          "seed_sha256": "5f87b356bec90c4705efd697796252ad22df6750204f60570557f932a1024e03",
+          "expanded_sha256": "bb25250eceae2d7d3fd0b0370734dd63454551012f3c881948e7424c9499906e",
+          "raw_gain_counts": [
+            522999,
+            1265,
+            0,
+            24
+          ],
+          "expanded_gain_counts": [
+            523318,
+            970,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 12,
+          "seed_sha256": "e3fe584f8012c5cb5a866617bdc94016440987d982cd37c5265c7c94e6b91730",
+          "expanded_sha256": "20ada97c2ddd41b82b570a04f500aba246edcdf19191586b24c88e021903b4a4",
+          "raw_gain_counts": [
+            522621,
+            1649,
+            0,
+            18
+          ],
+          "expanded_gain_counts": [
+            522898,
+            1370,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 8,
+          "seed_sha256": "60e1e026ec29cfe7e99ad30bb1d6df68f1a65b5134713ec4ee08eef7f0160fd6",
+          "expanded_sha256": "49a2014e018cfbce414691f950dd59fb2f490b31d0813053a2be137c997cccf3",
+          "raw_gain_counts": [
+            524044,
+            229,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524138,
+            130,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 4,
+          "seed_sha256": "ee8ff93b15aa30e6dec82f93d57742493b9a201a13e1e71b30188d7510adaece",
+          "expanded_sha256": "fad2f218f18760141d97f86f4251236b2b876a3a2c3fa39cd2c2b3dac09fa414",
+          "raw_gain_counts": [
+            524274,
+            1,
+            3,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 28,
+          "seed_sha256": "338cc698487d6fddd3e09d91798f5c1685aa2f38d045a7e88a0bf7d54a712ce8",
+          "expanded_sha256": "ac94b22f9483c75270301e8a2d7dd200d45b7cdb281cb8dc98c374d997821d6b",
+          "raw_gain_counts": [
+            524281,
+            4,
+            0,
+            3
+          ],
+          "expanded_gain_counts": [
+            524288,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 24,
+          "seed_sha256": "b1ccf48cc5845725ea7b2b52682435a9819cf486d1d491223eca30768b2eb24e",
+          "expanded_sha256": "16f352dbaf4636730679e080bd5ec07dbab6b2cb3ac51a60b3441368abe5339a",
+          "raw_gain_counts": [
+            524257,
+            1,
+            1,
+            29
+          ],
+          "expanded_gain_counts": [
+            524248,
+            0,
+            0,
+            40
+          ]
+        },
+        {
+          "panel": 20,
+          "seed_sha256": "e62fc3fcffb43790c90f3c8c108ba688f37ff703615669e652d8802466da62f0",
+          "expanded_sha256": "7867222cc120c4098570083bb0120d8ab3c5f250c5fc7ddeb56f86013ed42e96",
+          "raw_gain_counts": [
+            524131,
+            145,
+            0,
+            12
+          ],
+          "expanded_gain_counts": [
+            524158,
+            120,
+            0,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 8,
+      "timestamp": 4909050824011576417,
+      "panels": [
+        {
+          "panel": 16,
+          "seed_sha256": "a70113a25e46a9ed905384b478491652d11a0522c2efb54ff95b9fb4ac39978c",
+          "expanded_sha256": "c12b65f155711bbac62f03f2cfde21ddb7b4fe760440d214dbaa1e5d85699342",
+          "raw_gain_counts": [
+            524036,
+            228,
+            0,
+            24
+          ],
+          "expanded_gain_counts": [
+            524138,
+            150,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 12,
+          "seed_sha256": "99fee1426e89fc26d3b1cfde669adb0191965026ce713cbd9714702d96dc1a6e",
+          "expanded_sha256": "eafdfcbc19bc7d89b2c975999c94c433764ebc2d5317384add8b4208a6cdffbc",
+          "raw_gain_counts": [
+            523954,
+            316,
+            0,
+            18
+          ],
+          "expanded_gain_counts": [
+            524088,
+            180,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 8,
+          "seed_sha256": "d645c5a9615c278a6e0abe3341d7290abf75de29112e96f481345bdf20b9dc25",
+          "expanded_sha256": "53a6c82bd291d383d1079b814a055105960f6991e35d1d9c2e5e45a5edb7792e",
+          "raw_gain_counts": [
+            524254,
+            19,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524268,
+            0,
+            0,
+            20
+          ]
+        },
+        {
+          "panel": 4,
+          "seed_sha256": "91490de43690191c882caa2587b29fcab052aa0ed2fc59b1634981f44a4626a2",
+          "expanded_sha256": "6deb6cb4a4e5f06bf875b29ae927097b3ca8460550b7e9c0e62854b76140f6d5",
+          "raw_gain_counts": [
+            524274,
+            1,
+            3,
+            10
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 28,
+          "seed_sha256": "03ce34b83c1fd4b5dfd130f1083c1a4499a4511dd5159d1c031819146f99af18",
+          "expanded_sha256": "31b94a5609e0ea75a4f779c44cded0e6b02bfb1cb1e02d288132612fd64524c5",
+          "raw_gain_counts": [
+            524281,
+            4,
+            0,
+            3
+          ],
+          "expanded_gain_counts": [
+            524288,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "panel": 24,
+          "seed_sha256": "207e5aff4f159b702456e689c550d98fb7979c2c4267582a5b9f8162e3f3af46",
+          "expanded_sha256": "ff8f74ce458f67b218b7a75bf2d69c3540494b01176c3f7a88638f00a2994ba5",
+          "raw_gain_counts": [
+            524258,
+            0,
+            1,
+            29
+          ],
+          "expanded_gain_counts": [
+            524248,
+            0,
+            0,
+            40
+          ]
+        },
+        {
+          "panel": 20,
+          "seed_sha256": "ae7061e22dc745e261857b2482e36325f48296d2ac622c6d7ffc44721c392558",
+          "expanded_sha256": "58cf0466564d2762f1ecb6959392c15a491285ad13ed3072447ef53098f597e6",
+          "raw_gain_counts": [
+            524262,
+            14,
+            0,
+            12
+          ],
+          "expanded_gain_counts": [
+            524268,
+            10,
+            0,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 9,
+      "timestamp": 4909050823936603206,
+      "panels": [
+        {
+          "panel": 17,
+          "seed_sha256": "028284c0d38f8f63f82c988d717051235e7be5808577d4a794d1833129aa2375",
+          "expanded_sha256": "da19cd0bae21eb094087956c04d2a2a4193de00009b7f1bc92b06206cc8f67bc",
+          "raw_gain_counts": [
+            518444,
+            3947,
+            1,
+            1896
+          ],
+          "expanded_gain_counts": [
+            518008,
+            4210,
+            0,
+            2070
+          ]
+        },
+        {
+          "panel": 13,
+          "seed_sha256": "da231a3b43616bb46cf969c18b055a77123ae250f088ee4cb9c5456a465a4d12",
+          "expanded_sha256": "36ff24b305458f537e4bff122b355a9efd44c013ff88472edfbc5a73d4db0bc3",
+          "raw_gain_counts": [
+            516760,
+            5607,
+            0,
+            1921
+          ],
+          "expanded_gain_counts": [
+            516578,
+            5980,
+            0,
+            1730
+          ]
+        },
+        {
+          "panel": 9,
+          "seed_sha256": "d9bd7680d1d5221e71a8dd57faebd1be6e36ac5678772bc615a714b040a19326",
+          "expanded_sha256": "1e212428c17e2fd20351d89cb72e3f7df0f25a28a6cb03e7843b88abd54c7f62",
+          "raw_gain_counts": [
+            519380,
+            4788,
+            0,
+            120
+          ],
+          "expanded_gain_counts": [
+            519288,
+            4840,
+            0,
+            160
+          ]
+        },
+        {
+          "panel": 5,
+          "seed_sha256": "621041dc0b8b044e075f593d613b535a95026fd49297a1d2518c835dde6d26ab",
+          "expanded_sha256": "e92e12cae51a4a616b3e31e3d4b4876765063002e35b6d23209eb4a629de5e1c",
+          "raw_gain_counts": [
+            524219,
+            38,
+            0,
+            31
+          ],
+          "expanded_gain_counts": [
+            524168,
+            40,
+            0,
+            80
+          ]
+        },
+        {
+          "panel": 29,
+          "seed_sha256": "38de6af143dd0fc7fc250f356f823bd5a55ef87352774233c4d301f8e9940a8e",
+          "expanded_sha256": "92c9eec9c93489e2564edf435cf5609268fd39107e80d49c61607a9a6f767b76",
+          "raw_gain_counts": [
+            524278,
+            1,
+            0,
+            9
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 25,
+          "seed_sha256": "0d934e7bd7e0bfc81ce8e16db9fcb15565dd3e9926e56f7d9cd48755cd2fcb55",
+          "expanded_sha256": "e2f29b7fa7cec70b516a5317c31adee0f4236c5d6887f8d07bdcfabeb8999862",
+          "raw_gain_counts": [
+            524184,
+            89,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524228,
+            50,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 21,
+          "seed_sha256": "7ea1e9828a209d9027d621f20642f3dcb2b1d77f94051f75516cab198c7e350b",
+          "expanded_sha256": "d51bf63435ebbdf7c64ac067aff2e428c97e9aed2a99603aeb7f2670c2703796",
+          "raw_gain_counts": [
+            520277,
+            3897,
+            0,
+            114
+          ],
+          "expanded_gain_counts": [
+            520078,
+            4090,
+            0,
+            120
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 9,
+      "timestamp": 4909050823944991817,
+      "panels": [
+        {
+          "panel": 17,
+          "seed_sha256": "bbe3a33a23db27af93b661a1473fa0180d9c268830eafe35954db527f0e4b3d6",
+          "expanded_sha256": "dcb34c06b8375a159b4bbd4c2293a555cbff5bfb7cf8a054c5e53bb1509b0a86",
+          "raw_gain_counts": [
+            522252,
+            139,
+            1,
+            1896
+          ],
+          "expanded_gain_counts": [
+            522068,
+            150,
+            0,
+            2070
+          ]
+        },
+        {
+          "panel": 13,
+          "seed_sha256": "fd6c12b8dbc2e5396ef9c795fde6f9d062bc19cc5a634e6139c5fc0b29863fd9",
+          "expanded_sha256": "45e256c5e1a7c15ae0836343b1a77a2d743bc1cda1282e37d0272a943c78b2bd",
+          "raw_gain_counts": [
+            522280,
+            87,
+            0,
+            1921
+          ],
+          "expanded_gain_counts": [
+            522558,
+            0,
+            0,
+            1730
+          ]
+        },
+        {
+          "panel": 9,
+          "seed_sha256": "c1b4ecc64684ed6e9909849c1b6882ea0003cdd04fb76933c5e415d177223f10",
+          "expanded_sha256": "16919088acfa8392abd83854796867dd81fa9eeb321c19dbb964109bf0547d00",
+          "raw_gain_counts": [
+            524168,
+            0,
+            0,
+            120
+          ],
+          "expanded_gain_counts": [
+            524128,
+            0,
+            0,
+            160
+          ]
+        },
+        {
+          "panel": 5,
+          "seed_sha256": "d65547887e910e3d29928af049bd6cc22882876a584fe986db7c4fddd3829285",
+          "expanded_sha256": "43f91e1fe9255906aca77bd3c2689b644b325eefd57b0c83dfb496e441c2682e",
+          "raw_gain_counts": [
+            524257,
+            0,
+            0,
+            31
+          ],
+          "expanded_gain_counts": [
+            524208,
+            0,
+            0,
+            80
+          ]
+        },
+        {
+          "panel": 29,
+          "seed_sha256": "3de58cb44ddb4737cd9b3032bdac61b8052402dc7761856a7eb1698dc5382ece",
+          "expanded_sha256": "466ce9585028f3724d5212e5eb6cadf801a5a9c426be3d6a2f34ed79a9ee95c1",
+          "raw_gain_counts": [
+            524278,
+            1,
+            0,
+            9
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 25,
+          "seed_sha256": "57ef53c8b190ed9990f0f10ee339f1b97eb196c591a2e5a275da230728d93c2e",
+          "expanded_sha256": "1b3e036ca03294ab4a0fa8355aafffa2029eafdb6c3dcc6229429a4994b4f137",
+          "raw_gain_counts": [
+            524249,
+            24,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524248,
+            30,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 21,
+          "seed_sha256": "c6fc4896a896aea3bb1c4d48f320837865d488a1ffbd4a59dcf02cfb11cd281b",
+          "expanded_sha256": "cf5f0e3ad39418a4447bb297ec8957a9202653d13a07239ecfd195b896f2db51",
+          "raw_gain_counts": [
+            524174,
+            0,
+            0,
+            114
+          ],
+          "expanded_gain_counts": [
+            524168,
+            0,
+            0,
+            120
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 9,
+      "timestamp": 4909050823953249356,
+      "panels": [
+        {
+          "panel": 17,
+          "seed_sha256": "7d0fbad7995c377a5c672176e0f3c17a4f22c4570e192a13fac5e74747cd8fa0",
+          "expanded_sha256": "2ea392188e1f14d1c44eb26c443088fd1dd2c12862afcc01bdea3339c482a395",
+          "raw_gain_counts": [
+            522150,
+            238,
+            1,
+            1899
+          ],
+          "expanded_gain_counts": [
+            521958,
+            250,
+            0,
+            2080
+          ]
+        },
+        {
+          "panel": 13,
+          "seed_sha256": "b03ef19d4d1e54c656ea776f6a4333613f2ebfc2682b83c4152f5fcea2730bc1",
+          "expanded_sha256": "a596f5eadca3399f13a02ce05a0a6a4c80993aaeaa79c26190331e9c0ba4f71a",
+          "raw_gain_counts": [
+            522160,
+            206,
+            0,
+            1922
+          ],
+          "expanded_gain_counts": [
+            522428,
+            130,
+            0,
+            1730
+          ]
+        },
+        {
+          "panel": 9,
+          "seed_sha256": "78cbbf50897aec44ea769282b5d2fb21cada7748c87a40c899280bee6e2d0b2b",
+          "expanded_sha256": "380c0155e5ad5b40bb78a56475c6fbcd67cbccbf2b72d1a340c1208a87c6ae82",
+          "raw_gain_counts": [
+            524093,
+            75,
+            0,
+            120
+          ],
+          "expanded_gain_counts": [
+            524058,
+            70,
+            0,
+            160
+          ]
+        },
+        {
+          "panel": 5,
+          "seed_sha256": "6888c85909849daaff262d5f88519e343963153371eced3b38ded3cb5a03af06",
+          "expanded_sha256": "5924b9b20d724034f522c87dbe5ff07ed90a72f69e20df8a0bce8adec78d87d8",
+          "raw_gain_counts": [
+            524257,
+            0,
+            0,
+            31
+          ],
+          "expanded_gain_counts": [
+            524208,
+            0,
+            0,
+            80
+          ]
+        },
+        {
+          "panel": 29,
+          "seed_sha256": "34a9137192f721021c02cc2d9b0c95a4a479f05078f4c93a30f440d4e84fa4d3",
+          "expanded_sha256": "6a75847b0d187b4b830efd8e33f79c241d5048ca90ad0eaf1bbbedc50cdb2148",
+          "raw_gain_counts": [
+            524278,
+            1,
+            0,
+            9
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 25,
+          "seed_sha256": "af5ef435075d70347961c122f1acc0b6c66ba7eceeaf091e2781ffb84ffeb09f",
+          "expanded_sha256": "c84aef2ff664f969b1d27a15cae082b682e463b4fdce0e427bc63614a42a39ac",
+          "raw_gain_counts": [
+            524244,
+            29,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524248,
+            30,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 21,
+          "seed_sha256": "bf89677fa5d5a9fc1dfb130d1f4f7680b47483b65b56102631f9fe5b8d32b78e",
+          "expanded_sha256": "64f24ff28ac4fc88482df1addda9f2d27be14388044f2c6426209f4ce82c7b4e",
+          "raw_gain_counts": [
+            524105,
+            69,
+            0,
+            114
+          ],
+          "expanded_gain_counts": [
+            524098,
+            70,
+            0,
+            120
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 9,
+      "timestamp": 4909050823961637967,
+      "panels": [
+        {
+          "panel": 17,
+          "seed_sha256": "d95af0561f31e6e26cd64691ab7be4255dd9ad409f81ec10a19c26bd34e014d5",
+          "expanded_sha256": "69d7af2a070fc25c0e2a046f3b585ed0d8783d896c911c698151ce3695c15bae",
+          "raw_gain_counts": [
+            512253,
+            10138,
+            1,
+            1896
+          ],
+          "expanded_gain_counts": [
+            511708,
+            10510,
+            0,
+            2070
+          ]
+        },
+        {
+          "panel": 13,
+          "seed_sha256": "216361d26a0c33229a0738835923880be9ed72ba228ff8b93468510857c62315",
+          "expanded_sha256": "7e1f7ee40a6cf3f4b7a72180aad7a6fa3786f67f976c46b1bbbcf0406a646232",
+          "raw_gain_counts": [
+            507745,
+            14623,
+            0,
+            1920
+          ],
+          "expanded_gain_counts": [
+            507930,
+            14628,
+            0,
+            1730
+          ]
+        },
+        {
+          "panel": 9,
+          "seed_sha256": "7ccd189262510282f45a2325eeb9d94ceb7f045f6b1ff9094c922e090965299c",
+          "expanded_sha256": "a58ddd348c6d63847cfca602cd03d17ca2fe114684bcf76a38c2159fd7dcf173",
+          "raw_gain_counts": [
+            513285,
+            10883,
+            0,
+            120
+          ],
+          "expanded_gain_counts": [
+            513308,
+            10820,
+            0,
+            160
+          ]
+        },
+        {
+          "panel": 5,
+          "seed_sha256": "5b3eca40b15aa8fe5b169bcc9d09124171f638969e8845ced1b417ed3534769f",
+          "expanded_sha256": "4b42c513a4e939a21ccf0859200c70cf05e4805f9382a1bae3f6d1ecdb26d049",
+          "raw_gain_counts": [
+            524158,
+            99,
+            0,
+            31
+          ],
+          "expanded_gain_counts": [
+            524088,
+            120,
+            0,
+            80
+          ]
+        },
+        {
+          "panel": 29,
+          "seed_sha256": "ca3ecc24184fed6fd322549195b80e3c8fc0fa31d3185d7f14b0b9911873967b",
+          "expanded_sha256": "1fcb6f47e53df1c01cac1bac7d7cd0b725db30199413ee8b7cfe7ee00907cac1",
+          "raw_gain_counts": [
+            524278,
+            1,
+            0,
+            9
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 25,
+          "seed_sha256": "d7f76720ffb0e933c1930eab7b60fa4a41f76c9fe7511026c58e328bfd4f276e",
+          "expanded_sha256": "fe3a404a15d5b7530e8ea2b3723ed68428f8c612ad5ad502319e28eace92a068",
+          "raw_gain_counts": [
+            524072,
+            201,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524128,
+            150,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 21,
+          "seed_sha256": "cd1acd6843af99670631ea6bad7808de3c398fc2898bf5e9d6ac90a5cc909059",
+          "expanded_sha256": "8fc8360cd67c1937e8ebd95be1643dcfe336ffdcc1fff16f59acad0a8a600803",
+          "raw_gain_counts": [
+            515417,
+            8757,
+            0,
+            114
+          ],
+          "expanded_gain_counts": [
+            515508,
+            8660,
+            0,
+            120
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 9,
+      "timestamp": 4909050823970026578,
+      "panels": [
+        {
+          "panel": 17,
+          "seed_sha256": "e31948e69cf43d8ede821e16bc009cd19ca3a157d849a5fae9d84b6cd15cacf0",
+          "expanded_sha256": "574eae888e016786cd42c99b92b6f21c04bf65a2afa1696739b0c77ffb2e5996",
+          "raw_gain_counts": [
+            500119,
+            22272,
+            1,
+            1896
+          ],
+          "expanded_gain_counts": [
+            498918,
+            23300,
+            0,
+            2070
+          ]
+        },
+        {
+          "panel": 13,
+          "seed_sha256": "a8cea2fe8b5f79a77071350da69f464f85df3e1ae898155549fe67b4dfe92569",
+          "expanded_sha256": "923cff80d1f7a6bccf468bf2457f1e25cae6958d5f65baff5518104b31c38052",
+          "raw_gain_counts": [
+            491270,
+            31097,
+            0,
+            1921
+          ],
+          "expanded_gain_counts": [
+            491530,
+            31028,
+            0,
+            1730
+          ]
+        },
+        {
+          "panel": 9,
+          "seed_sha256": "baec96d7c00e4d73f5279581a2a55c4fcf6c9b686d2f7f4cf4233ab9466dc9f9",
+          "expanded_sha256": "ffeca39b6bf01f70bcdf9b5613a3154a3a6f4136c6745e748a25fb91b7b4f978",
+          "raw_gain_counts": [
+            500620,
+            23548,
+            0,
+            120
+          ],
+          "expanded_gain_counts": [
+            500678,
+            23450,
+            0,
+            160
+          ]
+        },
+        {
+          "panel": 5,
+          "seed_sha256": "c8e08293821e56a0527034c8740afcf875b483279b825235e2547bb7004452b3",
+          "expanded_sha256": "1bb501b9a0974c08d99812e4996c767294686f3e252fca401fb282c2a6404ca7",
+          "raw_gain_counts": [
+            523998,
+            259,
+            0,
+            31
+          ],
+          "expanded_gain_counts": [
+            523878,
+            330,
+            0,
+            80
+          ]
+        },
+        {
+          "panel": 29,
+          "seed_sha256": "f15252471e30a884c707fe0b050974b932a68d2d7b9032cc36694266cb7dd9a8",
+          "expanded_sha256": "0f969da9ac2087e01dc1e3283d33bdf9d060e7084eaab68cd38a132001f399d8",
+          "raw_gain_counts": [
+            524278,
+            1,
+            0,
+            9
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 25,
+          "seed_sha256": "5f4ab257e6dd7db2171e113044140ef92e8eb7d8c6547a8a9c9e6808871d8028",
+          "expanded_sha256": "69dc842faaed55564a7e80fe59461046da84a7af9303f5a4f380b43f2978b0f2",
+          "raw_gain_counts": [
+            523846,
+            427,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            523908,
+            370,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 21,
+          "seed_sha256": "5c5b986ffe82482f2485fedc2a6935c7bc3a9177c99bd8491d2d92b2844e047b",
+          "expanded_sha256": "62a90b10f01bc8780ffaacdfbffc6111dc2e477a6291b693d663c59f830591a9",
+          "raw_gain_counts": [
+            505618,
+            18556,
+            0,
+            114
+          ],
+          "expanded_gain_counts": [
+            505058,
+            19110,
+            0,
+            120
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 9,
+      "timestamp": 4909050823978284117,
+      "panels": [
+        {
+          "panel": 17,
+          "seed_sha256": "a40cdce1cb6d4fc554f375e1f4e41c1b7644f98d1c2ddd5b4dcb9a46e2b655bf",
+          "expanded_sha256": "ad02f03d4040e7b258e33fa2ce371268d7fa14a26832af1686c34615baaa634d",
+          "raw_gain_counts": [
+            515134,
+            7257,
+            1,
+            1896
+          ],
+          "expanded_gain_counts": [
+            514508,
+            7710,
+            0,
+            2070
+          ]
+        },
+        {
+          "panel": 13,
+          "seed_sha256": "cf74c93d91d6f83910aae09559676c865ff75a15fc614af4a26eb27d9b34e84f",
+          "expanded_sha256": "4b3752f312a05f70dc01f50dd77e581e12e078103789f8e9acdcd6ed5610fa39",
+          "raw_gain_counts": [
+            511577,
+            10790,
+            0,
+            1921
+          ],
+          "expanded_gain_counts": [
+            512160,
+            10398,
+            0,
+            1730
+          ]
+        },
+        {
+          "panel": 9,
+          "seed_sha256": "c1c079b2ac5a42e5bffaab3eab6a8a0b0767a7929ed25e78dbca3db5468385dc",
+          "expanded_sha256": "082e62ae38aec49ab46e56e159ed69758ec0a04010fa16f36b31501884d5fb3c",
+          "raw_gain_counts": [
+            515821,
+            8347,
+            0,
+            120
+          ],
+          "expanded_gain_counts": [
+            515668,
+            8460,
+            0,
+            160
+          ]
+        },
+        {
+          "panel": 5,
+          "seed_sha256": "9ad19c9df9d409917a4da4a41db9e815a8843e031b33d5734e8f58892b9d8c51",
+          "expanded_sha256": "d3c87936ae34b74f21325412d62f883eaf6726ac7603db58d77e23d164009c18",
+          "raw_gain_counts": [
+            524181,
+            76,
+            0,
+            31
+          ],
+          "expanded_gain_counts": [
+            524128,
+            80,
+            0,
+            80
+          ]
+        },
+        {
+          "panel": 29,
+          "seed_sha256": "80649718a922ff065f45cbe7c2d19c4f881023f038784e6d0c3540bf29a187ef",
+          "expanded_sha256": "dbdc259cdd0d6b64258efffa01fcf3e2c9c2efe9c60d720d22c84d81591e8d42",
+          "raw_gain_counts": [
+            524278,
+            1,
+            0,
+            9
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 25,
+          "seed_sha256": "47e9ff9dea006f50e05328677c0c5346e7dd39abd8c31acf9e0354144c58a3ec",
+          "expanded_sha256": "9ac82607bb29ec5ccf699c1777519bedbddcdef565bb35793450903c0eec4db0",
+          "raw_gain_counts": [
+            524116,
+            157,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524118,
+            160,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 21,
+          "seed_sha256": "87a8f884fae0898f8e57b9d8b849545695e54aaeebda01a5fe03343fb0fe4509",
+          "expanded_sha256": "4e21ae78abee4b7eadee6f441d43156e4aababec5678c1a29a9060f7104fa27a",
+          "raw_gain_counts": [
+            517498,
+            6676,
+            0,
+            114
+          ],
+          "expanded_gain_counts": [
+            517378,
+            6790,
+            0,
+            120
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 9,
+      "timestamp": 4909050823986672728,
+      "panels": [
+        {
+          "panel": 17,
+          "seed_sha256": "7554a06f88886acf4979218ec7f3380a7500b09d37ca69a017fafaa81dd71545",
+          "expanded_sha256": "8316f7c59a428d013e0f49c118eddc727dbdf1ca675fe67c3730ce91996cc2b0",
+          "raw_gain_counts": [
+            516316,
+            6075,
+            1,
+            1896
+          ],
+          "expanded_gain_counts": [
+            515858,
+            6360,
+            0,
+            2070
+          ]
+        },
+        {
+          "panel": 13,
+          "seed_sha256": "6534b66d2d8d4fcd28ea773e8c11567f512c54760bcafea56b03dae3e7aec32e",
+          "expanded_sha256": "decae04cd955ca6712eee850494ba0a6772c23b0e61d7d80553d9c5152d363a8",
+          "raw_gain_counts": [
+            513676,
+            8691,
+            0,
+            1921
+          ],
+          "expanded_gain_counts": [
+            513650,
+            8908,
+            0,
+            1730
+          ]
+        },
+        {
+          "panel": 9,
+          "seed_sha256": "c87c6a33dd8af47dc32fa75faae7e40d3ea621df303618bf3a1297643721cbc9",
+          "expanded_sha256": "d3f5bbb80cae029277d6d92d6b23720879f872a639aa090cae1b34e45c50a4c6",
+          "raw_gain_counts": [
+            517027,
+            7141,
+            0,
+            120
+          ],
+          "expanded_gain_counts": [
+            517088,
+            7040,
+            0,
+            160
+          ]
+        },
+        {
+          "panel": 5,
+          "seed_sha256": "b264972e0ed282284660247b88799cf166ad950682bb30a4810ec518817f3d18",
+          "expanded_sha256": "548830701eb73b94f8f15ef0ca6140f97741375c64c541197ef4b6cc2fcdb07b",
+          "raw_gain_counts": [
+            524199,
+            58,
+            0,
+            31
+          ],
+          "expanded_gain_counts": [
+            524118,
+            90,
+            0,
+            80
+          ]
+        },
+        {
+          "panel": 29,
+          "seed_sha256": "495f42e282e28afab219c981eaac22ca2396503e3094bb80b977e234da3f85a1",
+          "expanded_sha256": "278d1d31d640b7c8546a25166e13eaa63ce1309460777693eb03498b7fdaab14",
+          "raw_gain_counts": [
+            524278,
+            1,
+            0,
+            9
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 25,
+          "seed_sha256": "4144ea4eec7402efb84958aa2745ecc64e140ebae747c9fd63ea4a90ded56640",
+          "expanded_sha256": "df82e92fb2bbd46feb92c115fae8809931afd14d53345a15f0d7388e2793fdef",
+          "raw_gain_counts": [
+            524143,
+            130,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524178,
+            100,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 21,
+          "seed_sha256": "a8155582d51b3312aa5de73be923f6545ce7cf96ec4f4f0e9d9707017370758a",
+          "expanded_sha256": "d4639ddba40bb6344f74fd665034093ee2d15e42f9d84f2470be19cf60169705",
+          "raw_gain_counts": [
+            518493,
+            5681,
+            0,
+            114
+          ],
+          "expanded_gain_counts": [
+            518438,
+            5730,
+            0,
+            120
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 9,
+      "timestamp": 4909050823994930267,
+      "panels": [
+        {
+          "panel": 17,
+          "seed_sha256": "6fbb16a0c26879402c1555504c92a5c7f6d8f4c67ebd18aeb5cf40e367070241",
+          "expanded_sha256": "0071e8b3d0b71db45c750ea9f30c51b325ace93fb9aa78beb9288a6f159c3714",
+          "raw_gain_counts": [
+            513730,
+            8661,
+            1,
+            1896
+          ],
+          "expanded_gain_counts": [
+            513438,
+            8780,
+            0,
+            2070
+          ]
+        },
+        {
+          "panel": 13,
+          "seed_sha256": "8d5b66f0b01afc8ac9389656022148270a14c58587f41f8b1b39925de3d485d7",
+          "expanded_sha256": "3b29f51213d6a2db3cbf050dc310c5ba66abdd871a3295b066bfd77a968c8b0d",
+          "raw_gain_counts": [
+            509906,
+            12461,
+            0,
+            1921
+          ],
+          "expanded_gain_counts": [
+            510340,
+            12218,
+            0,
+            1730
+          ]
+        },
+        {
+          "panel": 9,
+          "seed_sha256": "e3ce9fae0445c9459fb71ef295fb87d671836a833d89a00241ef70d0482c52da",
+          "expanded_sha256": "6fa26fd2a9263d23f6e0a24029b35414f9dd1936db24cae6eb9bd17b35c826bd",
+          "raw_gain_counts": [
+            514678,
+            9490,
+            0,
+            120
+          ],
+          "expanded_gain_counts": [
+            514778,
+            9350,
+            0,
+            160
+          ]
+        },
+        {
+          "panel": 5,
+          "seed_sha256": "ba06d38982394a460e59de5e3537b4bc1829cd9598846323c263ab7ad9d0f888",
+          "expanded_sha256": "ad12c0eb954c26f6edbb8b526c3e65f6f2fe776d52d02c75d87f733b8a37d73f",
+          "raw_gain_counts": [
+            524161,
+            96,
+            0,
+            31
+          ],
+          "expanded_gain_counts": [
+            524128,
+            80,
+            0,
+            80
+          ]
+        },
+        {
+          "panel": 29,
+          "seed_sha256": "3fcb8a1b87c8853e7d80e7420f35551ed2754ce73f89109b1dd8c3edc088c19d",
+          "expanded_sha256": "f5e106b5ed172789d1c05c293f287b8ae3e230b6bffe67a075b20f46d7e3c831",
+          "raw_gain_counts": [
+            524278,
+            1,
+            0,
+            9
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 25,
+          "seed_sha256": "12d1843f2dca86d06eb6d5ebe04ce4f1abd0e1258b8950decbdb1a271ee3ca98",
+          "expanded_sha256": "9bc921da5f10a6a982276c239a81a67f89aa70e2282f5e2b7800512be5a43c9a",
+          "raw_gain_counts": [
+            524117,
+            156,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524168,
+            110,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 21,
+          "seed_sha256": "d449fd657b030fa361eb9410a6dade5438ba3c9174e20ee82de2ba0e8896e9f6",
+          "expanded_sha256": "923db5743e7d86e1eac3aa4b6843bfd3f5ee78a943372e3c98930a96a63dd8f2",
+          "raw_gain_counts": [
+            516527,
+            7647,
+            0,
+            114
+          ],
+          "expanded_gain_counts": [
+            516578,
+            7590,
+            0,
+            120
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 9,
+      "timestamp": 4909050824003318878,
+      "panels": [
+        {
+          "panel": 17,
+          "seed_sha256": "5d500cf744d2e6fc89a3233313bdccf3f141cb448576f13dee4ae26748338ad7",
+          "expanded_sha256": "fbf9be837363cc8beb4c2db154be46960f21382fa15056fc1b736c5a37a34ee1",
+          "raw_gain_counts": [
+            508416,
+            13975,
+            1,
+            1896
+          ],
+          "expanded_gain_counts": [
+            507928,
+            14290,
+            0,
+            2070
+          ]
+        },
+        {
+          "panel": 13,
+          "seed_sha256": "4b98cad5d299e7d457c45ea1c53c44463a95b77f215ce2ef97fcbea970daeb61",
+          "expanded_sha256": "f4360cad004aaeac9181a2985e10570199a544340dac608a05081f2f6d5a9497",
+          "raw_gain_counts": [
+            502220,
+            20147,
+            0,
+            1921
+          ],
+          "expanded_gain_counts": [
+            503020,
+            19538,
+            0,
+            1730
+          ]
+        },
+        {
+          "panel": 9,
+          "seed_sha256": "6969bd73818c6999f97d2ef996d9241d2428a7259e9443a6ce9ee9a6d2becb49",
+          "expanded_sha256": "13bd6c9d62082bebdcc7fd4bc4a3d0cdb5a575ef6f502938c4b731fa3b896712",
+          "raw_gain_counts": [
+            508934,
+            15234,
+            0,
+            120
+          ],
+          "expanded_gain_counts": [
+            508878,
+            15250,
+            0,
+            160
+          ]
+        },
+        {
+          "panel": 5,
+          "seed_sha256": "36f93130e0a37f4c290ce3f67696e8e7b58d1a974288e98e9f2d9276b6f69f7a",
+          "expanded_sha256": "9f7fbeae632a5f7b0f168e6bf165861a03c6d00be3ce41f87333506d735185ff",
+          "raw_gain_counts": [
+            524095,
+            162,
+            0,
+            31
+          ],
+          "expanded_gain_counts": [
+            524068,
+            140,
+            0,
+            80
+          ]
+        },
+        {
+          "panel": 29,
+          "seed_sha256": "efbe15ef92cd5605cc605ea92ada345fcc9ce848643a932d2bd0f9044f2d6757",
+          "expanded_sha256": "c6b2d44b283cc2d7810d6d3621ab838e63ff342046de9166eb37fb638d95dcf8",
+          "raw_gain_counts": [
+            524278,
+            1,
+            0,
+            9
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 25,
+          "seed_sha256": "646b85f003d90d5cb32702f9361e1d5326a66995df85b7568d506240a0e5eaab",
+          "expanded_sha256": "7d43e00477f00c441085ec70661214aec59c0fd5385ddba3f5a998697f04c206",
+          "raw_gain_counts": [
+            523996,
+            277,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524018,
+            260,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 21,
+          "seed_sha256": "a0998eed5ad8674fd9dd4fe5458a38c175d5c50419f90e690bd086cb77f51445",
+          "expanded_sha256": "6e8d1411dfd3897f74e1e8ea00e251928172d1c2fdc259ea74a453b08168766a",
+          "raw_gain_counts": [
+            512180,
+            11994,
+            0,
+            114
+          ],
+          "expanded_gain_counts": [
+            512538,
+            11630,
+            0,
+            120
+          ]
+        }
+      ]
+    },
+    {
+      "stream": 9,
+      "timestamp": 4909050824011576417,
+      "panels": [
+        {
+          "panel": 17,
+          "seed_sha256": "c955ef8730e8bd75c2d51be0524f9471d69b8191e3908f711bd20d5cabc6edf0",
+          "expanded_sha256": "8d3d91f57ad703e9f92717d33ee9147fdc36039917e821bbfd3afca046f493c6",
+          "raw_gain_counts": [
+            519815,
+            2576,
+            1,
+            1896
+          ],
+          "expanded_gain_counts": [
+            519638,
+            2580,
+            0,
+            2070
+          ]
+        },
+        {
+          "panel": 13,
+          "seed_sha256": "d402528b50d5fa0d11911fa41474077d5b0f74f270f759665254818c96fbc19c",
+          "expanded_sha256": "3f14bb4f2fa020ae7d9e3e497129ed564bc30ac6c5188abe59ef865e6be26a87",
+          "raw_gain_counts": [
+            519062,
+            3305,
+            0,
+            1921
+          ],
+          "expanded_gain_counts": [
+            519240,
+            3318,
+            0,
+            1730
+          ]
+        },
+        {
+          "panel": 9,
+          "seed_sha256": "e126d86d3182508c9701e9920c9eea212c5663c80be894481373914c0db0d8bf",
+          "expanded_sha256": "beff9e1e8bdb6dd3c24b9b69a9a5187582033fde678cdfd683762d327313f6b4",
+          "raw_gain_counts": [
+            520900,
+            3268,
+            0,
+            120
+          ],
+          "expanded_gain_counts": [
+            520918,
+            3210,
+            0,
+            160
+          ]
+        },
+        {
+          "panel": 5,
+          "seed_sha256": "dbc56e34da536fb47d34eda0a895717430b834e50ac177e45c7a89bcbf41f093",
+          "expanded_sha256": "35d0061d75d4e24ba5e9389300f38535fe39459c39111c505db5e8930dce5bc0",
+          "raw_gain_counts": [
+            524236,
+            21,
+            0,
+            31
+          ],
+          "expanded_gain_counts": [
+            524168,
+            40,
+            0,
+            80
+          ]
+        },
+        {
+          "panel": 29,
+          "seed_sha256": "df2b3d43bc83bb7a659c3776a74e0be00ab682a0f1c547fda028b86889a5b2d6",
+          "expanded_sha256": "d64c1a3002ec21ba963bec98e467821861eb3dbb0c34663e2c78978cbbf1f883",
+          "raw_gain_counts": [
+            524278,
+            1,
+            0,
+            9
+          ],
+          "expanded_gain_counts": [
+            524278,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 25,
+          "seed_sha256": "c0fa967c8dbb862aaf295171e93eead15e1b314cb2a43fd6481728d195178ee7",
+          "expanded_sha256": "ba81d633f324f71c810644471c5409543540965a57e9b14f2a75816c96327449",
+          "raw_gain_counts": [
+            524205,
+            68,
+            0,
+            15
+          ],
+          "expanded_gain_counts": [
+            524198,
+            80,
+            0,
+            10
+          ]
+        },
+        {
+          "panel": 21,
+          "seed_sha256": "c5b62c9025dedab39d648c05a4b9c0dd6aa27862a575d1cba97e5f7ced5f0215",
+          "expanded_sha256": "0dc57e4c8e6780588b2b6f88fb8b82bf323b114f7f1dd69242e09b3ce0974932",
+          "raw_gain_counts": [
+            521558,
+            2616,
+            0,
+            114
+          ],
+          "expanded_gain_counts": [
+            521658,
+            2510,
+            0,
+            120
+          ]
+        }
+      ]
+    }
+  ],
+  "generation_sha256": "37caae57732f88a57ab8660af4641028b8f8c476efd5b309b6c9eb7f8deeb798",
+  "code_sha256": {
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/mfx_expand10_stage1_20261105/verify.py": "bce5e571aa48aa329fd07772e337304b693e4f1fed43d2c3f7c2934bcd8bcaa8",
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/mfx_expand10_stage1_20261105/fixture.py": "a028341739c16795a595db82484412bbcbdc5c30844721c9eed9e2efa6ebaa06",
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage3_20261104/xtc_fixture.py": "2cc9b2e976a53ccd2e880312013f2d32cc1d8909c1ce94ca1e6c94004395d148"
+  },
+  "PS_FAKESTEP_FLAG": "0",
+  "PS_PARALLEL": "none"
+}

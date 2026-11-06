@@ -92,7 +92,7 @@ nor run-persistent cube state is implemented by this plan. Follow the
 [persistent task proposal](persistent_task_state_xpp_cube.md) for ownership and
 final merging; retain sums through steps and export once at EndRun.
 
-Keep compressed input buffers alive until expansion completes; retain expanded
+Keep seed input buffers alive until expansion completes; retain expanded
 raw through calibration and calibrated output through cube accumulation. Tie
 slot reuse to CUDA completion. Budget seed, full raw, calibrated output,
 constants and cube buffers across all BDs sharing a GPU. A float32 full-image

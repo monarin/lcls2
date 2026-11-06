@@ -1,0 +1,14 @@
+{
+  "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+  "executable": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/bin/python",
+  "host": "sdfiana025",
+  "numpy": "2.3.5",
+  "runtime_sha256": {
+    "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/__init__.py": "d5940dadb8008720bc7cd40aeec2edc2dbeede820f0d86508582bfed677f710d",
+    "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/dgram.cpython-311-x86_64-linux-gnu.so": "b6f14f41ba10f86dac24556cd7ab58ba87902e936ff27dba2b7581422f432866",
+    "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/dgramedit.cpython-311-x86_64-linux-gnu.so": "e9292dcbac381285db7fcba40b1a200f59a6b19e026fd647bd0db6417662f530",
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/mfx_expand10_stage1_20261105/runtime.sh": "5a7e583d274f85a0d1fcc848ab8e85f8f6d9646e157d803780048e151999fa6e",
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage3_20261104/runtime.sh": "8f53a89a5986aa87f70b01ba50459ffd119e3a0f7b71f9fb5513701f2035e819",
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/synthetic_mfx_stage3_20261104/xtc_fixture.py": "2cc9b2e976a53ccd2e880312013f2d32cc1d8909c1ce94ca1e6c94004395d148"
+  }
+}

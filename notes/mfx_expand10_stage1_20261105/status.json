@@ -1,0 +1,9 @@
+{
+  "phase": "independent-review",
+  "round": 1,
+  "round_limit": 3,
+  "artifact_root": "/sdf/scratch/users/m/monarin/gpu-validation/mfx-expand10/20261105-stage1-r2",
+  "checks": "10 events; 320 panel comparisons; 20 files; serial DataSource; six boundary/rejection tests",
+  "unresolved_ids": [],
+  "limitations": "Stage 1 only: GPU and calibration acceptance remain Stage 2"
+}
