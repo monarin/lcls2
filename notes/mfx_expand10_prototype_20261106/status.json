@@ -1,0 +1,16 @@
+{
+  "phase": "smoke-pass-review-pending",
+  "base": "5153ab21c",
+  "round": 1,
+  "round_limit": 3,
+  "job": "43527071",
+  "artifact_root": "/sdf/scratch/users/m/monarin/gpu-validation/mfx-expand10/20261106-prototype-r1",
+  "large_dataset_write_started": false,
+  "stage3b": "deferred",
+  "unresolved_findings": [],
+  "checks": [
+    "Python and shell syntax",
+    "1000-event one-A100 native smoke",
+    "saved arrays readback and hashes"
+  ]
+}

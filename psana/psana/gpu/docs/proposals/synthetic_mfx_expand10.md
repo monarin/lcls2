@@ -20,6 +20,12 @@ on `444a695e2` with no blocking findings. This is an explicit per-run/per-stream
 finalization after EOF. The managed lifecycle/factory/state allocator remains
 proposed. Controlled step-label tests do not establish native multi-step support.
 
+November 6 sequencing correction: first expose and smoke-test a small runnable
+[GpuTask entrypoint](../../../../../notes/mfx_expand10_prototype_20261106/README.md)
+using the existing 1,000-event fixture and reviewed Stage 3A task. Large-fixture
+preparation is deferred; the capacity probe and repetition draft do not authorize
+or establish a large dataset write.
+
 ## Layout and calibration
 
 Use public `mfx101555026` run 10, the same source as prjdatpsana runs 1–2:
@@ -156,8 +162,10 @@ rates, not measured throughput or a promise that a given GPU count can sustain i
    step-boundary test is unavailable without another source. Measure actual
    files and memory before scaling.
 3. **Cube and performance.** Implement/review persistent sums and deterministic
-   bin assignment; validate against CPU. Prepare 400,000 events only after the
-   pilot and capacity checks. Source run 10 has 36,037 events, so the large
+   bin assignment; validate against CPU. Expose and smoke-test a simple runnable
+   GpuTask blow-up/calibration/cube prototype on the existing pilot before moving
+   to large-fixture preparation. Prepare 400,000 events only after that prototype
+   and capacity checks. Source run 10 has 36,037 events, so the large
    fixture must repeat source intervals with unique, aligned output timestamps;
    specify and test the transition/repetition seams before writing it. Use the
    existing integer-nanosecond timestamp machinery, preserve valid source step
