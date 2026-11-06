@@ -13,6 +13,13 @@ events using frozen constants, with independent review passing and all findings
 closed. Tested code is `11f2f804a`; final evidence review is `b0b946f41`. No public fixture or new calibration
 records have been deployed.
 
+Stage 3A update: the [application-owned cube pilot](../../../../../notes/mfx_expand10_stage3a_20261105/README.md)
+passed native tiny/tail/1,000-event checks with exact counts and all 30-bin cube
+pixels within a documented float32 accumulation bound; independent review is
+pending. This is an explicit per-run/per-stream prototype with application
+finalization after EOF. The managed lifecycle/factory/state allocator remains
+proposed. Controlled step-label tests do not establish native multi-step support.
+
 ## Layout and calibration
 
 Use public `mfx101555026` run 10, the same source as prjdatpsana runs 1–2:

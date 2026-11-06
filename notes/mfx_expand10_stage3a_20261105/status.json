@@ -1,0 +1,34 @@
+{
+  "phase": "ready-for-independent-review",
+  "base_commit": "ff5c3304d",
+  "round": 1,
+  "round_limit": 3,
+  "artifact_root": "/sdf/scratch/users/m/monarin/gpu-validation/mfx-expand10/20261105-stage3a-r1",
+  "checks": {
+    "host_tests": "2 groups passed",
+    "controlled_gpu_tests": "all passed on all final jobs",
+    "tiny": "pass: 10 events",
+    "pilot": "pass: 1000 events, 503316480 cube pixels",
+    "tail": "pass: 3 native-tail events",
+    "provenance": "all final report hashes match current source"
+  },
+  "attempts": [
+    {
+      "job": 43410045,
+      "result": "pass: initial tiny, before strengthened acceptance harness"
+    },
+    {
+      "job": 43410471,
+      "result": "pass: final tiny harness"
+    },
+    {
+      "job": 43410472,
+      "result": "pass: 1000 events"
+    },
+    {
+      "job": 43410474,
+      "result": "pass: native tail"
+    }
+  ],
+  "unresolved_ids": []
+}
