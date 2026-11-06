@@ -51,7 +51,8 @@ Each case runs in a fresh process. The runner records:
   calibration/accumulation/delivery/export boundaries. These are sampled high
   waters, not continuous exact device peaks. Device usage includes other users
   if any share the device. Process VmHWM records lifetime RSS including CPU
-  verification; GPU-phase host high water is captured separately. Filesystem
+  verification; The pre-validation high water (called gpu_phase_memory in the report) covers
+  baseline through completed export, excluding close() and CPU validation. Filesystem
   page cache is not process RSS.
 - CUDA event intervals for the unchanged expansion, count and sum kernels,
   plus the full calibration call. Events are retained through completion, with
@@ -96,7 +97,7 @@ admission checks to force a larger case onto a shared device.
 ## Scheduler interruption
 
 Job 43533593 on sdfampere034 passed the 30- and 100-bin cases, then was preempted
-during the 200-bin CPU check. That incomplete report is not acceptance evidence.
+before the 200-bin case completed. The report did not checkpoint its phase. That incomplete report is not acceptance evidence.
 The unchanged runner/kernel code is rerun for 200 bins only by
 [resume200.sbatch](resume200.sbatch), job 43533968 on sdfampere015, using a fresh
 CPU seed cache and output directory. Both jobs run the focused host/device tests.
@@ -110,21 +111,21 @@ All three 1000-event cases passed exact counts and every output pixel within the
 CPU float32-accumulation error bound. Both streams received 501/499 events. The
 200-bin case used the recovery job; the interrupted attempt is excluded.
 
-| Bins | GPU cube state GiB | Sampled device peak GiB | GPU-phase host peak GiB | Full-process host peak GiB | Iteration seconds | Export seconds |
+| Bins | GPU cube state GiB | Sampled device peak GiB | Through-export host peak GiB | Full-process host peak GiB | Iteration seconds | Export seconds |
 |---:|---:|---:|---:|---:|---:|---:|
 | 30 | 3.75 | 6.07 | 1.85 | 3.45 | 2.77 | 5.61 |
 | 100 | 12.50 | 14.82 | 1.83 | 3.43 | 2.47 | 18.58 |
 | 200 | 25.00 | 27.32 | 1.85 | 3.45 | 2.75 | 43.61 |
 
 Thus **200 bins fit this 40 GB A100 configuration**, with 25 GiB of banks and
-27.32 GiB sampled device usage. GPU-phase RSS stayed near 1.85 GiB instead of
+27.32 GiB sampled device usage. RSS through export stayed near 1.85 GiB instead of
 allocating a 25 GiB host cube; even CPU validation stayed below 3.45 GiB RSS.
 Export's explicit reusable arrays were 192 MiB plus small count storage. These
 results apply to one BD, two streams, batch size 7, float32 sums and this fixture.
 
 Each case read 3,358,200,000 bytes through the GPU KvikIO reader (JF streams,
 not every CPU metadata read). Warm CUDA interval sums over 156 calls were about
-165–166 ms expansion, 700–706 ms calibration, 3.35–3.38 ms count updates and
+165 ms expansion, 700–706 ms calibration, 3.35–3.38 ms count updates and
 147.7–147.8 ms image accumulation. Calibration is the largest measured GPU
 stage interval; these overlapping intervals do not establish the critical path.
 The overall loop includes I/O, Python work, scalar checks, initialization and
@@ -137,8 +138,19 @@ not characterize a production filesystem. A long run amortizes final export
 over more events, but output-size and sink bandwidth still need budgeting.
 
 All 5,536,481,280 final cube pixels across the three cases were compared. Maximum
-error/bound ratios were 0.1782, 0.4660 and 0.6029, all below one.
+error/bound ratios were 0.1781, 0.4659 and 0.6029, all below one.
 [Compact verified evidence](validation-summary.json) links full scratch reports
 and retained-bin hashes. Focused tests passed on both allocated nodes, including
 third-stream rejection without state mutation and failure after the first bin
 write. No sustained 35kHz conclusion follows from this campaign.
+
+Independent Claude review passed implementation `df757a357` with no blocking
+findings. [Review responses](review-01/response.md) record the documentation
+clarifications and optional follow-ups. No executable source changed in closure.
+
+Measurement contract: read_stats assumes the frozen framework resets counters
+outside individual submission/completion calls. Its negative-delta check catches
+only resets that decrease the observed counter; it is not a general reset epoch
+tracker. All three accepted runs recorded 790 submissions/requests and identical
+requested/completed/useful byte totals. Reusing this instrumentation with changed
+reader reset semantics requires stronger epoch tracking.
