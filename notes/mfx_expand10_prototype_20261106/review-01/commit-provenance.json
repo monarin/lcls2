@@ -1,0 +1,13 @@
+{
+  "implementation_commit": "e7b2d2f01bd73d0b1704310bbb0cc5ff07251fa9",
+  "all_tested_code_matches_git_blobs": true,
+  "code_sha256": {
+    "notes/mfx_expand10_prototype_20261106/prototype.py": "387147b02c5a6354b4d5db053a7847490b56b668ecdb13a1d7165a2349312195",
+    "notes/mfx_expand10_stage3a_20261105/cube.py": "3b3452da6d05edb8b9b3d7ad23efd4f18d210ac34ebd0849ebf5099cabdf4415",
+    "notes/mfx_expand10_stage2_20261105/adapter.py": "d0a41a58a7d2533523d72d08449d7a0e5f92de89c5c178ae92cabde7e498ae7c",
+    "psana/psana/gpu/examples/jungfrau_calibration.py": "5a2590f1b0efa0ff79cf3c6b8f9e8544a226b50f9616635f816783a31cb24993",
+    "notes/mfx_expand10_stage2_20261105/gpu_accept.py": "7ebc741c643a0b832db03308f9d4122bb962127e6ab5c5fcfbe7f6b6f2078d4d",
+    "notes/mfx_expand10_stage2_20261105/runtime.sh": "73aa7d9bc6d58463661854c28268c8666e04836584d3d0de5990ff9125d93778",
+    "notes/mfx_expand10_prototype_20261106/run.sbatch": "083071052a3bd4293b6c34c48cf8976424415ee623a2953590371da51788f06b"
+  }
+}

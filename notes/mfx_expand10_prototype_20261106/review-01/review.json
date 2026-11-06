@@ -1,0 +1,61 @@
+{
+  "reviewed_commit": "e7b2d2f01bd73d0b1704310bbb0cc5ff07251fa9",
+  "verdict": "pass",
+  "summary": "Prototype round 1 at e7b2d2f01 passes. prototype.py is a short native entrypoint that reuses the reviewed Stage 3A Cube and Stage 2 Sample10 adapter unchanged (smoke-report code_sha256 for cube.py, adapter.py, gpu_accept.py, runtime.sh and jungfrau_calibration.py equal the Stage 3A and Stage 2 commit-provenance digests). Wiring is sound: run.sbatch requests one A100 and execs the Stage 2 runtime.sh on prototype.py; the import order (cube first, which inserts the Stage 2 directory on sys.path) resolves gpu_accept/fixture; preflight verifies fixture digests and binds generation.json to the accepted Stage 2 pilot entry; frozen constants are injected only via a constructor-scoped RunSerial._setup_run_calibconst patch, identical to the accepted acceptance harness. Processing is one process, two persistent streams, batch size 7, Cube(max_streams=2), ordinal%29 over 30 bins. Checks match the agreed acceptance: ordered timestamps against the schedule, zero sim10.errors per event (the only published per-event payload), exact bincount, finite sums, empty bin 29, finish only after full iteration, close in finally on success and abort, with report.json written in the outer finally and cleanup errors recorded. Smoke evidence is internally consistent: 1,000 events, banks 501/499, counts 14x35 + 15x34 + 0 = 1,000, export_count 1, cube (30,32,512,1024) float64 whose 4,026,531,968-byte cube.npy and 368-byte counts.npy sizes match evidence.json, runtime psana module hashes equal Stage 2/3A, KVIKIO_COMPAT_MODE ON, job 43527071 on sdfampere002. README numbers (501/499, counts, pool peak 6,064,654,848, 18.79 s, 4.03 GB banks) match smoke-report.json, and README/proposal make no 35 kHz, MPI, GDS, multi-step, managed-lifecycle, pixelwise-revalidation or large-dataset claims; the proposal records the November 6 sequencing correction. Three low non-blocking findings: F-008 carried forward (third-stream rejection test still deferred; this entrypoint fixes two streams), F-009 (prototype evidence lacks an explicit implementation-commit/per-file hash binding and itemized readback checks), F-010 (proposal status line is stale).",
+  "checks": [
+    "Read scope.md, prototype.py, run.sbatch, README.md, status.json, smoke-report.json, evidence.json and review-01/context.md in notes/mfx_expand10_prototype_20261106.",
+    "Read reused dependencies: stage3a cube.py, acceptance.py, run_gpu.sbatch, README.md, review-01/review.json, review-01/response.md, status.json, commit-provenance.json; stage2 adapter.py, gpu_accept.py, fixture.py, runtime.sh, validation-summary.json, commit-provenance.json; verify.py and xtc_fixture.py symbol locations.",
+    "Read the proposal psana/psana/gpu/docs/proposals/synthetic_mfx_expand10.md header and Stages section for the November 6 sequencing correction (lines 23-27 and 165-168).",
+    "Read psana/psana/gpu/gpu_task.py GpuTask (callable plus inputs/calibconst, no lifecycle hooks) and psana/psana/psexp/run.py RunSerial (constructor calls _setup_run_calibconst then creates GpuEventManager; events() closes GPU resources on iterator close).",
+    "Wiring: run.sbatch execs $prototype_dir/../mfx_expand10_stage2_20261105/runtime.sh with prototype.py --output; runtime.sh sets PS_PARALLEL=none, PS_FAKESTEP_FLAG=0, KVIKIO_COMPAT_MODE=ON and execs the recorded venv python; prototype.py enforces PS_PARALLEL/PS_FAKESTEP before creating output (prototype.py:32-33).",
+    "Import resolution: cube.py inserts the Stage 2 directory into sys.path before prototype.py imports gpu_accept and fixture (cube.py:6-7, prototype.py:20-23); gpu_accept imports adapter, fixture, verify from that directory.",
+    "Fixture/code provenance: preflight checks every stream file digest against generation.json (gpu_accept.py:47-64); prototype binds generation.json sha to the single accepted Stage 2 validation-summary entry for that root (prototype.py:51-53); smoke-report generation_sha256 f700a4cd... equals the Stage 2 pilot entry.",
+    "Reuse unchanged: smoke-report code_sha256 for cube.py (3b3452da), adapter.py (d0a41a58), gpu_accept.py (7ebc741c), runtime.sh (73aa7d9b), jungfrau_calibration.py (5a2590f1) equal Stage 3A commit-provenance and Stage 2 commit-provenance; runtime psana/gpu_events/gpu_task_batch hashes equal the Stage 2 validation-summary values.",
+    "Frozen constants scope: patch.object(RunSerial,'_setup_run_calibconst') wraps only next(ds.runs()) and asserts run.dsparms is ds.dsparms (prototype.py:65-69), the same pattern as acceptance.py:63-67 and gpu_accept.py:149-156.",
+    "Acceptance checks present: ordered timestamps (prototype.py:72), zero sim10.errors per event (73), event count equals schedule (75), finish after full iteration (77), exact np.bincount(arange%29, minlength=30) counts (78-79), finite sums and empty bin 29 (80), arrays saved (81-82), export_count recorded (85).",
+    "Failure cleanup: task.close() in finally for success and abort; cleanup exceptions set status fail and re-raise; report.json written in the inner finally with elapsed time; closing(run.events()) closes the GPU event manager on early exit (prototype.py:70, 90-99).",
+    "Two-stream/bank invariants: n_gpu_streams=2 and Cube(max_streams=2) (prototype.py:58-62); Cube._bank keys on stream identity and rejects a third stream (cube.py:95-100); accept_events counts each accepted event once (cube.py:16-22).",
+    "Smoke evidence consistency: counts list is fourteen 35s, fifteen 34s, one 0 (sum 1000); bank_event_counts 501/499; callback_sizes sum consistent with batch 7 pattern; export_count 1; cube_shape [30,32,512,1024] float64 gives 4,026,531,840 bytes + 128-byte npy header = 4,026,531,968 matching evidence.json; counts.npy 240 + 128 = 368 matching evidence.json.",
+    "README claims vs evidence: job 43527071, sdfampere002, A100 40 GB, KVIKIO ON, 501/499, counts, one export, pool peak 6,064,654,848, 18.79 s, 4.03 GB banks all match smoke-report.json; README states pixelwise validation is Stage 3A evidence and disclaims 35 kHz, MPI, GDS, multi-step and large-dataset generation.",
+    "README recipe is runnable from the checkout: builds prototype_dir from $PWD, creates a logs dir, submits run.sbatch with prototype_dir and a new output path; run.sbatch creates cupy-cache and tmp beside the output; prototype refuses an existing output directory.",
+    "Proposal sequencing update: lines 23-27 record the November 6 correction and defer large-fixture preparation; Stage 3 text (165-168) requires the prototype before 400,000-event preparation; the capacity probe and repetition draft are stated not to authorize a large write.",
+    "Status.json: base 5153ab21c, round 1 of 3, job 43527071, large_dataset_write_started false, stage3b deferred, no unresolved findings.",
+    "Prior finding IDs F-001 to F-008 exist in earlier stages; F-008 reused; new IDs start at F-009."
+  ],
+  "limitations": [
+    "Read-only review: no commands executed, no tests run, no SHA-256 digests computed. Equality of recorded hashes, the evidence.json flags independent_saved_array_readback and all_recorded_code_hashes_match, and the match between committed prototype.py/run.sbatch and the files hashed in the smoke run are coordinator-computed and were checked only for mutual consistency across committed files.",
+    "The git HEAD reference for this worktree lives outside the read sandbox (/sdf/home/m/monarin/lcls2/.git/worktrees/...) and could not be read; the reviewed SHA is taken from the supplied review instruction and the gitStatus snapshot (e7b2d2f01).",
+    "Original scratch artifacts (cube.npy, counts.npy, report.json, SLURM log, generation.json, fixture XTC) under /sdf/scratch were not read; only in-checkout copies were inspected. The smoke-report.json copy could not be byte-compared to the evidence.json report.json entry (5277 bytes).",
+    "The installed psana runtime (GpuEventManager, EventPool stream ownership, GPUResult.on_cpu) was not re-inspected beyond gpu_task.py and run.py; its behaviour is carried forward from the accepted Stage 2 and Stage 3A reviews.",
+    "No diff tooling was available; the no-core-change claim rests on the unchanged jungfrau_calibration.py and runtime module hashes relative to Stage 2/3A plus the absence of core edits among the reviewed files."
+  ],
+  "findings": [
+    {
+      "id": "F-008",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_expand10_stage3a_20261105/test_cube.py",
+      "line": 22,
+      "evidence": "The runtime guard at cube.py:99-100 ('More execution streams than explicitly budgeted') remains untested. The prototype fixes n_gpu_streams=2 and Cube(max_streams=2) (prototype.py:58-62), so it cannot reach this path and does not broaden supported stream settings. Stage 3A status.json lists F-008 as deferred nonblocking.",
+      "requested_change": "Carry forward unchanged: before any configuration with more than two execution streams, add a controlled assertion that a third distinct stream passed to add() raises RuntimeError and leaves the two existing banks and self.seen unchanged. Not required for this prototype."
+    },
+    {
+      "id": "F-009",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_expand10_prototype_20261106/evidence.json",
+      "line": 4,
+      "evidence": "evidence.json records only booleans ('independent_saved_array_readback': true, 'all_recorded_code_hashes_match': true) and artifact digests. Unlike Stage 2 and Stage 3A, there is no commit-provenance record naming the implementation commit and the per-file digests for prototype.py (387147b0...) and run.sbatch (08307105...) at the reviewed SHA, and the readback does not itemize what was checked (shape, dtype, counts equality, finite values, empty bin 29). status.json also lacks an implementation_commit field.",
+      "requested_change": "Non-blocking: add a commit-provenance.json (implementation_commit, files_sha256 for prototype.py, run.sbatch, cube.py, adapter.py, gpu_accept.py, runtime.sh, jungfrau_calibration.py) and extend evidence.json with the itemized readback results (cube shape/dtype, counts equal to smoke-report, isfinite, bin 29 zero). Record implementation_commit/reviewed_commit in status.json at closure."
+    },
+    {
+      "id": "F-010",
+      "severity": "low",
+      "blocking": false,
+      "file": "psana/psana/gpu/docs/proposals/synthetic_mfx_expand10.md",
+      "line": 3,
+      "evidence": "The proposal header still reads 'Status: Stage 2 correctness complete, November 5, 2026' although the same document records the Stage 3A pass on 444a695e2 (line 16-21) and the November 6 prototype sequencing correction (lines 23-27).",
+      "requested_change": "Non-blocking: update the status line to reflect Stage 3A completion and the prototype smoke stage, keeping the large-fixture deferral explicit."
+    }
+  ]
+}

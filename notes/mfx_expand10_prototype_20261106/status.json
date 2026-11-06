@@ -1,5 +1,5 @@
 {
-  "phase": "smoke-pass-review-pending",
+  "phase": "complete",
   "base": "5153ab21c",
   "round": 1,
   "round_limit": 3,
@@ -12,5 +12,15 @@
     "Python and shell syntax",
     "1000-event one-A100 native smoke",
     "saved arrays readback and hashes"
+  ],
+  "implementation_commit": "e7b2d2f01bd73d0b1704310bbb0cc5ff07251fa9",
+  "reviewed_commit": "e7b2d2f01bd73d0b1704310bbb0cc5ff07251fa9",
+  "review_verdict": "pass",
+  "deferred_nonblocking": [
+    "F-008"
+  ],
+  "evidence_only_closure": [
+    "F-009: source blob provenance, itemized array checks and commit IDs recorded",
+    "F-010: proposal status updated"
   ]
 }

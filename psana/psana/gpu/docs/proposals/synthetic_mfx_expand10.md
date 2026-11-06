@@ -1,6 +1,7 @@
 # MFX five-stream input with synthetic 10x GPU expansion
 
-Status: Stage 2 correctness complete, November 5, 2026. This is the active dataset direction.
+Status: Stage 3A correctness and standalone GpuTask prototype smoke complete,
+November 6, 2026. Large-fixture preparation is deferred. This is the active dataset direction.
 Stop further real-codec exploration and the XPP repeat16 fixture path. Preserve
 those results and existing datasets. Only private scratch pilots have been generated.
 
