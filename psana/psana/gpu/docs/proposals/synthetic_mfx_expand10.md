@@ -40,8 +40,14 @@ Single-node follow-up: [10,000 unique source events](../../../../../notes/mfx_ex
 in `prjdatpsana/scratch/synthetic_mfx/sample10_10k/` (37,682,986,080 actual
 XTC/SMD bytes), retaining all ten streams and frozen MFX calibration. Generation,
 all source/CPU comparisons and serial DataSource checks passed in job 43538554;
-independent review passed on `738058473` with no blockers. Next separate clean timing from
-correctness/profiling, establish one-GPU stream/batch performance, then scale BDs
+independent review passed on `738058473` with no blockers.
+The [performance preparation](../../../../../notes/mfx_expand10_performance_20261106/README.md)
+now separates clean throughput from CPU/CUDA profiling and optional export;
+seven host tests, controlled device checks and 1k one/two-stream A100 smoke cases
+passed (job 43548178). Independent review status is recorded with that stage.
+The profile exposes frequent admission-pressure flushes at the existing 4 GiB
+framework budget, to investigate during the next campaign. No 10k performance
+run has been launched. Next establish one-GPU stream/batch performance, then scale BDs
 and GPUs within one node. Increase event count only if the measured interval is
 too short or variable. The repeated 400k fixture and multi-node work remain
 deferred; 10k events would last only 0.286 seconds at the eventual 35 kHz target.

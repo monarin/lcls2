@@ -1,0 +1,27 @@
+{
+  "phase": "ready_for_review",
+  "base": "d91085f653c54940ee5eb63462efab7aaced1617",
+  "round": 0,
+  "round_limit": 3,
+  "scope": "single-node performance preparation; no 10k campaign launch",
+  "unresolved_findings": [],
+  "core_changed": false,
+  "job": "43548178",
+  "host_tests": 7,
+  "prior_attempts": [
+    {
+      "job": "43547849",
+      "status": "canceled during queue change; briefly started, no acceptance"
+    },
+    {
+      "job": "43547876",
+      "status": "canceled replacement; output directory collision, no acceptance"
+    },
+    {
+      "job": "43548142",
+      "status": "device test failed on profiling wrapper stream keyword collision; fixed"
+    }
+  ],
+  "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/performance_prep_20261106_r3",
+  "checks": "7 host tests; 4 controlled GPU cases; 1k throughput 1/2 streams and profile 2 streams passed"
+}

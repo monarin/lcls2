@@ -1,0 +1,407 @@
+{
+  "cpu": [
+    {
+      "phase": "steady",
+      "stage": "cache_trim_after_pressure",
+      "calls": 142,
+      "total_seconds": 0.011277319397777319,
+      "p50_seconds": 7.484899833798409e-05,
+      "p95_seconds": 0.00010035212617367505
+    },
+    {
+      "phase": "steady",
+      "stage": "calibration_kernel.enqueue",
+      "calls": 143,
+      "total_seconds": 0.0019521699286997318,
+      "p50_seconds": 1.2320000678300858e-05,
+      "p95_seconds": 1.9582081586122515e-05
+    },
+    {
+      "phase": "steady",
+      "stage": "consumer_retirement_release",
+      "calls": 142,
+      "total_seconds": 8.781673386693001e-05,
+      "p50_seconds": 6.002373993396759e-07,
+      "p95_seconds": 7.594469934701918e-07
+    },
+    {
+      "phase": "steady",
+      "stage": "cpu_ancillary_read",
+      "calls": 705,
+      "total_seconds": 0.20255541941151023,
+      "p50_seconds": 2.724025398492813e-05,
+      "p95_seconds": 0.0016523852013051496
+    },
+    {
+      "phase": "steady",
+      "stage": "cpu_dgram_construction",
+      "calls": 903,
+      "total_seconds": 0.47134213987737894,
+      "p50_seconds": 0.00023977691307663918,
+      "p95_seconds": 0.002272116718813777
+    },
+    {
+      "phase": "steady",
+      "stage": "cube_bins_upload_accumulate_call",
+      "calls": 143,
+      "total_seconds": 0.017591682728379965,
+      "p50_seconds": 0.00011357804760336876,
+      "p95_seconds": 0.00016364287585020066
+    },
+    {
+      "phase": "steady",
+      "stage": "cube_count_kernel.enqueue",
+      "calls": 143,
+      "total_seconds": 0.0016783555038273335,
+      "p50_seconds": 1.0919757187366486e-05,
+      "p95_seconds": 1.617390662431717e-05
+    },
+    {
+      "phase": "steady",
+      "stage": "cube_sum_kernel.enqueue",
+      "calls": 143,
+      "total_seconds": 0.0014607245102524757,
+      "p50_seconds": 9.129755198955536e-06,
+      "p95_seconds": 1.5183119103312494e-05
+    },
+    {
+      "phase": "steady",
+      "stage": "descriptor_build_upload_call.enqueue",
+      "calls": 143,
+      "total_seconds": 0.19677350856363773,
+      "p50_seconds": 0.0014368491247296333,
+      "p95_seconds": 0.0016160069499164822
+    },
+    {
+      "phase": "steady",
+      "stage": "expand_calibrate_call",
+      "calls": 143,
+      "total_seconds": 0.22787660267204046,
+      "p50_seconds": 0.001650146208703518,
+      "p95_seconds": 0.001830966304987669
+    },
+    {
+      "phase": "steady",
+      "stage": "expansion_kernel.enqueue",
+      "calls": 143,
+      "total_seconds": 0.0024429545737802982,
+      "p50_seconds": 1.545017585158348e-05,
+      "p95_seconds": 2.5680940598249436e-05
+    },
+    {
+      "phase": "steady",
+      "stage": "kvikio_submit",
+      "calls": 710,
+      "total_seconds": 0.048838051967322826,
+      "p50_seconds": 6.383424624800682e-05,
+      "p95_seconds": 9.813359938561913e-05
+    },
+    {
+      "phase": "steady",
+      "stage": "kvikio_wait",
+      "calls": 710,
+      "total_seconds": 0.028552166651934385,
+      "p50_seconds": 1.1459924280643463e-05,
+      "p95_seconds": 3.8064853288233264e-05
+    },
+    {
+      "phase": "steady",
+      "stage": "parse_groups_call.enqueue",
+      "calls": 142,
+      "total_seconds": 0.1438679457642138,
+      "p50_seconds": 0.0006737550720572472,
+      "p95_seconds": 0.0009237849386408922
+    },
+    {
+      "phase": "steady",
+      "stage": "producer_retirement_wait",
+      "calls": 142,
+      "total_seconds": 0.00025665247812867165,
+      "p50_seconds": 1.7050188034772873e-06,
+      "p95_seconds": 2.297409810125827e-06
+    },
+    {
+      "phase": "steady",
+      "stage": "slot_flush_active",
+      "calls": 289,
+      "total_seconds": 0.5752121927216649,
+      "p50_seconds": 0.0002887551672756672,
+      "p95_seconds": 0.004854819923639298
+    },
+    {
+      "phase": "steady",
+      "stage": "slot_flush_active.close",
+      "calls": 146,
+      "total_seconds": 0.0001378701999783516,
+      "p50_seconds": 9.201467037200928e-07,
+      "p95_seconds": 1.1300435289740562e-06
+    },
+    {
+      "phase": "steady",
+      "stage": "slot_submit_including_null_wait",
+      "calls": 142,
+      "total_seconds": 0.2922913646325469,
+      "p50_seconds": 0.002125103259459138,
+      "p95_seconds": 0.002349316515028476
+    },
+    {
+      "phase": "steady",
+      "stage": "smd_eventbuilder_next",
+      "calls": 135,
+      "total_seconds": 0.1324354880489409,
+      "p50_seconds": 0.00048801302909851074,
+      "p95_seconds": 0.002087220223620534
+    },
+    {
+      "phase": "warmup",
+      "stage": "cache_trim_after_pressure",
+      "calls": 15,
+      "total_seconds": 0.0012039612047374249,
+      "p50_seconds": 7.518939673900604e-05,
+      "p95_seconds": 0.00011385972611606118
+    },
+    {
+      "phase": "warmup",
+      "stage": "calibration_kernel.enqueue",
+      "calls": 14,
+      "total_seconds": 0.00020269770175218582,
+      "p50_seconds": 1.2970063835382462e-05,
+      "p95_seconds": 2.1289265714585777e-05
+    },
+    {
+      "phase": "warmup",
+      "stage": "consumer_retirement_release",
+      "calls": 16,
+      "total_seconds": 1.1777970939874649e-05,
+      "p50_seconds": 6.949994713068008e-07,
+      "p95_seconds": 9.973300620913506e-07
+    },
+    {
+      "phase": "warmup",
+      "stage": "cpu_ancillary_read",
+      "calls": 85,
+      "total_seconds": 0.025323690846562386,
+      "p50_seconds": 2.5949906557798386e-05,
+      "p95_seconds": 0.0016719054430723186
+    },
+    {
+      "phase": "warmup",
+      "stage": "cpu_dgram_construction",
+      "calls": 111,
+      "total_seconds": 0.056968925055116415,
+      "p50_seconds": 0.00022531580179929733,
+      "p95_seconds": 0.002198397647589445
+    },
+    {
+      "phase": "warmup",
+      "stage": "cube_bins_upload_accumulate_call",
+      "calls": 15,
+      "total_seconds": 0.00335480272769928,
+      "p50_seconds": 0.00011852802708745003,
+      "p95_seconds": 0.0008784275501966476
+    },
+    {
+      "phase": "warmup",
+      "stage": "cube_count_kernel.enqueue",
+      "calls": 15,
+      "total_seconds": 0.00017827702686190605,
+      "p50_seconds": 1.1099036782979965e-05,
+      "p95_seconds": 1.6634818166494363e-05
+    },
+    {
+      "phase": "warmup",
+      "stage": "cube_sum_kernel.enqueue",
+      "calls": 15,
+      "total_seconds": 0.00015118950977921486,
+      "p50_seconds": 9.060371667146683e-06,
+      "p95_seconds": 1.5128124505281444e-05
+    },
+    {
+      "phase": "warmup",
+      "stage": "descriptor_build_upload_call.enqueue",
+      "calls": 15,
+      "total_seconds": 0.022441077511757612,
+      "p50_seconds": 0.0014233188703656197,
+      "p95_seconds": 0.0019801976159214956
+    },
+    {
+      "phase": "warmup",
+      "stage": "expand_calibrate_call",
+      "calls": 15,
+      "total_seconds": 0.028162903618067503,
+      "p50_seconds": 0.0016390960663557053,
+      "p95_seconds": 0.0032906362321227763
+    },
+    {
+      "phase": "warmup",
+      "stage": "expansion_kernel.enqueue",
+      "calls": 15,
+      "total_seconds": 0.0004370538517832756,
+      "p50_seconds": 1.55596062541008e-05,
+      "p95_seconds": 8.266870863735657e-05
+    },
+    {
+      "phase": "warmup",
+      "stage": "kvikio_submit",
+      "calls": 80,
+      "total_seconds": 0.04277846775949001,
+      "p50_seconds": 6.59390352666378e-05,
+      "p95_seconds": 0.0003382293507456774
+    },
+    {
+      "phase": "warmup",
+      "stage": "kvikio_wait",
+      "calls": 80,
+      "total_seconds": 0.0011744950897991657,
+      "p50_seconds": 1.0350020602345467e-05,
+      "p95_seconds": 3.181267529726028e-05
+    },
+    {
+      "phase": "warmup",
+      "stage": "parse_groups_call.enqueue",
+      "calls": 16,
+      "total_seconds": 0.01398245245218277,
+      "p50_seconds": 0.0006757697556167841,
+      "p95_seconds": 0.0015362646663561463
+    },
+    {
+      "phase": "warmup",
+      "stage": "producer_retirement_wait",
+      "calls": 16,
+      "total_seconds": 3.253994509577751e-05,
+      "p50_seconds": 1.9099097698926926e-06,
+      "p95_seconds": 2.874992787837982e-06
+    },
+    {
+      "phase": "warmup",
+      "stage": "slot_flush_active",
+      "calls": 31,
+      "total_seconds": 0.06984360096976161,
+      "p50_seconds": 0.00026039592921733856,
+      "p95_seconds": 0.005467718467116356
+    },
+    {
+      "phase": "warmup",
+      "stage": "slot_flush_active.close",
+      "calls": 16,
+      "total_seconds": 1.7410144209861755e-05,
+      "p50_seconds": 9.699724614620209e-07,
+      "p95_seconds": 1.537497155368328e-06
+    },
+    {
+      "phase": "warmup",
+      "stage": "slot_submit_including_null_wait",
+      "calls": 16,
+      "total_seconds": 0.041063299402594566,
+      "p50_seconds": 0.002084673848003149,
+      "p95_seconds": 0.005102006834931672
+    },
+    {
+      "phase": "warmup",
+      "stage": "smd_eventbuilder_next",
+      "calls": 17,
+      "total_seconds": 0.02239135606214404,
+      "p50_seconds": 0.0008170781657099724,
+      "p95_seconds": 0.0028858986683189865
+    }
+  ],
+  "cuda": [
+    {
+      "phase": "steady",
+      "stage": "calibration_kernel",
+      "calls": 143,
+      "total_seconds": 0.6270023682117465,
+      "p50_seconds": 0.004462592124938965,
+      "p95_seconds": 0.004497203111648559
+    },
+    {
+      "phase": "steady",
+      "stage": "cube_count_kernel",
+      "calls": 143,
+      "total_seconds": 0.002975743995048106,
+      "p50_seconds": 2.1503999829292296e-05,
+      "p95_seconds": 2.3552000522613525e-05
+    },
+    {
+      "phase": "steady",
+      "stage": "cube_sum_kernel",
+      "calls": 143,
+      "total_seconds": 0.13486899165809157,
+      "p50_seconds": 0.001047551989555359,
+      "p95_seconds": 0.0010506240129470824
+    },
+    {
+      "phase": "steady",
+      "stage": "descriptor_build_upload_call",
+      "calls": 143,
+      "total_seconds": 0.19803750348091126,
+      "p50_seconds": 0.001445888042449951,
+      "p95_seconds": 0.0016251904129981998
+    },
+    {
+      "phase": "steady",
+      "stage": "expansion_kernel",
+      "calls": 143,
+      "total_seconds": 0.14824140784144393,
+      "p50_seconds": 0.0011489280462265014,
+      "p95_seconds": 0.0011600896120071411
+    },
+    {
+      "phase": "steady",
+      "stage": "parse_groups_call",
+      "calls": 142,
+      "total_seconds": 0.14571826994419104,
+      "p50_seconds": 0.000686079978942871,
+      "p95_seconds": 0.0009367551892995831
+    },
+    {
+      "phase": "warmup",
+      "stage": "calibration_kernel",
+      "calls": 14,
+      "total_seconds": 0.06467788791656495,
+      "p50_seconds": 0.004678143978118896,
+      "p95_seconds": 0.004693350529670715
+    },
+    {
+      "phase": "warmup",
+      "stage": "cube_count_kernel",
+      "calls": 15,
+      "total_seconds": 0.00039833600074052814,
+      "p50_seconds": 2.6623999699950218e-05,
+      "p95_seconds": 2.897920049726963e-05
+    },
+    {
+      "phase": "warmup",
+      "stage": "cube_sum_kernel",
+      "calls": 15,
+      "total_seconds": 0.015010816156864165,
+      "p50_seconds": 0.0010496000051498414,
+      "p95_seconds": 0.0010557440519332886
+    },
+    {
+      "phase": "warmup",
+      "stage": "descriptor_build_upload_call",
+      "calls": 15,
+      "total_seconds": 0.022568960189819336,
+      "p50_seconds": 0.0014315520524978637,
+      "p95_seconds": 0.0019889152050018293
+    },
+    {
+      "phase": "warmup",
+      "stage": "expansion_kernel",
+      "calls": 15,
+      "total_seconds": 0.020277247548103332,
+      "p50_seconds": 0.0014172159433364867,
+      "p95_seconds": 0.0014917631626129148
+    },
+    {
+      "phase": "warmup",
+      "stage": "parse_groups_call",
+      "calls": 16,
+      "total_seconds": 0.014182399988174438,
+      "p50_seconds": 0.0006876159906387329,
+      "p95_seconds": 0.00155008003115654
+    }
+  ],
+  "interpretation": "CPU spans are inclusive/nested. CUDA call spans include host submission gaps and stream waits; kernel spans bracket individual launches. Concurrent/nested intervals must not be summed into loop wall time."
+}
