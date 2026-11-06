@@ -5,6 +5,9 @@ Implementation, device smoke and independent review status are in status.json.
 The reviewed expansion, calibration and accumulation CUDA sources are reused;
 psana core and the frozen installed runtime are unchanged.
 
+Independent Claude re-review passed code commit `5f4e7167b` with all four initial
+findings closed and no blockers. See [review closure](review-02/response.md).
+
 Post-review preparation validation passed in job 43548551 on sdfampere011,
 A100-SXM4-40GB (COMPLETED, exit 0, 50 seconds): nine host tests, four controlled GPU cases,
 and 1,000-event throughput cases with one/two streams plus a two-stream profile.
@@ -101,6 +104,8 @@ write/fsync times. It uses the reviewed bounded one-bin host staging. Default
 performance runs export only compact reports/counts, not the multi-GB cube.
 Preemption may leave `status=running`; check Slurm and logs before interpreting
 that record. It is never an accepted result.
+If iteration raises, the failed report currently omits partial pressure counts;
+preserving that optional failure diagnostic is deferred (PERF-PREP-05).
 
 ## Wrap-up note: XTC buffers, seeds and raw gathering
 

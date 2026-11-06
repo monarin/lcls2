@@ -1,7 +1,8 @@
 # MFX five-stream input with synthetic 10x GPU expansion
 
 Status: Stage 3A correctness, standalone prototype, 200-bin capacity validation,
-and the reviewed 10k project-scratch fixture are complete, November 6, 2026.
+the reviewed 10k project-scratch fixture and performance-runner preparation are
+complete, November 6, 2026. The 10k performance campaign has not started.
 The repeated 400k fixture remains deferred. This is the active dataset direction.
 Stop further real-codec exploration and the XPP repeat16 fixture path. Preserve
 those results and existing datasets. The sample10 fixtures are in scratch;
@@ -44,8 +45,8 @@ independent review passed on `738058473` with no blockers.
 The [performance preparation](../../../../../notes/mfx_expand10_performance_20261106/README.md)
 now separates clean throughput from CPU/CUDA profiling and optional export;
 nine host tests, controlled device checks and 1k one/two-stream A100 smoke cases
-passed after review improvements (job 43548551). Independent review status is
-recorded with that stage. Count-only diagnostics confirm frequent two-stream
+passed after review improvements (job 43548551). Independent Claude re-review
+passed code commit `5f4e7167b` with no blockers. Count-only diagnostics confirm frequent two-stream
 admission-pressure flushes at the existing 4 GiB framework budget (none in the
 one-stream smoke), to investigate during the next campaign. No 10k performance
 run has been launched. Next establish one-GPU stream/batch performance, then scale BDs
