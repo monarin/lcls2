@@ -1,14 +1,16 @@
 # MFX five-stream input with synthetic 10x GPU expansion
 
-Status: proposed, November 5, 2026. This is the active dataset direction.
+Status: Stage 2 correctness implementation, November 5, 2026. This is the active dataset direction.
 Stop further real-codec exploration and the XPP repeat16 fixture path. Preserve
-those results and existing datasets; this plan does not generate or publish data.
+those results and existing datasets. Only private scratch pilots have been generated.
 
 Execution update: [Stage 1](../../../../../notes/mfx_expand10_stage1_20261105/README.md)
 completed with 10 events in private scratch, all 320 CPU panel comparisons and
 serial DataSource checks passing, and independent review passing at
-`3d21547ce5f55c9b38775c7bed2a631789d62577`. GPU/calibration integration remains
-Stage 2; no public fixture or new calibration records have been deployed.
+`3d21547ce5f55c9b38775c7bed2a631789d62577`. The [Stage 2 adapter and correctness campaign](../../../../../notes/mfx_expand10_stage2_20261105/README.md)
+cover native GPU expansion and full calibration with frozen constants. See its
+status and review records for acceptance. No public fixture or new calibration
+records have been deployed.
 
 ## Layout and calibration
 
@@ -93,8 +95,8 @@ not a BD-local counter, and remain independent of native step boundaries.
 The current user calibration example expects dense uint16
 `(events, segments, rows, columns)` input and full physical constants. The
 synthetic input schema needs an explicit reader/task adapter and an expansion
-kernel before that calibration arithmetic can be reused. Neither the adapter
-nor run-persistent cube state is implemented by this plan. Follow the
+kernel before that calibration arithmetic can be reused. The Stage 2 user-task adapter now materializes this input without psana core
+changes; run-persistent cube state remains Stage 3 work. Follow the
 [persistent task proposal](persistent_task_state_xpp_cube.md) for ownership and
 final merging; retain sums through steps and export once at EndRun.
 
@@ -141,8 +143,9 @@ rates, not measured throughput or a promise that a given GPU count can sustain i
    stream timelines, Names mappings, SMD offsets, seed/source equality and EOF.
 2. **GPU correctness pilot.** Implement/review reader adapter, materialized
    expansion and calibration integration. Compare every pixel for the tiny
-   fixture, then scale to approximately 1,000 events. Include a separate native
-   step-boundary sample and exercise stream/batch buffer reuse. Measure actual
+   fixture, then scale to approximately 1,000 events. Include a separate sample with native closing transitions and exercise
+   stream/batch buffer reuse. Source run 10 has one step, so an internal native
+   step-boundary test is unavailable without another source. Measure actual
    files and memory before scaling.
 3. **Cube and performance.** Implement/review persistent sums and deterministic
    bin assignment; validate against CPU. Prepare 400,000 events only after the
@@ -156,7 +159,8 @@ rates, not measured throughput or a promise that a given GPU count can sustain i
 
 Use the session's implementation/review loop at each stage. Publication, new
 run assignment and calibration deployment follow their own concrete preflight;
-this revision authorizes planning only, with no production DRP/codec changes.
+execution is limited to the separately authorized stages, with no production
+DRP/codec changes.
 
 Evidence: [five-stream codec probe](../../../../../notes/mfx_real_codec_20261105/README.md),
 [raw size probe](../../../../../notes/raw_compression_factor_20261105/README.md),
