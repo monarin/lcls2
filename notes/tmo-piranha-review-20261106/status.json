@@ -1,0 +1,19 @@
+{
+  "scope": "document-only standalone Piranha setup plan",
+  "phase": "complete",
+  "implementation_sha": "ce31b07c1659de51acee8310df94e24d10dcbb7b",
+  "base_sha": "f3936ee86b35dfc2a93a579c6fb08ac83731eea7",
+  "round": 2,
+  "round_limit": 3,
+  "unresolved_ids": [],
+  "checks": [
+    "snapshot hashes verified",
+    "deployed Piranha byte-identical",
+    "commit checks passed except two formatting checks skipped for verbatim evidence"
+  ],
+  "artifact": "notes/tmo-piranha-standalone-test-findings-2026-11-06.md",
+  "reviewer": "independent in-session agent",
+  "reviewer_change_reason": "Automatic approval rejected external Claude payload export; no Claude invocation executed.",
+  "review_sha": "ce31b07c1659de51acee8310df94e24d10dcbb7b",
+  "verdict": "pass"
+}
