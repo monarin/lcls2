@@ -1,5 +1,7 @@
 # Synthetic JF 1M input for expansion and fly-scan cubes
 
+**Superseded for future work:** use the [MFX five-stream 10x expansion plan](synthetic_mfx_expand10.md). The completed XPP stages below remain historical evidence; further XPP fixture generation/publication is paused by the November 5 direction change.
+
 Status: Stage 2 complete, November 5, 2026, with independent Claude review
 passing at `30305b95b`. Run 3 exists privately (2,400 events, one native step), and eight
 experiment-only calibration types are deployed for runs 3–4. Neither run 3 nor

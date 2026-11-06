@@ -1,0 +1,7 @@
+{
+  "phase": "independent-review",
+  "round": 1,
+  "round_limit": 3,
+  "checks": "Documentation/source cross-check and payload arithmetic; no runtime changes",
+  "unresolved_ids": []
+}
