@@ -1,7 +1,13 @@
 {
-  "phase": "independent-review",
+  "phase": "complete",
   "round": 1,
   "round_limit": 3,
   "checks": "Documentation/source cross-check and payload arithmetic; no runtime changes",
-  "unresolved_ids": []
+  "unresolved_ids": [],
+  "reviewed_commit": "b73f0dfe75e39a947bccfc9a7eb70b34b23fbfce",
+  "review_verdict": "pass",
+  "completed_rounds": 1,
+  "deferred_nonblocking_ids": [
+    "F-001"
+  ]
 }

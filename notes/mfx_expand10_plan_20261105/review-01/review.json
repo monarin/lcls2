@@ -1,0 +1,36 @@
+{
+  "reviewed_commit": "b73f0dfe75e39a947bccfc9a7eb70b34b23fbfce",
+  "verdict": "pass",
+  "summary": "Document-only revision adding psana/psana/gpu/docs/proposals/synthetic_mfx_expand10.md and a supersession notice in synthetic_jungfrau_decompression_cube.md. All stated sizes, ratios, rates and durations recompute exactly from 32 panels x 524,288 uint16 pixels with ceil(N/10)=52,429 stored words per panel (last group 8 pixels). Stream-to-physical-panel mapping matches notes/mfx_real_codec_20261105/gate-result.json; source event count (36,037), ten source streams (JF at indices 5-9, five ancillary), 32 segment IDs and (3, 32, 512, 1024) float32 constant layouts match notes/synthetic_mfx_stage1_20261103/manifest.json. The plan correctly distinguishes image shape (32,512,1024) from the gain-axis constant layout, describes the stored array as a rank-1 UINT16 seed (a type/rank dgram.cc supports), and explicitly states that the adapter, persistent cube state and any codec are not implemented. Runs 1-2 and XPP runs 3-4 are preserved; new runs 5/6 are proposed only after collision checks. Relative links to the notes directories, the calibration example and the persistent-task proposal resolve in this checkout. The superseded XPP document keeps its completed Stage 2 record intact. One low, non-blocking wording inconsistency noted.",
+  "checks": [
+    "Arithmetic: 524288/10 -> 52429 words; 52429*2=104858 B/panel; 32*104858=3355456 B/event; 33554432/3355456=9.99996; 1000 events=3.355 GB; 400000 events=1.342 TB; 35k ev/s -> 117.44 GB/s seed, 1.174 TB/s raw, 2.349 TB/s float32; cube bin 67108864 B, 30 bins 2.013 GB; 400000/35000=11.43 s; last group 524288-52428*10=8 pixels",
+    "Panel order per stream (s005-s009) identical to gate-result.json panel_order and to mfx_real_codec README table",
+    "Source run 10 event_count 36037 in all ten manifest streams; JF stream_indices [5,6,7,8,9]; 32 segment IDs 0-31 with unique detector IDs; five ancillary streams (0-4) present",
+    "Calibration constants in manifest: pedestals/pixel_gain/pixel_offset/status/rms/min/max float32 (3,32,512,1024), geometry str; plan's shape vs gain-axis statements consistent",
+    "jungfrau_calibration.py _layout requires C-contiguous uint16 (events, segments, rows, columns) and (3, physical segments, rows, columns) constants, matching plan lines 87-90",
+    "dgram.cc handles Name::UINT16 with rank>=1 arrays (lines 569-582); rank-1 UINT16 seed field is representable",
+    "Expansion semantics: repeat(seed,10)[:524288] equals raw[i]=seed[i//10]; sampling raw[::10] never crosses a panel; gain bits retained per word",
+    "Relative links ../../../../../notes/... and ../../examples/jungfrau_calibration.py and persistent_task_state_xpp_cube.md resolve from proposals/ directory",
+    "Lifecycle: runs 1-2 unchanged, runs 3-4 reserved for XPP (consistent with superseded doc line 7), runs 5/6 only proposed, no DB changes; staged validation (tiny fixture -> 1000-event pilot -> 400k) present",
+    "No implication that adapter, persistent state or codec exists (lines 69, 89-91, 153); real-codec and raw-size results preserved and linked as evidence",
+    "Supersession notice present at top of synthetic_jungfrau_decompression_cube.md; completed Stage 2 record retained unchanged below it",
+    "No runtime tests expected or claimed for this document-only change"
+  ],
+  "limitations": [
+    "Read-only review via file tools; no commands executed and no tests run. Validation evidence is limited to CPU arithmetic and source/document cross-checks.",
+    "manifest.json (5,761 lines) was read in part (lines 1-1536) plus targeted greps for stream counts, event counts, constant shapes and segment IDs; not every stream record was inspected line by line.",
+    "Actual XTC files under /sdf/data/lcls/ds/prj/public01/xtc and scratch artifacts were not accessible to this review; Configure membership and L1Accept child order are taken from the manifest/gate-result records, which the plan itself says must be re-verified before generation.",
+    "Existence or absence of prjdatpsana runs 5/6 in the run database could not be checked; the plan defers this to a preflight."
+  ],
+  "findings": [
+    {
+      "id": "F-001",
+      "severity": "low",
+      "blocking": false,
+      "file": "psana/psana/gpu/docs/proposals/synthetic_mfx_expand10.md",
+      "line": 95,
+      "evidence": "Line 95 says \"Keep compressed input buffers alive until expansion completes\" while line 61 states \"This is deterministic synthetic expansion, not reversible compression of the original image\" and line 54 forbids labelling the short array as ordinary raw.",
+      "requested_change": "Replace \"compressed input buffers\" with \"seed input buffers\" (or \"sample10 input buffers\") so the GPU section uses the same non-compression terminology as the stored-representation section."
+    }
+  ]
+}
