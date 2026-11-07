@@ -50,6 +50,11 @@ All event/bin checks passed; four observer tests and nine preparation tests pass
 | 2 | 8 GiB | 8 MiB | 15 | 142 |
 | 2 | 4 GiB | 512 KiB | 0 | 0 |
 
+The two-stream 8 MiB cases made 315 admission attempts: 158 succeeded and
+157 failed then retried. Thus all but the first successful submission required
+a full pool flush before admission, serializing those execution handoffs. This
+does not measure overlap inside an individual submission.
+
 All captured failures had the same stream-credit/raw-slot exception text; there
 were **zero byte-budget hold failures** in every case. The observer retains four
 failure snapshots per phase, not a detailed snapshot of every failure. Those
@@ -94,7 +99,9 @@ Full reports and traces:
 [artifacts.json](artifacts.json) records paths, sizes and SHA256;
 [validation-summary.json](validation-summary.json) contains compact results.
 Scheduler output and accounting are preserved alongside them in this directory.
-Review progress is in [status.json](status.json).
+Independent restricted Claude review passed code commit `784e4fba4` with no
+blocking findings. See [review and responses](review-01/response.md) and
+[status.json](status.json).
 
 ## Next decision
 
