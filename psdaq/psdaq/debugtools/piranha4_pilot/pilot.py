@@ -242,22 +242,31 @@ def child_main(spec, loader=load_real):
             started = time.monotonic()
             capture.add('trial_start', trial=current_trial)
             info = pc.piranha4_connectionInfo(root, command.read_text())
-            capture.phase = 'dealloc'
-            pc.piranha4_connectionShutdown()
+            capture.phase = 'connection_info_return'
             dropped = capture.dump(directory / ('uart-%04d.json' % current_trial), drain=True)
             if dropped:
                 raise RuntimeError('Capture overflow: %d events dropped' % dropped)
+            capture.phase = 'dealloc'
+            pc.piranha4_connectionShutdown()
             write_json(directory / ('result-%04d.json' % current_trial), {
                 'ok': True, 'trial': current_trial, 'pid': os.getpid(), 'camera': spec['camera'],
                 'started_monotonic': started, 'elapsed_seconds': time.monotonic() - started,
                 'since_root_ready_seconds': started - ready['ready_monotonic'], 'connection_info': info})
             # Next warm trial starts a new segment; late RX remains in the ring.
     except BaseException as exc:
+        # Preserve the failed segment before any potentially blocking cleanup.
+        # A parent's termination request must not interrupt this bounded snapshot.
+        signal.signal(signal.SIGTERM, signal.SIG_IGN)
+        signal.signal(signal.SIGINT, signal.SIG_IGN)
         failure = {'ok': False, 'trial': current_trial, 'pid': os.getpid(),
                    'phase': capture.failure_phase or capture.phase, 'exception': repr(exc),
                    'traceback': traceback.format_exc(),
                    'target_timeout': capture.failure_phase == 'allocation_gcp_wait'
                    and str(exc).startswith('*** await: prompt not seen:')}
+        try:
+            capture.dump(directory / 'uart-failure.json')
+        except BaseException as snapshot_error:
+            failure['capture_error'] = repr(snapshot_error)
         write_json(directory / 'failure.json', failure)
     finally:
         # Ignore repeat termination while bounded parent watchdog allows cleanup.
@@ -299,22 +308,40 @@ def wait_files(children, name, timeout):
 
 
 def stop_children(children, grace, terminate):
-    """Signal only known children; wait once for the whole group, then reap."""
+    """Bound both graceful exit and post-kill reaping, even for stuck devices."""
+    status = {'forced_kill_pids': [], 'unreaped_pids': [], 'errors': []}
     if terminate:
         for proc, _, _ in children:
             if proc.poll() is None:
-                proc.terminate()
+                try:
+                    proc.terminate()
+                except ProcessLookupError:
+                    pass
+                except OSError as exc:
+                    status['errors'].append('terminate %d: %s' % (proc.pid, exc))
     deadline = time.monotonic() + grace
-    forced = []
     while any(proc.poll() is None for proc, _, _ in children) and time.monotonic() < deadline:
         time.sleep(0.05)
-    for proc, directory, log in children:
+    # Signal ALL survivors before waiting on any; one unkillable task must not
+    # prevent its peer receiving SIGKILL or prevent a final failed summary.
+    for proc, _, _ in children:
         if proc.poll() is None:
-            forced.append(proc.pid)
-            proc.kill()
-        proc.wait()
+            status['forced_kill_pids'].append(proc.pid)
+            try:
+                proc.kill()
+            except ProcessLookupError:
+                pass
+            except OSError as exc:
+                status['errors'].append('kill %d: %s' % (proc.pid, exc))
+    deadline = time.monotonic() + min(grace, 2.)
+    for proc, _, log in children:
+        try:
+            proc.wait(timeout=max(0., deadline - time.monotonic()))
+        except subprocess.TimeoutExpired:
+            status['unreaped_pids'].append(proc.pid)
         log.close()
-    return forced
+    status['exit_codes'] = [proc.poll() for proc, _, _ in children]
+    return status
 
 
 def pause_children(children, duration):
@@ -331,7 +358,7 @@ def pause_children(children, duration):
 
 def run_controller(config, output, worker_prefix=None):
     """Testable orchestration; CLI performs host/environment/exclusivity gates."""
-    worker_prefix = worker_prefix or [sys.executable, str(Path(__file__).resolve()), '--worker-spec']
+    worker_prefix = worker_prefix or [sys.executable, '-u', str(Path(__file__).resolve()), '--worker-spec']
     output = Path(output)
     output.mkdir(mode=0o700, parents=True, exist_ok=False)
     summary = {'ok': False, 'config': config, 'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
@@ -374,14 +401,13 @@ def run_controller(config, output, worker_prefix=None):
                 write_json(output / 'summary.json', summary)
                 if trial != trials[-1]:
                     pause_children(children, config['interval'])
-            forced = stop_children(children, config['cleanup_timeout'], terminate=False)
-            group_result = {'group': group_index, 'forced_kill_pids': forced,
-                            'exit_codes': [proc.returncode for proc, _, _ in children]}
+            group_result = dict(group=group_index, **stop_children(children, config['cleanup_timeout'], terminate=False))
             summary['groups'].append(group_result)
-            if forced or any(proc.returncode != 0 or not read_json(directory / 'exit.json')['ok']
-                             for proc, directory, _ in children):
+            finished_children, children = children, []
+            if (group_result['forced_kill_pids'] or group_result['unreaped_pids'] or group_result['errors']
+                    or any(proc.returncode != 0 or not read_json(directory / 'exit.json')['ok']
+                             for proc, directory, _ in finished_children)):
                 raise RuntimeError('Worker exit or cleanup failed')
-            children = []
             if group_index != len(groups):
                 time.sleep(config['interval'])
         summary['ok'] = True
@@ -390,14 +416,18 @@ def run_controller(config, output, worker_prefix=None):
         summary['traceback'] = traceback.format_exc()
     finally:
         previous = {sig: signal.signal(sig, signal.SIG_IGN) for sig in (signal.SIGINT, signal.SIGTERM)}
-        if children:
-            forced = stop_children(children, config['cleanup_timeout'], terminate=True)
-            summary['abort_cleanup'] = {'forced_kill_pids': forced,
-                                       'exit_codes': [proc.returncode for proc, _, _ in children]}
-        summary['finished_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
-        write_json(output / 'summary.json', summary)
-        for sig, handler in previous.items():
-            signal.signal(sig, handler)
+        try:
+            if children:
+                try:
+                    summary['abort_cleanup'] = stop_children(children, config['cleanup_timeout'], terminate=True)
+                except BaseException as exc:
+                    summary['abort_cleanup_error'] = repr(exc)
+                    summary['ok'] = False
+            summary['finished_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+            write_json(output / 'summary.json', summary)
+        finally:
+            for sig, handler in previous.items():
+                signal.signal(sig, handler)
     return 0 if summary['ok'] else 1
 
 

@@ -53,7 +53,7 @@ def fake_loader(spec):
     class Root:
         def stop(self):
             calls.append('stop')
-            if bad and fault == 'stop_hang':
+            if bad and (fault == 'stop_hang' or spec.get('test_cleanup_hang')):
                 while True:
                     time.sleep(1)
 
@@ -63,6 +63,13 @@ def fake_loader(spec):
             raise RuntimeError('fake init failure')
         root = Root()
         root.rx = pc.MyUartPiranha4Rx('fake')
+        class Frame:
+            def getPayload(self):
+                return 4
+
+            def read(self, target, offset):
+                target[:] = b'X\x00\x00\x00'
+        root.rx._acceptFrame(Frame())
         root.tx = Tx()
         return root
 
@@ -175,6 +182,41 @@ class PilotTests(unittest.TestCase):
         rc, result = self.run_pilot(trials=1, test_fault='shutdown_failure', test_fault_camera='atm')
         self.assertEqual(rc, 1)
         self.assertFalse(result['ok'])
+
+    def test_failure_capture_survives_hanging_cleanup(self):
+        rc, result = self.run_pilot(trials=1, test_fault='gcp_timeout',
+                                   test_fault_camera='atm', test_cleanup_hang=True)
+        self.assertEqual(rc, 1)
+        directory = self.output / 'process-group-0001/atm'
+        snapshot = pilot.read_json(directory / 'uart-failure.json')
+        self.assertTrue(any(e['kind'] == 'rx' and e['raw_hex'] == '58000000' for e in snapshot['events']))
+        self.assertTrue(pilot.read_json(directory / 'failure.json')['target_timeout'])
+        self.assertTrue(result['abort_cleanup']['forced_kill_pids'])
+
+    def test_unkillable_peers_get_all_signals_and_bounded_summary(self):
+        processes = []
+        for pid in (90001, 90002):
+            proc = mock.Mock(pid=pid, returncode=None)
+            proc.poll.return_value = None
+            proc.wait.side_effect = subprocess.TimeoutExpired('fake', .01)
+            processes.append(proc)
+        ready = [{'pid': p.pid, 'host': socket.gethostname(), 'camera': cam}
+                 for p, cam in zip(processes, ['fzp', 'atm'])]
+        config = dict(self.config, trials=1, cleanup_timeout=.01)
+        old_handlers = {sig: signal.getsignal(sig) for sig in (signal.SIGINT, signal.SIGTERM)}
+        started = time.monotonic()
+        with mock.patch.object(pilot.subprocess, 'Popen', side_effect=processes):
+            with mock.patch.object(pilot, 'wait_files', side_effect=[ready, RuntimeError('fake allocation failed')]):
+                rc = pilot.run_controller(config, self.output, self.worker)
+        self.assertLess(time.monotonic() - started, 1.)
+        self.assertEqual(rc, 1)
+        summary = pilot.read_json(self.output / 'summary.json')
+        self.assertEqual(summary['abort_cleanup']['unreaped_pids'], [90001, 90002])
+        for proc in processes:
+            proc.terminate.assert_called()
+            proc.kill.assert_called()
+            self.assertTrue(all('timeout' in call.kwargs for call in proc.wait.call_args_list))
+        self.assertTrue(all(signal.getsignal(sig) == handler for sig, handler in old_handlers.items()))
 
     def test_default_dry_run_never_loads_or_preflights(self):
         with mock.patch.object(pilot, 'load_real', side_effect=AssertionError('imported hardware')):

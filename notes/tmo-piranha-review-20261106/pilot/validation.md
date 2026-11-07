@@ -9,3 +9,5 @@ No hardware execution. No root constructed using real dependencies. No productio
 - The script uses absolute-path invocation, so the development checkout does not replace the installed psdaq module. Only stdlib is imported by the parent.
 
 Limitations: no real camera pilot yet; tests use fake hardware/barriers. Parser fidelity is checked with the original receiver definition but callback timing is not. Preflight cannot establish absence of invisible /proc holders. Operator attestation and full board exclusivity are mandatory. Capture instrumentation changes timing; warm mode does not Configure/acquire between Alloc calls. Real cleanup and endpoint release still need operator readback.
+
+After round-1 review: 17 offline tests passed on Python 3.9.21 (see tests-round-02.log), including unkillable mocked peers and target timeout combined with hanging cleanup. These verify bounded signaling/reaping, survivor reporting, restored signal handlers and pre-cleanup raw capture preservation. Production child logging is now unbuffered. No hardware was run for these changes.

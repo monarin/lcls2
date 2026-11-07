@@ -53,7 +53,10 @@ This normally takes about 45 seconds plus initialization/cleanup. The default
 40-second delay begins after all roots report initialized; it approximates the
 observed launch-to-Alloc delay but is not an exact replay. Initialization and
 allocation each have a 60-second watchdog. Graceful cleanup has 10 seconds;
-a remaining known test PID is then killed and the run fails. No new trial
+a remaining known test PID is then sent SIGKILL and the run fails. Post-kill
+reaping is bounded to two additional seconds for the group. If a process remains
+unkillable, `unreaped_pids` identifies it: stop and have the operator handle the
+stuck device/process before any further test or DAQ restart. No new trial
 starts after a reported failure. Ctrl-C stops the test children and saves the
 available evidence; an uninterruptible hardware call may require forced exit.
 
@@ -98,7 +101,7 @@ Exit code 0 and `summary.json` with `ok: true` mean every requested call returne
 and child cleanup completed. Any nonzero exit or `ok: false` means stop and inspect:
 
 - `manifest.json` / `summary.json`: parameters, process groups, PIDs, trial results,
-  errors and forced kills. No authentication variables are dumped.
+  errors, forced kills and unreaped PIDs. No authentication variables are dumped.
 - `process-group-*/{fzp,atm}/provenance.json`: imported module paths/hashes, Python,
   Rogue version and an environment allowlist.
 - `ready.json`, `result-NNNN.json`, `exit.json`: identity, delays, returned camera
@@ -106,12 +109,14 @@ and child cleanup completed. Any nonzero exit or `ok: false` means stop and insp
 - `failure.json`: phase, full traceback and `target_timeout`. Only an exception
   beginning `*** await: prompt not seen:` at the allocation GCP wait is classified
   as the target. Entry/startup, CPA, VT, VV, init and cleanup failures are separate.
-- `uart-NNNN.json`, `uart-final.json`: timestamped original frame bytes in hex,
+- `uart-NNNN.json`, `uart-failure.json`, `uart-final.json`: timestamped original frame bytes in hex,
   TX command markers, wait/clear markers, current line and parsed responses.
   UART character bytes occupy payload offsets 0, 4, 8, ... . A missing parsed
   response does not prove zero received bytes. Ring overflow halts the run;
-  forced termination can lose the unflushed segment.
-- `process.log`: original stdout/stderr, including assigned PyRogue ZMQ server
+  the failure snapshot is saved before potentially hanging cleanup. A failure
+  while writing capture is recorded as `capture_error`; cleanup still runs.
+  Abrupt crashes or hangs before an exception can lose the unflushed segment.
+- `process.log`: unbuffered original stdout/stderr, including assigned PyRogue ZMQ server
   ports and firmware/version warnings. Record these listeners and verify they
   disappear at teardown; the harness does not independently certify socket or
   device release after process exit.
