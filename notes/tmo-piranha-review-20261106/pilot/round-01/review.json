@@ -1,0 +1,34 @@
+{
+  "reviewed_commit": "c46f1184ec4dbe717ace9ecedc156ac6417bb871",
+  "verdict": "changes_requested",
+  "summary": "The pilot preserves the deployed call sequence and explicit gates. Two failure-path issues require correction: bounded post-kill reaping and saving failing UART evidence before cleanup.",
+  "checks": [
+    "Read pilot, tests, README, contract and validation.",
+    "Checked paired schema/order, cold/warm lifetimes, RX/TX hooks, target classification, bounds, gates and cleanup against source."
+  ],
+  "limitations": [
+    "Read-only review; no hardware imports, devices, runtime tests, network or production operations.",
+    "15 passing tests and import-only evidence were not independently rerun.",
+    "Hardware cleanup, kernel behavior and reproduction fidelity remain unverified."
+  ],
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "high",
+      "blocking": true,
+      "file": "psdaq/psdaq/debugtools/piranha4_pilot/pilot.py",
+      "line": 311,
+      "evidence": "stop_children kills and then calls unbounded proc.wait() for each child before proceeding to the next. An uninterruptible first child prevents signaling its peer and writing the final summary; parent ignores signals during final cleanup.",
+      "requested_change": "Signal every remaining child before waiting, bound post-kill reaping, record surviving/unreaped PIDs, finish failed summary, restore handlers even on cleanup errors. Add mocked unkillable-process coverage."
+    },
+    {
+      "id": "H2",
+      "severity": "medium",
+      "blocking": true,
+      "file": "psdaq/psdaq/debugtools/piranha4_pilot/pilot.py",
+      "line": 266,
+      "evidence": "UART capture is saved only after connectionShutdown/root.stop; cleanup hanging after a caught allocation exception loses the failing segment on forced termination.",
+      "requested_change": "Save best-effort non-draining raw snapshot immediately on failure before cleanup; keep final capture and record write errors. Test allocation GCP timeout plus hanging root.stop."
+    }
+  ]
+}

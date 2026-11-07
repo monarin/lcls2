@@ -1,0 +1,18 @@
+{
+  "scope": "hardware pilot preparation only",
+  "phase": "complete",
+  "round": 2,
+  "round_limit": 3,
+  "implementation_sha": "49a8aa1d5c6e8866108055da009ec8cc70e3e904",
+  "reviewer": "in-session independent reviewer",
+  "unresolved_ids": [],
+  "review_sha": "49a8aa1d5c6e8866108055da009ec8cc70e3e904",
+  "verdict": "pass",
+  "checks": [
+    "17 offline tests pass on Python3.9.21",
+    "deployed imports and hashes verified without root construction",
+    "commit hooks pass",
+    "copied pilot equals reviewed snapshot"
+  ],
+  "hardware_executed": false
+}
