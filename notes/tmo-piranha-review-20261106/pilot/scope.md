@@ -1,0 +1,7 @@
+# Pilot preparation contract
+
+Mona now requests a real-hardware pilot she can try, extending the earlier plan-only scope to local harness implementation and offline validation. Prepare cold/warm single-camera and paired-camera trials using deployed piranha4 functions. Do not execute on hardware, stop DAQ, submit jobs, change installed files, or publish. Preserve the original parser, timeouts, commands and supervisor/barrier logic; capture is observational. Default invocation is dry-run. Explicit --execute and --daq-stopped are required for an operator's future hardware run.
+
+Acceptance: executable documented pilot; deployed environment checks; fresh process per lane for cold trials, reused processes/roots for warm with connectionShutdown; bounded watchdog and cleanup; stop entire campaign on failure; phase/byte evidence; offline tests for cold/warm lifecycle, paired participants, failures/watchdogs, CLI gates and capture; independent review at exact commit with no blocking findings. Hardware equivalence remains unverified. No claim that preflight proves exclusive access when /proc visibility is incomplete.
+
+Use existing isolated task branch notes/tmo-piranha-standalone-plan-20261106. Base 4df13daf8b3cc0572ec09e2dab1e53e92cc835e8. Three review rounds maximum. Continue in-session independent review: external Claude transfer was rejected earlier and is not retried. No model override. Save pilot review records separately from the completed plan review.
