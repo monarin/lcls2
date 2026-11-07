@@ -47,9 +47,14 @@ now separates clean throughput from CPU/CUDA profiling and optional export;
 nine host tests, controlled device checks and 1k one/two-stream A100 smoke cases
 passed after review improvements (job 43548551). Independent Claude re-review
 passed code commit `5f4e7167b` with no blockers. Count-only diagnostics confirm frequent two-stream
-admission-pressure flushes at the existing 4 GiB framework budget (none in the
-one-stream smoke), to investigate during the next campaign. No 10k performance
-run has been launched. Next establish one-GPU stream/batch performance, then scale BDs
+admission-pressure flushes (none in the one-stream smoke). The
+[causal investigation](../../../../../notes/mfx_expand10_pressure_20261106/README.md)
+identifies one outstanding small input group per physical file as the constraint,
+not the 4 GiB byte budget: 8 GiB gives identical drains, while classifying these
+datagrams as large eliminates them at the cost of more read groups. No core
+fix or 10k performance run has been launched. Resolve this admission constraint
+before interpreting two-stream scaling; then establish one-GPU stream/batch
+performance and scale BDs
 and GPUs within one node. Increase event count only if the measured interval is
 too short or variable. The repeated 400k fixture and multi-node work remain
 deferred; 10k events would last only 0.286 seconds at the eventual 35 kHz target.

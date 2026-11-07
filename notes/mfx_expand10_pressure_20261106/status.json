@@ -1,0 +1,12 @@
+{
+  "phase": "ready_for_review",
+  "base": "c10abb7f9ad86202aca7e08a50004b74548171c9",
+  "round": 0,
+  "round_limit": 3,
+  "unresolved_findings": [],
+  "core_changed": false,
+  "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/pressure_20261106_r1",
+  "job": "43557748",
+  "checks": "4 observer + 9 existing host tests; four 1k native cases passed",
+  "conclusion": "small physical-stream credit, not byte-budget exhaustion"
+}

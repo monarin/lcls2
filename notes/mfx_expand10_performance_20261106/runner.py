@@ -29,6 +29,7 @@ def run(args):
     import kvikio
     require(os.environ.get('PS_PARALLEL') == 'none' and os.environ.get('PS_FAKESTEP_FLAG') == '0', 'Use the reviewed runtime')
     require(args.streams in (1,2) and 1 <= args.batch_size <= 16 and 2 <= args.bins <= 200, 'Unsupported bounded case')
+    require(1 <= args.framework_budget_gib <= 8 and 1 <= args.bulk_target_bytes <= 8<<20, 'Unsupported input budget/target')
     require(args.reserve_gib >= 8 and args.state_cap_gib > 0, 'Keep at least 8 GiB non-state reserve')
     args.output.mkdir(mode=0o770, exist_ok=False)
     report = dict(status='running', mode=args.mode, host=platform.node(), job=os.environ.get('SLURM_JOB_ID'),
@@ -74,14 +75,16 @@ def run(args):
         free,total = cp.cuda.runtime.memGetInfo()
         require(task.required_state_bytes + args.reserve_gib*GIB <= free, 'Persistent banks plus reserve exceed free GPU memory')
         report['admission'] = dict(state_bytes=task.required_state_bytes, nonstate_reserve_bytes=args.reserve_gib*GIB,
-                                   free_device_bytes=free, total_device_bytes=total, framework_budget_gib=4)
+                                   free_device_bytes=free, total_device_bytes=total, framework_budget_gib=args.framework_budget_gib,
+                                   bulk_target_bytes=args.bulk_target_bytes)
         t = time.perf_counter()
         task.prepare()
         report['kernel_prepare_seconds'] = time.perf_counter()-t
         dense_cube.adapter.register_reader()
         t = time.perf_counter()
         ds = DataSource(exp='mfx101555026', run=10, dir=str(args.root), live=False, skip_calib_load='all', gpu_det='jungfrau',
-                        batch_size=args.batch_size, n_gpu_streams=args.streams, gpu_memory_budget_gb=4, gpu_bulk_target_bytes=8<<20,
+                        batch_size=args.batch_size, n_gpu_streams=args.streams,
+                        gpu_memory_budget_gb=args.framework_budget_gib, gpu_bulk_target_bytes=args.bulk_target_bytes,
                         gpu_fn=GpuTask(task, inputs=task.inputs, calibconst=task.calibconst))
         def frozen_setup(run):
             require(run.dsparms is ds.dsparms, 'Unexpected run construction')
@@ -153,6 +156,8 @@ if __name__ == '__main__':
     parser.add_argument('--warmup', type=int, default=1000)
     parser.add_argument('--state-cap-gib', type=int, default=27)
     parser.add_argument('--reserve-gib', type=int, default=8)
+    parser.add_argument('--framework-budget-gib', type=int, default=4)
+    parser.add_argument('--bulk-target-bytes', type=int, default=8<<20)
     parser.add_argument('--verify-files', action='store_true')
     parser.add_argument('--export', type=Path, help='Optional new full-cube directory; outside steady timing')
     run(parser.parse_args())

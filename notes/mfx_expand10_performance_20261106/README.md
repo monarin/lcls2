@@ -20,9 +20,13 @@ validation-summary.json, device-checks.json and artifacts.json.
 Both clean and profile two-stream cases observed 15 warmup and 142 steady-window
 cache trims after framework GpuMemoryPressureError, with the inherited 4 GiB
 framework budget. The clean one-stream case observed zero. The frozen
-runtime calls `_trim_gpu_caches` only on this admission-failure path. Treat
-budget-driven flushes as a concrete next-campaign diagnostic; this preparation
-does not change the budget or core admission behavior. Initial smoke job
+runtime calls `_trim_gpu_caches` only on this admission-failure path.
+The [follow-up investigation](../mfx_expand10_pressure_20261106/README.md)
+corrects the initial budget attribution: the cause is a small-group credit
+conflict per physical file stream, with ample byte budget and free reader slots.
+Doubling the quota leaves the drain counts unchanged; changing the classification
+threshold removes them but increases read-group count. Core admission behavior
+remains unchanged. Initial smoke job
 43548178 on sdfampere035 also passed before the review improvements; its logs
 are retained and the original reports remain referenced by review-01/copy-index.json.
 CUDA/CPU profile totals
@@ -92,7 +96,9 @@ sbatch --output="$results-logs/%j.out" --error="$results-logs/%j.err" \
 
 For the small preparation checks replace `throughput` with `smoke`. For separate
 profiling use `profile`; pass further runner options after that argument.
-Supported bounds: streams 1/2, batches 1..16, bins 2..200. Admission reserves at
+Supported bounds: streams 1/2, batches 1..16, bins 2..200.
+The diagnostic follow-up adds `--framework-budget-gib` (1..8, default 4) and
+`--bulk-target-bytes` (1 byte..8 MiB, default 8 MiB); defaults are unchanged. Admission reserves at
 least 8 GiB beyond the persistent banks; this is not a framework-wide memory
 guarantee. Default 100 bins/two banks is 12.5 GiB plus counts. No multi-BD/MPI
 claim. Each repetition uses a fresh process/output directory. Three repeats
