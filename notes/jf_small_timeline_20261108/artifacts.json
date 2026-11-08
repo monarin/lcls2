@@ -1,0 +1,77 @@
+[
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r1/launch-sha256.txt",
+    "bytes": 620,
+    "sha256": "7bdeccc2c1518333c15f46a31cf414405d0712edfb6c5f2d439cc111c4f97b6a"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r1_logs/43829133.err",
+    "bytes": 1268,
+    "sha256": "8d88507272f556a32a23062eb0f4a3e8641b1d2cb00cb2af6d314463b9bf5916"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r1_logs/43829133.out",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r2/jf-64-b16-s4-pool2.nsys-rep",
+    "bytes": 749455,
+    "sha256": "ec0a0bbc194f497c0074673f7f071be6d088a66bb9a64028691338719b73ee39"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r2/jf-64-b16-s4-pool2.sqlite",
+    "bytes": 3350528,
+    "sha256": "bd1761ec6ca3ee241153507565c0aa0e6df395b0adc18c1dec033bed0f23c689"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r2/launch-sha256.txt",
+    "bytes": 620,
+    "sha256": "4d29159b71b9751079e375fda3a1712a7d1229415b51382d2cd337bd6a0ab7ad"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r2/report.json",
+    "bytes": 12120,
+    "sha256": "e1f62b5af160fb92c013aabbfb5b1d1cff5b6837d63ebc5ed2948602c57c4c2f"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r2_logs/43829309.err",
+    "bytes": 9164,
+    "sha256": "2c22b51d922302343b3235fae626ecdac1be6c89283a282f9c6aa221ba463187"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r2_logs/43829309.out",
+    "bytes": 1405,
+    "sha256": "97ab01ff0dc07c899b7be1640a4d32627f2c14e8d8b002fe9ae83e3ff7ad235b"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r3/jf-64-b16-s4-pool2.nsys-rep",
+    "bytes": 1182379,
+    "sha256": "444f80f538a74b9f8b0ffce9c33809712991cc0464450670ef95c230efad7fe7"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r3/jf-64-b16-s4-pool2.sqlite",
+    "bytes": 8577024,
+    "sha256": "0b503d2c6e15adb407afeec938b58deb31b1a2635666d6610a0004818399febf"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r3/launch-sha256.txt",
+    "bytes": 776,
+    "sha256": "69c549a8e19fcffd8b6d356b5f33ef08acae3a55d62d077502ecbfee4b08200f"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r3/report.json",
+    "bytes": 12289,
+    "sha256": "ce9c8bc75be257fe9d17bc89ddf7026f6aa54745f94f89ec6f79bf8ed12e734c"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r3_logs/43829731.err",
+    "bytes": 9164,
+    "sha256": "81ac9ff0519585c7c9a7534de1949a5b4c96ffd6e5a33055fec1303116d2994f"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r3_logs/43829731.out",
+    "bytes": 1451,
+    "sha256": "6e11e08badacc248d0d43f6d00587651a8ace909072496c8bd5ee29ff53775c5"
+  }
+]

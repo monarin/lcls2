@@ -1,0 +1,10 @@
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/lscratch/monarin/jf-small-timeline-43829309/tmp/nsys-report-6aaa.qdstrm'
+
+
+Generated:
+	/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r2/jf-64-b16-s4-pool2.nsys-rep
+PASS: 64 events, 1 BD/1 GPU, depth 2, four 16-event batches, 16 four-event executions
+[1794164568.165253] [sdfampere020:2798929:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x5634b89e6d80 was not matched
+[1794164568.169135] [sdfampere020:2798891:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x562d3559a0c0 was not matched

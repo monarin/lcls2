@@ -1,0 +1,45 @@
+{
+  "status": "pass",
+  "accepted_job": "43829731",
+  "source_sha256": {
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_small_timeline_20261108/analyze.py": "6340fe9a6784d988849a0c34a4f664f348e53b9dd4191ec1cdb1d287c68be539",
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_small_timeline_20261108/runner.py": "cc178146ca69be669767c1944c70508b1f77e8e663a670529dffb73bb28b519e",
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_small_timeline_20261108/rank.sh": "7fbe94613b8ebbdd01e08b95615a6650990f16677196ebc0911652b1d89286b1",
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_small_timeline_20261108/runtime.sh": "ce4e670a66e4dc15341e6600b289ec170441450caba19cf2ff5fd6ea258978a6",
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_small_timeline_20261108/run.sbatch": "92394c29009c721ad94e3a585368ab5f9e3aaf1a86ee06ea75f97c6a128bf9dd",
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/cube.py": "6d741c98fee468ec94dbff719866e0884b9ee8eb735e93700089c373a416c315",
+    "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/common.py": "727ec6717c7d98681ef325ea66b94f47201cba9229149fa2a067108070dc4643"
+  },
+  "runtime_files": {
+    "psana.gpu.gpu_events": {
+      "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "sha256": "cfc6b2bbede9f5081560a153067289dc4bc4aee794f18d4a62b459bc51b930db"
+    },
+    "psana.gpu.gpu_stream": {
+      "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_stream.py",
+      "sha256": "9a937e68645e51d384d19267a6b23639e54bf0276cfe606583f9f820fa71d079"
+    },
+    "psana.gpu.gpu_group_schedule": {
+      "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_group_schedule.py",
+      "sha256": "eee7f6c9d7b7563725926d82f480924d62fb0c43228e21deb392d476ed32f3a7"
+    },
+    "psana.gpu.gpu_input_group": {
+      "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_input_group.py",
+      "sha256": "354152ece8df1571b9ea5510ccbf2f0c1f06ff5952258a854b21faea99529504"
+    },
+    "psana.gpu.gpu_admission": {
+      "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_admission.py",
+      "sha256": "a3014eea980d6a2fa5b9bbf68703374c93596c5e23118b3fa6bafc4e1c96ea30"
+    },
+    "psana.gpu.gpu_detector": {
+      "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_detector.py",
+      "sha256": "c1a118c3d1477c1693f1e55c3a11c197c2ded5a61ec570a94f9ad1d8a396faac"
+    },
+    "psana.gpu.gpu_task_batch": {
+      "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_task_batch.py",
+      "sha256": "cf6242c263d84e214cac40899e0e2df825ff1137577f894714819fbc5c7de8e7"
+    }
+  },
+  "inherited_source_manifest_sha256": "6b7e70cca8f6d5428bd7fbf34ae562903780f9c4e55ef9cb788880dae8e840e7",
+  "prior_manifest_code_files_checked": 23
+}

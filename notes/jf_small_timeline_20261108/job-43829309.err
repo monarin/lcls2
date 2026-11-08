@@ -1,0 +1,5 @@
+[PSANA-INFO RANK:0 1794164555.433229568] RunParallel [MPI-role] rank=0 host=sdfampere020 numa_id=4 numa_size=3
+[PSANA-INFO RANK:2 1794164556.501257984] RunParallel gpu placement host=sdfampere020 pci=0:41:00.0 ordinal=0 visible=1 peers=1 owner=True limit=1.25GiB sharing=off
+/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_events.py:525: UserWarning: KvikioGpuReader: kvikio is using the CPU-fallback path (NVMe → CPU DRAM → GPU VRAM).  True GDS (NVMe → GPU VRAM direct) is not available — possible causes: Lustre/GPFS filesystem, cuFile driver not loaded, or KVIKIO_COMPAT_MODE=1.  Performance will be limited by both NVMe read speed AND PCIe CPU→GPU transfer bandwidth.
+  self.gpu_reader = KvikioGpuReader(
+GpuEventManager: kvikio I/O path = CPU-fallback (NVMe → CPU DRAM → GPU VRAM via cudaMemcpy). True GDS is not available — likely Lustre/GPFS filesystem or cuFile driver not loaded.  GDS would give NVMe → GPU VRAM directly, bypassing CPU DRAM entirely.

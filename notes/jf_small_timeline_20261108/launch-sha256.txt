@@ -1,0 +1,5 @@
+6340fe9a6784d988849a0c34a4f664f348e53b9dd4191ec1cdb1d287c68be539  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_small_timeline_20261108/analyze.py
+cc178146ca69be669767c1944c70508b1f77e8e663a670529dffb73bb28b519e  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_small_timeline_20261108/runner.py
+7fbe94613b8ebbdd01e08b95615a6650990f16677196ebc0911652b1d89286b1  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_small_timeline_20261108/rank.sh
+ce4e670a66e4dc15341e6600b289ec170441450caba19cf2ff5fd6ea258978a6  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_small_timeline_20261108/runtime.sh
+92394c29009c721ad94e3a585368ab5f9e3aaf1a86ee06ea75f97c6a128bf9dd  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_small_timeline_20261108/run.sbatch

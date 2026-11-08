@@ -1,0 +1,234 @@
+{
+  "status": "pass",
+  "sqlite": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r3/jf-64-b16-s4-pool2.sqlite",
+  "cuda_identity": {
+    "globalPid": 328577010630656,
+    "device": 0,
+    "context": 1
+  },
+  "phases": {
+    "PIPELINE_64_EVENTS": {
+      "start_ns": 8101202177,
+      "end_ns": 11118463626,
+      "streams": [
+        13,
+        14
+      ],
+      "kernel_counts": {
+        "gather_canonical_u16": 16,
+        "calibrate": 16,
+        "accept_events": 16,
+        "accumulate": 16
+      },
+      "selected": {
+        "kernel_union_ns": 93751212,
+        "cross_stream_overlap_ns": 0,
+        "overlap_fraction_of_kernel_busy_time": 0.0,
+        "max_concurrent_streams": 1,
+        "first_start_ns": 9713822976,
+        "last_end_ns": 11112769320
+      },
+      "all_kernels": {
+        "kernel_union_ns": 95551983,
+        "cross_stream_overlap_ns": 0,
+        "overlap_fraction_of_kernel_busy_time": 0.0,
+        "max_concurrent_streams": 1,
+        "first_start_ns": 9615730622,
+        "last_end_ns": 11112769320
+      },
+      "handoffs": {
+        "gaps_ns": [
+          26960188,
+          19519637,
+          14016225,
+          29398172,
+          19861733,
+          21196199,
+          30323185,
+          45513869,
+          20654944,
+          18944461,
+          22360717,
+          26286638,
+          19034529,
+          17303338,
+          26220134
+        ],
+        "next_launch_before_previous_sum_end": 0
+      }
+    },
+    "RESIDENT_CONTROL_8_EVENTS": {
+      "start_ns": 11120560942,
+      "end_ns": 11130407878,
+      "streams": [
+        19,
+        20
+      ],
+      "kernel_counts": {
+        "calibrate": 2,
+        "accept_events": 2,
+        "accumulate": 2
+      },
+      "selected": {
+        "kernel_union_ns": 9474351,
+        "cross_stream_overlap_ns": 104609,
+        "overlap_fraction_of_kernel_busy_time": 0.011041283988739704,
+        "max_concurrent_streams": 2,
+        "first_start_ns": 11120928532,
+        "last_end_ns": 11130402883
+      },
+      "all_kernels": {
+        "kernel_union_ns": 9474351,
+        "cross_stream_overlap_ns": 116417,
+        "overlap_fraction_of_kernel_busy_time": 0.012287596269127036,
+        "max_concurrent_streams": 2,
+        "first_start_ns": 11120928532,
+        "last_end_ns": 11130402883
+      },
+      "handoffs": {
+        "gaps_ns": [
+          -8465748
+        ],
+        "next_launch_before_previous_sum_end": 1
+      }
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": 1,
+      "text": "Profiling has started.",
+      "globalPid": -144115188075855872
+    },
+    {
+      "severity": 1,
+      "text": "Process was launched by the profiler, see /lscratch/monarin/jf-small-timeline-43829731/tmp/nvidia/nsight_systems/quadd_session_102807486/streams/pid_2807500_stdout.log and stderr.log for program output",
+      "globalPid": 328577010630656
+    },
+    {
+      "severity": 1,
+      "text": "Common injection library initialized successfully.",
+      "globalPid": 328577010630656
+    },
+    {
+      "severity": 1,
+      "text": "OS runtime libraries injection initialized successfully.",
+      "globalPid": 328577010630656
+    },
+    {
+      "severity": 1,
+      "text": "Buffers holding CUDA trace data will be flushed on CudaProfilerStop() call. See --flush-on-cudaprofilerstop to control this behavior.",
+      "globalPid": 328577010630656
+    },
+    {
+      "severity": 1,
+      "text": "Loaded CUPTI library: /sdf/group/lcls/ds/tools/nsight-2025.3.1/target-linux-x64/libcupti.so.12.9",
+      "globalPid": 328577010630656
+    },
+    {
+      "severity": 1,
+      "text": "Enabling trace for device graph launch",
+      "globalPid": 328577010630656
+    },
+    {
+      "severity": 1,
+      "text": "CUDA injection initialized successfully.",
+      "globalPid": 328577010630656
+    },
+    {
+      "severity": 2,
+      "text": "Scheduling information is absent. The thread activity is deduced based on OS runtime libraries traces. This is inaccurate and does not take into account asynchronous interrupts and exception faults.",
+      "globalPid": -144115188075855872
+    },
+    {
+      "severity": 1,
+      "text": "Number of NVTX events collected: \t10346.",
+      "globalPid": 328577010630656
+    },
+    {
+      "severity": 2,
+      "text": "No NVTX events collected. Does the process use NVTX?",
+      "globalPid": 328580600954880
+    },
+    {
+      "severity": 2,
+      "text": "No NVTX events collected. Does the process use NVTX?",
+      "globalPid": 328580701618176
+    },
+    {
+      "severity": 1,
+      "text": "Number of CUDA events collected: \t4851.",
+      "globalPid": 328577010630656
+    },
+    {
+      "severity": 2,
+      "text": "CUDA profiling might have not been started correctly.",
+      "globalPid": 328580600954880
+    },
+    {
+      "severity": 2,
+      "text": "No CUDA events collected. Does the process use CUDA?",
+      "globalPid": 328580600954880
+    },
+    {
+      "severity": 2,
+      "text": "CUDA profiling might have not been started correctly.",
+      "globalPid": 328580701618176
+    },
+    {
+      "severity": 2,
+      "text": "No CUDA events collected. Does the process use CUDA?",
+      "globalPid": 328580701618176
+    },
+    {
+      "severity": 1,
+      "text": "Number of OS runtime libraries events collected: \t27225.",
+      "globalPid": 328577010630656
+    },
+    {
+      "severity": 1,
+      "text": "Number of OS runtime libraries events collected: \t6.",
+      "globalPid": 328580600954880
+    },
+    {
+      "severity": 1,
+      "text": "Number of OS runtime libraries events collected: \t3.",
+      "globalPid": 328580701618176
+    },
+    {
+      "severity": 1,
+      "text": "Common injection library initialized successfully.",
+      "globalPid": 328580600954880
+    },
+    {
+      "severity": 1,
+      "text": "OS runtime libraries injection initialized successfully.",
+      "globalPid": 328580600954880
+    },
+    {
+      "severity": 1,
+      "text": "Common injection library initialized successfully.",
+      "globalPid": 328580701618176
+    },
+    {
+      "severity": 1,
+      "text": "OS runtime libraries injection initialized successfully.",
+      "globalPid": 328580701618176
+    },
+    {
+      "severity": 1,
+      "text": "NVTX injection initialized successfully.",
+      "globalPid": 328577010630656
+    },
+    {
+      "severity": 1,
+      "text": "Number of CUPTI events produced: \t7267, CUPTI buffers: 50.",
+      "globalPid": 328577010630656
+    },
+    {
+      "severity": 1,
+      "text": "Profiling has stopped.",
+      "globalPid": -144115188075855872
+    }
+  ],
+  "limitations": "Instrumented short diagnostic, includes startup/warmup. Resident control bypasses I/O and dense gather; demonstrates possibility, not guaranteed or efficient overlap. No throughput or copy/compute-overlap claim."
+}

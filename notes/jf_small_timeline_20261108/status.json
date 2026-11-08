@@ -1,0 +1,37 @@
+{
+  "phase": "validated",
+  "base": "b81b5a424",
+  "job": "43829731",
+  "round": 0,
+  "round_limit": 3,
+  "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r3",
+  "unresolved_findings": [],
+  "attempts": [
+    {
+      "job": "43829133",
+      "status": "failed before data",
+      "reason": "One Slurm task supplied only one MPI slot; corrected to three tasks"
+    },
+    {
+      "job": "43829309",
+      "status": "workload passed",
+      "reason": "Windowed capture had possible event completeness warnings; superseded by full-process capture"
+    }
+  ],
+  "checks": {
+    "native_job": "pass",
+    "event_identity": 64,
+    "pipeline_executions": 16,
+    "subbatch_size": 4,
+    "pressure_drains": 0,
+    "bank_events": [
+      32,
+      32
+    ],
+    "resident_events": 8,
+    "pixel_sample_0": "pass",
+    "pipeline_overlap_ns": 0,
+    "resident_overlap_ns": 104609,
+    "source_hashes": "pass"
+  }
+}
