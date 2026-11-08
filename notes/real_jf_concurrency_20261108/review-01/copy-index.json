@@ -1,0 +1,132 @@
+[
+  {
+    "file": "clean-s1-r1-report.json",
+    "bytes": 26414,
+    "sha256": "ad6b82f18388f117db48cf3cbb03cb146bf7ccd2733c789e0c8df717faaaaebd"
+  },
+  {
+    "file": "clean-s1-r2-report.json",
+    "bytes": 26416,
+    "sha256": "bc35090ff710a8665b7be7c38fa02f4da1b9ecaf21e2f44cc237f8df7f3fc018"
+  },
+  {
+    "file": "clean-s1-r3-report.json",
+    "bytes": 26414,
+    "sha256": "c0df575dec92d84ec7224866dd3660eb26baa1dbb25f7eb7657e2fe55d175ab6"
+  },
+  {
+    "file": "clean-s2-r1-report.json",
+    "bytes": 27450,
+    "sha256": "f300b550c165b971f0c6e3e42e698596fe2cdedd4bec7aeec71fa315d5fbe5bb"
+  },
+  {
+    "file": "clean-s2-r2-report.json",
+    "bytes": 27445,
+    "sha256": "91275b94ea0bec62e93fe59f1b0ac1ee34cd18c7463c7e8a3b177a6c16b6b1dc"
+  },
+  {
+    "file": "clean-s2-r3-report.json",
+    "bytes": 27448,
+    "sha256": "bcbee97fa81843634ca86be470581825a0bc511b9120ce6528739169453da5cc"
+  },
+  {
+    "file": "control-8m-report.json",
+    "bytes": 100554,
+    "sha256": "65133ab0670da49b4acd01354d6c82650fe0a0e32e680b46a576852b0444f15e"
+  },
+  {
+    "file": "implementation.patch",
+    "bytes": 216607,
+    "sha256": "a10b4215e9d45c791915dfcde610d515a21f445b34143e140691d7f6737f57f7"
+  },
+  {
+    "file": "installed-runtime/psana.detector.UtilsJungfrau.py",
+    "bytes": 36513,
+    "sha256": "719b72d04fb02b8a7a388ce81a9c74faf2fc863b87a26a85c4efaa7dc70c654d"
+  },
+  {
+    "file": "installed-runtime/psana.detector.jungfrau.py",
+    "bytes": 4531,
+    "sha256": "d25d2e0d16d59790dc87c6d35eb7aa4326e2a49c819815ff46c82a94accd9397"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_detector.py",
+    "bytes": 18677,
+    "sha256": "c1a118c3d1477c1693f1e55c3a11c197c2ded5a61ec570a94f9ad1d8a396faac"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_events.py",
+    "bytes": 53147,
+    "sha256": "cfc6b2bbede9f5081560a153067289dc4bc4aee794f18d4a62b459bc51b930db"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_input.py",
+    "bytes": 29076,
+    "sha256": "428cdf7acff0b6ed2e649e0032180db71249f25be9fdac69dbdf00079006037e"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_kvikio_read.py",
+    "bytes": 21712,
+    "sha256": "aaf846982556cb8ff72e4e0ddde04903561269ffc08d4b6183bd07e1a1a2bbcd"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_stream.py",
+    "bytes": 14864,
+    "sha256": "9a937e68645e51d384d19267a6b23639e54bf0276cfe606583f9f820fa71d079"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_task_batch.py",
+    "bytes": 10250,
+    "sha256": "cf6242c263d84e214cac40899e0e2df825ff1137577f894714819fbc5c7de8e7"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpudgram.batch.py",
+    "bytes": 17217,
+    "sha256": "41be73a2292cd667d3fe7798b3c28fc0e82758a5c036f38cadf0632872aad08c"
+  },
+  {
+    "file": "installed-runtime/psana.psexp.event_manager.py",
+    "bytes": 15777,
+    "sha256": "bc7b3bdb588e4fd9675949b8f0b0a88ad0f82a9de898294a0bdc0739343776f2"
+  },
+  {
+    "file": "installed-runtime/psana.py",
+    "bytes": 1199,
+    "sha256": "d5940dadb8008720bc7cd40aeec2edc2dbeede820f0d86508582bfed677f710d"
+  },
+  {
+    "file": "pixel-acceptance-report.json",
+    "bytes": 27477,
+    "sha256": "6cecde46a9f3092b110b031445cf47dd81ae2fcfbcc6fea1079d7a2b9a1dbc91"
+  },
+  {
+    "file": "trace-524288-kernels.csv",
+    "bytes": 77288,
+    "sha256": "71052d6871fbf87f3b867bab3accc088333425d21d53c44a39230829852be5a8"
+  },
+  {
+    "file": "trace-524288-launches.csv",
+    "bytes": 9130,
+    "sha256": "3439d9ad637ae96feaf06b0034b205871ecfe0a1bde4740197e0e0db63d541cc"
+  },
+  {
+    "file": "trace-8388608-kernels.csv",
+    "bytes": 524512,
+    "sha256": "3f0f2d9395ba3b23d92d9bd552a24e83a47fff13aa12332c623e2bc90d6ddd4e"
+  },
+  {
+    "file": "trace-8388608-launches.csv",
+    "bytes": 61846,
+    "sha256": "ba696b0b7e64436c1901bf4659b7d79daef86285f165b22302fa034ea7df246e"
+  },
+  {
+    "file": "traced-524288-report.json",
+    "bytes": 27451,
+    "sha256": "7c66dfeaf129763221b11cb9021361afa2a409041bf07efc1c959a086936fd35"
+  },
+  {
+    "file": "traced-8388608-report.json",
+    "bytes": 100555,
+    "sha256": "1e23965b67495533c516afcacd5949a0024a14246ac205747d87a4415d60ac78"
+  }
+]

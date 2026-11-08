@@ -59,7 +59,13 @@ the threshold changes batching as well as admission behavior; the rate differenc
 cannot be attributed solely to removal of pressure drains. The 100th drain is
 counted as warmup because admission precedes the next task's warmup-boundary join.
 Clean rates use 900 measured events plus completed GPU tail after a 100-event
-warmup. Variability is visible even within this allocation.
+warmup. This existing rate window starts inside the first measured task callback,
+after the boundary join. That batch's input I/O/parsing and dense gather have
+already been submitted; the join also completes its gather, excluding that
+preparation from the denominator. It is therefore a callback-boundary rate,
+not an exact 900-event interval starting before all input I/O. The full-trace
+overlap result is independent of this timing boundary. Variability is visible
+even within this allocation.
 
 Separate Nsight Systems 2025.3.1 captures show **zero cross-stream kernel overlap**
 at both targets, for both the four selected gather/calibrate/accept/sum kernels
@@ -76,9 +82,12 @@ read, completion wait, parsing or host-preparation operation causes the delay.
 No core fix is included. The next investigation should inspect that interval.
 
 This reproduces the missing kernel concurrency on full real JF data, as in the
-[sim10 comparison](../mfx_expand10_512k_20261108/README.md). It also demonstrates
-that the small-group restriction can cause drains on real data when deliberately
-selected with 8 MiB. The real run at the framework's default 1 MiB would already
+[sim10 comparison](../mfx_expand10_512k_20261108/README.md). It also shows
+admission drains under the 8 MiB small-group setting. This count-only experiment
+does not distinguish small-group credit pressure from raw-slot exhaustion; the
+[earlier sim10 diagnostic](../mfx_expand10_pressure_20261106/README.md) attributed
+its failures to the credit path, but that cause was not separately instrumented
+in this real-data run. The real run at the framework's default 1 MiB would already
 classify these datagrams as large; we did not run a separate default-target case.
 
 The earlier sim10 test used another node/time and a different I/O volume/path.
@@ -92,7 +101,9 @@ cube acceptance, sustained performance or 10k qualification claim is made.
 Full reports, native traces and SQLite exports:
 `/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/`
 
-[validation-summary.json](validation-summary.json) records all cases;
+[validation-summary.json](validation-summary.json) is a coordinator-generated
+compaction of all cases, deriving bin totals and callback counts. The full
+per-case `report.json` files bound in artifacts.json are authoritative;
 [artifacts.json](artifacts.json) binds scratch evidence by size and SHA256;
 [reference.json](reference.json) holds CPU identities and pixel references.
 Execution source hashes were rechecked across every accepted report, CPU module
@@ -100,3 +111,8 @@ reference and launch manifest. The job logs here normalize terminal progress
 and trailing whitespace; the originals remain in the sibling `_logs` directory.
 See [reproduction.md](reproduction.md) for exact commands, CSV queries and analysis
 boundaries, and [status.json](status.json) for the independent review state.
+
+Independent restricted Claude review **passed** code commit `e720d46a6`, with no
+blocking findings. [Review responses](review-01/response.md) address four low
+notes; the kernel-name-format robustness suggestion is deferred because the
+captured exports use bare names. Closure changes only documentation/evidence.

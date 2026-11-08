@@ -1,0 +1,63 @@
+{
+  "reviewed_commit": "e720d46a636a370e8f5279d06e470483772303a7",
+  "verdict": "pass",
+  "summary": "Read-only review of the real-JF 1,000-event concurrency comparison at e720d46a6. The patch touches only notes/real_jf_concurrency_20261108/ (28 new files, no core/runtime/kernel changes; implementation.patch diff headers enumerated). Event cap and identity are enforced end to end: every DataSource uses max_events=1000, the CPU reference records all 1,000 timestamps and binds them to the sim10 pilot manifest, run_real.py rejects any timestamp mismatch or overrun and requires delivered_events==1000, and source file size/mtime is checked before and after. Stream and array lifetimes are sound: banks keep the EventPool stream objects by identity, every device array is registered via keepalive before launch, presence is a pool-owned slot buffer consumed on the same stream, and task.close() joins before releasing banks. Raw/calibrated reference validity: CPU cversion-3 with frozen constants and the GPU calibrate(use_offset=True, no masks) are the same settings bit-validated in stage 2; the pixel-acceptance report shows all three sample indices checked and passing with full-image SHA256. Measurement boundaries match the sim10 runner contract (warmup rounded to a callback, 100/900 split confirmed by callback phases, tail included, no D2H in clean runs, pixel-acceptance rate excluded). Trace analysis is correct: half-open sweep with distinct-stream depth, single GPU/context/process check, task-kernel counts tied to accepted callbacks, FIFO gather/sum pairing per stream with correlationId-matched launch API; hand-recomputed first handoffs from the CSV exports fall within the reported ranges and all summary numbers in the README match the summaries and reports. Conclusions are appropriately hedged (no copy/compute overlap, no causal isolation, no real-vs-sim comparison, no 10k/sustained claim). Two low-severity wording/documentation findings and two low robustness notes are recorded; none block.",
+  "checks": [
+    "Scope: implementation.patch diff headers list only 28 files under notes/real_jf_concurrency_20261108/; no psana core, runtime, calibration or cube-kernel files changed.",
+    "Event cap/identity: DataSource(max_events=1000) in prepare_reference.py and run_real.py; frozen gpu_events.py honors dsparms.max_events at lines 1029/1077; run_real.py requires per-event timestamp equality with the CPU reference and delivered_events==1000; reference binds timestamps to the sim10 pilot manifest and source_stat before/after.",
+    "Stream/array lifetimes: Bank retains stream object and _bank matches by identity; EventPool streams are persistent per slot; calibrate(publish=False) keepalives the output, cube.py keepalives errors before cp.subtract, add() keepalives images/errors/bins/accepted/host_bins/bank arrays before launch; close() synchronizes before clearing banks.",
+    "Reference validity: CPU det.raw.calib(event, cversion=3, cmpars=None) with det.raw._calibconst=frozen constants; GPU JungfrauCalibration(use_offset=True, no status) matches the stage-2 bit-validated configuration; pixel-acceptance-report pixel_checks=[0,500,999], status pass; run_real.py requires sorted(checked)==SAMPLES in validate mode.",
+    "Measurement boundaries: Window.before/after/finish contract reused from timing.py; 15 warmup-phase callbacks = exactly 100 events (7,7,6 batching) at 512 KiB and 100 one-event callbacks at 8 MiB; no D2H in clean runs; traced and pixel-acceptance rates excluded from the clean table.",
+    "Evidence provenance: launch-sha256.txt entries equal execution-source-hashes.json code entries for all seven submitted files; clean-s1-r1 raw report runtime_files/code_sha256 equal execution-source-hashes.json; failed-wrapper-report.json shows the pre-fix run_real.py/cube.py hashes consistent with the described fixes; copy-index.json SHA256/bytes equal artifacts.json for all ten reports; scheduler-accounting shows the two failed jobs and 43826632 COMPLETED 0:0 in 2m53s.",
+    "Trace analysis: analyze_real.py half-open interval sweep with distinct-stream depth; one GPU/context/process check; task kernel counts equal callbacks; both execution streams required; gather/sum FIFO pairing with correlationId launch lookup and ambiguity rejection; test_analysis.py fixtures exercise serial/overlap and three rejection paths; analysis-tests.log shows 2 tests OK.",
+    "Numbers: hand-recomputed first 512 KiB handoff 6068681803-6035388594=33.29 ms and first 8 MiB handoff 6383360547-6376213391=7.15 ms lie inside the reported 22.245-59.684 ms and 5.697-16.558 ms ranges; kernel_groups 75+75 per task kernel at 512 KiB and 500+500 at 8 MiB (8 kernel names, 1200/8000 total); clean rates 148.2-169.0 median 168.0 and 153.6-186.2 median 185.8; control 84.2; bank splits 500/500; pressure trims 0/0 and 100/899 all match the reports.",
+    "Diagnostics: trace-diagnostics.json shows only severity-1 entries for the CUDA-producing globalPid in both traces; severity-2 no-CUDA/no-NVTX entries belong to other PIDs, as the README states.",
+    "Conclusion scope: README/reproduction state no copy/compute-overlap, no causal isolation of the inter-task gap, no real-vs-sim speed comparison, no sustained/10k claim, Nsight perturbation, cache warming and KvikIO CPU fallback."
+  ],
+  "limitations": [
+    "No commands were run: SHA256 values in artifacts.json, copy-index.json, launch-sha256.txt and execution-source-hashes.json were checked for mutual consistency only, not recomputed; byte-equality of build/real-jf-evidence copies with scratch originals is not independently verified.",
+    "The SQLite traces and .nsys-rep files were not opened; trace conclusions rest on the committed summaries and the CSV exports, which I spot-checked by hand for the first handoffs and kernel ordering rather than exhaustively.",
+    "The frozen runtime's gpu_input_group.py (InputGroupPool.plan_slots) is not among the copied installed-runtime files; the small-group credit versus raw-slot semantics were read from the repository source, which may differ from the frozen install.",
+    "implementation.patch was read in full only for its diff headers and the first 783 lines; file contents were reviewed from the checkout itself.",
+    "Job logs in the notes directory are normalized copies; originals under the _logs scratch directory were not read.",
+    "Git state of the detached worktree could not be verified by command; the reviewed SHA is taken from the task statement and the checkout contents."
+  ],
+  "findings": [
+    {
+      "id": "RJF-01",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/real_jf_concurrency_20261108/README.md",
+      "line": 79,
+      "evidence": "README states the 8 MiB control 'demonstrates that the small-group restriction can cause drains on real data'. The counter in timing.py admission_counts wraps _trim_gpu_caches, which the frozen gpu_events.py (line 931-935) invokes on any GpuMemoryPressureError from _issue_group_reads; that error at line 819 reads 'input groups await stream credit or raw slots', and plan_slots in gpu_input_group.py returns None for either the small-stream credit or exhausted free slots. The measurement therefore does not isolate the small-group credit as the cause.",
+      "requested_change": "Reword to 'admission failures (small-group credit or raw-slot backpressure) cause drains' or cite the earlier diagnostic that attributed drains to the credit path; keep the current non-causal rate wording. Can be deferred to the next notes update."
+    },
+    {
+      "id": "RJF-02",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/real_jf_concurrency_20261108/validation-summary.json",
+      "line": 53,
+      "evidence": "validation-summary.json presents 'checks.total_bin_count' and 'checks.per_bank_totals' and an integer 'callbacks': 150, whereas the raw report (build/real-jf-evidence/clean-s1-r1-report.json lines 149-358, 1112) contains 'checks.counts' (100 bins), 'checks.per_bank_counts' and a 150-element callbacks list. README line 95 calls the summary a record of all cases without noting it is a derived compaction.",
+      "requested_change": "Add one sentence to README or reproduction.md stating that validation-summary.json is a coordinator-generated compaction (bin totals, callback counts) and that the per-case report.json files bound in artifacts.json are authoritative. Deferrable."
+    },
+    {
+      "id": "RJF-03",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/real_jf_concurrency_20261108/analyze_real.py",
+      "line": 64,
+      "evidence": "TASK_NAMES matching strips a '(' signature (line 54) but the gather/sum pairing uses exact equality r['name']=='gather_canonical_u16' and 'accumulate' (lines 64-65). If an export carried signatures, both lists would be empty, executions would be empty, and min(gaps) at line 77 would raise a bare ValueError instead of the intended diagnostic. Not triggered here: CSV exports show bare kernel names.",
+      "requested_change": "Use the same normalized name for pairing and add an explicit 'no executions' error before computing gaps. Deferred by scope (no analysis change required for this evidence)."
+    },
+    {
+      "id": "RJF-04",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/real_jf_concurrency_20261108/analysis-tests.log",
+      "line": 1,
+      "evidence": "run.sbatch runs only test_preparation.py (line 25); the two SQLite-analysis tests were run host-side and the committed log carries no host, Python version or source-hash provenance, unlike the job logs and reports.",
+      "requested_change": "Optionally record the host/Python/commit used for the analysis test run in reproduction.md or status.json. Deferrable."
+    }
+  ]
+}

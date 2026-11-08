@@ -1,7 +1,7 @@
 {
-  "phase": "validated",
+  "phase": "complete",
   "base": "539bf30e5",
-  "round": 0,
+  "round": 1,
   "round_limit": 3,
   "job": "43826632",
   "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3",
@@ -26,6 +26,16 @@
     "host_preparation_tests": 9,
     "sqlite_analysis_tests": 2,
     "kernel_overlap_ns": 0,
-    "code_hash_verification": "pass"
-  }
+    "code_hash_verification": "pass",
+    "host_analysis_provenance": "analysis-tests-provenance.json"
+  },
+  "implementation_sha": "e720d46a636a370e8f5279d06e470483772303a7",
+  "review_worktree": "/tmp/real-jf-review-20261108-r1",
+  "reviewed_sha": "e720d46a636a370e8f5279d06e470483772303a7",
+  "review_verdict": "pass",
+  "deferred_nonblocking_findings": [
+    "RJF-03"
+  ],
+  "responses": "review-01/response.md",
+  "closure": "Documentation/evidence only; no code changes after reviewed SHA"
 }

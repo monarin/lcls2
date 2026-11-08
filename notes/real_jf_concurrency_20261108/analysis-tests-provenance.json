@@ -1,0 +1,23 @@
+{
+  "host": "sdfiana025",
+  "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+  "executable": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/bin/python",
+  "reviewed_code_sha": "e720d46a636a370e8f5279d06e470483772303a7",
+  "exit_code": 0,
+  "command": [
+    "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "notes/real_jf_concurrency_20261108",
+    "-p",
+    "test_analysis.py",
+    "-v"
+  ],
+  "source_sha256": {
+    "test_analysis.py": "1c0d206bdd77218021d0cab94da3b38b861cd5a784599e1943ebbee968018726",
+    "analyze_real.py": "9cfb19c7ec2271ebec709ab05c4a3df67fe06a749b43b0a3cae4d8496057b700"
+  },
+  "reason": "Record requested host-test provenance after RJF-04; no code changes"
+}
