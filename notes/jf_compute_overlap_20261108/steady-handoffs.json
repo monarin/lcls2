@@ -1,0 +1,95 @@
+{
+  "criterion": "Next gather launch API returns before previous cross-stream cube sum ends; first four callbacks excluded",
+  "pairs": [
+    {
+      "previous_stream": 13,
+      "next_stream": 14,
+      "next_launch_end_ns": 10948952326,
+      "previous_sum_end_ns": 10951415680,
+      "lead_ns": 2463354,
+      "qualifies": true
+    },
+    {
+      "previous_stream": 14,
+      "next_stream": 13,
+      "next_launch_end_ns": 11003108281,
+      "previous_sum_end_ns": 11003200158,
+      "lead_ns": 91877,
+      "qualifies": true
+    },
+    {
+      "previous_stream": 13,
+      "next_stream": 14,
+      "next_launch_end_ns": 11050099512,
+      "previous_sum_end_ns": 11054966973,
+      "lead_ns": 4867461,
+      "qualifies": true
+    },
+    {
+      "previous_stream": 14,
+      "next_stream": 13,
+      "next_launch_end_ns": 11112775602,
+      "previous_sum_end_ns": 11106317434,
+      "lead_ns": -6458168,
+      "qualifies": false
+    },
+    {
+      "previous_stream": 13,
+      "next_stream": 14,
+      "next_launch_end_ns": 11163576622,
+      "previous_sum_end_ns": 11164024211,
+      "lead_ns": 447589,
+      "qualifies": true
+    },
+    {
+      "previous_stream": 14,
+      "next_stream": 13,
+      "next_launch_end_ns": 11202744607,
+      "previous_sum_end_ns": 11224653271,
+      "lead_ns": 21908664,
+      "qualifies": true
+    },
+    {
+      "previous_stream": 13,
+      "next_stream": 14,
+      "next_launch_end_ns": 11277791572,
+      "previous_sum_end_ns": 11266820365,
+      "lead_ns": -10971207,
+      "qualifies": false
+    },
+    {
+      "previous_stream": 14,
+      "next_stream": 13,
+      "next_launch_end_ns": 11337307265,
+      "previous_sum_end_ns": 11329315546,
+      "lead_ns": -7991719,
+      "qualifies": false
+    },
+    {
+      "previous_stream": 13,
+      "next_stream": 14,
+      "next_launch_end_ns": 11397593858,
+      "previous_sum_end_ns": 11389090907,
+      "lead_ns": -8502951,
+      "qualifies": false
+    },
+    {
+      "previous_stream": 14,
+      "next_stream": 13,
+      "next_launch_end_ns": 11445552705,
+      "previous_sum_end_ns": 11448928893,
+      "lead_ns": 3376188,
+      "qualifies": true
+    },
+    {
+      "previous_stream": 13,
+      "next_stream": 14,
+      "next_launch_end_ns": 11496410864,
+      "previous_sum_end_ns": 11500463962,
+      "lead_ns": 4053098,
+      "qualifies": true
+    }
+  ],
+  "steady_pair_count": 11,
+  "qualifying_count": 7
+}

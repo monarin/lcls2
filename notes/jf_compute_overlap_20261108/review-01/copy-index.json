@@ -1,0 +1,20 @@
+[
+  {
+    "path": "/tmp/jf-compute-review-20261108-r1/build/jf-compute-evidence/kernels.csv",
+    "bytes": 19603,
+    "sha256": "ff9d129b351fe8170aa2a3c255d1136bd224900ddc2a91b2cfbd1dbe14778a43",
+    "source": "Read-only queries against native SQLite identified in artifacts.json"
+  },
+  {
+    "path": "/tmp/jf-compute-review-20261108-r1/build/jf-compute-evidence/launches.csv",
+    "bytes": 19365,
+    "sha256": "ed00b14aa0761faac407649c90dd22d05cd9b5b6af8f5d4d8605af0ba03bc798",
+    "source": "Read-only queries against native SQLite identified in artifacts.json"
+  },
+  {
+    "path": "/tmp/jf-compute-review-20261108-r1/build/jf-compute-evidence/nvtx.csv",
+    "bytes": 5644,
+    "sha256": "4396f73b7357f11e1cd9b7ee7b712e3ca1376cbff18b44d0cd30c30e39fb2f31",
+    "source": "Read-only queries against native SQLite identified in artifacts.json"
+  }
+]

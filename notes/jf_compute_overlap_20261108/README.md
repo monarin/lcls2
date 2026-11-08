@@ -85,3 +85,15 @@ baseline, UCX unmatched-tag warnings appeared after PASS; the job exited 0 and
 exact event checks passed. Their cause is not investigated. Committed job logs
 remove progress formatting, NULs and trailing whitespace; byte-exact originals
 are hashed in artifacts.json. Native workload JSON is copied byte-for-byte.
+
+Independent restricted Claude review **passed** executable commit `34b5e18c9`,
+with no blocking findings. See [review responses](review-01/response.md).
+[steady-handoffs.json](steady-handoffs.json) records the exact launch-return
+criterion for all eleven steady pairs; seven qualify. The older summary field
+`next_launch_before_previous_sum_end` uses launch *start* across all fifteen
+pairs, so use the supplemental file for the stricter steady count.
+Calibration has a separate host enqueue span; cube count/sum host launches are
+identified via CUDA correlation IDs and kernel names within the task span.
+Before rerunning against an updated checkout, compare the calibration example
+with its recorded SHA in source-verification.json and revalidate the private ABI
+if it differs. This experiment has no automatic ABI hash guard.

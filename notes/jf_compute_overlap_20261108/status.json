@@ -1,10 +1,29 @@
 {
-  "phase": "review_preparation",
+  "phase": "complete",
   "base": "18198d703",
   "job": "43837236",
   "round": 1,
   "round_limit": 3,
   "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_compute_overlap_20261108_r1",
-  "checks": "Native workload and CPU submission concurrency assertions pass",
-  "unresolved_findings": []
+  "checks": {
+    "native_workload": "pass",
+    "events": 64,
+    "calibration_kernels": 192,
+    "steady_launch_return_early": 7,
+    "steady_adjacent_pairs": 11,
+    "first_repeated_image_sha": "pass",
+    "source_hashes": 35
+  },
+  "unresolved_findings": [],
+  "implementation_sha": "34b5e18c986c62e8ebf11c314bec24f867c9c982",
+  "review_worktree": "/tmp/jf-compute-review-20261108-r1",
+  "reviewed_sha": "34b5e18c986c62e8ebf11c314bec24f867c9c982",
+  "review_verdict": "pass",
+  "deferred_nonblocking_findings": [
+    "JFS-03",
+    "JFS-02",
+    "JFC-01",
+    "JFC-02"
+  ],
+  "closure": "Documentation/evidence only after reviewed executable commit; optional future instrumentation/robustness changes deferred"
 }

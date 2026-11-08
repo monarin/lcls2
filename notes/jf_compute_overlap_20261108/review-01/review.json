@@ -1,0 +1,66 @@
+{
+  "reviewed_commit": "34b5e18c986c62e8ebf11c314bec24f867c9c982",
+  "verdict": "pass",
+  "summary": "Read-only review of notes/jf_compute_overlap_20261108 at 34b5e18c9. The runner derives from the reviewed jf_small_timeline runner and adds only RepeatedCalibration: base.calibrate allocates/keeps the output once (batch.keepalive), then the single cached cp.RawKernel is replayed 11 more times on the supplied stream with the same raw/present/peds/gain/offset/out pointers; the 14-argument tuple (raw used as the unused status/extra/valid pointers, status_bits/stextra_bits = 0, grid min(65535,(size+255)//256) x 256) matches jungfrau_calibration.py lines 131-136 exactly for use_offset=True, status/extra disabled, with_validity=False, and the wrapper requires those conditions plus len(_kernels)==1. No host sync is added; the only extra allocation is one 64 MiB out[0].copy() in the first callback, hashed after task.join() against reference samples['0'].calibrated_sha256 (7a0f9b14... matches report.repeated_calibration_sample_sha256). The resident control uses task.calibration.base (single pass), and the kernels.csv control range shows exactly 2 calibrate kernels on streams 19/20. The pipeline range has 192 calibrate kernels on streams 13/14 and 16 each of gather/accept/accumulate; launches.csv has 317 cuLaunchKernel rows, one per kernel, all on the NVTX thread. I independently confirmed the cited handoffs from the CSVs: stream-14 accumulate (corr 6390) ends 11224653271; stream-13 gather launch (corr 6857) 11202731358-11202744607 (21.909 ms early), first calibrate API (6868) ends 11202965574, twelfth (6901) ends 11203119262, sum API (6923) ends 11203302820, gather kernel starts 11210830012, first calibrate kernel 11215872562; the two other README rows (4192 vs 3725, 5258 vs 4791) also match. All seven negative steady gaps hold under the stricter launch_end<previous sum_end criterion, and the device kernel order around 11.21-11.22 s yields ~272 us of the 292,481 ns selected overlap, consistent with the summary. Provenance hashes are mutually consistent across launch-sha256.txt, report.json source_sha256 and source-verification.json; inherited cube.py/common.py/runtime hashes equal the prior reviewed manifests. Job 43837236 COMPLETED 0:0, PASS line present, no severity-2 diagnostics for the CUDA-producing PID. Claims are properly hedged (no throughput, no cross-node comparison, no full cube-sum validation). Findings are low and non-blocking: analyzer still has no host fixture test (JFS-03), cube add() still shares the task NVTX span (JFS-02 partially addressed), the wrapper hardcodes the example ABI without a source-hash guard, and the summary records only a launch_start-based handoff count while acceptance uses launch_end. JFS-04 is resolved by the new resident timestamp guard.",
+  "checks": [
+    "Scope: directory contains runner.py, analyze.py, rank.sh, runtime.sh, run.sbatch, README/scope/status, report/timeline-summary/artifacts/source-verification, normalized job logs and scheduler accounting; no psana core, runtime or kernel source changes are claimed or evident; framework settings (batch 16, n_gpu_streams 2, 1.25 GiB, 512 KiB target, depth 2) unchanged from baseline.",
+    "ABI: RepeatedCalibration args (raw, present, peds, gain, offset, raw, out, uint64(raw.size), uint64(rows*cols), uint64(peds.shape[1]), uint64(0), raw, uint64(0), raw) match the 14-parameter calibrate signature and the base call at jungfrau_calibration.py:131-136 when status/extra/validity are disabled; grid/block identical; require() enforces use_offset and zero masks and a single cached kernel variant.",
+    "Lifetimes/synchronization: out is registered via batch.keepalive inside base.calibrate before any launch; replays occur under `with stream` on the same stream; constants come from batch.calibconst (run lifetime); no synchronize/get added in the task; sample copy is stream-ordered and read only after task.join() inside the PIPELINE range's ExitStack.",
+    "Control: resident_control sets cube.calibration=task.calibration.base; kernels.csv rows 311-318 show exactly one calibrate per control stream (19, 20) plus accept/accumulate; control raw/calibrated hashes compared to reference samples['0'] as before.",
+    "Workload acceptance (report.json): 64 timestamps, 16 callbacks of size 4 (4 warmup/12 steady alternating streams), 4 splits of [4,4,4,4] with capacity 603,879,936 and depth 2, pressure_drains 0, counts [32,32] with per-bank [[16,16],[16,16]], bank_events [32,32], repeated sample SHA equals reference calibrated_sha256 for event 0, resident timestamp guard present at runner.py:217.",
+    "Kernel counts from kernels.csv: 194 calibrate total (192 on streams 13/14 + 2 on 19/20), 52 gather/accept/accumulate (48 pipeline + 4 control); no kernels on streams other than 13/14/19/20; launches.csv has 317 cuLaunchKernel rows = 317 kernels, all globalTid 287008287426643 matching NVTX globalTid; cited correlation IDs 6857/6868/6901/6923/6390/4192/3725/5258/4791 each appear exactly once.",
+    "Handoff recomputation: steady pairs (executions[4:]) 4->5 10948952326<10951415680, 5->6 11003108281<11003200158, 6->7 11050099512<11054966973, 8->9 11163576622<11164024211, 9->10 11202744607<11224653271, 13->14 11445552705<11448928893, 14->15 11496410864<11500463962; the other four steady pairs are positive; seven of eleven matches README/summary, each pair alternates streams 13/14.",
+    "11.16-11.27 s window: stream-13 repeat12 NVTX 11202844716-11203122472 encloses calibrate APIs 6868-6901 (11202953955-11203119262), 12 consecutive correlation IDs step 3; stream-14 calibrate kernels 6359-6368 continue executing until 11215950450 while stream-13 gather kernel (11210830012) and first calibrate (11215872562) begin; submit_gather_task NVTX 11200515267-11203494567 confirms framework-side gather submission before task range 11202808797.",
+    "Overlap plausibility: hand-summed device overlaps around the 9->10 handoff (17,056 + 20,256 + 77,888 + 117,344 + 26,592 + 12,736 ns) plus small accumulate/gather overlaps at four other handoffs (4,864 + 5,057 + 4,576 + 5,344) total ~291.7 us, consistent with selected overlap 292,481 ns; full-phase aggregate not recomputed.",
+    "Analyzer: expected calibrate count scaled by settings.calibration_repeats==12 only for the pipeline phase; straddle check, exact Counter equality, two-stream requirement, FIFO gather/sum pairing, unique correlationId lookup with thread check, and the new steady cross-stream launch_end<sum_end assertion are present; intervals() reused unchanged from analyze_real.py.",
+    "Provenance: analyze/runner/rank/runtime/run.sbatch hashes identical in launch-sha256.txt, report.source_sha256 and source-verification.json; cube.py 6d741c98..., common.py 727ec671..., reference.json 7fa4c7a1..., gpu_events.py cfc6b2bb... and the other runtime hashes equal the jf_small_timeline and real_jf_concurrency manifests; artifacts.json binds nsys-rep (1,175,746 B), SQLite, report, launch manifest and byte-exact logs by SHA.",
+    "Job evidence: scheduler-accounting shows 43837236 COMPLETED 0:0 in 23 s on sdfampere040; .out has PASS then two UCX unmatched-tag warnings; .err shows RunParallel roles, GPU placement and the expected KvikIO CPU-fallback warning; timeline-summary diagnostics include no severity-2 entries for globalPid 287008287096832, only child no-CUDA/no-NVTX and scheduling-info notices.",
+    "Claim hedging: README and summary state diagnostic-only workload, no throughput or universal concurrency claim, different node from baseline, aggregate (not single-interval) overlap, control not used as pipeline evidence, no full cube-sum validation, UCX cause uninvestigated, normalized logs disclosed."
+  ],
+  "limitations": [
+    "No commands were run. SHA256 values were checked only for mutual consistency across committed manifests, not recomputed against the committed source files or the scratch artifacts.",
+    "The native .nsys-rep and SQLite exports on scratch were not opened; all trace conclusions rest on build/jf-compute-evidence/{kernels,launches,nvtx}.csv and the committed timeline-summary.json, whose byte-equivalence to the hash-bound SQLite is accepted from the coordinator.",
+    "Successful execution of analyze.py and the coordinator's AST/shell syntax checks are accepted from the committed summary and statement; I did not run them.",
+    "The aggregate overlap figures (292,481 ns selected, 1,205,029 ns all-kernel) were only spot-checked by hand at the cited handoffs, not fully recomputed over all 317 kernels.",
+    "Committed job logs are normalized copies; the removed content (nsys progress output, NULs) could not be inspected, and the UCX unmatched-tag warnings' cause remains uninvestigated as disclosed.",
+    "The git state of the detached worktree could not be verified by command; the reviewed SHA is taken from the task statement and checkout contents."
+  ],
+  "findings": [
+    {
+      "id": "JFS-03",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/jf_compute_overlap_20261108/analyze.py",
+      "line": 58,
+      "evidence": "The analyzer adds a new acceptance criterion (steady cross-stream launch_end < previous sum_end) and a 12x calibrate count expectation, but like its predecessor has no host fixture test; only intervals() is covered by the prior test_analysis.py. This review verified the seven qualifying handoffs and kernel counts by hand from the CSVs, so the result is not in doubt.",
+      "requested_change": "Optionally add a small SQLite fixture test covering the repeat-count expectation and the launch_end-based handoff assertion (pass and fail cases). Deferrable; no rerun needed."
+    },
+    {
+      "id": "JFS-02",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/jf_compute_overlap_20261108/runner.py",
+      "line": 67,
+      "evidence": "The new calibration_repeat12_enqueue NVTX span now isolates calibration host submission, but the cube add() (count/sum) host calls still share the enclosing 'task events=4' range; in the CSVs they are distinguished only via kernel names and correlation IDs (e.g. APIs 6907/6920/6923 after the span ends at 11203122472).",
+      "requested_change": "In a future capture wrap the add() call in its own NVTX span, or keep the README note that cube host calls are identified by kernel name. Deferrable."
+    },
+    {
+      "id": "JFC-01",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/jf_compute_overlap_20261108/runner.py",
+      "line": 75,
+      "evidence": "RepeatedCalibration hardcodes the example kernel's 14-argument ABI and grid shape. It matches jungfrau_calibration.py:131-136 at this commit and the first-image CPU-v3 hash passes, and source-verification.json records the example's hash (5a2590f1...), but nothing in the runner itself detects a future signature change in the example; an argument drift would only surface as a hash mismatch or a silent kernel fault.",
+      "requested_change": "Document (done in README) and optionally add a require() on the example file's SHA256 or on the kernel's expected argument count in any rerun. No change to current evidence."
+    },
+    {
+      "id": "JFC-02",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/jf_compute_overlap_20261108/analyze.py",
+      "line": 55,
+      "evidence": "handoffs.next_launch_before_previous_sum_end counts gaps computed from launch_start (15 gaps, 7 negative) while the acceptance assertion at line 58 and the README table use launch_end on steady pairs only. Both give seven here, but the summary does not record the launch_end-based steady count that the acceptance actually relies on.",
+      "requested_change": "Add an explicit summary field (e.g. steady_launch_end_before_previous_sum_end) so the recorded number corresponds to the asserted criterion. Deferrable; no rerun needed."
+    }
+  ]
+}
