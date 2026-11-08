@@ -1,0 +1,5 @@
+6ac3788dd07a7c67a56746889a58151d7f760e8bce41fc6ec0f35410c16a8cea  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_compute_overlap_20261108/analyze.py
+4cf44eae8c6b3f71c8e7924feae51ea3aa4a6d426379bbae46a69b9c5c000e20  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_compute_overlap_20261108/runner.py
+52f0a6712157e3880005bec5a3cd2daa2e08c51955a515e4d96d3b5950f2c190  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_compute_overlap_20261108/rank.sh
+ce4e670a66e4dc15341e6600b289ec170441450caba19cf2ff5fd6ea258978a6  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_compute_overlap_20261108/runtime.sh
+85828f26ef2eb7b3f95e90ee8cf3346fb717afbe5429d47cab1fbd856d173c59  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_compute_overlap_20261108/run.sbatch

@@ -1,0 +1,10 @@
+{
+  "phase": "review_preparation",
+  "base": "18198d703",
+  "job": "43837236",
+  "round": 1,
+  "round_limit": 3,
+  "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_compute_overlap_20261108_r1",
+  "checks": "Native workload and CPU submission concurrency assertions pass",
+  "unresolved_findings": []
+}

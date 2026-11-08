@@ -1,0 +1,427 @@
+{
+  "status": "pass",
+  "rows": [
+    {
+      "rank": 0,
+      "role": "smd0",
+      "host": "sdfampere040",
+      "job": "43837236",
+      "status": "pass",
+      "timestamps": [],
+      "splits": [],
+      "pressure_drains": 0
+    },
+    {
+      "rank": 1,
+      "role": "eb",
+      "host": "sdfampere040",
+      "job": "43837236",
+      "status": "pass",
+      "timestamps": [],
+      "splits": [],
+      "pressure_drains": 0
+    },
+    {
+      "rank": 2,
+      "role": "bd",
+      "host": "sdfampere040",
+      "job": "43837236",
+      "status": "pass",
+      "timestamps": [
+        4909050823936603206,
+        4909050823944991817,
+        4909050823953249356,
+        4909050823961637967,
+        4909050823970026578,
+        4909050823978284117,
+        4909050823986672728,
+        4909050823994930267,
+        4909050824003318878,
+        4909050824011576417,
+        4909050824019965028,
+        4909050824028222567,
+        4909050824036611178,
+        4909050824044999789,
+        4909050824053257328,
+        4909050824061645939,
+        4909050824069903478,
+        4909050824078292089,
+        4909050824086549628,
+        4909050824094938239,
+        4909050824103195778,
+        4909050824111584389,
+        4909050824119841928,
+        4909050824128230539,
+        4909050824136619150,
+        4909050824144876689,
+        4909050824153265300,
+        4909050824161522839,
+        4909050824169911450,
+        4909050824178300061,
+        4909050824186557600,
+        4909050824194946211,
+        4909050824203203750,
+        4909050824211592361,
+        4909050824219849900,
+        4909050824228238511,
+        4909050824236496050,
+        4909050824244884661,
+        4909050824253142200,
+        4909050824261530811,
+        4909050824269788350,
+        4909050824278176961,
+        4909050824286565572,
+        4909050824294823111,
+        4909050824303211722,
+        4909050824311469261,
+        4909050824319857872,
+        4909050824328115411,
+        4909050824336504022,
+        4909050824344892633,
+        4909050824353150172,
+        4909050824361538783,
+        4909050824369796322,
+        4909050824378184933,
+        4909050824386442472,
+        4909050824394831083,
+        4909050824403219694,
+        4909050824411477233,
+        4909050824419865844,
+        4909050824428123383,
+        4909050824436511994,
+        4909050824444769533,
+        4909050824453158144,
+        4909050824461415683
+      ],
+      "splits": [
+        {
+          "events": 16,
+          "sizes": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "capacity": 603879936,
+          "depth": 2,
+          "event_costs": [
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936
+          ],
+          "committed": 604079616
+        },
+        {
+          "events": 16,
+          "sizes": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "capacity": 603879936,
+          "depth": 2,
+          "event_costs": [
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936
+          ],
+          "committed": 1141701120
+        },
+        {
+          "events": 16,
+          "sizes": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "capacity": 603879936,
+          "depth": 2,
+          "event_costs": [
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936
+          ],
+          "committed": 1141701120
+        },
+        {
+          "events": 16,
+          "sizes": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "capacity": 603879936,
+          "depth": 2,
+          "event_costs": [
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936,
+            67111936
+          ],
+          "committed": 1141701120
+        }
+      ],
+      "pressure_drains": 0,
+      "runtime": {
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+        "cupy": "14.0.1",
+        "kvikio": "26.10.00",
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "mpi": "Open MPI v5.0.8, package: Open MPI conda@69bcf91866a2 Distribution, ident: 5.0.8, repo rev: v5.0.8, May 30, 2025\u0000",
+        "environment": {
+          "PS_PARALLEL": "mpi",
+          "PS_EB_NODES": "1",
+          "PS_SRV_NODES": "0",
+          "PS_SMD_N_EVENTS": "16",
+          "KVIKIO_COMPAT_MODE": "ON",
+          "CUDA_VISIBLE_DEVICES": "0"
+        }
+      },
+      "runtime_files": {
+        "psana.gpu.gpu_events": {
+          "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+          "sha256": "cfc6b2bbede9f5081560a153067289dc4bc4aee794f18d4a62b459bc51b930db"
+        },
+        "psana.gpu.gpu_stream": {
+          "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_stream.py",
+          "sha256": "9a937e68645e51d384d19267a6b23639e54bf0276cfe606583f9f820fa71d079"
+        },
+        "psana.gpu.gpu_group_schedule": {
+          "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_group_schedule.py",
+          "sha256": "eee7f6c9d7b7563725926d82f480924d62fb0c43228e21deb392d476ed32f3a7"
+        },
+        "psana.gpu.gpu_input_group": {
+          "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_input_group.py",
+          "sha256": "354152ece8df1571b9ea5510ccbf2f0c1f06ff5952258a854b21faea99529504"
+        },
+        "psana.gpu.gpu_admission": {
+          "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_admission.py",
+          "sha256": "a3014eea980d6a2fa5b9bbf68703374c93596c5e23118b3fa6bafc4e1c96ea30"
+        },
+        "psana.gpu.gpu_detector": {
+          "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_detector.py",
+          "sha256": "c1a118c3d1477c1693f1e55c3a11c197c2ded5a61ec570a94f9ad1d8a396faac"
+        },
+        "psana.gpu.gpu_task_batch": {
+          "path": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_task_batch.py",
+          "sha256": "cf6242c263d84e214cac40899e0e2df825ff1137577f894714819fbc5c7de8e7"
+        }
+      },
+      "reference_sha256": "7fa4c7a167568e6e4b648ed3581bb424eb4620ee90463f1db0c31a04f13e27bb",
+      "source_sha256": {
+        "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_compute_overlap_20261108/analyze.py": "6ac3788dd07a7c67a56746889a58151d7f760e8bce41fc6ec0f35410c16a8cea",
+        "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_compute_overlap_20261108/runner.py": "4cf44eae8c6b3f71c8e7924feae51ea3aa4a6d426379bbae46a69b9c5c000e20",
+        "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_compute_overlap_20261108/rank.sh": "52f0a6712157e3880005bec5a3cd2daa2e08c51955a515e4d96d3b5950f2c190",
+        "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_compute_overlap_20261108/runtime.sh": "ce4e670a66e4dc15341e6600b289ec170441450caba19cf2ff5fd6ea258978a6",
+        "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_compute_overlap_20261108/run.sbatch": "85828f26ef2eb7b3f95e90ee8cf3346fb717afbe5429d47cab1fbd856d173c59",
+        "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/cube.py": "6d741c98fee468ec94dbff719866e0884b9ee8eb735e93700089c373a416c315",
+        "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/common.py": "727ec6717c7d98681ef325ea66b94f47201cba9229149fa2a067108070dc4643"
+      },
+      "settings": {
+        "events": 64,
+        "batch_size": 16,
+        "pool_depth": 2,
+        "n_gpu_streams": 2,
+        "target_subbatch": 4,
+        "gpu_memory_budget_gb": 1.25,
+        "gpu_bulk_target_bytes": 524288,
+        "bins": 2,
+        "calibration_repeats": 12,
+        "state_bytes": 268435488
+      },
+      "callbacks": [
+        {
+          "size": 4,
+          "stream": 94865467539824,
+          "phase": "warmup"
+        },
+        {
+          "size": 4,
+          "stream": 94865472241904,
+          "phase": "warmup"
+        },
+        {
+          "size": 4,
+          "stream": 94865467539824,
+          "phase": "warmup"
+        },
+        {
+          "size": 4,
+          "stream": 94865472241904,
+          "phase": "warmup"
+        },
+        {
+          "size": 4,
+          "stream": 94865467539824,
+          "phase": "steady"
+        },
+        {
+          "size": 4,
+          "stream": 94865472241904,
+          "phase": "steady"
+        },
+        {
+          "size": 4,
+          "stream": 94865467539824,
+          "phase": "steady"
+        },
+        {
+          "size": 4,
+          "stream": 94865472241904,
+          "phase": "steady"
+        },
+        {
+          "size": 4,
+          "stream": 94865467539824,
+          "phase": "steady"
+        },
+        {
+          "size": 4,
+          "stream": 94865472241904,
+          "phase": "steady"
+        },
+        {
+          "size": 4,
+          "stream": 94865467539824,
+          "phase": "steady"
+        },
+        {
+          "size": 4,
+          "stream": 94865472241904,
+          "phase": "steady"
+        },
+        {
+          "size": 4,
+          "stream": 94865467539824,
+          "phase": "steady"
+        },
+        {
+          "size": 4,
+          "stream": 94865472241904,
+          "phase": "steady"
+        },
+        {
+          "size": 4,
+          "stream": 94865467539824,
+          "phase": "steady"
+        },
+        {
+          "size": 4,
+          "stream": 94865472241904,
+          "phase": "steady"
+        }
+      ],
+      "checks": {
+        "status": "pass",
+        "counts": [
+          32,
+          32
+        ],
+        "per_bank_counts": [
+          [
+            16,
+            16
+          ],
+          [
+            16,
+            16
+          ]
+        ],
+        "events": 64,
+        "scope": "Exact accepted event/bin counts; no new full-pixel numerical acceptance claim"
+      },
+      "repeated_calibration_sample_sha256": "7a0f9b1400034907481dfcc2873186da043b402a02a0a1b8c369b5b23d35092a",
+      "resident_control": {
+        "events": 8,
+        "sizes": [
+          4,
+          4
+        ],
+        "streams": [
+          94865469002000,
+          94865467767232
+        ],
+        "checks": {
+          "status": "pass",
+          "counts": [
+            4,
+            4
+          ],
+          "per_bank_counts": [
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              2
+            ]
+          ],
+          "events": 8,
+          "scope": "Exact accepted event/bin counts; no new full-pixel numerical acceptance claim"
+        },
+        "pixel_sample": 0,
+        "scope": "Same calibration and cube kernels on independent resident inputs; no I/O or dense gather; no performance claim"
+      },
+      "bank_events": [
+        32,
+        32
+      ],
+      "source_stat_unchanged": true
+    }
+  ]
+}

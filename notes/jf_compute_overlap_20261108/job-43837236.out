@@ -1,0 +1,21 @@
+Collecting data...
+PASS: 64 events, 1 BD/1 GPU, depth 2, four 16-event batches, 16 four-event executions
+[1794168536.143990] [sdfampere040:329774:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x559d05471940 was not matched
+[1794168536.144367] [sdfampere040:329811:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x564792ca7bc0 was not matched
+Generating '/lscratch/monarin/jf-compute-overlap-43837236/tmp/nsys-report-e851.qdstrm'
+
+[1/1] [0%                          ] jf-64-repeat12-b16-s4-pool2.nsys-rep
+[1/1] [0%                          ] jf-64-repeat12-b16-s4-pool2.nsys-rep
+[1/1] [7%                          ] jf-64-repeat12-b16-s4-pool2.nsys-rep
+[1/1] [8%                          ] jf-64-repeat12-b16-s4-pool2.nsys-rep
+[1/1] [9%                          ] jf-64-repeat12-b16-s4-pool2.nsys-rep
+[1/1] [10%                         ] jf-64-repeat12-b16-s4-pool2.nsys-rep
+[1/1] [==21%                       ] jf-64-repeat12-b16-s4-pool2.nsys-rep
+[1/1] [=====30%                    ] jf-64-repeat12-b16-s4-pool2.nsys-rep
+[1/1] [=========44%                ] jf-64-repeat12-b16-s4-pool2.nsys-rep
+[1/1] [=============58%            ] jf-64-repeat12-b16-s4-pool2.nsys-rep
+[1/1] [===============66%          ] jf-64-repeat12-b16-s4-pool2.nsys-rep
+[1/1] [========================100%] jf-64-repeat12-b16-s4-pool2.nsys-rep
+[1/1] [========================100%] jf-64-repeat12-b16-s4-pool2.nsys-rep
+Generated:
+	/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_compute_overlap_20261108_r1/jf-64-repeat12-b16-s4-pool2.nsys-rep

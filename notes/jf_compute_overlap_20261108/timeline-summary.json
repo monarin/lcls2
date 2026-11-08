@@ -1,0 +1,382 @@
+{
+  "status": "pass",
+  "sqlite": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_compute_overlap_20261108_r1/jf-64-repeat12-b16-s4-pool2.sqlite",
+  "cuda_identity": {
+    "globalPid": 287008287096832,
+    "device": 0,
+    "context": 1
+  },
+  "phases": {
+    "PIPELINE_64_EVENTS": {
+      "start_ns": 7729196189,
+      "end_ns": 11556829775,
+      "streams": [
+        13,
+        14
+      ],
+      "kernel_counts": {
+        "gather_canonical_u16": 16,
+        "calibrate": 192,
+        "accept_events": 16,
+        "accumulate": 16
+      },
+      "selected": {
+        "kernel_union_ns": 832720286,
+        "cross_stream_overlap_ns": 292481,
+        "overlap_fraction_of_kernel_busy_time": 0.000351235588849339,
+        "max_concurrent_streams": 2,
+        "first_start_ns": 9533781432,
+        "last_end_ns": 11551799703
+      },
+      "all_kernels": {
+        "kernel_union_ns": 834360771,
+        "cross_stream_overlap_ns": 1205029,
+        "overlap_fraction_of_kernel_busy_time": 0.0014442541426722948,
+        "max_concurrent_streams": 2,
+        "first_start_ns": 9450747487,
+        "last_end_ns": 11551799703
+      },
+      "executions": [
+        {
+          "stream": 13,
+          "launch_start": 9533749230,
+          "launch_end": 9533783660,
+          "gather_start": 9533781432,
+          "sum_start": 10652143192,
+          "sum_end": 10652567385
+        },
+        {
+          "stream": 14,
+          "launch_start": 10716454940,
+          "launch_end": 10716479340,
+          "gather_start": 10716468716,
+          "sum_start": 10770451157,
+          "sum_end": 10770880695
+        },
+        {
+          "stream": 13,
+          "launch_start": 10777672230,
+          "launch_end": 10777685700,
+          "gather_start": 10777685972,
+          "sum_start": 10830877689,
+          "sum_end": 10831302267
+        },
+        {
+          "stream": 14,
+          "launch_start": 10833694420,
+          "launch_end": 10833707790,
+          "gather_start": 10833708069,
+          "sum_start": 10887200331,
+          "sum_end": 10887624685
+        },
+        {
+          "stream": 13,
+          "launch_start": 10899389440,
+          "launch_end": 10899401050,
+          "gather_start": 10899401280,
+          "sum_start": 10951009246,
+          "sum_end": 10951415680
+        },
+        {
+          "stream": 14,
+          "launch_start": 10948938917,
+          "launch_end": 10948952326,
+          "gather_start": 10951439712,
+          "sum_start": 11002792797,
+          "sum_end": 11003200158
+        },
+        {
+          "stream": 13,
+          "launch_start": 11003094161,
+          "launch_end": 11003108281,
+          "gather_start": 11003226751,
+          "sum_start": 11054560763,
+          "sum_end": 11054966973
+        },
+        {
+          "stream": 14,
+          "launch_start": 11050086402,
+          "launch_end": 11050099512,
+          "gather_start": 11054962109,
+          "sum_start": 11105909528,
+          "sum_end": 11106317434
+        },
+        {
+          "stream": 13,
+          "launch_start": 11112762133,
+          "launch_end": 11112775602,
+          "gather_start": 11112775574,
+          "sum_start": 11163617585,
+          "sum_end": 11164024211
+        },
+        {
+          "stream": 14,
+          "launch_start": 11163562382,
+          "launch_end": 11163576622,
+          "gather_start": 11164019154,
+          "sum_start": 11224229366,
+          "sum_end": 11224653271
+        },
+        {
+          "stream": 13,
+          "launch_start": 11202731358,
+          "launch_end": 11202744607,
+          "gather_start": 11210830012,
+          "sum_start": 11266409611,
+          "sum_end": 11266820365
+        },
+        {
+          "stream": 14,
+          "launch_start": 11277778672,
+          "launch_end": 11277791572,
+          "gather_start": 11277791676,
+          "sum_start": 11328908376,
+          "sum_end": 11329315546
+        },
+        {
+          "stream": 13,
+          "launch_start": 11337293365,
+          "launch_end": 11337307265,
+          "gather_start": 11337306812,
+          "sum_start": 11388684697,
+          "sum_end": 11389090907
+        },
+        {
+          "stream": 14,
+          "launch_start": 11397580708,
+          "launch_end": 11397593858,
+          "gather_start": 11397593632,
+          "sum_start": 11448521019,
+          "sum_end": 11448928893
+        },
+        {
+          "stream": 13,
+          "launch_start": 11445539086,
+          "launch_end": 11445552705,
+          "gather_start": 11448924317,
+          "sum_start": 11500057209,
+          "sum_end": 11500463962
+        },
+        {
+          "stream": 14,
+          "launch_start": 11496397294,
+          "launch_end": 11496410864,
+          "gather_start": 11500458618,
+          "sum_start": 11551392086,
+          "sum_end": 11551799703
+        }
+      ],
+      "handoffs": {
+        "gaps_ns": [
+          63887555,
+          6791535,
+          2392153,
+          11764755,
+          -2476763,
+          -105997,
+          -4880571,
+          6444699,
+          -461829,
+          -21921913,
+          10958307,
+          7977819,
+          8489801,
+          -3389807,
+          -4066668
+        ],
+        "next_launch_before_previous_sum_end": 7
+      }
+    },
+    "RESIDENT_CONTROL_8_EVENTS": {
+      "start_ns": 11614718370,
+      "end_ns": 11624302791,
+      "streams": [
+        19,
+        20
+      ],
+      "kernel_counts": {
+        "calibrate": 2,
+        "accept_events": 2,
+        "accumulate": 2
+      },
+      "selected": {
+        "kernel_union_ns": 9184391,
+        "cross_stream_overlap_ns": 113280,
+        "overlap_fraction_of_kernel_busy_time": 0.012333969666578872,
+        "max_concurrent_streams": 2,
+        "first_start_ns": 11615113160,
+        "last_end_ns": 11624297551
+      },
+      "all_kernels": {
+        "kernel_union_ns": 9184391,
+        "cross_stream_overlap_ns": 123584,
+        "overlap_fraction_of_kernel_busy_time": 0.013455873122126443,
+        "max_concurrent_streams": 2,
+        "first_start_ns": 11615113160,
+        "last_end_ns": 11624297551
+      },
+      "executions": [
+        {
+          "stream": 19,
+          "launch_start": 11615095415,
+          "launch_end": 11615122404,
+          "gather_start": 11615113160,
+          "sum_start": 11623491404,
+          "sum_end": 11623898414
+        },
+        {
+          "stream": 20,
+          "launch_start": 11615836205,
+          "launch_end": 11615849135,
+          "gather_start": 11619277210,
+          "sum_start": 11623891118,
+          "sum_end": 11624297551
+        }
+      ],
+      "handoffs": {
+        "gaps_ns": [
+          -8062209
+        ],
+        "next_launch_before_previous_sum_end": 1
+      }
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": 1,
+      "text": "Profiling has started.",
+      "globalPid": -144115188075855872
+    },
+    {
+      "severity": 1,
+      "text": "Process was launched by the profiler, see /lscratch/monarin/jf-compute-overlap-43837236/tmp/nvidia/nsight_systems/quadd_session_10329797/streams/pid_329811_stdout.log and stderr.log for program output",
+      "globalPid": 287008287096832
+    },
+    {
+      "severity": 1,
+      "text": "Common injection library initialized successfully.",
+      "globalPid": 287008287096832
+    },
+    {
+      "severity": 1,
+      "text": "OS runtime libraries injection initialized successfully.",
+      "globalPid": 287008287096832
+    },
+    {
+      "severity": 1,
+      "text": "Buffers holding CUDA trace data will be flushed on CudaProfilerStop() call. See --flush-on-cudaprofilerstop to control this behavior.",
+      "globalPid": 287008287096832
+    },
+    {
+      "severity": 1,
+      "text": "Loaded CUPTI library: /sdf/group/lcls/ds/tools/nsight-2025.3.1/target-linux-x64/libcupti.so.12.9",
+      "globalPid": 287008287096832
+    },
+    {
+      "severity": 1,
+      "text": "Enabling trace for device graph launch",
+      "globalPid": 287008287096832
+    },
+    {
+      "severity": 1,
+      "text": "CUDA injection initialized successfully.",
+      "globalPid": 287008287096832
+    },
+    {
+      "severity": 2,
+      "text": "Scheduling information is absent. The thread activity is deduced based on OS runtime libraries traces. This is inaccurate and does not take into account asynchronous interrupts and exception faults.",
+      "globalPid": -144115188075855872
+    },
+    {
+      "severity": 1,
+      "text": "Number of NVTX events collected: \t10362.",
+      "globalPid": 287008287096832
+    },
+    {
+      "severity": 2,
+      "text": "No NVTX events collected. Does the process use NVTX?",
+      "globalPid": 287010048704512
+    },
+    {
+      "severity": 2,
+      "text": "No NVTX events collected. Does the process use NVTX?",
+      "globalPid": 287010182922240
+    },
+    {
+      "severity": 1,
+      "text": "Number of CUDA events collected: \t5212.",
+      "globalPid": 287008287096832
+    },
+    {
+      "severity": 2,
+      "text": "CUDA profiling might have not been started correctly.",
+      "globalPid": 287010048704512
+    },
+    {
+      "severity": 2,
+      "text": "No CUDA events collected. Does the process use CUDA?",
+      "globalPid": 287010048704512
+    },
+    {
+      "severity": 2,
+      "text": "CUDA profiling might have not been started correctly.",
+      "globalPid": 287010182922240
+    },
+    {
+      "severity": 2,
+      "text": "No CUDA events collected. Does the process use CUDA?",
+      "globalPid": 287010182922240
+    },
+    {
+      "severity": 1,
+      "text": "Number of OS runtime libraries events collected: \t26563.",
+      "globalPid": 287008287096832
+    },
+    {
+      "severity": 1,
+      "text": "Number of OS runtime libraries events collected: \t5.",
+      "globalPid": 287010048704512
+    },
+    {
+      "severity": 1,
+      "text": "Number of OS runtime libraries events collected: \t3.",
+      "globalPid": 287010182922240
+    },
+    {
+      "severity": 1,
+      "text": "Common injection library initialized successfully.",
+      "globalPid": 287010048704512
+    },
+    {
+      "severity": 1,
+      "text": "OS runtime libraries injection initialized successfully.",
+      "globalPid": 287010048704512
+    },
+    {
+      "severity": 1,
+      "text": "Common injection library initialized successfully.",
+      "globalPid": 287010182922240
+    },
+    {
+      "severity": 1,
+      "text": "OS runtime libraries injection initialized successfully.",
+      "globalPid": 287010182922240
+    },
+    {
+      "severity": 1,
+      "text": "NVTX injection initialized successfully.",
+      "globalPid": 287008287096832
+    },
+    {
+      "severity": 1,
+      "text": "Number of CUPTI events produced: \t7627, CUPTI buffers: 50.",
+      "globalPid": 287008287096832
+    },
+    {
+      "severity": 1,
+      "text": "Profiling has stopped.",
+      "globalPid": -144115188075855872
+    }
+  ],
+  "limitations": "Artificial twelve-pass calibration diagnostic, includes startup/warmup. CPU launch completion before previous sum end is the concurrency criterion, not throughput. Resident control bypasses I/O and dense gather; demonstrates possibility, not guaranteed or efficient overlap. No throughput or copy/compute-overlap claim."
+}

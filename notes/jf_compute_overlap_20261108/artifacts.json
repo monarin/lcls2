@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_compute_overlap_20261108_r1/jf-64-repeat12-b16-s4-pool2.nsys-rep",
+    "bytes": 1175746,
+    "sha256": "d41157c52d85f96a4ca6c976388e8b5b08e3c1c043aa541c47e1e3e48f79315a"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_compute_overlap_20261108_r1/jf-64-repeat12-b16-s4-pool2.sqlite",
+    "bytes": 9637888,
+    "sha256": "8e285079e21740931968acff0a7fb822c00c0f442a723141af24707fceadaca3"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_compute_overlap_20261108_r1/launch-sha256.txt",
+    "bytes": 781,
+    "sha256": "1e15ff923e3cce820b63a63c0127156548b6db434c45c75443c9e00554f1c07c"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_compute_overlap_20261108_r1/report.json",
+    "bytes": 12441,
+    "sha256": "4af40ca44ae96c2dc1e490ed6ff47b94eacddd5e23b28eefcf4da96a824ceed3"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_compute_overlap_20261108_r1_logs/43837236.err",
+    "bytes": 9164,
+    "sha256": "a94e47e9a24b7b2061d660254ae66aaf06a910d1dc815d3dc0044e84b9df73ad"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_compute_overlap_20261108_r1_logs/43837236.out",
+    "bytes": 1577,
+    "sha256": "643067d35f453cdbf116978e84e543260163d42385058d4b31fb88134de534d2"
+  }
+]
