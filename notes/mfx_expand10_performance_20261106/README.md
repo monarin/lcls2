@@ -98,8 +98,12 @@ For the small preparation checks replace `throughput` with `smoke`. For separate
 profiling use `profile`; pass further runner options after that argument.
 Supported bounds: streams 1/2, batches 1..16, bins 2..200.
 The diagnostic follow-up adds `--framework-budget-gib` (1..8, default 4) and
-`--bulk-target-bytes` (1 byte..8 MiB, default 8 MiB); defaults are unchanged. Admission reserves at
-least 8 GiB beyond the persistent banks; this is not a framework-wide memory
+`--bulk-target-bytes` (1 byte..8 MiB). On November 8 the sim10 runner default
+changed from 8 MiB to **512 KiB** to bypass the small-group credit restriction
+for its 0.5–0.7 MiB JF datagrams. This changes read grouping, not stored data.
+The framework default remains 1 MiB. See the
+[512 KiB rerun](../mfx_expand10_512k_20261108/README.md) for results and limitations.
+Admission reserves at least 8 GiB beyond the persistent banks; this is not a framework-wide memory
 guarantee. Default 100 bins/two banks is 12.5 GiB plus counts. No multi-BD/MPI
 claim. Each repetition uses a fresh process/output directory. Three repeats
 and then stream/batch scaling remain the next campaign, not this preparation.

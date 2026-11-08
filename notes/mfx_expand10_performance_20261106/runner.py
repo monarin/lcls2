@@ -157,7 +157,7 @@ if __name__ == '__main__':
     parser.add_argument('--state-cap-gib', type=int, default=27)
     parser.add_argument('--reserve-gib', type=int, default=8)
     parser.add_argument('--framework-budget-gib', type=int, default=4)
-    parser.add_argument('--bulk-target-bytes', type=int, default=8<<20)
+    parser.add_argument('--bulk-target-bytes', type=int, default=512<<10)
     parser.add_argument('--verify-files', action='store_true')
     parser.add_argument('--export', type=Path, help='Optional new full-cube directory; outside steady timing')
     run(parser.parse_args())
