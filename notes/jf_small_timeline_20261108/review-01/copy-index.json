@@ -1,0 +1,57 @@
+[
+  {
+    "file": "implementation.patch",
+    "bytes": 72141,
+    "sha256": "3b6557325c0a5e87e2228ef2c242149db52691016ff180495d8818a5850bd333"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_admission.py",
+    "bytes": 2612,
+    "sha256": "a3014eea980d6a2fa5b9bbf68703374c93596c5e23118b3fa6bafc4e1c96ea30"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_detector.py",
+    "bytes": 18677,
+    "sha256": "c1a118c3d1477c1693f1e55c3a11c197c2ded5a61ec570a94f9ad1d8a396faac"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_events.py",
+    "bytes": 53147,
+    "sha256": "cfc6b2bbede9f5081560a153067289dc4bc4aee794f18d4a62b459bc51b930db"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_group_schedule.py",
+    "bytes": 4119,
+    "sha256": "eee7f6c9d7b7563725926d82f480924d62fb0c43228e21deb392d476ed32f3a7"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_input_group.py",
+    "bytes": 10908,
+    "sha256": "354152ece8df1571b9ea5510ccbf2f0c1f06ff5952258a854b21faea99529504"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_stream.py",
+    "bytes": 14864,
+    "sha256": "9a937e68645e51d384d19267a6b23639e54bf0276cfe606583f9f820fa71d079"
+  },
+  {
+    "file": "installed-runtime/psana.gpu.gpu_task_batch.py",
+    "bytes": 10250,
+    "sha256": "cf6242c263d84e214cac40899e0e2df825ff1137577f894714819fbc5c7de8e7"
+  },
+  {
+    "file": "kernels.csv",
+    "bytes": 9145,
+    "sha256": "b4925338566031ce5eb298fe46409c7c0e895365adfbf46e9df7089caba2bed9"
+  },
+  {
+    "file": "launches.csv",
+    "bytes": 2110,
+    "sha256": "8cc32a06a88515531f409b61922bb403da471a85a3a87b729904c2f45ad783b8"
+  },
+  {
+    "file": "nvtx.csv",
+    "bytes": 4340,
+    "sha256": "1cca993a3f968267884f439e5e164c225e16544d51292bc292a0c02ad17fefd9"
+  }
+]

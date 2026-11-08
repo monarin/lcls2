@@ -1,0 +1,71 @@
+{
+  "reviewed_commit": "2919ffe338ecfc3720cb2c6599b493a0d06d3cf2",
+  "verdict": "pass",
+  "summary": "Read-only review of the compact real-JF timeline at 2919ffe33. implementation.patch adds only the 21 files under notes/jf_small_timeline_20261108/ (runner, NVTX-only method wrappers, launcher/batch scripts, analyzer, logs and evidence); no core, runtime, calibration or cube-kernel file changes. Runner lifetime/order is sound: the PIPELINE_64_EVENTS range encloses task.join() before the ExitStack pops NVTX and unpatches; the Resident snapshots hold only device copies of raw/presence, run-lifetime constant arrays and host tuples (never a batch/context), are taken inside the execution-stream context in the first two callbacks only (kernels.csv shows the two cupy_copy pairs on streams 13 and 14 there), and the control's fresh Cube, two non-blocking streams and zero-filled banks are created and device-synchronized before RESIDENT_CONTROL_8_EVENTS; cube.join() precedes the range end and cube.close()/owners.clear() run in finally. MPI topology is enforced (comm.size==3, RunParallel, rank 0 asserts roles {smd0,eb,bd} and that helpers delivered no events; rank.sh profiles only OMPI rank 2 and blanks CUDA for the others; report.json shows rank 2 = bd). Byte splitting is real: _split_subbatches is the frozen planner, event_costs 67,111,936 B each against capacity 603,879,936/depth 2, so four events fit per slot and five would not; four splits of [4,4,4,4], zero drains, 16 four-event callbacks and 32/32 bank events are asserted in the runner. The control is independent (own raw copies, own Cube/banks/streams, same JungfrauCalibration instance and identical cube kernel source, no I/O/gather, no synthetic kernel) and its event-0 raw/calibrated SHA256 ties the pipeline's gathered raw and the calibration kernel to the CPU-v3 reference. Hand recomputation from the CSVs reproduces the analyzer exactly: control selected overlap 73,216+1,344+1,568+22,561+5,920 = 104,609 ns, all-kernel overlap 116,417 ns, control gap -8,465,748 ns; pipeline gaps 26,960,188 / 19,519,637 / 14,016,225 (min) / 45,513,869 (max); every stream-13 accumulate ends before the next stream-14 kernel starts and vice versa (zero overlap); 16 gathers and 34 correlated launches. Provenance is mutually consistent (launch-sha256 = report source_sha256 = source-verification; runtime hashes = copy-index; inherited cube.py/common.py hashes equal the previously reviewed manifest; 776-byte launch manifest size matches five entries). Conclusions are properly hedged (feasibility only, no root cause, no throughput claim). Four low, non-blocking findings: committed job logs are normalized copies of the bound originals without saying so, calibration vs cube host calls are not separately labeled as scope.md asked, the new analyzer has no host test (verified by hand here), and the event-0 control check could assert the timestamp explicitly. No blocking findings; pass.",
+  "checks": [
+    "Scope: implementation.patch diff headers list exactly the 21 files present under notes/jf_small_timeline_20261108/; no psana core, runtime, calibration or cube-kernel changes.",
+    "Runner lifetime/order: span('PIPELINE_64_EVENTS') and instrumentation() entered on an ExitStack; task.join() executes inside the stack before NVTX pop/unpatch; kernels.csv last pipeline kernel ends 11112769320 < range end 11118463626; control range ends after cube.join() (last control kernel 11130402883 < 11130407878).",
+    "Resident snapshot: copies raw/presence with .copy() under the execution-stream context (cupy_copy kernels on stream 13 at 10.012 s and stream 14 at 10.694 s only), retains run-lifetime constant arrays and host tuples, never the BatchInputContext; len(self.resident)<2 guard limits to the first two callbacks.",
+    "Control independence: new RealCube with its own banks on two fresh non-blocking streams (CUPTI 19/20), _bank() zero-fill then Device().synchronize() before the NVTX range; same JungfrauCalibration instance (compiled kernel cache keyed by device/segments/ctypes) and identical accept_events/accumulate source; no I/O, gather, delay or repeated-compute kernel.",
+    "Control checks: check_counts requires all 8 ordinals seen and both banks ([2,2],[2,2] matches ordinals 0-3/4-7 mod 2); owners search finds the calibrate output (only float32 array with raw shape; bank.sums has shape (2,...)); raw and calibrated event-0 SHA256 compared to reference.json samples['0'].",
+    "MPI topology: run.sbatch --ntasks=3, mpiexec -n 3; runtime.sh PS_EB_NODES=1 PS_SRV_NODES=0 PS_SMD_N_EVENTS=16; runner requires comm.size==3 and RunParallel, rank 0 asserts sorted roles ['bd','eb','smd0'] and no helper timestamps; rank.sh gives nsys only to OMPI rank 2 and CUDA_VISIBLE_DEVICES='' to others; report.json rows show rank 2 role bd with CUDA_VISIBLE_DEVICES=0.",
+    "Byte splitting: wrapper calls the frozen _split_subbatches and records capacity 603,879,936, depth 2, event_costs 67,111,936 each; 4*67,111,936=268,447,744 < 301,939,968 per slot and 5*67,111,936=335,559,680 > per-slot share, so 4+4+4+4 follows from the existing planner; runner asserts 4 splits of [4]*4, 16 callbacks of size 4, pressure_drains==0 and bank_events [32,32].",
+    "Drain counter: _trim_gpu_caches has a single call site in frozen gpu_events.py (line 935, GpuMemoryPressureError path), so pressure_drains==0 means no admission retry occurred; nvtx.csv has no admission_pressure_trim rows.",
+    "Handoff recomputation from launches.csv/kernels.csv: gap1 10693016867-10666056679=26,960,188; gap2 10719154127-10699634490=19,519,637; min 10739169537-10725153312=14,016,225; max 10915578503-10870064634=45,513,869; control 11121537966-11130003714=-8,465,748; all equal timeline-summary.json.",
+    "Overlap recomputation: control selected overlap 73,216+1,344+1,568+22,561+5,920=104,609 ns and all-kernel 104,609+8,928+2,880=116,417 ns match the summary; for the pipeline every accumulate end on one stream precedes the next walk_xtc start on the other stream for all 15 handoffs, giving 0 ns overlap.",
+    "Kernel counts: kernels.csv has 16 gather_canonical_u16/calibrate/accept_events/accumulate on streams 13/14 inside the pipeline range and 2 each of calibrate/accept_events/accumulate on 19/20 in the control range; launches.csv has 34 cuLaunchKernel rows with globalTid equal to the NVTX globalTid.",
+    "Analyzer: single NVTX row per label, kernels fully inside [a,b], straddle check, exact Counter equality, exactly two streams, FIFO pairing on normalized names (RJF-03 pattern avoided here), unique correlationId launch lookup with tid check; intervals() reused unchanged from the previously tested analyze_real.py.",
+    "Warmup/window: Window(16,64) joins at the fifth callback; report callbacks phases are 4 warmup then 12 steady; README directs to 10.775-11.119 s which begins at the fifth task range (10774659057).",
+    "Memory/state: settings.state_bytes 268,435,488 = 2 streams x 2 bins x (32*512*1024*4+8), matching the README's 256 MiB cube state; cube banks, user outputs and Resident copies are plain cupy allocations outside the framework budget as stated.",
+    "Provenance: launch-sha256.txt entries equal report.json source_sha256 and source-verification.json for analyze.py, runner.py, rank.sh, runtime.sh, run.sbatch; runtime_files hashes equal copy-index.json for all seven installed-runtime copies; cube.py/common.py hashes equal notes/real_jf_concurrency_20261108/execution-source-hashes.json and launch-sha256.txt; reference.json hash equals the prior artifacts.json; computed size of the five-line launch manifest is 776 bytes, matching the r3 artifact.",
+    "Attempts: job-43829133.err shows the PRRTE slot error and scheduler-accounting FAILED 1:0; 43829309 .out shows capture range start/end and PASS, windowed summary carries 'Not all ... events might have been collected' diagnostics; 43829731 COMPLETED 0:0 in 20 s, PASS line, no severity-2 diagnostics for the CUDA-producing globalPid, only child-PID no-CUDA/no-NVTX and the expected scheduling-information notice.",
+    "README numbers: range times, streams, 104,609 ns, 14.0-45.5 ms, 8.47 ms, 1,182,379-byte report, capacity 603,879,936, 4/16 batches/executions and 64-event count all match report.json, timeline-summary.json, artifacts.json and scheduler-accounting.txt.",
+    "Conclusion strength: README/summary limit claims to late launch and overlap feasibility, state the control bypasses I/O/gather, make no throughput, copy/compute-overlap, root-cause or full cube-sum acceptance claim, and disclose UCX warnings, child-process diagnostics and KvikIO CPU fallback."
+  ],
+  "limitations": [
+    "No commands were run. SHA256 values in artifacts.json, copy-index.json, launch-sha256.txt, report.json and source-verification.json were checked only for mutual consistency, not recomputed; byte-equality of build/jf-small-evidence copies with scratch originals is not independently verified.",
+    "The native .nsys-rep and SQLite exports were not opened; all trace conclusions rest on the committed summaries and the three CSV exports, which I recomputed by hand for overlaps, handoff gaps and kernel counts.",
+    "Successful execution of analyze.py against the two SQLite files is accepted from the committed summary outputs and the coordinator statement; I did not run it.",
+    "The committed job logs are not byte-identical to the bound scratch originals (e.g., 9,164-byte .err originals vs five-line copies); the removed content could not be inspected.",
+    "Git state of the detached worktree could not be verified by command; the reviewed SHA is taken from the task statement and checkout contents.",
+    "gpu_budget.py, gpu_task.py and EventPool submission internals were not among the copied frozen runtime files; attribute names used by the wrappers (_admission_capacity, event_pool.depth, _gpu_budget.committed) are accepted from the copied gpu_events.py/gpu_stream.py and the successful report."
+  ],
+  "findings": [
+    {
+      "id": "JFS-01",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/jf_small_timeline_20261108/README.md",
+      "line": 107,
+      "evidence": "README says the UCX warnings 'are retained in the job logs' and artifacts.json binds the originals at 9,164 bytes (.err) and 1,451 bytes (.out) for job 43829731, but the committed job-43829731.err is five lines (~1.3 KB) and job-43829731.out is eight lines (~0.56 KB). The committed copies are therefore normalized/truncated, unlike the prior experiment's README which stated this explicitly.",
+      "requested_change": "Add one sentence stating that the committed job logs are normalized copies (what was removed, e.g. nsys progress/carriage-return output) and that the byte-exact originals are the _logs files bound in artifacts.json. Deferrable."
+    },
+    {
+      "id": "JFS-02",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/jf_small_timeline_20261108/runner.py",
+      "line": 56,
+      "evidence": "scope.md asks to 'Label read issue/wait, submit, calibration and cube calls with scoped NVTX wrappers'. The runner labels read_issue, read_wait, submit_gather_task, admission_split and the enclosing 'task events=4 stream=...' range, but the calibrate() call and the cube add() call inside the task share one range; only the GPU kernel names distinguish them. Host-side submission time of calibration versus cube work is not separable from the NVTX track.",
+      "requested_change": "Either wrap the calibrate() and add() calls in nested NVTX spans in a future capture, or note in README that calibration/cube host calls are distinguished only via kernel names. Deferrable; no evidence impact."
+    },
+    {
+      "id": "JFS-03",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/jf_small_timeline_20261108/analyze.py",
+      "line": 13,
+      "evidence": "Only intervals() is covered by the prior test_analysis.py; the new phase filtering, straddle check, count assertions and per-phase FIFO pairing in analyze() have no host test. This review verified the outputs by hand against the CSVs (overlap 104,609/116,417 ns, gap -8,465,748 ns, pipeline gaps 14.0-45.5 ms), and the assertion style fails rather than producing a false zero, so the result is not in doubt.",
+      "requested_change": "Optionally add a small SQLite fixture test (two NVTX phases, serial and overlapping cases, missing-kernel rejection) analogous to test_analysis.py, with provenance as done for RJF-04. Deferrable."
+    },
+    {
+      "id": "JFS-04",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/jf_small_timeline_20261108/runner.py",
+      "line": 117,
+      "evidence": "The control compares batches[0].raw[0] and its calibrated image to reference samples['0'] but does not assert batches[0].timestamps[0] == ref['timestamp'] (4909050823936603206). The SHA256 match makes a mismatched event practically impossible, and the pipeline timestamp assertion plus FIFO callback order imply it, but the identity is not stated directly.",
+      "requested_change": "Add require(batches[0].timestamps[0]==ref['timestamp']) before the digest comparisons in any rerun. Optional robustness; no change to current evidence."
+    }
+  ]
+}

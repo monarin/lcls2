@@ -45,7 +45,10 @@ named ranges rather than the whole process startup:
 - `PIPELINE_64_EVENTS`: the real file-reading pipeline. Nested `read_issue`,
   `read_wait`, `submit_gather_task`, `admission_split` and `task events=4 ...`
   ranges identify host work. Kernel names show `gather_canonical_u16`,
-  `calibrate`, `accept_events`, and `accumulate`.
+  `calibrate`, `accept_events`, and `accumulate`. Calibration and cube host calls
+  share the enclosing task NVTX range; their host submission durations are not
+  separately instrumented. Use the named GPU kernels and correlated CUDA launch
+  APIs to distinguish them. Nested host spans are a possible future refinement.
 - `RESIDENT_CONTROL_8_EVENTS`: two four-event batches copied from the first eight
   real events, already resident and ready before launch. It uses the same
   calibration and cube kernels, with two independent streams and cube banks;
@@ -107,6 +110,9 @@ scheduling information (CPU sampling/context switching disabled) are preserved
 in timeline-summary.json. Both MPI captures printed UCX unmatched-tag warnings
 after the PASS line; these are retained in the job logs. They did not prevent
 completion or the exact event/count checks; their cause was not investigated.
+Committed job logs are normalized copies: Nsight progress lines, carriage-return
+formatting, NULs and trailing whitespace were removed. The byte-exact originals
+are the sibling `_logs` files bound by artifacts.json.
 
 | NVTX range | Time in report | GPU execution streams | Selected-kernel overlap |
 |---|---|---|---|
@@ -153,3 +159,10 @@ WHERE text IN ('PIPELINE_64_EVENTS','RESIDENT_CONTROL_8_EVENTS','admission_split
               'read_issue','read_wait','submit_gather_task','admission_pressure_trim')
    OR text LIKE 'task events=%' OR text LIKE 'resident_task%' ORDER BY start;
 ```
+
+Independent restricted Claude review **passed** code commit `2919ffe33`, with no
+blocking findings. The reviewer independently recomputed overlaps, submission
+gaps and kernel counts from the readable CSV records. See
+[review responses](review-01/response.md) for four low findings, documentation
+clarifications and two deferred robustness suggestions. Closure changes only
+notes/evidence; the tested executable files and native capture are unchanged.

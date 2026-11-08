@@ -1,8 +1,8 @@
 {
-  "phase": "validated",
+  "phase": "complete",
   "base": "b81b5a424",
   "job": "43829731",
-  "round": 0,
+  "round": 1,
   "round_limit": 3,
   "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_small_timeline_20261108_r3",
   "unresolved_findings": [],
@@ -33,5 +33,15 @@
     "pipeline_overlap_ns": 0,
     "resident_overlap_ns": 104609,
     "source_hashes": "pass"
-  }
+  },
+  "implementation_sha": "2919ffe338ecfc3720cb2c6599b493a0d06d3cf2",
+  "review_worktree": "/tmp/jf-small-review-20261108-r1",
+  "reviewed_sha": "2919ffe338ecfc3720cb2c6599b493a0d06d3cf2",
+  "review_verdict": "pass",
+  "deferred_nonblocking_findings": [
+    "JFS-03",
+    "JFS-04"
+  ],
+  "responses": "review-01/response.md",
+  "closure": "Documentation/evidence only; no executable changes after reviewed SHA"
 }
