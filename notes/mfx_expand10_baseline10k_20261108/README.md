@@ -99,3 +99,15 @@ samples. [artifacts.json](artifacts.json) binds original report/log files by SHA
 [source-verification.json](source-verification.json) records rechecked source and
 runtime hashes. The existing runner/kernels/runtime are unchanged. Subsequent
 batch tuning, compressed-path attribution and MPI scaling remain separate stages.
+
+The post-campaign GPU snapshot reports 0 MiB used and 97% utilization. This is
+one sample immediately after the final process exited; it could reflect recent
+benchmark activity, but the available evidence does not attribute the reading.
+
+Independent restricted Claude review **passed** executable commit `525193585`,
+with no blocking findings. All three findings were addressed through evidence/
+documentation closure; see [responses](review-01/response.md). The coordinator
+subsequently supplied the missing review-copy index, rechecked each native copy
+byte-for-byte against its scratch original and saved their matching hashes.
+The reviewer did not independently execute tests or hash the artifacts. No
+executable changes or extra GPU runs followed review.
