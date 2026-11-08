@@ -1,0 +1,7 @@
+9cfb19c7ec2271ebec709ab05c4a3df67fe06a749b43b0a3cae4d8496057b700  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/analyze_real.py
+727ec6717c7d98681ef325ea66b94f47201cba9229149fa2a067108070dc4643  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/common.py
+6d741c98fee468ec94dbff719866e0884b9ee8eb735e93700089c373a416c315  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/cube.py
+65bff2ee2878fc173539eacce3aaaf955a7596fd514ac012c5f88be43abe0f02  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/prepare_reference.py
+81ddcb52db070758227a7a57d52f8bc8a941cb37aa01c093f4f237901c17fd19  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/run_real.py
+1c0d206bdd77218021d0cab94da3b38b861cd5a784599e1943ebbee968018726  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/test_analysis.py
+036fb2315fe476dfb1077a0e88ac39fa26702ae17a1b0d2ed8360f59cbc20ca5  /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/run.sbatch

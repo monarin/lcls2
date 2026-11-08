@@ -1,0 +1,7 @@
+test_incomplete_kernels_wrong_context_and_ambiguous_launch_rejected (test_analysis.Tests.test_incomplete_kernels_wrong_context_and_ambiguous_launch_rejected) ... ok
+test_real_gather_handoffs_overlap_and_serial (test_analysis.Tests.test_real_gather_handoffs_overlap_and_serial) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.022s
+
+OK

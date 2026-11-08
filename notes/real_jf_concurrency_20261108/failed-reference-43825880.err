@@ -1,0 +1,27 @@
+test_10k_manifest_receipt_size_and_optional_fresh_hash (test_preparation.Tests.test_10k_manifest_receipt_size_and_optional_fresh_hash) ... ok
+test_callback_rounding_and_completed_tail (test_preparation.Tests.test_callback_rounding_and_completed_tail) ... ok
+test_clean_mode_creates_no_cuda_events_or_publications (test_preparation.Tests.test_clean_mode_creates_no_cuda_events_or_publications) ... ok
+test_failed_join_never_starts_timer (test_preparation.Tests.test_failed_join_never_starts_timer) ... ok
+test_framework_hooks_match_runtime_and_restore_on_failure (test_preparation.Tests.test_framework_hooks_match_runtime_and_restore_on_failure) ... ok
+test_generator_excludes_consumer_and_preserves_close (test_preparation.Tests.test_generator_excludes_consumer_and_preserves_close) ... ok
+test_no_steady_window_and_incomplete_rejected (test_preparation.Tests.test_no_steady_window_and_incomplete_rejected) ... ok
+test_prepare_rejects_repeat_or_existing_events_without_cuda (test_preparation.Tests.test_prepare_rejects_repeat_or_existing_events_without_cuda) ... ok
+test_pressure_counter_no_clocks_and_restores (test_preparation.Tests.test_pressure_counter_no_clocks_and_restores) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.045s
+
+OK
+Traceback (most recent call last):
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/prepare_reference.py", line 47, in <module>
+    main(p.parse_args().output)
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/prepare_reference.py", line 27, in main
+    calibrated=det.raw.calib(event,cversion=3,cmpars=None,nda_raw=raw).reshape(raw.shape)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/detector/jungfrau.py", line 80, in calib
+    return uj.calib_jungfrau_versions(self, evt, **kwa)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/detector/UtilsJungfrau.py", line 876, in calib_jungfrau_versions
+    if kwa != odc.kwa:
+       ^^^^^^^^^^^^^^
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()

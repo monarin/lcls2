@@ -1,0 +1,97 @@
+[
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/clean-s1-r1/report.json",
+    "bytes": 26414,
+    "sha256": "ad6b82f18388f117db48cf3cbb03cb146bf7ccd2733c789e0c8df717faaaaebd"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/clean-s1-r2/report.json",
+    "bytes": 26416,
+    "sha256": "bc35090ff710a8665b7be7c38fa02f4da1b9ecaf21e2f44cc237f8df7f3fc018"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/clean-s1-r3/report.json",
+    "bytes": 26414,
+    "sha256": "c0df575dec92d84ec7224866dd3660eb26baa1dbb25f7eb7657e2fe55d175ab6"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/clean-s2-r1/report.json",
+    "bytes": 27450,
+    "sha256": "f300b550c165b971f0c6e3e42e698596fe2cdedd4bec7aeec71fa315d5fbe5bb"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/clean-s2-r2/report.json",
+    "bytes": 27445,
+    "sha256": "91275b94ea0bec62e93fe59f1b0ac1ee34cd18c7463c7e8a3b177a6c16b6b1dc"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/clean-s2-r3/report.json",
+    "bytes": 27448,
+    "sha256": "bcbee97fa81843634ca86be470581825a0bc511b9120ce6528739169453da5cc"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/control-8m/report.json",
+    "bytes": 100554,
+    "sha256": "65133ab0670da49b4acd01354d6c82650fe0a0e32e680b46a576852b0444f15e"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/launch-sha256.txt",
+    "bytes": 1124,
+    "sha256": "f0d015de108a6909fdffe6b63c3ec1b90f4b8eed07595887a524ec3f7cf51153"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/nsys-version.txt",
+    "bytes": 57,
+    "sha256": "dcac29a80c031ea82023b41eca2aa393682a9989a9111fad96d560847d3bd8eb"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/pixel-acceptance/report.json",
+    "bytes": 27477,
+    "sha256": "6cecde46a9f3092b110b031445cf47dd81ae2fcfbcc6fea1079d7a2b9a1dbc91"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/reference.json",
+    "bytes": 31255,
+    "sha256": "7fa4c7a167568e6e4b648ed3581bb424eb4620ee90463f1db0c31a04f13e27bb"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/trace-524288.nsys-rep",
+    "bytes": 4452224,
+    "sha256": "828e3e506053e60efe75ced7e7ce4ba69810b787b1d600f6329771bee79e5deb"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/trace-524288.sqlite",
+    "bytes": 13492224,
+    "sha256": "a90ce496709973eaa7ed415ccf02012cc2a02ad5432adb3911606a37ff223be6"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/trace-8388608.nsys-rep",
+    "bytes": 5341776,
+    "sha256": "e7bcf0470a912ad0bf8d0dd7ec5936c93e466cdca2f6ddd64e61fe1614893bf5"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/trace-8388608.sqlite",
+    "bytes": 15384576,
+    "sha256": "6afaf69cc2ee20b6a262a186b7f7fd4fb52a8a43442bb0698463920951e07614"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/traced-524288/report.json",
+    "bytes": 27451,
+    "sha256": "7c66dfeaf129763221b11cb9021361afa2a409041bf07efc1c959a086936fd35"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/traced-8388608/report.json",
+    "bytes": 100555,
+    "sha256": "1e23965b67495533c516afcacd5949a0024a14246ac205747d87a4415d60ac78"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3_logs/43826632.err",
+    "bytes": 25368,
+    "sha256": "f3bc125880b7186cd70be29b7a73714ff3e4bd09f240427df24099cb20980169"
+  },
+  {
+    "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3_logs/43826632.out",
+    "bytes": 10194,
+    "sha256": "a15365588cd52ef8c71db31108e0d1b1181de7e2b022fe1e4ff2d5cd3c1a958c"
+  }
+]

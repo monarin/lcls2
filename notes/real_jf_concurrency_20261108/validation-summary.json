@@ -1,0 +1,1231 @@
+{
+  "status": "pass",
+  "job": "43826632",
+  "scope": "1000 events per case; not sustained performance qualification",
+  "cases": {
+    "clean-s1-r1": {
+      "status": "pass",
+      "host": "sdfampere001",
+      "job": "43826632",
+      "events": 1000,
+      "streams": 1,
+      "bins": 100,
+      "batch_size": 7,
+      "bulk_target_bytes": 524288,
+      "framework_budget_gib": 4,
+      "validation_mode": false,
+      "delivered_events": 1000,
+      "runtime": {
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+        "cupy": "14.0.1",
+        "kvikio": "26.10.00",
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "cuda_runtime": 12090,
+        "environment": {
+          "PS_PARALLEL": "none",
+          "PS_FAKESTEP_FLAG": "0",
+          "PS_SMD_N_EVENTS": "20",
+          "PS_SMD_CHUNKSIZE": "268435456",
+          "KVIKIO_COMPAT_MODE": "ON",
+          "KVIKIO_NTHREADS": "4",
+          "CUDA_VISIBLE_DEVICES": "0"
+        }
+      },
+      "admission": {
+        "state_bytes": 6710887200,
+        "nonstate_reserve_bytes": 8589934592,
+        "free_device_bytes": 41961127936,
+        "total_device_bytes": 42405855232
+      },
+      "window": {
+        "warmup_events": 100,
+        "steady_events": 900,
+        "boundary_join_seconds": 0.0014250450767576694,
+        "submission_seconds": 5.31468984298408,
+        "tail_completion_seconds": 0.010021422989666462,
+        "completed_window_seconds": 5.324711265973747,
+        "completed_events_per_second": 169.02324934522326
+      },
+      "admission_pressure_trims": {
+        "warmup": 0,
+        "steady": 0
+      },
+      "checks": {
+        "status": "pass",
+        "events": 1000,
+        "bins": 100,
+        "total_bin_count": 1000,
+        "per_bank_totals": [
+          1000
+        ],
+        "scope": "Exact accepted event/bin counts; no new full-pixel numerical acceptance claim"
+      },
+      "bank_events": [
+        1000
+      ],
+      "pixel_checks": [],
+      "memory": {
+        "samples": [
+          {
+            "label": "before_setup",
+            "monotonic_seconds": 1127860.163548449,
+            "device_free_bytes": 41961127936,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 444727296,
+            "cupy_pool_total_bytes": 0,
+            "cupy_pool_used_bytes": 0,
+            "VmHWM_bytes": 471400448,
+            "VmRSS_bytes": 471400448
+          },
+          {
+            "label": "before_iteration",
+            "monotonic_seconds": 1127860.986216203,
+            "device_free_bytes": 41355051008,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 1050804224,
+            "cupy_pool_total_bytes": 604079616,
+            "cupy_pool_used_bytes": 604079616,
+            "VmHWM_bytes": 1933238272,
+            "VmRSS_bytes": 1933238272
+          },
+          {
+            "label": "after_completion",
+            "monotonic_seconds": 1127866.99038022,
+            "device_free_bytes": 33658503168,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 8747352064,
+            "cupy_pool_total_bytes": 8255148032,
+            "cupy_pool_used_bytes": 7181404160,
+            "VmHWM_bytes": 2037047296,
+            "VmRSS_bytes": 1433427968
+          },
+          {
+            "label": "after_cleanup",
+            "monotonic_seconds": 1127866.990476549,
+            "device_free_bytes": 33658503168,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 8747352064,
+            "cupy_pool_total_bytes": 8255148032,
+            "cupy_pool_used_bytes": 470516736,
+            "VmHWM_bytes": 2037047296,
+            "VmRSS_bytes": 1433427968
+          }
+        ],
+        "peaks": {
+          "device_used_bytes": 8747352064,
+          "cupy_pool_total_bytes": 8255148032,
+          "cupy_pool_used_bytes": 7181404160,
+          "VmRSS_bytes": 1933238272,
+          "VmHWM_bytes": 2037047296
+        },
+        "interpretation": "Device usage and pool values sampled at callback/delivery/export boundaries; not continuous exact peaks. VmHWM is process lifetime host RSS high-water, including CPU validation. Device usage includes other device users."
+      },
+      "callbacks": 150
+    },
+    "clean-s1-r2": {
+      "status": "pass",
+      "host": "sdfampere001",
+      "job": "43826632",
+      "events": 1000,
+      "streams": 1,
+      "bins": 100,
+      "batch_size": 7,
+      "bulk_target_bytes": 524288,
+      "framework_budget_gib": 4,
+      "validation_mode": false,
+      "delivered_events": 1000,
+      "runtime": {
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+        "cupy": "14.0.1",
+        "kvikio": "26.10.00",
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "cuda_runtime": 12090,
+        "environment": {
+          "PS_PARALLEL": "none",
+          "PS_FAKESTEP_FLAG": "0",
+          "PS_SMD_N_EVENTS": "20",
+          "PS_SMD_CHUNKSIZE": "268435456",
+          "KVIKIO_COMPAT_MODE": "ON",
+          "KVIKIO_NTHREADS": "4",
+          "CUDA_VISIBLE_DEVICES": "0"
+        }
+      },
+      "admission": {
+        "state_bytes": 6710887200,
+        "nonstate_reserve_bytes": 8589934592,
+        "free_device_bytes": 41961127936,
+        "total_device_bytes": 42405855232
+      },
+      "window": {
+        "warmup_events": 100,
+        "steady_events": 900,
+        "boundary_join_seconds": 0.0014277840964496136,
+        "submission_seconds": 6.061017314903438,
+        "tail_completion_seconds": 0.010124435881152749,
+        "completed_window_seconds": 6.071141750784591,
+        "completed_events_per_second": 148.24229723901448
+      },
+      "admission_pressure_trims": {
+        "warmup": 0,
+        "steady": 0
+      },
+      "checks": {
+        "status": "pass",
+        "events": 1000,
+        "bins": 100,
+        "total_bin_count": 1000,
+        "per_bank_totals": [
+          1000
+        ],
+        "scope": "Exact accepted event/bin counts; no new full-pixel numerical acceptance claim"
+      },
+      "bank_events": [
+        1000
+      ],
+      "pixel_checks": [],
+      "memory": {
+        "samples": [
+          {
+            "label": "before_setup",
+            "monotonic_seconds": 1127882.474637999,
+            "device_free_bytes": 41961127936,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 444727296,
+            "cupy_pool_total_bytes": 0,
+            "cupy_pool_used_bytes": 0,
+            "VmHWM_bytes": 468373504,
+            "VmRSS_bytes": 468373504
+          },
+          {
+            "label": "before_iteration",
+            "monotonic_seconds": 1127883.315329811,
+            "device_free_bytes": 41355051008,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 1050804224,
+            "cupy_pool_total_bytes": 604079616,
+            "cupy_pool_used_bytes": 604079616,
+            "VmHWM_bytes": 1914826752,
+            "VmRSS_bytes": 1914826752
+          },
+          {
+            "label": "after_completion",
+            "monotonic_seconds": 1127890.156726146,
+            "device_free_bytes": 33658503168,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 8747352064,
+            "cupy_pool_total_bytes": 8255148032,
+            "cupy_pool_used_bytes": 7181404160,
+            "VmHWM_bytes": 2016481280,
+            "VmRSS_bytes": 1412894720
+          },
+          {
+            "label": "after_cleanup",
+            "monotonic_seconds": 1127890.156818395,
+            "device_free_bytes": 33658503168,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 8747352064,
+            "cupy_pool_total_bytes": 8255148032,
+            "cupy_pool_used_bytes": 470516736,
+            "VmHWM_bytes": 2016481280,
+            "VmRSS_bytes": 1412894720
+          }
+        ],
+        "peaks": {
+          "device_used_bytes": 8747352064,
+          "cupy_pool_total_bytes": 8255148032,
+          "cupy_pool_used_bytes": 7181404160,
+          "VmRSS_bytes": 1914826752,
+          "VmHWM_bytes": 2016481280
+        },
+        "interpretation": "Device usage and pool values sampled at callback/delivery/export boundaries; not continuous exact peaks. VmHWM is process lifetime host RSS high-water, including CPU validation. Device usage includes other device users."
+      },
+      "callbacks": 150
+    },
+    "clean-s1-r3": {
+      "status": "pass",
+      "host": "sdfampere001",
+      "job": "43826632",
+      "events": 1000,
+      "streams": 1,
+      "bins": 100,
+      "batch_size": 7,
+      "bulk_target_bytes": 524288,
+      "framework_budget_gib": 4,
+      "validation_mode": false,
+      "delivered_events": 1000,
+      "runtime": {
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+        "cupy": "14.0.1",
+        "kvikio": "26.10.00",
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "cuda_runtime": 12090,
+        "environment": {
+          "PS_PARALLEL": "none",
+          "PS_FAKESTEP_FLAG": "0",
+          "PS_SMD_N_EVENTS": "20",
+          "PS_SMD_CHUNKSIZE": "268435456",
+          "KVIKIO_COMPAT_MODE": "ON",
+          "KVIKIO_NTHREADS": "4",
+          "CUDA_VISIBLE_DEVICES": "0"
+        }
+      },
+      "admission": {
+        "state_bytes": 6710887200,
+        "nonstate_reserve_bytes": 8589934592,
+        "free_device_bytes": 41961127936,
+        "total_device_bytes": 42405855232
+      },
+      "window": {
+        "warmup_events": 100,
+        "steady_events": 900,
+        "boundary_join_seconds": 0.001424384769052267,
+        "submission_seconds": 5.345544011099264,
+        "tail_completion_seconds": 0.010128646856173873,
+        "completed_window_seconds": 5.355672657955438,
+        "completed_events_per_second": 168.0461181030397
+      },
+      "admission_pressure_trims": {
+        "warmup": 0,
+        "steady": 0
+      },
+      "checks": {
+        "status": "pass",
+        "events": 1000,
+        "bins": 100,
+        "total_bin_count": 1000,
+        "per_bank_totals": [
+          1000
+        ],
+        "scope": "Exact accepted event/bin counts; no new full-pixel numerical acceptance claim"
+      },
+      "bank_events": [
+        1000
+      ],
+      "pixel_checks": [],
+      "memory": {
+        "samples": [
+          {
+            "label": "before_setup",
+            "monotonic_seconds": 1127905.693535258,
+            "device_free_bytes": 41961127936,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 444727296,
+            "cupy_pool_total_bytes": 0,
+            "cupy_pool_used_bytes": 0,
+            "VmHWM_bytes": 468643840,
+            "VmRSS_bytes": 468643840
+          },
+          {
+            "label": "before_iteration",
+            "monotonic_seconds": 1127906.511202714,
+            "device_free_bytes": 41355051008,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 1050804224,
+            "cupy_pool_total_bytes": 604079616,
+            "cupy_pool_used_bytes": 604079616,
+            "VmHWM_bytes": 1928056832,
+            "VmRSS_bytes": 1928056832
+          },
+          {
+            "label": "after_completion",
+            "monotonic_seconds": 1127912.545280403,
+            "device_free_bytes": 33658503168,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 8747352064,
+            "cupy_pool_total_bytes": 8255148032,
+            "cupy_pool_used_bytes": 7181404160,
+            "VmHWM_bytes": 2030817280,
+            "VmRSS_bytes": 1427263488
+          },
+          {
+            "label": "after_cleanup",
+            "monotonic_seconds": 1127912.545377342,
+            "device_free_bytes": 33658503168,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 8747352064,
+            "cupy_pool_total_bytes": 8255148032,
+            "cupy_pool_used_bytes": 470516736,
+            "VmHWM_bytes": 2030817280,
+            "VmRSS_bytes": 1427263488
+          }
+        ],
+        "peaks": {
+          "device_used_bytes": 8747352064,
+          "cupy_pool_total_bytes": 8255148032,
+          "cupy_pool_used_bytes": 7181404160,
+          "VmRSS_bytes": 1928056832,
+          "VmHWM_bytes": 2030817280
+        },
+        "interpretation": "Device usage and pool values sampled at callback/delivery/export boundaries; not continuous exact peaks. VmHWM is process lifetime host RSS high-water, including CPU validation. Device usage includes other device users."
+      },
+      "callbacks": 150
+    },
+    "clean-s2-r1": {
+      "status": "pass",
+      "host": "sdfampere001",
+      "job": "43826632",
+      "events": 1000,
+      "streams": 2,
+      "bins": 100,
+      "batch_size": 7,
+      "bulk_target_bytes": 524288,
+      "framework_budget_gib": 4,
+      "validation_mode": false,
+      "delivered_events": 1000,
+      "runtime": {
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+        "cupy": "14.0.1",
+        "kvikio": "26.10.00",
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "cuda_runtime": 12090,
+        "environment": {
+          "PS_PARALLEL": "none",
+          "PS_FAKESTEP_FLAG": "0",
+          "PS_SMD_N_EVENTS": "20",
+          "PS_SMD_CHUNKSIZE": "268435456",
+          "KVIKIO_COMPAT_MODE": "ON",
+          "KVIKIO_NTHREADS": "4",
+          "CUDA_VISIBLE_DEVICES": "0"
+        }
+      },
+      "admission": {
+        "state_bytes": 13421774400,
+        "nonstate_reserve_bytes": 8589934592,
+        "free_device_bytes": 41961127936,
+        "total_device_bytes": 42405855232
+      },
+      "window": {
+        "warmup_events": 100,
+        "steady_events": 900,
+        "boundary_join_seconds": 0.001422394998371601,
+        "submission_seconds": 4.824319797102362,
+        "tail_completion_seconds": 0.010392079828307033,
+        "completed_window_seconds": 4.834711876930669,
+        "completed_events_per_second": 186.15380252429182
+      },
+      "admission_pressure_trims": {
+        "warmup": 0,
+        "steady": 0
+      },
+      "checks": {
+        "status": "pass",
+        "events": 1000,
+        "bins": 100,
+        "total_bin_count": 1000,
+        "per_bank_totals": [
+          500,
+          500
+        ],
+        "scope": "Exact accepted event/bin counts; no new full-pixel numerical acceptance claim"
+      },
+      "bank_events": [
+        500,
+        500
+      ],
+      "pixel_checks": [],
+      "memory": {
+        "samples": [
+          {
+            "label": "before_setup",
+            "monotonic_seconds": 1127871.482166361,
+            "device_free_bytes": 41961127936,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 444727296,
+            "cupy_pool_total_bytes": 0,
+            "cupy_pool_used_bytes": 0,
+            "VmHWM_bytes": 469336064,
+            "VmRSS_bytes": 469336064
+          },
+          {
+            "label": "before_iteration",
+            "monotonic_seconds": 1127872.302799928,
+            "device_free_bytes": 41355051008,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 1050804224,
+            "cupy_pool_total_bytes": 604079616,
+            "cupy_pool_used_bytes": 604079616,
+            "VmHWM_bytes": 1935851520,
+            "VmRSS_bytes": 1935851520
+          },
+          {
+            "label": "after_completion",
+            "monotonic_seconds": 1127877.770197883,
+            "device_free_bytes": 25964052480,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 16441802752,
+            "cupy_pool_total_bytes": 15906216448,
+            "cupy_pool_used_bytes": 14362708480,
+            "VmHWM_bytes": 2039660544,
+            "VmRSS_bytes": 1436180480
+          },
+          {
+            "label": "after_cleanup",
+            "monotonic_seconds": 1127877.770294692,
+            "device_free_bytes": 25964052480,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 16441802752,
+            "cupy_pool_total_bytes": 15906216448,
+            "cupy_pool_used_bytes": 940933632,
+            "VmHWM_bytes": 2039660544,
+            "VmRSS_bytes": 1436180480
+          }
+        ],
+        "peaks": {
+          "device_used_bytes": 16441802752,
+          "cupy_pool_total_bytes": 15906216448,
+          "cupy_pool_used_bytes": 14362708480,
+          "VmRSS_bytes": 1935851520,
+          "VmHWM_bytes": 2039660544
+        },
+        "interpretation": "Device usage and pool values sampled at callback/delivery/export boundaries; not continuous exact peaks. VmHWM is process lifetime host RSS high-water, including CPU validation. Device usage includes other device users."
+      },
+      "callbacks": 150
+    },
+    "clean-s2-r2": {
+      "status": "pass",
+      "host": "sdfampere001",
+      "job": "43826632",
+      "events": 1000,
+      "streams": 2,
+      "bins": 100,
+      "batch_size": 7,
+      "bulk_target_bytes": 524288,
+      "framework_budget_gib": 4,
+      "validation_mode": false,
+      "delivered_events": 1000,
+      "runtime": {
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+        "cupy": "14.0.1",
+        "kvikio": "26.10.00",
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "cuda_runtime": 12090,
+        "environment": {
+          "PS_PARALLEL": "none",
+          "PS_FAKESTEP_FLAG": "0",
+          "PS_SMD_N_EVENTS": "20",
+          "PS_SMD_CHUNKSIZE": "268435456",
+          "KVIKIO_COMPAT_MODE": "ON",
+          "KVIKIO_NTHREADS": "4",
+          "CUDA_VISIBLE_DEVICES": "0"
+        }
+      },
+      "admission": {
+        "state_bytes": 13421774400,
+        "nonstate_reserve_bytes": 8589934592,
+        "free_device_bytes": 41961127936,
+        "total_device_bytes": 42405855232
+      },
+      "window": {
+        "warmup_events": 100,
+        "steady_events": 900,
+        "boundary_join_seconds": 0.00142575497739017,
+        "submission_seconds": 4.833618824137375,
+        "tail_completion_seconds": 0.010307554854080081,
+        "completed_window_seconds": 4.843926378991455,
+        "completed_events_per_second": 185.7996859538124
+      },
+      "admission_pressure_trims": {
+        "warmup": 0,
+        "steady": 0
+      },
+      "checks": {
+        "status": "pass",
+        "events": 1000,
+        "bins": 100,
+        "total_bin_count": 1000,
+        "per_bank_totals": [
+          500,
+          500
+        ],
+        "scope": "Exact accepted event/bin counts; no new full-pixel numerical acceptance claim"
+      },
+      "bank_events": [
+        500,
+        500
+      ],
+      "pixel_checks": [],
+      "memory": {
+        "samples": [
+          {
+            "label": "before_setup",
+            "monotonic_seconds": 1127894.78139008,
+            "device_free_bytes": 41961127936,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 444727296,
+            "cupy_pool_total_bytes": 0,
+            "cupy_pool_used_bytes": 0,
+            "VmHWM_bytes": 469413888,
+            "VmRSS_bytes": 469413888
+          },
+          {
+            "label": "before_iteration",
+            "monotonic_seconds": 1127895.610604327,
+            "device_free_bytes": 41355051008,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 1050804224,
+            "cupy_pool_total_bytes": 604079616,
+            "cupy_pool_used_bytes": 604079616,
+            "VmHWM_bytes": 1930211328,
+            "VmRSS_bytes": 1930211328
+          },
+          {
+            "label": "after_completion",
+            "monotonic_seconds": 1127901.081249697,
+            "device_free_bytes": 25964052480,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 16441802752,
+            "cupy_pool_total_bytes": 15906216448,
+            "cupy_pool_used_bytes": 14362708480,
+            "VmHWM_bytes": 2030874624,
+            "VmRSS_bytes": 1427828736
+          },
+          {
+            "label": "after_cleanup",
+            "monotonic_seconds": 1127901.081348606,
+            "device_free_bytes": 25964052480,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 16441802752,
+            "cupy_pool_total_bytes": 15906216448,
+            "cupy_pool_used_bytes": 940933632,
+            "VmHWM_bytes": 2030874624,
+            "VmRSS_bytes": 1427828736
+          }
+        ],
+        "peaks": {
+          "device_used_bytes": 16441802752,
+          "cupy_pool_total_bytes": 15906216448,
+          "cupy_pool_used_bytes": 14362708480,
+          "VmRSS_bytes": 1930211328,
+          "VmHWM_bytes": 2030874624
+        },
+        "interpretation": "Device usage and pool values sampled at callback/delivery/export boundaries; not continuous exact peaks. VmHWM is process lifetime host RSS high-water, including CPU validation. Device usage includes other device users."
+      },
+      "callbacks": 150
+    },
+    "clean-s2-r3": {
+      "status": "pass",
+      "host": "sdfampere001",
+      "job": "43826632",
+      "events": 1000,
+      "streams": 2,
+      "bins": 100,
+      "batch_size": 7,
+      "bulk_target_bytes": 524288,
+      "framework_budget_gib": 4,
+      "validation_mode": false,
+      "delivered_events": 1000,
+      "runtime": {
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+        "cupy": "14.0.1",
+        "kvikio": "26.10.00",
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "cuda_runtime": 12090,
+        "environment": {
+          "PS_PARALLEL": "none",
+          "PS_FAKESTEP_FLAG": "0",
+          "PS_SMD_N_EVENTS": "20",
+          "PS_SMD_CHUNKSIZE": "268435456",
+          "KVIKIO_COMPAT_MODE": "ON",
+          "KVIKIO_NTHREADS": "4",
+          "CUDA_VISIBLE_DEVICES": "0"
+        }
+      },
+      "admission": {
+        "state_bytes": 13421774400,
+        "nonstate_reserve_bytes": 8589934592,
+        "free_device_bytes": 41961127936,
+        "total_device_bytes": 42405855232
+      },
+      "window": {
+        "warmup_events": 100,
+        "steady_events": 900,
+        "boundary_join_seconds": 0.001410885015502572,
+        "submission_seconds": 5.84835946187377,
+        "tail_completion_seconds": 0.010415022959932685,
+        "completed_window_seconds": 5.8587744848337024,
+        "completed_events_per_second": 153.61574375832046
+      },
+      "admission_pressure_trims": {
+        "warmup": 0,
+        "steady": 0
+      },
+      "checks": {
+        "status": "pass",
+        "events": 1000,
+        "bins": 100,
+        "total_bin_count": 1000,
+        "per_bank_totals": [
+          500,
+          500
+        ],
+        "scope": "Exact accepted event/bin counts; no new full-pixel numerical acceptance claim"
+      },
+      "bank_events": [
+        500,
+        500
+      ],
+      "pixel_checks": [],
+      "memory": {
+        "samples": [
+          {
+            "label": "before_setup",
+            "monotonic_seconds": 1127917.116659203,
+            "device_free_bytes": 41961127936,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 444727296,
+            "cupy_pool_total_bytes": 0,
+            "cupy_pool_used_bytes": 0,
+            "VmHWM_bytes": 471351296,
+            "VmRSS_bytes": 471351296
+          },
+          {
+            "label": "before_iteration",
+            "monotonic_seconds": 1127917.941268207,
+            "device_free_bytes": 41355051008,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 1050804224,
+            "cupy_pool_total_bytes": 604079616,
+            "cupy_pool_used_bytes": 604079616,
+            "VmHWM_bytes": 1929183232,
+            "VmRSS_bytes": 1929183232
+          },
+          {
+            "label": "after_completion",
+            "monotonic_seconds": 1127924.544082541,
+            "device_free_bytes": 25964052480,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 16441802752,
+            "cupy_pool_total_bytes": 15906216448,
+            "cupy_pool_used_bytes": 14362708480,
+            "VmHWM_bytes": 2031943680,
+            "VmRSS_bytes": 1428328448
+          },
+          {
+            "label": "after_cleanup",
+            "monotonic_seconds": 1127924.54418297,
+            "device_free_bytes": 25964052480,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 16441802752,
+            "cupy_pool_total_bytes": 15906216448,
+            "cupy_pool_used_bytes": 940933632,
+            "VmHWM_bytes": 2031943680,
+            "VmRSS_bytes": 1428328448
+          }
+        ],
+        "peaks": {
+          "device_used_bytes": 16441802752,
+          "cupy_pool_total_bytes": 15906216448,
+          "cupy_pool_used_bytes": 14362708480,
+          "VmRSS_bytes": 1929183232,
+          "VmHWM_bytes": 2031943680
+        },
+        "interpretation": "Device usage and pool values sampled at callback/delivery/export boundaries; not continuous exact peaks. VmHWM is process lifetime host RSS high-water, including CPU validation. Device usage includes other device users."
+      },
+      "callbacks": 150
+    },
+    "control-8m": {
+      "status": "pass",
+      "host": "sdfampere001",
+      "job": "43826632",
+      "events": 1000,
+      "streams": 2,
+      "bins": 100,
+      "batch_size": 7,
+      "bulk_target_bytes": 8388608,
+      "framework_budget_gib": 4,
+      "validation_mode": false,
+      "delivered_events": 1000,
+      "runtime": {
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+        "cupy": "14.0.1",
+        "kvikio": "26.10.00",
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "cuda_runtime": 12090,
+        "environment": {
+          "PS_PARALLEL": "none",
+          "PS_FAKESTEP_FLAG": "0",
+          "PS_SMD_N_EVENTS": "20",
+          "PS_SMD_CHUNKSIZE": "268435456",
+          "KVIKIO_COMPAT_MODE": "ON",
+          "KVIKIO_NTHREADS": "4",
+          "CUDA_VISIBLE_DEVICES": "0"
+        }
+      },
+      "admission": {
+        "state_bytes": 13421774400,
+        "nonstate_reserve_bytes": 8589934592,
+        "free_device_bytes": 41961127936,
+        "total_device_bytes": 42405855232
+      },
+      "window": {
+        "warmup_events": 100,
+        "steady_events": 900,
+        "boundary_join_seconds": 0.0001749678049236536,
+        "submission_seconds": 10.678968875901774,
+        "tail_completion_seconds": 0.007258006138727069,
+        "completed_window_seconds": 10.6862268820405,
+        "completed_events_per_second": 84.22055884968708
+      },
+      "admission_pressure_trims": {
+        "warmup": 100,
+        "steady": 899
+      },
+      "checks": {
+        "status": "pass",
+        "events": 1000,
+        "bins": 100,
+        "total_bin_count": 1000,
+        "per_bank_totals": [
+          500,
+          500
+        ],
+        "scope": "Exact accepted event/bin counts; no new full-pixel numerical acceptance claim"
+      },
+      "bank_events": [
+        500,
+        500
+      ],
+      "pixel_checks": [],
+      "memory": {
+        "samples": [
+          {
+            "label": "before_setup",
+            "monotonic_seconds": 1127929.172979342,
+            "device_free_bytes": 41961127936,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 444727296,
+            "cupy_pool_total_bytes": 0,
+            "cupy_pool_used_bytes": 0,
+            "VmHWM_bytes": 473051136,
+            "VmRSS_bytes": 473051136
+          },
+          {
+            "label": "before_iteration",
+            "monotonic_seconds": 1127930.002033191,
+            "device_free_bytes": 41355051008,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 1050804224,
+            "cupy_pool_total_bytes": 604079616,
+            "cupy_pool_used_bytes": 604079616,
+            "VmHWM_bytes": 1930256384,
+            "VmRSS_bytes": 1930256384
+          },
+          {
+            "label": "after_completion",
+            "monotonic_seconds": 1127941.945713284,
+            "device_free_bytes": 27723563008,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 14682292224,
+            "cupy_pool_total_bytes": 14227364352,
+            "cupy_pool_used_bytes": 13489078784,
+            "VmHWM_bytes": 2026725376,
+            "VmRSS_bytes": 1423335424
+          },
+          {
+            "label": "after_cleanup",
+            "monotonic_seconds": 1127941.945820973,
+            "device_free_bytes": 27723563008,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 14682292224,
+            "cupy_pool_total_bytes": 14227364352,
+            "cupy_pool_used_bytes": 67303936,
+            "VmHWM_bytes": 2026725376,
+            "VmRSS_bytes": 1423335424
+          }
+        ],
+        "peaks": {
+          "device_used_bytes": 14682292224,
+          "cupy_pool_total_bytes": 14227364352,
+          "cupy_pool_used_bytes": 13489078784,
+          "VmRSS_bytes": 1930256384,
+          "VmHWM_bytes": 2026725376
+        },
+        "interpretation": "Device usage and pool values sampled at callback/delivery/export boundaries; not continuous exact peaks. VmHWM is process lifetime host RSS high-water, including CPU validation. Device usage includes other device users."
+      },
+      "callbacks": 1000
+    },
+    "pixel-acceptance": {
+      "status": "pass",
+      "host": "sdfampere001",
+      "job": "43826632",
+      "events": 1000,
+      "streams": 2,
+      "bins": 100,
+      "batch_size": 7,
+      "bulk_target_bytes": 524288,
+      "framework_budget_gib": 4,
+      "validation_mode": true,
+      "delivered_events": 1000,
+      "runtime": {
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+        "cupy": "14.0.1",
+        "kvikio": "26.10.00",
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "cuda_runtime": 12090,
+        "environment": {
+          "PS_PARALLEL": "none",
+          "PS_FAKESTEP_FLAG": "0",
+          "PS_SMD_N_EVENTS": "20",
+          "PS_SMD_CHUNKSIZE": "268435456",
+          "KVIKIO_COMPAT_MODE": "ON",
+          "KVIKIO_NTHREADS": "4",
+          "CUDA_VISIBLE_DEVICES": "0"
+        }
+      },
+      "admission": {
+        "state_bytes": 13421774400,
+        "nonstate_reserve_bytes": 8589934592,
+        "free_device_bytes": 41961127936,
+        "total_device_bytes": 42405855232
+      },
+      "window": {
+        "warmup_events": 100,
+        "steady_events": 900,
+        "boundary_join_seconds": 0.0014283049385994673,
+        "submission_seconds": 5.109693157952279,
+        "tail_completion_seconds": 0.0059802059549838305,
+        "completed_window_seconds": 5.115673363907263,
+        "completed_events_per_second": 175.92991889392164
+      },
+      "admission_pressure_trims": {
+        "warmup": 0,
+        "steady": 0
+      },
+      "checks": {
+        "status": "pass",
+        "events": 1000,
+        "bins": 100,
+        "total_bin_count": 1000,
+        "per_bank_totals": [
+          500,
+          500
+        ],
+        "scope": "Exact accepted event/bin counts; no new full-pixel numerical acceptance claim"
+      },
+      "bank_events": [
+        500,
+        500
+      ],
+      "pixel_checks": [
+        0,
+        500,
+        999
+      ],
+      "memory": {
+        "samples": [
+          {
+            "label": "before_setup",
+            "monotonic_seconds": 1127848.296625389,
+            "device_free_bytes": 41961127936,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 444727296,
+            "cupy_pool_total_bytes": 0,
+            "cupy_pool_used_bytes": 0,
+            "VmHWM_bytes": 467664896,
+            "VmRSS_bytes": 467664896
+          },
+          {
+            "label": "before_iteration",
+            "monotonic_seconds": 1127849.281809622,
+            "device_free_bytes": 41355051008,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 1050804224,
+            "cupy_pool_total_bytes": 604079616,
+            "cupy_pool_used_bytes": 604079616,
+            "VmHWM_bytes": 1960067072,
+            "VmRSS_bytes": 1960067072
+          },
+          {
+            "label": "after_completion",
+            "monotonic_seconds": 1127855.610304443,
+            "device_free_bytes": 25964052480,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 16441802752,
+            "cupy_pool_total_bytes": 15906216448,
+            "cupy_pool_used_bytes": 14362708480,
+            "VmHWM_bytes": 2164899840,
+            "VmRSS_bytes": 1461051392
+          },
+          {
+            "label": "after_cleanup",
+            "monotonic_seconds": 1127855.610407422,
+            "device_free_bytes": 25964052480,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 16441802752,
+            "cupy_pool_total_bytes": 15906216448,
+            "cupy_pool_used_bytes": 940933632,
+            "VmHWM_bytes": 2164899840,
+            "VmRSS_bytes": 1461051392
+          }
+        ],
+        "peaks": {
+          "device_used_bytes": 16441802752,
+          "cupy_pool_total_bytes": 15906216448,
+          "cupy_pool_used_bytes": 14362708480,
+          "VmRSS_bytes": 1960067072,
+          "VmHWM_bytes": 2164899840
+        },
+        "interpretation": "Device usage and pool values sampled at callback/delivery/export boundaries; not continuous exact peaks. VmHWM is process lifetime host RSS high-water, including CPU validation. Device usage includes other device users."
+      },
+      "callbacks": 150
+    },
+    "traced-524288": {
+      "status": "pass",
+      "host": "sdfampere001",
+      "job": "43826632",
+      "events": 1000,
+      "streams": 2,
+      "bins": 100,
+      "batch_size": 7,
+      "bulk_target_bytes": 524288,
+      "framework_budget_gib": 4,
+      "validation_mode": false,
+      "delivered_events": 1000,
+      "runtime": {
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+        "cupy": "14.0.1",
+        "kvikio": "26.10.00",
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "cuda_runtime": 12090,
+        "environment": {
+          "PS_PARALLEL": "none",
+          "PS_FAKESTEP_FLAG": "0",
+          "PS_SMD_N_EVENTS": "20",
+          "PS_SMD_CHUNKSIZE": "268435456",
+          "KVIKIO_COMPAT_MODE": "ON",
+          "KVIKIO_NTHREADS": "4",
+          "CUDA_VISIBLE_DEVICES": "0"
+        }
+      },
+      "admission": {
+        "state_bytes": 13421774400,
+        "nonstate_reserve_bytes": 8589934592,
+        "free_device_bytes": 41931767808,
+        "total_device_bytes": 42405855232
+      },
+      "window": {
+        "warmup_events": 100,
+        "steady_events": 900,
+        "boundary_join_seconds": 0.0014889240264892578,
+        "submission_seconds": 4.920060199918225,
+        "tail_completion_seconds": 0.010465709026902914,
+        "completed_window_seconds": 4.930525908945128,
+        "completed_events_per_second": 182.5363088280683
+      },
+      "admission_pressure_trims": {
+        "warmup": 0,
+        "steady": 0
+      },
+      "checks": {
+        "status": "pass",
+        "events": 1000,
+        "bins": 100,
+        "total_bin_count": 1000,
+        "per_bank_totals": [
+          500,
+          500
+        ],
+        "scope": "Exact accepted event/bin counts; no new full-pixel numerical acceptance claim"
+      },
+      "bank_events": [
+        500,
+        500
+      ],
+      "pixel_checks": [],
+      "memory": {
+        "samples": [
+          {
+            "label": "before_setup",
+            "monotonic_seconds": 1127971.901333104,
+            "device_free_bytes": 41931767808,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 474087424,
+            "cupy_pool_total_bytes": 0,
+            "cupy_pool_used_bytes": 0,
+            "VmHWM_bytes": 1027440640,
+            "VmRSS_bytes": 1027440640
+          },
+          {
+            "label": "before_iteration",
+            "monotonic_seconds": 1127973.251669828,
+            "device_free_bytes": 41325690880,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 1080164352,
+            "cupy_pool_total_bytes": 604079616,
+            "cupy_pool_used_bytes": 604079616,
+            "VmHWM_bytes": 2466951168,
+            "VmRSS_bytes": 2466951168
+          },
+          {
+            "label": "after_completion",
+            "monotonic_seconds": 1127978.857664101,
+            "device_free_bytes": 25934692352,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 16471162880,
+            "cupy_pool_total_bytes": 15906216448,
+            "cupy_pool_used_bytes": 14362708480,
+            "VmHWM_bytes": 2583449600,
+            "VmRSS_bytes": 1979961344
+          },
+          {
+            "label": "after_cleanup",
+            "monotonic_seconds": 1127978.857765579,
+            "device_free_bytes": 25934692352,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 16471162880,
+            "cupy_pool_total_bytes": 15906216448,
+            "cupy_pool_used_bytes": 940933632,
+            "VmHWM_bytes": 2583449600,
+            "VmRSS_bytes": 1979961344
+          }
+        ],
+        "peaks": {
+          "device_used_bytes": 16471162880,
+          "cupy_pool_total_bytes": 15906216448,
+          "cupy_pool_used_bytes": 14362708480,
+          "VmRSS_bytes": 2466951168,
+          "VmHWM_bytes": 2583449600
+        },
+        "interpretation": "Device usage and pool values sampled at callback/delivery/export boundaries; not continuous exact peaks. VmHWM is process lifetime host RSS high-water, including CPU validation. Device usage includes other device users."
+      },
+      "callbacks": 150
+    },
+    "traced-8388608": {
+      "status": "pass",
+      "host": "sdfampere001",
+      "job": "43826632",
+      "events": 1000,
+      "streams": 2,
+      "bins": 100,
+      "batch_size": 7,
+      "bulk_target_bytes": 8388608,
+      "framework_budget_gib": 4,
+      "validation_mode": false,
+      "delivered_events": 1000,
+      "runtime": {
+        "python": "3.11.14 | packaged by conda-forge | (main, Oct 22 2025, 22:46:25) [GCC 14.3.0]",
+        "cupy": "14.0.1",
+        "kvikio": "26.10.00",
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "cuda_runtime": 12090,
+        "environment": {
+          "PS_PARALLEL": "none",
+          "PS_FAKESTEP_FLAG": "0",
+          "PS_SMD_N_EVENTS": "20",
+          "PS_SMD_CHUNKSIZE": "268435456",
+          "KVIKIO_COMPAT_MODE": "ON",
+          "KVIKIO_NTHREADS": "4",
+          "CUDA_VISIBLE_DEVICES": "0"
+        }
+      },
+      "admission": {
+        "state_bytes": 13421774400,
+        "nonstate_reserve_bytes": 8589934592,
+        "free_device_bytes": 41931767808,
+        "total_device_bytes": 42405855232
+      },
+      "window": {
+        "warmup_events": 100,
+        "steady_events": 900,
+        "boundary_join_seconds": 0.00017407815903425217,
+        "submission_seconds": 9.593589863041416,
+        "tail_completion_seconds": 0.007081425050273538,
+        "completed_window_seconds": 9.60067128809169,
+        "completed_events_per_second": 93.74344491059975
+      },
+      "admission_pressure_trims": {
+        "warmup": 100,
+        "steady": 899
+      },
+      "checks": {
+        "status": "pass",
+        "events": 1000,
+        "bins": 100,
+        "total_bin_count": 1000,
+        "per_bank_totals": [
+          500,
+          500
+        ],
+        "scope": "Exact accepted event/bin counts; no new full-pixel numerical acceptance claim"
+      },
+      "bank_events": [
+        500,
+        500
+      ],
+      "pixel_checks": [],
+      "memory": {
+        "samples": [
+          {
+            "label": "before_setup",
+            "monotonic_seconds": 1127948.152755742,
+            "device_free_bytes": 41931767808,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 474087424,
+            "cupy_pool_total_bytes": 0,
+            "cupy_pool_used_bytes": 0,
+            "VmHWM_bytes": 1013501952,
+            "VmRSS_bytes": 1013501952
+          },
+          {
+            "label": "before_iteration",
+            "monotonic_seconds": 1127949.83622689,
+            "device_free_bytes": 41325690880,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 1080164352,
+            "cupy_pool_total_bytes": 604079616,
+            "cupy_pool_used_bytes": 604079616,
+            "VmHWM_bytes": 2454933504,
+            "VmRSS_bytes": 2454933504
+          },
+          {
+            "label": "after_completion",
+            "monotonic_seconds": 1127960.645894446,
+            "device_free_bytes": 27694202880,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 14711652352,
+            "cupy_pool_total_bytes": 14227364352,
+            "cupy_pool_used_bytes": 13489078784,
+            "VmHWM_bytes": 2567438336,
+            "VmRSS_bytes": 1964359680
+          },
+          {
+            "label": "after_cleanup",
+            "monotonic_seconds": 1127960.646027644,
+            "device_free_bytes": 27694202880,
+            "device_total_bytes": 42405855232,
+            "device_used_bytes": 14711652352,
+            "cupy_pool_total_bytes": 14227364352,
+            "cupy_pool_used_bytes": 67303936,
+            "VmHWM_bytes": 2567438336,
+            "VmRSS_bytes": 1964359680
+          }
+        ],
+        "peaks": {
+          "device_used_bytes": 14711652352,
+          "cupy_pool_total_bytes": 14227364352,
+          "cupy_pool_used_bytes": 13489078784,
+          "VmRSS_bytes": 2454933504,
+          "VmHWM_bytes": 2567438336
+        },
+        "interpretation": "Device usage and pool values sampled at callback/delivery/export boundaries; not continuous exact peaks. VmHWM is process lifetime host RSS high-water, including CPU validation. Device usage includes other device users."
+      },
+      "callbacks": 1000
+    }
+  },
+  "clean_rates": {
+    "1": [
+      169.02324934522326,
+      148.24229723901448,
+      168.0461181030397
+    ],
+    "2": [
+      186.15380252429182,
+      185.7996859538124,
+      153.61574375832046
+    ]
+  },
+  "clean_median_events_per_second": {
+    "1": 168.0461181030397,
+    "2": 185.7996859538124
+  }
+}

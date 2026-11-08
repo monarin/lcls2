@@ -1,0 +1,31 @@
+{
+  "phase": "validated",
+  "base": "539bf30e5",
+  "round": 0,
+  "round_limit": 3,
+  "job": "43826632",
+  "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3",
+  "unresolved_findings": [],
+  "failed_attempts": [
+    {
+      "job": "43825880",
+      "phase": "CPU reference",
+      "reason": "nda_raw arrays in CPU calibration keyword cache; use normal event call"
+    },
+    {
+      "job": "43826137",
+      "phase": "GPU pixel acceptance",
+      "reason": "calibrate returns (out,valid); unpack before cube"
+    }
+  ],
+  "checks": {
+    "job": "pass",
+    "gpu_cases": 10,
+    "events_per_case": 1000,
+    "cpu_reference": "pass",
+    "host_preparation_tests": 9,
+    "sqlite_analysis_tests": 2,
+    "kernel_overlap_ns": 0,
+    "code_hash_verification": "pass"
+  }
+}

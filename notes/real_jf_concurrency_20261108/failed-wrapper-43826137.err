@@ -1,0 +1,49 @@
+test_10k_manifest_receipt_size_and_optional_fresh_hash (test_preparation.Tests.test_10k_manifest_receipt_size_and_optional_fresh_hash) ... ok
+test_callback_rounding_and_completed_tail (test_preparation.Tests.test_callback_rounding_and_completed_tail) ... ok
+test_clean_mode_creates_no_cuda_events_or_publications (test_preparation.Tests.test_clean_mode_creates_no_cuda_events_or_publications) ... ok
+test_failed_join_never_starts_timer (test_preparation.Tests.test_failed_join_never_starts_timer) ... ok
+test_framework_hooks_match_runtime_and_restore_on_failure (test_preparation.Tests.test_framework_hooks_match_runtime_and_restore_on_failure) ... ok
+test_generator_excludes_consumer_and_preserves_close (test_preparation.Tests.test_generator_excludes_consumer_and_preserves_close) ... ok
+test_no_steady_window_and_incomplete_rejected (test_preparation.Tests.test_no_steady_window_and_incomplete_rejected) ... ok
+test_prepare_rejects_repeat_or_existing_events_without_cuda (test_preparation.Tests.test_prepare_rejects_repeat_or_existing_events_without_cuda) ... ok
+test_pressure_counter_no_clocks_and_restores (test_preparation.Tests.test_pressure_counter_no_clocks_and_restores) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.045s
+
+OK
+/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_events.py:525: UserWarning: KvikioGpuReader: kvikio is using the CPU-fallback path (NVMe → CPU DRAM → GPU VRAM).  True GDS (NVMe → GPU VRAM direct) is not available — possible causes: Lustre/GPFS filesystem, cuFile driver not loaded, or KVIKIO_COMPAT_MODE=1.  Performance will be limited by both NVMe read speed AND PCIe CPU→GPU transfer bandwidth.
+  self.gpu_reader = KvikioGpuReader(
+GpuEventManager: kvikio I/O path = CPU-fallback (NVMe → CPU DRAM → GPU VRAM via cudaMemcpy). True GDS is not available — likely Lustre/GPFS filesystem or cuFile driver not loaded.  GDS would give NVMe → GPU VRAM directly, bypassing CPU DRAM entirely.
+Traceback (most recent call last):
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/run_real.py", line 110, in <module>
+    run(p.parse_args())
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/run_real.py", line 76, in run
+    for event in events:
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/run.py", line 859, in events
+    yield from super().events()
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/psexp/run.py", line 199, in events
+    for envelope in self._evt_iter:
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_events.py", line 224, in __next__
+    return next(self._iter)
+           ^^^^^^^^^^^^^^^^
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_events.py", line 1170, in _events
+    yield from self._process_batch(
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_events.py", line 1064, in _process_batch
+    self._submit_gpu(subbatch, gpu_read, sb_envelopes)
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_events.py", line 751, in _submit_gpu
+    record = self._submit_group_gpu(subbatch, gpu_read, event_envelopes)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_events.py", line 798, in _submit_group_gpu
+    return self.event_pool.submit(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_stream.py", line 232, in submit
+    dispatch_task(task, batch_inputs, detector_bindings or {}, stream,
+  File "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib/python3.11/site-packages/psana/gpu/gpu_producer.py", line 227, in dispatch_task
+    task.function(context, stream)
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/real_jf_concurrency_20261108/cube.py", line 33, in __call__
+    self.add(images,errors,batch.timestamps,stream,batch.keepalive,batch.step_generation)
+  File "/sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/mfx_expand10_stage3a_20261105/cube.py", line 111, in add
+    if (images.shape != (len(ts), *self.shape) or images.dtype != cp.float32 or
+        ^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'shape'

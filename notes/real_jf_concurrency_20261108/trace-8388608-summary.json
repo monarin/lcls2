@@ -1,0 +1,272 @@
+{
+  "path": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/trace-8388608.sqlite",
+  "scope": "Full 1k trace including warmup; no steady-only or copy/compute overlap claim",
+  "device_id": 0,
+  "context_id": 1,
+  "global_pid": 287296888766464,
+  "callbacks": 1000,
+  "task_streams": [
+    13,
+    14
+  ],
+  "task_kernel_counts": {
+    "gather_canonical_u16": 1000,
+    "calibrate": 1000,
+    "accept_events": 1000,
+    "accumulate": 1000
+  },
+  "submission_handoffs": {
+    "count": 999,
+    "next_launch_before_previous_sum_end": 0,
+    "min_launch_gap_ns": 5696781,
+    "max_launch_gap_ns": 16557595,
+    "method": "Pair gather and sum FIFO within each stream; order executions by gather launch API start. Gap = next launch API start minus previous sum device end."
+  },
+  "task_kernels": {
+    "kernel_union_ns": 4046792636,
+    "cross_stream_overlap_ns": 0,
+    "overlap_fraction_of_kernel_busy_time": 0.0,
+    "max_concurrent_streams": 1,
+    "first_start_ns": 6363646645,
+    "last_end_ns": 17087592842
+  },
+  "all_kernels": {
+    "kernel_union_ns": 4086247215,
+    "cross_stream_overlap_ns": 0,
+    "overlap_fraction_of_kernel_busy_time": 0.0,
+    "max_concurrent_streams": 1,
+    "first_start_ns": 6360565550,
+    "last_end_ns": 17087592842
+  },
+  "kernel_groups": [
+    {
+      "name": "accept_events",
+      "stream": 13,
+      "count": 500,
+      "duration_ns": 2360303
+    },
+    {
+      "name": "accept_events",
+      "stream": 14,
+      "count": 500,
+      "duration_ns": 2235860
+    },
+    {
+      "name": "accumulate",
+      "stream": 13,
+      "count": 500,
+      "duration_ns": 76259611
+    },
+    {
+      "name": "accumulate",
+      "stream": 14,
+      "count": 500,
+      "duration_ns": 76150823
+    },
+    {
+      "name": "calibrate",
+      "stream": 13,
+      "count": 500,
+      "duration_ns": 1834479080
+    },
+    {
+      "name": "calibrate",
+      "stream": 14,
+      "count": 500,
+      "duration_ns": 1833082582
+    },
+    {
+      "name": "cupy_subtract__uint_uint8_uint32",
+      "stream": 13,
+      "count": 500,
+      "duration_ns": 1312399
+    },
+    {
+      "name": "cupy_subtract__uint_uint8_uint32",
+      "stream": 14,
+      "count": 500,
+      "duration_ns": 1158482
+    },
+    {
+      "name": "gather_canonical_u16",
+      "stream": 13,
+      "count": 500,
+      "duration_ns": 111116865
+    },
+    {
+      "name": "gather_canonical_u16",
+      "stream": 14,
+      "count": 500,
+      "duration_ns": 111107512
+    },
+    {
+      "name": "init_locators",
+      "stream": 13,
+      "count": 500,
+      "duration_ns": 2014546
+    },
+    {
+      "name": "init_locators",
+      "stream": 14,
+      "count": 500,
+      "duration_ns": 2060405
+    },
+    {
+      "name": "locate_fields",
+      "stream": 13,
+      "count": 500,
+      "duration_ns": 8166584
+    },
+    {
+      "name": "locate_fields",
+      "stream": 14,
+      "count": 500,
+      "duration_ns": 8257245
+    },
+    {
+      "name": "walk_xtc",
+      "stream": 13,
+      "count": 500,
+      "duration_ns": 8310210
+    },
+    {
+      "name": "walk_xtc",
+      "stream": 14,
+      "count": 500,
+      "duration_ns": 8174708
+    }
+  ],
+  "runtime_api": [
+    {
+      "name": "cudaStreamSynchronize_v3020",
+      "count": 2012,
+      "total_ns": 3284987828
+    },
+    {
+      "name": "cuStreamSynchronize",
+      "count": 10000,
+      "total_ns": 2327451550
+    },
+    {
+      "name": "cudaMemGetInfo_v3020",
+      "count": 8,
+      "total_ns": 241196316
+    },
+    {
+      "name": "cuMemcpyBatchAsync",
+      "count": 10000,
+      "total_ns": 229669897
+    },
+    {
+      "name": "cuLaunchKernel",
+      "count": 8000,
+      "total_ns": 105224421
+    },
+    {
+      "name": "cudaMemcpyAsync_v3020",
+      "count": 4011,
+      "total_ns": 97801022
+    },
+    {
+      "name": "cuMemHostAlloc",
+      "count": 4,
+      "total_ns": 50502737
+    },
+    {
+      "name": "cuStreamCreate",
+      "count": 4,
+      "total_ns": 22544796
+    },
+    {
+      "name": "cudaStreamWaitEvent_v3020",
+      "count": 11002,
+      "total_ns": 15838372
+    },
+    {
+      "name": "cudaEventQuery_v3020",
+      "count": 15000,
+      "total_ns": 15761559
+    },
+    {
+      "name": "cudaEventRecord_v3020",
+      "count": 3002,
+      "total_ns": 10397278
+    },
+    {
+      "name": "cudaEventCreateWithFlags_v3020",
+      "count": 3002,
+      "total_ns": 8673594
+    },
+    {
+      "name": "cudaMalloc_v3020",
+      "count": 36,
+      "total_ns": 5664708
+    },
+    {
+      "name": "cudaEventSynchronize_v3020",
+      "count": 1000,
+      "total_ns": 5385877
+    },
+    {
+      "name": "cudaStreamIsCapturing_v10000",
+      "count": 4011,
+      "total_ns": 4538459
+    },
+    {
+      "name": "cuModuleLoadData",
+      "count": 6,
+      "total_ns": 4131097
+    },
+    {
+      "name": "cudaEventDestroy_v3020",
+      "count": 3000,
+      "total_ns": 3054064
+    },
+    {
+      "name": "cudaHostAlloc_v3020",
+      "count": 1,
+      "total_ns": 1564504
+    },
+    {
+      "name": "cudaGetDeviceProperties_v2_v12000",
+      "count": 1,
+      "total_ns": 995099
+    },
+    {
+      "name": "cuModuleUnload",
+      "count": 5,
+      "total_ns": 666563
+    },
+    {
+      "name": "cuGetProcAddress_v2",
+      "count": 420,
+      "total_ns": 111818
+    },
+    {
+      "name": "cudaStreamCreateWithPriority_v5050",
+      "count": 2,
+      "total_ns": 52680
+    },
+    {
+      "name": "cudaMemsetAsync_v3020",
+      "count": 4,
+      "total_ns": 48709
+    },
+    {
+      "name": "cuCtxSetFlags",
+      "count": 1,
+      "total_ns": 18090
+    },
+    {
+      "name": "cuInit",
+      "count": 2,
+      "total_ns": 9570
+    },
+    {
+      "name": "cuModuleGetLoadingMode",
+      "count": 1,
+      "total_ns": 380
+    }
+  ],
+  "interpretation": "API totals are inclusive and not critical-path attribution. Nsight perturbs timing; compare throughput using separate clean runs."
+}

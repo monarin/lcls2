@@ -1,0 +1,106 @@
+{"status": "pass", "streams": 2, "bulk_target_bytes": 524288, "validation_mode": true, "delivered_events": 1000, "admission_pressure_trims": {"warmup": 0, "steady": 0}, "window": {"warmup_events": 100, "steady_events": 900, "boundary_join_seconds": 0.0014283049385994673, "submission_seconds": 5.109693157952279, "tail_completion_seconds": 0.0059802059549838305, "completed_window_seconds": 5.115673363907263, "completed_events_per_second": 175.92991889392164}}
+{"status": "pass", "streams": 1, "bulk_target_bytes": 524288, "validation_mode": false, "delivered_events": 1000, "admission_pressure_trims": {"warmup": 0, "steady": 0}, "window": {"warmup_events": 100, "steady_events": 900, "boundary_join_seconds": 0.0014250450767576694, "submission_seconds": 5.31468984298408, "tail_completion_seconds": 0.010021422989666462, "completed_window_seconds": 5.324711265973747, "completed_events_per_second": 169.02324934522326}}
+{"status": "pass", "streams": 2, "bulk_target_bytes": 524288, "validation_mode": false, "delivered_events": 1000, "admission_pressure_trims": {"warmup": 0, "steady": 0}, "window": {"warmup_events": 100, "steady_events": 900, "boundary_join_seconds": 0.001422394998371601, "submission_seconds": 4.824319797102362, "tail_completion_seconds": 0.010392079828307033, "completed_window_seconds": 4.834711876930669, "completed_events_per_second": 186.15380252429182}}
+{"status": "pass", "streams": 1, "bulk_target_bytes": 524288, "validation_mode": false, "delivered_events": 1000, "admission_pressure_trims": {"warmup": 0, "steady": 0}, "window": {"warmup_events": 100, "steady_events": 900, "boundary_join_seconds": 0.0014277840964496136, "submission_seconds": 6.061017314903438, "tail_completion_seconds": 0.010124435881152749, "completed_window_seconds": 6.071141750784591, "completed_events_per_second": 148.24229723901448}}
+{"status": "pass", "streams": 2, "bulk_target_bytes": 524288, "validation_mode": false, "delivered_events": 1000, "admission_pressure_trims": {"warmup": 0, "steady": 0}, "window": {"warmup_events": 100, "steady_events": 900, "boundary_join_seconds": 0.00142575497739017, "submission_seconds": 4.833618824137375, "tail_completion_seconds": 0.010307554854080081, "completed_window_seconds": 4.843926378991455, "completed_events_per_second": 185.7996859538124}}
+{"status": "pass", "streams": 1, "bulk_target_bytes": 524288, "validation_mode": false, "delivered_events": 1000, "admission_pressure_trims": {"warmup": 0, "steady": 0}, "window": {"warmup_events": 100, "steady_events": 900, "boundary_join_seconds": 0.001424384769052267, "submission_seconds": 5.345544011099264, "tail_completion_seconds": 0.010128646856173873, "completed_window_seconds": 5.355672657955438, "completed_events_per_second": 168.0461181030397}}
+{"status": "pass", "streams": 2, "bulk_target_bytes": 524288, "validation_mode": false, "delivered_events": 1000, "admission_pressure_trims": {"warmup": 0, "steady": 0}, "window": {"warmup_events": 100, "steady_events": 900, "boundary_join_seconds": 0.001410885015502572, "submission_seconds": 5.84835946187377, "tail_completion_seconds": 0.010415022959932685, "completed_window_seconds": 5.8587744848337024, "completed_events_per_second": 153.61574375832046}}
+{"status": "pass", "streams": 2, "bulk_target_bytes": 8388608, "validation_mode": false, "delivered_events": 1000, "admission_pressure_trims": {"warmup": 100, "steady": 899}, "window": {"warmup_events": 100, "steady_events": 900, "boundary_join_seconds": 0.0001749678049236536, "submission_seconds": 10.678968875901774, "tail_completion_seconds": 0.007258006138727069, "completed_window_seconds": 10.6862268820405, "completed_events_per_second": 84.22055884968708}}
+{"status": "pass", "streams": 2, "bulk_target_bytes": 8388608, "validation_mode": false, "delivered_events": 1000, "admission_pressure_trims": {"warmup": 100, "steady": 899}, "window": {"warmup_events": 100, "steady_events": 900, "boundary_join_seconds": 0.00017407815903425217, "submission_seconds": 9.593589863041416, "tail_completion_seconds": 0.007081425050273538, "completed_window_seconds": 9.60067128809169, "completed_events_per_second": 93.74344491059975}}
+Collecting data...
+Generating '/lscratch/monarin/real-jf-concurrency-43826632/tmp/nsys-report-3142.qdstrm'
+
+[1/1] [0%                          ] trace-8388608.nsys-rep
+[1/1] [0%                          ] trace-8388608.nsys-rep
+[1/1] [6%                          ] trace-8388608.nsys-rep
+[1/1] [5%                          ] trace-8388608.nsys-rep
+[1/1] [8%                          ] trace-8388608.nsys-rep
+[1/1] [7%                          ] trace-8388608.nsys-rep
+[1/1] [6%                          ] trace-8388608.nsys-rep
+[1/1] [5%                          ] trace-8388608.nsys-rep
+[1/1] [6%                          ] trace-8388608.nsys-rep
+[1/1] [5%                          ] trace-8388608.nsys-rep
+[1/1] [6%                          ] trace-8388608.nsys-rep
+[1/1] [5%                          ] trace-8388608.nsys-rep
+[1/1] [7%                          ] trace-8388608.nsys-rep
+[1/1] [9%                          ] trace-8388608.nsys-rep
+[1/1] [11%                         ] trace-8388608.nsys-rep
+[1/1] [13%                         ] trace-8388608.nsys-rep
+[1/1] [14%                         ] trace-8388608.nsys-rep
+[1/1] [=16%                        ] trace-8388608.nsys-rep
+[1/1] [==18%                       ] trace-8388608.nsys-rep
+[1/1] [==20%                       ] trace-8388608.nsys-rep
+[1/1] [===22%                      ] trace-8388608.nsys-rep
+[1/1] [===24%                      ] trace-8388608.nsys-rep
+[1/1] [====26%                     ] trace-8388608.nsys-rep
+[1/1] [====28%                     ] trace-8388608.nsys-rep
+[1/1] [=====29%                    ] trace-8388608.nsys-rep
+[1/1] [=====31%                    ] trace-8388608.nsys-rep
+[1/1] [======33%                   ] trace-8388608.nsys-rep
+[1/1] [======35%                   ] trace-8388608.nsys-rep
+[1/1] [=======38%                  ] trace-8388608.nsys-rep
+[1/1] [========41%                 ] trace-8388608.nsys-rep
+[1/1] [=========44%                ] trace-8388608.nsys-rep
+[1/1] [==========47%               ] trace-8388608.nsys-rep
+[1/1] [===========50%              ] trace-8388608.nsys-rep
+[1/1] [===========52%              ] trace-8388608.nsys-rep
+[1/1] [============55%             ] trace-8388608.nsys-rep
+[1/1] [=============58%            ] trace-8388608.nsys-rep
+[1/1] [=============59%            ] trace-8388608.nsys-rep
+[1/1] [==================76%       ] trace-8388608.nsys-rep
+[1/1] [========================100%] trace-8388608.nsys-rep
+[1/1] [========================100%] trace-8388608.nsys-rep
+Generated:
+	/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/trace-8388608.nsys-rep
+{"status": "pass", "streams": 2, "bulk_target_bytes": 524288, "validation_mode": false, "delivered_events": 1000, "admission_pressure_trims": {"warmup": 0, "steady": 0}, "window": {"warmup_events": 100, "steady_events": 900, "boundary_join_seconds": 0.0014889240264892578, "submission_seconds": 4.920060199918225, "tail_completion_seconds": 0.010465709026902914, "completed_window_seconds": 4.930525908945128, "completed_events_per_second": 182.5363088280683}}
+Collecting data...
+Generating '/lscratch/monarin/real-jf-concurrency-43826632/tmp/nsys-report-a147.qdstrm'
+
+[1/1] [0%                          ] trace-524288.nsys-rep
+[1/1] [0%                          ] trace-524288.nsys-rep
+[1/1] [11%                         ] trace-524288.nsys-rep
+[1/1] [9%                          ] trace-524288.nsys-rep
+[1/1] [8%                          ] trace-524288.nsys-rep
+[1/1] [6%                          ] trace-524288.nsys-rep
+[1/1] [13%                         ] trace-524288.nsys-rep
+[1/1] [12%                         ] trace-524288.nsys-rep
+[1/1] [10%                         ] trace-524288.nsys-rep
+[1/1] [9%                          ] trace-524288.nsys-rep
+[1/1] [8%                          ] trace-524288.nsys-rep
+[1/1] [7%                          ] trace-524288.nsys-rep
+[1/1] [6%                          ] trace-524288.nsys-rep
+[1/1] [5%                          ] trace-524288.nsys-rep
+[1/1] [5%                          ] trace-524288.nsys-rep
+[1/1] [6%                          ] trace-524288.nsys-rep
+[1/1] [5%                          ] trace-524288.nsys-rep
+[1/1] [6%                          ] trace-524288.nsys-rep
+[1/1] [5%                          ] trace-524288.nsys-rep
+[1/1] [6%                          ] trace-524288.nsys-rep
+[1/1] [5%                          ] trace-524288.nsys-rep
+[1/1] [7%                          ] trace-524288.nsys-rep
+[1/1] [9%                          ] trace-524288.nsys-rep
+[1/1] [11%                         ] trace-524288.nsys-rep
+[1/1] [14%                         ] trace-524288.nsys-rep
+[1/1] [=16%                        ] trace-524288.nsys-rep
+[1/1] [==18%                       ] trace-524288.nsys-rep
+[1/1] [==20%                       ] trace-524288.nsys-rep
+[1/1] [===22%                      ] trace-524288.nsys-rep
+[1/1] [===24%                      ] trace-524288.nsys-rep
+[1/1] [====26%                     ] trace-524288.nsys-rep
+[1/1] [====28%                     ] trace-524288.nsys-rep
+[1/1] [=====30%                    ] trace-524288.nsys-rep
+[1/1] [=====32%                    ] trace-524288.nsys-rep
+[1/1] [======34%                   ] trace-524288.nsys-rep
+[1/1] [=======36%                  ] trace-524288.nsys-rep
+[1/1] [=======38%                  ] trace-524288.nsys-rep
+[1/1] [========41%                 ] trace-524288.nsys-rep
+[1/1] [=========44%                ] trace-524288.nsys-rep
+[1/1] [==========47%               ] trace-524288.nsys-rep
+[1/1] [===========50%              ] trace-524288.nsys-rep
+[1/1] [===========53%              ] trace-524288.nsys-rep
+[1/1] [============56%             ] trace-524288.nsys-rep
+[1/1] [==================75%       ] trace-524288.nsys-rep
+[1/1] [========================100%] trace-524288.nsys-rep
+[1/1] [========================100%] trace-524288.nsys-rep
+Generated:
+	/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/real_jf_concurrency_20261108_r3/trace-524288.nsys-rep
