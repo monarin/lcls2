@@ -8,8 +8,14 @@ The earlier diagnostic wrapper retains its explicit 8 MiB/512 KiB controls.
 
 A datagram smaller than the target enters the small-group path. Each sim10 JF
 datagram is 524,724–734,604 bytes, so at 512 KiB all five files use large groups.
-This bypasses the one-outstanding-small-group credit and increases the group
-count from 790 coalesced groups to 5,000 per-file/event groups in this 1k fixture.
+This bypasses the one-outstanding-small-group credit. The
+[November 6 admission diagnostic](../mfx_expand10_pressure_20261106/README.md)
+measured 790 coalesced groups versus 5,000 per-file/event groups for these settings
+on this 1k fixture; those group counts are historical, not newly instrumented
+in this rerun. CUDA API call counts in the native traces are not read-group
+counts and should not be compared one-for-one. This analysis does not attribute
+the API-count difference to repeated reads: the observed credit failures occur
+before I/O submission.
 This is a workload setting, not a general repair of the small-group policy.
 
 ## Native rerun
@@ -86,7 +92,9 @@ and SQLite exports are under:
 [execution-source-hashes.json](execution-source-hashes.json) was rechecked against
 the files actually executed. Scheduler logs here have terminal progress lines
 and trailing whitespace normalized; originals remain in the sibling `_logs`
-directory. See [status.json](status.json) for independent review status.
+directory. Independent restricted Claude review passed code commit `3454a936c`
+with no blockers. See [review responses](review-01/response.md) and
+[status.json](status.json).
 
 For this runner, the default is sufficient; the explicit equivalent is:
 
@@ -96,3 +104,36 @@ python runner.py ... --bulk-target-bytes 524288
 
 The framework's small-group policy, its byte budget, stored data, calibration DB,
 and GPU expansion/calibration/cube kernels are unchanged. No 10k campaign ran.
+
+To regenerate the numerical summary from either SQLite export (choose a new
+output filename; the analyzer rejects overwrites):
+
+```bash
+python notes/mfx_expand10_512k_20261108/analyze_trace.py \
+  /sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/target512_20261108_r1/trace-524288.sqlite \
+  /sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/target512_20261108_r1/traced-524288/report.json \
+  --output /tmp/trace-524288-summary-new.json
+```
+
+Replace `524288` with `8388608` for the control. `run.sbatch` produces the native
+capture and SQLite export; summary generation is this separate host-side step.
+The review CSVs were exported with Python's `csv.writer`, a header row, and
+these queries against each SQLite export, using `mode=ro`:
+
+```sql
+-- Header: start,end,stream,name,correlation,globalPid
+SELECT k.start,k.end,k.streamId,s.value,k.correlationId,k.globalPid
+FROM CUPTI_ACTIVITY_KIND_KERNEL k
+JOIN StringIds s ON s.id=k.demangledName
+ORDER BY k.start;
+
+-- Header: start,end,name,correlation,globalTid
+SELECT r.start,r.end,s.value,r.correlationId,r.globalTid
+FROM CUPTI_ACTIVITY_KIND_RUNTIME r
+JOIN StringIds s ON s.id=r.nameId
+WHERE r.correlationId IN (
+  SELECT k.correlationId FROM CUPTI_ACTIVITY_KIND_KERNEL k
+  JOIN StringIds n ON n.id=k.demangledName WHERE n.value='expand10'
+)
+ORDER BY r.start;
+```
