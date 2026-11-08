@@ -133,3 +133,12 @@ array. That gather is absent in sim10; timing should not invent a separate
 gather stage. A future real codec adapter may decode from payload pointers or
 need a packed input buffer according to its API. Ordinary cube users should
 call the adapter rather than implement XTC descriptor plumbing themselves.
+
+## Current handoff
+
+See the [November 8 single-node baseline plan](../mfx_expand10_single_node_baseline_20261108.md)
+for the consolidated concurrency conclusion, the decision to retain 512 KiB for
+sim10, completed evidence and the next 10k/within-node scaling stages. The 10k
+sustained campaign remains pending; the extended-compute real-JF test establishes
+concurrency is permitted, without isolating the compressed workload's read and
+preparation costs.
