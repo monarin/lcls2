@@ -1,0 +1,17 @@
+{
+  "phase": "review_preparation",
+  "scope": "clean10k baseline, six serial single-worker cases on one GPU",
+  "base": "f1b7ec7a0",
+  "job": "43859846",
+  "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/baseline10k_20261108_r1",
+  "round": 1,
+  "round_limit": 3,
+  "unresolved_findings": [],
+  "checks": {
+    "native_cases": 6,
+    "events_per_case": 10000,
+    "pressure_drains": 0,
+    "summary_tests": 5,
+    "source_hash_files": 27
+  }
+}

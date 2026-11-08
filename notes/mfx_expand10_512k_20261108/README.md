@@ -142,7 +142,7 @@ ORDER BY r.start;
 
 See the [November 8 single-node baseline plan](../mfx_expand10_single_node_baseline_20261108.md)
 for the consolidated concurrency conclusion, the decision to retain 512 KiB for
-sim10, completed evidence and the next 10k/within-node scaling stages. The 10k
-sustained campaign remains pending; the extended-compute real-JF test establishes
+sim10, completed evidence and the next 10k/within-node scaling stages. The [six-case 10k baseline](../mfx_expand10_baseline10k_20261108/README.md)
+has completed; the extended-compute real-JF test establishes
 concurrency is permitted, without isolating the compressed workload's read and
 preparation costs.

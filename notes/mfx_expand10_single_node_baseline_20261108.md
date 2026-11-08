@@ -1,8 +1,8 @@
 # Simulated-compression cube: progress and single-node baseline plan
 
 Updated November 8, 2026, after the small real-JF concurrency diagnostics.
-This is a decision/progress note and proposed sequence, not a new benchmark
-result or authorization to launch the campaign in this documentation turn.
+This decision/progress note links completed measurements and proposes the next
+stages; the clean 10k baseline has now completed.
 Implementation and fixes continue to use the session's independent Claude
 implement/review loop. Existing evidence below has its own review records.
 
@@ -68,7 +68,7 @@ publication. Do not describe these captures as a complete D2H pipeline test.
 
 ## Remaining stages (new baseline campaign sequence)
 
-### 1. Establish the clean 10k single-worker/one-GPU baseline — next
+### 1. Establish the clean 10k single-worker/one-GPU baseline — completed
 
 Use the existing serial runner first, accurately labeled single-worker rather
 than an actual MPI BD measurement. Keep normal single-pass calibration, expansion
@@ -97,7 +97,12 @@ unconstrained comparisons. Capture failures/drains explicitly rather than using
 their rate as a clean scaling result. This stage yields a repeatable baseline;
 it does not by itself establish the 35 kHz target.
 
-### 2. Tune batching and identify the limiting stages
+Stage 1 completed in job 43859846: all six 10k cases passed with zero admission
+drains. Warmed-window medians were 257.25 and 283.58 events/s (one/two streams),
+with material variation among one-stream repeats; no causal scaling claim.
+See the [baseline results](mfx_expand10_baseline10k_20261108/README.md).
+
+### 2. Tune batching and identify the limiting stages — next
 
 Hold 512 KiB, 100 bins and the input/runtime fixed. Use a compact nominal batch
 comparison (4,7,14; runner supports 1..16), one/two execution streams, reusing the
