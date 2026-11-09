@@ -7,8 +7,10 @@ Three fresh processes each run a full 10k-event cache-cold pass followed by two
 warm passes. Each pass completes 50,000 requests / 33,582,000,000 bytes to GPU.
 Four KvikIO workers, four logical CPUs, 35 outstanding buffers, 4 MiB tasks,
 16 MiB bounce buffers, compatibility ON and auto_direct_io_read=False.
-Slurm requests an exclusive node (one GPU, 16 allocated CPUs), while the reader
-restricts itself and its workers to four allowed logical CPUs.
+Slurm requests one GPU/16 CPUs per task plus node exclusivity. The exclusive
+allocation reserved all 112 allocatable CPUs and four GPUs on the node; the reader
+used device 0 only and restricted itself and its workers to four logical CPUs.
+The actual submission and allocation are retained in `slurm-job.txt`.
 
 The five files are owner-checked and confined to the accepted fixture directory.
 After KvikIO initialization, fsync/FADV_DONTNEED evicts only these files; mincore
@@ -20,8 +22,8 @@ cold gate. No such failure is silently relabeled as cold.
 
 Each NIC's physical rx_bytes_phy/tx_bytes_phy counters bracket each timed pass.
 Counters must exist and must not decrease; physical ports are reported separately,
-without adding netdev or IB duplicates. A one-second idle interval is recorded
-before conditioning in each process. This is node-wide traffic, including possible
+without adding netdev or IB duplicates. A one-second sleep is bracketed by counter sampling before conditioning in
+each process; the recorded idle envelopes were 2.78–2.88 seconds. This is node-wide traffic, including possible
 OS/services traffic even with an exclusive Slurm allocation. Idle subtraction is
 not used to claim exact file traffic. NIC intervals include endpoint sampling
 overhead; application timers only cover request issue through completion/device
@@ -61,8 +63,8 @@ The NIC endpoint envelope is **1.78–1.95 seconds longer** than the read timer
 because interface discovery/ethtool sampling is outside read timing. Accordingly,
 the raw NIC-envelope cold rate is **3.45–3.51 GiB/s**; do not present it as an
 instantaneous or read-window network rate. The byte-ratio evidence is the useful
-cache distinction here. Idle endpoint measurements are retained without
-subtraction, and all host traffic remains included. No high-frequency timeline
+cache distinction here. Idle receive traffic was about 1.04 MB/s, similar to the warm-pass receive
+traffic. These endpoint measurements are retained without subtraction, and all host traffic remains included. No high-frequency timeline
 was collected; these are per-pass counter brackets matching the historical method.
 
 All nine passes passed exact completion counts. All three processes passed 105
@@ -71,5 +73,20 @@ existing buffer-ownership tests pass. `results.json` binds native reports and
 executed reader/runtime source hashes; raw reports are retained on project scratch.
 `slurm-accounting.txt` and the scheduler logs preserve allocation/completion evidence.
 
-Independent Claude review: pending. Executed reader code is commit
+Independent Claude review: **PASS**, no blocking findings, at
+`21c7c50dd842a8cf3c0863e7d775a72a93399a6c`. See [review responses](review-01/responses.md). Executed reader code is commit
 `5e878baa84893537fd614d235d0ae57192197133`; subsequent commits add audit tests/results.
+
+Reader device selection was logical CUDA device 0. The reader did not record its
+CUDA_VISIBLE_DEVICES value or physical GPU UUID, so the batch-step inventory
+cannot conclusively map that logical device to a physical UUID. GPU 1 showed
+4% utilization in the final batch-step snapshot; its cause is unexplained.
+`slurm-job.txt` proves the exclusive allocation, but this does not establish
+absence of all system GPU activity. Future reports should capture UUID/mapping.
+
+`input_direct_fd_count=5` is a descriptor-flag census, not evidence of actual
+O_DIRECT transfers; see [metric definitions](../mfx_kvikio_read_20261108/metric-definitions.json).
+Observed near-complete page-cache residency and near-idle warm NIC traffic support
+buffered reads. The identity block's generic fixture cache label predates this
+experiment; the report-level cache description and pass-level mincore gates
+specify the actual conditioning for these measurements.

@@ -1,5 +1,5 @@
 {
-  "phase": "review",
+  "phase": "complete",
   "job": "43878284",
   "round": 1,
   "round_limit": 3,
@@ -12,5 +12,13 @@
     "job": "COMPLETED 0:0"
   },
   "unresolved": [],
-  "implementation_commit": "5e878baa84893537fd614d235d0ae57192197133"
+  "implementation_commit": "5e878baa84893537fd614d235d0ae57192197133",
+  "reviewed_commit": "21c7c50dd842a8cf3c0863e7d775a72a93399a6c",
+  "verdict": "pass",
+  "unresolved_blocking": [],
+  "deferred_nonblocking": [
+    "NW-02: skipped interface reasons and cross-bracket inventory guard",
+    "NW-03: reader CVD/UUID capture",
+    "KR-03: descriptor census output-key rename"
+  ]
 }
