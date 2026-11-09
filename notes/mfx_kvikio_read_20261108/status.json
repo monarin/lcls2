@@ -1,5 +1,5 @@
 {
-  "phase": "awaiting_documentation_rereview",
+  "phase": "complete",
   "base": "4e09db0ec",
   "job": "43866709",
   "checks": [
@@ -9,13 +9,19 @@
   ],
   "review_round": 2,
   "round_limit": 3,
-  "unresolved": [
-    "KR-01 pending reviewer closure"
-  ],
+  "unresolved": [],
   "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/kvikio_read_20261108_r1",
   "executable_commit": "70359e3b894206f2e9c9f2d2abb4740805a3a87b",
   "round1_verdict": "changes_requested",
   "deferred": [
-    "KR-03 executable schema rename; companion labels added"
+    "KR-03 accepted non-blocking descriptor-census key rename in next benchmark version"
+  ],
+  "reviewed_commit": "869c2912c0ee9bdb5b32e613521ff142bf4575f6",
+  "review_verdict": "pass",
+  "resolved": [
+    "KR-01",
+    "KR-02",
+    "KR-04",
+    "KR-05"
   ]
 }

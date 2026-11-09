@@ -159,3 +159,12 @@ processes and saves progress after each case. `audit.py NATIVE_ROOT --output
 NEW_RESULT_JSON` validates the complete campaign independently. For the ten host
 tests, set `KVIKIO_READ_NATIVE_ROOT` and run unittest discovery for `test_*.py`.
 Input files are opened read-only. Failed campaigns stop; outputs are not reused.
+
+Independent restricted Claude review passed round 2 on
+`869c2912c0ee9bdb5b32e613521ff142bf4575f6`; measured executable code remains
+`70359e3b894206f2e9c9f2d2abb4740805a3a87b`. The blocking settings-provenance wording
+was corrected without changing measurements. Four findings are closed; the
+non-blocking descriptor-census key rename is accepted for a future benchmark
+version. See [review closure](review-02/response.md). Reviewer file-only tools
+could inspect source/evidence but could not execute, hash or query live storage;
+those validations were performed by the coordinator.
