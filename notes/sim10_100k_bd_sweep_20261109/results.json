@@ -1,5 +1,5 @@
 {
-  "status": "validated_review_pending",
+  "status": "pass",
   "job": "44033881",
   "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sim10_100k_bd_sweep_20261109_r1",
   "host": "sdfampere038",
@@ -554,5 +554,10 @@
         }
       ]
     }
-  ]
+  ],
+  "reviewed_commit": "c12cd589b05564c4d3b6b57436f07dedcebd5246",
+  "notes": {
+    "historical_comparison": "Prior1BD/1stream/10k sdfampere042:2.188397/2.119708GiB/s, median2.154053. Current1BD/2streams/100k sdfampere038:median1.188917, about44.8%lower. The3.7866x speedup is relative only to this sweep. Node, stream count and input length differ; cause not isolated.",
+    "read_ahead": "PerBDpeak500requests/335820000bytes equals one100eventsubbatch. Controller waits current subbatch reads before issuing next; BDs add independent issuers. Does not rule out within-subbatch read concurrency or read/compute overlap."
+  }
 }

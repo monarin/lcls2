@@ -1,8 +1,9 @@
 # 100k sim10: 1–4 BDs on one GPU, cold Weka FFB
 
 **Four BDs reached 4.50 GiB/s, 3.79 x the one-BD rate, for psana-GPU descriptor
-staging on one A100.** All native checks and 22 audit tests passed; independent
-results review is pending. Job 44033881 completed 0:0 in 43m03s on sdfampere038.
+staging on one A100.** All native checks, 22 audit tests and independent
+results review passed on `c12cd589b05564c4d3b6b57436f07dedcebd5246`.
+[Review closure](review-02/responses.md) records the findings and limitations. Job 44033881 completed 0:0 in 43m03s on sdfampere038.
 Code review passed on `fb4609a89a67e958e918fbd4c01a7dcad2db78bd` with no blocking
 findings; [responses](review-01/responses.md) track the optional items.
 
@@ -72,7 +73,11 @@ invocations were 1000, each with 100 events. No psana EventManager._read payload
 calls or pressure drains occurred, and all managers/resources drained with the
 correct peer count. Submitted-but-not-retired peaks were 500 requests/320.263 MiB
 **per BD**. These are queue bookkeeping peaks, not 500 simultaneous storage reads;
-per-BD maxima are not asserted to coincide. Memory snapshots are in
+per-BD maxima are not asserted to coincide. The peak equals one 100-event
+subbatch even with two execution streams. The frozen controller finishes the
+current subbatch read waits before issuing the next subbatch reads; more BDs
+add independent issuers. Reads within a subbatch can proceed concurrently, and
+this does not rule out read/compute overlap. Memory snapshots are in
 [validation](validation.json), not continuous GPU-memory peaks.
 
 The runtime comparison to the previous one-BD bulk sweep matches all five common
@@ -80,13 +85,21 @@ recorded framework modules, GPU model, CuPy 14.0.1, KvikIO 26.10.00 and effectiv
 settings; [comparison](baseline-runtime-comparison.json). Three newly recorded
 modules have no hashes in the old report. Node, stream count and dataset length
 differ from that historical measurement, so rate differences cannot be assigned
-to input size alone. The fallback log's generic “NVMe” wording is not the storage
+to input size alone. Specifically, the earlier accepted **1-BD/1-stream, 10k**
+run on **sdfampere042** measured **2.1884/2.1197 GiB/s** (median 2.1541).
+The current **1-BD/2-stream, 100k** cases on **sdfampere038** were slower,
+**1.1737/1.2042 GiB/s** (median 1.1889, about 44.8% below that historical median).
+The headline **3.79x** compares only configurations within this sweep; relative
+to the historical single-BD median, current 4-BD throughput is about 2.09x.
+This comparison does not identify why the single-BD rate differs.
+
+The fallback log's generic “NVMe” wording is not the storage
 path: `findmnt` verifies `drpsrcf/ffb`. KvikIO uses the intended CPU bounce path.
 Native logs retain nonfatal UCX unmatched-tag warnings during MPI teardown; all
 process groups exited successfully and exact delivery/drain checks passed.
 
 [Scope](scope.md), [status](status.json), [results](results.json),
-[tests](tests.log), [job accounting](slurm-accounting.txt) and
+[tests](tests.log), [exact validation commands](validation-commands.txt), [job accounting](slurm-accounting.txt) and
 [artifact index](artifact-index.json) preserve the evidence. Native artifacts:
 
 ```

@@ -1,12 +1,10 @@
 {
-  "phase": "results_review_pending",
-  "accepted": false,
+  "phase": "complete",
+  "accepted": true,
   "review_round": 2,
   "review_limit": 3,
   "base_commit": "063f278244e5cb2404933ae0f466960c7197fe62",
-  "unresolved": [
-    "independent results review pending"
-  ],
+  "unresolved": [],
   "job": "44033881",
   "implementation_commit": "fb4609a89a67e958e918fbd4c01a7dcad2db78bd",
   "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sim10_100k_bd_sweep_20261109_r1",
@@ -16,6 +14,13 @@
     "audit": "pass",
     "tests": "22passed",
     "cleanup": "pass",
-    "runtime_baseline": "five common module hashes and versions/settings match"
-  }
+    "runtime_baseline": "five common module hashes and versions/settings match",
+    "review": "round2 pass, no blocking findings; requested documentation clarified"
+  },
+  "reviewed_commit": "c12cd589b05564c4d3b6b57436f07dedcebd5246",
+  "review_verdict": "pass",
+  "deferred_nonblocking": [
+    "BDS-02"
+  ],
+  "review_artifacts": "/lscratch/monarin/tmp/sim10-100k-bds-review-output-20261109-r2"
 }
