@@ -1,0 +1,12 @@
+Reviewed code: `118dcb5d3d563a4996b6669fd702bd6d51727fd8`. Verdict: pass, no blocking findings. This closure changes documentation/evidence only; it does not alter measured code or native results.
+
+| ID | Response | Resolution |
+|---|---|---|
+| PSR-01 | Accepted the reviewer's documentation alternative. README corrects the focused report's overly broad unchanged-controller note: discarded generator return value defers the EndRun flush to finish(). Final drain is timed, exact event/count validation passed, and clean rates/main diagnostics are unaffected. | Documented limitation. Preserve measured wrapper/evidence; forward return values before future reuse. No new GPU run or claim of a corrected diagnostic. |
+| PSR-02 | README explicitly leaves the ~13.9 s multi-BD warm plateau unattributed and proposes a 4BD diagnostic/helper-core variation. | Follow-up experiment deferred; current recommendation is a measured configuration, not an exhaustive optimum. |
+| PSR-03 | README states that four cores host main + four KvikIO workers and runtime helpers. Near-equality of wall/thread CPU limits observed main-thread descheduling, but worker contention was not isolated. | Documented limitation; 5–6 cores/BD or fixed-total-core test deferred. |
+| PSR-04 | README documents the order-dependent per-BD free-memory snapshot and lack of a continuous reservation/peak guarantee. Clarification from perf_cube.py:29-41: prepare() compiles kernels; it does not allocate cube banks, which allocate later during callbacks. Post-loop snapshots exceeded 8 GiB, without establishing continuous headroom. | Snapshot limitation accepted and documented; no claim of a synchronized reserve or double-counted preallocated banks. |
+
+Coordinator validation: 14 audit tests pass; all accepted native-case audits pass; three completed GPU jobs. No code changed after reviewed SHA, so no additional code review or repeated GPU execution is needed for this evidence-only closure. Reviewer's inability to run tests/hash files/read live hardware is retained in review.json.
+
+The first automatic approval review blocked the invocation based on an unspecified external destination. A read-only check identified the trusted user-configured HTTPS SLAC gateway ai-api.slac.stanford.edu. Re-evaluation with that new evidence approved the same restricted invocation; no bypass or alternative execution was used. No remaining approval block.

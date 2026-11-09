@@ -1,3 +1,5 @@
+Focused diagnostic only; see the [generator-return and final-flush attribution caveat](README.md#why-the-read-only-rate-falls-in-psana). Clean throughput runs are unaffected.
+
 | Section (exclusive host wall time) | Seconds | Main-thread CPU seconds |
 |---|---:|---:|
 | kvikio_wait | 4.5235 | 1.4210 |

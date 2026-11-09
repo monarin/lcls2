@@ -1,5 +1,5 @@
 {
-  "phase": "review_preparation",
+  "phase": "complete",
   "base_commit": "e4d9f79f2",
   "round": 1,
   "round_limit": 3,
@@ -19,5 +19,16 @@
   "implementation_commit": "21f47cf95",
   "serial_control_job": "43977453",
   "detailed_job": "43979257",
-  "serial_control_commit": "af3e14bd969a5e07726c0b55a09326662573e79b"
+  "serial_control_commit": "af3e14bd969a5e07726c0b55a09326662573e79b",
+  "reviewed_commit": "118dcb5d3d563a4996b6669fd702bd6d51727fd8",
+  "review_output": "/lscratch/monarin/tmp/pipeline-review-output-20261109-r1",
+  "review_worktree": "/lscratch/monarin/tmp/pipeline-review-20261109-r1",
+  "verdict": "pass",
+  "nonblocking_findings": [
+    "PSR-01",
+    "PSR-02",
+    "PSR-03",
+    "PSR-04"
+  ],
+  "resolution": "Documented limitations and deferred optional experiments; no code change after reviewed SHA"
 }

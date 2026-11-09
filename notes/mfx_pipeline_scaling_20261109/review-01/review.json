@@ -1,0 +1,68 @@
+{
+  "reviewed_commit": "118dcb5d3d563a4996b6669fd702bd6d51727fd8",
+  "verdict": "pass",
+  "summary": "The single-node sample10 psana bottleneck investigation is accepted for its stated scope. The harness correctly brackets a whole-MPI-loop timer (start barrier through BD GPU joins) with a file-specific zero-mincore cold gate / >=99.9% warm gate on exactly the ten bigdata files, separate physical NIC counters with their own interval, exact JF byte accounting (33,582,000,000 bytes / 50,000 reads per 10k, enforced per BD and globally), one GPU UUID for all BDs, disjoint four-core physical affinities plus one core per helper, an aggregate <=4-bank budget with 8 GiB reserve, exact global timestamp partition and per-bank/bin acceptance, and zero pressure drains. Every headline number in README.md (medians, 57.1%/8.3% deltas, 618/719 events/s, 36.805\u201337.385 GiB NIC range, 4.120/12.84\u201312.87 GiB/s standalone, 27.189 of 27.429 s attributed, 23.758 s = 86.6% main-thread CPU, host-timing.md row sums, serial bridge 1.192/1.242 and 1.498/1.540, 0.887 GiB/s conversion) reconciles with results.json, followup-results.json and the native copies. The conclusion that the 1BD/2stream gap to the standalone ring is host-side input/event preparation rather than I/O or GPU waiting is supported by two independent lines: the parse-only ablation (+2% cold, +6% warm) and the exclusive host attribution (KvikIO wait only 4.5 s wall / 1.4 s CPU of 27.4 s; wall\u2248thread-CPU for the other categories). Two BDs per GPU helping (+57%) and four BDs giving diminishing returns is measured and repeated. Four non-blocking findings: a generator-wrapper return-value drop that slightly alters controller flow only in the focused detailed diagnostic; the unattributed ~13.9 s warm plateau shared by 2BD/2s and 4BD/1s; BD core oversubscription (main thread + four KvikIO workers on four cores) not called out; and a conservative but racy per-BD VRAM reserve check. Failed attempts 43976569 and 43976777 are preserved and their causes match the logs.",
+  "checks": [
+    "Read scope.md and README.md first; all scope items (fixture, frozen runtime, one GPU UUID, 4 cores/BD + 1/helper, forced KvikIO fallback 4 threads/4 MiB/16 MiB/no auto-direct, batch7/SMD20/bulk512KiB/4GiB budget, 100 bins/99 active, <=4 banks with 8 GiB reserve, pilot 400 events, exact partition/bank counts/empty control bin, zero drains, serial bridge, focused diagnostic with bound wrapper hash) are implemented in runner.py/task.py/common.py/campaign.py/runtime.sh/run.sbatch or analysis/*.",
+    "Whole-loop timer (runner.py:72-90): loop_start after conditioning and nic_before on rank 0, loop_end after the post-iteration barrier; BD iteration includes task.join and device synchronize; NIC interval brackets the loop and audit enforces nic seconds >= loop_seconds; conditioning excluded.",
+    "Cold/warm gates (common.py:25-69): owner-checked mincore, fsync+FADV_DONTNEED eviction loop, exactly the ten accepted bigdata paths, fraction==0 cold / >=0.999 warm; audit.py re-derives the gate and file coverage from native records; standalone control (network_watch.py) uses the same protocol on the five JF files.",
+    "Byte/rate accounting (instrument.py, runner.py:93-94,108-110,117): _submit_read/wait_batch patches count ranges and bytes, frozen reader (gpu_kvikio_read.py:401-405) rejects short reads, per-BD requires requests==5*n and bytes==3358200*n, global sum == 3358200*events, jf_gib_s = bytes/2^30/loop_seconds; audit.py re-checks arithmetic to 1e-12.",
+    "MPI placement (runner.py:18-20,43,49,106-107; common.py:72-81; campaign.py:9-12): rank roles smd0/eb/bd verified, getDeviceCount()==1, CUDA_VISIBLE_DEVICES set to one UUID before MPI import, distinct physical cores by (package, core_id), audit enforces disjoint CPU sets and single device_pci/mask; serial control uses affinity(2,3) -> same cores [2,3,4,5] as MPI BD (serial/serial-cold/network.json, serial/mpi-cold.json).",
+    "Acceptance (task.py:58-71, audit.py:47-68): per-rank order, callback/delivery identity, per-bank counts == bincount(ordinal%99), aggregate local bins, global sum == events and bin 99 empty, event identities == manifest first N timestamps; stream use == streams; pilots stop at 400 via max_events.",
+    "Exclusive timing (task.py:13-34): nested stack subtracts child wall/thread time from parent; audit requires sum(wall_exclusive) <= iteration_seconds+0.1 and non-negative spans; host-timing.md rows sum to 27.189 s and README groupings (7.153/8.478/6.309/5.249/0.240) reproduce from followup-results.json; CUDA intervals kept separate.",
+    "README numbers cross-checked against results.json medians (1.058/1.280, 1.231/1.537, 1.540/1.593, 1.934/2.248, 2.095/2.235, parse 1.255/1.625), ranges, NIC rx range 36.805\u201337.385 GiB over clean full cold cases, warm rx 14\u201324 MiB, standalone 4.1198 and 12.868/12.843 GiB/s, serial bridge rows, 283.58 Hz -> 0.887 GiB/s.",
+    "Diagnostic hook targets exist in the frozen psana checkout (gpu_events.py:337,578,648,692,728,783,813,945,1120; gpu_kvikio_read.py:348,386; node.py:1352; event_manager.py:258,347; run.py:514; event.py:51); _process_batch/_handle_steps/_batch_envelopes/EventPool.flush are generators as the generator=True hooks assume; README code links #L945/#L813/#L578 resolve to the described functions and the issue-first-read-then-CPU-EventManager ordering is confirmed at gpu_events.py:967-1064.",
+    "Standalone control fairness: read_case.py 'events' pattern issues the same 50,000 per-datagram JF ranges (671,640 B) from the five JF files with depth 35, 4 threads, 4 MiB tasks, 16 MiB bounce, compat ON, 4 CPUs; psana peak_outstanding_requests is also 35 in every case.",
+    "Serial bridge uses the same install prefix and venv (stage2 runtime.sh vs pipeline runtime.sh differ only in PS_PARALLEL/PS_EB_NODES); iteration_completed_seconds brackets warmup+iteration+join and excludes DataSource setup, matching the MPI whole-loop scope; envelope-vs-iteration bracket check (<0.1 s) is enforced by followup_audit.py:39-40.",
+    "Evidence binding: copy-index.json lists byte-identical copies for all main/serial/detailed/failed artifacts whose SHA256 values match the artifact maps in results.json and followup-results.json; detailed/report.json additional_instrumentation sha matches followup-results source_verified for analysis/detailed.py; 43977007.out sha256sum lines match results.json source_verified for the seven harness files; slurm-accounting.txt shows the three accepted jobs COMPLETED 0:0 on sdfampere023 and two FAILED attempts.",
+    "Failed attempts: failed1/pilot-b4-s1.log shows the PRRTE 'not enough slots' error (fixed by --ntasks=6); failed2/pilot-b4-s1.log shows the GPUBAT1 'stream 5 contains normal detectors []' error consistent with the missing register_reader() call now at runner.py:33.",
+    "tests.log lists 14 passing tests matching test_audit.py (9) and test_followup.py (5); negative tests cover duplicate events, wrong banks, incomplete reads, cold gate, counter reset, overlapping affinity, false rate, exclusive overflow, bad NIC delta, device change, missing cache file, warm gate.",
+    "UCX shutdown warnings observed in main/full-b4-s1-cold-r1.log and detailed/run.log after the 'status: pass' line; exit 0 and exact counts hold as README states."
+  ],
+  "limitations": [
+    "No shell: I did not run tests, audit.py, followup_audit.py, or any hashing. Source/runtime SHA equality claims (including 'installed gpu_events.py and event_manager.py SHA-verified identical') rest on the coordinator's verification and the recorded hash maps.",
+    "Byte-identity of build/pipeline-review-evidence copies to the original scratch artifacts is taken from copy-index.json; I could not read the original scratch paths.",
+    "Large native reports were spot-checked by grep (host, job, affinity, device mask, loop_seconds, additional_instrumentation) rather than read in full; serial/serial-warm/*, serial/mpi-warm.json, failed2-logs/*.err and the 2 MB diag/full case reports were not opened beyond what results.json/followup-results.json summarize.",
+    "I did not re-read notes/mfx_kvikio_read_20261108/audit.py (check_case) or gpu_accept.py/adapter.py; these are previously reviewed immutable imports.",
+    "No git tooling was available, so confinement of the diff to notes/mfx_pipeline_scaling_20261109 was not independently confirmed; the checkout's psana sources were only inspected for hook-target existence and line references.",
+    "No GPU hardware, Nsight, live-job or NUMA-topology inspection; CPU-to-GPU/NIC NUMA locality of the chosen cores was not evaluated."
+  ],
+  "findings": [
+    {
+      "id": "PSR-01",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_pipeline_scaling_20261109/analysis/detailed.py",
+      "line": 27,
+      "evidence": "detailed.py:27 wraps GpuEventManager._handle_steps with generator=True. The inherited wrapper (notes/mfx_expand10_performance_20261106/timing.py:116-129) catches StopIteration and does a bare `return`, discarding the generator's return value. The controller consumes that value: gpu_events.py:965 `end_run_seen = yield from self._handle_steps(step_dict)` and gpu_events.py:1085-1087 `if stop_after or end_run_seen: yield from self._flush_event_pool(); self._done = True`. Under the detailed hooks end_run_seen is therefore None at the EndRun batch, so the final flush/_done at 1085-1087 is skipped and the drain happens in finish() (gpu_events.py:1116) instead. The report note at detailed/report.json:29974 says 'controller behavior unchanged'. Validation still passed and slot_flush_active call counts are identical (5) in the hooked and unhooked diagnostics, so the effect is where the final drain is attributed, not correctness. The main-campaign Diagnostic only wraps EventPool.flush (return value unused) and is unaffected.",
+      "requested_change": "In detailed.py override wrap for generator hooks to forward the StopIteration value (e.g., `return source_value` from `except StopIteration as stop: return stop.value`), or amend the README/report note to state that the focused diagnostic deferred the EndRun flush to finish() and that clean cases and the main diagnostics are unaffected."
+    },
+    {
+      "id": "PSR-02",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/mfx_pipeline_scaling_20261109/README.md",
+      "line": 71,
+      "evidence": "README reports 4BD/1stream gives +8.3% cold and 'no warm-cache benefit' but does not attribute the plateau. results.json shows warm loop_seconds of 13.938/13.892 s (2BD/2s) and 14.057/13.929 s (4BD/1s), i.e. the same ~13.9 s ceiling despite doubling BD processes and worker cores. Candidate limiters differ in remedy: shared-GPU contention (diag-full-b2-s2 already shows calibration_kernel p50 rising from 4.6 ms at 1BD to 7.6 ms per BD at 2BD), single-core EB/SMD0 helpers (common.py:79 gives ranks 0 and 1 one core each), or host memory/PCIe bandwidth. No diagnostic case was run at 4 BDs (campaign.py:42-43 runs diagnostics only for 1BD and 2BD).",
+      "requested_change": "Add a sentence to the README stating that the shared ~13.9 s warm ceiling for 2BD/2s and 4BD/1s is unattributed (GPU sharing vs. single-core helpers vs. host bandwidth), and list a 4BD diagnostic or helper-core variation as a proposed follow-up. Optional future experiment, not a scoped acceptance problem."
+    },
+    {
+      "id": "PSR-03",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_pipeline_scaling_20261109/runner.py",
+      "line": 20,
+      "evidence": "Each BD is pinned to four physical cores (common.py:79-80) and then runs one CPU-bound Python main thread (86.6% of wall in the detailed diagnostic) plus four KvikIO worker threads (runner.py:50 num_threads=4) that perform pread and bounce-buffer copies for ~31 GiB, plus CUDA/UCX helper threads. The standalone control (read_case.py:17) also uses four cores but its main thread mostly waits. README lines 9-11 describe the placement without noting this oversubscription. Measured wall_exclusive \u2248 thread_exclusive for host categories (e.g. cpu_dgram_construction 3.4835 vs 3.4653 s) indicates little main-thread descheduling, so the effect on the stated conclusion is small.",
+      "requested_change": "Note in README that the BD core budget hosts main + four KvikIO workers and that the near-equality of wall and thread CPU in host categories bounds the contention; a 5\u20136 core/BD or fixed-total-core variant is an optional future experiment (already listed as not run)."
+    },
+    {
+      "id": "PSR-04",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_pipeline_scaling_20261109/runner.py",
+      "line": 63,
+      "evidence": "The reserve gate `require(state+(8<<30)<=free)` is evaluated per BD after that BD's own prepare() while other BDs may or may not have allocated yet, so `free` is a race-dependent snapshot while `state` is the aggregate of all BDs. The check is conservative (it double-counts this BD's banks) rather than lax, and memory_after shows free >= 10.12 GiB in every 4BD case (results.json per_bd memory_after.free 10121904128\u201310491002880), so the >=8 GiB reserve held in practice.",
+      "requested_change": "Document the check as conservative/order-dependent in README or the code comment, or compute the gate once on rank 0 after a barrier using the maximum per-BD usage. Informational; no acceptance impact."
+    }
+  ]
+}

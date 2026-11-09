@@ -1,6 +1,9 @@
 # Sample10 psana pipeline versus cold read baseline
 
-Completed measurements on sdfampere023. Independent review pending. Scope: [scope.md](scope.md).
+Completed measurements on sdfampere023. Independent Claude review passed at
+`118dcb5d3d563a4996b6669fd702bd6d51727fd8`, with four non-blocking findings
+addressed as documented limitations. [Review](review-01/review.json),
+[responses](review-01/response.md), [scope](scope.md).
 
 This harness uses the accepted 10k synthetic MFX fixture and the existing
 expansion, calibration and 100-bin/99-active cube kernels unchanged. Each run
@@ -9,6 +12,11 @@ one physical GPU selected by UUID before MPI initialization. Each BD is pinned
 to four distinct physical CPU cores; each helper has one. BDs increase total
 CPU allocation and KvikIO workers (four per BD), not just process count.
 Device PCI/mask, CPU affinity, runtime hashes and effective settings are saved.
+Each four-core BD budget hosts its main thread plus four KvikIO workers and
+runtime helper threads. Most measured host categories have nearly equal wall
+and main-thread CPU time, indicating little main-thread descheduling there;
+background-worker contention was not separately measured. A 5–6 core/BD or
+fixed-total-core comparison remains a possible follow-up.
 
 Both cold and warm cases have fresh GPU contexts. Whole-loop time includes the
 start barrier, event delivery, lazy first-call allocations/calibration setup,
@@ -45,7 +53,12 @@ Python/framework work explicitly outside attribution.
 1/2 BDs compare one and two streams; 4 BDs use one stream. Each stream's cube
 bank is 6.25 GiB, so tested configurations have at most four banks (~25 GiB)
 with an aggregate >=8 GiB non-bank reserve gate. Snapshots are not continuous
-memory peaks. The 4 BD/2 stream configuration would need 50 GiB of banks alone
+memory peaks. The pre-loop reserve check uses a per-BD free-memory snapshot
+while other contexts may still initialize, so it is order-dependent rather than
+a synchronized reservation. prepare() compiles kernels; cube banks allocate
+later during callbacks. Recorded post-loop snapshots also exceeded the 8 GiB
+reserve, but do not establish the minimum free memory throughout execution.
+The 4 BD/2 stream configuration would need 50 GiB of banks alone
 and is outside this A100-40GiB test. Framework budget remains 4 GiB per BD,
 nominal EB batch 7, SMD grouping 20, bulk read target 512 KiB, forced KvikIO CPU
 fallback, four workers/4 MiB tasks/16 MiB bounce/no auto-direct per BD.
@@ -91,6 +104,9 @@ in `results.json`. The recommended configuration processes **618 events/s cold**
 and **719 events/s warm**. The 4BD/1stream cold range is 2.087–2.103 GiB/s;
 2BD/2stream is 1.918–1.949 GiB/s. Warm ranges overlap (2.225–2.245 versus
 2.244–2.251 GiB/s); do not claim a meaningful warm advantage for four BDs.
+The shared ~13.9 s warm-loop plateau is not attributed by this investigation.
+GPU sharing, single-core SMD0/EB helpers and host bandwidth are possible limits.
+A 4BD diagnostic or helper-core variation would help distinguish them.
 
 The same-node standalone four-worker KvikIO control measured **4.120 GiB/s cold**
 and **12.843–12.868 GiB/s warm**. This control keeps a continuously replenished
@@ -132,6 +148,16 @@ row), while producer execution-stream retirement waits are only **0.013 s**.
 There are zero pressure-triggered drains in every accepted case. This refines the
 earlier broad 'read dominated' description: **the host input pipeline dominates,
 not simply time blocked waiting for Weka or for another GPU stream to finish**.
+
+The focused diagnostic has a review-discovered instrumentation caveat:
+the inherited generator wrapper discards StopIteration.value from _handle_steps.
+This defers the EndRun-triggered final flush to finish(), changing its attribution
+while retaining the final drain inside the measured loop. Event/count acceptance
+passed, and both diagnostics recorded five slot flush calls. Clean throughput
+cases and the main campaign diagnostic hooks are unaffected. The native focused
+report note claiming unchanged controller behavior is too broad; it is preserved
+as recorded evidence with this correction. A future reuse of the focused wrapper
+should forward generator return values before collecting new timings.
 
 [host-timing.md](host-timing.md) contains all disjoint host categories. GPU CUDA
 intervals are separately retained; do not add them to host time or sum them across
