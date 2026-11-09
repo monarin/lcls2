@@ -1,0 +1,16 @@
+{
+  "phase": "review_pending",
+  "job": "43989739",
+  "host": "sdfampere002",
+  "harness_commit": "693c25bb3",
+  "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_cold_ffb_20261109_r1",
+  "round": 0,
+  "round_limit": 3,
+  "review": "pending",
+  "checks": {
+    "native_audit": "pass",
+    "tests": 7,
+    "syntax": "pass",
+    "ffb_temporary_removed": true
+  }
+}

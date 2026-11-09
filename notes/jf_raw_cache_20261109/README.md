@@ -1,5 +1,7 @@
 # Uncompressed Jungfrau cold/warm reproduction
 
+**Superseded:** the user requested a cold Weka FFB comparison with sim10, without NVMe or warm runs. See [the successor scope](../jf_cold_ffb_20261109/scope.md). R3 job43987249 was stopped during preparation before input staging; both cleanup records confirm removal. No R3 rates exist. Round2 preparation-code review passed e2936a898; this was not performance acceptance. The sections below retain the earlier plan and failed-attempt history.
+
 Status: r1 job43983799 stopped at its first warm preparation gate after both
 raw-pixel preflights and one full cold case passed. No warm rate was accepted.
 The private xtc copy was removed (cleanup.json). R2 adds interleaved warming,
@@ -84,7 +86,7 @@ exhaustive sweep or a confidence-interval study.
 Code commit before submission: `1e526c602`. Frozen runtime is the same B install
 used by the sample10 investigation; runtime.sh records the absolute prefix and
 venv. Scripts/runtime hashes and device placement accompany each case.
-Ten CPU cache/NIC/preparation audit tests and Python/shell syntax checks pass.
+Fifteen CPU cache/NIC/preparation audit tests and Python/shell syntax checks pass.
 Both r1 raw preflights passed, and r1 Weka/1BD cold measured5.6168GiB/s with
 zero initial residency and334.718GiB NIC RX. This single observation is not a
 completed reproduction. The r1 warm failure had no persisted residency vector;
