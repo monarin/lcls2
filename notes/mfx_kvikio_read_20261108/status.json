@@ -1,0 +1,10 @@
+{
+  "phase": "awaiting_independent_review",
+  "base": "4e09db0ec",
+  "job": "43866709",
+  "checks": ["33 native cases pass", "independent accounting/source audit pass", "10 host tests pass"],
+  "review_round": 1,
+  "round_limit": 3,
+  "unresolved": [],
+  "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/kvikio_read_20261108_r1"
+}
