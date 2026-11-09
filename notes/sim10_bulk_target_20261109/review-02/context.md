@@ -35,3 +35,10 @@ SBT-01 and SBT-03 are explicitly deferred low-priority cleanup with same queued
 code. Assess any new issues too. The reviewed commit SHA will be appended by the
 coordinator after committing this evidence. You cannot execute tests/hashes;
 report those independent-verification limitations rather than inventing a pass.
+
+Reviewed commit: f171fdb16c3ec9980a5bbbe60eee50de986645cc.
+Note counter semantics: peak outstanding requests means submitted and not yet
+retired via wait_batch; some physical I/O may already have finished. This is not
+proof that all500requests were simultaneously active at storage. Please assess
+whether report wording needs clarification. Coordinator plans to state this
+explicitly in the final evidence-only wording.

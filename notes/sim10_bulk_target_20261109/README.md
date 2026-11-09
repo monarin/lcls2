@@ -10,7 +10,9 @@
 
 All full cases read **33,582,000,000 bytes (31.275675 GiB)** over 10,000 events
 from five JF XTC files. Reader calls are GPU-reader requests to KvikIO, not OS
-syscalls or KvikIO worker tasks. Both repeats matched the independent predicted
+syscalls or KvikIO worker tasks. Peak outstanding counts mean submitted requests
+not yet retired through wait_batch; some may already have finished physical I/O.
+They do not show simultaneous storage activity. Both repeats matched the independent predicted
 counts and complete read-size histograms exactly.
 
 At 4 MiB the mean rate was 1.574 GiB/s, 26.9% below the 512 KiB mean of 2.154 GiB/s.
@@ -20,8 +22,8 @@ The small-group restriction matters even with **one CUDA execution stream**:
 it allows only one live small input group per physical XTC file. Peak pending
 reads fell from 500 to 5. Group boundaries also changed execution scheduling:
 100 callbacks of 100 events became thousands of callbacks of 1–5 or 1–11 events.
-Thus coalescing worked, but the same configuration change also reduced input
-concurrency and increased execution/callback overhead. These observations are
+Thus coalescing worked, but the same configuration change also reduced the number of
+reads submitted ahead of each wait and increased execution/callback overhead. These observations are
 consistent with scheduling costs offsetting larger reads; no section timings
 were collected to assign the slowdown to individual components. This does not
 show that larger reads alone are slower, or that storage bandwidth is the limit.
@@ -59,8 +61,11 @@ All five payload files had zero initial resident pages in every case and
 | 05-target-524288 | 31.276 | 34.802 | 677.7 |
 
 Measured-case idle NIC RX was 0.93–1.03 MiB/s. NIC totals include protocol,
-SMD/background traffic and a slightly wider timing bracket; they do not provide
-an exact remote-read/cache-hit fraction. Both repeats used the same GPU:
+SMD/background traffic and a wider timing bracket; they do not provide
+an exact remote-read/cache-hit fraction. The NIC bracket exceeded the loop timer
+by about 0.9–1.2 seconds in five runs and 4.3 seconds in run 04 (4 MiB). The table
+reports NIC byte totals, not NIC rates; these counters were not used to compute
+the payload GiB/s results. Both repeats used the same GPU:
 `GPU-1b50deab-6fd5-0cd6-f752-536b4de64f73`, PCI `0000:01:00.0`.
 
 Settings: one BD, one A100-SXM4-40GB, one CUDA execution stream, EB batch 100,
@@ -72,8 +77,8 @@ recorded in the native results. Inputs are sim10 seed descriptors via public
 GpuTask. No dense gather, calibration, expansion, cube, user kernels, or timed
 payload D2H. This is framework staging throughput; pixel values were not inspected.
 
-Three 200-event preflights preceded full runs in order 512 KiB, 4 MiB, 8 MiB,
-8 MiB, 4 MiB, 512 KiB. Preflights warmed compiler caches; lazy allocations in
+Three 200-event preflights ran at 512 KiB, 4 MiB, and 8 MiB. The six full runs
+then ran at 512 KiB, 4 MiB, 8 MiB, 8 MiB, 4 MiB, and 512 KiB. Preflights warmed compiler caches; lazy allocations in
 each new process remained timed. Timing covered the MPI event loop and final
 GPU drain. Setup, SHA verification/copying, cache eviction, idle samples and
 final cache scans were excluded. Only two repeats per setting were measured;
@@ -91,9 +96,11 @@ offline frozen-runtime planner check matched all six event-count/target cases
 before hardware validation (cpu-plan-check.json). The live counters now match too.
 
 Implementation: `f849540905a19cc2c18d620702088ade120740fe`, unchanged since the
-code-only review. Review round 2 of these hardware results is pending. Prior
-SBT-02 is addressed by reporting callback counts, complete subbatch histograms,
-and the coupled scheduling effects above. Optional SBT-01/SBT-03 cleanup remains
+code-only review. **Claude results review passed** in round 2 on commit
+`f171fdb16c3ec9980a5bbbe60eee50de986645cc`, with no blocking findings. SBT-02 was
+confirmed resolved. The two new wording suggestions, SBT-04 and SBT-05, are
+addressed in this evidence-only update. The benchmark code is unchanged. See
+[review](review-02/review.json) and [responses](review-02/response.md). Optional SBT-01/SBT-03 cleanup remains
 deferred; instrument.py is hashed as lineage for bulk_accounting.py, and the
 inherited --preflight flag is unused (campaign selects short cases by events=200).
 
@@ -108,3 +115,9 @@ Validation commands (Python 3.11 from xpp_drp_gpu_311):
 python notes/sim10_bulk_target_20261109/audit.py /sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sim10_bulk_target_20261109_r1
 python notes/sim10_bulk_target_20261109/test_audit.py /sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sim10_bulk_target_20261109_r1
 ```
+
+The coordinator verified 25 native evidence copies byte-for-byte by SHA-256,
+ran the audit and tests, and confirmed benchmark code was unchanged. Claude
+reviewed the copied files with read-only tools; it could not independently run
+tests or hashes, and inspected long timestamp/callback arrays selectively.
+These limitations are retained in the review record.
