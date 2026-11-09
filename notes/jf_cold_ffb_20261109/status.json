@@ -1,20 +1,21 @@
 {
-  "phase": "report_rereview_pending",
+  "phase": "complete",
   "job": "43989739",
   "host": "sdfampere002",
   "harness_commit": "693c25bb3",
   "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_cold_ffb_20261109_r1",
-  "round": 1,
+  "round": 2,
   "round_limit": 3,
-  "review": "changes_requested",
+  "review": "pass",
   "checks": {
     "native_audit": "pass",
     "tests": 7,
     "syntax": "pass",
     "ffb_temporary_removed": true
   },
-  "reviewed_commit": "7ea7a23849b1759ddac017aabd08af7778bcdc5e",
-  "unresolved_blocking": [
-    "COLD-R1-01: report fixed, pending reviewer confirmation"
+  "reviewed_commit": "1a2d4043f1ed9155e3ec7f89270aa5b1426bd5c0",
+  "unresolved_blocking": [],
+  "deferred_optional": [
+    "COLD-R1-04: auditor hardening; rationale accepted by round2"
   ]
 }
