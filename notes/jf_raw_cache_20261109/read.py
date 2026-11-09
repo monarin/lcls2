@@ -1,7 +1,7 @@
 """Kernel-free KvikIO ring over exactly the JF event datagrams."""
 import argparse,json,os,platform,time
 from pathlib import Path
-from common import require,paths,requests,run_queue,begin,end,sources
+from common import require,paths,requests,run_queue,begin,end,sources,CacheGateError,cache_unavailable
 
 def main(a):
     os.environ['CUDA_VISIBLE_DEVICES']=os.environ['JF_GPU_UUID']
@@ -18,7 +18,10 @@ def main(a):
     def submit(slot,r):return handles[r[0]].pread(buffers[slot],size=r[2],file_offset=r[1],task_size=a.task_mib<<20)
     try:
         run_queue(plan[:5],5,submit,lambda f:int(f.get()));cp.cuda.Device().synchronize()
-        observation=begin(a.directory,a.cache);start=time.perf_counter()
+        try:observation=begin(a.directory,a.cache)
+        except CacheGateError as exc:
+            cache_unavailable(a.output,vars(a),exc);raise SystemExit(42)
+        start=time.perf_counter()
         total,count,last=run_queue(plan,depth,submit,lambda f:int(f.get()));cp.cuda.Device().synchronize();seconds=time.perf_counter()-start
         end(observation,a.directory,seconds);require(count==50000 and total==335571760000,'Incomplete reads')
         witnesses=[]

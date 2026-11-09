@@ -19,6 +19,8 @@ sys.path.insert(0,str(HERE.parent/'mfx_kvikio_read_20261108'))
 from network_watch import physical_counters,counter_delta
 from plan_reads import run_queue
 
+class CacheGateError(ValueError):pass
+
 def require(ok,message):
     if not ok:raise ValueError(message)
 
@@ -87,13 +89,14 @@ def condition(directory,kind):
             subprocess.run(['numactl','--interleave=all',sys.executable,str(HERE/'warm_cache.py'),'--prefixes',json.dumps(ranges)],check=True)
         cache=residency(directory);history.append(dict(stage='prepared',cache=cache));save()
         if kind=='warm':
-            for attempt in range(1,4):
+            for attempt in range(1,9):
                 missing=[(x['path'],x['bytes']) for x in cache['files'] if x['resident_pages']/x['pages']<.999]
                 if not missing:break
                 subprocess.run(['numactl','--interleave=all',sys.executable,str(HERE/'warm_cache.py'),'--missing-prefixes',json.dumps(missing)],check=True)
                 cache=residency(directory);history.append(dict(stage='repair-%d'%attempt,cache=cache));save()
         record['cache']=cache;record['memory_after']=snapshot();save()
-        require(all(x['resident_pages']==0 if kind=='cold' else x['resident_pages']/x['pages']>=.999 for x in cache['files']),'Cache gate failed: '+json.dumps(cache))
+        if not all(x['resident_pages']==0 if kind=='cold' else x['resident_pages']/x['pages']>=.999 for x in cache['files']):
+            raise CacheGateError('Cache gate failed: '+json.dumps(cache))
         record['status']='pass';save();return record
     except BaseException as exc:
         record['status']='fail';record['error']=repr(exc);record['memory_after']=snapshot();save();raise
@@ -172,3 +175,11 @@ def prefix_residency(path, length, *, missing_ranges=False):
     if missing_ranges:
         result['missing_ranges'] = missing
     return result
+
+
+def cache_unavailable(output,settings,exc):
+    import platform
+    target=Path(os.environ['JF_CACHE_REPORT'])
+    report=dict(status='cache-unavailable',settings=settings,host=platform.node(),job=os.getenv('SLURM_JOB_ID'),error=str(exc),cache_report=str(target),cache_sha256=sha(target),source_sha256=sources())
+    require(settings['cache']=='warm','Only unavailable warm gates may be skipped')
+    with open(output,'x') as f:json.dump(report,f,indent=2);f.write('\n')

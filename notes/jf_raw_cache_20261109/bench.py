@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 import platform
 import time
-from common import HERE,REF,require,sha,ts_hash,begin,end,sources
+from common import HERE,REF,require,sha,ts_hash,begin,end,sources,CacheGateError,cache_unavailable
 rank_hint=int(os.environ['OMPI_COMM_WORLD_RANK'])
 os.environ['CUDA_VISIBLE_DEVICES']=os.environ['JF_GPU_UUID'] if rank_hint>=2 else ''
 os.sched_setaffinity(0,{int(x) for x in os.environ['BENCH_CPU_AFFINITY'].split(',')})
@@ -71,7 +71,11 @@ def main(a):
     run=next(ds.runs());setup_seconds=time.perf_counter()-start
     require(run.comms.node_type()==('smd0' if comm.rank==0 else 'eb' if comm.rank==1 else 'bd'),'Wrong role')
     if is_bd:cp.cuda.Device().synchronize()
-    comm.Barrier();observation=begin(a.directory,a.cache) if comm.rank==0 else None
+    comm.Barrier();observation=None
+    if comm.rank==0:
+        try:observation=begin(a.directory,a.cache)
+        except CacheGateError as exc:
+            cache_unavailable(a.output,vars(a),exc);comm.Abort(42)
     start=time.perf_counter();comm.Barrier();rank_start=time.perf_counter();stamps=[]
     with closing(run.events()) as events:
         for evt in events:stamps.append(int(evt.timestamp))

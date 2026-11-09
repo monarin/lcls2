@@ -33,3 +33,12 @@ the >=99.9% per-file gate. Persist all residency and memory snapshots on failure
 Conditioning remains untimed. Cases may take up to1200s within the same60min
 allocation cap. Add early Slurm TERM and cleanup of the whole private root;
 SIGKILL remains uncatchable and requires checking scheduler cleanup.
+
+R3 final bounded retry: r2's first interleaved pass left the last file at81.74%,
+then95.55%,98.26%,99.09% after three repairs; other files stayed>=99.9%.
+Permit at most eight repairs because this evidence converged without displacing
+the other files. Extend the same-node allocation cap to90min to accommodate
+untimed full313GiB warming. If a final warm threshold still fails, classify only
+that case cache-unavailable (no measured rate) and continue independent cases.
+Never suppress I/O/short-read/pixel/MPI/other failures. Final audit returns partial
+if any warm gate is unavailable; do not relabel failed preparation as warm.

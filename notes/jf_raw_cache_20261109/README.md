@@ -55,9 +55,11 @@ request/byte totals. Full bigdata SHA and raw-pixel checks run on the GPU node.
   five owned bigdata files after setup/warmup. Warm: preload outside timing,
   then **>=99.9% residency in each file**. R2 resets input cache before warm
   preparation, runs the sequential warmer with numactl --interleave=all, and
-  allows at most three missing-page repairs with the same policy. All cache and
+  allows at most eight missing-page repairs with the same policy. All cache and
   memory snapshots persist even if a gate fails. An initial Weka warm-preparation
-  probe fails early before local copying if the strict gate is unattainable. SMD setup may already prime buffers;
+  probe records whether the strict gate is attainable before copying. A final
+  failed warm gate produces no rate and does not prevent independent cold/local
+  cases; other failures still abort. SMD setup may already prime buffers;
   Weka backend caches are uncontrolled. No global cache flush.
 - Read physical ethtool counters before/after each completed loop and separately
   during idle. Keep ports and counter intervals separate; no inferred exact
@@ -117,3 +119,12 @@ hash changes and missing local cleanup. Preserve failure logs and use a fresh
 artifact root for any rerun. Do not describe submission or host checks as a
 successful reproduction. See [scope](scope.md), [status](status.json) and
 [CPU tests](tests.log).
+
+R2 probe job43985860 failed before staging: first pass percentages were
+[99.9652,99.9951,99.9990,99.9943,81.7443]; s009 improved to95.5539,98.2636,
+99.0872 after three repairs while the other files stayed stable. R3 permits
+eight bounded repairs, retains every gate snapshot, and reports unavailable
+warm cases separately with no rate. A partial campaign is never labeled a
+complete reproduction. R2 full private-root cleanup passed. Fifteen host checks
+pass, including actual normal/TERM launcher cleanup with harmless test children.
+The final retry's allocation cap is90min; timed workload/settings are unchanged.

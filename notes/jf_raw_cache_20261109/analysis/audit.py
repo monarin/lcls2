@@ -48,14 +48,31 @@ def check(r,refs):
         need(e['task_size']==(1<<20 if r['workload']=='psana-dense-input' else a['task_mib']<<20),'Task size')
     return devices[0]
 
+def unavailable(r,cache):
+    need(r['status']=='cache-unavailable' and r['settings']['cache']=='warm','Unavailable classification')
+    need('gib_s' not in r and 'measurement' not in r,'Failed warm gate has a rate')
+    need(cache['status']=='fail' and cache['kind']=='warm','Failed cache evidence')
+    need(len(cache['history'])==10 and cache['history'][-1]['stage']=='repair-8','Bounded repairs missing')
+    files=cache['cache']['files']
+    need(len(files)==5 and any(x['resident_pages']/x['pages']<.999 for x in files),'Warm cache actually passed')
+
+
 def audit(root):
     here=Path(__file__).resolve().parents[1];refs=json.loads((here/'reference.json').read_text());complete=json.loads((root/'complete.json').read_text())
-    need(complete['status']=='pass' and len(complete['cases'])==20,'Campaign incomplete')
+    need(complete['status'] in ('pass','partial') and len(complete['cases'])==20,'Campaign incomplete')
     expected={'preflight-b1','preflight-b4'}|{'psana-%s-b%d-%s-r%d'%(storage,bds,cache,rep) for storage,bds in [('weka',1),('weka',4),('local',4)] for cache in ('cold','warm') for rep in (1,2)}|{'read-%s-t%d-%s'%(storage,threads,cache) for storage,threads in [('weka',4),('weka',8),('local',8)] for cache in ('cold','warm')}
     need({x['name'] for x in complete['cases']}==expected,'Unexpected cases')
-    artifacts={};rows=[];groups={};source=None;device=None;host=None
+    artifacts={};rows=[];groups={};source=None;device=None;host=None;missing=[]
     for c in complete['cases']:
-        p=root/(c['name']+'.json');r=json.loads(p.read_text());d=check(r,refs)
+        p=root/(c['name']+'.json');r=json.loads(p.read_text())
+        if r['status']=='cache-unavailable':
+            q=root/(c['name']+'.cache.json');cache=json.loads(q.read_text());unavailable(r,cache)
+            need(c['status']=='cache-unavailable' and c['gib_s'] is None and sha(q)==r['cache_sha256'],'Unavailable record mismatch')
+            need(r['host']==host and r['source_sha256']==source,'Unavailable source/host mismatch')
+            artifacts[str(p)]=sha(p);artifacts[str(q)]=sha(q)
+            missing.append(dict(name=c['name'],cache=cache['cache'],conditioning_seconds=cache['seconds']))
+            continue
+        d=check(r,refs)
         if source is None:source=r['source_sha256'];device=d['mask'];host=r['host']
         need(r['source_sha256']==source and d['mask']==device and r['host']==host,'Campaign identity')
         need(c['gib_s']==r['gib_s'],'Progress mismatch');artifacts[str(p)]=sha(p)
@@ -67,7 +84,9 @@ def audit(root):
     stage=json.loads((root/'staging.json').read_text());expected_hash=json.loads((here/'expected-sha256.json').read_text())
     need(len(stage)==5 and all(x['sha256']==expected_hash[Path(x['source']).name] for x in stage),'Stage identity')
     need(json.loads((root/'cleanup.json').read_text())['removed'],'Local cleanup')
-    return dict(status='pass',host=host,device_mask=device,artifacts=artifacts,source_verified=source,cases=rows,summary={k:dict(median=statistics.median(v),minimum=min(v),maximum=max(v),repeats=len(v)) for k,v in groups.items()})
+    need(json.loads((root/'root-cleanup.json').read_text())['removed'],'Root cleanup')
+    need(complete['status']==('partial' if missing else 'pass'),'Completion classification')
+    return dict(status='partial' if missing else 'pass',unavailable_warm_cases=missing,host=host,device_mask=device,artifacts=artifacts,source_verified=source,cases=rows,summary={k:dict(median=statistics.median(v),minimum=min(v),maximum=max(v),repeats=len(v)) for k,v in groups.items()})
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('root',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args()

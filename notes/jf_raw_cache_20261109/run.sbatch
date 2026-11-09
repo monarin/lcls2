@@ -8,7 +8,7 @@
 #SBATCH --gpus=1
 #SBATCH --exclusive
 #SBATCH --mem=700G
-#SBATCH --time=01:00:00
+#SBATCH --time=01:30:00
 #SBATCH --signal=B:TERM@180
 set -euo pipefail
 source_dir=${1:?source}
