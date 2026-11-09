@@ -25,3 +25,10 @@ Diagnostic CPU exclusive wall/thread time and CUDA-event intervals are separate
 from clean rates; nested/overlapping intervals must not be summed as wall time.
 Single-node exclusive allocation <=35min; up to three independent Claude review
 rounds, preserve failures, commit/push only work/synthetic-mfx-scan.
+
+Follow-up control on the same node: original serial runner versus MPI 1BD,
+2 streams, cold and warm, one pair each, <=10min. Needed because the original
+sub-1GiB/s result used serial mode, while the BD scaling campaign uses MPI.
+Use the same task/configuration; add outside-loop cache/NIC wrappers and cheap
+read accounting to the unchanged original serial runner. No claimed causal
+comparison across nodes or between its steady timer and the MPI whole-loop timer.

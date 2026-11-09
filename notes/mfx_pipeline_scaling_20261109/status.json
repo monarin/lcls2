@@ -1,5 +1,5 @@
 {
-  "phase": "pilot_and_measurement",
+  "phase": "measurement",
   "base_commit": "e4d9f79f2",
   "round": 0,
   "round_limit": 3,
@@ -13,5 +13,7 @@
   "checks": {
     "unit_tests": 9,
     "pilot_4bd_1stream": "pass"
-  }
+  },
+  "implementation_commit": "21f47cf95",
+  "serial_control_job": "43977453"
 }
