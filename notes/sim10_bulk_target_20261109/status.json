@@ -1,26 +1,27 @@
 {
-  "phase": "hardware-queued-code-review-passed",
-  "review_round": 1,
+  "phase": "results-review-pending",
+  "review_round": 2,
   "round_limit": 3,
   "scope": "Sim10 cold FFB bulk targets 512KiB,4MiB,8MiB; batch100,one GPU stream",
   "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sim10_bulk_target_20261109_r1",
   "job": "44009313",
   "implementation_sha": "f849540905a19cc2c18d620702088ade120740fe",
   "reviewed_sha": "f849540905a19cc2c18d620702088ade120740fe",
-  "hardware_validation": "pending",
-  "post_run_tests": "pending",
-  "estimated_start": "2026-11-09 14:02:44 America/Los_Angeles",
+  "hardware_validation": "pass",
+  "post_run_tests": "12 passed",
   "review_output": "/lscratch/monarin/tmp/sim10-bulk-code-review-output-20261109-r1",
   "unresolved_ids": [
-    "SBT-02 (results report obligation)"
+    "SBT-02 (awaiting results-review confirmation)"
   ],
   "review_verdict": "pass (implementation only)",
-  "overall_acceptance": "pending hardware, audit tests and results review",
+  "overall_acceptance": "pending results review",
   "checks": {
     "syntax": "pass",
     "offline_cpu_planner": "pass, all six event-count/target combinations",
-    "hardware": "pending",
-    "post_run_tests": "pending"
+    "hardware": "pass, COMPLETED 0:0",
+    "post_run_tests": "12 passed",
+    "audit": "pass",
+    "cleanup": "pass"
   },
   "deferred_ids": [
     "SBT-01",
