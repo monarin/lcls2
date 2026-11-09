@@ -1,1 +1,16 @@
-{"phase":"implementation","base_commit":"319d1c8ce","round":0,"round_limit":3,"unresolved_blocking":[]}
+{
+  "phase": "queued",
+  "base_commit": "319d1c8ce",
+  "round": 0,
+  "round_limit": 3,
+  "unresolved_blocking": [],
+  "job": "43983799",
+  "implementation_commit": "1e526c602",
+  "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_raw_cache_20261109_r1",
+  "checks": {
+    "syntax": "pass",
+    "unit_tests": 7,
+    "smd_requests": 50000,
+    "smd_bytes": 335571760000
+  }
+}
