@@ -1,0 +1,17 @@
+Command from repository root:
+PYTHONDONTWRITEBYTECODE=1 /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/bin/python -m unittest discover -s notes/mfx_pipeline_scaling_20261109/analysis -p "test_*.py" -v
+
+test_cold_gate (test_audit.Audit.test_cold_gate) ... ok
+test_counter_reset (test_audit.Audit.test_counter_reset) ... ok
+test_duplicate_event (test_audit.Audit.test_duplicate_event) ... ok
+test_exclusive_timing_overflow (test_audit.Audit.test_exclusive_timing_overflow) ... ok
+test_false_rate (test_audit.Audit.test_false_rate) ... ok
+test_incomplete_read (test_audit.Audit.test_incomplete_read) ... ok
+test_overlap_cpu_affinity (test_audit.Audit.test_overlap_cpu_affinity) ... ok
+test_valid (test_audit.Audit.test_valid) ... ok
+test_wrong_bank_counts (test_audit.Audit.test_wrong_bank_counts) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+OK

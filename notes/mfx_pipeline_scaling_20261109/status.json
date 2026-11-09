@@ -1,0 +1,17 @@
+{
+  "phase": "pilot_and_measurement",
+  "base_commit": "e4d9f79f2",
+  "round": 0,
+  "round_limit": 3,
+  "unresolved_blocking": [],
+  "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/pipeline_scaling_20261109_r3",
+  "job": "43977007",
+  "failed_jobs": [
+    "43976569",
+    "43976777"
+  ],
+  "checks": {
+    "unit_tests": 9,
+    "pilot_4bd_1stream": "pass"
+  }
+}
