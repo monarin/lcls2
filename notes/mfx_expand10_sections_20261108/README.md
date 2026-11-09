@@ -18,7 +18,7 @@ rechecked after execution. No new full-pixel numerical validation was performed.
 The single-stream case spends substantial host wall time waiting for input
 completion (6.30 s), waiting to reuse its execution slot (5.95 s), and preparing
 CPU events (5.79 s). With two streams, slot-reuse wait almost disappears
-(0.025 s), but input-completion wait is the largest measured section (10.03 s).
+(0.024 s), but input-completion wait is the largest measured section (10.03 s).
 CPU event preparation remains substantial (6.40 s). This supports a pipeline
 limited by input/preparation work rather than sustained GPU kernel execution;
 it does not isolate Weka as the sole bottleneck or establish storage saturation.
@@ -34,12 +34,16 @@ includes task submission, consumer release, uploads/enqueues and final flush.
 |---|---:|---:|
 | Diagnostic envelope | 34.013 s | 34.360 s |
 | Input completion wait | 6.299 s (18.5%) | 10.028 s (29.2%) |
-| Execution-slot reuse wait | 5.945 s (17.5%) | 0.025 s (0.1%) |
+| Execution-slot reuse wait | 5.945 s (17.5%) | 0.024 s (0.1%) |
 | CPU ancillary reads + event construction | 5.788 s (17.0%) | 6.402 s (18.6%) |
 | Outside instrumented sections | 6.595 s (19.4%) | 7.433 s (21.6%) |
 
 The uninstrumented remainder includes Python/framework work and profiling
 overhead; no CPU sampling was enabled, so it cannot be assigned more narrowly.
+Timing/NVTX overhead also occurs inside measured spans. For example, the
+one-stream NVTX read-wait/submission totals exceed their perf_counter totals by
+about 0.04/0.07 s across roughly 45k calls each. Small differences on the order
+of 0.1 s should not be interpreted as meaningful performance differences.
 Input wait is a KvikIO future wait encompassing unfinished worker reads/H2D and
 scheduling; it is not a measurement of physical Weka read latency. The increased
 wait in this one two-stream capture is not proof that adding a stream slows I/O.
@@ -64,8 +68,10 @@ GPU parser kernels themselves are short; CPU parser preparation/enqueue costs
 1.99/2.40 s and descriptor build/upload calls cost another 1.99/2.11 s on the host.
 Neither is the duration of its GPU kernels alone.
 
-No task-kernel overlap was observed in either steady envelope (the sum of
-individual task durations equals their interval union). H2D totals include
+No two kernels executed concurrently in either steady envelope, including the
+two-stream capture: the sum of all individual kernel durations equals their
+interval union. This describes these profiled runs, not a general prohibition
+on concurrency. H2D totals include
 metadata copies as well as input payloads. No D2H occurs in these envelopes;
 validation copies happen afterward, with no per-event publication or full cube
 export. Worker `Buffered pread` interval unions are 11.92/16.31 s, including
@@ -100,6 +106,9 @@ Native artifacts:
 `run.sbatch SOURCE_DIRECTORY NEW_OUTPUT_DIRECTORY` reproduces the capture.
 `python analyze.py NATIVE_ROOT --output NEW_SUMMARY_JSON` verifies acceptance,
 partitions nested NVTX ranges, clips GPU/worker intervals and binds inputs by SHA.
+Run with normal Python assertions enabled: **do not use `python -O`, `-OO`, or
+set `PYTHONOPTIMIZE`**. Acceptance gates currently use assertions; the recorded
+analysis used normal Python without optimization.
 Five host interval tests cover overlap, nesting, clipping, gaps and invalid
 crossing ranges. `summary.json` records all detailed CPU/GPU timings and artifact
 hashes; `source-verification.json` binds the unchanged source/runtime.
@@ -107,3 +116,10 @@ hashes; `source-verification.json` binds the unchanged source/runtime.
 Next targeted measurement: distinguish remaining host work and input issue/wait
 costs before tuning worker count or batching. This task makes no framework or
 kernel changes and does not start the broader batch sweep.
+
+Independent restricted Claude review passed on executable commit
+`27975c173a08bd69ba6b03c87c70cc31fcc8914f`. Four non-blocking findings were
+addressed in documentation; no executable changes or additional GPU runs were
+needed. See [review response](review-01/response.md). The reviewer checked source
+and evidence consistency but could not execute tests, hash files or query SQLite;
+those checks were performed by the coordinator.

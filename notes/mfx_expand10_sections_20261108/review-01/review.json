@@ -1,0 +1,66 @@
+{
+  "reviewed_commit": "27975c173a08bd69ba6b03c87c70cc31fcc8914f",
+  "verdict": "pass",
+  "summary": "The scoped section-timing implementation and conclusions at 27975c173 are internally consistent and meet the agreed acceptance. Both byte-identical native report copies show status pass, 10000 delivered/checked events, batch 7, 100 bins, 524288-byte target, 4 GiB budget, zero warmup/steady pressure trims, bank ownership [10000] and [5000,5000], one host/job. Recorded source and runtime SHA256s are identical across launch-sha256.txt, both reports, the sections source-verification.json and the clean-baseline source-verification.json, supporting the unchanged-frozen-source claim. analyze.py's partition() is a correct exclusive sweep: ranges are clipped to the envelope, the innermost recognized span owns each segment, crossing (non-nested) spans raise, and the final assertion forces rows to sum to the envelope, so nested NVTX spans are not double counted. Every value and percentage in cpu-table.md and the README tables recomputes from summary.json (including the 'Other instrumented' and 'XTC walk + locator' aggregates), exclusive child sums reconcile with inclusive parents, and the GPU table is kept separate with an explicit do-not-add warning. The no-kernel-overlap statement is supported: all-kernel union equals the sum of per-kernel sums exactly in both cases. D2H copies inside the envelopes are zero. The README states boundary exclusions (3.7/2.9 ms head/tail), an explicit uninstrumented remainder, and disclaims Weka saturation, CPU utilization, causal speedup and device exclusivity. Four low, non-blocking findings concern a rounding mismatch between README and cpu-table, reliance on bare asserts for acceptance gates, per-call instrumentation overhead carried inside high-count spans, and under-emphasis of the observation that the two-stream capture achieved zero kernel concurrency.",
+  "checks": [
+    "Read scope.md, README.md, analyze.py, test_analysis.py, tests.log, cpu-table.md, summary.json, source-verification.json, run.sbatch, status.json, gpu-before/after.csv, launch-sha256.txt, nsys-version.txt",
+    "Read unchanged instrumentation timing.py, perf_cube.py, runner.py and clean baseline README plus its source-verification.json",
+    "Read build/sections-evidence copy-index.json, s1/s2-report.json (head, bank_events, read_stats, memory), s1/s2-profile-aggregates.json",
+    "Traced partition() and union_ns() logic by hand against the five tests; confirmed nesting check is sufficient (crossing pairs always appear as consecutive violations after sort) and that the sum assertion enforces a true partition",
+    "Confirmed acceptance gates in analyze.py are satisfied by values present in the report copies (status, mode, streams, events, batch, bins, target, budget, trims, bank_events)",
+    "Recomputed all cpu-table.md and README percentages and aggregates from summary.json cpu_exclusive_seconds; rows sum to envelope (34.012/34.360)",
+    "Checked exclusive-vs-inclusive reconciliation: ancillary+construction 5.788 vs inclusive 5.763 (s1), 6.402 vs 6.387 (s2); expand_calibrate_call exclusive + nested enqueues + descriptor upload = inclusive 2.33",
+    "Verified all-kernel union equals sum of per-kernel summed seconds in both cases (9.429326993, 9.615763549) and task-kernel union equals sum of the four task kernels",
+    "Verified GPU table values, H2D (copyKind 1) unions, D2H (copyKind 2) count 0, Buffered pread unions, rates 264.6/261.9, envelope head/tail 3.7/2.9 ms, before_setup 474087424 bytes, gpu-before 6373 MiB/100%, gpu-after 0 MiB/0%",
+    "Cross-checked recorded SHA256s: launch-sha256.txt == report code_sha256 == sections source-verification.json == baseline source-verification.json for all shared files; s1 and s2 report hash blocks identical",
+    "Confirmed run.sbatch uses --sample=none --cpuctxsw=none (no CPU sampling), exclusive output mkdir, no staging",
+    "Confirmed copy-index.json hashes for report copies match summary.json artifact hashes; profile copies documented as projections dropping raw intervals only"
+  ],
+  "limitations": [
+    "Could not open or query the native s1/s2 SQLite or .nsys-rep files; SQL-level envelope selection, NVTX thread filtering and CUPTI queries were reviewed as source code only, not re-executed.",
+    "Could not compute any SHA256; hash equality was checked only between recorded values in repository files, not against file contents in this worktree.",
+    "Did not run test_analysis.py; the five passing tests are taken from tests.log.",
+    "Slurm job exit status 0:0 and 2m14s wall time are not in repository files; they rest on coordinator statements and scratch logs not provided.",
+    "Could not run git to confirm the diff from base 2913e479c is confined to the notes directory; relied on recorded hash equality for runner/kernel/runtime files.",
+    "Did not count the 1500 callback entries in the report copies directly; relied on analyze.py's assertions having passed during the recorded run.",
+    "The two-stream exclusive 'slot_submit_including_null_wait' child decomposition (3.44 inclusive vs 0.90 exclusive) could not be fully attributed without raw intervals; this does not affect the partition correctness."
+  ],
+  "findings": [
+    {
+      "id": "SEC-01",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_expand10_sections_20261108/README.md",
+      "line": 37,
+      "evidence": "README reports two-stream execution-slot reuse wait as 0.025 s; cpu-table.md line 4 reports 0.024 s; summary.json producer_retirement_wait is 0.024479837 s.",
+      "requested_change": "Use one rounding of the same value in both documents (0.024 s at three decimals) so the two in-repo tables agree."
+    },
+    {
+      "id": "SEC-02",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_expand10_sections_20261108/analyze.py",
+      "line": 70,
+      "evidence": "All acceptance gates (status, mode, event counts, batch/bins/target/budget, zero trims, bank ownership, callback counts, envelope bound, 1350-per-kernel counts, single device) are bare assert statements; under python -O they are stripped and the script would still emit status 'pass'. The recorded run satisfies every gate per the report copies, so this is a robustness risk rather than an attribution error.",
+      "requested_change": "Replace asserts with explicit checks that raise (or a require() helper), or document in the README that analyze.py must not be run with optimization enabled."
+    },
+    {
+      "id": "SEC-03",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_expand10_sections_20261108/README.md",
+      "line": 41,
+      "evidence": "NVTX exclusive totals exceed the perf_counter inclusive totals for the highest-count spans: kvikio_wait 6.299 vs 6.260 s and kvikio_submit 2.020 vs 1.948 s (44965 calls each, s1); timing.py opens the NVTX range before and closes it after the perf_counter timing, so roughly 1-2 us per call of RangePush/clock overhead is attributed inside those spans (~0.1 s per span). The README attributes profiling overhead only to the uninstrumented remainder.",
+      "requested_change": "Add a sentence noting that high-call-count spans also carry per-call NVTX/timer overhead of order 0.1 s, so small differences between spans at that scale are not meaningful."
+    },
+    {
+      "id": "SEC-04",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/mfx_expand10_sections_20261108/README.md",
+      "line": 67,
+      "evidence": "summary.json shows all_kernels_union_seconds equals the sum of every per-kernel summed_seconds in both cases (9.429326993 and 9.615763549), i.e. zero kernel-kernel concurrency even with two execution streams. The README mentions no task-kernel overlap in passing but does not state that the two-stream configuration produced no GPU concurrency in this capture, which bears directly on the user's question of what dominates.",
+      "requested_change": "State explicitly that in this single two-stream capture no two kernels ever executed concurrently on the device, qualified as one profiled run, so readers do not assume the second stream overlapped GPU work."
+    }
+  ]
+}

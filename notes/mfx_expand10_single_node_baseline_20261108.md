@@ -102,7 +102,7 @@ drains. Warmed-window medians were 257.25 and 283.58 events/s (one/two streams),
 with material variation among one-stream repeats; no causal scaling claim.
 See the [baseline results](mfx_expand10_baseline10k_20261108/README.md).
 
-### 2. Tune batching and identify the limiting stages — next
+### 2. Tune batching and identify the limiting stages — attribution measured; tuning next
 
 Hold 512 KiB, 100 bins and the input/runtime fixed. Use a compact nominal batch
 comparison (4,7,14; runner supports 1..16), one/two execution streams, reusing the
@@ -110,7 +110,16 @@ stage 1 batch 7 results. Start with bounded screening, then repeat the promising
 configuration three times. Measure actual GPU subbatches because nominal batch
 size is not GPU execution size; keep memory headroom and pressure counts visible.
 
-Separately profile a short representative compressed case (about 1k events) to
+Section attribution was measured in two separate 10k diagnostic captures using
+the existing runner's profile mode (job 43863315). Slot-reuse waiting falls from
+5.95 s with one stream to about 0.024 s with two; input-completion waiting is the
+largest measured two-stream section (10.03 s), with substantial CPU preparation.
+Kernels occupy about 28% of both steady diagnostic envelopes; calibration is
+about two thirds of user-kernel time. The 19–22% uninstrumented host remainder
+is explicitly retained. These instrumented cases on another node do not replace
+the clean throughput baseline. See [section timings](mfx_expand10_sections_20261108/README.md).
+
+Use these captures before commissioning another profile to
 attribute the gap to read issue/completion, worker file reads/H2D, XTC parsing,
 expansion/calibration/count/sum and slot retirement. Quantify interval overlaps
 without adding inclusive timers together. The sim10 adapter reads seeds through

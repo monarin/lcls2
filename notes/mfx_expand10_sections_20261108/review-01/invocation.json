@@ -1,0 +1,29 @@
+{
+  "commit": "27975c173a08bd69ba6b03c87c70cc31fcc8914f",
+  "repo": "/lscratch/monarin/tmp/mfx-sections-review-20261108-r1",
+  "timeout_seconds": 900,
+  "model_override": null,
+  "argv": [
+    "claude",
+    "-p",
+    "--safe-mode",
+    "--restricted",
+    "--tools",
+    "Read,Glob,Grep",
+    "--allowedTools",
+    "Read,Glob,Grep",
+    "--permission-mode",
+    "dontAsk",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "{\"mcpServers\":{}}",
+    "--output-format",
+    "json",
+    "--json-schema",
+    "{\"type\": \"object\", \"additionalProperties\": false, \"required\": [\"reviewed_commit\", \"verdict\", \"summary\", \"checks\", \"limitations\", \"findings\"], \"properties\": {\"reviewed_commit\": {\"type\": \"string\"}, \"verdict\": {\"type\": \"string\", \"enum\": [\"pass\", \"changes_requested\", \"blocked\"]}, \"summary\": {\"type\": \"string\"}, \"checks\": {\"type\": \"array\", \"items\": {\"type\": \"string\"}}, \"limitations\": {\"type\": \"array\", \"items\": {\"type\": \"string\"}}, \"findings\": {\"type\": \"array\", \"items\": {\"type\": \"object\", \"additionalProperties\": false, \"required\": [\"id\", \"severity\", \"blocking\", \"file\", \"line\", \"evidence\", \"requested_change\"], \"properties\": {\"id\": {\"type\": \"string\"}, \"severity\": {\"type\": \"string\", \"enum\": [\"critical\", \"high\", \"medium\", \"low\"]}, \"blocking\": {\"type\": \"boolean\"}, \"file\": {\"type\": \"string\"}, \"line\": {\"type\": \"integer\", \"minimum\": 0}, \"evidence\": {\"type\": \"string\"}, \"requested_change\": {\"type\": \"string\"}}}}}}",
+    "--settings",
+    "/lscratch/monarin/tmp/review-connection-ajdacb56/settings.json"
+  ],
+  "connection_settings_source": "/sdf/home/m/monarin/.claude-lcls/settings.json",
+  "context_sha256": "0afed0facc17467eb22d53d9ab7f09da3fdb9ca9f715ea5997872964dff7e18a"
+}

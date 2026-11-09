@@ -1,0 +1,34 @@
+[
+  {
+    "native": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1/s1-report/report.json",
+    "copy": "/lscratch/monarin/tmp/mfx-sections-review-20261108-r1/build/sections-evidence/s1-report.json",
+    "native_bytes": 142591,
+    "native_sha256": "dd84dc4198b5e8b25a6fdd1b1d0345fca084515c0753fd68df6f06a1ecff68e7",
+    "copy_sha256": "dd84dc4198b5e8b25a6fdd1b1d0345fca084515c0753fd68df6f06a1ecff68e7",
+    "rule": "byte-identical"
+  },
+  {
+    "native": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1/s1-report/profile.json",
+    "copy": "/lscratch/monarin/tmp/mfx-sections-review-20261108-r1/build/sections-evidence/s1-profile-aggregates.json",
+    "native_bytes": 19901073,
+    "native_sha256": "65d2d3a03b3dea7ac5894961766a1c9de224e6c5a04940bf21eac2f54f7fc579",
+    "copy_sha256": "95f5132a6cdf0b766fa5adbe1dedb359ad145abd204b37011e463ecff46967f9",
+    "rule": "JSON projection: drop cpu_intervals and cuda_intervals only"
+  },
+  {
+    "native": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1/s2-report/report.json",
+    "copy": "/lscratch/monarin/tmp/mfx-sections-review-20261108-r1/build/sections-evidence/s2-report.json",
+    "native_bytes": 143725,
+    "native_sha256": "4bcafacea6c792463662f4af971c88c6681b750bd3065bd95f51b2ec5498d092",
+    "copy_sha256": "4bcafacea6c792463662f4af971c88c6681b750bd3065bd95f51b2ec5498d092",
+    "rule": "byte-identical"
+  },
+  {
+    "native": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1/s2-report/profile.json",
+    "copy": "/lscratch/monarin/tmp/mfx-sections-review-20261108-r1/build/sections-evidence/s2-profile-aggregates.json",
+    "native_bytes": 19904596,
+    "native_sha256": "92f5b71098fe78e8f3ab0642209256b81ec283b140a3de040a4712b0ad72dc10",
+    "copy_sha256": "29083235f30d4b74ecae1d0e423c00742cdb12de5c4a53e02532d14ce8a222c7",
+    "rule": "JSON projection: drop cpu_intervals and cuda_intervals only"
+  }
+]

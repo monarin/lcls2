@@ -1,5 +1,5 @@
 {
-  "phase": "awaiting_independent_review",
+  "phase": "complete",
   "base": "2913e479c",
   "job": "43863315",
   "review_round": 1,
@@ -10,5 +10,14 @@
     "source/runtime hashes verified"
   ],
   "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1",
-  "unresolved": []
+  "unresolved": [],
+  "reviewed_commit": "27975c173a08bd69ba6b03c87c70cc31fcc8914f",
+  "review_verdict": "pass",
+  "resolved": [
+    "SEC-01",
+    "SEC-02",
+    "SEC-03",
+    "SEC-04"
+  ],
+  "closure": "documentation/evidence only; executable commit unchanged"
 }
