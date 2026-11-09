@@ -1,7 +1,7 @@
 {
-  "phase": "measurement",
+  "phase": "review_preparation",
   "base_commit": "e4d9f79f2",
-  "round": 0,
+  "round": 1,
   "round_limit": 3,
   "unresolved_blocking": [],
   "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/pipeline_scaling_20261109_r3",
@@ -11,9 +11,13 @@
     "43976777"
   ],
   "checks": {
-    "unit_tests": 9,
-    "pilot_4bd_1stream": "pass"
+    "unit_tests": 14,
+    "main_native_audit": "pass",
+    "followup_native_audit": "pass",
+    "main_MPI_cases": 23
   },
   "implementation_commit": "21f47cf95",
-  "serial_control_job": "43977453"
+  "serial_control_job": "43977453",
+  "detailed_job": "43979257",
+  "serial_control_commit": "af3e14bd969a5e07726c0b55a09326662573e79b"
 }

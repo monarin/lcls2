@@ -10,8 +10,13 @@ test_incomplete_read (test_audit.Audit.test_incomplete_read) ... ok
 test_overlap_cpu_affinity (test_audit.Audit.test_overlap_cpu_affinity) ... ok
 test_valid (test_audit.Audit.test_valid) ... ok
 test_wrong_bank_counts (test_audit.Audit.test_wrong_bank_counts) ... ok
+test_bad_nic_delta (test_followup.Followup.test_bad_nic_delta) ... ok
+test_cold_valid (test_followup.Followup.test_cold_valid) ... ok
+test_device_change (test_followup.Followup.test_device_change) ... ok
+test_missing_cache_file (test_followup.Followup.test_missing_cache_file) ... ok
+test_warm_gate (test_followup.Followup.test_warm_gate) ... ok
 
 ----------------------------------------------------------------------
-Ran 9 tests in 0.001s
+Ran 14 tests in 0.001s
 
 OK

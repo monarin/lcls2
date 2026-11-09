@@ -1,6 +1,6 @@
 # Sample10 psana pipeline versus cold read baseline
 
-Measurement in progress. Scope: [scope.md](scope.md).
+Completed measurements on sdfampere023. Independent review pending. Scope: [scope.md](scope.md).
 
 This harness uses the accepted 10k synthetic MFX fixture and the existing
 expansion, calibration and 100-bin/99-active cube kernels unchanged. Each run
@@ -63,3 +63,153 @@ MPI slots (no read); job 43976777 (`..._r2`) lacked the process-local synthetic
 reader registration before DataSource setup (no event loop). Corrected by
 requesting six Slurm task slots and registering the existing adapter. No core
 psana or detector kernel changes were made.
+
+## Result and recommendation
+
+**Use two BDs per GPU with two execution streams each as the next baseline for
+this 100-bin workload.** It improves cold input processing by **57.1%** over one
+BD/two streams, with eight physical worker cores instead of four. Four BDs/one
+stream gain only another **8.3% cold** and provide no warm-cache benefit, while
+using sixteen worker cores. These are measured configurations, not an exhaustive
+optimum. Both multi-BD choices hold ~25 GiB of persistent cube banks. More bins
+require revisiting the memory budget before increasing concurrency.
+
+Exact JF datagram bytes per completed whole loop determine all GiB/s below.
+The two helpers use two additional physical cores, independent of worker cores.
+
+| Task | BDs | Streams/BD | Worker cores | Cold GiB/s | Warm GiB/s | Repeats per cache mode |
+|---|---:|---:|---:|---:|---:|---:|
+| Full | 1 | 1 | 4 | 1.058 | 1.280 | 1 |
+| Full | 1 | 2 | 4 | **1.231** | **1.537** | 2 |
+| Full | 2 | 1 | 8 | 1.540 | 1.593 | 1 |
+| Full | 2 | 2 | 8 | **1.934** | **2.248** | 2 |
+| Full | 4 | 1 | 16 | 2.095 | 2.235 | 2 |
+| Read/parse only | 1 | 2 | 4 | 1.255 | 1.625 | 1 |
+
+For repeated cases, entries are medians (two samples); raw ranges and rates are
+in `results.json`. The recommended configuration processes **618 events/s cold**
+and **719 events/s warm**. The 4BD/1stream cold range is 2.087–2.103 GiB/s;
+2BD/2stream is 1.918–1.949 GiB/s. Warm ranges overlap (2.225–2.245 versus
+2.244–2.251 GiB/s); do not claim a meaningful warm advantage for four BDs.
+
+The same-node standalone four-worker KvikIO control measured **4.120 GiB/s cold**
+and **12.843–12.868 GiB/s warm**. This control keeps a continuously replenished
+35-request ring, reads only JF files and does no psana event handling or user
+compute. It is not an allocation of 4 GiB/s per GPU or a multi-GPU/node ceiling.
+All clean full-pipeline cold cases received **36.805–37.385 GiB** on the physical
+NIC, consistent with 31.276 GiB JF plus 3.809 GiB ancillary event bytes and
+protocol/readahead overhead. Warm cases received only **14–24 MiB**. The network
+counter evidence supports the intended local cache distinction.
+
+## Why the read-only rate falls in psana
+
+The strongest evidence is the ablation: omitting expansion, calibration and cube
+kernels improves the 1BD/2stream rate only ~2% cold and ~6% warm relative to the
+full-case medians. This supports **host input/event preparation as the main
+1BD/2stream bottleneck**, with the GPU computation largely hidden behind that
+work. This conclusion does not imply user compute is irrelevant after adding BDs.
+
+A focused cold 1BD/2stream diagnostic attributes 27.189 of its 27.429 seconds,
+leaving only 0.240 s outside instrumented sections. Exclusive main-thread CPU
+time totals **23.758 s**, about **86.6%** of wall time. That includes CPU work in
+Python, libraries and driver calls, not only Python execution. It does not count
+KvikIO background worker CPU time. The diagnostic is slower than the clean
+25.40 s median, so these measurements identify costs rather than provide exact
+percentages of an uninstrumented run.
+
+| Exclusive host category | Seconds |
+|---|---:|
+| Ancillary event initialization, datagram construction and CPU reads | **7.153** |
+| Subbatch/input-group planning, issue bookkeeping, parser/descriptor preparation and group submission bookkeeping | **8.478** |
+| KvikIO submission + future waits | **6.309** |
+| Remaining measured controller/task/lifecycle work | 5.249 |
+| Outside instrumented sections | 0.240 |
+
+The KvikIO row is 1.785 s submission plus 4.523 s future waits. Future waits
+include 1.421 s of main-thread CPU time; they are not pure disk/network waiting.
+MPI batch receive/unpack/request is only **0.199 s** (within the remaining-work
+row), while producer execution-stream retirement waits are only **0.013 s**.
+There are zero pressure-triggered drains in every accepted case. This refines the
+earlier broad 'read dominated' description: **the host input pipeline dominates,
+not simply time blocked waiting for Weka or for another GPU stream to finish**.
+
+[host-timing.md](host-timing.md) contains all disjoint host categories. GPU CUDA
+intervals are separately retained; do not add them to host time or sum them across
+BDs to infer GPU busy time. No new Nsight timeline or utilization union was
+collected here. Input request high-water counts are submitted-but-not-yet-joined
+requests, not proof that all requests execute physically at once.
+
+The current code issues the first GPU read before CPU ancillary handling, then
+waits for inputs, prepares parsed field descriptors and calls the task before
+advancing. The standalone ring can refill as each read completes. Relevant
+unchanged code: [batch controller](../../psana/psana/gpu/gpu_events.py#L945),
+[input-group issue](../../psana/psana/gpu/gpu_events.py#L813),
+[subbatch planning](../../psana/psana/gpu/gpu_events.py#L578), and
+[CPU EventManager](../../psana/psana/psexp/event_manager.py).
+The installed `gpu_events.py` and `event_manager.py` were SHA-verified identical
+to these checkout files. In this simulated decompression path the task consumes
+field descriptors directly; there is no separate contiguous-seed/raw gather
+before expansion. Two GPU streams permit overlap, but do not parallelize the
+Python preparation thread. Multiple BDs provide independent host processes and
+additional worker cores, which explains the measured improvement in conjunction
+with the stage timings; a fixed-total-core process-count comparison was not run.
+
+The next optimization experiments should reduce the repeated CPU work around
+1,500 small callbacks: batch/subbatch sizing and avoiding ancillary detector
+materialization that the application does not need. In this fixture the CPU-routed
+streams contribute 4.09 GB per 10k events; one stream alone contributes 3.96 GB.
+These are proposed next experiments, not implemented speedups.
+
+## Bridge to the earlier sub-1 GiB/s result
+
+The original runner used serial psana. A separate same-node follow-up ran that
+unchanged runner with cache/NIC brackets, then MPI 1BD/2stream with the same
+four-core worker affinity, task and explicit KvikIO settings:
+
+| Mode | Cold GiB/s | Warm GiB/s |
+|---|---:|---:|
+| Original serial runner, whole loop | **1.192** | **1.498** |
+| MPI 1BD/2stream, whole loop | **1.242** | **1.540** |
+
+This does **not reproduce the earlier sub-1 GiB/s absolute rate**. Serial versus
+MPI accounts for only a small part of the difference on this controlled node.
+The older node/cache/CPU placement conditions were not controlled identically;
+we cannot assign that historical difference to one cause. Also, the old ~0.995
+GiB/s conversion used all stored fixture bytes per event, while this report uses
+exact JF datagram bytes (the old 283.58 Hz corresponds to ~0.887 GiB/s JF).
+The large read-only versus full-pipeline gap remains in the controlled tests.
+The serial steady timer is retained in native evidence but is not compared with
+the MPI whole-loop timer. Fresh GPU startup/lazy initialization is included in
+both whole-loop modes, and compiler-cache history is not identical between the
+main campaign and follow-up allocations.
+
+## Validation and evidence
+
+All 23 main MPI cases (two pilots, 18 clean cases and three diagnostics), the
+standalone three-pass read control, four serial/MPI bridge cases and focused
+10k diagnostic passed. Every full 10k MPI case has the exact global timestamp
+partition, exact accepted per-bank/bin counts, 50,000 completed JF requests,
+33,582,000,000 JF bytes and zero pressure drains. Main-source/runtime hashes
+are stable across cases. Fourteen CPU audit tests pass, including negative tests
+for duplicate events, false cache/rate claims, wrong banks, missing read bytes,
+NIC resets and overlapping CPU affinity. No new full-pixel cube comparison or
+cross-BD cube export was performed; numerical kernel acceptance is inherited
+from the earlier reviewed prototype.
+
+Independent summary artifacts: [results.json](results.json),
+[followup-results.json](followup-results.json), [tests.log](tests.log), and
+[slurm-accounting.txt](slurm-accounting.txt). Some MPI logs contain UCX
+'unexpected tag-receive descriptor' warnings at shutdown; all accepted jobs exit
+0, and exact event/count checks pass. These warnings are retained, not treated
+as evidence of missing data or repaired by this benchmark. The existing generic
+fallback warning says NVMe; these actual input files are read from Weka without
+NVMe staging.
+
+Additional native artifacts:
+`/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/pipeline_serial_20261109_r1`
+(job 43977453, 3m23s) and
+`/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/pipeline_detailed_20261109_r1`
+(job 43979257, 1m01s). Main job 43977007 completed in 19m23s. All three ran on
+exclusive sdfampere023 allocations, using GPU UUID
+`GPU-52ed4d03-f40c-877b-7455-4abb19f74cf3` only. The node's other GPUs were reserved by exclusivity
+but were not used by the benchmark.

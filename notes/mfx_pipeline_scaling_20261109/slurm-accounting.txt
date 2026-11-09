@@ -1,0 +1,16 @@
+JobID|State|ExitCode|Elapsed|NodeList|AllocTRES|ReqTRES
+43976569|FAILED|1:0|00:00:03|sdfampere023|billing=112,cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=96G,node=1|billing=24,cpu=24,gres/gpu=1,mem=96G,node=1
+43976569.batch|FAILED|1:0|00:00:03|sdfampere023|cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=96G,node=1|
+43976569.extern|COMPLETED|0:0|00:00:03|sdfampere023|billing=112,cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=96G,node=1|
+43976777|FAILED|1:0|00:00:09|sdfampere023|billing=112,cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=96G,node=1|billing=24,cpu=24,gres/gpu=1,mem=96G,node=1
+43976777.batch|FAILED|1:0|00:00:09|sdfampere023|cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=96G,node=1|
+43976777.extern|COMPLETED|0:0|00:00:09|sdfampere023|billing=112,cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=96G,node=1|
+43977007|COMPLETED|0:0|00:19:23|sdfampere023|billing=112,cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=96G,node=1|billing=24,cpu=24,gres/gpu=1,mem=96G,node=1
+43977007.batch|COMPLETED|0:0|00:19:23|sdfampere023|cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=96G,node=1|
+43977007.extern|COMPLETED|0:0|00:19:23|sdfampere023|billing=112,cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=96G,node=1|
+43977453|COMPLETED|0:0|00:03:23|sdfampere023|billing=112,cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=64G,node=1|billing=12,cpu=12,gres/gpu=1,mem=64G,node=1
+43977453.batch|COMPLETED|0:0|00:03:23|sdfampere023|cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=64G,node=1|
+43977453.extern|COMPLETED|0:0|00:03:23|sdfampere023|billing=112,cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=64G,node=1|
+43979257|COMPLETED|0:0|00:01:01|sdfampere023|billing=112,cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=64G,node=1|billing=12,cpu=12,gres/gpu=1,mem=64G,node=1
+43979257.batch|COMPLETED|0:0|00:01:01|sdfampere023|cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=64G,node=1|
+43979257.extern|COMPLETED|0:0|00:01:01|sdfampere023|billing=112,cpu=112,gres/gpu:a100=4,gres/gpu=4,mem=64G,node=1|

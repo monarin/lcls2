@@ -32,3 +32,10 @@ sub-1GiB/s result used serial mode, while the BD scaling campaign uses MPI.
 Use the same task/configuration; add outside-loop cache/NIC wrappers and cheap
 read accounting to the unchanged original serial runner. No claimed causal
 comparison across nodes or between its steady timer and the MPI whole-loop timer.
+
+Focused attribution follow-up: the first diagnostic leaves ~8.2s of 26.8s outside
+its existing hooks. One additional cold 10k/1BD/2stream diagnostic, <=6min on the
+same node after the serial control, adds nested hooks for controller planning,
+input groups, EventManager initialization, MPI batch reception, iterator and
+Run event materialization. No production source change; diagnostic rates remain
+separate. Bind the additional wrapper source hash in the report.

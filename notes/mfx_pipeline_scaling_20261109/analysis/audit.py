@@ -17,6 +17,8 @@ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def check(r):
     need(r['status']=='pass','Failed case');s=r['settings'];m=r['measurement'];bds=[x for x in r['rows'] if x['role']=='bd']
     need(len(bds)==s['bds'] and len(r['rows'])==s['bds']+2,'Rank topology')
+    need(len({x['host'] for x in r['rows']})==1 and len({x['job'] for x in r['rows']})==1,'Multiple nodes/jobs')
+    need(s['batch']==7 and s['bds']*s['streams']<=4,'Unexpected batch or state budget')
     need([x['role'] for x in r['rows'][:2]]==['smd0','eb'],'Helper roles')
     expected=r['events']
     delivered=[t for b in bds for t in b['timestamps']]
@@ -69,16 +71,25 @@ def check(r):
 
 def audit(root):
     complete=json.loads((root/'complete.json').read_text());need(complete['status']=='pass','Incomplete campaign')
+    expected={'pilot-b4-s1','pilot-b2-s2','diag-full-b1-s2','diag-full-b2-s2','diag-parse-b1-s2'}
+    for repeat in (1,2):
+        configs=[(1,2,'full'),(2,2,'full'),(4,1,'full')]
+        if repeat==1:configs += [(1,1,'full'),(2,1,'full'),(1,2,'parse')]
+        for b,s,t in configs:
+            expected.update('%s-b%d-s%d-%s-r%d'%(t,b,s,k,repeat) for k in ('cold','warm'))
+    names=[x['name'] for x in complete['cases']]
+    need(set(names)==expected and len(names)==len(expected),'Missing/duplicate campaign cases')
     cases=[];artifacts={};sources={};baseline_identity=None
     for item in complete['cases']:
         path=root/(item['name']+'.json');r=json.loads(path.read_text());bds=check(r)
+        need(item['jf_gib_s']==r['jf_gib_s'] and item['events_per_second']==r['events_per_second'],'Progress/native disagreement')
         # Check all event identities against the accepted manifest, not just count.
         manifest_path=Path('/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sample10_10k/generation.json')
         need(sha(manifest_path)==r['identity']['generation_sha256'],'Manifest identity')
         manifest=json.loads(manifest_path.read_text())
         stamps=[x['timestamp'] for x in manifest['schedule'] if x['service']==12][:r['events']]
         need(sorted(t for b in bds for t in b['timestamps'])==stamps,'Event identities')
-        identity=(r['identity'],r['calibration'],bds[0]['runtime'],bds[0]['runtime_files'],r['source_sha256'])
+        identity=(r['rows'][0]['host'],r['rows'][0]['job'],r['identity'],r['calibration'],bds[0]['runtime'],bds[0]['runtime_files'],r['source_sha256'])
         if baseline_identity is None:baseline_identity=identity
         need(identity==baseline_identity,'Runtime/source/fixture changed')
         for source,h in r['source_sha256'].items():
