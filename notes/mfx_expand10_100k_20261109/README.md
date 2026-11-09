@@ -5,7 +5,9 @@ in **42m26s**, exit 0:0. All 20 files passed readback, and DataSource traversed
 one run/step containing 100,000 events with 3,200,000 panel-layout checks and
 1,280 seed-value witnesses around repetition boundaries. Independent code review
 passed with no blocking findings on `186ac6c299a4869afdbf169f8266bccb5331b864`;
-results review is pending. The [scope](scope.md), [status](status.json),
+results review passed on `450bde48002464f69a0917917908f58ae613cdd9`.
+The fixture is **accepted**; [review findings and responses](review-round2/responses.md)
+record optional hardening deferrals. The [scope](scope.md), [status](status.json),
 [verification](verification.json), [file receipts](files.json) and
 [job accounting](slurm-accounting.txt) record this user-authorized fixture.
 
@@ -54,9 +56,13 @@ references and aligned strictly ordered timelines, and serial DataSource
 traversal of all 100k events with all 32 panel layouts checked each event.
 DataSource seed-value witnesses check the first/last two events of each cycle;
 full raw-byte preservation is checked separately for every datagram.
+Validation shares base-index and XTC helper code with the writer; schedule
+derivation and byte comparison use separate code paths. This establishes
+consistency against the accepted base, not an adversarial independent validator.
 
-Acceptance requires completed native validation and independent review. The job
-leaves `accepted=false` with `validated_review_pending` until coordinator closure.
+Native validation and independent review both passed. The native job initially
+left `accepted=false` with `validated_review_pending`; coordinator closure records
+`complete/accepted` in the evidence status and [acceptance receipt](acceptance.json).
 A nonterminal status paired with a terminated Slurm job means interruption,
 not successful validation; inspect accounting and partial files before recovery.
 The writer refuses existing output and evidence directories. Do not rerun into
