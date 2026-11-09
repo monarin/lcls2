@@ -37,3 +37,5 @@ completion still requires GPU acceptance and independent result review.
 No nested review/delegation/tools beyond Read/Glob/Grep. Do not claim to run
 hashes, tests, live scheduler or GPU commands. Stable finding IDs; distinguish
 blocking execution defects from optional improvements. Max three rounds.
+
+Execution update after the documentation commit: job43983799 started on sdfampere038 and is copying/hash-checking the inputs. No throughput results yet. Review remains readiness only.

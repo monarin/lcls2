@@ -25,3 +25,11 @@ endpoints. Standalone sampled GPU/CPU byte witnesses outside timing. No new
 scientific/cube kernels. Report loop and NIC intervals separately; no exact
 cache-hit fraction or causal across-node regression claim. Independent Claude
 review up to three rounds, scoped commits/push to work/synthetic-mfx-scan.
+
+R2 correction after r1 warm gate failure: before every warm case reset only
+the five owned input files, sequentially preload under numactl --interleave=all,
+then at most three missing-page repair passes under the same policy. Never lower
+the >=99.9% per-file gate. Persist all residency and memory snapshots on failure.
+Conditioning remains untimed. Cases may take up to1200s within the same60min
+allocation cap. Add early Slurm TERM and cleanup of the whole private root;
+SIGKILL remains uncatchable and requires checking scheduler cleanup.

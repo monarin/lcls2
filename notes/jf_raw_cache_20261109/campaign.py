@@ -1,11 +1,13 @@
 """Bounded Weka/local comparison with independent fresh-process samples."""
 from concurrent.futures import ThreadPoolExecutor
-import hashlib,json,os,shutil,subprocess,sys
+import hashlib,json,os,shutil,subprocess,sys,signal
 from pathlib import Path
-from common import HERE,SOURCE,NAMES,REF,require,sha,paths,requests,residency
+from common import HERE,SOURCE,NAMES,REF,require,sha,paths,requests,residency,condition
 output=Path(sys.argv[1]);output.mkdir(mode=0o770,exist_ok=False)
 local=Path(os.environ['JF_LOCAL_INPUT']);local.mkdir(mode=0o700,exist_ok=False)
 cases=[]
+def terminate(signum,frame):raise SystemExit(128+signum)
+signal.signal(signal.SIGTERM,terminate)
 try:
     inventory=subprocess.check_output(['nvidia-smi','--query-gpu=uuid,pci.bus_id,name','--format=csv,noheader'],text=True)
     (output/'gpu-inventory.csv').write_text(inventory);os.environ['JF_GPU_UUID']=inventory.splitlines()[0].split(',')[0].strip()
@@ -19,6 +21,9 @@ try:
     for label,command in [('weka-mount',['findmnt','-T',str(SOURCE)]),('local-mount',['findmnt','-T',str(local)]),('block-devices',['lsblk','-o','NAME,TYPE,SIZE,MODEL,TRAN,MOUNTPOINTS'])]:
         result=subprocess.run(command,capture_output=True,text=True,check=True);(output/(label+'.txt')).write_text(result.stdout)
     require(shutil.disk_usage(local).free>sum(REF['10000']['stage_bytes'].values())+20*(1<<30),'Insufficient private local stage space')
+    os.environ['JF_CACHE_REPORT']=str(output/'preparation-probe.cache.json')
+    condition(SOURCE,'warm')
+    print('Strict interleaved Weka warm-cache preparation probe passed',flush=True)
     expected=json.loads((HERE/'expected-sha256.json').read_text())
     def copy_one(src):
         target=local/src.name;h=hashlib.sha256();before=src.stat()
@@ -44,9 +49,9 @@ try:
             if preflight:cmd+=['--events','200','--preflight']
         else:cmd=[sys.executable,str(HERE/'read.py')]+args+['--threads',str(threads),'--task-mib',str(task)]
         print('Starting '+name,flush=True)
-        with (output/(name+'.log')).open('x') as f:subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT,check=True,timeout=600)
+        with (output/(name+'.log')).open('x') as f:subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT,check=True,timeout=1200,env=dict(os.environ,JF_CACHE_REPORT=str(output/(name+'.cache.json'))))
         r=json.loads((output/(name+'.json')).read_text());require(r['status']=='pass','Case failed')
-        cases.append(dict(name=name,command=cmd,gib_s=r['gib_s'],artifact=str(output/(name+'.json'))))
+        cases.append(dict(name=name,command=cmd,gib_s=r['gib_s'],artifact=str(output/(name+'.json')),conditioning_seconds=r['measurement']['conditioning']['seconds']))
         (output/'progress.json').write_text(json.dumps(cases,indent=2)+'\n');print(json.dumps(cases[-1]),flush=True)
     for bds in (1,4):execute('preflight-b%d'%bds,SOURCE,'cold',bds,True)
     for rep in (1,2):

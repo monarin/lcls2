@@ -1,16 +1,30 @@
 {
-  "phase": "queued",
+  "phase": "warm_preparation_fix",
   "base_commit": "319d1c8ce",
-  "round": 0,
+  "round": 1,
   "round_limit": 3,
-  "unresolved_blocking": [],
+  "unresolved_blocking": [
+    "warm_cache_acceptance_pending"
+  ],
   "job": "43983799",
   "implementation_commit": "1e526c602",
   "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_raw_cache_20261109_r1",
   "checks": {
+    "unit_tests": 10,
     "syntax": "pass",
-    "unit_tests": 7,
     "smd_requests": 50000,
-    "smd_bytes": 335571760000
-  }
+    "smd_bytes": 335571760000,
+    "raw_pixel_preflights": "1BD and4BD pass in r1"
+  },
+  "host": "sdfampere038",
+  "readiness_review_commit": "585111a4518a068fbb726dda0d4770c2839788c6",
+  "failed_jobs": [
+    {
+      "job": "43983799",
+      "host": "sdfampere038",
+      "reason": "Warm >=99.9% per-file cache gate failed before timing",
+      "elapsed": "00:10:20",
+      "local_xtc_removed": true
+    }
+  ]
 }

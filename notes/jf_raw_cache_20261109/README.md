@@ -1,9 +1,11 @@
 # Uncompressed Jungfrau cold/warm reproduction
 
-Status: **queued, no new GPU measurements yet**. Slurm job 43983799 requests
-one exclusive A100 node, one active GPU, 700 GiB RAM and a 60-minute limit.
-The current queue has no start estimate. Independent harness-readiness review
-is pending; this is not performance acceptance.
+Status: r1 job43983799 stopped at its first warm preparation gate after both
+raw-pixel preflights and one full cold case passed. No warm rate was accepted.
+The private xtc copy was removed (cleanup.json). R2 adds interleaved warming,
+bounded missing-page repair and failure snapshots; the strict threshold stays
+unchanged. Harness-readiness review passed commit585111a45; final measurements
+and the corrected preparation/auditor still require review.
 
 User request: reproduce the earlier uncompressed JF raw-read performance using
 the preceding sample10 investigation's strict cold/warm definitions.
@@ -51,7 +53,11 @@ request/byte totals. Full bigdata SHA and raw-pixel checks run on the GPU node.
   GPU/CPU byte witnesses after timing.
 - Cold: fsync + file-specific FADV_DONTNEED, then **zero resident pages** in all
   five owned bigdata files after setup/warmup. Warm: preload outside timing,
-  then **>=99.9% residency in each file**. SMD setup may already prime buffers;
+  then **>=99.9% residency in each file**. R2 resets input cache before warm
+  preparation, runs the sequential warmer with numactl --interleave=all, and
+  allows at most three missing-page repairs with the same policy. All cache and
+  memory snapshots persist even if a gate fails. An initial Weka warm-preparation
+  probe fails early before local copying if the strict gate is unattainable. SMD setup may already prime buffers;
   Weka backend caches are uncontrolled. No global cache flush.
 - Read physical ethtool counters before/after each completed loop and separately
   during idle. Keep ports and counter intervals separate; no inferred exact
@@ -76,8 +82,21 @@ exhaustive sweep or a confidence-interval study.
 Code commit before submission: `1e526c602`. Frozen runtime is the same B install
 used by the sample10 investigation; runtime.sh records the absolute prefix and
 venv. Scripts/runtime hashes and device placement accompany each case.
-Seven CPU cache/NIC audit tests and Python/shell syntax checks pass. GPU checks
-and the independent result audit remain pending.
+Ten CPU cache/NIC/preparation audit tests and Python/shell syntax checks pass.
+Both r1 raw preflights passed, and r1 Weka/1BD cold measured5.6168GiB/s with
+zero initial residency and334.718GiB NIC RX. This single observation is not a
+completed reproduction. The r1 warm failure had no persisted residency vector;
+r2 fixes that evidence gap. Final GPU matrix/result audit remain pending.
+
+The base calibration patch is partly shadowed by RunParallel: its shared-calib
+setup still executes with empty constants under skip_calib_load=all, matching
+the historical raw-only harness. The r1 common mask had56 physical cores.
+The exact submission is in submission.txt. R2 adds early TERM/EXIT cleanup of
+the private parent/cache directories as well as xtc; SIGKILL cannot be caught.
+R1 root-cache cleanup could not be checked after the job: SSH refused access
+without an active allocation (and reported a changed host key). No SSH security
+setting was changed. The313GiB xtc removal is independently recorded by the
+campaign; only the small parent/compiler-cache removal remains unverified.
 
 Expected artifacts:
 `/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_raw_cache_20261109_r1`

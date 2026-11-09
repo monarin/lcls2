@@ -6,6 +6,7 @@ import mmap
 import os
 from pathlib import Path
 import struct
+import subprocess
 import sys
 import time
 import numpy as np
@@ -69,18 +70,33 @@ def residency(directory,evict=False):
     return dict(files=rows,pages=sum(x['pages'] for x in rows),resident_pages=sum(x['resident_pages'] for x in rows))
 
 def condition(directory,kind):
-    start=time.perf_counter()
-    if kind=='cold':residency(directory,True)
-    elif kind=='warm':
-        from concurrent.futures import ThreadPoolExecutor
-        def preload(p):
-            with p.open('rb',buffering=0) as f:
-                while f.read(16<<20):pass
-        with ThreadPoolExecutor(max_workers=5) as ex:list(ex.map(preload,paths(directory)))
-    else:raise ValueError('Invalid cache kind')
-    cache=residency(directory)
-    require(all(x['resident_pages']==0 if kind=='cold' else x['resident_pages']/x['pages']>=.999 for x in cache['files']),'Cache gate failed')
-    return dict(kind=kind,seconds=time.perf_counter()-start,cache=cache)
+    from memory_state import snapshot
+    start=time.perf_counter();history=[]
+    record=dict(kind=kind,history=history,memory_before=snapshot())
+    def save():
+        record['seconds']=time.perf_counter()-start
+        target=os.environ.get('JF_CACHE_REPORT')
+        if target:Path(target).write_text(json.dumps(record,indent=2)+'\n')
+    try:
+        # Reset before warming so existing cold-run/staging pages do not retain
+        # their previous allocation placement. This is outside all timed work.
+        require(kind in ('cold','warm'),'Invalid cache kind')
+        history.append(dict(stage='reset',cache=residency(directory,True)));save()
+        if kind=='warm':
+            ranges=[(str(p),p.stat().st_size) for p in paths(directory)]
+            subprocess.run(['numactl','--interleave=all',sys.executable,str(HERE/'warm_cache.py'),'--prefixes',json.dumps(ranges)],check=True)
+        cache=residency(directory);history.append(dict(stage='prepared',cache=cache));save()
+        if kind=='warm':
+            for attempt in range(1,4):
+                missing=[(x['path'],x['bytes']) for x in cache['files'] if x['resident_pages']/x['pages']<.999]
+                if not missing:break
+                subprocess.run(['numactl','--interleave=all',sys.executable,str(HERE/'warm_cache.py'),'--missing-prefixes',json.dumps(missing)],check=True)
+                cache=residency(directory);history.append(dict(stage='repair-%d'%attempt,cache=cache));save()
+        record['cache']=cache;record['memory_after']=snapshot();save()
+        require(all(x['resident_pages']==0 if kind=='cold' else x['resident_pages']/x['pages']>=.999 for x in cache['files']),'Cache gate failed: '+json.dumps(cache))
+        record['status']='pass';save();return record
+    except BaseException as exc:
+        record['status']='fail';record['error']=repr(exc);record['memory_after']=snapshot();save();raise
 
 def begin(directory,kind):
     a=physical_counters();time.sleep(1);b=physical_counters()
@@ -119,3 +135,40 @@ def sources():
     files=list(HERE.glob('*.py'))+list(HERE.glob('*.sh'))+list(HERE.glob('*.sbatch'))
     files += [HERE.parent/'mfx_kvikio_read_20261108/network_watch.py',HERE.parent/'mfx_kvikio_read_20261108/plan_reads.py']
     return {str(p):sha(p) for p in files}
+
+
+def prefix_residency(path, length, *, missing_ranges=False):
+    """Measure only the input prefix exercised by a short run, without reading it."""
+    import ctypes
+    import mmap
+    import numpy as np
+    with open(path, 'rb', buffering=0) as source:
+        if not 0 < length <= os.fstat(source.fileno()).st_size:
+            raise ValueError('invalid measured input extent')
+        mapping = mmap.mmap(source.fileno(), length, flags=mmap.MAP_PRIVATE,
+                            prot=mmap.PROT_READ | mmap.PROT_WRITE)
+    pages = (length + mmap.PAGESIZE - 1) // mmap.PAGESIZE
+    vector = (ctypes.c_ubyte * pages)()
+    anchor = ctypes.c_char.from_buffer(mapping)
+    try:
+        libc = ctypes.CDLL(None, use_errno=True)
+        rc = libc.mincore(ctypes.c_void_p(ctypes.addressof(anchor)),
+                         ctypes.c_size_t(length), ctypes.byref(vector))
+        if rc:
+            error = ctypes.get_errno()
+            raise OSError(error, os.strerror(error), str(path))
+        present = np.ctypeslib.as_array(vector) & 1
+        resident = int(present.sum(dtype=np.uint64))
+        if missing_ranges:
+            edges = np.flatnonzero(np.diff(np.r_[False, present == 0, False]))
+            missing = [(int(first)*mmap.PAGESIZE,
+                        min(int(stop)*mmap.PAGESIZE, length)-int(first)*mmap.PAGESIZE)
+                       for first, stop in zip(edges[::2], edges[1::2])]
+    finally:
+        del anchor
+        mapping.close()
+    result = dict(path=str(path), bytes=length, pages=pages, resident_pages=resident,
+                  resident_fraction=resident/pages)
+    if missing_ranges:
+        result['missing_ranges'] = missing
+    return result

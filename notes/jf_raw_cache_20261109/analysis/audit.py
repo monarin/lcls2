@@ -8,6 +8,7 @@ def need(ok,why):
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 def gate(m,kind):
+    need(m['conditioning']['kind']==kind,'Conditioning kind')
     c=m['conditioning']['cache'];files=c['files']
     need(len(files)==5 and len({x['path'] for x in files})==5,'Five cache files required')
     need(sum(x['pages'] for x in files)==c['pages'] and sum(x['resident_pages'] for x in files)==c['resident_pages'],'Cache accounting')
@@ -58,7 +59,7 @@ def audit(root):
         if source is None:source=r['source_sha256'];device=d['mask'];host=r['host']
         need(r['source_sha256']==source and d['mask']==device and r['host']==host,'Campaign identity')
         need(c['gib_s']==r['gib_s'],'Progress mismatch');artifacts[str(p)]=sha(p)
-        row=dict(name=c['name'],gib_s=r['gib_s'],seconds=r['measurement']['loop_seconds'],nic=r['measurement']['nic_delta'],cache_before=r['measurement']['conditioning']['cache']['resident_pages'],cache_pages=r['measurement']['conditioning']['cache']['pages'],bytes=r['bytes'])
+        row=dict(name=c['name'],gib_s=r['gib_s'],seconds=r['measurement']['loop_seconds'],nic=r['measurement']['nic_delta'],cache_before=r['measurement']['conditioning']['cache']['resident_pages'],cache_pages=r['measurement']['conditioning']['cache']['pages'],cache_after=r['measurement']['cache_after'],conditioning_seconds=r['measurement']['conditioning']['seconds'],bytes=r['bytes'])
         if 'rows' in r:row['per_bd']=[{k:x[k] for k in ('rank','counts','loop_seconds')} for x in r['rows'] if x['is_bd']]
         rows.append(row)
         if not c['name'].startswith('preflight'):groups.setdefault(c['name'].rsplit('-r',1)[0],[]).append(r['gib_s'])
