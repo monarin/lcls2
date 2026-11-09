@@ -1,0 +1,3 @@
+Implementation: 3c69eed3c
+Job43996574, sdfampere040, cold FFB both inputs, no NVMe input staging.
+sbatch --output=/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_framework_cold_20261109_r1_logs/%j.out --error=/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_framework_cold_20261109_r1_logs/%j.err notes/jf_framework_cold_20261109/run.sbatch /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_framework_cold_20261109 /sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_framework_cold_20261109_r1
