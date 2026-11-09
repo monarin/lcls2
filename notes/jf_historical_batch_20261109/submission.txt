@@ -1,0 +1,4 @@
+Job 44003240; one exclusive ampere node, 700GiB, 30-minute limit.
+Output: /sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1
+Slurm logs: /sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1_logs
+sbatch notes/jf_historical_batch_20261109/run.sbatch /sdf/home/m/monarin/lcls2_worktree/psana2-gpu/notes/jf_historical_batch_20261109 /sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1

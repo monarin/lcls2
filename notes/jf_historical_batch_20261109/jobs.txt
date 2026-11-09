@@ -1,0 +1,2 @@
+JobID|State|ExitCode|Elapsed|NodeList|ReqMem
+44003240|COMPLETED|0:0|00:13:05|sdfampere003|700G
