@@ -1,5 +1,7 @@
 # KvikIO fallback read baseline for the 10k sample10 fixture
 
+Follow-up: the [physical NIC/cache profile](../mfx_kvikio_network_20261108/README.md) measured **4.02 GiB/s cache-cold** versus **13.96 GiB/s warm**, with network-byte evidence. The 15.62 GiB/s result below is application throughput with uncontrolled cache history, not a demonstrated Weka network rate.
+
 The best confirmed read-only rate is **15.62 GiB/s median** (15.25–15.68) with
 four workers, explicit 4 MiB task and 16 MiB bounce-buffer settings, and a bounded
 ring of 35 outstanding datagram reads. This is a repeated-read application
