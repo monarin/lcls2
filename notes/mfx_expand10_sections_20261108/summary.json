@@ -1,0 +1,536 @@
+[
+  {
+    "streams": 1,
+    "host": "sdfampere026",
+    "job": "43863315",
+    "status": "pass",
+    "native_window": {
+      "warmup_events": 1000,
+      "steady_events": 9000,
+      "boundary_join_seconds": 1.0950025171041489e-05,
+      "submission_seconds": 34.00420395703986,
+      "tail_completion_seconds": 0.012678280007094145,
+      "completed_window_seconds": 34.01688223704696,
+      "completed_events_per_second": 264.5745114817818
+    },
+    "envelope_seconds": 34.013216223,
+    "envelope_start_ns": 12022677236,
+    "envelope_end_ns": 46035893459,
+    "envelope_method": "First steady expand_calibrate_call NVTX start through last instrumented main-thread range end; excludes a small steady-window head/tail.",
+    "main_thread": 321934560906299,
+    "cpu_exclusive_seconds": {
+      "outside_instrumented_sections": 6.595256421,
+      "kvikio_wait": 6.298591627,
+      "producer_retirement_wait": 5.945105324,
+      "cpu_dgram_construction": 3.139106576,
+      "cpu_ancillary_read": 2.649287588,
+      "kvikio_submit": 2.020499005,
+      "parse_groups_call.enqueue": 1.993108325,
+      "descriptor_build_upload_call.enqueue": 1.987088365,
+      "smd_eventbuilder_next": 1.232294505,
+      "slot_submit_including_null_wait": 0.901949435,
+      "consumer_retirement_release": 0.687661257,
+      "expand_calibrate_call": 0.276096837,
+      "cube_bins_upload_accumulate_call": 0.1621887,
+      "expansion_kernel.enqueue": 0.038802473,
+      "calibration_kernel.enqueue": 0.031093985,
+      "cube_count_kernel.enqueue": 0.02868994,
+      "cube_sum_kernel.enqueue": 0.022578706,
+      "slot_flush_active": 0.003809524,
+      "slot_flush_active.close": 7.63e-06
+    },
+    "cpu_inclusive_steady": [
+      {
+        "phase": "steady",
+        "stage": "calibration_kernel.enqueue",
+        "calls": 1350,
+        "total_seconds": 0.02891275566071272,
+        "p50_seconds": 1.998990774154663e-05,
+        "p95_seconds": 2.930674236267805e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "consumer_retirement_release",
+        "calls": 1349,
+        "total_seconds": 0.6843342324718833,
+        "p50_seconds": 0.000485043041408062,
+        "p95_seconds": 0.0006654500029981131
+      },
+      {
+        "phase": "steady",
+        "stage": "cpu_ancillary_read",
+        "calls": 7035,
+        "total_seconds": 2.637592950835824,
+        "p50_seconds": 1.9560102373361588e-05,
+        "p95_seconds": 0.0008236039895564317
+      },
+      {
+        "phase": "steady",
+        "stage": "cpu_dgram_construction",
+        "calls": 9071,
+        "total_seconds": 5.76332814572379,
+        "p50_seconds": 0.0002413070760667324,
+        "p95_seconds": 0.0012893103994429111
+      },
+      {
+        "phase": "steady",
+        "stage": "cube_bins_upload_accumulate_call",
+        "calls": 1350,
+        "total_seconds": 0.2121449843980372,
+        "p50_seconds": 0.00015212292782962322,
+        "p95_seconds": 0.00018415115773677825
+      },
+      {
+        "phase": "steady",
+        "stage": "cube_count_kernel.enqueue",
+        "calls": 1350,
+        "total_seconds": 0.026459018234163523,
+        "p50_seconds": 1.8759630620479584e-05,
+        "p95_seconds": 2.5618076324462888e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "cube_sum_kernel.enqueue",
+        "calls": 1350,
+        "total_seconds": 0.020833970978856087,
+        "p50_seconds": 1.445971429347992e-05,
+        "p95_seconds": 2.066236920654773e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "descriptor_build_upload_call.enqueue",
+        "calls": 1350,
+        "total_seconds": 1.9842625013552606,
+        "p50_seconds": 0.0014473784249275923,
+        "p95_seconds": 0.0015613989438861607
+      },
+      {
+        "phase": "steady",
+        "stage": "expand_calibrate_call",
+        "calls": 1350,
+        "total_seconds": 2.3309955331496894,
+        "p50_seconds": 0.0016904242802411318,
+        "p95_seconds": 0.001855736062861979
+      },
+      {
+        "phase": "steady",
+        "stage": "expansion_kernel.enqueue",
+        "calls": 1350,
+        "total_seconds": 0.03650337224826217,
+        "p50_seconds": 2.3539643734693527e-05,
+        "p95_seconds": 4.530544392764564e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "kvikio_submit",
+        "calls": 44965,
+        "total_seconds": 1.947689663618803,
+        "p50_seconds": 3.778887912631035e-05,
+        "p95_seconds": 5.275495350360862e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "kvikio_wait",
+        "calls": 44965,
+        "total_seconds": 6.2599539719522,
+        "p50_seconds": 8.570030331611633e-06,
+        "p95_seconds": 2.2525340318679726e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "parse_groups_call.enqueue",
+        "calls": 1349,
+        "total_seconds": 1.9894580380059779,
+        "p50_seconds": 0.0012644408270716667,
+        "p95_seconds": 0.0016180219128727911
+      },
+      {
+        "phase": "steady",
+        "stage": "producer_retirement_wait",
+        "calls": 1349,
+        "total_seconds": 5.9417992564849555,
+        "p50_seconds": 0.00502552418038249,
+        "p95_seconds": 0.005405152030289173
+      },
+      {
+        "phase": "steady",
+        "stage": "slot_flush_active",
+        "calls": 5,
+        "total_seconds": 0.0037984843365848064,
+        "p50_seconds": 4.270114004611969e-06,
+        "p95_seconds": 0.002580699976533651
+      },
+      {
+        "phase": "steady",
+        "stage": "slot_flush_active.close",
+        "calls": 4,
+        "total_seconds": 4.169996827840805e-06,
+        "p50_seconds": 9.452924132347107e-07,
+        "p95_seconds": 1.6666948795318603e-06
+      },
+      {
+        "phase": "steady",
+        "stage": "slot_submit_including_null_wait",
+        "calls": 1349,
+        "total_seconds": 3.4434905108064413,
+        "p50_seconds": 0.0023781550116837025,
+        "p95_seconds": 0.0027077838778495787
+      },
+      {
+        "phase": "steady",
+        "stage": "smd_eventbuilder_next",
+        "calls": 1350,
+        "total_seconds": 1.2292763688601553,
+        "p50_seconds": 0.0004717728588730097,
+        "p95_seconds": 0.0019421085715293882
+      }
+    ],
+    "gpu_kernels": [
+      {
+        "name": "calibrate",
+        "count": 1350,
+        "summed_seconds": 6.241551965,
+        "union_seconds": 6.241551965
+      },
+      {
+        "name": "expand10",
+        "count": 1350,
+        "summed_seconds": 1.752426033,
+        "union_seconds": 1.752426033
+      },
+      {
+        "name": "accumulate",
+        "count": 1350,
+        "summed_seconds": 1.343163457,
+        "union_seconds": 1.343163457
+      },
+      {
+        "name": "accept_events",
+        "count": 1350,
+        "summed_seconds": 0.031942213,
+        "union_seconds": 0.031942213
+      },
+      {
+        "name": "walk_xtc",
+        "count": 1349,
+        "summed_seconds": 0.03122487,
+        "union_seconds": 0.03122487
+      },
+      {
+        "name": "locate_fields",
+        "count": 1349,
+        "summed_seconds": 0.021957188,
+        "union_seconds": 0.021957188
+      },
+      {
+        "name": "init_locators",
+        "count": 1349,
+        "summed_seconds": 0.007061267,
+        "union_seconds": 0.007061267
+      }
+    ],
+    "activity": {
+      "all_kernels_union_seconds": 9.429326993,
+      "task_kernels_union_seconds": 9.369083668,
+      "buffered_pread_worker_union_seconds": 11.919528232,
+      "copies_by_cupti_kind": {
+        "1": {
+          "count": 50363,
+          "union_seconds": 1.757998401,
+          "summed_seconds": 1.757998401
+        },
+        "2": {
+          "count": 0,
+          "union_seconds": 0.0,
+          "summed_seconds": 0.0
+        }
+      }
+    },
+    "interpretation": "CPU exclusive sections partition host wall time (including blocking), not CPU utilization. GPU/copy/worker times overlap this wall time and each other; do not add them. Profile instrumentation perturbs timings. Buffered pread includes cache/OS effects, not physical Weka service time.",
+    "artifacts": {
+      "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1/s1-report/report.json": {
+        "bytes": 142591,
+        "sha256": "dd84dc4198b5e8b25a6fdd1b1d0345fca084515c0753fd68df6f06a1ecff68e7"
+      },
+      "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1/s1-report/profile.json": {
+        "bytes": 19901073,
+        "sha256": "65d2d3a03b3dea7ac5894961766a1c9de224e6c5a04940bf21eac2f54f7fc579"
+      },
+      "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1/s1.sqlite": {
+        "bytes": 90566656,
+        "sha256": "8a7e1e5670f200850060a0553efdf7882b02f0974e3c0336cd1f313172d4cdff"
+      },
+      "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1/s1.nsys-rep": {
+        "bytes": 30289035,
+        "sha256": "1ce349f8757987d16e0adf952a4a25e3631c9defd2df13f2dd2023aadfca536c"
+      }
+    }
+  },
+  {
+    "streams": 2,
+    "host": "sdfampere026",
+    "job": "43863315",
+    "status": "pass",
+    "native_window": {
+      "warmup_events": 1000,
+      "steady_events": 9000,
+      "boundary_join_seconds": 1.347903162240982e-05,
+      "submission_seconds": 34.351069413591176,
+      "tail_completion_seconds": 0.011678324081003666,
+      "completed_window_seconds": 34.36274773767218,
+      "completed_events_per_second": 261.9115348023587
+    },
+    "envelope_seconds": 34.359843985,
+    "envelope_start_ns": 10675515270,
+    "envelope_end_ns": 45035359255,
+    "envelope_method": "First steady expand_calibrate_call NVTX start through last instrumented main-thread range end; excludes a small steady-window head/tail.",
+    "main_thread": 321975195325873,
+    "cpu_exclusive_seconds": {
+      "kvikio_wait": 10.028238418,
+      "outside_instrumented_sections": 7.43286087,
+      "cpu_ancillary_read": 3.35107414,
+      "cpu_dgram_construction": 3.051099786,
+      "parse_groups_call.enqueue": 2.395277604,
+      "descriptor_build_upload_call.enqueue": 2.112819675,
+      "kvikio_submit": 2.065675665,
+      "smd_eventbuilder_next": 1.275275434,
+      "slot_submit_including_null_wait": 1.148822588,
+      "consumer_retirement_release": 0.696573706,
+      "expand_calibrate_call": 0.489843707,
+      "cube_bins_upload_accumulate_call": 0.166239557,
+      "expansion_kernel.enqueue": 0.035763525,
+      "calibration_kernel.enqueue": 0.03044857,
+      "cube_count_kernel.enqueue": 0.02742732,
+      "producer_retirement_wait": 0.024479837,
+      "cube_sum_kernel.enqueue": 0.023426671,
+      "slot_flush_active": 0.004490382,
+      "slot_flush_active.close": 6.53e-06
+    },
+    "cpu_inclusive_steady": [
+      {
+        "phase": "steady",
+        "stage": "calibration_kernel.enqueue",
+        "calls": 1350,
+        "total_seconds": 0.02829295676201582,
+        "p50_seconds": 1.9669998437166214e-05,
+        "p95_seconds": 2.8628576546907415e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "consumer_retirement_release",
+        "calls": 1349,
+        "total_seconds": 0.6938541810959578,
+        "p50_seconds": 0.0005081328563392162,
+        "p95_seconds": 0.0006635279394686221
+      },
+      {
+        "phase": "steady",
+        "stage": "cpu_ancillary_read",
+        "calls": 7035,
+        "total_seconds": 3.33722065621987,
+        "p50_seconds": 1.880992203950882e-05,
+        "p95_seconds": 0.0008978386875241991
+      },
+      {
+        "phase": "steady",
+        "stage": "cpu_dgram_construction",
+        "calls": 9071,
+        "total_seconds": 6.38684271229431,
+        "p50_seconds": 0.00024028588086366653,
+        "p95_seconds": 0.0013722700532525778
+      },
+      {
+        "phase": "steady",
+        "stage": "cube_bins_upload_accumulate_call",
+        "calls": 1350,
+        "total_seconds": 0.215781485196203,
+        "p50_seconds": 0.00015404284931719303,
+        "p95_seconds": 0.00020087796729058026
+      },
+      {
+        "phase": "steady",
+        "stage": "cube_count_kernel.enqueue",
+        "calls": 1350,
+        "total_seconds": 0.025312943384051323,
+        "p50_seconds": 1.765461638569832e-05,
+        "p95_seconds": 2.4972530081868164e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "cube_sum_kernel.enqueue",
+        "calls": 1350,
+        "total_seconds": 0.021657120436429977,
+        "p50_seconds": 1.4704419299960136e-05,
+        "p95_seconds": 2.1974346600472925e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "descriptor_build_upload_call.enqueue",
+        "calls": 1350,
+        "total_seconds": 2.109949146397412,
+        "p50_seconds": 0.00151017215102911,
+        "p95_seconds": 0.0017659783130511638
+      },
+      {
+        "phase": "steady",
+        "stage": "expand_calibrate_call",
+        "calls": 1350,
+        "total_seconds": 2.6663414747454226,
+        "p50_seconds": 0.0017611139919608831,
+        "p95_seconds": 0.0021350090857595204
+      },
+      {
+        "phase": "steady",
+        "stage": "expansion_kernel.enqueue",
+        "calls": 1350,
+        "total_seconds": 0.033231858629733324,
+        "p50_seconds": 2.2360123693943024e-05,
+        "p95_seconds": 3.216820769011973e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "kvikio_submit",
+        "calls": 44965,
+        "total_seconds": 1.9944879924878478,
+        "p50_seconds": 3.9989128708839417e-05,
+        "p95_seconds": 5.715694278478618e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "kvikio_wait",
+        "calls": 44965,
+        "total_seconds": 9.989029680844396,
+        "p50_seconds": 8.400063961744308e-06,
+        "p95_seconds": 2.1609943360090256e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "parse_groups_call.enqueue",
+        "calls": 1349,
+        "total_seconds": 2.391839716117829,
+        "p50_seconds": 0.0013132309541106224,
+        "p95_seconds": 0.001877796184271574
+      },
+      {
+        "phase": "steady",
+        "stage": "producer_retirement_wait",
+        "calls": 1349,
+        "total_seconds": 0.0212796563282609,
+        "p50_seconds": 1.4049932360649109e-05,
+        "p95_seconds": 2.3879110813140866e-05
+      },
+      {
+        "phase": "steady",
+        "stage": "slot_flush_active",
+        "calls": 6,
+        "total_seconds": 0.004482502583414316,
+        "p50_seconds": 1.0314863175153732e-05,
+        "p95_seconds": 0.0030733164167031646
+      },
+      {
+        "phase": "steady",
+        "stage": "slot_flush_active.close",
+        "calls": 4,
+        "total_seconds": 3.4300610423088074e-06,
+        "p50_seconds": 6.998889148235321e-07,
+        "p95_seconds": 1.4767050743103024e-06
+      },
+      {
+        "phase": "steady",
+        "stage": "slot_submit_including_null_wait",
+        "calls": 1349,
+        "total_seconds": 4.029486500192434,
+        "p50_seconds": 0.0024599130265414715,
+        "p95_seconds": 0.0032018236815929413
+      },
+      {
+        "phase": "steady",
+        "stage": "smd_eventbuilder_next",
+        "calls": 1350,
+        "total_seconds": 1.2725051227025688,
+        "p50_seconds": 0.000493787694722414,
+        "p95_seconds": 0.0020251145819202066
+      }
+    ],
+    "gpu_kernels": [
+      {
+        "name": "calibrate",
+        "count": 1350,
+        "summed_seconds": 6.314253808,
+        "union_seconds": 6.314253808
+      },
+      {
+        "name": "expand10",
+        "count": 1350,
+        "summed_seconds": 1.855985973,
+        "union_seconds": 1.855985973
+      },
+      {
+        "name": "accumulate",
+        "count": 1350,
+        "summed_seconds": 1.349690275,
+        "union_seconds": 1.349690275
+      },
+      {
+        "name": "walk_xtc",
+        "count": 1349,
+        "summed_seconds": 0.033061055,
+        "union_seconds": 0.033061055
+      },
+      {
+        "name": "accept_events",
+        "count": 1350,
+        "summed_seconds": 0.031809062,
+        "union_seconds": 0.031809062
+      },
+      {
+        "name": "locate_fields",
+        "count": 1349,
+        "summed_seconds": 0.023477208,
+        "union_seconds": 0.023477208
+      },
+      {
+        "name": "init_locators",
+        "count": 1349,
+        "summed_seconds": 0.007486168,
+        "union_seconds": 0.007486168
+      }
+    ],
+    "activity": {
+      "all_kernels_union_seconds": 9.615763549,
+      "task_kernels_union_seconds": 9.551739118,
+      "buffered_pread_worker_union_seconds": 16.314617978,
+      "copies_by_cupti_kind": {
+        "1": {
+          "count": 50363,
+          "union_seconds": 1.832640508,
+          "summed_seconds": 1.834061204
+        },
+        "2": {
+          "count": 0,
+          "union_seconds": 0.0,
+          "summed_seconds": 0.0
+        }
+      }
+    },
+    "interpretation": "CPU exclusive sections partition host wall time (including blocking), not CPU utilization. GPU/copy/worker times overlap this wall time and each other; do not add them. Profile instrumentation perturbs timings. Buffered pread includes cache/OS effects, not physical Weka service time.",
+    "artifacts": {
+      "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1/s2-report/report.json": {
+        "bytes": 143725,
+        "sha256": "4bcafacea6c792463662f4af971c88c6681b750bd3065bd95f51b2ec5498d092"
+      },
+      "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1/s2-report/profile.json": {
+        "bytes": 19904596,
+        "sha256": "92f5b71098fe78e8f3ab0642209256b81ec283b140a3de040a4712b0ad72dc10"
+      },
+      "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1/s2.sqlite": {
+        "bytes": 90574848,
+        "sha256": "a23ce24611a9c8dc858d4bd449ae12854c284fead355661ab8e859387c80fc34"
+      },
+      "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1/s2.nsys-rep": {
+        "bytes": 30344432,
+        "sha256": "d884e292d52b6e642cf98e9821fe03d17abeae5b62b8bb4c59a3b04d027a206e"
+      }
+    }
+  }
+]

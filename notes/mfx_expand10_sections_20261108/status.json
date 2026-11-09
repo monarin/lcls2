@@ -1,0 +1,14 @@
+{
+  "phase": "awaiting_independent_review",
+  "base": "2913e479c",
+  "job": "43863315",
+  "review_round": 1,
+  "round_limit": 3,
+  "checks": [
+    "native s1/s2 pass",
+    "5 interval tests pass",
+    "source/runtime hashes verified"
+  ],
+  "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sections_20261108_r1",
+  "unresolved": []
+}

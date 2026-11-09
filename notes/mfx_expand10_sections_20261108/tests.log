@@ -1,0 +1,10 @@
+test_clip_window (test_analysis.Intervals.test_clip_window) ... ok
+test_nested_exclusive_and_gaps (test_analysis.Intervals.test_nested_exclusive_and_gaps) ... ok
+test_non_nested_rejected (test_analysis.Intervals.test_non_nested_rejected) ... ok
+test_touching_ranges (test_analysis.Intervals.test_touching_ranges) ... ok
+test_union_overlap_and_touch (test_analysis.Intervals.test_union_overlap_and_touch) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
