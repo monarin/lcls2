@@ -119,6 +119,15 @@ about two thirds of user-kernel time. The 19–22% uninstrumented host remainder
 is explicitly retained. These instrumented cases on another node do not replace
 the clean throughput baseline. See [section timings](mfx_expand10_sections_20261108/README.md).
 
+A separate [KvikIO read-only sweep](mfx_kvikio_read_20261108/README.md) completed
+33 cases in job 43866709. Repeated datagram reads confirmed 15.62 GiB/s median
+with four workers, explicit 4 MiB tasks/16 MiB bounce buffers and 35 outstanding
+requests; eight workers and large reads did not exceed that confirmed control.
+The first pass was only 4.14 GiB/s, so cache/history must remain explicit. This
+is five-file JF input throughput with no psana preparation/compute, not physical
+Weka bandwidth or an end-to-end speedup. Keep the current pipeline settings
+while investigating input submission and host preparation.
+
 Use these captures before commissioning another profile to
 attribute the gap to read issue/completion, worker file reads/H2D, XTC parsing,
 expansion/calibration/count/sum and slot retirement. Quantify interval overlaps

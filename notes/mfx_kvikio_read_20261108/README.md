@@ -1,7 +1,7 @@
 # KvikIO fallback read baseline for the 10k sample10 fixture
 
 The best confirmed read-only rate is **15.62 GiB/s median** (15.25–15.68) with
-the existing four-worker, 4 MiB task, 16 MiB bounce-buffer settings and a bounded
+four workers, explicit 4 MiB task and 16 MiB bounce-buffer settings, and a bounded
 ring of 35 outstanding datagram reads. This is a repeated-read application
 throughput ceiling observed on one A100, not physical Weka bandwidth or an
 end-to-end psana rate. The first pass of the same configuration was only
@@ -22,7 +22,9 @@ fixture receipt. Full-file hashes are historical generation-acceptance hashes;
 this campaign does not reread every file merely to hash it before timing.
 
 - Exact event mode: 50,000 requests, 33,582,000,000 bytes = **31.2757 GiB/pass**,
-  exactly the GPU input ranges used by the pipeline, 524724–734604 bytes each.
+  exactly the GPU input ranges used by the pipeline. The generation manifest
+  gives sizes of 524724–734604 bytes each; these extrema are not native report
+  fields. See `request-size-evidence.json` for the coordinator's manifest readback.
 - Contiguous-file mode: 4/16/64 MiB requests from offset zero through EOF, including
   partial tails, 33,582,860,544 bytes = 31.2765 GiB/pass. The 860544 extra bytes
   are headers/transitions/etc. This is a read-ceiling comparison, not an
@@ -62,7 +64,7 @@ passes; medians are of complete-case bytes/time, not per-pass peak rates.
 
 | Pattern | Workers | Outstanding requests | Task / bounce | CPU affinity count | Median GiB/s | Range |
 |---|---:|---:|---|---:|---:|---|
-| Exact datagrams, current settings/control | 4 | 35 | 4 / 16 MiB | 4 | **15.62** | 15.25–15.68 |
+| Exact datagrams, four-worker control | 4 | 35 | 4 / 16 MiB | 4 | **15.62** | 15.25–15.68 |
 | Exact datagrams, screening winner | 8 | 35 | 4 / 16 MiB | 16 | **15.47** | 15.42–15.49 |
 | 64 MiB contiguous reads, screening winner | 4 | 10 | 4 / 1 MiB | 16 | **14.61** | 13.36–14.64 |
 
@@ -72,12 +74,20 @@ are applied through `kvikio.defaults.set` before opening handles and checked via
 where applicable. Runtime: KvikIO 26.10.00, CuPy 14.0.1, Python 3.11.14, CUDA
 runtime 12090. Every case uses the same environment/package/source files.
 
-The original four-worker settings are already competitive at this read-only
-ceiling. Neither increasing to eight workers nor combining datagrams into large
+The four-worker control is already competitive at this read-only ceiling.
+The earlier pipeline recorded compatibility mode and four workers but did not
+capture its effective task/bounce sizes. The 4/16 MiB values here match the
+installed library defaults and are explicitly set/verified in this new test;
+they are not retrospective proof of unrecorded historical environment settings.
+Neither increasing to eight workers nor combining datagrams into large
 reads demonstrated a confirmed gain over the control. The 4- and 8-worker
 confirmation ranges overlap; do not treat their ~1% median difference as a
 causal advantage. This does not imply bulk coalescing is useless in the real
 pipeline, where host overhead and allowed concurrency differ.
+The control and eight-worker confirmation differ in both worker count and CPU
+affinity count, so this table cannot isolate a worker-count effect. Recorded
+affinity values are logical CPU (hardware-thread) IDs; physical-core/sibling
+topology was not recorded.
 
 ## Screening evidence (single cases, not causal comparisons)
 
@@ -108,6 +118,12 @@ Other single-case sweeps:
   path; actual direct-vs-buffered byte fractions were not traced. Unaligned
   portions may use buffered I/O. This remains CPU fallback, not GDS, and is not
   a verified cold-storage measurement. No general direct-I/O performance claim.
+
+The legacy report key `input_direct_fd_count` (and `results.json` alias
+`direct_fd_count`) means only a **descriptor-flag census**, not actual I/O-path
+evidence. It is five in every case. `metric-definitions.json` labels these saved
+fields explicitly; native reports are preserved byte-for-byte. Renaming the
+keys in the executable/report schema is deferred to a future benchmark version.
 
 This is an adaptive, bounded sweep, not a full factorial or proof of an absolute
 hardware maximum. In particular, queue/bounce tuning focused on the selected

@@ -1,10 +1,21 @@
 {
-  "phase": "awaiting_independent_review",
+  "phase": "awaiting_documentation_rereview",
   "base": "4e09db0ec",
   "job": "43866709",
-  "checks": ["33 native cases pass", "independent accounting/source audit pass", "10 host tests pass"],
-  "review_round": 1,
+  "checks": [
+    "33 native cases pass",
+    "independent accounting/source audit pass",
+    "10 host tests pass"
+  ],
+  "review_round": 2,
   "round_limit": 3,
-  "unresolved": [],
-  "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/kvikio_read_20261108_r1"
+  "unresolved": [
+    "KR-01 pending reviewer closure"
+  ],
+  "artifacts": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/kvikio_read_20261108_r1",
+  "executable_commit": "70359e3b894206f2e9c9f2d2abb4740805a3a87b",
+  "round1_verdict": "changes_requested",
+  "deferred": [
+    "KR-03 executable schema rename; companion labels added"
+  ]
 }
