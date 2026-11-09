@@ -1,9 +1,19 @@
 {
-  "phase": "implementation_verified",
+  "phase": "results_review_pending",
   "accepted": false,
-  "review_round": 0,
+  "review_round": 2,
   "review_limit": 3,
-  "checks": {"unit_tests": "4 passed; rollover, independent schedules, full/partial cycles, malformed inputs"},
+  "checks": {
+    "unit_tests": "4 passed; rollover, independent schedules, full/partial cycles, malformed inputs",
+    "pilot": "pass: 23 events, one step, 736 panel/layout checks, 352 seed witnesses, full file readback",
+    "generation": "complete; exactly376806534528 bytes, 100000 events, 100847 records/stream",
+    "review_round1": "pass, no blocking findings; optional items recorded",
+    "runtime": "pass: job44025856 complete0:0;100k events; all20files;3200000panel layouts;1280seed witnesses"
+  },
   "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sample10_100k_evidence_20261109",
-  "unresolved": ["pilot, full generation/readback and independent review pending"]
+  "unresolved": [
+    "results review pending"
+  ],
+  "implementation_commit": "186ac6c299a4869afdbf169f8266bccb5331b864",
+  "job": "44025856"
 }

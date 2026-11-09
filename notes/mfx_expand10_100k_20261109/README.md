@@ -1,30 +1,63 @@
 # 100,000-event sim10 fixture
 
-Preparation in progress. User-authorized enlargement of the accepted 10k sim10
-fixture, retaining the **512 KiB bulk target** for subsequent performance tests.
-See the [deferred small-datagram scheduling note](../../psana/psana/gpu/docs/proposals/small_dgram_scheduling_followup.md).
+Generation and all CPU validation passed as Slurm job **44025856** on sdfmilan271
+in **42m26s**, exit 0:0. All 20 files passed readback, and DataSource traversed
+one run/step containing 100,000 events with 3,200,000 panel-layout checks and
+1,280 seed-value witnesses around repetition boundaries. Independent code review
+passed with no blocking findings on `186ac6c299a4869afdbf169f8266bccb5331b864`;
+results review is pending. The [scope](scope.md), [status](status.json),
+[verification](verification.json), [file receipts](files.json) and
+[job accounting](slurm-accounting.txt) record this user-authorized fixture.
 
-Repeat the accepted 10,000-event sequence ten times into new physical files,
-retaining all ten streams (five JF plus five ancillary) and all 32 panel identities.
-There are 100,000 unique outer event timestamps but only 10,000 distinct source
-payload events. Shift outer datagram timestamps with nanosecond arithmetic;
-rewrite SMD offsets/sizes; preserve Configure, detector fields and payload bytes.
-Internal detector timestamps/frame counters repeat intentionally. Keep one native
-step with no inserted step boundaries. Retain source experiment/run identity
-(mfx101555026/run 10) with explicit dir=; no public-run registration or calibration
-DB writes. Full-shape frozen calibration remains applicable by panel identity.
+Keep **gpu_bulk_target_bytes=512*1024** for subsequent performance tests.
+[Small-datagram scheduling work](../../psana/psana/gpu/docs/proposals/small_dgram_scheduling_followup.md)
+is deferred: one live small group per file restricts read-ahead, and group
+boundaries force changes to execution size. No scheduler code changes here.
 
-Intended root: /sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sample10_100k
-Evidence root: same parent, sample10_100k_evidence_20261109.
-JF event datagram bytes: 335,820,000,000 bytes (312.757 GiB). Full 20-file footprint roughly
-351 GiB including ancillary data and SMD, with exact preflight size to follow.
-This is a real on-disk repetition, not a loop over the old file or a sparse alias.
-The run duration/file working set grows 10x; batch 100 still holds about 320 MiB of
-JF input. No new GPU performance result is claimed by generating this fixture.
+The fixture physically repeats the accepted 10,000-event sequence ten times,
+retaining ten streams (five JF plus five ancillary) and all 32 panel identities.
+There are 100,000 unique outer event timestamps and 10,000 source payload events.
+Nanosecond arithmetic shifts outer timestamps; SMD offsets/sizes are rewritten.
+All other header and payload bytes are preserved, including internal detector
+timestamps/frame counters, which repeat intentionally. One native step spans the
+output, with no inserted step boundaries. The manifest uses `plan` to describe
+repetition source indices/cycles, rather than the old fixture's `schedule` key.
+Later benchmark scripts must use this new manifest and accepted file receipts;
+the old campaigns deliberately pin the 10k fixture and cannot be reused unchanged.
 
-Acceptance will include a tiny repeated pilot with a partial final cycle,
-unit tests across timestamp second boundaries, complete 20-file readback/hashes,
-unchanged payloads against the accepted base, all SMD references and aligned
-strictly ordered timelines, and serial DataSource traversal of all 100k events.
-The fixture is accepted only when its evidence status is complete/accepted and
-independent review passes. Existing fixtures will not be overwritten.
+Target directory:
+
+```
+/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sample10_100k
+```
+
+Evidence: same parent, `sample10_100k_evidence_20261109`.
+Native log: `sample10_100k_logs_20261109/44025856.log` in that parent.
+Source experiment/run identity remains mfx101555026/run 10; use explicit `dir=`.
+No public-run registration or calibration DB writes. Full-shape frozen constants
+retain their panel mapping; this campaign skips calibration loading and does not
+claim a fresh scientific calibration or GPU correctness test.
+
+[Preflight](preflight.json) and verified output agree on **376,806,534,528 bytes (350.928 GiB)** across
+20 files, and 100,847 datagrams per stream. JF event datagrams account for
+**335,820,000,000 bytes (312.757 GiB)**. Physical files contain all repetitions;
+there are no sparse aliases or loops over the old file. Total volume and run
+duration grow 10x. At batch 100, per-batch JF input remains about 320 MiB, so this
+tests total working set/duration rather than a larger outstanding-input window.
+A subsequent cold-FFB benchmark still needs FFB staging, cache evidence and NIC
+counters; generating project-scratch data does not establish read bandwidth.
+
+Validation includes four unit tests (second rollover, partial/complete cycles,
+independent schedules and malformed inputs), a [23-event pilot](pilot-verification.json),
+full output hashes and byte preservation against the accepted base, all SMD
+references and aligned strictly ordered timelines, and serial DataSource
+traversal of all 100k events with all 32 panel layouts checked each event.
+DataSource seed-value witnesses check the first/last two events of each cycle;
+full raw-byte preservation is checked separately for every datagram.
+
+Acceptance requires completed native validation and independent review. The job
+leaves `accepted=false` with `validated_review_pending` until coordinator closure.
+A nonterminal status paired with a terminated Slurm job means interruption,
+not successful validation; inspect accounting and partial files before recovery.
+The writer refuses existing output and evidence directories. Do not rerun into
+partial files or delete them merely to obtain a clean status.
