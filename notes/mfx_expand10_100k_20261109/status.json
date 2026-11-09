@@ -1,0 +1,9 @@
+{
+  "phase": "implementation_verified",
+  "accepted": false,
+  "review_round": 0,
+  "review_limit": 3,
+  "checks": {"unit_tests": "4 passed; rollover, independent schedules, full/partial cycles, malformed inputs"},
+  "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sample10_100k_evidence_20261109",
+  "unresolved": ["pilot, full generation/readback and independent review pending"]
+}

@@ -1,12 +1,14 @@
 # MFX five-stream input with synthetic 10x GPU expansion
 
-Status: Stage 3A correctness, standalone prototype, 200-bin capacity validation,
-the reviewed 10k project-scratch fixture and performance-runner preparation are
-complete, November 6, 2026. The 10k performance campaign has not started.
-The repeated 400k fixture remains deferred. This is the active dataset direction.
-Stop further real-codec exploration and the XPP repeat16 fixture path. Preserve
-those results and existing datasets. The sample10 fixtures are in scratch;
-no new public experiment/run has been registered for them.
+Status update, November 9, 2026: the 10k fixture and single-node cold-FFB
+staging sweeps are complete. Keep the sim10 bulk target at **512 KiB**. Record
+small-group read-ahead/concurrency limits and forced execution splitting for
+[deferred scheduling work](small_dgram_scheduling_followup.md).
+The user authorized a [100k-event scratch fixture](../../../../../notes/mfx_expand10_100k_20261109/README.md)
+to enlarge the total input volume and run duration; generation/acceptance status
+is tracked there. The 400k fixture and multi-node work remain deferred.
+Earlier dated stage notes below retain their historical scope. This is the
+active dataset direction; real-codec and XPP repeat16 exploration remain stopped.
 
 Execution update: [Stage 1](../../../../../notes/mfx_expand10_stage1_20261105/README.md)
 completed with 10 events in private scratch, all 320 CPU panel comparisons and
