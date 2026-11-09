@@ -1,0 +1,10 @@
+test_bytes_and_interval (test_network.Counters.test_bytes_and_interval) ... ok
+test_clock (test_network.Counters.test_clock) ... ok
+test_missing (test_network.Counters.test_missing) ... ok
+test_ports_separate (test_network.Counters.test_ports_separate) ... ok
+test_reset (test_network.Counters.test_reset) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

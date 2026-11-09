@@ -71,17 +71,27 @@ def run(config, output):
             except (OSError,StopIteration):
                 pass
         report['input_direct_fd_count'] = direct_fds
+        network = None
+        if config.get('network_profile', False):
+            from network_watch import NetworkProfile
+            network = NetworkProfile(paths)
+            report['network_initial'] = dict(cache=network.initial_cache, idle=network.idle)
         elapsed_total = 0
         for iteration in range(3):
             cp.cuda.Device().synchronize()
+            observation = network.begin(iteration) if network else None
             start = time.perf_counter()
             total,count,last = run_queue(requests,depth,submit,lambda f:int(f.get()))
             cp.cuda.Device().synchronize()
             elapsed = time.perf_counter()-start
             require(total == report['requested_bytes_per_pass'] and count==len(requests), 'Accounting mismatch')
-            report['passes'].append(dict(bytes=total,requests=count,seconds=elapsed,gib_s=total/GIB/elapsed))
+            row = dict(bytes=total,requests=count,seconds=elapsed,gib_s=total/GIB/elapsed)
+            if network:
+                row['network'] = network.finish(observation,total)
+            report['passes'].append(row)
+            save()
             elapsed_total += elapsed
-            if elapsed_total >= 5:
+            if elapsed_total >= 5 and not network:
                 break
         # Last-use buffer witnesses only after final completion, outside timing.
         witnesses = []
@@ -99,6 +109,8 @@ def run(config, output):
                       max_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,
                       timing='First submission through all futures and final device synchronization per full pass. Sum complete-pass bytes/time. Setup, five warm reads, inter-pass idle and post-read witnesses excluded.',
                       cache='Uncontrolled Weka/server/OS caches. Later cases and repeated full passes reuse input. No staging or cache flush. Direct flag is opportunistic POSIX I/O, still CPU fallback, not GDS.')
+        if network:
+            report['cache'] = 'First full pass: owner-checked file-specific eviction and zero-mincore gate after warmup. Next two passes reuse cache. Weka backend caches uncontrolled. NIC endpoints include counter sampling overhead; rates use their own interval, not GPU-read timer. NIC traffic is node-wide; no exact cache-hit ratio inferred.'
     except BaseException as exc:
         report.update(status='fail',error=repr(exc))
         raise
