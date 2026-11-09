@@ -1,3 +1,5 @@
+Command: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/bin/python notes/jf_historical_batch_20261109/test_audit.py /sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1
+
 ...........
 ----------------------------------------------------------------------
 Ran 11 tests in 0.349s

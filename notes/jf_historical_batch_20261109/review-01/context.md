@@ -49,3 +49,9 @@ Please check measured claims and limitations against this native evidence.
 You cannot run tests or hashes with your allowed tools; acknowledge that limit.
 No unresolved previous findings on this new scope. Provide stable IDs for any new
 issues and assess latest reviewed SHA, separating blocking from optional advice.
+
+Reviewed SHA (code plus evidence commit):
+67502407a3b0ba2395a2684f03b650d280e20762. Implementation code remains353df539b.
+Known small report correction to verify: final raw idle RX is0.9116MiB/s, so the
+full measured-case idle range should be0.91–1.00, not README's0.94–1.01. status.json
+still records hardware-running; it will be updated when review completes.

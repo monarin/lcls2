@@ -1,0 +1,140 @@
+[
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/00-raw-dense-b20.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/00-raw-dense-b20.json",
+    "bytes": 692259,
+    "sha256": "d4319d370216ddf2aee5ce961e1bc8ca43351da4fd05ae807a449789fc7e6d3b"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/00-raw-dense-b20.log",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/00-raw-dense-b20.log",
+    "bytes": 1168,
+    "sha256": "9dca55cbe38541fe79212cfa483d97fd68189df5895827c5456bef3e88c98813"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/01-sim10-field-b20.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/01-sim10-field-b20.json",
+    "bytes": 692205,
+    "sha256": "f5715569857be1f1afe811acc3f7d941c4b4113dec1a688b3b349989ca47a732"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/01-sim10-field-b20.log",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/01-sim10-field-b20.log",
+    "bytes": 1171,
+    "sha256": "c6529d1d947e8073e30e04e6d24c87fb96a4f9a9966c6089fb0ee3e960e5d25e"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/02-sim10-field-b100.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/02-sim10-field-b100.json",
+    "bytes": 645907,
+    "sha256": "791ac68c7a788467010d54cc985ad95bf6f348986016de02c9cc6cc669ae74e2"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/02-sim10-field-b100.log",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/02-sim10-field-b100.log",
+    "bytes": 1171,
+    "sha256": "d5302cd5362184caebdcea02ebbe92f00363b24541bb952fde9a0ed004613f25"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/03-sim10-field-b100.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/03-sim10-field-b100.json",
+    "bytes": 645907,
+    "sha256": "493beff4316cb14b84de48362eab2604579573ae6f9844967c588a3b9b9e22ba"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/03-sim10-field-b100.log",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/03-sim10-field-b100.log",
+    "bytes": 1170,
+    "sha256": "8be1ce725c64d656a2bf2ba6808fea8e8f33993eab5385f45480c20f3771fcc3"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/04-sim10-field-b20.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/04-sim10-field-b20.json",
+    "bytes": 692202,
+    "sha256": "daea54c23bd3b0d78558f754ac46b03887a8e1594c9fe44880998a7be1a90d9b"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/04-sim10-field-b20.log",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/04-sim10-field-b20.log",
+    "bytes": 1171,
+    "sha256": "b88bcd4f822021c1ab1b932a622a7cfba17e418502a1b52bc546a5de151376a1"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/05-raw-dense-b20.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/05-raw-dense-b20.json",
+    "bytes": 692256,
+    "sha256": "2172a4e214a575c365378f20709d0bb34191e21dc08428c7d01210382ed72933"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/05-raw-dense-b20.log",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/05-raw-dense-b20.log",
+    "bytes": 1168,
+    "sha256": "b66bf2c1b4fa9a6597394fa1a2b2360a364cc831ad3f52b234c1d3d41d93f2e7"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/cleanup.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/cleanup.json",
+    "bytes": 103,
+    "sha256": "40969bc2af4478fea9b381389cd84d51360da36f5d94984b1df1941cb10cc63c"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/complete.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/complete.json",
+    "bytes": 7569,
+    "sha256": "d73cd624b0645a0565db036827e4e70bb31b511af47dfda1ddecc3dffb05fca4"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/inputs.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/inputs.json",
+    "bytes": 541563,
+    "sha256": "549ca74a1d7cda2483257d2268113ded696f27ad3659212734ea77f68b883579"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/preflight-raw-dense.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/preflight-raw-dense.json",
+    "bytes": 28837,
+    "sha256": "536b666fe7f905717e3d61d6adc2a9499da6f79dfc3ffb9b4fef0b732e956be9"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/preflight-raw-dense.log",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/preflight-raw-dense.log",
+    "bytes": 1166,
+    "sha256": "536cd2ac96190561fa463f423e1922f2e5bbcb855a239429c110dcc229ca9b6c"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/preflight-sim10-field.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/preflight-sim10-field.json",
+    "bytes": 26830,
+    "sha256": "304ba8be4a74d1289d80bb637ac6b4acc93535c05ee4188f704bc7c54d2cc2b3"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/preflight-sim10-field.log",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/preflight-sim10-field.log",
+    "bytes": 1169,
+    "sha256": "4e8e93df87c044087379b16a18f8d7bbf6e7e423c4f6c26db92783d2e2a4e7b2"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/progress.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/progress.json",
+    "bytes": 7066,
+    "sha256": "a7f27e89cc57a085667a3a76eed6b5940c796e186f943ade9986bd86f6a46ece"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1/provenance.json",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/native/provenance.json",
+    "bytes": 6410,
+    "sha256": "ea828bf530587a53595eb0af1942311393b404dd223af321b22016f8826c80cb"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1_logs/44003240.err",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/logs/44003240.err",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "source": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/jf_historical_batch_20261109_r1_logs/44003240.out",
+    "copy": "/lscratch/monarin/tmp/jf-history-review-20261109-r1/build/history-review-evidence/logs/44003240.out",
+    "bytes": 6080,
+    "sha256": "c9f5204cabb790c57961630ca1a50b634ec6bcbdf6edd42287d1afa9e7ad7a01"
+  }
+]
