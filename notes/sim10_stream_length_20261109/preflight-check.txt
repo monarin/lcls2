@@ -1,17 +1,14 @@
-Perlmutter implementation preflight (native acceptance pending):
-- Python 3.11 AST parse of task scripts passes.
-- bash -n run.sbatch runtime.sh passes.
-- Explicit relocation: five JF streams, 100000 timestamps, original manifest hash.
-- findmnt identifies Lustre. Local-page-cache-only measurement mode.
-- Configure sim10 Names panel order checked for all five streams after correcting
-  the initial validator's inclusion of separate config Names.
-- Source provenance includes 16 execution/reference files. Native negative-test
-  log separately prints test_audit.py SHA256; summarize.py derives comparisons.
-- Native first attempt job61064869: all 11 SHA256 values passed, validator failed
-  at the now-fixed Configure assertion. No benchmark rates accepted.
-- Attempt02 job61064979: stopped before reading input on an allocation assertion.
-- Exclusive allocation grants four GPUs; each MPI step requests one and the
-  runner checks the selected UUID against the original step mask before imports.
-- Attempt03 job61065065: input validation, pilots and matrix pending.
-- Implementation review cfadd496a: pass with nonblocking suggestions; changes
-  since that review require re-review. No native results acceptance yet.
+Perlmutter completed validation, 2026-11-10 UTC:
+- Python3.11 AST and bash syntax checks pass.
+- Relocation, original manifest hash and five Configure sim10 panel orders pass.
+- Job61065065: all eleven SHA256 values, every SMD timestamp/offset and the full
+  100000-event DataSource traversal pass for the deliberate JF-only subset.
+- Native Cray MPI/CuPy/KvikIO/CUDA probe and both GPU pilots pass.
+- Full 1/2-stream x 10k/100k reversed matrix passes on one node/GPU/job.
+- Independent audit passes and 47 native audit tests pass in 26.622 seconds.
+- All cases show zero local bigdata pages after setup; remote traffic unverified.
+- Job and all steps COMPLETED 0:0 in 35m58s; UTC scheduler table retained.
+- Before/after input stat identities unchanged; no task-root temporary XTC input.
+- Source provenance pins 16 execution/reference files; test log prints test SHA.
+- Initial port review passed; final code/native results review pending.
+- Failed attempt01/02 evidence retained, without benchmark acceptance.

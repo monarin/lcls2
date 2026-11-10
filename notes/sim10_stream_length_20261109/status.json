@@ -1,5 +1,5 @@
 {
-  "phase": "perlmutter_native_validation",
+  "phase": "native_pass_results_review_pending",
   "accepted": false,
   "base_commit": "d7e573f7b",
   "review_round": 1,
@@ -7,20 +7,18 @@
   "unresolved": [],
   "checks": {
     "preflight": "Python3.11 AST, shell syntax, relocation, Configure sim10 panels, Lustre mount pass",
-    "native": "attempt01 all 11 SHA256 passed; attempt03 full validation in progress",
-    "audit": "pending native receipts",
-    "tests": "expanded native negative tests pending",
+    "native": "Full relocated fixture validation plus ten GPU cases pass; job COMPLETED 0:0",
+    "audit": "pass",
+    "tests": "47 native audit tests pass",
     "review": "round1 code pass",
     "perlmutter_data": "Exact SDF 100k Sim10 JF subset transferred: Globus SUCCEEDED, 11 files, 335875429007 bytes, checksum verification, zero faults; all destination sizes and SMD/manifest SHA256 verified. Bigdata SHA256 reread and runtime validation pending.",
-    "perlmutter_runtime": "eight Python hashes match SDF; compute preflight pending"
+    "perlmutter_runtime": "Cray MPICH/CuPy/KvikIO/CUDA native probe and GPU pilots pass"
   },
   "job": "61065065",
-  "implementation_commit": "97399922b",
+  "implementation_commit": "e39365a1d",
   "artifact_root": "/pscratch/sd/m/monarin/psana2-gpu/sim10-stream-length-20261109/attempt03",
   "remaining": [
-    "Compute fixture validation and pilots/matrix",
-    "Implementation and native results review",
-    "Native audit mutation tests"
+    "Independent review of latest code and complete native results"
   ],
   "sdf_job_state": "CANCELLED before start",
   "cancellation_pacific": "2026-11-09T16:05:24",
