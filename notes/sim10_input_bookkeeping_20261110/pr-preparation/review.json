@@ -1,0 +1,52 @@
+{
+  "reviewed_commit": "6f61a8d760c269b61f0f3a93c4f424d10f5932a2",
+  "verdict": "pass",
+  "summary": "The extraction is sound for PR preparation. The checked-out gpu_input_group.py, gpu_input_window.py, gpu_events.py hunk and both unit-test files match the supplied diff line for line, and the target's later borrowed/owned accounting, field-access and IPC code is untouched by these files. Pool ownership contracts hold on inspection: only the BD thread mutates _groups/_busy_slots/_candidates; the consumer-side callback only does SimpleQueue.put; eligibility (closed and unreferenced) is separate from CUDA completion (window.poll still gates _forget); a failed window.poll or release_raw leaves the state in _groups and _candidates for retry; slots and small credits are released only in _forget after release_raw succeeds; stale notifications are rejected by `self._groups.get(state.key) is state`; and a partial issue_groups failure leaves started reads in _groups with busy slots for close() to drain, while the reader's own issue_group/issue_batch handles its internal drain. No change to physical read counts/sizes, stream scheduling, or reader pending-list scans. The CHANGELOG, performance doc and PR body are honest: they attribute the 1.27 to 2.18 GiB/s, 50,101 to 101 poll and 31 native-test results to the original research implementation, state that the PR base has not been rerun on GPU or rebenchmarked, and claim only the 1,023-test CPU pass on this tree. Three low, non-blocking items are recorded (stale \"review pending\" line, fork-link reachability before publication, and a documented partial-failure behaviour that is a faithful port and out of redesign scope). No new-base GPU acceptance is asserted or inferred.",
+  "checks": [
+    "Read full psana/psana/gpu/gpu_input_group.py at checkout; content equals supplied diff (busy-slot set, SimpleQueue retirement queue, issue_groups validation-before-I/O, _issue_reserved, _collect_candidates identity check, candidate-only poll, _forget order release_raw -> groups -> busy -> candidates -> small, close() discarding stale notifications).",
+    "Read full psana/psana/gpu/gpu_input_window.py; notify_when_retirable registers once under the RLock, fires only when closed and unreferenced, is cleared after firing, and _try_retire calls _notify_retirable before the released/closed checks; CUDA event checks unchanged.",
+    "Read gpu_events.py _issue_group_reads (lines 888-917) and surrounding _issue_gpu_read/_wait_gpu_read/_drain_pending_gpu_read/_close_resources; controller change limited to replacing the per-group issue loop with issue_groups and the documented partial-failure comment; pool.close() is still called from _close_resources.",
+    "Read both test files in full; the seven new tests cover plan reuse without repolling, pre-I/O conflict rejection, partial submission ownership, live-window skipping with delayed CUDA retry, consumer-thread enqueue plus stale-notification rejection, release_raw failure preserving candidate/busy slot, and failed notification registration not binding the window.",
+    "Grepped psana for all uses of _busy_slots, _candidates, _retirement_queue, issue_groups, notify_when_retirable, plan_slots, .issue( and _pending_gpu_read; only test_gpu_slot_selection.py fakes pool internals and it was updated to seed/discard _busy_slots consistently.",
+    "Verified gpu_kvikio_read.issue_group (lines 248-291) still performs budget check and _check_slot_available before _submit_read, so issue_groups' pre-validation does not bypass reader-level guards.",
+    "Confirmed design.md contains no stale 'poll all groups' description; module docstring updated to 'Only unreferenced windows enter the retirement queue'.",
+    "Confirmed the checkout has no .github PULL_REQUEST_TEMPLATE and no prior root CHANGELOG.md; the new CHANGELOG.md has a single Unreleased/Fixed entry with no unrelated history.",
+    "Reviewed PR body and performance doc for honesty: native GPU and benchmark numbers attributed to the research branch/original implementation; explicit statement that the PR-base runtime has not been rerun on GPU or rebenchmarked; CPU count 1,023 matches supplied log; no issue closure asserted; checklist items for Actions and Fix #XXX left unchecked.",
+    "Cross-checked supplied CPU test log: 1023 passed in 10.19s with no failures or skips reported."
+  ],
+  "limitations": [
+    "No commands were run. The coordinator's SHA-256 byte-identity claims against reviewed commit 3c3799829 and the 'gpu_events other bytes equal target' claim could not be recomputed; verification was limited to confirming the checkout files match the supplied diff.",
+    "The exact base e032e0d56 and master template d04c3a114 are not present in this worktree and no git commands were permitted, so the base-vs-head diff and the master PR template text could not be independently confirmed; the body's Motivation / How to test the behavior? / Checklist structure matches the described template.",
+    "Native GPU tests, benchmarks and Perlmutter receipts could not be inspected; the GitHub links to monarin/lcls2 at 6f61a8d and 3c3799829 were not fetched and their reachability is unverified.",
+    "The CPU test result is taken from the supplied log; the tests were not executed by the reviewer."
+  ],
+  "findings": [
+    {
+      "id": "PREP-R1-01",
+      "severity": "low",
+      "blocking": false,
+      "file": "PR body (How to test the behavior? section)",
+      "line": 0,
+      "evidence": "Bullet reads: 'Independent review of this extracted port: pending.' This round-1 review has now completed with a pass and three non-blocking notes.",
+      "requested_change": "Before publication, replace the 'pending' bullet with the review outcome (round 1 pass, no blocking findings; native GPU/benchmark on this base still not rerun) so the body does not ship with a stale status."
+    },
+    {
+      "id": "PREP-R1-02",
+      "severity": "low",
+      "blocking": false,
+      "file": "psana/psana/gpu/docs/performance/input_group_bookkeeping.md",
+      "line": 69,
+      "evidence": "Evidence link targets https://github.com/monarin/lcls2/tree/3c3799829c659d739d5927511f86cc968a6fae6e/notes/sim10_input_bookkeeping_20261110 and the PR body links the doc at monarin/lcls2 blob 6f61a8d76. Both depend on those commits being pushed to the fork; reviewer could not fetch them.",
+      "requested_change": "At publication time confirm both fork commits are pushed and the paths resolve; otherwise the 'immutable evidence' claim is unverifiable to upstream reviewers."
+    },
+    {
+      "id": "PREP-R1-03",
+      "severity": "low",
+      "blocking": false,
+      "file": "psana/psana/gpu/gpu_events.py",
+      "line": 909,
+      "evidence": "If issue_groups raises mid-plan on a non-poisoning allocation failure (reader.issue_group GpuMemoryPressureError after earlier groups submitted), _pending_gpu_read is the empty list, so the pressure retry at line 1013 raises 'a pre-issued GPU read is already outstanding' and started reads are read only by pool.close(). The pre-port loop also left _pending_gpu_read non-None, so retry behaviour is unchanged; only the drain location moved from _drain_pending_gpu_read to pool.close(), as the in-code comment states.",
+      "requested_change": "No code change requested (faithful port of the reviewed implementation; redesign out of scope). Optionally mention in the PR body that partial-plan failures are drained by the pool at close, so upstream reviewers see the intended ownership path."
+    }
+  ]
+}

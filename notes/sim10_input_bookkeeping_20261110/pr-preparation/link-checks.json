@@ -1,0 +1,8 @@
+{
+  "checked_utc": "2026-11-10T22:45:50.864211Z",
+  "method": "GitHub connector fetch; returned complete file contents successfully",
+  "urls": [
+    "https://github.com/monarin/lcls2/blob/6f61a8d760c269b61f0f3a93c4f424d10f5932a2/psana/psana/gpu/docs/performance/input_group_bookkeeping.md",
+    "https://github.com/monarin/lcls2/blob/3c3799829c659d739d5927511f86cc968a6fae6e/notes/sim10_input_bookkeeping_20261110/README.md"
+  ]
+}

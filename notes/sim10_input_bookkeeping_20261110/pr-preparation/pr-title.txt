@@ -1,0 +1,1 @@
+Reduce repeated GPU input-pool scans during batch submission

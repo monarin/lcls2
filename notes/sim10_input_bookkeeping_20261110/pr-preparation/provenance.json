@@ -1,0 +1,18 @@
+{
+  "base": "e032e0d562f39ecfee735ebeae8b395f28d4b08e",
+  "head": "6f61a8d760c269b61f0f3a93c4f424d10f5932a2",
+  "original_fix_head": "3c3799829c659d739d5927511f86cc968a6fae6e",
+  "original_fix_base": "1805e1d9522a4e45aa611a59d83a4cf051678104",
+  "template_master": "d04c3a1148812b48fa78116c4aa8d3710efcd8e2",
+  "byte_identical_to_reviewed": {
+    "psana/psana/gpu/gpu_input_group.py": "3df71deff9c0df685f02ab4030537fffac93de67018a127ca0baa79fdc7ab2c6",
+    "psana/psana/gpu/gpu_input_window.py": "61b1203e91993ad6dc101a9c2614ca0a468ac01cb6724758f9189721c0551832",
+    "psana/psana/tests/gpu/unit/test_gpu_input_group.py": "8aa31dd31ca399e2ed930e8c79cdbe7633c79eef87a485e257646aa760510942",
+    "psana/psana/tests/gpu/unit/test_gpu_slot_selection.py": "4e9697d90b4265a66265263bd950658a0bceb430713b09382727fbe193ef8906"
+  },
+  "issue_group_reads_sha256": "7458030c5281186b48c00e4306a159266ee54f0c466117318a0a50c0632bcb04",
+  "gpu_events_other_bytes_equal_target": true,
+  "cpu_tests": "1023 passed in 10.19s",
+  "native_on_new_base": "not rerun; original research evidence only",
+  "publication": "not requested; prepare branch and draft body"
+}
