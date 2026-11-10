@@ -3,11 +3,19 @@
 **Moved to Perlmutter at the user's request.** SDF job **44043617** was cancelled
 while pending, before any allocation or data generation. No new performance
 result exists. Read [TRANSFER.md](TRANSFER.md) for the receiving agent's task,
-verified local dataset, runtime candidates, controls and required adaptations.
+transferred dataset, runtime candidates, controls and required adaptations.
+
+**The 100k Sim10 dataset is already on Perlmutter:**
+`/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf`.
+Globus completed all 11 files (312.808 GiB) with checksum verification and no
+faults. Local generation is no longer needed. See
+[transfer receipts](../sim10_globus_transfer_20261109/TRANSFER_UPDATE.md); runtime
+validation and benchmark acceptance remain pending.
 
 The remaining specification below describes the **cancelled SDF harness**, not
 a ready Perlmutter run. Its byte totals and Weka paths are reference values;
-TRANSFER.md requires recomputing them for the local source and Lustre.
+The same SDF fixture is now available, but paths and cold-I/O instrumentation
+require adaptation for Lustre; verify the measured byte counts on Perlmutter.
 
 The question is whether CUDA execution stream count or measured event count can
 explain the earlier one-BD results of about 2.15 versus 1.19 GiB/s. All cases use
