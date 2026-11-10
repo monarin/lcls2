@@ -1,0 +1,19 @@
+{
+  "url": "https://github.com/slac-lcls/lcls2/pull/298",
+  "number": 298,
+  "base": "features/psana2-gpu",
+  "base_sha": "e032e0d562f39ecfee735ebeae8b395f28d4b08e",
+  "head": "67c327a148a08b2aaf972e67e1e02e367c2b298f",
+  "reviewed_code_commit": "6f61a8d760c269b61f0f3a93c4f424d10f5932a2",
+  "latest_change": "CHANGELOG PR link only",
+  "state": "open",
+  "draft": false,
+  "mergeable": true,
+  "mergeable_state": "clean",
+  "files": 7,
+  "additions": 310,
+  "deletions": 19,
+  "actions_reported": 0,
+  "checked_utc": "2026-11-10T22:56:50.037834Z",
+  "creation_method": "gh CLI; GitHub connector create was denied403 by integration permissions"
+}

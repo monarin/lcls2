@@ -39,3 +39,11 @@ the body. No code changed after review. Review limitations remain in review.json
 
 The exact reviewer context is preserved as text in review-context.json with its
 SHA256; JSON encoding preserves whitespace inside the embedded source diff.
+
+## Publication
+
+Opened [PR #298](https://github.com/slac-lcls/lcls2/pull/298) against
+`slac-lcls/lcls2:features/psana2-gpu`. Head `67c327a14` adds only the changelog
+PR link after reviewed code commit `6f61a8d76`. GitHub reports mergeable/clean.
+No Actions runs reported; target psana/DAQ workflows use schedule/manual
+triggers. Exact-base GPU validation remains unrun. See publication.json.

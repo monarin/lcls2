@@ -1,20 +1,19 @@
 {
-  "phase": "prepared",
+  "phase": "pr_open",
   "review_round": 1,
   "review_limit": 3,
-  "head": "6f61a8d760c269b61f0f3a93c4f424d10f5932a2",
+  "head": "67c327a148a08b2aaf972e67e1e02e367c2b298f",
   "target": "slac-lcls/lcls2:features/psana2-gpu",
   "target_sha": "e032e0d562f39ecfee735ebeae8b395f28d4b08e",
   "branch": "monarin:fix/gpu-input-group-bookkeeping",
   "cpu": "1023 passed",
   "gpu": "prior fix native evidence; exact target port not rerun",
-  "pr": "not opened; branch pushed and title/body ready",
+  "pr": "https://github.com/slac-lcls/lcls2/pull/298",
   "review_verdict": "pass",
   "reviewed_commit": "6f61a8d760c269b61f0f3a93c4f424d10f5932a2",
   "unresolved_blockers": [],
   "followup": [
-    "Open PR targeting features/psana2-gpu",
-    "Add PR link to changelog",
-    "Observe GitHub Actions; exact-base GPU validation not rerun"
+    "GitHub Actions not triggered by target psana/DAQ workflow configuration",
+    "Exact-base GPU validation not rerun"
   ]
 }

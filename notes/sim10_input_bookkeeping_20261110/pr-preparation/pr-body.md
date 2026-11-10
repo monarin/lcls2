@@ -47,6 +47,7 @@ PS_PARALLEL=mpi python -m pytest -q psana/psana/tests/gpu/unit
 - [ ] Does the PR use "Fix #XXX" notation to tell GitHub to close the relevant issue numbered XXX when the PR is merged?
 
 The target branch has no root changelog, so this adds a minimal Unreleased/Fixed
-entry following master's format. Add its PR-number link once the PR exists.
-Actions are pending PR creation. No issue closure is asserted for this focused
+entry following master's format.
+No GitHub Actions runs have been reported for this head. The target branch's
+psana/DAQ test workflows currently use scheduled/manual triggers, not PR triggers. No issue closure is asserted for this focused
 bookkeeping change.
