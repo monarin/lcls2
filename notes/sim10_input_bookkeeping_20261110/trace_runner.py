@@ -35,10 +35,15 @@ def main():
         from psana.gpu.gpu_input_group import InputGroupPool
         import hashlib
         import inspect
-        for method in ('poll', 'plan_slots', 'issue') + (('issue_groups', '_issue_reserved') if os.environ['SIM10_VARIANT']=='new' else ()):
+        measured_methods = {'poll': 'input.poll', 'plan_slots': 'input.plan_slots'}
+        if os.environ['SIM10_VARIANT']=='new':
+            measured_methods.update(issue_groups='input.issue_groups', _issue_reserved='input.issue')
+        else:
+            measured_methods['issue']='input.issue'
+        for method, phase in measured_methods.items():
             fn = getattr(InputGroupPool, method)
             recorder.inventory.append(dict(function=fn.__qualname__,
-                path=inspect.getfile(fn), ranges=['input.' + method],
+                path=inspect.getfile(fn), ranges=[phase],
                 source_sha256=hashlib.sha256(inspect.getsource(fn).encode()).hexdigest()))
         poll = InputGroupPool.poll
         poll_counts = dict(calls=0, retained_states_at_poll=0, max_states=0, reclaimed=0)

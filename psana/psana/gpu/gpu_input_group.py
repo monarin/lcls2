@@ -172,7 +172,8 @@ class InputGroupPool:
         The supplied window must own this read via retain_input() and use
         deferred retirement. Separate windows may share a batched parser
         allocation through its release callback; the group API does not require
-        a parser launch per read request.
+        a parser launch per read request. Bind only after notification registration
+        succeeds, so every bound window has a path into the candidate queue.
         """
         state = self._groups[key]
         if state.window is not None:
@@ -182,11 +183,11 @@ class InputGroupPool:
                 or window.batch.data_gpu is not read.data_gpu
                 or not np.array_equal(window.desc_table, read.desc_table)):
             raise ValueError('window does not match this group or lacks deferred retirement')
-        state.window = window
         # Notification may come from a consumer thread. It only enqueues; the
         # BD thread alone mutates pool state and releases raw-slot ownership.
         queue = self._retirement_queue
         window.notify_when_retirable(lambda: queue.put(state))
+        state.window = window
         # Retain the pool's raw hold as well as the parser's, until poll removes
         # the group. This makes the backing safe even through partial setup.
         for d in state.group.dgrams:

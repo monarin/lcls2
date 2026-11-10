@@ -338,3 +338,48 @@ def test_consumer_thread_only_enqueues_and_stale_notification_cannot_reclaim_new
     assert pool.live_keys == (key,) and pool._busy_slots == {0}
     pool.close()
     assert pool._retirement_queue.empty() and not pool._candidates
+
+
+def test_raw_hold_release_failure_preserves_candidate_and_busy_slot_until_retry(io):
+    pool, groups = setup(io, slots=1)
+    key = pool.issue(0, groups[1])
+    bind(pool, key)
+    state = pool._groups[key]
+    release = state.release_raw
+    calls = []
+
+    def fail_once():
+        calls.append('release')
+        if len(calls) == 1:
+            raise RuntimeError('raw hold release failed')
+        release()
+
+    state.release_raw = fail_once
+    pool.take_use(key, 0).wait_until_safe_to_reuse()
+    with pytest.raises(RuntimeError, match='raw hold release failed'):
+        pool.poll()
+    assert pool._groups[key] is state and pool._candidates[key] is state
+    assert pool._busy_slots == {0} and state.release_raw is fail_once
+    assert pool.reader._input_holds[0] == 1
+    assert pool.poll() == (key,)
+    assert not pool._groups and not pool._candidates and not pool._busy_slots
+    assert pool.reader._input_holds[0] == 0
+    pool.close()
+
+
+def test_failed_notification_registration_does_not_leave_untracked_bound_window(io):
+    pool, groups = setup(io, slots=1)
+    key = pool.issue(0, groups[1])
+    read = pool.read(key)
+    batch = NS(data_gpu=read.data_gpu, n_dgrams=1, walk_done=Token())
+    rejected = InputWindow(key[0], key[1], batch, read.desc_table,
+        release=read.retain_input(), defer_retirement=True)
+    rejected.notify_when_retirable(lambda: None)
+    with pytest.raises(RuntimeError, match='already registered'):
+        pool.bind(key, rejected)
+    assert pool._groups[key].window is None
+    assert rejected.close()
+    window = bind(pool, key)
+    pool.take_use(key, 0).wait_until_safe_to_reuse()
+    assert pool.poll() == (key,) and window.released
+    pool.close()

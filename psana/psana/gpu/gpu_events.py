@@ -831,6 +831,9 @@ class GpuEventManager:
         pending = []
         self._pending_gpu_read = pending
         with hold:
+            # On partial failure the pool owns started reads, even though this
+            # pending list and the schedule stay unpopulated. The non-None
+            # _pending_gpu_read guard prevents reissue; pool.close drains them.
             keys = inputs.issue_groups(self._input_batch_id, groups, slots=slots)
             if keys is None:
                 raise RuntimeError('reserved input groups became unavailable')

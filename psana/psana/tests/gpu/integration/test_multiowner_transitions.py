@@ -76,7 +76,12 @@ def test_transition_drains_pending_multiowner_consumers_before_dispatch(monkeypa
         assert order == ['consumer'] * len(windows) + ['dispatch']
         np.testing.assert_array_equal(copied.get(), expected[0])
         assert cp.asnumpy(copied_gain) == cp.asnumpy(old_gain) == 1
-        assert cp.asnumpy(constants.get('camera', 'gain')) == (2 if service == TransitionId.BeginStep else 1)
+        # Run-scoped constants remain the same allocation across BeginStep.
+        # Transition dispatch changes host state, but does not re-upload it.
+        assert m.dsparms.calibconst['camera']['gain'] == 2
+        assert constants.get('camera', 'gain') is old_gain
+        assert cp.asnumpy(constants.get('camera', 'gain')) == 1
+        assert getattr(m, '_step_generation', 0) == (1 if service == TransitionId.BeginStep else 0)
     finally:
         constants.close()
         for _ in m.event_pool.flush():

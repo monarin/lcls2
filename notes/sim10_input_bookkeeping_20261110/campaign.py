@@ -48,6 +48,8 @@ def main(out):
         print('Starting',name,flush=True)
         with (out/(name+'.log')).open('x') as log:
             subprocess.run(cmd,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=timeout)
+    launch('baseline-check',[HERE/'baseline_check.py',out/'baseline-check.json',out.parent/'baseline-test-tmp'],ranks=1)
+    require(json.loads((out/'baseline-check.json').read_text())['expected_failure_reproduced'],'Baseline diagnostic')
     launch('gpu-tests',[HERE/'gpu_tests.py',out/'gpu-tests.json',out.parent/'pytest-tmp'],ranks=1,timeout=240)
     tests=json.loads((out/'gpu-tests.json').read_text())
     require(tests['exitcode']==tests['failed']==tests['skipped']==0 and tests['passed']>0,'Native acceptance')

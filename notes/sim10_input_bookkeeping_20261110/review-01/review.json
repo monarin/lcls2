@@ -1,0 +1,74 @@
+{
+  "reviewed_commit": "95e6c3788e39afdd237bc115481802cd1bd33da8",
+  "verdict": "changes_requested",
+  "summary": "Round 1 implementation review of the input bookkeeping change. Code inspection found no blocking defects: the busy-slot set and retirement queue are maintained only with live group ownership; InputWindow notifies once under its lock before the completion check and the callback only enqueues; _collect_candidates rejects stale states by identity; candidates survive not-ready and error results; _try_retire CUDA behaviour is unchanged; issue_groups validates the whole plan before I/O and partial submissions stay pool-owned and drainable (reader.wait_batch does not consult the poison flag); the controller's pending list is an empty non-None list on that exception so the existing outstanding-read guard still fires, matching old behaviour; plan_slots polls once on the production path; standalone issue() is preserved; no read sizes, counts or callback sizes change. New unit tests cover batch submission without repolling, pre-I/O conflict rejection, partial-batch ownership, live-window skipping with delayed CUDA retry, and consumer-thread enqueue plus stale-notification rejection; the controller path is exercised by test_gpu_group_runtime. The acceptance harness copies exactly three files over a symlinked frozen tree, asserts the frozen install equals the frozen snapshot, validates resolved runtime identity per variant, rejects pytest skips, reuses accepted checks.validate and the cold gate, and runs 8 clean plus 4 timing matched cases with identical controls. Verdict is changes_requested only because the required native GPU test results and matched Perlmutter old/new receipts are still pending; CPU mocks cannot stand in for them. Four low/medium non-blocking findings are listed.",
+  "checks": [
+    "Read scope.md and status.json for notes/sim10_input_bookkeeping_20261110; phase implementation_review, round 1 of 3, gpu and performance checks pending",
+    "Compared psana/psana/gpu/gpu_input_group.py against notes/sim10_trace_20261110/frozen/gpu_input_group.py: busy set, SimpleQueue, candidates dict, issue_groups, _issue_reserved, _collect_candidates, poll over candidates only, _forget discards slot/candidate, close drains stale notifications",
+    "Compared gpu_input_window.py against frozen copy: notify_when_retirable single registration, _notify_retirable fires once when closed and unreferenced under lock, called at top of _try_retire before completion check; retire/release/retry logic otherwise unchanged",
+    "Compared gpu_events.py _issue_group_reads with frozen: single hunk replaces per-group issue loop with issue_groups; pending.extend and issued.update only after success; rest of file structure matches by grep and line offsets",
+    "Traced controller error handling: _retire_issue_and_yield GpuMemoryPressureError retry, _issue_gpu_read guard on non-None pending, _wait_gpu_read, _drain_pending_gpu_read, _close_resources -> InputGroupPool.close",
+    "Read gpu_kvikio_read.issue_group/_submit_read/wait_batch: partial submission drains and poisons, but wait_batch on earlier pending batches does not check _failure, so pool.close can drain earlier groups after a mid-batch failure",
+    "Read all 17 tests in test_gpu_input_group.py including 5 new tests; read test_gpu_slot_selection.py fixture setting _busy_slots; grep confirmed test_gpu_group_runtime.py drives GpuEventManager with InputGroupPool on CPU",
+    "Read cpu-tests.log: 968 passed in 8.15s; cpu_tests.py bootstraps checkout psana over SDF install and asserts gpu_input_group resolves to checkout source",
+    "Read prepare_overlay.py, runtime_identity.py, gpu_tests.py, campaign.py, run.sbatch, runner.py, trace_runner.py; compared runner.py to accepted sim10_stream_length_20261109/runner.py (only overlay path insert, two extra modules in identity list, validate() call differ); compared trace_runner.py to accepted sim10_trace_20261110/trace_runner.py",
+    "Read perlmutter-runtime.json (8 modules, unresolved frozen paths), clean_exec.py env whitelist, runtime.sh (PYTHONDONTWRITEBYTECODE=1, PS_PARALLEL=mpi, PS_SMD_N_EVENTS=1000), support.py constants (BULK 524288, BATCH 100, BUDGET 6, WORKERS 8), sim10_trace campaign.validate and file_stats",
+    "Confirmed six integration test files named in gpu_tests.py exist; confirmed bulk_phase_timing exposes install, measured_function, Recorder.phase/snapshot/inventory/counters/active/steady and reader counters total_requests/total_bytes",
+    "Read prior diagnosis notes/sim10_trace_20261110/README.md; the implemented fix matches its Next scoped fix section"
+  ],
+  "limitations": [
+    "Reviewer has no access to the Perlmutter native runtime, frozen install-B, or the dataset from SDF; native GPU tests and the matched 10k old/new comparison are pending and were not inspected",
+    "No commands were run; file equivalence between the checkout, the frozen snapshots and base 1805e1d9 was judged by reading and grep, not by git diff or hashes; prepare_overlay asserts frozen-install equality at run time",
+    "Full-file identity of gpu_events.py outside the inspected hunk is inferred from matching grep hits and a one-line offset shift, not from a complete diff",
+    "cpu-tests.log records the pass count but not the commit, PS_PARALLEL value, or Python version; those are taken from status.json and cpu_tests.py",
+    "Path resolution behaviour of /pscratch and the attempt directory on Perlmutter (symlink components) could not be checked; runtime_identity.validate fails closed in either case",
+    "Raw prior timing receipt arrays were not read, per scope"
+  ],
+  "findings": [
+    {
+      "id": "IBK-R1-01",
+      "severity": "high",
+      "blocking": true,
+      "file": "notes/sim10_input_bookkeeping_20261110/status.json",
+      "line": 11,
+      "evidence": "checks.gpu is \"pending\" and checks.performance is \"pending matched old/new 10k on Perlmutter\". scope.md requires GPU ownership/transition tests before the matched comparison and timing runs to confirm scan removal. No gpu-tests.json, complete.json, or case receipts exist under the campaign notes. Review rules state a missing required test result prevents a pass and GPU acceptance must not be inferred from CPU mocks.",
+      "requested_change": "Run notes/sim10_input_bookkeeping_20261110/run.sbatch on Perlmutter, commit gpu-tests.json, provenance.json, the 12 case receipts and complete.json (or failed.json), and update status.json before requesting a pass."
+    },
+    {
+      "id": "IBK-R1-02",
+      "severity": "medium",
+      "blocking": false,
+      "file": "psana/psana/tests/gpu/unit/test_gpu_input_group.py",
+      "line": 253,
+      "evidence": "The scope invariant 'release_raw failure preserves group, candidate, slot' has no direct test. Existing tests inject failures in the window release callback (test_batch_detaches_before_callback_and_is_not_retired_twice), CUDA query (test_query_failure...), and shutdown wait (test_shutdown_wait_failure...), but none make state.release_raw raise inside _forget and then assert the key stays in live_keys, _candidates and _busy_slots and that a later poll reclaims it.",
+      "requested_change": "Add a unit test that wraps state.release_raw to raise once, calls pool.poll(), asserts the state remains in _groups/_candidates/_busy_slots with release_raw still set, then asserts a second poll reclaims and clears all three."
+    },
+    {
+      "id": "IBK-R1-03",
+      "severity": "low",
+      "blocking": false,
+      "file": "psana/psana/gpu/gpu_events.py",
+      "line": 834,
+      "evidence": "On a mid-batch exception from issue_groups, pending stays an empty list and _group_schedule.issued is not updated for the groups that were submitted and remain owned by the pool. The old loop recorded each successful group in issued. Behaviour is equivalent in practice because _pending_gpu_read is non-None so _issue_gpu_read raises 'a pre-issued GPU read is already outstanding' on any retry and _close_resources drains the pool, but the schedule/pool divergence is undocumented.",
+      "requested_change": "Add a comment at this site stating that after a partial issue_groups failure the pool, not the schedule or pending list, owns the submitted groups and that the outstanding-read guard prevents reissue; optionally add a controller-level test mirroring test_partial_batch_submission_failure_keeps_started_reads_owned."
+    },
+    {
+      "id": "IBK-R1-04",
+      "severity": "low",
+      "blocking": false,
+      "file": "psana/psana/gpu/gpu_input_group.py",
+      "line": 185,
+      "evidence": "bind sets state.window before notify_when_retirable. If registration raises (notification already registered on the window), the group keeps a bound window that will never enqueue itself, so poll() and drain_idle() never reclaim it; only close() does. Previously poll scanned every bound window. This is an API-misuse edge, not a production path.",
+      "requested_change": "Register the notification before assigning state.window (or reset state.window on registration failure) so a group without a pool notification is never left bound, and note the invariant in the bind docstring."
+    },
+    {
+      "id": "IBK-R1-05",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_input_bookkeeping_20261110/trace_runner.py",
+      "line": 38,
+      "evidence": "For the new variant the inventory records InputGroupPool.issue with ranges ['input.issue'] although issue is not wrapped; _issue_reserved is the function timed under 'input.issue' and is also recorded. The recorded patch inventory therefore overstates what was instrumented.",
+      "requested_change": "Record issue in the inventory only for the old variant, or give it an empty/explicit 'not measured' ranges entry for the new variant so the phases.json patch list matches the installed wrappers."
+    }
+  ]
+}

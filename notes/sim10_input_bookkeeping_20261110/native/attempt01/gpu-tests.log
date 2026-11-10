@@ -1,0 +1,103 @@
+........................F......                                          [100%]
+=================================== FAILURES ===================================
+____ test_transition_drains_pending_multiowner_consumers_before_dispatch[6] ____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f619559bd50>
+service = 6
+
+    @pytest.mark.parametrize('service', [TransitionId.BeginStep, TransitionId.EndRun])
+    def test_transition_drains_pending_multiowner_consumers_before_dispatch(monkeypatch, service):
+        import cupy as cp
+        _, detector, _, specs, expected, owner = fixture_inputs(cp)
+        producer = cp.cuda.Stream(non_blocking=True)
+        windows = tuple(owner((i,), range(4), producer) for i in range(2))
+        m = gpu_events.GpuEventManager.__new__(gpu_events.GpuEventManager)
+        m.event_pool = EventPool(n=1)
+        m._first_batch_logged = True
+        m.input_preparers, m.configs = {'camera': detector}, []
+        record = m.event_pool.submit(NS(iter_events=lambda: iter(specs)), None, [],
+                                     m.input_preparers, input_windows=windows, batch_id=7)
+        output = record.prepared_inputs['camera'].data[0]
+        lease = record.leases[0]
+        consumer = cp.cuda.Stream(non_blocking=True)
+        delay = cp.RawKernel('''extern "C" __global__ void delay(unsigned long long ticks) {
+            unsigned long long start = clock64();
+            while (clock64() - start < ticks) {}
+        }''', 'delay')
+        delay.compile()
+        order = []
+        from psana.gpu.gpu_task import RequestedConstants
+        from psana.gpu.gpu_budget import _GpuBudget
+        constants = RequestedConstants([('camera', 'gain')], _GpuBudget(4096))
+        m.dsparms = NS(calibconst={'camera': {'gain': np.array(1., np.float64)}})
+        constants.refresh(m.dsparms.calibconst)
+        old_gain = constants.get('camera', 'gain')
+        m._task_constants = constants
+        m._trim_gpu_caches = lambda: None
+        m._compute_subbatch_budget = lambda: 4096
+
+        with consumer:
+            consumer.wait_event(lease.result_ready)
+            delay((1,), (1,), (np.uint64(60000000),))
+            copied = output.copy()
+            copied_gain = old_gain.copy()
+            done = cp.cuda.Event(disable_timing=True)
+            done.record(consumer)
+
+        class Completion:
+            def synchronize(self):
+                done.synchronize()
+                order.append('consumer')
+        lease.register_consumer_done(Completion())
+        for window in windows:
+            assert not window.close()
+        assert m.event_pool.active_count == 1
+        monkeypatch.setattr(gpu_events, '_iter_step_events', lambda packet, configs: iter(packet))
+
+        def dispatch(dgrams):
+            assert done.done and not m.event_pool.active_count
+            assert all(w.released for w in windows)
+            assert constants.get('camera', 'gain') is old_gain
+            m.dsparms.calibconst['camera']['gain'][...] = 2
+            order.append('dispatch')
+        m.run = NS(_handle_transition=dispatch)
+        dg = NS(service=lambda: service)
+        try:
+            assert list(m._handle_steps({0: ([(service, [dg])], [])})) == []
+            assert order == ['consumer'] * len(windows) + ['dispatch']
+            np.testing.assert_array_equal(copied.get(), expected[0])
+            assert cp.asnumpy(copied_gain) == cp.asnumpy(old_gain) == 1
+>           assert cp.asnumpy(constants.get('camera', 'gain')) == (2 if service == TransitionId.BeginStep else 1)
+E           AssertionError: assert array(1.) == 2
+E            +  where array(1.) = <function asnumpy at 0x7f61ac5a65c0>(array(1.))
+E            +    where <function asnumpy at 0x7f61ac5a65c0> = <module 'cupy' from '/pscratch/sd/m/monarin/psana2-gpu/perlmutter-kvikio2610-20261015/attempt01/env/lib/python3.11/site-packages/cupy/__init__.py'>.asnumpy
+E            +    and   array(1.) = get('camera', 'gain')
+E            +      where get = <psana.gpu.gpu_task.RequestedConstants object at 0x7f6194dce010>.get
+
+/pscratch/sd/m/monarin/psana2-gpu/sim10-input-bookkeeping-20261110/source/psana/psana/tests/gpu/integration/test_multiowner_transitions.py:79: AssertionError
+=============================== warnings summary ===============================
+gpu/integration/test_gpu_input_group_device.py::test_later_group_reuses_storage_while_earlier_cuda_consumers_run[False]
+gpu/integration/test_gpu_input_group_device.py::test_later_group_reuses_storage_while_earlier_cuda_consumers_run[True]
+  /pscratch/sd/m/monarin/psana2-gpu/sim10-input-bookkeeping-20261110/source/psana/psana/tests/gpu/integration/test_gpu_input_group_device.py:60: UserWarning: KvikioGpuReader: kvikio is using the CPU-fallback path (NVMe → CPU DRAM → GPU VRAM).  True GDS (NVMe → GPU VRAM direct) is not available — possible causes: Lustre/GPFS filesystem, cuFile driver not loaded, or KVIKIO_COMPAT_MODE=1.  Performance will be limited by both NVMe read speed AND PCIe CPU→GPU transfer bandwidth.
+    reader = KvikioGpuReader(n_slots=3)
+
+gpu/integration/test_gpu_input_window_device.py::test_retained_input_bytes_and_locators_survive_slow_slot_reuse
+  /pscratch/sd/m/monarin/psana2-gpu/sim10-input-bookkeeping-20261110/source/psana/psana/tests/gpu/integration/test_gpu_input_window_device.py:51: UserWarning: KvikioGpuReader: kvikio is using the CPU-fallback path (NVMe → CPU DRAM → GPU VRAM).  True GDS (NVMe → GPU VRAM direct) is not available — possible causes: Lustre/GPFS filesystem, cuFile driver not loaded, or KVIKIO_COMPAT_MODE=1.  Performance will be limited by both NVMe read speed AND PCIe CPU→GPU transfer bandwidth.
+    reader = KvikioGpuReader(n_slots=2, bulk_read=False)
+
+gpu/integration/test_gpu_group_ownership_device.py: 14 warnings
+gpu/integration/test_gpu_group_schedule_device.py: 5 warnings
+  /pscratch/sd/m/monarin/psana2-gpu/sim10-input-bookkeeping-20261110/source/psana/psana/tests/gpu/integration/gpu_group_fixture.py:77: UserWarning: KvikioGpuReader: kvikio is using the CPU-fallback path (NVMe → CPU DRAM → GPU VRAM).  True GDS (NVMe → GPU VRAM direct) is not available — possible causes: Lustre/GPFS filesystem, cuFile driver not loaded, or KVIKIO_COMPAT_MODE=1.  Performance will be limited by both NVMe read speed AND PCIe CPU→GPU transfer bandwidth.
+    m.gpu_reader = KvikioGpuReader(n_slots=2020, budget=budget)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../../../../pscratch/sd/m/monarin/psana2-gpu/sim10-input-bookkeeping-20261110/source/psana/psana/tests/gpu/integration/test_multiowner_transitions.py::test_transition_drains_pending_multiowner_consumers_before_dispatch[6]
+1 failed, 30 passed, 22 warnings in 10.36s
+Traceback (most recent call last):
+  File "/pscratch/sd/m/monarin/psana2-gpu/sim10-input-bookkeeping-20261110/source/notes/sim10_input_bookkeeping_20261110/gpu_tests.py", line 32, in <module>
+    assert result==0 and receipt.passed>0 and receipt.skipped==receipt.failed==0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+srun: error: nid002889: task 0: Exited with exit code 1
+srun: Terminating StepId=61098117.0
