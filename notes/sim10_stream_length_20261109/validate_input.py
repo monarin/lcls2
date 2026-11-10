@@ -28,7 +28,7 @@ def main(output):
         bdpath=Path(stream['files']['bd']['path']);smdpath=Path(stream['files']['smd']['path'])
         with bdpath.open('rb') as bd,smdpath.open('rb') as smd:
             bcfg=x.read_record(bd,0);scfg=x.read_record(smd,0);schemas=x.schemas(bcfg);ss=x.schemas(scfg)
-            jf=[s for s in schemas.values() if s['detname']=='jungfrau']
+            jf=[s for s in schemas.values() if s['detname']=='jungfrau' and s['alg']=='sim10']
             fields=[('seed',1,1),('frame_cnt',3,0),('timestamp',3,0),('hotPixelThresh',1,0),('numHotPixels',2,0),('maxHotPixels',2,0)]
             require([s['segment'] for s in jf]==stream['panels'],'Configure panel order')
             require(all(s['alg']=='sim10' and s['fields']==fields for s in jf),'Configure Names fields')

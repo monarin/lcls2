@@ -1,7 +1,7 @@
 """Recompute topology, cold-cache, exact I/O and rate acceptance from native rows."""
 import json,math,sys
 from pathlib import Path
-from support import require as need,ts_hash,sha,MODE,HERE,TRANSFER,source_hashes,FIXTURE,EVENT_BYTES,BULK,BATCH,BUDGET,MATRIX,histogram
+from support import require as need,ts_hash,sha,MODE,HERE,TRANSFER,source_hashes,FIXTURE,ROOT,EVENT_BYTES,BULK,BATCH,BUDGET,MATRIX,histogram
 
 def audit(root):
     def read(name):return json.loads((root/name).read_text())
@@ -22,6 +22,8 @@ def audit(root):
     need(sha(root/'validation.json')==p['validation_sha256'] and validation['status']=='pass' and validation['event_count']==100000 and validation['steps']==[100000] and validation['runs']==1,'Native input acceptance')
     need(validation['timestamp_sha256']==info['timestamp_sha256'] and validation['generation_sha256']==info['generation_sha256'] and validation['transfer_sha256']==sha(TRANSFER),'Native input identity')
     transfer=json.loads(TRANSFER.read_text())
+    need(info['directory']==str(ROOT) and info['exp']=='mfx101555026' and info['run']==10,'Input location')
+    need(p['staged']==[dict(stream=t['stream'],kind=t['kind'],source=t['source_path'],target=t['destination_path'],bytes=t['bytes'],sha256=t['sha256']) for t in transfer['files'] if t['kind']!='manifest'],'Relocated file mapping')
     need(validation['files']==[dict(path=t['destination_path'],bytes=t['bytes'],sha256=t['sha256']) for t in transfer['files']],'Native file hashes')
     need([t['stream'] for t in validation['streams']]==[5,6,7,8,9] and all(t['events']==100000 for t in validation['streams']),'Native stream counts')
     matrix=MATRIX
@@ -56,7 +58,7 @@ def audit(root):
             need(x['memory']['total']>BUDGET*2**30 and 0<=x['memory']['pool_used']<=x['memory']['pool_total'],'GPU memory')
             need(k>0 and stamps==sorted(set(stamps)),'Local partition')
             need([t for c in x['callbacks'] for t in c['timestamps']]==stamps,'Callback identity')
-            need(all(0<c['size']<=BATCH and c['size']==len(c['timestamps']) for c in x['callbacks']),'Callback sizes')
+            need(len(x['callbacks'])==k//BATCH and all(c['size']==BATCH and len(c['timestamps'])==BATCH for c in x['callbacks']),'Callback sizes/histogram')
             need(len({c['stream'] for c in x['callbacks']})==streams,'Execution streams')
             need(x['drain']==[dict(closed=True,pending=0,active=0,held=0,peers=bds)],'Drain/peer discovery')
             if device is None:device=x['device']

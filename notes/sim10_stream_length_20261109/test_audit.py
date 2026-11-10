@@ -43,6 +43,7 @@ class Audit(unittest.TestCase):
     def test_stream_setting(self):self.rejects(lambda r:r['settings'].update(streams=1),'Case identity')
     def test_runtime(self):self.rejects(lambda r:r['rows'][2]['runtime_files'].clear(),'Frozen runtime')
     def test_helper(self):self.rejects(lambda r:r['rows'][0]['timestamps'].append(0),'Helper data')
+    def test_callback_size(self):self.rejects(lambda r:r['rows'][2]['callbacks'][0].update(size=99),'Callback sizes/histogram')
     def test_mode(self):self.rejects(lambda r:r['measurement'].update(mode='network cold'),'Measurement mode')
     def test_mask(self):self.rejects(lambda r:r['rows'][0].update(mask='GPU-wrong'),'Rank GPU masks')
     def test_job(self):self.rejects(lambda r:r.update(job='different'),'Job identity')

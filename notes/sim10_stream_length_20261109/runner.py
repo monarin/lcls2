@@ -73,7 +73,7 @@ def main(a):
         n=len(delivered);require(n>0 and delivered==sorted(set(delivered)),'Local ordered unique events')
         require([t for c in task.callbacks for t in c['timestamps']]==delivered,'Callbacks vs delivery')
         require(len({c['stream'] for c in task.callbacks})==a.streams,'Requested execution streams must be exercised')
-        require(all(0<c['size']<=BATCH and c['size']==len(c['timestamps']) for c in task.callbacks),'Callback sizes')
+        require(len(task.callbacks)==n//BATCH and all(c['size']==BATCH and len(c['timestamps'])==BATCH for c in task.callbacks),'Callback sizes/histogram')
         require(io['requests']==io['completed_requests']==5*n and io['requested_bytes']==io['completed_bytes']==EVENT_BYTES*n,'Exact GPU I/O')
         require(io['read_size_histogram']==histogram(n),'Read size histogram')
         require(cpu_reads[0]==io['pressure_drains']==0,'CPU payload or admission drain')
