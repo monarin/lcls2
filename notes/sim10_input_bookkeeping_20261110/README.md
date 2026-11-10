@@ -2,7 +2,7 @@
 
 The matched Perlmutter 10k test confirms that removing repeated input-pool scans
 eliminates most of the extra two-stream host cost. This change preserves physical
-reads, callback sizes, memory ownership and CUDA scheduling. Final review pending.
+reads, callback sizes, memory ownership and CUDA scheduling. Claude round 2 passed with no blocking findings.
 
 ## Measured result
 
@@ -86,7 +86,7 @@ batch submission remains pool-owned and drainable through existing cleanup.
 - Eight clean and four timing cases passed. Slurm job and all steps completed
   with exit 0. `summarize.py` reproduces the summary from full receipts.
 - Round 1 reviewed 95e6c3788 and requested native evidence before approval;
-  four nonblocking suggestions were implemented in c13d3df31. Final review pending.
+  four nonblocking suggestions were implemented in c13d3df31. Claude round 2 passed with no blocking findings.
 
 Failed attempts remain disclosed. Attempt 01 (61098117) passed 30 GPU tests but
 failed a stale assertion expecting BeginStep to refresh device constants. The
@@ -111,3 +111,9 @@ in b95b789ca. No performance conclusions come from those failed attempts.
   `review-02/`, `native/attempt03/complete.json`, `provenance.json`, `slurm.txt`.
 - `native/attempt03/SHA256SUMS.remote` verifies copies of authoritative result
   JSON files. `summary.json` is derived locally; Slurm receipt is queried directly.
+
+Final reviewed commit: `8b7b9ffc042797ec95722ee83e3078bc4e937ebd`.
+Round 2 verdict is **pass**, with no blocking findings. Its low-priority hash
+record request IBK-R2-01 is addressed in `status.json`: each final checkout
+runtime SHA256 was computed and matched against the native provenance. The
+review closure commit changes only evidence/documentation.
