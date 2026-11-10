@@ -1,0 +1,8 @@
+{
+  "phase": "preparing",
+  "scope": "corrected Ada 10k baseline",
+  "pr_sha": "67c327a148a08b2aaf972e67e1e02e367c2b298f",
+  "round_limit": 3,
+  "checks": {},
+  "unresolved": []
+}

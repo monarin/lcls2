@@ -1,0 +1,12 @@
+{
+  "cpu_unit_tests": {
+    "passed": 1023,
+    "seconds": 6.55,
+    "runtime": "PR 67c327a14 Python with SDF install-B native",
+    "warning": "Sandbox denied network interface discovery; tests still passed. No MPI/GPU claim from this check."
+  },
+  "syntax": "all Python compile and bash -n pass",
+  "native_source_comparison": "all tracked psana/xtcdata .pyx .pxd .cc .hh .h .cpp .c .cu match frozen build source",
+  "gpu": "pending allocation",
+  "performance": "pending allocation"
+}
