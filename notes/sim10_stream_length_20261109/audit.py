@@ -46,6 +46,7 @@ def audit(root):
         for x in rows:
             need(x['host']==host and 'policy: interleave' in x['numa_policy'],'Placement')
             need(x['cleanup_complete'] and 'CRAY MPICH' in x['mpi'].upper(),'Cleanup/MPI')
+            need(p['gpu_uuid'] in x['inherited_uuids'] and len(x['inherited_uuids'])==1,'Step GPU allocation')
             need(x['mask']==(p['gpu_uuid'] if x['rank']==2 else ''),'Rank GPU masks')
             need(x['runtime_files']==json.loads((HERE/'perlmutter-runtime.json').read_text())['modules'],'Frozen runtime')
             if placement is None:placement=x['affinity'];runtime=x['runtime_files']

@@ -11,7 +11,7 @@ def main(output):
     try:
         inventory=subprocess.check_output(['nvidia-smi','--query-gpu=uuid,pci.bus_id,name,memory.total','--format=csv,noheader'],text=True)
         allocated=os.environ.get('CUDA_VISIBLE_DEVICES','').split(',')
-        require(len(allocated)==1 and allocated[0] not in ('','-1'),'One Slurm allocated GPU required')
+        require(allocated and all(x not in ('','-1') for x in allocated),'Slurm allocated GPUs required')
         os.environ['JF_GPU_UUID']=subprocess.check_output(['nvidia-smi','-i',allocated[0],'--query-gpu=uuid','--format=csv,noheader'],text=True).strip()
         require(os.environ['JF_GPU_UUID'].startswith('GPU-') and '\n' not in os.environ['JF_GPU_UUID'],'Allocated GPU UUID')
         cmd=launch(1,'validate_input.py',output/'validation.json')
@@ -22,7 +22,7 @@ def main(output):
         files=[dict(stream=s['stream'],kind=k,source=r['source_path'],target=r['path'],bytes=r['bytes'],sha256=r['sha256']) for s in streams for k,r in s['files'].items()]
         info=dict(exp='mfx101555026',run=10,directory=str(ROOT),files=[r['target'] for r in files if r['kind']=='bd'],timestamps=stamps,event_bytes=EVENT_BYTES,generation_sha256=sha(ROOT/'generation.json'),timestamp_sha256=ts_hash(stamps))
         write(output/'inputs.json',info)
-        write(output/'provenance.json',dict(staged=files,staging='transferred fixture reused in place',mode=MODE,mount=mount(),allocated_mask=allocated[0],gpu_inventory=inventory,gpu_uuid=os.environ['JF_GPU_UUID'],source_sha256=source_hashes(),acceptance=json.loads((FIXTURE/'acceptance.json').read_text()),validation_sha256=sha(output/'validation.json'),job=os.environ['SLURM_JOB_ID'],started=started))
+        write(output/'provenance.json',dict(staged=files,staging='transferred fixture reused in place',mode=MODE,mount=mount(),allocated_mask=','.join(allocated),gpu_inventory=inventory,gpu_uuid=os.environ['JF_GPU_UUID'],source_sha256=source_hashes(),acceptance=json.loads((FIXTURE/'acceptance.json').read_text()),validation_sha256=sha(output/'validation.json'),job=os.environ['SLURM_JOB_ID'],started=started))
         cases=[]
         for name,streams,events in MATRIX:
             cmd=launch(3,'runner.py','--inputs',output/'inputs.json','--output',output/(name+'.json'),'--bds',1,'--events',events,'--streams',streams)

@@ -4,6 +4,10 @@ from pathlib import Path
 from contextlib import closing
 from support import NOTES,require,sha,cache,diagnostics,MODE,affinity,source_hashes,write,histogram,EVENT_BYTES,BULK,BATCH,BUDGET,WORKERS
 rank_hint=int(os.environ['SLURM_PROCID'])
+inherited_mask=os.environ.get('CUDA_VISIBLE_DEVICES','')
+require(bool(inherited_mask),'Missing step GPU allocation')
+inherited_uuids=subprocess.check_output(['nvidia-smi','-i',inherited_mask,'--query-gpu=uuid','--format=csv,noheader'],text=True).strip().splitlines()
+require(os.environ['JF_GPU_UUID'] in inherited_uuids,'Selected UUID outside step allocation')
 os.environ['CUDA_VISIBLE_DEVICES']=os.environ['JF_GPU_UUID'] if rank_hint>=2 else ''
 chosen=affinity()
 from mpi4py import MPI
@@ -83,7 +87,7 @@ def main(a):
     modules=('psana','psana.gpu.gpu_events','psana.gpu.gpu_detector','psana.gpu.gpu_task','psana.gpu.gpu_kvikio_read','psana.gpu.gpu_placement','psana.gpu.gpu_stream_read_plan','psana.gpu.gpu_group_schedule')
     runtime={n:dict(path=importlib.import_module(n).__file__,sha256=sha(importlib.import_module(n).__file__)) for n in modules}
     admission=[dict(capacity=m._admission_capacity,margin=m._admission_margin,subbatch_budget=m._subbatch_budget_bytes,budget=m._gpu_budget.limit()) for m in managers]
-    row=dict(mask=os.environ['CUDA_VISIBLE_DEVICES'],mpi=MPI.Get_library_version(),admission=admission,drain=drain,rank=rank_hint,role=role,host=platform.node(),affinity=chosen,device=device,memory=memory,timestamps=delivered,callbacks=task.callbacks,io=io,cpu_reads=cpu_reads[0],runtime_files=runtime,
+    row=dict(inherited_mask=inherited_mask,inherited_uuids=inherited_uuids,mask=os.environ['CUDA_VISIBLE_DEVICES'],mpi=MPI.Get_library_version(),admission=admission,drain=drain,rank=rank_hint,role=role,host=platform.node(),affinity=chosen,device=device,memory=memory,timestamps=delivered,callbacks=task.callbacks,io=io,cpu_reads=cpu_reads[0],runtime_files=runtime,
         numa_policy=subprocess.run(['numactl','--show'],capture_output=True,text=True,check=True).stdout)
     require('policy: interleave' in row['numa_policy'],'Expected interleaved page allocations')
     reference=json.loads((NOTES/'sim10_stream_length_20261109/perlmutter-runtime.json').read_text())['modules']
