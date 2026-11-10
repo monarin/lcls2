@@ -1,0 +1,20 @@
+{
+  "local_tests": "22 passed in 4.28s",
+  "shell_syntax": "pass",
+  "fixture": {
+    "events": 100000,
+    "streams": 5
+  },
+  "native_compatibility": {
+    "status": "pass",
+    "native_sources": 225,
+    "native_binaries": 28,
+    "config_mismatches": {
+      "psana/meson.build": {
+        "pr": "4cd078217825f316d8db0ef62782ac5d8a2a3d42283b839240bfc984efe9f1ae",
+        "frozen": "27ae0bce919c99bfb7705747074f7d6413f23d3fffcf5aa6ba65741602149452"
+      }
+    }
+  },
+  "gpu_execution": "pending"
+}
