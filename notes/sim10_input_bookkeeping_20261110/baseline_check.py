@@ -18,7 +18,8 @@ sys.path.insert(0,str(HERE.parents[1]/'psana/psana/tests/gpu/integration'))
 import pytest
 reports=[]
 class Record:
-    def pytest_runtest_logreport(self,r):
+    def pytest_runtest_logreport(self,report):
+        r=report
         reports.append(dict(nodeid=r.nodeid,when=r.when,passed=r.passed,failed=r.failed,
             skipped=r.skipped,error=str(r.longrepr) if r.failed else None))
 result=pytest.main(['-q',str(HERE/'baseline_test/test_multiowner_transitions.py'),
