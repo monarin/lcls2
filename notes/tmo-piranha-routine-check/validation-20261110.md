@@ -24,3 +24,8 @@
   experiment provenance.
 - Main checkout branch and its tracked files were not changed. No hardware run,
   GUI attachment, production update, or hold-on-error implementation occurred.
+- Commit hooks passed for all newly consolidated files. Whole-branch diff checking
+  reports original trailing whitespace in two immutable deployed-source snapshots:
+  `evidence/ClinkDevRoot.py` and `evidence/deployed-piranha4_config.py` under the
+  November 6 evidence directory. These exact historical bytes are preserved;
+  diff checking excluding only those two snapshots passes.
