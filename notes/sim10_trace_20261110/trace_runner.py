@@ -32,6 +32,27 @@ def main():
 
         capture = os.environ.get('SIM10_NSYS_CAPTURE') == '1'
         recorder = install('Integrated-on', cp.cuda.nvtx if capture else None)
+        from psana.gpu.gpu_input_group import InputGroupPool
+        poll = InputGroupPool.poll
+        poll_counts = dict(calls=0, visited_states=0, max_states=0, reclaimed=0)
+        recorder.counters['input_poll'] = poll_counts
+
+        def observed_poll(pool):
+            # O(1) accounting only; do not add another scan or CUDA query.
+            if recorder.active:
+                size = len(pool._groups)
+                poll_counts['calls'] += 1
+                poll_counts['visited_states'] += size
+                poll_counts['max_states'] = max(poll_counts['max_states'], size)
+            with recorder.phase('input.poll'):
+                result = poll(pool)
+            if recorder.active:
+                poll_counts['reclaimed'] += len(result)
+            return result
+
+        InputGroupPool.poll = observed_poll
+        InputGroupPool.plan_slots = measured_function(
+            InputGroupPool.plan_slots, recorder, 'input.plan_slots')
         task = runner['StagingTask']
         task.__call__ = measured_function(task.__call__, recorder, 'task.callback')
         attach = GpuEventManager._attach_gpu
