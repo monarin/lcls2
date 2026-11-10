@@ -1,9 +1,29 @@
 {
-  "phase": "prepared",
+  "phase": "perlmutter_transfer_preparing",
   "accepted": false,
   "base_commit": "3d6a034b7",
-  "review_round": 0,
+  "review_round": 1,
   "review_limit": 3,
   "unresolved": [],
-  "checks": {}
+  "checks": {
+    "preflight": "AST/shell syntax/fixture receipts/matrix pass",
+    "native": "not run; SDF job cancelled",
+    "audit": "not run",
+    "tests": "not run",
+    "review": "round1 code pass",
+    "perlmutter_data": "sizes/readable headers/SMD hashes/alignment checked",
+    "perlmutter_runtime": "eight Python hashes match SDF; compute preflight pending"
+  },
+  "job": "44043617",
+  "implementation_commit": "21f56de8884dc386d2d0ae65d159a795ed448614",
+  "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sim10_stream_length_20261109_r1",
+  "remaining": [
+    "Perlmutter clone verification",
+    "transfer review",
+    "receiving agent adapts generation and runner",
+    "native tests and results review"
+  ],
+  "sdf_job_state": "CANCELLED before start",
+  "cancellation_pacific": "2026-11-09T16:05:24",
+  "review_verdict": "code-only pass; no native results"
 }
