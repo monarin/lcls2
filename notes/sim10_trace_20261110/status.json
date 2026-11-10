@@ -1,0 +1,32 @@
+{
+  "phase": "results_review",
+  "base_commit": "cc98b8440e00123bbe86a1d82e6be7986f28a447",
+  "implementation_commit": "ec0941a31222045e31e5a8ea8fb49c02c4a63a28",
+  "review_round": 3,
+  "review_limit": 3,
+  "checks": {
+    "syntax": "pass",
+    "timer_tests": "10 passed (--noconftest --import-mode=importlib); initial normal collection failed on GPU conftest/MPI environment",
+    "gpu": "Six matched 10k cases pass; Slurm job and all steps COMPLETED 0:0",
+    "perlmutter_syntax": "Python AST and bash syntax pass on current source",
+    "preflight": "Exact Nsight executable/version verified. Login-node timer import blocked by missing libfabric.so.1, including serial attempt (detector imports MPI); native timing case will validate installation. Native timer installation and Nsight capture succeeded on compute node.",
+    "analysis": "Six case invariants and exclusive phase sum accounting pass; Nsight SQLite analysis complete"
+  },
+  "artifact_root": "/pscratch/sd/m/monarin/psana2-gpu/sim10-trace-20261110",
+  "unresolved": [],
+  "review_history": [
+    {
+      "round": 1,
+      "status": "timeout_no_verdict",
+      "artifact": "/lscratch/monarin/tmp/sim10-trace-review01-20261110"
+    },
+    {
+      "round": 2,
+      "status": "pass_no_blockers",
+      "artifact": "/lscratch/monarin/tmp/sim10-trace-review02-20261110"
+    }
+  ],
+  "remote_source": "/pscratch/sd/m/monarin/psana2-gpu/sim10-trace-20261110/source",
+  "job": "61072191",
+  "artifact_local": "/lscratch/monarin/tmp/sim10-trace-artifacts-20261110"
+}

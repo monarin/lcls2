@@ -1,0 +1,68 @@
+{
+  "reviewed_commit": "ec0941a31222045e31e5a8ea8fb49c02c4a63a28",
+  "verdict": "pass",
+  "summary": "Implementation-only preflight of notes/sim10_trace_20261110 (campaign.py, trace_runner.py, trace_rank.py, run.sbatch, scope.md) against accepted cc98b8440. No blockers found. trace_runner executes the accepted runner via runpy.run_path before any CuPy import, so the accepted rank/UUID mask and affinity setup happen first; helper ranks 0/1 take no GPU or timer path. Class-level patches (InputGroupPool.poll/plan_slots/issue, StagingTask.__call__, GpuEventManager._attach_gpu, bulk_accounting.accounting) are installed before main, so instances created inside main inherit them, and runner's deferred 'from bulk_accounting import accounting' picks up the wrapper. The wrapper enters after the owner-scoped cold gate and both barriers, starts cudaProfilerApi only when SIM10_NSYS_CAPTURE=1, wraps the accepted accounting with a bd.loop phase, adds no CUDA waits, and writes phases JSON after main's cleanup/barriers. Poll counters are O(1) (len of _groups, len of reclaimed tuple) and gated on recorder.active; Recorder.phase is a no-op when inactive. All instrumented methods run on the BD main thread (no threads in psana/gpu runtime). The 50000 read invariant in timing cases holds: each PendingBatch is waited exactly once (completed flag), futures are one per range, 5 ranges per event. campaign.validate preserves exact event/byte/read/callback/stream/cold-gate/cleanup/retirement checks; input metadata dict keys match native/input-stat-after.json; srun/numactl structure, controls and sbatch match accepted except 20 min limit. trace_rank profiles SLURM_PROCID 2 only, refuses to overwrite captures, uses --capture-range=cudaProfilerApi/--capture-range-end=stop with cuda,nvtx,osrt. Pure CPU timer tests (10 passed) and AST/bash -n evidence supplied by coordinator; no GPU results expected at this stage.",
+  "checks": [
+    "Read all five new files and dependencies: accepted runner.py, bulk_accounting.py, support.py, clean_exec.py, runtime.sh, accepted campaign.py/run.sbatch, psana/psana/gpu/scripts/bulk_phase_timing.py, test_bulk_phase_timing.py",
+    "runpy.run_path ordering: mask/UUID/affinity set at runner module level before MPI/CuPy imports; __name__ guard prevents accepted argparse/main from running",
+    "Rank masking: CuPy/timer/profiler imports only when rank_hint==2; helper ranks run accepted main unchanged",
+    "Patch composition: install() wraps _setup_gpu_pipeline/_submit_read/wait_batch before runner main re-wraps them; bulk_accounting patch.object wraps instrumented versions and restores on exit; signatures compatible",
+    "InputGroupPool.poll/plan_slots/issue exist with matching signatures; _groups is a dict; poll returns tuple; InputGroupPool imported at call time inside _setup_gpu_pipeline so class patches apply",
+    "Counters O(1), active-gated; no CUDA queries or extra scans added; Recorder.phase no-op when inactive",
+    "Thread context: no threading/ThreadPoolExecutor in psana/gpu runtime modules; single shared recorder stack safe",
+    "CUDA profiler range: cp.cuda.profiler.start/stop only when capture; start after cold gate + barriers, stop in finally; nsys capture-range=cudaProfilerApi, end=stop",
+    "10k invariants: events==10000, bytes==10000*3358200, completed_requests==50000, 100 callbacks of size 100, stream count, cold gate, cpu_reads/pressure_drains==0, cleanup/retirement, timestamps==reference[:10000]",
+    "Timing-case read counter: PendingBatch.completed set once in wait_batch; futures one per range; observed_wait counts len(futures) -> 50000",
+    "Same node/GPU/CPU/settings: JF_GPU_UUID derived from CUDA_VISIBLE_DEVICES like accepted; host/affinity/mask equality across cases; framework controls dict exact",
+    "Scratch/job policy: sbatch identical to accepted except 20 min limit and job name; clean_exec/runtime.sh reused; results dir exist_ok=False; log/command files opened with 'x'",
+    "Input metadata: file_stats compares exact dict (path,bytes,uid,inode,mtime_ns) against native/input-stat-after.json before and after; fixture()/generation sha reused; no full 100k re-read",
+    "Phases artifact path: output+'.phases.json' written by rank 2 after main; campaign reads name+'.json.phases.json'",
+    "Steady flag: _attach_gpu is the single delivery point (lines 857 and 1083), consistent with snapshot steady_definition"
+  ],
+  "limitations": [
+    "Read-only review; no commands executed and no tests run. Validation evidence (AST, bash -n, diff --check, 10 CPU timer tests passed) is as supplied by the coordinator.",
+    "Frozen runtime install-B at /pscratch/.../install-B is outside the worktree and could not be read (restricted mode). Compatibility of bulk_phase_timing.install() targets (e.g., GpuFileEpochs, _issue_group_reads, InputGroupPool) with install-B rather than repo HEAD is therefore unverified from this host.",
+    "Existence of the hard-coded nsys binary path in trace_rank.py and availability of cupy.cuda.nvtx/profiler in the frozen env were not verifiable.",
+    "Did not read native/input-validation.json, perlmutter-runtime.json hashes, or timestamp JSON contents per instructions; only key structure of input-stat-after.json was inspected.",
+    "Iris balance and Slurm account/QOS policy are outside file evidence.",
+    "No prior finding IDs were available (first invocation produced none), so IDs below are new."
+  ],
+  "findings": [
+    {
+      "id": "T1",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/sim10_trace_20261110/trace_rank.py",
+      "line": 6,
+      "evidence": "NSYS path is hard-coded and only resolved at os.execv on rank 2 during case 05/06. If the binary is absent, FileNotFoundError aborts after four GPU cases have already consumed premium allocation; campaign.py has no preflight for the nsys binary.",
+      "requested_change": "Add a cheap preflight in campaign.main before the first case (e.g., require(Path(NSYS).is_file()) or a shared constant) so a missing profiler fails before any GPU case runs. Optional: record nsys --version in provenance.json."
+    },
+    {
+      "id": "T2",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/sim10_trace_20261110/trace_runner.py",
+      "line": 34,
+      "evidence": "install('Integrated-on') wraps ~35 attributes of the frozen install-B runtime by name (GpuFileEpochs, _issue_group_reads, _submit_group_gpu, InputGroupPool, etc.). Repo HEAD has them, but install-B (Oct 2026) is unreadable from this worktree, and no supplied evidence shows install() has run against install-B. A mismatch would fail only in case 02 after both clean cases.",
+      "requested_change": "Before the GPU job, run an import-only dry install against the frozen env (install('Integrated-on') on a node with the env active, no DataSource) or cite prior evidence that bulk_phase_timing has been installed on install-B. Fail-closed behavior is otherwise acceptable."
+    },
+    {
+      "id": "T3",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_trace_20261110/campaign.py",
+      "line": 84,
+      "evidence": "Per-case subprocess timeout is 600 s for six cases (60 min worst case) while run.sbatch sets --time=00:20:00. No SIGTERM handler or cleanup record is written on job-limit kill, unlike the accepted campaign.",
+      "requested_change": "Either tighten the per-case timeout to fit the 20 min budget or add a SIGTERM handler that writes a partial/failed status file so an interrupted attempt is distinguishable from a crash. Non-blocking; job limit still bounds resource use."
+    },
+    {
+      "id": "T4",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_trace_20261110/campaign.py",
+      "line": 94,
+      "evidence": "phases['counters']['reader'] is created lazily by observed_wait; if no wait happened while active, this raises KeyError rather than the intended require message. In the expected path 50000 is reached (one wait per PendingBatch, one future per range).",
+      "requested_change": "Optional: use phases['counters'].get('reader', {}) so a missing counter surfaces as a clear require failure."
+    }
+  ]
+}

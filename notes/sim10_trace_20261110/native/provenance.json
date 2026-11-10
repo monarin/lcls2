@@ -1,0 +1,104 @@
+{
+  "job": "61072191",
+  "started": 1794285759.798765,
+  "gpu": "GPU-f4f771a2-0807-c661-5dc8-643cf7fbe430",
+  "input_metadata": [
+    {
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf/mfx101555026-r0010-s005-c000.xtc2",
+      "bytes": 52472554830,
+      "uid": 73802,
+      "inode": 846692613573582170,
+      "mtime_ns": 1794261378000000000
+    },
+    {
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf/smalldata/mfx101555026-r0010-s005-c000.smd.xtc2",
+      "bytes": 7756926,
+      "uid": 73802,
+      "inode": 846692613556802823,
+      "mtime_ns": 1794261379000000000
+    },
+    {
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf/mfx101555026-r0010-s006-c000.xtc2",
+      "bytes": 62966580132,
+      "uid": 73802,
+      "inode": 846692613556802817,
+      "mtime_ns": 1794261535000000000
+    },
+    {
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf/smalldata/mfx101555026-r0010-s006-c000.smd.xtc2",
+      "bytes": 7782228,
+      "uid": 73802,
+      "inode": 846692613556802822,
+      "mtime_ns": 1794261535000000000
+    },
+    {
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf/mfx101555026-r0010-s007-c000.xtc2",
+      "bytes": 73460605434,
+      "uid": 73802,
+      "inode": 846692613573582169,
+      "mtime_ns": 1794261725000000000
+    },
+    {
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf/smalldata/mfx101555026-r0010-s007-c000.smd.xtc2",
+      "bytes": 7807530,
+      "uid": 73802,
+      "inode": 846692613556802819,
+      "mtime_ns": 1794261726000000000
+    },
+    {
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf/mfx101555026-r0010-s008-c000.xtc2",
+      "bytes": 73460605434,
+      "uid": 73802,
+      "inode": 846692613540026612,
+      "mtime_ns": 1794261905000000000
+    },
+    {
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf/smalldata/mfx101555026-r0010-s008-c000.smd.xtc2",
+      "bytes": 7807530,
+      "uid": 73802,
+      "inode": 846692613556802820,
+      "mtime_ns": 1794261906000000000
+    },
+    {
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf/mfx101555026-r0010-s009-c000.xtc2",
+      "bytes": 73460605434,
+      "uid": 73802,
+      "inode": 846692613506472405,
+      "mtime_ns": 1794262087000000000
+    },
+    {
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf/smalldata/mfx101555026-r0010-s009-c000.smd.xtc2",
+      "bytes": 7807530,
+      "uid": 73802,
+      "inode": 846692613556802821,
+      "mtime_ns": 1794262087000000000
+    },
+    {
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf/generation.json",
+      "bytes": 15515999,
+      "uid": 73802,
+      "inode": 846692613556802818,
+      "mtime_ns": 1794262088000000000
+    }
+  ],
+  "mount": {
+    "filesystems": [
+      {
+        "target": "/pscratch",
+        "source": "2158@kfi,2091@kfi:2283@kfi,2219@kfi:/scratch",
+        "fstype": "lustre",
+        "options": "rw,nosuid,nodev,checksum,rchecksum_force,flock,user_xattr,lruresize,lazystatfs,nouser_fid2path,verbose,encrypt,statfs_project"
+      }
+    ]
+  },
+  "prior_validation": "/pscratch/sd/m/monarin/psana2-gpu/sim10-trace-20261110/source/notes/sim10_stream_length_20261109/native/input-validation.json",
+  "prior_validation_sha256": "041bc727f58743a57de6dc62884314a4062065d51a878f8aa9223d15f0625ff5",
+  "source_sha256": {
+    "/pscratch/sd/m/monarin/psana2-gpu/sim10-trace-20261110/source/notes/sim10_trace_20261110/campaign.py": "b0b933c21a9de3b6922a7568bc0196ed06198e222ff13562892e530ec75484f2",
+    "/pscratch/sd/m/monarin/psana2-gpu/sim10-trace-20261110/source/notes/sim10_trace_20261110/trace_rank.py": "461f7a2822fbe7815a3760bca964ebe3060cee9f0d4ac6cab0d38d2f79357b11",
+    "/pscratch/sd/m/monarin/psana2-gpu/sim10-trace-20261110/source/notes/sim10_trace_20261110/trace_runner.py": "1257a8d6121611ab72cb31d8e37ea0d4420574914a6f7b32d51081f9e5447de1",
+    "/pscratch/sd/m/monarin/psana2-gpu/sim10-trace-20261110/source/notes/sim10_trace_20261110/run.sbatch": "8cb3838012ed042791d2e6f2a2012903358136a9c64b19038400d16c87e7e86e",
+    "/pscratch/sd/m/monarin/psana2-gpu/sim10-trace-20261110/source/psana/psana/gpu/scripts/bulk_phase_timing.py": "f1cc1d7a92926473901fb6befd5f46d3113f757e9ab07e78ca958cc77f67dbfa"
+  },
+  "git_head": "ec0941a31222045e31e5a8ea8fb49c02c4a63a28"
+}

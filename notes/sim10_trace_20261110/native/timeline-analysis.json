@@ -1,0 +1,378 @@
+[
+  {
+    "sqlite": "/pscratch/sd/m/monarin/psana2-gpu/sim10-trace-20261110/attempt01/results/04-nsys-s1.sqlite",
+    "loop_start_s": 0.040104787,
+    "loop_end_s": 16.949506221,
+    "loop_seconds": 16.909401434,
+    "gpu_kernel_or_copy_union_seconds": 1.551812725,
+    "gpu_kernel_union_seconds": 0.007049896,
+    "gpu_copy_union_seconds": 1.544762829,
+    "kernel_summary": [
+      {
+        "name": "walk_xtc",
+        "streamId": 13,
+        "count": 100,
+        "summed_seconds": 0.0025486
+      },
+      {
+        "name": "init_locators",
+        "streamId": 13,
+        "count": 100,
+        "summed_seconds": 0.002989492
+      },
+      {
+        "name": "locate_fields",
+        "streamId": 13,
+        "count": 100,
+        "summed_seconds": 0.001511804
+      }
+    ],
+    "copy_summary": [
+      {
+        "kind": "Host-to-Device",
+        "count": 50305,
+        "bytes": 33607906648,
+        "summed_seconds": 1.544762829
+      }
+    ],
+    "cuda_api_summary": [
+      {
+        "name": "cuStreamSynchronize",
+        "count": 50000,
+        "summed_seconds": 1.911139749
+      },
+      {
+        "name": "cuMemcpyBatchAsync",
+        "count": 50000,
+        "summed_seconds": 1.069241572
+      },
+      {
+        "name": "cudaMalloc_v3020",
+        "count": 511,
+        "summed_seconds": 0.177837695
+      },
+      {
+        "name": "cudaEventQuery_v3020",
+        "count": 150000,
+        "summed_seconds": 0.121705183
+      },
+      {
+        "name": "cuMemHostAlloc",
+        "count": 8,
+        "summed_seconds": 0.105490316
+      },
+      {
+        "name": "cudaStreamWaitEvent_v3020",
+        "count": 100100,
+        "summed_seconds": 0.068919414
+      },
+      {
+        "name": "cuStreamCreate",
+        "count": 8,
+        "summed_seconds": 0.042715106
+      },
+      {
+        "name": "cudaMemcpyAsync_v3020",
+        "count": 305,
+        "summed_seconds": 0.004677116
+      },
+      {
+        "name": "cuLaunchKernel",
+        "count": 300,
+        "summed_seconds": 0.004128753
+      },
+      {
+        "name": "cudaHostAlloc_v3020",
+        "count": 1,
+        "summed_seconds": 0.002316868
+      },
+      {
+        "name": "cudaStreamSynchronize_v3020",
+        "count": 202,
+        "summed_seconds": 0.002088978
+      },
+      {
+        "name": "cudaEventRecord_v3020",
+        "count": 301,
+        "summed_seconds": 0.001309139
+      }
+    ],
+    "samples": [
+      {
+        "batch_index": 20,
+        "start_s": 3.787266849,
+        "end_s": 3.86940228,
+        "duration_ms": 82.135431,
+        "poll_count": 501,
+        "poll_ms": 7.28735,
+        "gpu_kernel_or_copy_union_ms": 15.536416,
+        "gpu_kernel_union_ms": 0.0,
+        "following_kernels": [
+          {
+            "name": "walk_xtc",
+            "stream": 13,
+            "start_s": 3.884533213,
+            "end_s": 3.884558301
+          },
+          {
+            "name": "init_locators",
+            "stream": 13,
+            "start_s": 3.884601789,
+            "end_s": 3.884631357
+          }
+        ]
+      },
+      {
+        "batch_index": 21,
+        "start_s": 3.940283871,
+        "end_s": 4.026520936,
+        "duration_ms": 86.237065,
+        "poll_count": 501,
+        "poll_ms": 7.197961,
+        "gpu_kernel_or_copy_union_ms": 15.585707,
+        "gpu_kernel_union_ms": 0.0,
+        "following_kernels": [
+          {
+            "name": "walk_xtc",
+            "stream": 13,
+            "start_s": 4.042888991,
+            "end_s": 4.042914559
+          },
+          {
+            "name": "init_locators",
+            "stream": 13,
+            "start_s": 4.042955423,
+            "end_s": 4.042985343
+          }
+        ]
+      },
+      {
+        "batch_index": 50,
+        "start_s": 8.728056466,
+        "end_s": 8.84066866,
+        "duration_ms": 112.612194,
+        "poll_count": 501,
+        "poll_ms": 8.546249,
+        "gpu_kernel_or_copy_union_ms": 15.152324,
+        "gpu_kernel_union_ms": 0.0,
+        "following_kernels": [
+          {
+            "name": "walk_xtc",
+            "stream": 13,
+            "start_s": 8.866591231,
+            "end_s": 8.866616863
+          },
+          {
+            "name": "init_locators",
+            "stream": 13,
+            "start_s": 8.866697087,
+            "end_s": 8.866726975
+          }
+        ]
+      }
+    ],
+    "limitations": [
+      "CUDA API sums include multiple host threads and may overlap.",
+      "GPU activity union covers traced kernels and memcpy, not hardware utilization or network I/O.",
+      "Nsight significantly perturbs throughput; use unprofiled results for rates.",
+      "Sample indices are zero-based group.issue batches; timestamps use Nsight trace origin."
+    ]
+  },
+  {
+    "sqlite": "/pscratch/sd/m/monarin/psana2-gpu/sim10-trace-20261110/attempt01/results/05-nsys-s2.sqlite",
+    "loop_start_s": 0.039479403,
+    "loop_end_s": 28.067387892,
+    "loop_seconds": 28.027908489,
+    "gpu_kernel_or_copy_union_seconds": 1.464039063,
+    "gpu_kernel_union_seconds": 0.007141123,
+    "gpu_copy_union_seconds": 1.45689794,
+    "kernel_summary": [
+      {
+        "name": "walk_xtc",
+        "streamId": 13,
+        "count": 50,
+        "summed_seconds": 0.001297053
+      },
+      {
+        "name": "walk_xtc",
+        "streamId": 14,
+        "count": 50,
+        "summed_seconds": 0.001283964
+      },
+      {
+        "name": "init_locators",
+        "streamId": 13,
+        "count": 50,
+        "summed_seconds": 0.00149359
+      },
+      {
+        "name": "init_locators",
+        "streamId": 14,
+        "count": 50,
+        "summed_seconds": 0.001552376
+      },
+      {
+        "name": "locate_fields",
+        "streamId": 13,
+        "count": 50,
+        "summed_seconds": 0.000756732
+      },
+      {
+        "name": "locate_fields",
+        "streamId": 14,
+        "count": 50,
+        "summed_seconds": 0.000757408
+      }
+    ],
+    "copy_summary": [
+      {
+        "kind": "Host-to-Device",
+        "count": 50305,
+        "bytes": 33607906648,
+        "summed_seconds": 1.45689794
+      }
+    ],
+    "cuda_api_summary": [
+      {
+        "name": "cuStreamSynchronize",
+        "count": 50000,
+        "summed_seconds": 1.757901787
+      },
+      {
+        "name": "cuMemcpyBatchAsync",
+        "count": 50000,
+        "summed_seconds": 0.956449049
+      },
+      {
+        "name": "cudaMalloc_v3020",
+        "count": 1017,
+        "summed_seconds": 0.281604345
+      },
+      {
+        "name": "cudaEventQuery_v3020",
+        "count": 150000,
+        "summed_seconds": 0.236492007
+      },
+      {
+        "name": "cuMemHostAlloc",
+        "count": 8,
+        "summed_seconds": 0.103433425
+      },
+      {
+        "name": "cudaStreamWaitEvent_v3020",
+        "count": 100100,
+        "summed_seconds": 0.070113868
+      },
+      {
+        "name": "cuStreamCreate",
+        "count": 8,
+        "summed_seconds": 0.052834055
+      },
+      {
+        "name": "cudaMemcpyAsync_v3020",
+        "count": 305,
+        "summed_seconds": 0.004547585
+      },
+      {
+        "name": "cuLaunchKernel",
+        "count": 300,
+        "summed_seconds": 0.004169216
+      },
+      {
+        "name": "cudaStreamSynchronize_v3020",
+        "count": 202,
+        "summed_seconds": 0.002026425
+      },
+      {
+        "name": "cuModuleLoadData",
+        "count": 1,
+        "summed_seconds": 0.001740449
+      },
+      {
+        "name": "cudaHostAlloc_v3020",
+        "count": 2,
+        "summed_seconds": 0.001482016
+      }
+    ],
+    "samples": [
+      {
+        "batch_index": 20,
+        "start_s": 6.014671359,
+        "end_s": 6.202365961,
+        "duration_ms": 187.694602,
+        "poll_count": 501,
+        "poll_ms": 94.190651,
+        "gpu_kernel_or_copy_union_ms": 14.638911,
+        "gpu_kernel_union_ms": 0.0,
+        "following_kernels": [
+          {
+            "name": "walk_xtc",
+            "stream": 13,
+            "start_s": 6.218747896,
+            "end_s": 6.218773816
+          },
+          {
+            "name": "init_locators",
+            "stream": 13,
+            "start_s": 6.21881532,
+            "end_s": 6.218845304
+          }
+        ]
+      },
+      {
+        "batch_index": 21,
+        "start_s": 6.278648272,
+        "end_s": 6.470007797,
+        "duration_ms": 191.359525,
+        "poll_count": 501,
+        "poll_ms": 95.101689,
+        "gpu_kernel_or_copy_union_ms": 14.62151,
+        "gpu_kernel_union_ms": 0.0,
+        "following_kernels": [
+          {
+            "name": "walk_xtc",
+            "stream": 14,
+            "start_s": 6.486114292,
+            "end_s": 6.486139924
+          },
+          {
+            "name": "init_locators",
+            "stream": 14,
+            "start_s": 6.486182323,
+            "end_s": 6.486213747
+          }
+        ]
+      },
+      {
+        "batch_index": 50,
+        "start_s": 14.262085068,
+        "end_s": 14.481201523,
+        "duration_ms": 219.116455,
+        "poll_count": 501,
+        "poll_ms": 94.629232,
+        "gpu_kernel_or_copy_union_ms": 14.608198,
+        "gpu_kernel_union_ms": 0.0,
+        "following_kernels": [
+          {
+            "name": "walk_xtc",
+            "stream": 13,
+            "start_s": 14.497340835,
+            "end_s": 14.497366691
+          },
+          {
+            "name": "init_locators",
+            "stream": 13,
+            "start_s": 14.497408995,
+            "end_s": 14.497438659
+          }
+        ]
+      }
+    ],
+    "limitations": [
+      "CUDA API sums include multiple host threads and may overlap.",
+      "GPU activity union covers traced kernels and memcpy, not hardware utilization or network I/O.",
+      "Nsight significantly perturbs throughput; use unprofiled results for rates.",
+      "Sample indices are zero-based group.issue batches; timestamps use Nsight trace origin."
+    ]
+  }
+]

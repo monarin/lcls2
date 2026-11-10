@@ -1,0 +1,783 @@
+{
+  "phases": {
+    "startup/allocation.owned_empty": {
+      "calls": 1017,
+      "total_ns": 324127588,
+      "self_ns": 324127588,
+      "max_ns": 19012241
+    },
+    "startup/setup.pipeline": {
+      "calls": 1,
+      "total_ns": 9634464,
+      "self_ns": 9031002,
+      "max_ns": 9634464
+    },
+    "startup/read.file_epochs": {
+      "calls": 4,
+      "total_ns": 1351283,
+      "self_ns": 1351283,
+      "max_ns": 572772
+    },
+    "startup/pool.flush": {
+      "calls": 1,
+      "total_ns": 4329,
+      "self_ns": 4329,
+      "max_ns": 4329
+    },
+    "startup/manager.flush": {
+      "calls": 1,
+      "total_ns": 20760,
+      "self_ns": 16431,
+      "max_ns": 20760
+    },
+    "startup/input.poll": {
+      "calls": 1003,
+      "total_ns": 108128842,
+      "self_ns": 108128842,
+      "max_ns": 669920
+    },
+    "startup/transition.handle": {
+      "calls": 4,
+      "total_ns": 1180082,
+      "self_ns": 1157698,
+      "max_ns": 383655
+    },
+    "startup/manager.process": {
+      "calls": 4,
+      "total_ns": 1023607252,
+      "self_ns": 27012448,
+      "max_ns": 570551149
+    },
+    "startup/admission.plan": {
+      "calls": 3,
+      "total_ns": 30626658,
+      "self_ns": 30626658,
+      "max_ns": 14137727
+    },
+    "startup/retire.begin": {
+      "calls": 3,
+      "total_ns": 39357,
+      "self_ns": 12485,
+      "max_ns": 35028
+    },
+    "startup/delivery.events": {
+      "calls": 3,
+      "total_ns": 557062,
+      "self_ns": 557062,
+      "max_ns": 553535
+    },
+    "startup/retire.finish": {
+      "calls": 2,
+      "total_ns": 1814,
+      "self_ns": 1814,
+      "max_ns": 972
+    },
+    "startup/input.plan_slots": {
+      "calls": 2,
+      "total_ns": 590717,
+      "self_ns": 407361,
+      "max_ns": 378465
+    },
+    "startup/read.buffer": {
+      "calls": 1000,
+      "total_ns": 339904426,
+      "self_ns": 17262753,
+      "max_ns": 19023844
+    },
+    "startup/read.pread_loop": {
+      "calls": 1000,
+      "total_ns": 93201928,
+      "self_ns": 93201928,
+      "max_ns": 41999538
+    },
+    "startup/read.submit": {
+      "calls": 1000,
+      "total_ns": 462400190,
+      "self_ns": 29293836,
+      "max_ns": 42085605
+    },
+    "startup/read.group": {
+      "calls": 1000,
+      "total_ns": 535930024,
+      "self_ns": 73529834,
+      "max_ns": 42134300
+    },
+    "startup/input.issue": {
+      "calls": 1000,
+      "total_ns": 688050388,
+      "self_ns": 44176502,
+      "max_ns": 42154179
+    },
+    "startup/group.issue": {
+      "calls": 2,
+      "total_ns": 699509859,
+      "self_ns": 10868754,
+      "max_ns": 351907323
+    },
+    "startup/manager.issue_read": {
+      "calls": 2,
+      "total_ns": 699525781,
+      "self_ns": 15922,
+      "max_ns": 351915810
+    },
+    "startup/read.wait": {
+      "calls": 1000,
+      "total_ns": 123307900,
+      "self_ns": 123307900,
+      "max_ns": 46391605
+    },
+    "startup/parser.metadata": {
+      "calls": 2,
+      "total_ns": 349108,
+      "self_ns": 144291,
+      "max_ns": 178196
+    },
+    "startup/parser.walk_submit": {
+      "calls": 2,
+      "total_ns": 29977668,
+      "self_ns": 29977668,
+      "max_ns": 29860491
+    },
+    "startup/parser.locator_buffer": {
+      "calls": 2,
+      "total_ns": 411018,
+      "self_ns": 23986,
+      "max_ns": 206170
+    },
+    "startup/parser.locate_submit": {
+      "calls": 2,
+      "total_ns": 187044,
+      "self_ns": 187044,
+      "max_ns": 119933
+    },
+    "startup/parser.parse": {
+      "calls": 2,
+      "total_ns": 31071552,
+      "self_ns": 146714,
+      "max_ns": 30446779
+    },
+    "startup/sync.pool_submit": {
+      "calls": 2,
+      "total_ns": 29648,
+      "self_ns": 29648,
+      "max_ns": 15230
+    },
+    "startup/event.views": {
+      "calls": 2,
+      "total_ns": 2488551,
+      "self_ns": 2488551,
+      "max_ns": 1414787
+    },
+    "startup/task.callback": {
+      "calls": 2,
+      "total_ns": 35522744,
+      "self_ns": 35413312,
+      "max_ns": 18391325
+    },
+    "startup/pool.submit": {
+      "calls": 2,
+      "total_ns": 74565562,
+      "self_ns": 36524619,
+      "max_ns": 48069332
+    },
+    "startup/group.submit": {
+      "calls": 2,
+      "total_ns": 139955119,
+      "self_ns": 34136833,
+      "max_ns": 75289106
+    },
+    "startup/manager.submit": {
+      "calls": 2,
+      "total_ns": 140004867,
+      "self_ns": 49748,
+      "max_ns": 75316811
+    },
+    "startup/sync.producer_retire": {
+      "calls": 1,
+      "total_ns": 26872,
+      "self_ns": 26872,
+      "max_ns": 26872
+    },
+    "steady/delivery.events": {
+      "calls": 10099,
+      "total_ns": 34704763,
+      "self_ns": 34704763,
+      "max_ns": 24928
+    },
+    "steady/manager.process": {
+      "calls": 9897,
+      "total_ns": 26868510882,
+      "self_ns": 1010300789,
+      "max_ns": 283695435
+    },
+    "steady/retire.consumer_join": {
+      "calls": 100,
+      "total_ns": 672965706,
+      "self_ns": 672965706,
+      "max_ns": 7619773
+    },
+    "steady/retire.finish": {
+      "calls": 98,
+      "total_ns": 668461961,
+      "self_ns": 7588727,
+      "max_ns": 7709788
+    },
+    "steady/input.poll": {
+      "calls": 49098,
+      "total_ns": 9106046012,
+      "self_ns": 9106046012,
+      "max_ns": 2461118
+    },
+    "steady/input.plan_slots": {
+      "calls": 98,
+      "total_ns": 232278991,
+      "self_ns": 45960224,
+      "max_ns": 2988652
+    },
+    "steady/read.buffer": {
+      "calls": 49000,
+      "total_ns": 45574094,
+      "self_ns": 45574094,
+      "max_ns": 24397
+    },
+    "steady/read.pread_loop": {
+      "calls": 49000,
+      "total_ns": 1779582734,
+      "self_ns": 1779582734,
+      "max_ns": 33238706
+    },
+    "steady/read.submit": {
+      "calls": 49000,
+      "total_ns": 2962911534,
+      "self_ns": 1137754706,
+      "max_ns": 33270066
+    },
+    "steady/read.group": {
+      "calls": 49000,
+      "total_ns": 6206688174,
+      "self_ns": 3243776640,
+      "max_ns": 33342257
+    },
+    "steady/input.issue": {
+      "calls": 49000,
+      "total_ns": 18076396199,
+      "self_ns": 2949980780,
+      "max_ns": 33642640
+    },
+    "steady/group.issue": {
+      "calls": 98,
+      "total_ns": 18761532379,
+      "self_ns": 452857189,
+      "max_ns": 222363070
+    },
+    "steady/manager.issue_read": {
+      "calls": 98,
+      "total_ns": 18762386452,
+      "self_ns": 854073,
+      "max_ns": 222371327
+    },
+    "steady/read.wait": {
+      "calls": 49000,
+      "total_ns": 870371206,
+      "self_ns": 870371206,
+      "max_ns": 28812804
+    },
+    "steady/parser.metadata": {
+      "calls": 98,
+      "total_ns": 5280353,
+      "self_ns": 5280353,
+      "max_ns": 85015
+    },
+    "steady/parser.walk_submit": {
+      "calls": 98,
+      "total_ns": 11316677,
+      "self_ns": 11316677,
+      "max_ns": 156184
+    },
+    "steady/parser.locator_buffer": {
+      "calls": 98,
+      "total_ns": 195817,
+      "self_ns": 195817,
+      "max_ns": 11362
+    },
+    "steady/parser.locate_submit": {
+      "calls": 98,
+      "total_ns": 4873384,
+      "self_ns": 4873384,
+      "max_ns": 83352
+    },
+    "steady/parser.parse": {
+      "calls": 98,
+      "total_ns": 27548310,
+      "self_ns": 5882079,
+      "max_ns": 427309
+    },
+    "steady/sync.pool_submit": {
+      "calls": 98,
+      "total_ns": 1742134,
+      "self_ns": 1742134,
+      "max_ns": 41100
+    },
+    "steady/event.views": {
+      "calls": 98,
+      "total_ns": 144558993,
+      "self_ns": 144558993,
+      "max_ns": 33082272
+    },
+    "steady/allocation.owned_empty": {
+      "calls": 98,
+      "total_ns": 5398913,
+      "self_ns": 5398913,
+      "max_ns": 64876
+    },
+    "steady/task.callback": {
+      "calls": 98,
+      "total_ns": 1690873028,
+      "self_ns": 1685474115,
+      "max_ns": 18020107
+    },
+    "steady/pool.submit": {
+      "calls": 98,
+      "total_ns": 2487272703,
+      "self_ns": 650098548,
+      "max_ns": 55581834
+    },
+    "steady/group.submit": {
+      "calls": 98,
+      "total_ns": 4601507377,
+      "self_ns": 2086686364,
+      "max_ns": 71941446
+    },
+    "steady/manager.submit": {
+      "calls": 98,
+      "total_ns": 4603301684,
+      "self_ns": 1794307,
+      "max_ns": 71960153
+    },
+    "steady/read.file_epochs": {
+      "calls": 97,
+      "total_ns": 50649059,
+      "self_ns": 50649059,
+      "max_ns": 1150012
+    },
+    "steady/transition.handle": {
+      "calls": 97,
+      "total_ns": 34043050,
+      "self_ns": 34043050,
+      "max_ns": 403182
+    },
+    "steady/admission.plan": {
+      "calls": 97,
+      "total_ns": 832831222,
+      "self_ns": 832831222,
+      "max_ns": 9271586
+    },
+    "steady/sync.producer_retire": {
+      "calls": 97,
+      "total_ns": 1395248,
+      "self_ns": 1395248,
+      "max_ns": 33155
+    },
+    "steady/retire.begin": {
+      "calls": 97,
+      "total_ns": 2129164,
+      "self_ns": 733916,
+      "max_ns": 40829
+    },
+    "steady/sync.pool_flush": {
+      "calls": 2,
+      "total_ns": 19238,
+      "self_ns": 19238,
+      "max_ns": 11372
+    },
+    "steady/pool.flush": {
+      "calls": 4,
+      "total_ns": 12278743,
+      "self_ns": 167033,
+      "max_ns": 7295961
+    },
+    "steady/manager.flush": {
+      "calls": 202,
+      "total_ns": 13851973,
+      "self_ns": 904762,
+      "max_ns": 7375716
+    },
+    "startup/bd.loop": {
+      "calls": 1,
+      "total_ns": 28027901691,
+      "self_ns": 112297120,
+      "max_ns": 28027901691
+    }
+  },
+  "patches": [
+    {
+      "function": "KvikioGpuReader._submit_read",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_kvikio_read.py",
+      "source_sha256": "740fd0d13b6a9cda88d596346d6f36beeb186f0df3b4f1d407d02f0015b4d986",
+      "ranges": {
+        "read.pread_loop": 1
+      }
+    },
+    {
+      "function": "EventPool.submit",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_stream.py",
+      "source_sha256": "682a23a3c5a1887897695702acd14dc2c48bdeace88d9684035b3079cb1da780",
+      "ranges": {
+        "sync.pool_submit": 2
+      }
+    },
+    {
+      "function": "EventPool.flush",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_stream.py",
+      "source_sha256": "f56e162db0060db794aa634f79cc38dbfe0c8e2c24e79465ac8b4cf767a0ed4b",
+      "ranges": {
+        "sync.pool_flush": 1,
+        "retire.consumer_join": 1
+      }
+    },
+    {
+      "function": "EventPool.begin_retire_next",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_stream.py",
+      "source_sha256": "99963a7f28abe0bc584b4481862472b30bc531b029fd6febdc1e62941391de4f",
+      "ranges": {
+        "sync.producer_retire": 1
+      }
+    },
+    {
+      "function": "EventPool.finish_retire_next",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_stream.py",
+      "source_sha256": "90fd2cdc00e2b401c5eb2fe2670c0b46fa374081952ad5d239d4560e21e4a67b",
+      "ranges": {
+        "retire.consumer_join": 1
+      }
+    },
+    {
+      "function": "GpuEventManager._setup_gpu_pipeline",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "b660d130acd193422053d7a0d9b7ba61368564845372536bf8c0243cc0c6a0ea",
+      "ranges": [
+        "setup.pipeline"
+      ]
+    },
+    {
+      "function": "GpuEventManager._next_batch",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "cd7cbc036f059355bca24ad9d59c58827b1130cf849163afc509639f32c0eac6",
+      "ranges": [
+        "upstream.next_batch"
+      ]
+    },
+    {
+      "function": "GpuEventManager._process_batch",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "66689fd1a1d12485377faa77f5e0779560d750a2d16a292875285a02bf4a5907",
+      "ranges": [
+        "manager.process"
+      ]
+    },
+    {
+      "function": "GpuEventManager._handle_steps",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "00cf43a50c4898215a32cf5f8a0c1699bb5851006fb56e5a4eecd3d0594cf01b",
+      "ranges": [
+        "transition.handle"
+      ]
+    },
+    {
+      "function": "GpuEventManager._split_subbatches",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "f00ea231895543c02dca5254c0f3c02a2d438176b0f19fcfc9f71498aadc5b33",
+      "ranges": [
+        "admission.plan"
+      ]
+    },
+    {
+      "function": "GpuEventManager._reserve_gpu_subbatch",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "5ac06d23830fcec236b9cf0b919d605c7cac7502f0da9e69b52ac2e5b63697c5",
+      "ranges": [
+        "admission.reserve_execution"
+      ]
+    },
+    {
+      "function": "GpuEventManager._issue_group_reads",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "72219afcd6b899150b2c3ee73bd45ed5c82f513237b95ba88e246a8b750b2460",
+      "ranges": [
+        "group.issue"
+      ]
+    },
+    {
+      "function": "GpuEventManager._submit_group_gpu",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "646a2d102eb756db076a7450d8c4ca1e6d13596114fea35371b553312263f98c",
+      "ranges": [
+        "group.submit"
+      ]
+    },
+    {
+      "function": "GpuEventManager._trim_gpu_caches",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "9446134e5ff0b0de6e102ec725f3462a889a3500e9781a6cb3dee4a697c10c9a",
+      "ranges": [
+        "cache.trim"
+      ]
+    },
+    {
+      "function": "GpuEventManager._flush_event_pool",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "dd074eb05bb99938676949fae07e36b04a4ec245e415f90453f012a1ed2c3c1e",
+      "ranges": [
+        "manager.flush"
+      ]
+    },
+    {
+      "function": "GpuEventManager._issue_gpu_read",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "ed0ff3dcabadc36a6aab64b87b98b83cddd9f24cd76b0766cd8ae950ba038771",
+      "ranges": [
+        "manager.issue_read"
+      ]
+    },
+    {
+      "function": "GpuEventManager._submit_gpu",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "d13ee98c48e72291fda65d8e229e98c5c67d2211d27c52497dcaf2d09934c281",
+      "ranges": [
+        "manager.submit"
+      ]
+    },
+    {
+      "function": "GpuEventManager._yield_ready",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_events.py",
+      "source_sha256": "6032d5143783f9fc56c5cb79d9e404e46fb12dfd02d671f16d187fef15199a65",
+      "ranges": [
+        "delivery.events"
+      ]
+    },
+    {
+      "function": "GpuFileEpochs.resolve",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_file_epochs.py",
+      "source_sha256": "0e8e0eccc7f9a9f2c9239167eee5a66572e78b77b41e6fef935e598e4feeef33",
+      "ranges": [
+        "read.file_epochs"
+      ]
+    },
+    {
+      "function": "KvikioGpuReader._submit_read",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_kvikio_read.py:bulk-timing",
+      "source_sha256": "740fd0d13b6a9cda88d596346d6f36beeb186f0df3b4f1d407d02f0015b4d986",
+      "ranges": [
+        "read.submit"
+      ]
+    },
+    {
+      "function": "KvikioGpuReader.issue_group",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_kvikio_read.py",
+      "source_sha256": "0a83db516aaa93baceb7e4b9b2157309abaf93b7ac2f80345976d36040d2c8d6",
+      "ranges": [
+        "read.group"
+      ]
+    },
+    {
+      "function": "KvikioGpuReader._ensure_slot_buffer",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_kvikio_read.py",
+      "source_sha256": "62c5ec8f706995ec75d5b2068d2695395af1be630b3c70fbaa1e83fdb9c9b8b8",
+      "ranges": [
+        "read.buffer"
+      ]
+    },
+    {
+      "function": "KvikioGpuReader.wait_batch",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_kvikio_read.py",
+      "source_sha256": "ea04362f11529c033c5b33fea1b4d7fe598e3eb33b080ce1b16cf5ecc85e0d3a",
+      "ranges": [
+        "read.wait"
+      ]
+    },
+    {
+      "function": "EventPool.submit",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_stream.py:bulk-timing",
+      "source_sha256": "682a23a3c5a1887897695702acd14dc2c48bdeace88d9684035b3079cb1da780",
+      "ranges": [
+        "pool.submit"
+      ]
+    },
+    {
+      "function": "EventPool.flush",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_stream.py:bulk-timing",
+      "source_sha256": "f56e162db0060db794aa634f79cc38dbfe0c8e2c24e79465ac8b4cf767a0ed4b",
+      "ranges": [
+        "pool.flush"
+      ]
+    },
+    {
+      "function": "EventPool.begin_retire_next",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_stream.py:bulk-timing",
+      "source_sha256": "99963a7f28abe0bc584b4481862472b30bc531b029fd6febdc1e62941391de4f",
+      "ranges": [
+        "retire.begin"
+      ]
+    },
+    {
+      "function": "EventPool.finish_retire_next",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_stream.py:bulk-timing",
+      "source_sha256": "90fd2cdc00e2b401c5eb2fe2670c0b46fa374081952ad5d239d4560e21e4a67b",
+      "ranges": [
+        "retire.finish"
+      ]
+    },
+    {
+      "function": "GpuXtcBatchPool.parse_window",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpudgram/batch.py",
+      "source_sha256": "c18b425b44272d2711b32101cd10adc29c92910fab7276f81afc2e583580ac60",
+      "ranges": [
+        "parser.window"
+      ]
+    },
+    {
+      "function": "GpuXtcBatchPool.parse",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpudgram/batch.py",
+      "source_sha256": "b54664a64227b71ab5176881aee60f52a950aab2f0307ee0736a704d69ac7bfd",
+      "ranges": [
+        "parser.parse"
+      ]
+    },
+    {
+      "function": "_GpuXtcSlotBuffers.prepare",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpudgram/batch.py",
+      "source_sha256": "29965925bfc454ef53045551307adaa1451d834e48111f7a900216e61fd2d7ec",
+      "ranges": [
+        "parser.metadata"
+      ]
+    },
+    {
+      "function": "_GpuXtcSlotBuffers.batched_locator_rows",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpudgram/batch.py",
+      "source_sha256": "54ba06e19ef104945a274655a1c269e0f105f91282b8222429c12b41aa0e5e9d",
+      "ranges": [
+        "parser.locator_buffer"
+      ]
+    },
+    {
+      "function": "GpuEventBatch.__init__",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpudgram/parser.py",
+      "source_sha256": "e9f41de0982b9f04a49a16a4fef9a18b8d08dd3b8a442d8fe4f666d8511ff45f",
+      "ranges": [
+        "parser.walk_submit"
+      ]
+    },
+    {
+      "function": "GpuEventBatch._locate_configured",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpudgram/parser.py",
+      "source_sha256": "81c0f486b06cec11cfffa2462087f042fa3a03b680c4c407bf3e55f8ac966267",
+      "ranges": [
+        "parser.locate_submit"
+      ]
+    },
+    {
+      "function": "GpuEventDgrams.from_windows",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_input.py",
+      "source_sha256": "50334596ff702ec30ecc3a56e3732fff5a0f761ad1430d1c517b550be894c4a1",
+      "ranges": [
+        "event.views"
+      ]
+    },
+    {
+      "function": "DenseInputPreparer.prepare_batch",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_detector.py",
+      "source_sha256": "dbea18f980c92366ecf2a01dc8e77325f5aa999d930f2e65dd53f28b7482de26",
+      "ranges": [
+        "input.prepare"
+      ]
+    },
+    {
+      "function": "DenseInputPreparer._slot_buffer",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_detector.py",
+      "source_sha256": "a1f985244ad275f53e35c71da23d1100a174facb3aca4ff50d4d974d3968f159",
+      "ranges": [
+        "detector.buffer"
+      ]
+    },
+    {
+      "function": "_GatherMap.prepare",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_detector.py",
+      "source_sha256": "c3181f1b00e82be90433a23a721c9533f349daebeb2ce98746117f0ce6f810a3",
+      "ranges": [
+        "detector.owner_map"
+      ]
+    },
+    {
+      "function": "_CanonicalGatherPlan.gather",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_detector.py",
+      "source_sha256": "80c32d27ac57b192f52de5b8c093cc8193c0ade021c2805cbeed7912c7155d1b",
+      "ranges": [
+        "detector.gather_submit"
+      ]
+    },
+    {
+      "function": "owned_empty",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_allocation.py",
+      "source_sha256": "80bdd3dd658850d8cc8634f016808517cdf84f2cd6e2c8e19bb140cbcf88b20e",
+      "ranges": [
+        "allocation.owned_empty"
+      ],
+      "aliases": [
+        "psana.gpu.gpu_allocation.owned_empty",
+        "psana.gpu.gpu_kvikio_read.owned_empty",
+        "psana.gpu.gpudgram.batch.owned_empty",
+        "psana.gpu.gpu_detector.owned_empty"
+      ]
+    },
+    {
+      "function": "InputGroupPool.poll",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_input_group.py",
+      "ranges": [
+        "input.poll"
+      ],
+      "source_sha256": "151f45a7a40ee5aeb7ac0b27451f015ecced952d8d9658f8367a582a48e4bb75"
+    },
+    {
+      "function": "InputGroupPool.plan_slots",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_input_group.py",
+      "ranges": [
+        "input.plan_slots"
+      ],
+      "source_sha256": "04cf166bc6ca46216bb05e394eed410f11560e1859c84e69897ed8285b29b768"
+    },
+    {
+      "function": "InputGroupPool.issue",
+      "path": "/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/install-B/lib/python3.11/site-packages/psana/gpu/gpu_input_group.py",
+      "ranges": [
+        "input.issue"
+      ],
+      "source_sha256": "95ecc0e2671124c84ede393722cbfa06f3cfb95d2e486e071d513b58d4fd82a3"
+    }
+  ],
+  "counters": {
+    "input_poll": {
+      "calls": 50101,
+      "visited_states": 37323500,
+      "max_states": 1000,
+      "reclaimed": 49000
+    },
+    "owned_allocations": {
+      "fixed": 5,
+      "reader": 1000,
+      "parser": 10,
+      "task-metadata": 100
+    },
+    "reader": {
+      "io_path": "CPU-fallback",
+      "compat_mode": true,
+      "bulk_read": true,
+      "total_requests": 50000,
+      "total_bytes": 33582000000,
+      "useful_bytes": 33582000000,
+      "total_ns": 162312817,
+      "issue_to_complete_ns": 5430678979890
+    }
+  },
+  "units": "host wall nanoseconds, not CUDA kernel duration",
+  "steady_definition": "after first delivered event"
+}
