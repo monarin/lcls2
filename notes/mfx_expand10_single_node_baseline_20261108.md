@@ -281,4 +281,5 @@ Job44185752 completed on sdfada016 (L40S):31GPU tests and evidence audit pass.
 For10k events /31.28GiB per pass, median1stream3.409GiB/s versus2streams3.269GiB/s
 (two4.10%lower). All50k reads and100callbacks/pass matched; NICRX~33.02GiB,
 zero initial JF page-cache residency, SMDwarm. See Ada results record; independent
-results review pending. Next is matching100k1BD/1–2stream run, then BD scaling.
+results review passed (round3, fbeeddebe). Next is matching100k1BD/1–2stream run,
+then BD scaling, after carrying forward the two documented harness hardening items.

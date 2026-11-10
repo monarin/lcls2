@@ -3,7 +3,8 @@
 Job **44185752 completed on sdfada016**, November10,15:35:22–15:37:45PST,
 using one L40S. All31 GPU acceptance tests passed (no skips), all six cases
 passed their checks, automatic evidence audit passed, and temporary FFB inputs
-were removed. Independent results review is pending; pre-launch review passed.
+were removed. Independent results review passed in round3 on fbeeddebe; no blocking findings.
+Pre-launch harness review passed on58894c331.
 
 | CUDA streams | Repeat1 GiB/s | Repeat2 GiB/s | Median GiB/s | Median events/s | Median loop seconds |
 |---|---:|---:|---:|---:|---:|
@@ -135,3 +136,12 @@ Current artifacts: `/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseli
 It depends on attempt01/source-reviewed for the immutable harness, so keep both
 attempt directories. Runtime PR source and receipt are separate in attempt02.
 GPU acceptance and performance remain pending; resume from status.json.
+
+
+## Final acceptance
+
+Results accepted after round3 independent Claude review; see review-03/review.json
+and response.md. Before another100k/BD scaling campaign, carry forward the explicit
+build-config allow-list/committed launch assertion and canonical-path hardening.
+These are not blockers for this pinned, canonical-path result set. Current state:
+status.json complete; all historical pending text above refers to earlier phases.

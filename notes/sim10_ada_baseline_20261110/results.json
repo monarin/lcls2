@@ -16,7 +16,7 @@
       "auto_direct_io_read": false
     }
   },
-  "status": "measured-audit-pass-review-pending",
+  "status": "accepted-audit-and-independent-review-pass",
   "scope": "Descriptor staging only; excludes blow-up, calibration, cube and payload D2H",
   "summary": [
     {
@@ -3129,5 +3129,6 @@
         "reference_match": true
       }
     }
-  ]
+  ],
+  "reviewed_results_sha": "fbeeddebe0bbe0e2e20082897b9fef5466f93866"
 }

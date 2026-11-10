@@ -44,3 +44,10 @@ The runtime loader intentionally omits the optional psexp.parallel_pread extensi
 (debugtools-only in this checkout), and asserts that absence. Native source
 comparison includes psana, xtcdata and psalg; build configuration hashes are
 recorded separately. This reuses an existing build, not a fresh PR rebuild.
+
+
+Measured configuration difference: psana/meson.build adds only gpu/notes to the
+Python package installation exclusion list; no extension compilation inputs,
+flags or links change. This exact insertion was asserted before submission.
+Round3 accepts this pinned run; an explicit reusable allow-list/committed launch
+assertion and canonical-path handling are prerequisites for the next campaign.
