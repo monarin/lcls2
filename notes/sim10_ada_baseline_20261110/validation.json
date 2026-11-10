@@ -8,5 +8,13 @@
   "syntax": "all Python compile and bash -n pass",
   "native_source_comparison": "all tracked psana/xtcdata .pyx .pxd .cc .hh .h .cpp .c .cu match frozen build source",
   "gpu": "pending allocation",
-  "performance": "pending allocation"
+  "performance": "pending allocation",
+  "campaign_cleanup_tests": {
+    "passed": 2,
+    "seconds": 1.27,
+    "checks": [
+      "success/nonzero return",
+      "timeout terminates and reaps launcher"
+    ]
+  }
 }

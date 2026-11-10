@@ -7,7 +7,7 @@ Reuse accepted 10k unique-event fixture, five JF files plus five SMD. Copy and
 SHA-verify ~31.3 GiB to owner-controlled Weka FFB, never NVMe; remove only this
 campaign's temporary FFB copy at completion. Shared scratch stores results.
 
-Exclusive node, one scheduler-assigned L40S, one BD plus SMD0 and EB. All ranks
+Exclusive node (Slurm reserves all GPUs), one selected scheduler-assigned L40S, one BD plus SMD0 and EB. All ranks
 share the same fixed 24 physical CPU allowance, NUMA interleave. Eight KvikIO
 workers, fallback ON, task 1 MiB, bounce 16 MiB, auto-direct OFF. Batch100,
 SMD1000, bulk512KiB, 6GiB framework budget. Descriptor staging GpuTask; no

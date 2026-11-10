@@ -3,8 +3,8 @@
 #SBATCH --qos=normal
 #SBATCH --partition=ada
 #SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=48
+#SBATCH --ntasks=3
+#SBATCH --cpus-per-task=16
 #SBATCH --gres=gpu:l40s:1
 #SBATCH --exclusive
 #SBATCH --mem=128G
@@ -32,3 +32,4 @@ bash "$source_dir/../jf_raw_cache_20261109/runtime.sh" /sdf/scratch/users/m/mona
 child=$!
 wait "$child"
 child=''
+bash "$source_dir/../jf_raw_cache_20261109/runtime.sh" /sdf/scratch/users/m/monarin/gpu-validation/kvikio-2610-validation-20261015-r1/venv/bin/python "$source_dir/audit.py" "$attempt/results" > "$attempt/audit.json"
