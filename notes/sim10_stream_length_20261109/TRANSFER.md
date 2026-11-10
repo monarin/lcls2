@@ -65,6 +65,8 @@ headers readable; all five SMD hashes match the prior reference and complete
 bigdata copies are only validated for the first10000! Never request100k raw
 events from this prefix or treat its SMD as a complete owned-run index. Current
 bigdata full hashes and Configure shapes were not independently revalidated.
+Small prior receipts are copied as perlmutter-inputs-ready.json and
+perlmutter-reference.json; their hashes and prior job ID are in the dataset record.
 The full original source is preferable when fetching closing transition templates.
 
 No Sim10 fixture was found in the inspected task/staging areas; the exact SDF
@@ -97,6 +99,13 @@ Writer starting points:
 - `notes/mfx_expand10_stage2_20261105/{fixture.py,adapter.py}`
 - `notes/mfx_expand10_100k_20261109/{repeat.py,validate_repeat.py,test_repeat.py}`
 - `notes/synthetic_mfx_stage3_20261104/xtc_fixture.py`
+
+Specific hardcodes to remove or parameterize: ten-stream/36037-source-event
+contracts, frozen SNAPSHOT manifest byte-equality and size/mtime/inode check_stat,
+ten-dgram-per-event DataSource assertions in validate_repeat, and mandatory
+calibration-manifest hashes. Original run442 also has files s000..s003 (nine
+physical files total); their detector contents have not been inspected. Discover
+actual Configure membership and choose the five JF streams deliberately.
 
 These contain SDF paths, source manifests, calibration receipts and stream
 assumptions; they are references, not Perlmutter-ready commands. This staging
@@ -152,8 +161,13 @@ remain distinct; if eviction does not work, report it rather than label cold.
 Inspect available Lustre llite/lctl statistics and Slingshot counters on compute;
 Linux Ethernet sysfs RX counters alone may miss KFI/Lustre data traffic. Establish
 counter scope/units and timestamp brackets before claiming network-served bytes.
-If appropriate counters are inaccessible, retain local-cache evidence and state
-that remote-traffic attribution is unverified.
+The current physical_counters() helper aborts when ethtool physical-byte
+statistics are absent; it does not degrade automatically. Replace physical_counters/
+counter_delta or explicitly define an audited local-cache-only measurement mode;
+fail closed on that mode's agreed evidence requirements. Sever/redirect the
+network_watch -> plan_reads -> fixture_check imports that pin an SDF input ROOT,
+as well as the SDF-only cache allowlist. If appropriate counters are inaccessible,
+retain local-cache evidence and state that remote-traffic attribution is unverified.
 
 Require exact ordered event identities, sizes/read counts, callbacks and
 subbatch histogram, requested stream count exercised, proper GPU/CPU routing,

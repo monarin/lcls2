@@ -5,6 +5,10 @@ while pending, before any allocation or data generation. No new performance
 result exists. Read [TRANSFER.md](TRANSFER.md) for the receiving agent's task,
 verified local dataset, runtime candidates, controls and required adaptations.
 
+The remaining specification below describes the **cancelled SDF harness**, not
+a ready Perlmutter run. Its byte totals and Weka paths are reference values;
+TRANSFER.md requires recomputing them for the local source and Lustre.
+
 The question is whether CUDA execution stream count or measured event count can
 explain the earlier one-BD results of about 2.15 versus 1.19 GiB/s. All cases use
 one BD and the same physical GPU/node within this allocation.
@@ -16,7 +20,7 @@ one BD and the same physical GPU/node within this allocation.
 | 1 | 100,000 | 312.756747 GiB | 2 |
 | 2 | 100,000 | 312.756747 GiB | 2 |
 
-Measured order is the table order followed by its reverse, after two 1000-event
+Planned order is the table order followed by its reverse, after two 1000-event
 pilots (one per stream count). The 10k cases read a prefix of the same accepted
 100k files. This holds file layout fixed and tests measured event count/read
 duration; it is not a comparison of physically separate 10k versus 100k files.
@@ -46,8 +50,8 @@ Cancelled SDF native output path (not created):
 /sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sim10_stream_length_20261109_r1
 ```
 
-Scheduler logs are in the sibling directory ending `_logs`, named `44043617.out`
-and `44043617.err`. The unique temporary FFB copy is removed on normal completion;
+Scheduler log paths were configured in the sibling directory ending `_logs`,
+named `44043617.out` and `44043617.err`; a pending cancelled job creates no logs. The unique temporary FFB copy is removed on normal completion;
 missing complete/cleanup receipts do not pass. Existing optional cancellation/
 timeout hardening remains deferred, so failed jobs require process/stage inspection.
 

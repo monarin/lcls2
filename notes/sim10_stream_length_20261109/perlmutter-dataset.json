@@ -99,5 +99,28 @@
       "readable": true
     }
   ],
-  "limitations": "Current size/header/SMD SHA/alignment verified; bigdata full hashes and Configure shapes not reread in this handoff. SMD can describe more events than the staged prefix contains."
+  "limitations": "Current size/header/SMD SHA/alignment verified; bigdata full hashes and Configure shapes not reread in this handoff. SMD can describe more events than the staged prefix contains.",
+  "prior_validation": {
+    "job": "60341348",
+    "node": "nid008329",
+    "date_from_campaign_directory": "2026-10-26",
+    "receipt_hashes": {
+      "perlmutter-inputs-ready.json": "cd8678904250de8218f1ad5e818d14f5b14e8728935d3548e18ec611842523f6",
+      "perlmutter-reference.json": "93d414d5cf22cbfbb640285d6f660b46d9a2350eb97d725463a030af6d18c5c4"
+    },
+    "receipt_evidence": "Copied from live Perlmutter paths recorded above; prior hashes do not imply a new full bigdata hash check."
+  },
+  "observed_additional_source_stream_files": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "checked_full_source_configure_headers": [
+    4,
+    5,
+    6,
+    7,
+    8
+  ]
 }

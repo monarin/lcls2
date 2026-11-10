@@ -1,8 +1,8 @@
 {
-  "phase": "perlmutter_transfer_preparing",
+  "phase": "perlmutter_transfer_ready",
   "accepted": false,
   "base_commit": "3d6a034b7",
-  "review_round": 1,
+  "review_round": 2,
   "review_limit": 3,
   "unresolved": [],
   "checks": {
@@ -18,12 +18,16 @@
   "implementation_commit": "21f56de8884dc386d2d0ae65d159a795ed448614",
   "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sim10_stream_length_20261109_r1",
   "remaining": [
-    "Perlmutter clone verification",
-    "transfer review",
     "receiving agent adapts generation and runner",
     "native tests and results review"
   ],
   "sdf_job_state": "CANCELLED before start",
   "cancellation_pacific": "2026-11-09T16:05:24",
-  "review_verdict": "code-only pass; no native results"
+  "review_verdict": "pass for preparation-only transfer; no performance acceptance",
+  "transfer_ready": true,
+  "perlmutter_clone": "/global/homes/m/monarin/lcls2_worktree/benchmarks/sim10-stream-length-20261109",
+  "perlmutter_branch": "work/perlmutter-sim10-stream-length",
+  "clone_verified_commit": "f441033dd734190b0adbbea190e09cf18f3445e2",
+  "perlmutter_artifacts": "/pscratch/sd/m/monarin/psana2-gpu/sim10-stream-length-20261109",
+  "reviewed_commit": "f441033dd734190b0adbbea190e09cf18f3445e2"
 }
