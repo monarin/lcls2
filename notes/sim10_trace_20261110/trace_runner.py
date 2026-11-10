@@ -33,6 +33,13 @@ def main():
         capture = os.environ.get('SIM10_NSYS_CAPTURE') == '1'
         recorder = install('Integrated-on', cp.cuda.nvtx if capture else None)
         from psana.gpu.gpu_input_group import InputGroupPool
+        import hashlib
+        import inspect
+        for method in ('poll', 'plan_slots', 'issue'):
+            fn = getattr(InputGroupPool, method)
+            recorder.inventory.append(dict(function=fn.__qualname__,
+                path=inspect.getfile(fn), ranges=['input.' + method],
+                source_sha256=hashlib.sha256(inspect.getsource(fn).encode()).hexdigest()))
         poll = InputGroupPool.poll
         poll_counts = dict(calls=0, visited_states=0, max_states=0, reclaimed=0)
         recorder.counters['input_poll'] = poll_counts
@@ -53,6 +60,8 @@ def main():
         InputGroupPool.poll = observed_poll
         InputGroupPool.plan_slots = measured_function(
             InputGroupPool.plan_slots, recorder, 'input.plan_slots')
+        InputGroupPool.issue = measured_function(
+            InputGroupPool.issue, recorder, 'input.issue')
         task = runner['StagingTask']
         task.__call__ = measured_function(task.__call__, recorder, 'task.callback')
         attach = GpuEventManager._attach_gpu
