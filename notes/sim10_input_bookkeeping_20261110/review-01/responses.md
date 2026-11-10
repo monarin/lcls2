@@ -19,3 +19,8 @@ Full CPU suite after fixes:970passed in8.77s. No calibration runtime behavior
 changed. Corrected GPU transition assertion preserves consumer order and pixel
 checks, asserts stable constant identity/value and step generation increment.
 Native baseline reproduction and new acceptance remain required, never inferred.
+
+Completion evidence for IBK-R1-01: attempt03/job61098604 passed baseline diagnostic,
+31 GPU tests (zero skips), and all 12 matched benchmark cases. Full JSON receipts,
+provenance, Slurm exit status, remote hashes and derived summary are now saved in
+native/attempt03. Reviewer confirmation remains required to close the finding.

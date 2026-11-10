@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/pscratch/sd/m/monarin/psana2-gpu/sim10-input-bookkeeping-20261110/source/notes/sim10_input_bookkeeping_20261110/baseline_check.py", line 24, in <module>
+    result=pytest.main(['-q',str(HERE/'baseline_test/test_multiowner_transitions.py'),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pscratch/sd/m/monarin/psana2-gpu/perlmutter-kvikio2610-20261015/attempt01/env/lib/python3.11/site-packages/_pytest/config/__init__.py", line 201, in main
+    return _main(args=args, plugins=plugins, prog="pytest.main()")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pscratch/sd/m/monarin/psana2-gpu/perlmutter-kvikio2610-20261015/attempt01/env/lib/python3.11/site-packages/_pytest/config/__init__.py", line 223, in _main
+    config = _prepareconfig(new_args, plugins, prog=prog)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pscratch/sd/m/monarin/psana2-gpu/perlmutter-kvikio2610-20261015/attempt01/env/lib/python3.11/site-packages/_pytest/config/__init__.py", line 409, in _prepareconfig
+    pluginmanager.register(plugin)
+  File "/pscratch/sd/m/monarin/psana2-gpu/perlmutter-kvikio2610-20261015/attempt01/env/lib/python3.11/site-packages/_pytest/config/__init__.py", line 571, in register
+    plugin_name = super().register(plugin, name)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pscratch/sd/m/monarin/psana2-gpu/perlmutter-kvikio2610-20261015/attempt01/env/lib/python3.11/site-packages/pluggy/_manager.py", line 239, in register
+    self._verify_hook(hook, hookimpl)
+  File "/pscratch/sd/m/monarin/psana2-gpu/perlmutter-kvikio2610-20261015/attempt01/env/lib/python3.11/site-packages/pluggy/_manager.py", line 448, in _verify_hook
+    raise PluginValidationError(
+pluggy._manager.PluginValidationError: Plugin '140278496343312' for hook 'pytest_runtest_logreport'
+hookimpl definition: pytest_runtest_logreport(r)
+Argument(s) {'r'} are declared in the hookimpl but can not be found in the hookspec
+srun: error: nid001917: task 0: Exited with exit code 1
+srun: Terminating StepId=61098414.0

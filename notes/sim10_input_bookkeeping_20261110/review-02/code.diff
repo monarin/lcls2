@@ -1,0 +1,302 @@
+diff --git a/psana/psana/gpu/gpu_events.py b/psana/psana/gpu/gpu_events.py
+index 9da9ffb86..001382db4 100644
+--- a/psana/psana/gpu/gpu_events.py
++++ b/psana/psana/gpu/gpu_events.py
+@@ -834,6 +834,8 @@ class GpuEventManager:
+-            for group, slot in zip(groups, slots):
+-                key = inputs.issue(self._input_batch_id, group, slot_id=slot)
+-                if key is None:
+-                    raise RuntimeError('reserved input group became unavailable')
+-                pending.append(key)
+-                self._group_schedule.issued.add(group.group_id)
++            # On partial failure the pool owns started reads, even though this
++            # pending list and the schedule stay unpopulated. The non-None
++            # _pending_gpu_read guard prevents reissue; pool.close drains them.
++            keys = inputs.issue_groups(self._input_batch_id, groups, slots=slots)
++            if keys is None:
++                raise RuntimeError('reserved input groups became unavailable')
++            pending.extend(keys)
++            self._group_schedule.issued.update(group.group_id for group in groups)
+diff --git a/psana/psana/gpu/gpu_input_group.py b/psana/psana/gpu/gpu_input_group.py
+index 4f748c75e..7f4b87ab7 100644
+--- a/psana/psana/gpu/gpu_input_group.py
++++ b/psana/psana/gpu/gpu_input_group.py
+@@ -5 +5 @@ credit until its group's last planned/active/CUDA consumer finishes, including
+-across EB batches. Polling examines all groups rather than a retirement queue.
++across EB batches. Only unreferenced windows enter the retirement queue.
+@@ -8,0 +9 @@ from dataclasses import dataclass, field
++from queue import Empty, SimpleQueue
+@@ -42,0 +44,3 @@ class InputGroupPool:
++        self._busy_slots = set()
++        self._retirement_queue = SimpleQueue()
++        self._candidates = {}
+@@ -52 +56 @@ class InputGroupPool:
+-        busy = {g.slot for g in self._groups.values()}
++        busy = set(self._busy_slots)
+@@ -97,2 +100,0 @@ class InputGroupPool:
+-        if group.small and group.stream_id in self._small:
+-            return None
+@@ -106,4 +108,32 @@ class InputGroupPool:
+-            if not 0 <= slot < self.reader._n_slots:
+-                raise IndexError(slot)
+-            if any(g.slot == slot for g in self._groups.values()):
+-                return None
++        if not 0 <= slot < self.reader._n_slots:
++            raise IndexError(slot)
++        if slot in self._busy_slots or (group.small and group.stream_id in self._small):
++            return None
++        return self._issue_reserved(key, group, slot)
++
++    def issue_groups(self, batch_id, groups, *, slots):
++        """Submit a complete slot plan without per-group polling or pool scans.
++
++        plan_slots() collects retirement candidates before the allocation hold.
++        Validate all keys/credits/slots before any I/O. A partial I/O failure
++        leaves successful submissions owned by this pool for close() to drain.
++        """
++        if self._closed:
++            raise RuntimeError('input group pool is closed')
++        groups, slots = tuple(groups), tuple(map(int, slots))
++        if len(groups) != len(slots):
++            raise ValueError('input groups and slots differ in length')
++        keys = tuple((int(batch_id), g.group_id) for g in groups)
++        if len(set(keys)) != len(keys) or any(k in self._groups for k in keys):
++            raise ValueError('duplicate live input group')
++        if any(not 0 <= s < self.reader._n_slots for s in slots):
++            raise IndexError('input slot outside reader pool')
++        small = [g.stream_id for g in groups if g.small]
++        if (len(set(slots)) != len(slots) or self._busy_slots.intersection(slots)
++                or len(set(small)) != len(small) or any(s in self._small for s in small)):
++            return None
++        for key, group, slot in zip(keys, groups, slots):
++            self._issue_reserved(key, group, slot)
++        return keys
++
++    def _issue_reserved(self, key, group, slot):
+@@ -111,0 +142 @@ class InputGroupPool:
++        self._busy_slots.add(slot)
+@@ -144 +175,2 @@ class InputGroupPool:
+-        a parser launch per read request.
++        a parser launch per read request. Bind only after notification registration
++        succeeds, so every bound window has a path into the candidate queue.
+@@ -153,0 +186,4 @@ class InputGroupPool:
++        # Notification may come from a consumer thread. It only enqueues; the
++        # BD thread alone mutates pool state and releases raw-slot ownership.
++        queue = self._retirement_queue
++        window.notify_when_retirable(lambda: queue.put(state))
+@@ -202,0 +239,10 @@ class InputGroupPool:
++    def _collect_candidates(self):
++        while True:
++            try:
++                state = self._retirement_queue.get_nowait()
++            except Empty:
++                break
++            # Identity check also rejects a stale notification after key reuse.
++            if self._groups.get(state.key) is state:
++                self._candidates[state.key] = state
++
+@@ -204 +250,2 @@ class InputGroupPool:
+-        """Reclaim every ready group, including later ones; never synchronize CUDA."""
++        """Reclaim eligible windows only; never synchronize or scan live uses."""
++        self._collect_candidates()
+@@ -206,3 +253 @@ class InputGroupPool:
+-        for state in tuple(self._groups.values()):
+-            if state.window is None:
+-                continue
++        for state in tuple(self._candidates.values()):
+@@ -234,0 +280,2 @@ class InputGroupPool:
++        self._busy_slots.discard(state.slot)
++        self._candidates.pop(state.key, None)
+@@ -260,0 +308 @@ class InputGroupPool:
++        self._collect_candidates()  # discard stale notifications from shutdown
+diff --git a/psana/psana/gpu/gpu_input_window.py b/psana/psana/gpu/gpu_input_window.py
+index a92042251..020ec895a 100644
+--- a/psana/psana/gpu/gpu_input_window.py
++++ b/psana/psana/gpu/gpu_input_window.py
+@@ -45,0 +46,2 @@ class InputWindow:
++        self._retirement_notify = None
++        self._retirement_notify_set = False
+@@ -120,0 +123,21 @@ class InputWindow:
++    def notify_when_retirable(self, notify):
++        """Register one nonblocking owner notification, without checking CUDA.
++
++        Called with the window lock held. The callback must only enqueue work;
++        it must not reclaim storage or call back into the input pool. Eligibility
++        means closed with no references; CUDA completion still needs checking.
++        """
++        with self._lock:
++            if self._retirement_notify_set:
++                raise RuntimeError('retirement notification already registered')
++            self._retirement_notify_set = True
++            self._retirement_notify = notify
++            self._notify_retirable()
++
++    def _notify_retirable(self):
++        # Caller holds _lock. Once closed and unreferenced, no use can fork.
++        if self._closed and not self._uses and self._retirement_notify is not None:
++            notify = self._retirement_notify
++            notify()
++            self._retirement_notify = None
++
+@@ -124,0 +148 @@ class InputWindow:
++            self._notify_retirable()
+diff --git a/psana/psana/tests/gpu/integration/test_multiowner_transitions.py b/psana/psana/tests/gpu/integration/test_multiowner_transitions.py
+index ca49022ff..f54bf64e2 100644
+--- a/psana/psana/tests/gpu/integration/test_multiowner_transitions.py
++++ b/psana/psana/tests/gpu/integration/test_multiowner_transitions.py
+@@ -79 +79,6 @@ def test_transition_drains_pending_multiowner_consumers_before_dispatch(monkeypa
+-        assert cp.asnumpy(constants.get('camera', 'gain')) == (2 if service == TransitionId.BeginStep else 1)
++        # Run-scoped constants remain the same allocation across BeginStep.
++        # Transition dispatch changes host state, but does not re-upload it.
++        assert m.dsparms.calibconst['camera']['gain'] == 2
++        assert constants.get('camera', 'gain') is old_gain
++        assert cp.asnumpy(constants.get('camera', 'gain')) == 1
++        assert getattr(m, '_step_generation', 0) == (1 if service == TransitionId.BeginStep else 0)
+diff --git a/psana/psana/tests/gpu/unit/test_gpu_input_group.py b/psana/psana/tests/gpu/unit/test_gpu_input_group.py
+index 1105c494d..845ad7ff7 100644
+--- a/psana/psana/tests/gpu/unit/test_gpu_input_group.py
++++ b/psana/psana/tests/gpu/unit/test_gpu_input_group.py
+@@ -250,0 +251,135 @@ def test_failed_parser_keeps_reader_hold_through_group_pool_shutdown(io):
++
++
++def test_batch_submission_uses_plan_without_repolling_and_preserves_reads(io, monkeypatch):
++    pool, groups = setup(io)
++    selected = groups[1:]
++    slots = pool.plan_slots(selected)
++
++    def unexpected_poll():
++        raise AssertionError('batch submission repeated retirement polling')
++
++    monkeypatch.setattr(pool, 'poll', unexpected_poll)
++    keys = pool.issue_groups(0, selected, slots=slots)
++    assert len(keys) == len(selected) == len(io.futures) == 3
++    assert pool._busy_slots == set(slots)
++    assert [call[2:] for call in io.calls if call[0] == 'submit'] == [(0, 16), (16, 16), (32, 16)]
++    pool.close()
++    assert not pool._busy_slots and all(f.gets == 1 for f in io.futures)
++
++
++def test_batch_conflicts_are_rejected_before_any_io(io):
++    pool, groups = setup(io)
++    assert pool.issue_groups(0, groups[1:3], slots=(0, 0)) is None
++    assert not io.futures
++    with pytest.raises(ValueError, match='duplicate'):
++        pool.issue_groups(0, (groups[1], groups[1]), slots=(0, 1))
++    with pytest.raises(IndexError):
++        pool.issue_groups(0, groups[1:3], slots=(0, 99))
++    assert not io.futures
++    key = pool.issue(0, groups[1], slot_id=0)
++    assert pool.issue_groups(1, groups[1:3], slots=(0, 1)) is None
++    assert len(io.futures) == 1 and pool.live_keys == (key,)
++    pool.close()
++
++
++def test_partial_batch_submission_failure_keeps_started_reads_owned(io):
++    pool, groups = setup(io)
++    io.fail_submit = 1
++    with pytest.raises(RuntimeError, match='submission'):
++        pool.issue_groups(0, groups[1:], slots=(0, 1, 2))
++    assert len(io.futures) == 1 and pool._busy_slots == {0}
++    assert pool.live_keys == ((0, groups[1].group_id),)
++    pool.close()
++    assert not pool._busy_slots and not pool.live_keys
++    assert all(f.gets == 1 for f in io.futures)
++
++
++def test_retirement_candidates_skip_live_windows_and_retry_delayed_cuda(io, monkeypatch):
++    pool, groups = setup(io)
++    a, b = pool.issue_groups(0, groups[1:3], slots=(0, 1))
++    wa, wb = bind(pool, a), bind(pool, b)
++    original = wa.poll
++
++    def still_owned():
++        raise AssertionError('polled a window with a live planned reference')
++
++    monkeypatch.setattr(wa, 'poll', still_owned)
++    done = Token(False)
++    use = pool.take_use(b, 1)
++    use.register_consumer_done(done)
++    use.wait_until_safe_to_reuse()
++    assert not pool.poll()
++    assert set(pool._candidates) == {b}
++    assert done.waits == 0
++    done.ready = True
++    assert pool.poll() == (b,) and not pool._candidates
++    assert not wa.released and wb.released
++    monkeypatch.setattr(wa, 'poll', original)
++    pool.take_use(a, 0).wait_until_safe_to_reuse()
++    assert pool.poll() == (a,)
++    pool.close()
++
++
++def test_consumer_thread_only_enqueues_and_stale_notification_cannot_reclaim_new_group(io):
++    from concurrent.futures import ThreadPoolExecutor
++    pool, groups = setup(io, slots=1)
++    key = pool.issue(0, groups[1])
++    bind(pool, key)
++    old = pool._groups[key]
++    use = pool.take_use(key, 0)
++    with ThreadPoolExecutor(max_workers=1) as executor:
++        executor.submit(use.wait_until_safe_to_reuse).result()
++    assert pool.live_keys == (key,) and not pool._candidates
++    assert pool.poll() == (key,)
++    assert pool.issue(0, groups[1]) == key
++    bind(pool, key)
++    pool._retirement_queue.put(old)
++    assert not pool.poll() and not pool._candidates
++    assert pool.live_keys == (key,) and pool._busy_slots == {0}
++    pool.close()
++    assert pool._retirement_queue.empty() and not pool._candidates
++
++
++def test_raw_hold_release_failure_preserves_candidate_and_busy_slot_until_retry(io):
++    pool, groups = setup(io, slots=1)
++    key = pool.issue(0, groups[1])
++    bind(pool, key)
++    state = pool._groups[key]
++    release = state.release_raw
++    calls = []
++
++    def fail_once():
++        calls.append('release')
++        if len(calls) == 1:
++            raise RuntimeError('raw hold release failed')
++        release()
++
++    state.release_raw = fail_once
++    pool.take_use(key, 0).wait_until_safe_to_reuse()
++    with pytest.raises(RuntimeError, match='raw hold release failed'):
++        pool.poll()
++    assert pool._groups[key] is state and pool._candidates[key] is state
++    assert pool._busy_slots == {0} and state.release_raw is fail_once
++    assert pool.reader._input_holds[0] == 1
++    assert pool.poll() == (key,)
++    assert not pool._groups and not pool._candidates and not pool._busy_slots
++    assert pool.reader._input_holds[0] == 0
++    pool.close()
++
++
++def test_failed_notification_registration_does_not_leave_untracked_bound_window(io):
++    pool, groups = setup(io, slots=1)
++    key = pool.issue(0, groups[1])
++    read = pool.read(key)
++    batch = NS(data_gpu=read.data_gpu, n_dgrams=1, walk_done=Token())
++    rejected = InputWindow(key[0], key[1], batch, read.desc_table,
++        release=read.retain_input(), defer_retirement=True)
++    rejected.notify_when_retirable(lambda: None)
++    with pytest.raises(RuntimeError, match='already registered'):
++        pool.bind(key, rejected)
++    assert pool._groups[key].window is None
++    assert rejected.close()
++    window = bind(pool, key)
++    pool.take_use(key, 0).wait_until_safe_to_reuse()
++    assert pool.poll() == (key,) and window.released
++    pool.close()
+diff --git a/psana/psana/tests/gpu/unit/test_gpu_slot_selection.py b/psana/psana/tests/gpu/unit/test_gpu_slot_selection.py
+index a19a95f09..62175a3fb 100644
+--- a/psana/psana/tests/gpu/unit/test_gpu_slot_selection.py
++++ b/psana/psana/tests/gpu/unit/test_gpu_slot_selection.py
+@@ -16,0 +17 @@ def pool_for(capacities, busy=(), small=()):
++    pool._busy_slots = set(busy)
+@@ -76,0 +78 @@ def test_new_plan_observes_growth_trim_and_completion(monkeypatch):
++        pool._busy_slots.discard(1)
