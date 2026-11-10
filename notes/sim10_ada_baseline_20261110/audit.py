@@ -32,6 +32,14 @@ def audit(root):
         need(device['compat_mode']=='ON' and device['effective']==dict(num_threads=8,task_size=1<<20,bounce_buffer_size=16<<20,auto_direct_io_read=False),'KvikIO')
         need(all(x['affinity']==p['cpu_affinity'] and len(x['affinity'])==24 and 'policy: interleave' in x['numa_policy'] and x['runtime_files']==runtime for x in rows),'CPU/runtime placement')
         need(r['source_sha256']==p['source_sha256'],'Harness identity')
+        receipt=p['native_receipt'];source=Path(receipt['source'])/'psana/psana'
+        for item in bd['runtime_files'].values():
+            path=Path(item['path'])
+            if path.suffix=='.py':
+                need(path.is_relative_to(source),'Python path outside pinned PR')
+                expected=receipt['python'].get(str(path.relative_to(source)))
+            else:expected=receipt['native'].get(str(path))
+            need(expected is not None and item['sha256']==expected,'Runtime receipt mismatch')
         for key in ('conditioning','initial_cache'):
             need([x['path'] for x in m[key]]==info['files'] and all(x['resident_pages']==0 for x in m[key]),'Cold cache')
         need(m['seconds']==r['seconds'] and r['seconds']>0 and math.isclose(r['gib_s'],r['bytes']/2**30/r['seconds']),'Rate')

@@ -1,0 +1,101 @@
+{
+  "reviewed_commit": "14c07bccd478fd58532b1671299b09651a692499",
+  "verdict": "changes_requested",
+  "summary": "Pre-launch harness review of notes/sim10_ada_baseline_20261110 at 14c07bccd (12 new files; no runtime edits). One blocker: run.sbatch requests --ntasks=1 (48 cpus-per-task) while campaign.py launches `mpiexec -n 3 --bind-to none` under the OpenMPI/PRRTE runtime selected by jf_raw_cache_20261109/runtime.sh. PRRTE sizes its slot pool from the Slurm task count, and notes/mfx_pipeline_scaling_20261109/review-01/review.json records exactly this failure ('not enough slots', fixed by --ntasks=6); every prior accepted MPI campaign on this runtime (sim10_bulk_target ntasks=3, sim10_100k_bd_sweep ntasks=6, mfx_pipeline_scaling ntasks=6) sets ntasks >= the mpiexec rank count. As written, both pilots and all four 10k cases would fail at launch, so the job cannot produce evidence. Fix: --ntasks=3 --cpus-per-task=16 (keeps 48 CPUs; support.affinity still trims every rank to the same 24 physical cores) or add an explicit oversubscribe map. Otherwise the harness matches the agreed scope: DataSource batch_size=100, n_gpu_streams from --streams in {1,2}, gpu_bulk_target_bytes=524288, 6 GiB budget, d2h chunk 0, skip_calib_load='all', descriptor-only GpuTask; KvikIO compat ON/8 workers/1 MiB task/16 MiB bounce/auto-direct off asserted via defaults.get; ranks 0-1 masked CUDA_VISIBLE_DEVICES='' before any import and rank 2 masked to the nvidia-smi UUID of the single scheduler-assigned device (campaign requires a comma-free CUDA_VISIBLE_DEVICES and one L40S row); getDeviceCount()==1 asserted; comm.size==3 with smd0/eb/bd roles asserted. Exact accounting: 5 reads/event x 10k = 50,000 requests and 3,358,200 x 10,000 = 33,582,000,000 bytes, histogram {524724:n,629664:n,734604:3n}, exactly n//100 callbacks each of size 100, callback timestamps == delivered order, len(distinct stream ptrs)==requested streams, cpu_reads==pressure_drains==0, manager closed/no pending/active_count 0/_held 0/peers 1 (hook names verified at gpu_events.py:183,192,337,446,648,1141; gpu_kvikio_read.py:348,386; event_manager.py:258; gpu_budget.py:170). bulk_accounting.py now keeps running outstanding totals (outstanding[0..1]) instead of summing pending on every issue, as the context states. Timer: rank 0 takes a 1 s idle NIC interval, evicts only the five owner-controlled staged JF files (fsync + FADV_DONTNEED, mincore zero gate) after DataSource setup and the first barrier, starts perf_counter before the loop barrier (so lazy pipeline setup is inside), stops after the completion barrier following the BD's device synchronize; physical_counters reports rx/tx_bytes_phy per interface with no summing, and the NIC interval is asserted >= the timer (not used as an application rate); no drop_caches anywhere. Staging goes to FFB only (findmnt source drpsrcf/ffb asserted), size+SHA verified per file, stage dir mode 0700 under the owner's FFB path and removed in finally with a cleanup receipt; results to shared scratch. Source identity: prepare_runtime.py pins PR head 67c327a1, requires a clean tracked tree, byte-compares every tracked .pyx/.pxd/.cc/.hh/.h/.cpp/.c/.cu under psana/ and xtcdata/ against the frozen build source, and records PR Python hashes plus install-B .so hashes; runtime.activate refuses if psana was already imported and loads psana with search locations [PR source, frozen psana]; identity() asserts 13 module paths/hashes per rank (Python must be under PR source with recorded hash; natives must match the receipt). Subpackage lookup falls through correctly for top-level natives (dgram, smdreader, eventbuilder, hsd, shmem, utilsdetector_ext) because hsd/shmem have no __init__.py and utilsdetector_ext is top-level per pycalgos/utilsdetector.py:15. gpu_tests.py runs the six ownership/transition/task/group/window device files in-process with the masked GPU and fails if exitcode!=0, passed==0, or any skip/failure. audit.py recomputes rates, matrix, roles, identities, callbacks, streams, I/O, histogram, drain, GPU/UUID, KvikIO settings, placement, harness hashes, cold gate, NIC and idle brackets. CPU suite (1023 passed) and syntax checks are taken from validation.json; GPU tests and performance are pending and are not labelled passed here. Non-blocking items: 20-minute wall limit is tight; no negative tests for audit.py and no audit comparison of runtime_files against the native receipt; psalg sources excluded from the native-source comparison; loader cannot resolve natives inside subpackages with __init__.py (only psexp.parallel_pread, debugtools-only); TMPDIR/CuPy cache on shared scratch not cleaned; BDS-02 orphaned-stage risk carried over; SMD files staged warm and only JF files cold-gated should be disclosed in results.",
+  "checks": [
+    "Read all 12 files in notes/sim10_ada_baseline_20261110: scope.md, validation.json, status.json, run.sbatch, campaign.py, runner.py, support.py, bulk_accounting.py, gpu_tests.py, prepare_runtime.py, runtime.py, audit.py.",
+    "Compared runner.py/campaign.py/support.py/bulk_accounting.py/run.sbatch line by line against the accepted notes/sim10_100k_bd_sweep_20261109 versions; differences are: --streams {1,2} driving n_gpu_streams and the stream-count assertion, exact callback count/size check, --events {1000,10000}, bds fixed to 1, runtime.activate()/identity() insertion with 13 hashed modules, scheduler GPU mask validation via nvidia-smi -i, gpu_tests.py pre-step, 24-core affinity trim applied in both campaign and runner, 10k fixture via fixture_check.check_10k, constant-time outstanding totals in bulk_accounting, sbatch moved to ada partition/gres l40s/ntasks 1/cpus 48/128G/20 min with shared-scratch TMPDIR.",
+    "Read reused helpers: jf_raw_cache_20261109/common.py and runtime.sh, jf_cold_ffb_20261109/run.py (cache(), FFB root), mfx_kvikio_read_20261108/network_watch.py (physical_counters/counter_delta), mfx_expand10_performance_20261106/fixture_check.py (check_10k receipt binding), plan_reads.py and adapter.py import lines; confirmed nothing imported before runtime.activate() imports psana at module scope (common.requests imports psana.dgram lazily).",
+    "Arithmetic: 524724+629664+3*734604 = 3,358,200 = EVENT_BYTES; 10k events -> 50,000 reads and 33,582,000,000 bytes; histogram(n) = {524724:n, 629664:n, 734604:3n}; callbacks n//100 of size 100.",
+    "Verified framework hook names/semantics at this checkout: GpuEventManager._n_bd_per_gpu (gpu_events.py:183), _closed (192, 1141), _setup_gpu_pipeline (337), _gpu_budget (348-356), pool_depth = n_gpu_streams (446), _trim_gpu_caches (648); KvikioGpuReader._pending/_submit_read/wait_batch with short-read check (gpu_kvikio_read.py:86,348,386,404); EventManager._read (event_manager.py:258); _GpuBudget._held (gpu_budget.py:170); EventPool.active_count (gpu_stream.py:342).",
+    "Verified timer/NIC/cold-gate ordering in runner.py:54-75 and that the NIC bracket is asserted >= timer and never used as an app rate; counter_delta keeps interfaces separate; no drop_caches anywhere in the harness.",
+    "Verified runtime.activate()/identity() package-path fallback against the psana tree: native .pyx inventory (19 files) shows top-level natives (dgram, smdreader, eventbuilder, parallelreader, dgramedit, dgramlite, quadanode) resolve via the second search location; hsd/ and shmem/ have no __init__.py so their frozen .so wins over the namespace portion; utilsdetector_ext is a top-level extension (pycalgos/utilsdetector.py:15); psexp/parallel_pread lives inside a subpackage with __init__.py and is imported only by debugtools (try/except).",
+    "Verified the six GPU test files exist at this checkout with pytest.mark.gpu + skipif(no CUDA device) gates; gpu_tests.py fails on any skip; psana/psana/tests/pytest.ini only deselects 'slow'; tests/gpu/conftest.py is a pure fixture module.",
+    "Checked Slurm/MPI conventions across all notes/*/run.sbatch: prior MPI campaigns on this OpenMPI runtime use ntasks >= mpiexec -n (bulk_target 3, 100k sweep 6, pipeline scaling 6); mfx_pipeline_scaling review-01 documents a PRRTE 'not enough slots' failure fixed by --ntasks=6.",
+    "Checked prepare_runtime.py coverage: tracked psana/ and xtcdata/ native sources compared; psalg/ (headers present at psalg/psalg/**) not compared.",
+    "Reviewed prior review IDs (SBT-*, BDS-01..08, IBK-R2-01, R1-R4) for reuse; BDS-02 carried over because campaign.py staging/cleanup code is unchanged.",
+    "Cross-checked audit.py against the result schema runner.py writes (rows[2] BD, measurement keys, framework dict, drain list, device dict, io keys, runtime_files) and against provenance.json keys written by campaign.py."
+  ],
+  "limitations": [
+    "No commands were run: no syntax checks, hashing, test execution, or git operations; the CPU suite result (1023 passed, 6.55 s) and the native-source comparison are taken from validation.json and the coordinator statement.",
+    "File tools are restricted to the worktree; reads of the sibling pr-source checkout (PR head 67c327a1), the native-compatibility.json receipt, the frozen build at pr187-pr208-integration-20261026-r1/B, and the FFB/fixture paths were unavailable. Framework hook semantics were verified against psana/psana at 14c07bccd, not against the PR source tree the job will load.",
+    "psana/setup.py is not present in this checkout, so extension module naming (top-level vs subpackage) was inferred from .pyx locations, __init__.py presence and the comment in pycalgos/utilsdetector.py.",
+    "The 10k fixture receipt (mfx_expand10_10k_20261106/files.json) and generation.json on project scratch were not read; fixture identity relies on fixture_check.check_10k fail-closed checks.",
+    "Whether the CPU unit-test run used runtime.activate() (package-path loader) or a plain PYTHONPATH layout is not recorded in validation.json, so the loader has no recorded end-to-end exercise before the job.",
+    "GPU tests and performance are pending allocation; nothing measured is approved by this review. Slurm account/partition/gres validity (lcls:prjdat21, ada, gpu:l40s:1) cannot be checked from files."
+  ],
+  "findings": [
+    {
+      "id": "ADA-01",
+      "severity": "high",
+      "blocking": true,
+      "file": "notes/sim10_ada_baseline_20261110/run.sbatch",
+      "line": 6,
+      "evidence": "run.sbatch sets --ntasks=1 --cpus-per-task=48, but campaign.py:39 launches `numactl --interleave=all mpiexec -n 3 --bind-to none ...` using the OpenMPI/PRRTE mpiexec from the conda base on PATH (jf_raw_cache_20261109/runtime.sh). PRRTE sizes slots from the Slurm task count, so -n 3 against a 1-task allocation fails with 'not enough slots'. notes/mfx_pipeline_scaling_20261109/review-01/review.json check 18 records exactly this failure in failed1/pilot-b4-s1.log, fixed by --ntasks=6; all prior accepted MPI campaigns on this runtime set ntasks >= the rank count (sim10_bulk_target ntasks=3, sim10_100k_bd_sweep ntasks=6, mfx_pipeline_scaling ntasks=6). The previous ntasks=1 sbatch files (jf_cold_ffb, mfx_kvikio_read) run no MPI.",
+      "requested_change": "Set `#SBATCH --ntasks=3` with `--cpus-per-task=16` (same 48 CPUs; support.affinity() still trims every rank to the same first 24 physical cores so the fixed allowance is preserved), or alternatively add an explicit oversubscribe mapping to the mpiexec command. Record the choice in scope.md and re-run the bash -n syntax check. Required before the job is submitted."
+    },
+    {
+      "id": "ADA-02",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/sim10_ada_baseline_20261110/run.sbatch",
+      "line": 11,
+      "evidence": "--time=00:20:00 with TERM at 120 s before the limit must cover: gpu_tests.py (timeout 300 s), copying and SHA-verifying ~31.3 GiB of JF plus SMD to Weka FFB with four threads, two 1000-event pilots and four 10k cases (each with MPI start-up, DataSource setup, cold conditioning and a 900 s per-case timeout), then stage removal. The prior accepted 1-BD two-stream rate was ~1.2 GiB/s (~26 s of loop per 10k case) and per-case overhead was tens of seconds; a realistic total is 10-16 min, leaving little margin for a slow cold Weka read or a long GPU test run. A wall-time kill leaves no complete.json and forces a full rerun.",
+      "requested_change": "Raise the limit to 45-60 min (the node is exclusive anyway) or document the timing budget so a timeout is recognised as scheduling rather than a harness failure."
+    },
+    {
+      "id": "ADA-03",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/sim10_ada_baseline_20261110/audit.py",
+      "line": 33,
+      "evidence": "The accepted 100k sweep shipped test_audit.py with 22 mutation tests (closed BDS-04); this directory has no test_audit.py, so none of audit.py's 26 fail-closed checks have a negative test. audit.py also loads provenance.json (which embeds native_receipt with python and native hashes) but only requires runtime_files to be identical across rows; it never compares the recorded per-module sha256 values against native_receipt['python'] / ['native'], so post-job identity rests solely on the in-run identity() asserts.",
+      "requested_change": "Add a test_audit.py (mutations for at least GPU tests, matrix, stream count, read accounting, drain, assigned GPU, cold cache, NIC bracket, harness identity, completion/cleanup) and extend audit.py to check each runtime_files entry's path/sha256 against provenance native_receipt. Run and log both before the results review."
+    },
+    {
+      "id": "ADA-04",
+      "severity": "medium",
+      "blocking": false,
+      "file": "notes/sim10_ada_baseline_20261110/prepare_runtime.py",
+      "line": 11,
+      "evidence": "The native-source comparison covers `git ls-files psana xtcdata` with suffixes .pyx/.pxd/.cc/.hh/.h/.cpp/.c/.cu. psalg/ (e.g. psalg/psalg/calib, detector, utils headers) is part of the same repository and is compiled into psana extensions (peakFinder/psalg_ext.pyx, pycalgos, hexanode); a PR change there would not be caught, yet install-B natives would still be declared source-identical. Build configuration (setup.py / CMake) is also outside the comparison.",
+      "requested_change": "Extend the ls-files set to psalg (and any other directory whose sources are linked into psana/xtcdata extensions) and record the build configuration hashes in the receipt, or state explicitly in scope.md/README that identity is asserted only for psana and xtcdata sources."
+    },
+    {
+      "id": "ADA-05",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_ada_baseline_20261110/runtime.py",
+      "line": 13,
+      "evidence": "activate() gives only the top-level `psana` package two search locations. Any subpackage with its own __init__.py in the PR source (psexp, pycalgos, peakFinder, gpu, detector) gets __path__ limited to the PR source directory, so a frozen .so living inside such a subpackage is unreachable. At this checkout the only such native is psana/psexp/parallel_pread.pyx, imported solely by debugtools (try/except), so the benchmark path is unaffected; top-level natives (dgram, smdreader, eventbuilder, hsd, shmem, utilsdetector_ext) resolve correctly.",
+      "requested_change": "Document this loader limitation in runtime.py and have identity() or gpu_tests.py assert that `psana.psexp.parallel_pread` is either importable from install-B or intentionally absent, so a future subpackage native does not silently change behaviour."
+    },
+    {
+      "id": "BDS-02",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_ada_baseline_20261110/campaign.py",
+      "line": 31,
+      "evidence": "Carried over unchanged from the 100k sweep: SIGTERM maps to sys.exit(143), but during staging the SystemExit propagates through the ThreadPoolExecutor context manager, which waits for in-flight copyfile/sha work on multi-GiB files before the finally reaches shutil.rmtree; subprocess.run(timeout=...) SIGKILLs gpu_tests/mpiexec, which can leave ranks holding staged files during rmtree. With TERM only 120 s before the wall limit the unique FFB stage can be orphaned.",
+      "requested_change": "Optional hardening as before (cancel pending copies on TERM, TERM-before-KILL on case timeout) and a README note that an orphaned sim10-ada-baseline-<jobid> directory under the owner's FFB path must be removed manually."
+    },
+    {
+      "id": "ADA-06",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_ada_baseline_20261110/run.sbatch",
+      "line": 19,
+      "evidence": "TMPDIR and CUPY_CACHE_DIR are created under the shared-scratch attempt directory and never removed; the prior sbatch files created a node-local root and `rm -rf`'d it in the EXIT trap. pytest --basetemp also lands under results/pytest-tmp.",
+      "requested_change": "Either remove $attempt/tmp and $attempt/cupy-cache in the cleanup trap or state in the README that these directories are intentionally retained as evidence."
+    },
+    {
+      "id": "ADA-07",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_ada_baseline_20261110/scope.md",
+      "line": 19,
+      "evidence": "The cold gate evicts and verifies only the five staged JF bigdata files (info['files']); the five SMD files are copied immediately before each campaign and are read by smd0 from a warm page cache inside the timed loop, and inputs.json/results do not record SMD residency. The prior campaign README disclosed that SMD and backend caches are uncontrolled; scope.md here says only that hardware cache is not flushed.",
+      "requested_change": "Add one sentence to scope.md and the eventual results README that SMD files are not cold-gated and are expected to be page-cache warm, and optionally record SMD residency (prefix_residency) alongside initial_cache for completeness."
+    }
+  ]
+}

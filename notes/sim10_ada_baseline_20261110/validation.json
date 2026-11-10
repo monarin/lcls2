@@ -6,7 +6,7 @@
     "warning": "Sandbox denied network interface discovery; tests still passed. No MPI/GPU claim from this check."
   },
   "syntax": "all Python compile and bash -n pass",
-  "native_source_comparison": "all tracked psana/xtcdata .pyx .pxd .cc .hh .h .cpp .c .cu match frozen build source",
+  "native_source_comparison": "All tracked native sources in psana, xtcdata, psalg match frozen build; configurations recorded separately",
   "gpu": "pending allocation",
   "performance": "pending allocation",
   "campaign_cleanup_tests": {
@@ -16,5 +16,11 @@
       "success/nonzero return",
       "timeout terminates and reaps launcher"
     ]
-  }
+  },
+  "harness_tests": {
+    "passed": 16,
+    "seconds": 1.55,
+    "checks": "cleanup tests + valid evidence + 13 mutations including runtime hashes"
+  },
+  "loader_exercised": "runtime.activate then identity for seven modules before 1023 CPU unit tests; repeated after optional native absence assertion"
 }

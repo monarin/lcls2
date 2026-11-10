@@ -1,8 +1,16 @@
 {
-  "phase": "preparing",
-  "scope": "corrected Ada 10k baseline",
+  "phase": "review-02-preparing",
   "pr_sha": "67c327a148a08b2aaf972e67e1e02e367c2b298f",
+  "round": 2,
   "round_limit": 3,
-  "checks": {},
-  "unresolved": []
+  "checks": {
+    "cpu_unit_passed": 1023,
+    "harness_passed": 16,
+    "gpu": "pending",
+    "performance": "pending"
+  },
+  "unresolved": [
+    "ADA-01 awaiting re-review"
+  ],
+  "artifacts": "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110"
 }

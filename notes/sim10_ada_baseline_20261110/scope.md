@@ -25,3 +25,22 @@ staging and tests. Hardware cache beyond local page cache is not flushed.
 Default independent Claude review loop: max3 rounds. Review harness before job;
 review measured evidence afterward. GPU performance is pending until job runs.
 No cross-hardware speedup claim. No more BD/batch/KvikIO sweep in this stage.
+
+JF bigdata files alone are cold-gated. SMD files are not evicted and are expected
+to be page-cache warm; backend storage caches are uncontrolled.
+
+The 20-minute allocation is deliberately bounded: allow up to 5 minutes for GPU
+tests, about 3 for staging/hash checks, and roughly 6 for pilots/repetitions and
+cleanup, leaving about 4 minutes before the TERM warning. This is an estimate,
+not a measured Ada runtime; timeout leaves an incomplete attempt and no accepted
+rates. Do not interpret a scheduling timeout as a framework regression.
+
+Shared-scratch tmp, CuPy compilation cache and pytest temp directories are retained
+for diagnosis until the attempt is reviewed. If a hard scheduler kill interrupts
+staging, check the owner-only FFB sim10-ada-baseline-<jobid> directory for an orphan
+and remove only that attempt's directory after confirming no readers remain.
+
+The runtime loader intentionally omits the optional psexp.parallel_pread extension
+(debugtools-only in this checkout), and asserts that absence. Native source
+comparison includes psana, xtcdata and psalg; build configuration hashes are
+recorded separately. This reuses an existing build, not a fresh PR rebuild.
