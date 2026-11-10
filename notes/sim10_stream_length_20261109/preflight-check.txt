@@ -1,5 +1,17 @@
-Python 3.11 AST: all new Python scripts parse. bash -n run.sbatch passes.
-Accepted 100k fixture manifests/size/SHA receipts agree; five JF files and five
-SMD files, 335859913008 bytes, 100000 timestamps, 32 panels.
-Matrix: two 1000-event pilots, then s1/10k,s2/10k,s1/100k,s2/100k and reverse.
-All 17 execution/dependency files hashed. No hardware or native-audit tests yet.
+Perlmutter implementation preflight (native acceptance pending):
+- Python 3.11 AST parse of task scripts passes.
+- bash -n run.sbatch runtime.sh passes.
+- Explicit relocation: five JF streams, 100000 timestamps, original manifest hash.
+- findmnt identifies Lustre. Local-page-cache-only measurement mode.
+- Configure sim10 Names panel order checked for all five streams after correcting
+  the initial validator's inclusion of separate config Names.
+- Source provenance includes 16 execution/reference files. Native negative-test
+  log separately prints test_audit.py SHA256; summarize.py derives comparisons.
+- Native first attempt job61064869: all 11 SHA256 values passed, validator failed
+  at the now-fixed Configure assertion. No benchmark rates accepted.
+- Attempt02 job61064979: stopped before reading input on an allocation assertion.
+- Exclusive allocation grants four GPUs; each MPI step requests one and the
+  runner checks the selected UUID against the original step mask before imports.
+- Attempt03 job61065065: input validation, pilots and matrix pending.
+- Implementation review cfadd496a: pass with nonblocking suggestions; changes
+  since that review require re-review. No native results acceptance yet.

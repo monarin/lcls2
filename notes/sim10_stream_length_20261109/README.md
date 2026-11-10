@@ -1,71 +1,42 @@
-# Controlled one-BD cold Weka comparison
+# Perlmutter Sim10 stream and duration comparison
 
-**Moved to Perlmutter at the user's request.** SDF job **44043617** was cancelled
-while pending, before any allocation or data generation. No new performance
-result exists. Read [TRANSFER.md](TRANSFER.md) for the receiving agent's task,
-transferred dataset, runtime candidates, controls and required adaptations.
+Native validation is in progress; no benchmark acceptance is claimed yet.
+The implementation is on `work/perlmutter-sim10-stream-length`, currently
+`97399922b`. Review of the initial port `cfadd496a` passed implementation readiness
+only; native fixes and results require re-review.
 
-**The 100k Sim10 dataset is already on Perlmutter:**
-`/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf`.
-Globus completed all 11 files (312.808 GiB) with checksum verification and no
-faults. Local generation is no longer needed. See
-[transfer receipts](../sim10_globus_transfer_20261109/TRANSFER_UPDATE.md); runtime
-validation and benchmark acceptance remain pending.
+Use the transferred 100k JF-only fixture on Lustre in place. The same five bigdata
+files serve both the 10k prefix and full 100k case. One BD uses one allocated GPU
+UUID; helpers are CUDA-masked empty. Perlmutter's exclusive-node allocation grants
+four GPUs, while each MPI step requests one and verifies the selected UUID.
 
-The remaining specification below describes the **cancelled SDF harness**, not
-a ready Perlmutter run. Its byte totals and Weka paths are reference values;
-The same SDF fixture is now available, but paths and cold-I/O instrumentation
-require adaptation for Lustre; verify the measured byte counts on Perlmutter.
+Fixed controls: batch100, SMD1000, bulk524288B, budget6GiB, KvikIO compatON,
+8 workers, 1MiB tasks,16MiB bounce, auto direct I/O OFF. Descriptor staging only:
+framework reads/walking/metadata preparation, no dense gather, expansion,
+calibration, cube or payload D2H. Each event contains 3358200 datagram bytes.
 
-The question is whether CUDA execution stream count or measured event count can
-explain the earlier one-BD results of about 2.15 versus 1.19 GiB/s. All cases use
-one BD and the same physical GPU/node within this allocation.
+The mode is local-page-cache-cold on the five bigdata files, verified by
+fsync/FADV_DONTNEED and zero mincore residency after DataSource setup. SMD and
+Lustre server caches remain uncontrolled. Raw llite/CXI diagnostics are retained;
+remote traffic is unverified. No network-byte ratio or cache-hit fraction is claimed.
+No Weka reproduction or direct explanation of the earlier SDF discrepancy follows.
 
-| CUDA streams | Events | Requested JF bytes | Repeats |
-|---:|---:|---:|---:|
-| 1 | 10,000 | 31.275675 GiB | 2 |
-| 2 | 10,000 | 31.275675 GiB | 2 |
-| 1 | 100,000 | 312.756747 GiB | 2 |
-| 2 | 100,000 | 312.756747 GiB | 2 |
+Two 1000-event pilots precede the streams1/2 × events10k/100k matrix, then its
+reverse. Startup, allocations, fill, drain and barriers remain timed, affecting
+short cases proportionally more. Validation reads the whole fixture before the
+pilots; reversed 10k cases follow all full-file reads. Reversal does not equalize
+backend caches. Report individual repeats and paired ratios alongside medians.
 
-Planned order is the table order followed by its reverse, after two 1000-event
-pilots (one per stream count). The 10k cases read a prefix of the same accepted
-100k files. This holds file layout fixed and tests measured event count/read
-duration; it is not a comparison of physically separate 10k versus 100k files.
+Attempt records under `/pscratch/sd/m/monarin/psana2-gpu/sim10-stream-length-20261109`:
 
-Fixed controls: batch100, SMD1000, 512 KiB bulk target, 6 GiB per-BD GPU budget,
-KvikIO fallback ON with eight workers, 1 MiB tasks, 16 MiB bounce buffers, automatic
-direct I/O OFF. Shared physical CPU affinity and NUMA interleave; existing frozen
-B runtime. Same descriptor staging task as the previous BD sweep, with no
-expansion, calibration, cube or payload D2H.
+- `attempt01`, job61064869: all eleven SHA256 checks passed; validation stopped
+  because the checker mixed sim10 and config Names. Corrected in f0bc14cef.
+- `attempt02`, job61064979: failed before input reads on the initial single-granted-
+  GPU assumption. Exclusive-node Slurm grants four; corrected in 97399922b.
+- `attempt03`, job61065065: independent hashes, SMD/Configure checks and full
+  DataSource traversal, then pilots/matrix and native audit tests in progress.
 
-Cold means fsync/FADV_DONTNEED followed by zero mincore-resident input pages after
-DataSource setup before each case. Physical NIC counters and idle RX are recorded.
-Backend and SMD caches are uncontrolled. Input is copied and SHA-verified on Weka
-FFB; node-local scratch holds only temporary/compiler files. Native checks require
-exact event/byte/read identities, requested execution streams, proper drain, no
-CPU payload reads or pressure drains. Independent audit and 24 native-receipt
-tests must still run after completion. No benchmark rate is a test threshold.
-
-Implementation commit: `21f56de8884dc386d2d0ae65d159a795ed448614`.
-Implementation review passed (code only); the SDF native checks did not run.
-Perlmutter porting, native acceptance and results review remain pending. Do not interpret successful submission or code review as measurement
-acceptance. See [scope](scope.md) and [status](status.json).
-
-Cancelled SDF native output path (not created):
-
-```
-/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sim10_stream_length_20261109_r1
-```
-
-Scheduler log paths were configured in the sibling directory ending `_logs`,
-named `44043617.out` and `44043617.err`; a pending cancelled job creates no logs. The unique temporary FFB copy is removed on normal completion;
-missing complete/cleanup receipts do not pass. Existing optional cancellation/
-timeout hardening remains deferred, so failed jobs require process/stage inspection.
-
-Do not resubmit the cancelled SDF job. Continue from TRANSFER.md on Perlmutter
-and adapt audit.py/test_audit.py to its native outputs. Record exact
-commands and immutable evidence, compare all individual repeats/paired ratios,
-and complete the independent results review before acceptance. If only stream
-count and event count are ruled out, node or storage-time effects remain possible;
-this single-node experiment cannot distinguish those effects.
+[Scope](scope.md), [review response](perlmutter-review-01/responses.md),
+[status](status.json), and [preflight evidence](preflight-check.txt) retain the
+implementation and interpretation contract. The original SDF handoff and transfer
+receipts remain historical evidence; no SDF allocation was resumed.

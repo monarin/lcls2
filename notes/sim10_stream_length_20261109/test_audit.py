@@ -1,8 +1,9 @@
 """Negative acceptance checks on copies of native sweep receipts."""
-import json,sys,tempfile,unittest
+import hashlib,json,sys,tempfile,unittest
 from pathlib import Path
 from audit import audit
 SOURCE=Path(sys.argv.pop(1))
+print('test_audit.py SHA256',hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),flush=True)
 class Audit(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
@@ -50,4 +51,24 @@ class Audit(unittest.TestCase):
     def test_admission(self):self.rejects(lambda r:r['rows'][2]['admission'][0].update(capacity=0),'Admission budget')
     def test_retirement(self):self.rejects(lambda r:r['rows'][2].update(cleanup_complete=False),'Cleanup/MPI')
     def test_native_acceptance(self):self.metadata('validation.json',lambda r:r.update(status='fail'),'Native input acceptance')
+    def test_effective_io(self):self.rejects(lambda r:r['rows'][2]['device']['effective'].update(auto_direct_io_read=True),'GPU identity|KvikIO settings')
+    def test_compat(self):self.rejects(lambda r:r['rows'][2]['device'].update(compat_mode='OFF'),'GPU identity|KvikIO settings')
+    def test_smd(self):self.rejects(lambda r:r['framework'].update(smd_events=1),'Framework settings')
+    def test_bulk(self):self.rejects(lambda r:r['framework'].update(bulk_target_bytes=1),'Framework settings')
+    def test_affinity(self):self.rejects(lambda r:r['rows'][2]['affinity'].pop(),'CPU/runtime changed')
+    def test_numa(self):self.rejects(lambda r:r['rows'][2].update(numa_policy='local'),'Placement')
+    def test_host(self):self.rejects(lambda r:r.update(host='wrong'),'Host changed')
+    def test_mpi(self):self.rejects(lambda r:r['rows'][2].update(mpi='wrong'),'Cleanup/MPI')
+    def test_bd_mask(self):self.rejects(lambda r:r['rows'][2].update(mask=''),'Rank GPU masks')
+    def test_mount(self):self.metadata('provenance.json',lambda r:r['mount']['filesystems'][0].update(fstype='ext4'),'Lustre measurement mode')
+    def test_conditioning(self):self.rejects(lambda r:r['measurement']['conditioning'][0].update(resident_pages=1),'Cold gate')
+    def test_pilot(self):self.metadata('pilot-s1.json',lambda r:r.update(bytes=0),'Case identity')
+    def test_short_case(self):self.metadata('00-s1-n10000.json',lambda r:r['rows'][2]['callbacks'][0].update(size=1),'Callback sizes/histogram')
+    def native_mutation(self,fn,pattern):
+        path=self.root/'validation.json';r=json.loads(path.read_text());fn(r);path.write_text(json.dumps(r))
+        p=self.root/'provenance.json';r=json.loads(p.read_text());r['validation_sha256']=hashlib.sha256(path.read_bytes()).hexdigest();p.write_text(json.dumps(r))
+        with self.assertRaisesRegex(ValueError,pattern):audit(self.root)
+    def test_validation_status(self):self.native_mutation(lambda r:r.update(status='fail'),'Native input acceptance')
+    def test_validation_hash(self):self.native_mutation(lambda r:r['files'][0].update(sha256='wrong'),'Native file hashes')
+    def test_validation_streams(self):self.native_mutation(lambda r:r['streams'][0].update(events=1),'Native stream counts')
 if __name__=='__main__':unittest.main()
