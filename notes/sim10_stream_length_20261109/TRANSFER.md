@@ -5,6 +5,23 @@ Perlmutter agent implement and run the rest. Do not resume the SDF allocation.
 SDF job44043617 was cancelled while PENDING on 2026-11-09 at16:05:24 Pacific;
 it never obtained a node and produced no performance data.
 
+## Current status: Sim10 data is already on Perlmutter
+
+Use the transferred 100k Sim10 fixture at:
+`/pscratch/sd/m/monarin/psana2-gpu/datasets/mfx101555026-r0010-sim10-100k-jf`
+
+Globus task `a8426223-dca2-11f1-aa1a-0affd629e535` SUCCEEDED on November 9,
+2026 at 17:18:29 Pacific. All 11 files (335875429007 bytes, 312.808 GiB) arrived
+with checksum verification enabled and zero faults. Destination sizes match;
+independent SHA256 checks passed for all five SMD files and generation.json.
+Independent bigdata SHA256 rereads and Perlmutter runtime acceptance remain.
+No local Sim10 generation or additional transfer is needed for this comparison.
+
+Transfer receipts, expected hashes and selection/relocation manifest:
+`notes/sim10_globus_transfer_20261109/` in this repository, also copied to
+`/pscratch/sd/m/monarin/psana2-gpu/sim10-stream-length-20261109/transfer/globus-20261109/`.
+The task-root `TRANSFER_UPDATE.md` records the same completed transfer.
+
 ## Objective and repository
 
 First investigate one-BD stream count and input duration, before further BD,
@@ -41,78 +58,48 @@ files. None of these measurements isolates stream count, event count or node.
 
 Perlmutter `/pscratch` is Lustre, verified by findmnt. This is a new within-site
 controlled test; it cannot directly attribute the earlier SDF discrepancy.
-Changing source run, CPU/GPU/platform, filesystem, CUDA/runtime versions also
-precludes calling it a direct Weka reproduction. Do not label Lustre as Weka.
+The transferred fixture keeps the source run and data constant. Changes in
+CPU/GPU/platform, filesystem and CUDA/runtime versions still preclude calling
+it a direct Weka reproduction. Do not label Lustre as Weka.
 The same-file10k prefix tests duration, not physical10k-versus100k file layouts.
 
-## Available local Jungfrau source (verified November9)
+## Transferred dataset and next steps
 
-Preferred full source for locally creating Sim10:
-`/pscratch/sd/p/psdatmgr/psdm/mfx/mfx101232725/xtc`
-Experiment `mfx101232725`, run442. Five JF streams `s004` through `s008`,
-32panels distributed5+6+7+7+7. Original full-run file sizes were listed/readable
-under the current account; read-only source, do not alter/drop other users' cache.
+The fixture is mfx101555026 run 10, with five physical JF streams s005..s009,
+32 panels, five matching SMD files under smalldata/, and unchanged generation.json.
+These are the exact JF files used in the accepted SDF 100k staging sweep. Use
+explicit dir= pointing to the destination above and preserve the filenames.
+Use a 10k event prefix and all 100k events from these SAME files for the matrix.
 
-An owned, previously validated raw10k prefix also exists:
-`/pscratch/sd/m/monarin/psana2-gpu/pr187-pr208-perlmutter-20261026/attempt01/inputs`
-The corresponding `inputs-ready.json` and `reference.json` are in its parent.
-Five bigdata files total335606159580bytes (about312.56GiB), plus small SMD files.
+The original generation.json describes the complete ten-stream SDF fixture and
+contains SDF absolute paths. Keep it byte-identical for provenance; use the
+transfer-manifest.json for the five-stream selection and path relocation.
+Validate this deliberate JF-only subset rather than requiring absent non-JF
+streams. The earlier perlmutter-dataset.json and run-442 receipts describe an
+unused fallback source, not the dataset for this benchmark.
 
-See `perlmutter-dataset.json` for exact paths, sizes, panel order and hashes.
-Current checks: all five bigdata file sizes match prior receipts; Configure
-headers readable; all five SMD hashes match the prior reference and complete
-(timestamp,service) sequences align. SMD contains16263events, but the owned
-bigdata copies are only validated for the first10000! Never request100k raw
-events from this prefix or treat its SMD as a complete owned-run index. Current
-bigdata full hashes and Configure shapes were not independently revalidated.
-Small prior receipts are copied as perlmutter-inputs-ready.json and
-perlmutter-reference.json; their hashes and prior job ID are in the dataset record.
-The full original source is preferable when fetching closing transition templates.
+1. Verify the five bigdata SHA256 values against the transfer manifest in an
+   appropriate compute allocation. File sizes and SMD/manifest hashes are
+   already checked; retain the original transfer receipt.
+2. Revalidate Configure/Names, panel mapping, synchronized SMD timestamps,
+   event count and offsets, then traverse the relocated subset with DataSource.
+   Adapt absolute SDF path, inode/mtime and ten-stream assertions explicitly;
+   do not reinterpret relocation or the deliberate subset as payload corruption.
+3. Port the controlled runner and independent audit for Perlmutter, including
+   runtime, scheduler, cache and network-counter changes described below.
+4. Run small GPU pilots and then the 1/2-stream x 10k/100k matrix. Continue the
+   implement-review-loop for implementation/fixes and review native results
+   separately. No benchmark acceptance is claimed by the file transfer.
 
-No Sim10 fixture was found in the inspected task/staging areas; the exact SDF
-mfx101555026 and prjdatpsana paths were absent from the checked psdatmgr tree.
-This is not an exhaustive global filesystem search. Do not claim a ready100k
-Sim10 dataset or silently benchmark raw32MiB events in its place.
+This is simulated compression: each panel stores raw.reshape(-1)[::10],
+52429 uint16 words for an original 512x1024 panel, with shape/expansion metadata.
+Repeated payloads in the 100k fixture are intentional. Generation is complete;
+writer porting and creating new run-442 fixtures are outside the next steps.
 
-## First concrete implementation steps
-
-1. Recheck source Configure/Names, JF schema/raw uint16 shape, physical panel
-   order, timestamps/transitions and SMD offsets. Derive mappings from source;
-   do not reuse SDF's hardcoded s005..s009 mapping or experiment/run IDs.
-2. Adapt the existing sample-every-tenth-uint16 writer to this source. Start
-   with a tiny complete fixture and DataSource acceptance, then produce10k.
-   Retain five physical JF streams and32panel descriptors. Per-panel seed is
-   raw.reshape(-1)[::10],52429uint16 words for512x1024; metadata preserves the
-   expansion factor and original shape. Sim10 is not a real compressor.
-3. Adapt the reviewed repetition writer to make100k physical events from10k
-   seed events, unique outer timestamps, synchronized transition schedule and
-   correct SMD offsets. No artificial multi-step scan is needed. Repeated
-   payloads are intentional. Keep source bytes immutable and verify receipts.
-   Recompute actual event/dgram sizes; do not assume SDF's3358200B/event exactly.
-   Expect roughly31GiB10k plus313GiB100k seed fixtures, excluding source/builds.
-4. Port the controlled runner and independent audit; only then run GPU pilots
-   and the2x2 matrix. Continue implement-review-loop for implementations/fixes.
-   Review code and native results separately; no throughput assertions in tests.
-
-Writer starting points:
-- `notes/mfx_expand10_10k_20261106/{fixture.py,verify.py,campaign.py}`
-- `notes/mfx_expand10_stage2_20261105/{fixture.py,adapter.py}`
-- `notes/mfx_expand10_100k_20261109/{repeat.py,validate_repeat.py,test_repeat.py}`
-- `notes/synthetic_mfx_stage3_20261104/xtc_fixture.py`
-
-Specific hardcodes to remove or parameterize: ten-stream/36037-source-event
-contracts, frozen SNAPSHOT manifest byte-equality and size/mtime/inode check_stat,
-ten-dgram-per-event DataSource assertions in validate_repeat, and mandatory
-calibration-manifest hashes. Original run442 also has files s000..s003 (nine
-physical files total); their detector contents have not been inspected. Discover
-actual Configure membership and choose the five JF streams deliberately.
-
-These contain SDF paths, source manifests, calibration receipts and stream
-assumptions; they are references, not Perlmutter-ready commands. This staging
-benchmark uses `skip_calib_load='all'` and no calibration-consuming inputs, so
-it requires no calibration DB deployment. Decouple generation provenance from
-unavailable SDF calibration snapshots for this scope; do not substitute foreign
-calibration as though accepted. Expansion/calibration/cube correctness is later.
+The staging benchmark uses skip_calib_load='all' and no calibration-consuming
+inputs, so no calibration DB deployment is needed. Keep source/calibration
+provenance without requiring unavailable SDF calibration snapshots to perform
+this staging-only test. Expansion/calibration/cube correctness is later.
 
 ## Runtime and scheduler adaptation
 
