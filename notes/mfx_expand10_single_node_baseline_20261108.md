@@ -1,10 +1,102 @@
 # Simulated-compression cube: progress and single-node baseline plan
 
-Updated November 8, 2026, after the small real-JF concurrency diagnostics.
+Historical baseline sections date from November 8, 2026. The November 10 resume
+plan below incorporates the completed attribution and input-bookkeeping fix.
 This decision/progress note links completed measurements and proposes the next
 stages; the clean 10k baseline has now completed.
 Implementation and fixes continue to use the session's independent Claude
 implement/review loop. Existing evidence below has its own review records.
+
+## Resume plan, November 10: after input-bookkeeping fix
+
+Continue on Perlmutter first, using the transferred 100k five-JF-file fixture.
+[PR #298](https://github.com/slac-lcls/lcls2/pull/298) contains the focused fix;
+pin its head `67c327a148a08b2aaf972e67e1e02e367c2b298f` for the next runtime.
+The original implementation passed native tests and matched 10k comparisons:
+1-stream 2.23 -> 2.29 GiB/s; 2-stream 1.27 -> 2.18 GiB/s. The exact PR-base
+runtime and fixed-runtime 100k case still need GPU validation/measurement.
+[Fix results](sim10_input_bookkeeping_20261110/README.md) and
+[PR preparation](sim10_input_bookkeeping_20261110/pr-preparation/README.md)
+record those distinctions. PR creation does not establish that it is merged.
+
+The older SDF/Weka 100k sweep reached 4.50 GiB/s with four BDs on one GPU,
+using pre-fix code. That is a historical within-site result, not a Perlmutter
+Lustre ceiling or an expected post-fix rate. Do not combine the two sites in a
+single scaling ratio. The November 8 stages below retain historical context.
+
+### Ordered parameter screens
+
+1. **Re-establish the corrected baseline.** Prepare an isolated runtime from the
+   pinned PR source and verify imported module/native identities. Run the native
+   ownership/transition/task acceptance before throughput. One BD/one GPU, batch
+   100, one/two CUDA streams, 10k prefix then 100k full file set. Use paired reverse
+   order and two repetitions for each length/stream combination. This checks
+   whether the previous full-duration two-stream penalty remains after the fix.
+2. **BD and stream screen on one GPU.** Use 100k events globally, BDs 1/2/3/4 and
+   one/two execution streams per BD. Start with accepted controls below. Keep the
+   same node/GPU and a declared fixed physical-CPU allowance across comparisons;
+   account for all BD main threads, KvikIO workers and MPI/runtime helpers. If a
+   larger CPU allowance is needed, establish the one-BD control under that same
+   allowance first. Report increasing total workers alongside BD count. Keep the
+   full 100k event set partitioned across BDs, not replayed independently by each.
+3. **Batch screen.** For one BD and the best BD topology, try batch 100/200/500
+   at the selected stream count. Recheck byte admission and actual callback/GPU
+   subbatch sizes. Larger batches increase the outstanding-read window but do not
+   coalesce the individual large-dgram reads at the retained 512 KiB threshold.
+   Reject or separately label pressure/split cases; do not assume nominal batch
+   equals execution size. Confirm promising settings with reversed repetitions.
+4. **KvikIO and CPU screen.** Test 4/8/16 workers per BD only where the allocated
+   physical-CPU allowance can support the total. Include a fixed-total-worker
+   comparison to distinguish additional workers from additional BD issuers.
+   After selecting worker count, compare 1/4 MiB task sizes and, if justified by
+   read/H2D timing, 16/64 MiB bounce buffers. Most Sim10 requests are below 1 MiB,
+   so larger task sizes may not affect request splitting. Keep NUMA/CPU placement
+   fixed within each screen; test a different placement separately if indicated.
+5. **GPUs within one node.** At the best supported per-GPU topology, compare
+   1/2/4 GPUs with a fixed total 100k event set. Recheck aggregate CPU, host-memory
+   and GPU-memory demand. Report node throughput and efficiency, rather than
+   multiplying the one-GPU rate; node storage/network resources are shared.
+6. **Restore the full GpuTask.** Compare descriptor staging, blow-up+calibration,
+   then blow-up+calibration+cube with the existing numerical/count checks and
+   frozen constants. Verify their Perlmutter availability before preparation.
+   Select batches independently for the compute workload: full-size intermediates
+   can force much smaller execution subbatches than staging-only tests. Enforce
+   cube-bank memory admission before BD/stream scaling; 100 float32 JF bins use
+   6.25 GiB per BD per execution stream, so four BDs/two streams need 50 GiB for
+   banks alone and cannot fit an A100 40 GB. Keep full cube export/merge timing
+   separately defined. No new dataset or calibration deployment is implied.
+
+### Controls, reporting and execution boundary
+
+Initial controls: 512 KiB bulk target, batch100, SMD1000, KvikIO fallback ON,
+8 workers/BD, 1 MiB tasks, 16 MiB bounce, auto-direct OFF. The historical staging
+budget is 6 GiB/BD; validate total physical-GPU demand and admission for every
+new topology. Do not silently turn this into 6 GiB per GPU. Small-group credit
+and forced execution splitting remain deferred; raising the bulk threshold
+would change those behaviors and is outside these initial parameter screens.
+
+Every stage records exact event identity/partition, requested/completed input
+bytes and reads, callback/subbatch distribution, stream usage, memory/drains,
+CPU/GPU mapping, runtime hashes, setup and full-loop elapsed times. For 10k/100k
+staging, expected reads are 50k/500k and JF bytes are
+33,582,000,000/335,820,000,000. Compare clean rates separately from instrumented
+attribution. Extend duration when the measured interval becomes too short for a
+stable comparison; do not create another dataset without a demonstrated need.
+
+Use owner-scoped cache eviction and require zero local payload page residency
+immediately before the loop. Label Perlmutter runs local-page-cache-cold Lustre,
+not cold Weka or verified backend-cold reads. Record available NIC/filesystem
+counters with permissions and timing scope; unavailable counters must be explicit.
+On a later SDF repeat, retain the established physical NIC counter method. Warm
+runs are an explicitly prepared secondary diagnostic, not mixed into cold medians.
+
+For timing attribution, add an exact candidate-visit/retry count to the opt-in
+benchmark instrumentation; retained-pool-size snapshots are not visits. Preserve
+queue/ownership behavior and avoid inserting extra CUDA waits. This instrumentation
+and each adapted harness use the session's independent implementation/review loop.
+No sweep has been submitted by this plan update. The immediate next scope is
+step 1; subsequent screens depend on its results. Multi-node scaling, a real
+codec and 400k generation remain deferred.
 
 ## Decision: keep 512 KiB for sample10
 
