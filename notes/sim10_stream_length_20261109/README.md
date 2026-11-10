@@ -1,6 +1,6 @@
 # Perlmutter: controlled Sim10 streams and duration
 
-**One CUDA execution stream was faster in every measured comparison.** Its median staging rate was 2.166 GiB/s for 10k events and 2.195 GiB/s for 100k; two streams measured 1.259 and 0.969 GiB/s respectively. This is a within-site Lustre result, not a direct attribution of the earlier SDF/Weka discrepancy.
+**One CUDA execution stream was faster in every main-matrix comparison.** Its median staging rate was 2.166 GiB/s for 10k events and 2.195 GiB/s for 100k; two streams measured 1.259 and 0.969 GiB/s respectively. This is a within-site Lustre result, not a direct attribution of the earlier SDF/Weka discrepancy.
 
 Native input validation, all ten cases, the independent audit and all **47 audit tests passed**. Job **61065065** completed **0:0** in **35m58s** on **nid001029**. Independent review of the final code and native results is pending; benchmark acceptance remains false until that review passes.
 
