@@ -1,0 +1,25 @@
+{
+  "mode": "warm",
+  "cameras": [
+    "fzp",
+    "atm"
+  ],
+  "trials": [
+    1,
+    2,
+    3
+  ],
+  "settle_seconds": 40.0,
+  "interval": 2.0,
+  "timeout": 60.0,
+  "cleanup_timeout": 10.0,
+  "execute": true,
+  "daq_stopped": true,
+  "preflight": {
+    "visible_device_holders": [],
+    "inaccessible_process_fd_directories": 919,
+    "limitation": "Operator must establish exclusive board access, including invisible clients."
+  },
+  "camera": "fzp",
+  "directory": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp"
+}

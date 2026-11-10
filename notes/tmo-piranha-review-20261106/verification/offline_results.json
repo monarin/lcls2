@@ -1,0 +1,783 @@
+{
+  "source": "/sdf/home/m/monarin/lcls2/psdaq/psdaq/configdb/piranha4_config.py",
+  "sha256": "9efaf0c9b206e9823e6ba3751c7b0ee3cdc68b8fb3849889fabc5cf404adcca6",
+  "scope": "Offline fault injection; not reproduction of hardware cause",
+  "timeout": "Real source default 5 seconds; real wall clock",
+  "results": [
+    {
+      "mode": "success",
+      "role": "single",
+      "hardware": "all faked",
+      "barrier": "faked; no sockets",
+      "connection_info": {
+        "paddr": 4278588680,
+        "model": "02",
+        "serno": "12345",
+        "bist": "Good"
+      },
+      "outcome": "returned_success",
+      "elapsed_seconds": 1.342,
+      "calls": [
+        [
+          "construct_fake_root",
+          {
+            "dev": "/dev/datadev_0",
+            "pollEn": false,
+            "initRead": true,
+            "laneConfig": {
+              "0": "Piranha4"
+            },
+            "dataDebug": false,
+            "enLclsII": true,
+            "startupMode": true,
+            "pgp4": false,
+            "enableConfig": false
+          }
+        ],
+        [
+          "fake_streamConnect",
+          []
+        ],
+        [
+          "fake_startup_reply",
+          []
+        ],
+        [
+          "fake_barrier_init",
+          [
+            true,
+            0
+          ]
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.FidCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.RxRstCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.RxDecErrCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.RxDspErrCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.ClearRxCounters",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.GthRxAlignCheck[1].TxClkFreq.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.GthRxAlignCheck[1].TxClkFreq.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.ConfigLclsTimingV2",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingPhyMonitor.TxUserRst",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TriggerEventManager.XpmMessageAligner.TxId.set",
+          [
+            4194304001
+          ]
+        ],
+        [
+          "fake_barrier_wait",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TriggerEventManager.XpmMessageAligner.RxId.get",
+          []
+        ],
+        [
+          "StopRun",
+          []
+        ],
+        [
+          "fake_barrier_wait",
+          []
+        ],
+        [
+          "allocation_GCP",
+          []
+        ],
+        [
+          "VT",
+          []
+        ],
+        [
+          "VV",
+          []
+        ],
+        [
+          "fake_barrier_shutdown",
+          []
+        ],
+        [
+          "stop_fake_root",
+          []
+        ]
+      ],
+      "received_frames": [
+        {
+          "phase": "fake_startup_reply",
+          "hex": "4d0000006f00000064000000650000006c0000002000000050000000340000005f000000430000004d0000005f00000030000000320000004b0000003100000030000000440000005f00000030000000300000005f000000520000000d0000000a00000053000000650000007200000069000000610000006c00000020000000230000002000000031000000320000003300000034000000350000000d0000000a0000004200000069000000530000005400000020000000470000006f0000006f000000640000000d0000000a00000043000000500000004100000020000000300000000d0000000a000000550000005300000045000000520000003e000000"
+        },
+        {
+          "phase": "allocation_GCP",
+          "hex": "4d0000006f00000064000000650000006c0000002000000050000000340000005f000000430000004d0000005f00000030000000320000004b0000003100000030000000440000005f00000030000000300000005f000000520000000d0000000a00000053000000650000007200000069000000610000006c00000020000000230000002000000031000000320000003300000034000000350000000d0000000a0000004200000069000000530000005400000020000000470000006f0000006f000000640000000d0000000a00000043000000500000004100000020000000300000000d0000000a000000550000005300000045000000520000003e000000"
+        },
+        {
+          "phase": "VT",
+          "hex": "54000000650000006d00000070000000650000007200000061000000740000007500000072000000650000002000000032000000350000000d0000000a000000550000005300000045000000520000003e000000"
+        },
+        {
+          "phase": "VV",
+          "hex": "560000006f0000006c000000740000006100000067000000650000002000000031000000320000000d0000000a000000550000005300000045000000520000003e000000"
+        }
+      ],
+      "final_cur": "USER>",
+      "final_resp": [
+        "Voltage 12"
+      ],
+      "supervisor": true,
+      "nworker": 0
+    },
+    {
+      "mode": "no_reply",
+      "role": "single",
+      "hardware": "all faked",
+      "barrier": "faked; no sockets",
+      "outcome": "expected_allocation_GCP_timeout",
+      "exception": "*** await: prompt not seen: len 0, resp: []",
+      "traceback": [
+        {
+          "file": "notes/tmo-piranha-review-20261106/verification/offline_path_check.py",
+          "line": 162,
+          "function": "run_case"
+        },
+        {
+          "file": "/sdf/home/m/monarin/lcls2/psdaq/psdaq/configdb/piranha4_config.py",
+          "line": 286,
+          "function": "piranha4_connectionInfo"
+        },
+        {
+          "file": "/sdf/home/m/monarin/lcls2/psdaq/psdaq/configdb/piranha4_config.py",
+          "line": 61,
+          "function": "_await"
+        }
+      ],
+      "elapsed_seconds": 6.319,
+      "calls": [
+        [
+          "construct_fake_root",
+          {
+            "dev": "/dev/datadev_0",
+            "pollEn": false,
+            "initRead": true,
+            "laneConfig": {
+              "0": "Piranha4"
+            },
+            "dataDebug": false,
+            "enLclsII": true,
+            "startupMode": true,
+            "pgp4": false,
+            "enableConfig": false
+          }
+        ],
+        [
+          "fake_streamConnect",
+          []
+        ],
+        [
+          "fake_startup_reply",
+          []
+        ],
+        [
+          "fake_barrier_init",
+          [
+            true,
+            0
+          ]
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.FidCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.RxRstCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.RxDecErrCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.RxDspErrCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.ClearRxCounters",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.GthRxAlignCheck[1].TxClkFreq.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.GthRxAlignCheck[1].TxClkFreq.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.ConfigLclsTimingV2",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingPhyMonitor.TxUserRst",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TriggerEventManager.XpmMessageAligner.TxId.set",
+          [
+            4194304001
+          ]
+        ],
+        [
+          "fake_barrier_wait",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TriggerEventManager.XpmMessageAligner.RxId.get",
+          []
+        ],
+        [
+          "StopRun",
+          []
+        ],
+        [
+          "fake_barrier_wait",
+          []
+        ],
+        [
+          "allocation_GCP",
+          []
+        ],
+        [
+          "fake_barrier_shutdown",
+          []
+        ],
+        [
+          "stop_fake_root",
+          []
+        ]
+      ],
+      "received_frames": [
+        {
+          "phase": "fake_startup_reply",
+          "hex": "4d0000006f00000064000000650000006c0000002000000050000000340000005f000000430000004d0000005f00000030000000320000004b0000003100000030000000440000005f00000030000000300000005f000000520000000d0000000a00000053000000650000007200000069000000610000006c00000020000000230000002000000031000000320000003300000034000000350000000d0000000a0000004200000069000000530000005400000020000000470000006f0000006f000000640000000d0000000a00000043000000500000004100000020000000300000000d0000000a000000550000005300000045000000520000003e000000"
+        }
+      ],
+      "final_cur": "",
+      "final_resp": [],
+      "supervisor": true,
+      "nworker": 0
+    },
+    {
+      "mode": "prompt_only",
+      "role": "single",
+      "hardware": "all faked",
+      "barrier": "faked; no sockets",
+      "outcome": "expected_allocation_GCP_timeout",
+      "exception": "*** await: prompt not seen: len 0, resp: []",
+      "traceback": [
+        {
+          "file": "notes/tmo-piranha-review-20261106/verification/offline_path_check.py",
+          "line": 162,
+          "function": "run_case"
+        },
+        {
+          "file": "/sdf/home/m/monarin/lcls2/psdaq/psdaq/configdb/piranha4_config.py",
+          "line": 286,
+          "function": "piranha4_connectionInfo"
+        },
+        {
+          "file": "/sdf/home/m/monarin/lcls2/psdaq/psdaq/configdb/piranha4_config.py",
+          "line": 61,
+          "function": "_await"
+        }
+      ],
+      "elapsed_seconds": 6.317,
+      "calls": [
+        [
+          "construct_fake_root",
+          {
+            "dev": "/dev/datadev_0",
+            "pollEn": false,
+            "initRead": true,
+            "laneConfig": {
+              "0": "Piranha4"
+            },
+            "dataDebug": false,
+            "enLclsII": true,
+            "startupMode": true,
+            "pgp4": false,
+            "enableConfig": false
+          }
+        ],
+        [
+          "fake_streamConnect",
+          []
+        ],
+        [
+          "fake_startup_reply",
+          []
+        ],
+        [
+          "fake_barrier_init",
+          [
+            true,
+            0
+          ]
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.FidCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.RxRstCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.RxDecErrCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.RxDspErrCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.ClearRxCounters",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.GthRxAlignCheck[1].TxClkFreq.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.GthRxAlignCheck[1].TxClkFreq.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.ConfigLclsTimingV2",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingPhyMonitor.TxUserRst",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TriggerEventManager.XpmMessageAligner.TxId.set",
+          [
+            4194304001
+          ]
+        ],
+        [
+          "fake_barrier_wait",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TriggerEventManager.XpmMessageAligner.RxId.get",
+          []
+        ],
+        [
+          "StopRun",
+          []
+        ],
+        [
+          "fake_barrier_wait",
+          []
+        ],
+        [
+          "allocation_GCP",
+          []
+        ],
+        [
+          "fake_barrier_shutdown",
+          []
+        ],
+        [
+          "stop_fake_root",
+          []
+        ]
+      ],
+      "received_frames": [
+        {
+          "phase": "fake_startup_reply",
+          "hex": "4d0000006f00000064000000650000006c0000002000000050000000340000005f000000430000004d0000005f00000030000000320000004b0000003100000030000000440000005f00000030000000300000005f000000520000000d0000000a00000053000000650000007200000069000000610000006c00000020000000230000002000000031000000320000003300000034000000350000000d0000000a0000004200000069000000530000005400000020000000470000006f0000006f000000640000000d0000000a00000043000000500000004100000020000000300000000d0000000a000000550000005300000045000000520000003e000000"
+        },
+        {
+          "phase": "allocation_GCP",
+          "hex": "550000005300000045000000520000003e000000"
+        }
+      ],
+      "final_cur": "USER>",
+      "final_resp": [],
+      "supervisor": true,
+      "nworker": 0
+    },
+    {
+      "mode": "bad_prompt",
+      "role": "single",
+      "hardware": "all faked",
+      "barrier": "faked; no sockets",
+      "outcome": "expected_allocation_GCP_timeout",
+      "exception": "*** await: prompt not seen: len 4, resp: ['Model P4_CM_02K10D_00_R', 'Serial # 12345', 'BiST Good', 'CPA 0']",
+      "traceback": [
+        {
+          "file": "notes/tmo-piranha-review-20261106/verification/offline_path_check.py",
+          "line": 162,
+          "function": "run_case"
+        },
+        {
+          "file": "/sdf/home/m/monarin/lcls2/psdaq/psdaq/configdb/piranha4_config.py",
+          "line": 286,
+          "function": "piranha4_connectionInfo"
+        },
+        {
+          "file": "/sdf/home/m/monarin/lcls2/psdaq/psdaq/configdb/piranha4_config.py",
+          "line": 61,
+          "function": "_await"
+        }
+      ],
+      "elapsed_seconds": 6.327,
+      "calls": [
+        [
+          "construct_fake_root",
+          {
+            "dev": "/dev/datadev_0",
+            "pollEn": false,
+            "initRead": true,
+            "laneConfig": {
+              "0": "Piranha4"
+            },
+            "dataDebug": false,
+            "enLclsII": true,
+            "startupMode": true,
+            "pgp4": false,
+            "enableConfig": false
+          }
+        ],
+        [
+          "fake_streamConnect",
+          []
+        ],
+        [
+          "fake_startup_reply",
+          []
+        ],
+        [
+          "fake_barrier_init",
+          [
+            true,
+            0
+          ]
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.FidCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.RxRstCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.RxDecErrCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.RxDspErrCount.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingFrameRx.ClearRxCounters",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.GthRxAlignCheck[1].TxClkFreq.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.GthRxAlignCheck[1].TxClkFreq.get",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.ConfigLclsTimingV2",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TimingPhyMonitor.TxUserRst",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TriggerEventManager.XpmMessageAligner.TxId.set",
+          [
+            4194304001
+          ]
+        ],
+        [
+          "fake_barrier_wait",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TriggerEventManager.XpmMessageAligner.RxId.get",
+          []
+        ],
+        [
+          "StopRun",
+          []
+        ],
+        [
+          "fake_barrier_wait",
+          []
+        ],
+        [
+          "allocation_GCP",
+          []
+        ],
+        [
+          "fake_barrier_shutdown",
+          []
+        ],
+        [
+          "stop_fake_root",
+          []
+        ]
+      ],
+      "received_frames": [
+        {
+          "phase": "fake_startup_reply",
+          "hex": "4d0000006f00000064000000650000006c0000002000000050000000340000005f000000430000004d0000005f00000030000000320000004b0000003100000030000000440000005f00000030000000300000005f000000520000000d0000000a00000053000000650000007200000069000000610000006c00000020000000230000002000000031000000320000003300000034000000350000000d0000000a0000004200000069000000530000005400000020000000470000006f0000006f000000640000000d0000000a00000043000000500000004100000020000000300000000d0000000a000000550000005300000045000000520000003e000000"
+        },
+        {
+          "phase": "allocation_GCP",
+          "hex": "4d0000006f00000064000000650000006c0000002000000050000000340000005f000000430000004d0000005f00000030000000320000004b0000003100000030000000440000005f00000030000000300000005f000000520000000d0000000a00000053000000650000007200000069000000610000006c00000020000000230000002000000031000000320000003300000034000000350000000d0000000a0000004200000069000000530000005400000020000000470000006f0000006f000000640000000d0000000a00000043000000500000004100000020000000300000000d0000000a00000000000000550000005300000045000000520000003e000000"
+        }
+      ],
+      "final_cur": "\u0000USER>",
+      "final_resp": [
+        "Model P4_CM_02K10D_00_R",
+        "Serial # 12345",
+        "BiST Good",
+        "CPA 0"
+      ],
+      "supervisor": true,
+      "nworker": 0
+    },
+    {
+      "mode": "success",
+      "role": "worker",
+      "hardware": "all faked",
+      "barrier": "faked; no sockets",
+      "connection_info": {
+        "paddr": 4278588680,
+        "model": "02",
+        "serno": "12345",
+        "bist": "Good"
+      },
+      "outcome": "returned_success",
+      "elapsed_seconds": 0.141,
+      "calls": [
+        [
+          "construct_fake_root",
+          {
+            "dev": "/dev/datadev_0",
+            "pollEn": false,
+            "initRead": true,
+            "laneConfig": {
+              "0": "Piranha4"
+            },
+            "dataDebug": false,
+            "enLclsII": true,
+            "startupMode": true,
+            "pgp4": false,
+            "enableConfig": false
+          }
+        ],
+        [
+          "fake_streamConnect",
+          []
+        ],
+        [
+          "fake_startup_reply",
+          []
+        ],
+        [
+          "fake_barrier_init",
+          [
+            false,
+            1
+          ]
+        ],
+        [
+          "fake_barrier_wait",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TriggerEventManager.XpmMessageAligner.RxId.get",
+          []
+        ],
+        [
+          "fake_barrier_wait",
+          []
+        ],
+        [
+          "allocation_GCP",
+          []
+        ],
+        [
+          "VT",
+          []
+        ],
+        [
+          "VV",
+          []
+        ],
+        [
+          "fake_barrier_shutdown",
+          []
+        ],
+        [
+          "stop_fake_root",
+          []
+        ]
+      ],
+      "received_frames": [
+        {
+          "phase": "fake_startup_reply",
+          "hex": "4d0000006f00000064000000650000006c0000002000000050000000340000005f000000430000004d0000005f00000030000000320000004b0000003100000030000000440000005f00000030000000300000005f000000520000000d0000000a00000053000000650000007200000069000000610000006c00000020000000230000002000000031000000320000003300000034000000350000000d0000000a0000004200000069000000530000005400000020000000470000006f0000006f000000640000000d0000000a00000043000000500000004100000020000000300000000d0000000a000000550000005300000045000000520000003e000000"
+        },
+        {
+          "phase": "allocation_GCP",
+          "hex": "4d0000006f00000064000000650000006c0000002000000050000000340000005f000000430000004d0000005f00000030000000320000004b0000003100000030000000440000005f00000030000000300000005f000000520000000d0000000a00000053000000650000007200000069000000610000006c00000020000000230000002000000031000000320000003300000034000000350000000d0000000a0000004200000069000000530000005400000020000000470000006f0000006f000000640000000d0000000a00000043000000500000004100000020000000300000000d0000000a000000550000005300000045000000520000003e000000"
+        },
+        {
+          "phase": "VT",
+          "hex": "54000000650000006d00000070000000650000007200000061000000740000007500000072000000650000002000000032000000350000000d0000000a000000550000005300000045000000520000003e000000"
+        },
+        {
+          "phase": "VV",
+          "hex": "560000006f0000006c000000740000006100000067000000650000002000000031000000320000000d0000000a000000550000005300000045000000520000003e000000"
+        }
+      ],
+      "final_cur": "USER>",
+      "final_resp": [
+        "Voltage 12"
+      ],
+      "supervisor": false,
+      "nworker": 1
+    },
+    {
+      "mode": "no_reply",
+      "role": "worker",
+      "hardware": "all faked",
+      "barrier": "faked; no sockets",
+      "outcome": "expected_allocation_GCP_timeout",
+      "exception": "*** await: prompt not seen: len 0, resp: []",
+      "traceback": [
+        {
+          "file": "notes/tmo-piranha-review-20261106/verification/offline_path_check.py",
+          "line": 162,
+          "function": "run_case"
+        },
+        {
+          "file": "/sdf/home/m/monarin/lcls2/psdaq/psdaq/configdb/piranha4_config.py",
+          "line": 286,
+          "function": "piranha4_connectionInfo"
+        },
+        {
+          "file": "/sdf/home/m/monarin/lcls2/psdaq/psdaq/configdb/piranha4_config.py",
+          "line": 61,
+          "function": "_await"
+        }
+      ],
+      "elapsed_seconds": 5.116,
+      "calls": [
+        [
+          "construct_fake_root",
+          {
+            "dev": "/dev/datadev_0",
+            "pollEn": false,
+            "initRead": true,
+            "laneConfig": {
+              "0": "Piranha4"
+            },
+            "dataDebug": false,
+            "enLclsII": true,
+            "startupMode": true,
+            "pgp4": false,
+            "enableConfig": false
+          }
+        ],
+        [
+          "fake_streamConnect",
+          []
+        ],
+        [
+          "fake_startup_reply",
+          []
+        ],
+        [
+          "fake_barrier_init",
+          [
+            false,
+            1
+          ]
+        ],
+        [
+          "fake_barrier_wait",
+          []
+        ],
+        [
+          "ClinkPcie.Hsio.TimingRx.TriggerEventManager.XpmMessageAligner.RxId.get",
+          []
+        ],
+        [
+          "fake_barrier_wait",
+          []
+        ],
+        [
+          "allocation_GCP",
+          []
+        ],
+        [
+          "fake_barrier_shutdown",
+          []
+        ],
+        [
+          "stop_fake_root",
+          []
+        ]
+      ],
+      "received_frames": [
+        {
+          "phase": "fake_startup_reply",
+          "hex": "4d0000006f00000064000000650000006c0000002000000050000000340000005f000000430000004d0000005f00000030000000320000004b0000003100000030000000440000005f00000030000000300000005f000000520000000d0000000a00000053000000650000007200000069000000610000006c00000020000000230000002000000031000000320000003300000034000000350000000d0000000a0000004200000069000000530000005400000020000000470000006f0000006f000000640000000d0000000a00000043000000500000004100000020000000300000000d0000000a000000550000005300000045000000520000003e000000"
+        }
+      ],
+      "final_cur": "",
+      "final_resp": [],
+      "supervisor": false,
+      "nworker": 1
+    }
+  ]
+}

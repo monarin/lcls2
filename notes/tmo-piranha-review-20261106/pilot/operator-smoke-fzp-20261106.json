@@ -1,0 +1,28 @@
+{
+  "operator_executed_hardware": true,
+  "agent_actions": "read-only inspection of saved results",
+  "run_directory": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212",
+  "summary_ok": true,
+  "camera": "fzp",
+  "mode": "cold",
+  "trials": 1,
+  "allocation_gcp_wait_seconds": 1.8380209570750594,
+  "connection_info": {
+    "paddr": 4278588680,
+    "model": "02",
+    "serno": "12097685",
+    "bist": "Good"
+  },
+  "capture_dropped_events": 0,
+  "process_exit": {
+    "group": 1,
+    "forced_kill_pids": [],
+    "unreaped_pids": [],
+    "errors": [],
+    "exit_codes": [
+      0
+    ]
+  },
+  "issue_205_reproduced": false,
+  "limitation": "One successful smoke trial; no independent live device/socket ownership check."
+}

@@ -1,0 +1,22 @@
+{
+  "mode": "cold",
+  "cameras": [
+    "atm"
+  ],
+  "trials": [
+    2
+  ],
+  "settle_seconds": 40.0,
+  "interval": 2.0,
+  "timeout": 60.0,
+  "cleanup_timeout": 10.0,
+  "execute": true,
+  "daq_stopped": true,
+  "preflight": {
+    "visible_device_holders": [],
+    "inaccessible_process_fd_directories": 932,
+    "limitation": "Operator must establish exclusive board access, including invisible clients."
+  },
+  "camera": "atm",
+  "directory": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0002/atm"
+}

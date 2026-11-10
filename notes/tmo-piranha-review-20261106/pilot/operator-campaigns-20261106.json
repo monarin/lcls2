@@ -1,0 +1,343 @@
+{
+  "agent_actions": "read-only inspection of operator-executed hardware results",
+  "runs": [
+    {
+      "run_directory": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212",
+      "ok": true,
+      "mode": "cold",
+      "cameras": [
+        "fzp"
+      ],
+      "rows": [
+        {
+          "trial": 1,
+          "camera": "fzp",
+          "lane": 0,
+          "pid": 39276,
+          "serial": "12097685",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.838,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 39276
+          }
+        }
+      ],
+      "process_groups": [
+        {
+          "group": 1,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "run_directory": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024",
+      "ok": true,
+      "mode": "cold",
+      "cameras": [
+        "fzp"
+      ],
+      "rows": [
+        {
+          "trial": 1,
+          "camera": "fzp",
+          "lane": 0,
+          "pid": 45082,
+          "serial": "12097685",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.869,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 45082
+          }
+        },
+        {
+          "trial": 2,
+          "camera": "fzp",
+          "lane": 0,
+          "pid": 45601,
+          "serial": "12097685",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.85,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 45601
+          }
+        },
+        {
+          "trial": 3,
+          "camera": "fzp",
+          "lane": 0,
+          "pid": 46188,
+          "serial": "12097685",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.859,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 46188
+          }
+        }
+      ],
+      "process_groups": [
+        {
+          "group": 1,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0
+          ]
+        },
+        {
+          "group": 2,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0
+          ]
+        },
+        {
+          "group": 3,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "run_directory": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600",
+      "ok": true,
+      "mode": "warm",
+      "cameras": [
+        "fzp"
+      ],
+      "rows": [
+        {
+          "trial": 1,
+          "camera": "fzp",
+          "lane": 0,
+          "pid": 48898,
+          "serial": "12097685",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.86,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 48898
+          }
+        },
+        {
+          "trial": 2,
+          "camera": "fzp",
+          "lane": 0,
+          "pid": 48898,
+          "serial": "12097685",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.839,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 48898
+          }
+        },
+        {
+          "trial": 3,
+          "camera": "fzp",
+          "lane": 0,
+          "pid": 48898,
+          "serial": "12097685",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.858,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 48898
+          }
+        }
+      ],
+      "process_groups": [
+        {
+          "group": 1,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "run_directory": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152",
+      "ok": true,
+      "mode": "warm",
+      "cameras": [
+        "atm"
+      ],
+      "rows": [
+        {
+          "trial": 1,
+          "camera": "atm",
+          "lane": 1,
+          "pid": 52870,
+          "serial": "12102856",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.849,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 52870
+          }
+        },
+        {
+          "trial": 2,
+          "camera": "atm",
+          "lane": 1,
+          "pid": 52870,
+          "serial": "12102856",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.849,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 52870
+          }
+        },
+        {
+          "trial": 3,
+          "camera": "atm",
+          "lane": 1,
+          "pid": 52870,
+          "serial": "12102856",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.859,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 52870
+          }
+        }
+      ],
+      "process_groups": [
+        {
+          "group": 1,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "run_directory": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317",
+      "ok": true,
+      "mode": "cold",
+      "cameras": [
+        "atm"
+      ],
+      "rows": [
+        {
+          "trial": 1,
+          "camera": "atm",
+          "lane": 1,
+          "pid": 53781,
+          "serial": "12102856",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.849,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 53781
+          }
+        },
+        {
+          "trial": 2,
+          "camera": "atm",
+          "lane": 1,
+          "pid": 54360,
+          "serial": "12102856",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.869,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 54360
+          }
+        },
+        {
+          "trial": 3,
+          "camera": "atm",
+          "lane": 1,
+          "pid": 54957,
+          "serial": "12102856",
+          "bist": "Good",
+          "gcp_wait_seconds": 1.85,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 54957
+          }
+        }
+      ],
+      "process_groups": [
+        {
+          "group": 1,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0
+          ]
+        },
+        {
+          "group": 2,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0
+          ]
+        },
+        {
+          "group": 3,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "issue_205_reproduced": false,
+  "limitation": "Single-camera campaigns only; no independent live socket/device ownership check."
+}

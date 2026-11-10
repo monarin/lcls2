@@ -1,0 +1,25 @@
+{
+  "files": {
+    "config": "/sdf/group/lcls/ds/ana/sw/conda2/rel/tmo/lcls2_110326_disable000/install/lib/python3.9/site-packages/psdaq/configdb/piranha4_config.py",
+    "gateway": "/sdf/group/lcls/ds/ana/sw/conda2-v4/rel/lcls2_submodules_09092026/cameralink-gateway/firmware/python/cameralink_gateway/_ClinkDevRoot.py",
+    "uart": "/sdf/group/lcls/ds/ana/sw/conda2-v4/rel/lcls2_submodules_09092026/cameralink-gateway/firmware/submodules/surf/python/surf/protocols/clink/_UartPiranha4.py",
+    "tx": "/sdf/group/lcls/ds/ana/sw/conda2-v4/rel/lcls2_submodules_09092026/cameralink-gateway/firmware/submodules/surf/python/surf/protocols/clink/_ClinkSerialTx.py"
+  },
+  "sha256": {
+    "config": "9efaf0c9b206e9823e6ba3751c7b0ee3cdc68b8fb3849889fabc5cf404adcca6",
+    "gateway": "26a2e0a397a52ecd01fc0612ba5919e4b8f8edbc689485ef975962924969ae20",
+    "uart": "6a40cf5b8b1562ccfd4dbb1bf7d5e9b3b3b67a6eabb038a62d5a6874bb6fe459",
+    "tx": "06b9327bef8d9da8631ef16a47a8212674c7179030bee2bcc66c034925a52a5d"
+  },
+  "rogue_version": "v6.1.3",
+  "python": "3.9.21 | packaged by conda-forge | (main, Dec  5 2024, 13:51:40) \n[GCC 13.3.0]",
+  "executable": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python",
+  "environment": {
+    "TESTRELDIR": "/sdf/group/lcls/ds/ana/sw/conda2/rel/tmo/lcls2_110326_disable000/install",
+    "SUBMODULEDIR": "/sdf/group/lcls/ds/ana/sw/conda2-v4/rel/lcls2_submodules_09092026",
+    "CONDA_PREFIX": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9",
+    "PYTHONPATH": "/sdf/group/lcls/ds/ana/sw/conda2/rel/tmo/lcls2_110326_disable000/install/lib/python3.9/site-packages",
+    "LANG": "en_US.UTF-8",
+    "LC_ALL": null
+  }
+}

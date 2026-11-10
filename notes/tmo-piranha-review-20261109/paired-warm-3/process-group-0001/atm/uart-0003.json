@@ -1,0 +1,5696 @@
+{
+  "events": [
+    {
+      "kind": "trial_start",
+      "monotonic": 5118593.56971697,
+      "phase": "connection_info",
+      "trial": 3,
+      "raw_hex": ""
+    },
+    {
+      "kind": "await_enter",
+      "monotonic": 5118597.78679296,
+      "phase": "entry_wait",
+      "raw_hex": ""
+    },
+    {
+      "kind": "await_return",
+      "monotonic": 5118597.796938727,
+      "phase": "entry_wait",
+      "raw_hex": ""
+    },
+    {
+      "kind": "clear",
+      "monotonic": 5118597.897103203,
+      "phase": "entry_wait",
+      "raw_hex": ""
+    },
+    {
+      "kind": "tx_string",
+      "monotonic": 5118597.897186472,
+      "phase": "allocation_gcp",
+      "text": "gcp",
+      "raw_hex": ""
+    },
+    {
+      "kind": "await_enter",
+      "monotonic": 5118597.897274191,
+      "phase": "allocation_gcp_wait",
+      "raw_hex": ""
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.018862819,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.019867688,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.020900887,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.021942355,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.023018183,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "64000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.024060911,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.02511735,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.026186298,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.027211316,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.028267155,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.029369972,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.030382091,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.031429099,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.032485988,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.033546786,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.034603044,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.035646433,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.036702361,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "50000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.037773039,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "34000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.038822207,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.039868825,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "43000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.040922454,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.041992372,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.0430433,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.044097719,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "32000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.045153257,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4b000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.046209885,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.047247274,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.048338731,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "44000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.04937387,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.050432358,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.051478896,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.052520865,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.053592273,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "52000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.054833639,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.055880837,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.056936256,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.057991174,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.059047412,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "63000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.06014577,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.061169449,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.062213637,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "63000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.063260066,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.064329024,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "64000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.065372852,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.06642315,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.067501428,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.068535787,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.069590655,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.070633503,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.071709621,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.07277224,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.073847848,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "33000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.074874506,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.075929374,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.076984713,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "38000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.078043181,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.079091169,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.080147658,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "32000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.081208966,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.082255244,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "32000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.083317702,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "39000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.084366741,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "36000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.085422019,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.086472097,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.087528335,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "35000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.088791102,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.0898242,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.090865528,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "43000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.091928487,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "43000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.092984305,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "49000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.094046953,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.095117571,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.096161299,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.097228628,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.098258606,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.099310234,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.100364833,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.101415261,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.102470539,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.103527028,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.104597956,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.105653534,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.106726072,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.10776168,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "33000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.108816049,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.109865167,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.110913465,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.111964654,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.113045252,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.11408458,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "32000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.115152398,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.116210456,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "34000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.117253905,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "33000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.118302493,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "39000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.119382281,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.12042325,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.121465178,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.12312129,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.124176768,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.125243376,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "46000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.126270425,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "50000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.127325643,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "47000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.128381561,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "41000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.129438099,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.130487868,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.131537636,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.132614364,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.133652633,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.134706941,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.135763479,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.136818747,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.137869506,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.138965703,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.140009362,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.1410411,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.142104328,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "33000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.143156857,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.144226785,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.145270433,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "35000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.146318512,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "36000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.14736198,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.148418068,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "32000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.149506366,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.150539035,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "36000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.151596863,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "33000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.152637251,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "39000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.15369959,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.154756368,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.155836506,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.157016053,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.158075111,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.159153639,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "53000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.160169438,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.161257326,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.162311974,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.163353472,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.16441024,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.165458159,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.166502957,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "23000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.167556435,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.168628634,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.169664502,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.17071703,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.171809538,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.172839387,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.173887215,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.174942603,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.176024261,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "32000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.17707827,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.178117968,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.179173556,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "32000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.180206395,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "38000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.181259463,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "35000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.182316351,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "36000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.183540738,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.184586066,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.185612145,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "42000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.186678513,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.187747461,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "53000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.188783489,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "54000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.189839538,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "3a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.190895866,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.191941614,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.193021192,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.19408466,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.195128819,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.196184127,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.197235155,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.198290134,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.199346572,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.20040172,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.201481718,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "47000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.202498897,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.203551785,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.204614653,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "64000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.205696441,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.206755149,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.207965666,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.209027234,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.210085012,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "44000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.211141231,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.212181809,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.213256487,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.214270386,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "75000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.215341774,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.216396072,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.217446461,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "53000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.218502839,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.219559347,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.220638615,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.221666604,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.222724232,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.22377803,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.224820289,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.225870267,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.227100553,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.228167711,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.22918336,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "45000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.230238808,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "78000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.231294697,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.232373665,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.233417863,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "54000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.234469811,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.23551377,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.236562968,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "67000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.237632366,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.238711744,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.239746723,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.240794371,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.241850879,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.242899258,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.243963336,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.245040094,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.246070202,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.247290209,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.248333407,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.249388775,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "54000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.250444294,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.251500332,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.25254033,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "67000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.253609488,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.254663117,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.255718835,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "76000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.256767543,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.257811382,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.25886729,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.259941358,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.260996506,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "70000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.262046245,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.263196772,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.264138891,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.265220629,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.266251468,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.267319976,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.268576252,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.26963464,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.270689728,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.271752837,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.272817355,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.273869193,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "73000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.274921121,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.2759706,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.277034168,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.278097456,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "52000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.279152204,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.280200143,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.281234091,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.282292589,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.283358858,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.284412956,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.285465154,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.286520882,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "39000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.28759474,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.288628829,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5b000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.289684067,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "48000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.290738575,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "7a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.291775864,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.293123629,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.294139358,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.295180416,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.296216325,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.297272283,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.298341301,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "73000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.299378969,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.300433868,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "43000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.301489976,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "43000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.302546654,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.303619292,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.304671121,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.305711109,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.306779127,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.307829005,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.308884244,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.309977302,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.31101023,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.312048789,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.313103377,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5b000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.314161775,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "48000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.315222213,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "7a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.316267182,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.317961083,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.319029141,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.320081089,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.321123778,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.322181796,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "78000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.323216294,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.324275543,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.32535207,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.326399089,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.327447637,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "52000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.328504496,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.329560464,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.330616282,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.33170372,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.332724439,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.333769847,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.334838085,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.335872174,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.336927402,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.33801119,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.339048048,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.340104596,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.341159235,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.342229533,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.343266561,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5b000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.344345159,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "48000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.345382818,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "7a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.346420916,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.347652822,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.348723691,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.349778669,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "45000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.350828527,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "78000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.351885056,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "70000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.352931474,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.353997342,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.35505086,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.356116078,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.357159617,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "64000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.358216325,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.359287753,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.360323932,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.36137928,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.362435378,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.363485007,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.364540395,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.365623623,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "54000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.366648361,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.367702499,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.368746398,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.369801466,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "64000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.370864394,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.372115361,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.373150819,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.374216177,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.375292735,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "75000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.376309034,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.377388892,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.37841585,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.379470939,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.380526767,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "45000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.381583065,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "78000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.382647693,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "70000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.383727261,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.38476134,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.385818628,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.386864096,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.387920475,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "64000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.388965413,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.390045161,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.391084429,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.392153778,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.393200106,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.394248564,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.395306703,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.396382471,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.397820295,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.398874603,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.399911751,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "45000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.40096749,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "78000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.402032968,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "70000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.403092936,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.404143434,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.405242482,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "54000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.406261511,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.407305839,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.408348027,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.409405376,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5b000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.410467674,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.411523502,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.412567751,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.413613339,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.414687717,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.415746805,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "38000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.416823773,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.417857722,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.41890583,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.419962358,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.421034206,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5b000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.422066925,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.423134193,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "73000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118598.424179911,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.346094288,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.347098297,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.348143356,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.349216794,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.350244712,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.351293801,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "73000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.352362269,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.353418207,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "45000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.354468065,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.355535543,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "54000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.356568962,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.35762432,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5b000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.358673528,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.359733467,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.360799135,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.361880043,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.362908051,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.36394937,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "38000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.365033898,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.366088916,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.367146934,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.368181263,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.369224941,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5b000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.370276709,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.371342118,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "73000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.372398806,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.374059537,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.375105426,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.376147794,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.377215982,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.378241921,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "78000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.379296739,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.380346927,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.381409106,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "45000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.382472114,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.383552422,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "54000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.38458589,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.385628869,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.386690957,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.387746875,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.388789723,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.389866672,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.39089766,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.391952258,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "33000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.393033766,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.394085365,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.395151663,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.396197641,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "35000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.397242729,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.398290468,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.399346566,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.400406754,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5b000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.401465232,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.402520591,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "73000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.403553469,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "5d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.404632177,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.405698005,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.406922262,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.40797854,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.409046488,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "54000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.410172696,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.411131225,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "73000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.412183683,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.413239852,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.41428984,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "50000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.415345988,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.416418036,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.417472264,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.418522213,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.419579291,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.420639079,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.421684478,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.422741336,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.423799474,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.424853342,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.425889311,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "3a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.426945319,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.428040437,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.429085745,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.430312302,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.43133969,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.432389519,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "44000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.433447157,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.434495415,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.435551113,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.436614142,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "63000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.43765706,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.438728248,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.439783596,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.440842855,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.441913103,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.442947621,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.444028539,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.445060518,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.446120346,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.447164644,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.448231132,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "49000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.449271231,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.450312809,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.451379907,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.452431956,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.453488314,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.454561812,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.455596601,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.456651719,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.457707367,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.458743176,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "46000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.459799204,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.460986711,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.4619396,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "77000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.463011888,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.464037827,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.465103455,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "64000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.466310561,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.46734653,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.468401478,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "54000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.469449996,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "44000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.470499085,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "49000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.471572383,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.472625701,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "53000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.473675509,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.474731348,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.475788256,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "67000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.476843774,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.477893313,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "73000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.478972551,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.480031449,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.481062367,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.482128495,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.483181344,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.484225982,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.485437269,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.486494767,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.487550485,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "56000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.488594274,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.489649372,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.49070486,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.491751508,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.492804407,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.493867365,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "42000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.494923813,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.495981011,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.497060449,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.498100918,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.499156366,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.500211854,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.501255853,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.502294301,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.503372159,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "32000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.504580516,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.505630914,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.506687032,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "48000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.507743271,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.508779079,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.509829407,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.510884416,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.511944964,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "42000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.513024212,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.51410899,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.515123059,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.516189987,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.517215085,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.518268554,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.519324482,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.52038051,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.521428818,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.522488617,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.523728253,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.524754411,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.52580963,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "46000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.526878828,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.527934556,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.528971175,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.530040313,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.531110241,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "46000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.532149859,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.533217537,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.534259486,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.535326254,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "64000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.536353222,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.537421441,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.538478929,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.539535187,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.540583835,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.541650373,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.542701172,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.54375311,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.544996996,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.546067284,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.547123443,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.548186621,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.549231949,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.550285817,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "73000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.551342616,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.552395124,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.553448382,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.554504421,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.555560599,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.556632677,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.557654626,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.558709664,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.559772742,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.56082832,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.561884388,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.562966886,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.5643918,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.565427559,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.566481567,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "53000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.567536855,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "79000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.568587054,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "73000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.569642622,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.570692051,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.571750189,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.572802137,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.573856275,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "47000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.574922633,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.575990641,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.57704061,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.578085278,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.579185426,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.580228294,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.581235683,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.582291671,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.583374289,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.584411238,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.585454526,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.586673353,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.587724451,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.588780509,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.589836298,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.590891866,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.591972504,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.593035182,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.59411888,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "72000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.595117369,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.596173107,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.597211186,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.598266214,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.599322012,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.60037086,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.601437409,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.602527336,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.603543365,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.604590844,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.605647002,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.60670262,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.607916767,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.608974875,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.610041943,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "41000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.611104121,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.612148679,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "49000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.613212878,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.614285336,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.615324014,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.616357133,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "64000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.617413181,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.618469379,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "3a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.619556977,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.620578486,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.621632394,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.622686302,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.62377815,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.624800369,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.625872007,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.626924565,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.627957684,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.62917572,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.630210618,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.631246957,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "53000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.632303915,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "63000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.633357953,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.634418642,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.63546465,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.636534228,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "54000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.637589856,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "79000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.638656505,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "70000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.639696063,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.640762091,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.641821679,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.642846208,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.643915276,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.644956785,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.646047402,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.647104081,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.648134079,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.649189677,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.650247716,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.651296344,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.652329203,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "53000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.653400261,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "63000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.654443769,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "61000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.655497867,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.656697404,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.657733432,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.658796141,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "43000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.659849579,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.660906677,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.661963095,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "53000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.663024704,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "70000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.664082742,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.66514151,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.666194308,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "64000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.667242567,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.668275725,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.669343483,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.670394322,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.67145044,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.672506088,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.673586636,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.674617065,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "38000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.675668863,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "35000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.676724481,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.677780339,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "48000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.678816588,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "7a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.680111894,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.681139392,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.68219528,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "43000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.683219449,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.684287337,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.685369795,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "43000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.686382864,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.687437182,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.68850575,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "66000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.689548889,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.690598267,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "67000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.691692805,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.692727023,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.693782062,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.69483509,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.695888058,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.696943626,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.698027804,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.699062763,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.700105591,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "64000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.701161979,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.702224438,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "75000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.703270766,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.704516172,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.705555481,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.706613099,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "50000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.707668287,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.708712465,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "78000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.709767844,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "65000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.710817302,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6c000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.71187344,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.712930219,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "46000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.713992857,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "6d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.715064555,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.716119433,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.717161971,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.71822445,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.719269588,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.720324736,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.721366825,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.722416273,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "38000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.723472471,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.724541009,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "62000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.725602758,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "69000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.726672386,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "74000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.727693744,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "73000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.729153098,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.730214506,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.731246775,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "43000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.732301323,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "50000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.733380741,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "41000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.73441408,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.735480648,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "52000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.736533196,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "4f000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.737616434,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "49000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.738673552,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.739695131,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.740750829,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.741787558,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.742843956,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.743900314,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.744956912,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.74603504,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "20000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.747112098,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.748145927,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.749201915,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "32000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.750239794,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.751295152,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "34000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.75235158,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "38000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.753452958,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.754510446,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.755565244,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "55000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.756612003,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "53000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.757657551,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "45000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.758728539,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "52000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.759784607,
+      "phase": "allocation_gcp_wait",
+      "payload_bytes": 4,
+      "raw_hex": "3e000000"
+    },
+    {
+      "kind": "await_return",
+      "monotonic": 5118599.765783301,
+      "phase": "allocation_gcp_wait",
+      "raw_hex": ""
+    },
+    {
+      "kind": "clear",
+      "monotonic": 5118599.76588285,
+      "phase": "CPA_check",
+      "raw_hex": ""
+    },
+    {
+      "kind": "tx_string",
+      "monotonic": 5118599.765938799,
+      "phase": "allocation_vt",
+      "text": "vt",
+      "raw_hex": ""
+    },
+    {
+      "kind": "await_enter",
+      "monotonic": 5118599.765999838,
+      "phase": "vt_wait",
+      "raw_hex": ""
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.850492679,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.851535897,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.852591015,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "34000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.853623714,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "35000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.854677192,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.85572057,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "30000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.856821558,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.857895576,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.858948595,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "55000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.860024093,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "53000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.861067741,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "45000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.862122999,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "52000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.863180218,
+      "phase": "vt_wait",
+      "payload_bytes": 4,
+      "raw_hex": "3e000000"
+    },
+    {
+      "kind": "await_return",
+      "monotonic": 5118599.867516629,
+      "phase": "vt_wait",
+      "raw_hex": ""
+    },
+    {
+      "kind": "clear",
+      "monotonic": 5118599.867576229,
+      "phase": "vt_wait",
+      "raw_hex": ""
+    },
+    {
+      "kind": "tx_string",
+      "monotonic": 5118599.867624738,
+      "phase": "allocation_vv",
+      "text": "vv",
+      "raw_hex": ""
+    },
+    {
+      "kind": "await_enter",
+      "monotonic": 5118599.867684898,
+      "phase": "vv_wait",
+      "raw_hex": ""
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.939715286,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.940770325,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.941813413,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "31000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.942868311,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "32000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.94390521,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "2e000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.944961798,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "32000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.946106145,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0d000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.947146444,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "0a000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.948202362,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "55000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.94925147,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "53000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.950301119,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "45000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.951351467,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "52000000"
+    },
+    {
+      "kind": "rx",
+      "monotonic": 5118599.952407015,
+      "phase": "vv_wait",
+      "payload_bytes": 4,
+      "raw_hex": "3e000000"
+    },
+    {
+      "kind": "await_return",
+      "monotonic": 5118599.959025962,
+      "phase": "vv_wait",
+      "raw_hex": ""
+    }
+  ],
+  "dropped_events": 0,
+  "cur": [
+    "U",
+    "S",
+    "E",
+    "R",
+    ">"
+  ],
+  "resp": [
+    "",
+    "12.2"
+  ]
+}

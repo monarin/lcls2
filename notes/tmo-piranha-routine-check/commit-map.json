@@ -1,0 +1,46 @@
+{
+  "base_origin_master": "25e6f4d6535b7b5b24e9cf0470ada5e9273b2ed0",
+  "mapping": [
+    {
+      "original_commit": "0eea03bc3861cc41f3f10b8c72c5dbaed69e4eb5",
+      "branch_commit": "8b9b61b8ff63d6f4fed66286b2010f80fa9973d6",
+      "subject": "docs: plan standalone Piranha allocation reproduction"
+    },
+    {
+      "original_commit": "ce31b07c1659de51acee8310df94e24d10dcbb7b",
+      "branch_commit": "1d39d6177ccd485f686636831247d833fba205ae",
+      "subject": "docs: account for Piranha test server sockets"
+    },
+    {
+      "original_commit": "4df13daf8b3cc0572ec09e2dab1e53e92cc835e8",
+      "branch_commit": "359af28b7e605acd2b2f5b62b0438758a1983c1b",
+      "subject": "docs: record independent Piranha plan review"
+    },
+    {
+      "original_commit": "c46f1184ec4dbe717ace9ecedc156ac6417bb871",
+      "branch_commit": "722528d72f4a8edff6035a3663e297f7573dd9ac",
+      "subject": "feat: prepare standalone Piranha cold and warm allocation pilot"
+    },
+    {
+      "original_commit": "49a8aa1d5c6e8866108055da009ec8cc70e3e904",
+      "branch_commit": "65126ac0104dde5412d74720403abcdb8226d5e6",
+      "subject": "fix: bound Piranha pilot cleanup and preserve failure capture"
+    },
+    {
+      "original_commit": "747580e8d851c10aebfc84fb0197f2dd673b3bfa",
+      "branch_commit": "56df2a2f3dc1419b2f623de87a17135bf63b2135",
+      "subject": "docs: record completed Piranha pilot preparation review"
+    },
+    {
+      "original_commit": "a3d454c63a4616f6d1b3e8cbac3a6251fbf6ffa8",
+      "branch_commit": "bb5470913eb2d2adb0aa86ab07308211285095e9",
+      "subject": "docs: plan staged Piranha hold-on-error inspection"
+    },
+    {
+      "original_commit": "20ad3ff9c9d1b62a5e90449b7f4fd8bce2759a07",
+      "branch_commit": "a12ebf3c5870f22993c896396717ee2108b90dfe",
+      "subject": "docs: record passing Piranha hold plan review"
+    }
+  ],
+  "note": "Prior review records retain original reviewed SHAs. These commits transplant the same Piranha content onto current master; unrelated old-base commits were excluded."
+}

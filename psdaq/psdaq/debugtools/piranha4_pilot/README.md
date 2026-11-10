@@ -1,6 +1,10 @@
 # TMO Piranha allocation pilot
 
-Prepared for issue 205. **Offline-tested only; no real-hardware trial has been run.**
+Prepared for issue 205. **Cold/warm hardware smoke tests passed on November 6 and 9, 2026; the intermittent timeout has not been reproduced.**
+
+See the [routine-check work overview](../../../../notes/tmo-piranha-routine-check/README.md)
+for results, review history and the staged hold-on-error design. Hold-on-error
+is planned and reviewed, but is not implemented in this pilot.
 This standalone driver invokes the deployed `piranha4_init`, `init_feb`,
 `connectionInfo` and `connectionShutdown` functions. It does not start control,
 TEB, MEB, Configure, acquisition or recording. It does open the real board,

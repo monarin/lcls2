@@ -1,0 +1,2285 @@
+{
+  "purpose": "Original source and evidence copied into the routine-check branch; process.log stored as lossless gzip to preserve original bytes through formatting hooks. Manifest hashes refer to the import snapshot, before subsequent intentional documentation updates.",
+  "files": [
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-hold-review-20261110/round-01/context.md",
+      "repository_path": "notes/tmo-piranha-hold-review-20261110/round-01/context.md",
+      "encoding": "identity",
+      "original_bytes": 2025,
+      "original_sha256": "f1cf2f9b8d8c4142418a1fcbb662e14938872169135efed8e6efbdf1e78ec7f3",
+      "stored_sha256": "f1cf2f9b8d8c4142418a1fcbb662e14938872169135efed8e6efbdf1e78ec7f3"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-hold-review-20261110/round-01/response.md",
+      "repository_path": "notes/tmo-piranha-hold-review-20261110/round-01/response.md",
+      "encoding": "identity",
+      "original_bytes": 254,
+      "original_sha256": "4d17bf2dc9b4f00483477d57c3774cefa39b60e728313e5ad1635df486811e6b",
+      "stored_sha256": "4d17bf2dc9b4f00483477d57c3774cefa39b60e728313e5ad1635df486811e6b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-hold-review-20261110/round-01/review.json",
+      "repository_path": "notes/tmo-piranha-hold-review-20261110/round-01/review.json",
+      "encoding": "identity",
+      "original_bytes": 2332,
+      "original_sha256": "a6c8eee40ec7ad7d62a1f8eaec7502a9337197e0e098c79593c1d6748b5db264",
+      "stored_sha256": "a6c8eee40ec7ad7d62a1f8eaec7502a9337197e0e098c79593c1d6748b5db264"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-hold-review-20261110/round-01/validation.md",
+      "repository_path": "notes/tmo-piranha-hold-review-20261110/round-01/validation.md",
+      "encoding": "identity",
+      "original_bytes": 1162,
+      "original_sha256": "c58853fff0bcaef94fa68a86b060aec3b7041f4f90398cb6e3d34555d8499020",
+      "stored_sha256": "c58853fff0bcaef94fa68a86b060aec3b7041f4f90398cb6e3d34555d8499020"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-hold-review-20261110/scope.md",
+      "repository_path": "notes/tmo-piranha-hold-review-20261110/scope.md",
+      "encoding": "identity",
+      "original_bytes": 1481,
+      "original_sha256": "0078ed90947b339eb29b9ac234feb61357af94aca85a6eae1ee35483330a67d4",
+      "stored_sha256": "0078ed90947b339eb29b9ac234feb61357af94aca85a6eae1ee35483330a67d4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-hold-review-20261110/status.json",
+      "repository_path": "notes/tmo-piranha-hold-review-20261110/status.json",
+      "encoding": "identity",
+      "original_bytes": 616,
+      "original_sha256": "d5808ab40d38c78fe09881e0809dd31328e9a7abf022ce0bdd3b93fdf189accc",
+      "stored_sha256": "d5808ab40d38c78fe09881e0809dd31328e9a7abf022ce0bdd3b93fdf189accc"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/evidence/ClinkDevRoot.py",
+      "repository_path": "notes/tmo-piranha-review-20261106/evidence/ClinkDevRoot.py",
+      "encoding": "identity",
+      "original_bytes": 18650,
+      "original_sha256": "26a2e0a397a52ecd01fc0612ba5919e4b8f8edbc689485ef975962924969ae20",
+      "stored_sha256": "26a2e0a397a52ecd01fc0612ba5919e4b8f8edbc689485ef975962924969ae20"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/evidence/UartPiranha4.py",
+      "repository_path": "notes/tmo-piranha-review-20261106/evidence/UartPiranha4.py",
+      "encoding": "identity",
+      "original_bytes": 15253,
+      "original_sha256": "6a40cf5b8b1562ccfd4dbb1bf7d5e9b3b3b67a6eabb038a62d5a6874bb6fe459",
+      "stored_sha256": "6a40cf5b8b1562ccfd4dbb1bf7d5e9b3b3b67a6eabb038a62d5a6874bb6fe459"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/evidence/atm_piranha_ip1_0-launch.txt",
+      "repository_path": "notes/tmo-piranha-review-20261106/evidence/atm_piranha_ip1_0-launch.txt",
+      "encoding": "identity",
+      "original_bytes": 2599,
+      "original_sha256": "baf820b59323416206c58494c65fe0d9d46f48fc08b4d26a041419f11d087443",
+      "stored_sha256": "baf820b59323416206c58494c65fe0d9d46f48fc08b4d26a041419f11d087443"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/evidence/deployed-piranha4_config.py",
+      "repository_path": "notes/tmo-piranha-review-20261106/evidence/deployed-piranha4_config.py",
+      "encoding": "identity",
+      "original_bytes": 20779,
+      "original_sha256": "9efaf0c9b206e9823e6ba3751c7b0ee3cdc68b8fb3849889fabc5cf404adcca6",
+      "stored_sha256": "9efaf0c9b206e9823e6ba3751c7b0ee3cdc68b8fb3849889fabc5cf404adcca6"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/evidence/devGui.py",
+      "repository_path": "notes/tmo-piranha-review-20261106/evidence/devGui.py",
+      "encoding": "identity",
+      "original_bytes": 7619,
+      "original_sha256": "20d2a1a225c38504307ff6c7249d52b757ec9393ab49866a629ebfdb0a325366",
+      "stored_sha256": "20d2a1a225c38504307ff6c7249d52b757ec9393ab49866a629ebfdb0a325366"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/evidence/fzp_piranha_0-launch.txt",
+      "repository_path": "notes/tmo-piranha-review-20261106/evidence/fzp_piranha_0-launch.txt",
+      "encoding": "identity",
+      "original_bytes": 2585,
+      "original_sha256": "c6b16da75b8c2584c2e98e9173b768d7fde4cfc12ece2226d261fcd851a2a8bd",
+      "stored_sha256": "c6b16da75b8c2584c2e98e9173b768d7fde4cfc12ece2226d261fcd851a2a8bd"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/evidence/issue-205.md",
+      "repository_path": "notes/tmo-piranha-review-20261106/evidence/issue-205.md",
+      "encoding": "identity",
+      "original_bytes": 10590,
+      "original_sha256": "0ce35f5166b816bde94e1472f45e54a19b411dfff082ec2a0e3e0e5dd8ea6da4",
+      "stored_sha256": "0ce35f5166b816bde94e1472f45e54a19b411dfff082ec2a0e3e0e5dd8ea6da4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/evidence/manifest.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/evidence/manifest.json",
+      "encoding": "identity",
+      "original_bytes": 1623,
+      "original_sha256": "2e14757e41a82ce5c4840864dfc3686b45534e2055481073bd75701538eaef3a",
+      "stored_sha256": "2e14757e41a82ce5c4840864dfc3686b45534e2055481073bd75701538eaef3a"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/evidence/setup_env_daq.sh",
+      "repository_path": "notes/tmo-piranha-review-20261106/evidence/setup_env_daq.sh",
+      "encoding": "identity",
+      "original_bytes": 2662,
+      "original_sha256": "b0667c55d22abee515a225bcae85c342a3b279042d07e81f5cfed46625f92cc8",
+      "stored_sha256": "b0667c55d22abee515a225bcae85c342a3b279042d07e81f5cfed46625f92cc8"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/pilot/operator-campaigns-20261106.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/pilot/operator-campaigns-20261106.json",
+      "encoding": "identity",
+      "original_bytes": 7713,
+      "original_sha256": "0e01ffe60bb0cb2591bd672b05d8af884864e78ba72fc1529c7d57526906e478",
+      "stored_sha256": "0e01ffe60bb0cb2591bd672b05d8af884864e78ba72fc1529c7d57526906e478"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/pilot/operator-paired-cold-20261106.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/pilot/operator-paired-cold-20261106.json",
+      "encoding": "identity",
+      "original_bytes": 4120,
+      "original_sha256": "b36e0e2965d2d97695142b118822731a812c0b3b6763f2e900290a57a5d891e0",
+      "stored_sha256": "b36e0e2965d2d97695142b118822731a812c0b3b6763f2e900290a57a5d891e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/pilot/operator-smoke-fzp-20261106.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/pilot/operator-smoke-fzp-20261106.json",
+      "encoding": "identity",
+      "original_bytes": 728,
+      "original_sha256": "7837867b1bf3fa8a0fe98cc1133f31a22428a3699ba76058174b94317871df9a",
+      "stored_sha256": "7837867b1bf3fa8a0fe98cc1133f31a22428a3699ba76058174b94317871df9a"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/pilot/round-01/context.md",
+      "repository_path": "notes/tmo-piranha-review-20261106/pilot/round-01/context.md",
+      "encoding": "identity",
+      "original_bytes": 1617,
+      "original_sha256": "036c3d6dace9e4166a2f61658fc89d2987d7baf3856e30d787834d3b34c5ad55",
+      "stored_sha256": "036c3d6dace9e4166a2f61658fc89d2987d7baf3856e30d787834d3b34c5ad55"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/pilot/round-01/response.md",
+      "repository_path": "notes/tmo-piranha-review-20261106/pilot/round-01/response.md",
+      "encoding": "identity",
+      "original_bytes": 972,
+      "original_sha256": "91941a38a82e4114138ccea27a00c2e83b9071bd6011b5f81e6d0dd8e3ab9206",
+      "stored_sha256": "91941a38a82e4114138ccea27a00c2e83b9071bd6011b5f81e6d0dd8e3ab9206"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/pilot/round-01/review.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/pilot/round-01/review.json",
+      "encoding": "identity",
+      "original_bytes": 2042,
+      "original_sha256": "913a1f2e53d1f3dd813328157f4193d77cfaa93f436808617eb7a311e4fd16f1",
+      "stored_sha256": "913a1f2e53d1f3dd813328157f4193d77cfaa93f436808617eb7a311e4fd16f1"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/pilot/round-02/context.md",
+      "repository_path": "notes/tmo-piranha-review-20261106/pilot/round-02/context.md",
+      "encoding": "identity",
+      "original_bytes": 729,
+      "original_sha256": "cdfe5556a462d50da41fbcf3af1cb67984e41786a2e32f4afbf7c8a7d4ffbf98",
+      "stored_sha256": "cdfe5556a462d50da41fbcf3af1cb67984e41786a2e32f4afbf7c8a7d4ffbf98"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/pilot/round-02/review.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/pilot/round-02/review.json",
+      "encoding": "identity",
+      "original_bytes": 1509,
+      "original_sha256": "62fa478353da1f2cc78f364ad782589d8fa9e3a2752efc9398057ff836d3aa45",
+      "stored_sha256": "62fa478353da1f2cc78f364ad782589d8fa9e3a2752efc9398057ff836d3aa45"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/pilot/scope.md",
+      "repository_path": "notes/tmo-piranha-review-20261106/pilot/scope.md",
+      "encoding": "identity",
+      "original_bytes": 1473,
+      "original_sha256": "663b16949620fa59d3a87d2e683131ba4f9bfd797c290b4f5ec6a2b3d726a4c4",
+      "stored_sha256": "663b16949620fa59d3a87d2e683131ba4f9bfd797c290b4f5ec6a2b3d726a4c4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/pilot/status.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/pilot/status.json",
+      "encoding": "identity",
+      "original_bytes": 561,
+      "original_sha256": "ff7296ce1c550d2061173df3024a675e1ff7367900922bcf168e512794921a91",
+      "stored_sha256": "ff7296ce1c550d2061173df3024a675e1ff7367900922bcf168e512794921a91"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/pilot/tests-round-02.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/pilot/tests-round-02.log",
+      "encoding": "identity",
+      "original_bytes": 2261,
+      "original_sha256": "7bbca0b08d94f1458b7701041f6d7604683233b1d3e5e05eb93d58b3940cc3a2",
+      "stored_sha256": "7bbca0b08d94f1458b7701041f6d7604683233b1d3e5e05eb93d58b3940cc3a2"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/pilot/validation.md",
+      "repository_path": "notes/tmo-piranha-review-20261106/pilot/validation.md",
+      "encoding": "identity",
+      "original_bytes": 2063,
+      "original_sha256": "1fe6820d46f82d8b8aafd0c19103dd8b574f5d2e42a8abf1a8ddea6f45248fb4",
+      "stored_sha256": "1fe6820d46f82d8b8aafd0c19103dd8b574f5d2e42a8abf1a8ddea6f45248fb4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/round-01/context.md",
+      "repository_path": "notes/tmo-piranha-review-20261106/round-01/context.md",
+      "encoding": "identity",
+      "original_bytes": 2044,
+      "original_sha256": "fa3cd96b7091e5335959cf4f3d56789b5f05fd630a187d2ccf06377bd2de3a49",
+      "stored_sha256": "fa3cd96b7091e5335959cf4f3d56789b5f05fd630a187d2ccf06377bd2de3a49"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/round-01/response.md",
+      "repository_path": "notes/tmo-piranha-review-20261106/round-01/response.md",
+      "encoding": "identity",
+      "original_bytes": 1012,
+      "original_sha256": "7af76a4f9fb31c606c927b75a0fce166e6542e277d7ee4c8f7df9823dd01c797",
+      "stored_sha256": "7af76a4f9fb31c606c927b75a0fce166e6542e277d7ee4c8f7df9823dd01c797"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/round-01/review.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/round-01/review.json",
+      "encoding": "identity",
+      "original_bytes": 2753,
+      "original_sha256": "36355b2a065fa186d8a922c72ef4b7bd8ccf45a2ab66d18e7f5f0539abdb504c",
+      "stored_sha256": "36355b2a065fa186d8a922c72ef4b7bd8ccf45a2ab66d18e7f5f0539abdb504c"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/round-02/context.md",
+      "repository_path": "notes/tmo-piranha-review-20261106/round-02/context.md",
+      "encoding": "identity",
+      "original_bytes": 703,
+      "original_sha256": "a346afc1825e7373818d70a8a6db16735f584967659595aa5bd669eb7ac54d5b",
+      "stored_sha256": "a346afc1825e7373818d70a8a6db16735f584967659595aa5bd669eb7ac54d5b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/round-02/review.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/round-02/review.json",
+      "encoding": "identity",
+      "original_bytes": 1349,
+      "original_sha256": "876ae4ecd3dda36440e732b2166d9383994e8dbaed387085631b2a95f8f26e9a",
+      "stored_sha256": "876ae4ecd3dda36440e732b2166d9383994e8dbaed387085631b2a95f8f26e9a"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/scope.md",
+      "repository_path": "notes/tmo-piranha-review-20261106/scope.md",
+      "encoding": "identity",
+      "original_bytes": 1350,
+      "original_sha256": "388dc6ebb1078b481fc9c239bafab2547b821a4838403892163acd8545dd5305",
+      "stored_sha256": "388dc6ebb1078b481fc9c239bafab2547b821a4838403892163acd8545dd5305"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/status.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/status.json",
+      "encoding": "identity",
+      "original_bytes": 767,
+      "original_sha256": "5ec98ef2d3af1a9ae84c3287aafcbdde2d645c2260847acea1c34ef238e11369",
+      "stored_sha256": "5ec98ef2d3af1a9ae84c3287aafcbdde2d645c2260847acea1c34ef238e11369"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/validation.md",
+      "repository_path": "notes/tmo-piranha-review-20261106/validation.md",
+      "encoding": "identity",
+      "original_bytes": 1758,
+      "original_sha256": "08c47841f10d0146b7848f5e0e2097f5da05d7f51a9870c4902cb7a8e750ce27",
+      "stored_sha256": "08c47841f10d0146b7848f5e0e2097f5da05d7f51a9870c4902cb7a8e750ce27"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/verification/offline_path_check.py",
+      "repository_path": "notes/tmo-piranha-review-20261106/verification/offline_path_check.py",
+      "encoding": "identity",
+      "original_bytes": 8259,
+      "original_sha256": "8709831686da5a4a2b35c7f585a9a4f01afa124e70692ae805bae824d1f054b0",
+      "stored_sha256": "8709831686da5a4a2b35c7f585a9a4f01afa124e70692ae805bae824d1f054b0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/verification/offline_results.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/verification/offline_results.json",
+      "encoding": "identity",
+      "original_bytes": 22907,
+      "original_sha256": "2a0513dd089dc8e99c146451ebe85528ae11d79545ba22b6fe1f9eca8efb6f35",
+      "stored_sha256": "2a0513dd089dc8e99c146451ebe85528ae11d79545ba22b6fe1f9eca8efb6f35"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261106/verification/result.md",
+      "repository_path": "notes/tmo-piranha-review-20261106/verification/result.md",
+      "encoding": "identity",
+      "original_bytes": 3969,
+      "original_sha256": "1e4a9d5a04541ea4acbe08b15a0f944ddcec7bf4802cca162f966c5740ae66b4",
+      "stored_sha256": "1e4a9d5a04541ea4acbe08b15a0f944ddcec7bf4802cca162f966c5740ae66b4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/manifest.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/manifest.json",
+      "encoding": "identity",
+      "original_bytes": 650,
+      "original_sha256": "86ea2b101d7c6d03dbdde1466206f812c8ef6e91c1ee15cf497b6540e33c1bf3",
+      "stored_sha256": "86ea2b101d7c6d03dbdde1466206f812c8ef6e91c1ee15cf497b6540e33c1bf3"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/alloc-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/alloc-0001.json",
+      "encoding": "identity",
+      "original_bytes": 400,
+      "original_sha256": "84171cc7da51f6879dbd1df2a28ededd9ec1730a9b769cd6e4f82fd03574acb7",
+      "stored_sha256": "84171cc7da51f6879dbd1df2a28ededd9ec1730a9b769cd6e4f82fd03574acb7"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/exit.json",
+      "encoding": "identity",
+      "original_bytes": 59,
+      "original_sha256": "ebcac870e5df6e71272663cb2e11b020248b3a3f82b42eddd9d0837f0033579d",
+      "stored_sha256": "ebcac870e5df6e71272663cb2e11b020248b3a3f82b42eddd9d0837f0033579d"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16505,
+      "original_sha256": "12d51457889cd87d1e39174daf050bd70a88e40ed18429dc16f8697b95bc49b6",
+      "stored_sha256": "b69d90f5000d30669ef8fa21e8d98d590ef13e5dca926371f6d9ed360ae06b84"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1682,
+      "original_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b",
+      "stored_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/ready.json",
+      "encoding": "identity",
+      "original_bytes": 152,
+      "original_sha256": "70900fe5217fede46090d292d900b9485dc9e195d7f971ff907a075a0f4d219a",
+      "stored_sha256": "70900fe5217fede46090d292d900b9485dc9e195d7f971ff907a075a0f4d219a"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/result-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/result-0001.json",
+      "encoding": "identity",
+      "original_bytes": 315,
+      "original_sha256": "1701467700bb64335cf782b619ddb31885fb3e25cbfb8a94ff885699f65fe618",
+      "stored_sha256": "1701467700bb64335cf782b619ddb31885fb3e25cbfb8a94ff885699f65fe618"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/spec.json",
+      "encoding": "identity",
+      "original_bytes": 555,
+      "original_sha256": "8399e77c15a7674fc51d44f73b6b025f8d0fbc462f9e0a3a2626581e137f7ac2",
+      "stored_sha256": "8399e77c15a7674fc51d44f73b6b025f8d0fbc462f9e0a3a2626581e137f7ac2"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/uart-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/uart-0001.json",
+      "encoding": "identity",
+      "original_bytes": 252914,
+      "original_sha256": "0801a14bc24d62cf996f75aa6cc6f0092a9d8a6c48dfd079e0371b52f4dfb82f",
+      "stored_sha256": "0801a14bc24d62cf996f75aa6cc6f0092a9d8a6c48dfd079e0371b52f4dfb82f"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/atm/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/exit.json",
+      "encoding": "identity",
+      "original_bytes": 59,
+      "original_sha256": "9341df5d1e59ae91422fef5957b170e6d34e87bc9406f0d3744e7630b1f3495e",
+      "stored_sha256": "9341df5d1e59ae91422fef5957b170e6d34e87bc9406f0d3744e7630b1f3495e"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16948,
+      "original_sha256": "a88994026712a49610de2042f80fc702126dad2a60c7703066d18be49974c667",
+      "stored_sha256": "8dafaf5ad6ec6fbc8dc3bb78ba10c62c9f46d3098585a3b48c9fd86a169ee5cf"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1682,
+      "original_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b",
+      "stored_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/ready.json",
+      "encoding": "identity",
+      "original_bytes": 152,
+      "original_sha256": "24cf0329a3ef6aee4294e041c17ec6364658300a638fac321aba9cf16eff6d59",
+      "stored_sha256": "24cf0329a3ef6aee4294e041c17ec6364658300a638fac321aba9cf16eff6d59"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/result-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/result-0001.json",
+      "encoding": "identity",
+      "original_bytes": 314,
+      "original_sha256": "13478e1cb52f454865d6c999a7bd80acce5c2d58758f3f1d7a065091ea046d7f",
+      "stored_sha256": "13478e1cb52f454865d6c999a7bd80acce5c2d58758f3f1d7a065091ea046d7f"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/spec.json",
+      "encoding": "identity",
+      "original_bytes": 555,
+      "original_sha256": "5c8d400b701309d1c52936494b5d3b1ff1c02f4bfc362fe1a138c3ac815f331b",
+      "stored_sha256": "5c8d400b701309d1c52936494b5d3b1ff1c02f4bfc362fe1a138c3ac815f331b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/uart-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/uart-0001.json",
+      "encoding": "identity",
+      "original_bytes": 252602,
+      "original_sha256": "048c6ce839858d2738b702345fb4e5fb01716b7dbcf01b6a330f57a49c730f1c",
+      "stored_sha256": "048c6ce839858d2738b702345fb4e5fb01716b7dbcf01b6a330f57a49c730f1c"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0001/fzp/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/alloc-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/alloc-0002.json",
+      "encoding": "identity",
+      "original_bytes": 400,
+      "original_sha256": "11806494242e6406047bdc54af727abbb2ae915e970b7bd1ee45bf647e7483a3",
+      "stored_sha256": "11806494242e6406047bdc54af727abbb2ae915e970b7bd1ee45bf647e7483a3"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/exit.json",
+      "encoding": "identity",
+      "original_bytes": 59,
+      "original_sha256": "9669e62fa1a18a42c76cc75fd7524690faf9794ab330fa5176bf245d0c62244e",
+      "stored_sha256": "9669e62fa1a18a42c76cc75fd7524690faf9794ab330fa5176bf245d0c62244e"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16794,
+      "original_sha256": "1e5db7e23d79e6ee53d0ecabc77d33212b0f572b8aa4cb965ef57435c2244a99",
+      "stored_sha256": "64cb0b7408cf2354c4121f1a2da2241636ed193f0cbcca231c921e194dd8ebc9"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1682,
+      "original_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b",
+      "stored_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/ready.json",
+      "encoding": "identity",
+      "original_bytes": 152,
+      "original_sha256": "55ff65dccd726f88803b1d7944078d4359676f4381c1208d4603745f66f3dfb5",
+      "stored_sha256": "55ff65dccd726f88803b1d7944078d4359676f4381c1208d4603745f66f3dfb5"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/result-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/result-0002.json",
+      "encoding": "identity",
+      "original_bytes": 315,
+      "original_sha256": "b3fbbc4a3bf185026ab0915c7a6eb71bba8adb880587e55993a021bd2807725a",
+      "stored_sha256": "b3fbbc4a3bf185026ab0915c7a6eb71bba8adb880587e55993a021bd2807725a"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/spec.json",
+      "encoding": "identity",
+      "original_bytes": 555,
+      "original_sha256": "080150e63c459c8880bc4494e0bb8cc6c182bb634026fa6f2e15d110fc8ee866",
+      "stored_sha256": "080150e63c459c8880bc4494e0bb8cc6c182bb634026fa6f2e15d110fc8ee866"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/uart-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/uart-0002.json",
+      "encoding": "identity",
+      "original_bytes": 252905,
+      "original_sha256": "c1d19b2ceda8e5a7c549c768ec20963c14aed9486d5dd4e9556644db5c5ecf57",
+      "stored_sha256": "c1d19b2ceda8e5a7c549c768ec20963c14aed9486d5dd4e9556644db5c5ecf57"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/atm/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/exit.json",
+      "encoding": "identity",
+      "original_bytes": 59,
+      "original_sha256": "06e8e133bd3915653d454c2acfd2551cb1c55dd2a5e5d7d2e10207b2b541d431",
+      "stored_sha256": "06e8e133bd3915653d454c2acfd2551cb1c55dd2a5e5d7d2e10207b2b541d431"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16763,
+      "original_sha256": "a1405b9f1ce5446fd8e459ba2a901a62b5d9d35d9165d29c416412d10fb4a426",
+      "stored_sha256": "387b18b1dab32b86aedeed6aebfb84c7b2d215658bfd11c0fa0c69514e3f76a2"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1682,
+      "original_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b",
+      "stored_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/ready.json",
+      "encoding": "identity",
+      "original_bytes": 152,
+      "original_sha256": "5b2d4510ad6f01ae31498909f56ddad2e5795402e2d5fc4fb18e2dcd41658a39",
+      "stored_sha256": "5b2d4510ad6f01ae31498909f56ddad2e5795402e2d5fc4fb18e2dcd41658a39"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/result-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/result-0002.json",
+      "encoding": "identity",
+      "original_bytes": 316,
+      "original_sha256": "5d5e2ef5634966ce5fdbf08ae27fbeb12b335e7c07abc224c1f188ef1aa7a5a9",
+      "stored_sha256": "5d5e2ef5634966ce5fdbf08ae27fbeb12b335e7c07abc224c1f188ef1aa7a5a9"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/spec.json",
+      "encoding": "identity",
+      "original_bytes": 555,
+      "original_sha256": "0c0bb01ad678d814a2778ff439cbf1edbc80dccd30f96b64a87e5837494df539",
+      "stored_sha256": "0c0bb01ad678d814a2778ff439cbf1edbc80dccd30f96b64a87e5837494df539"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/uart-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/uart-0002.json",
+      "encoding": "identity",
+      "original_bytes": 252579,
+      "original_sha256": "a9db6deed6310454f9c9f27a339c948ecbbd74f9cc40258ceb8a293d7129e404",
+      "stored_sha256": "a9db6deed6310454f9c9f27a339c948ecbbd74f9cc40258ceb8a293d7129e404"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0002/fzp/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/alloc-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/alloc-0003.json",
+      "encoding": "identity",
+      "original_bytes": 400,
+      "original_sha256": "a2327160cb956dd82dcae7008fb36ef9b52eb58e8e4fadcbcab37138011e4714",
+      "stored_sha256": "a2327160cb956dd82dcae7008fb36ef9b52eb58e8e4fadcbcab37138011e4714"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/exit.json",
+      "encoding": "identity",
+      "original_bytes": 59,
+      "original_sha256": "35fda175c26a7aca6ebdbe1f0d832c33824b250f1a2c4711107a7c928e331b21",
+      "stored_sha256": "35fda175c26a7aca6ebdbe1f0d832c33824b250f1a2c4711107a7c928e331b21"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16536,
+      "original_sha256": "a45d8f0e009c33249c4e4542f738b6bc7f71ed7d591a1fbb60f83731cabf52c2",
+      "stored_sha256": "3b6e46d57e4138e35c5cbb567a9726cf70587311e3dbd6921cda3c999f1d424f"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1682,
+      "original_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b",
+      "stored_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/ready.json",
+      "encoding": "identity",
+      "original_bytes": 152,
+      "original_sha256": "60f76c17d55865256b2780b083553d9487cbd49b469956ef693ad9685eb928b0",
+      "stored_sha256": "60f76c17d55865256b2780b083553d9487cbd49b469956ef693ad9685eb928b0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/result-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/result-0003.json",
+      "encoding": "identity",
+      "original_bytes": 316,
+      "original_sha256": "47573c757c0be1e3e92977e02a273de72fd761a22eca514736dd3d5c88f70a69",
+      "stored_sha256": "47573c757c0be1e3e92977e02a273de72fd761a22eca514736dd3d5c88f70a69"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/spec.json",
+      "encoding": "identity",
+      "original_bytes": 555,
+      "original_sha256": "6c022b47df38c0456cf12ccf8f7fdda2f16be4775cb9b388629c67973aa5d668",
+      "stored_sha256": "6c022b47df38c0456cf12ccf8f7fdda2f16be4775cb9b388629c67973aa5d668"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/uart-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/uart-0003.json",
+      "encoding": "identity",
+      "original_bytes": 252902,
+      "original_sha256": "290b8ce892a2560bfcdafb946180140ab8f0e24855f55aabb880904337a8300a",
+      "stored_sha256": "290b8ce892a2560bfcdafb946180140ab8f0e24855f55aabb880904337a8300a"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/atm/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/exit.json",
+      "encoding": "identity",
+      "original_bytes": 59,
+      "original_sha256": "9184bdd2da7fcdd53578cd6de9f39b318d19d491e108591594d2458b7c8177a7",
+      "stored_sha256": "9184bdd2da7fcdd53578cd6de9f39b318d19d491e108591594d2458b7c8177a7"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16881,
+      "original_sha256": "19b23e88715d45fecd920e7c8f0510302b2acb7e3a96977e5af9e5690ad954d3",
+      "stored_sha256": "ad4578ba0d85eed04bfc90378995d5342b6ad7c785cb6cce48fe57062c5be149"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1682,
+      "original_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b",
+      "stored_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/ready.json",
+      "encoding": "identity",
+      "original_bytes": 152,
+      "original_sha256": "73f68255d30bde5912f8bd8d8162b3bdcf76622eef3c6bfbb151f5e86666bd79",
+      "stored_sha256": "73f68255d30bde5912f8bd8d8162b3bdcf76622eef3c6bfbb151f5e86666bd79"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/result-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/result-0003.json",
+      "encoding": "identity",
+      "original_bytes": 316,
+      "original_sha256": "1b273803b146f777f63bed3e6f84b43ed9b0008f862942e29064fad5d7d8a2a4",
+      "stored_sha256": "1b273803b146f777f63bed3e6f84b43ed9b0008f862942e29064fad5d7d8a2a4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/spec.json",
+      "encoding": "identity",
+      "original_bytes": 555,
+      "original_sha256": "08b7e2b198f5c1ab55ab6f729c341184e9b2a13d26f0b98cb6ab37bad6e94708",
+      "stored_sha256": "08b7e2b198f5c1ab55ab6f729c341184e9b2a13d26f0b98cb6ab37bad6e94708"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/uart-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/uart-0003.json",
+      "encoding": "identity",
+      "original_bytes": 252601,
+      "original_sha256": "1674a958e327624e34a7fe77f03d9fa67116c34d3025f8659877bc43cdf59712",
+      "stored_sha256": "1674a958e327624e34a7fe77f03d9fa67116c34d3025f8659877bc43cdf59712"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/process-group-0003/fzp/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/summary.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-cold-3/summary.json",
+      "encoding": "identity",
+      "original_bytes": 3973,
+      "original_sha256": "7a2113d328b7bc3f2792bc97a20fdd0d544a5fa5cf8ae85d67aa4278cc12aaa5",
+      "stored_sha256": "7a2113d328b7bc3f2792bc97a20fdd0d544a5fa5cf8ae85d67aa4278cc12aaa5"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/manifest.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/manifest.json",
+      "encoding": "identity",
+      "original_bytes": 650,
+      "original_sha256": "9eba479c3abcc677e194058ed38eb5cc961d94c02824cba9aca79cfa42434a1e",
+      "stored_sha256": "9eba479c3abcc677e194058ed38eb5cc961d94c02824cba9aca79cfa42434a1e"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/alloc-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/alloc-0001.json",
+      "encoding": "identity",
+      "original_bytes": 400,
+      "original_sha256": "6174b8e186aee5d462f46838ff040070c1f7c291da3c07f69a2e952e1740a04b",
+      "stored_sha256": "6174b8e186aee5d462f46838ff040070c1f7c291da3c07f69a2e952e1740a04b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/alloc-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/alloc-0002.json",
+      "encoding": "identity",
+      "original_bytes": 400,
+      "original_sha256": "6174b8e186aee5d462f46838ff040070c1f7c291da3c07f69a2e952e1740a04b",
+      "stored_sha256": "6174b8e186aee5d462f46838ff040070c1f7c291da3c07f69a2e952e1740a04b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/alloc-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/alloc-0003.json",
+      "encoding": "identity",
+      "original_bytes": 400,
+      "original_sha256": "6174b8e186aee5d462f46838ff040070c1f7c291da3c07f69a2e952e1740a04b",
+      "stored_sha256": "6174b8e186aee5d462f46838ff040070c1f7c291da3c07f69a2e952e1740a04b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/exit.json",
+      "encoding": "identity",
+      "original_bytes": 59,
+      "original_sha256": "52331bac06b29a7dfcdf361c14af5d1142ca25a3c017a64510e96cadd3eba833",
+      "stored_sha256": "52331bac06b29a7dfcdf361c14af5d1142ca25a3c017a64510e96cadd3eba833"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 41594,
+      "original_sha256": "157540b0ff23f8aafad953b6c8bffe6ec635f6a8323b497bd226adf88671913e",
+      "stored_sha256": "d2434deb788aaf09ad69aa4216096414964129d25ff43d05d8a82ea323b431fe"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1682,
+      "original_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b",
+      "stored_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/ready.json",
+      "encoding": "identity",
+      "original_bytes": 152,
+      "original_sha256": "413d0c94588620bd398869c66b9237dd3b431154fcf79dfeaddd12d8ea1208fc",
+      "stored_sha256": "413d0c94588620bd398869c66b9237dd3b431154fcf79dfeaddd12d8ea1208fc"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/result-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/result-0001.json",
+      "encoding": "identity",
+      "original_bytes": 315,
+      "original_sha256": "ee17623e156daf64dac6bf6be605b1d28d135d3ed310fd29cc0e61d43ea407e9",
+      "stored_sha256": "ee17623e156daf64dac6bf6be605b1d28d135d3ed310fd29cc0e61d43ea407e9"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/result-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/result-0002.json",
+      "encoding": "identity",
+      "original_bytes": 315,
+      "original_sha256": "52661683fc41f6e0bd9ec13200eed1624a4856bbd7b64406a4b9c4ae9abf8e90",
+      "stored_sha256": "52661683fc41f6e0bd9ec13200eed1624a4856bbd7b64406a4b9c4ae9abf8e90"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/result-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/result-0003.json",
+      "encoding": "identity",
+      "original_bytes": 314,
+      "original_sha256": "8f9285b9916f1ce73e60f4c6c65edf4fd0e6845897226389850060c7c28fe3b4",
+      "stored_sha256": "8f9285b9916f1ce73e60f4c6c65edf4fd0e6845897226389850060c7c28fe3b4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/spec.json",
+      "encoding": "identity",
+      "original_bytes": 569,
+      "original_sha256": "de97ebf83dfd4daf3ec84a2b202797f3abc925b8a44cccf498546ecbbef2a71e",
+      "stored_sha256": "de97ebf83dfd4daf3ec84a2b202797f3abc925b8a44cccf498546ecbbef2a71e"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/uart-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/uart-0001.json",
+      "encoding": "identity",
+      "original_bytes": 252894,
+      "original_sha256": "1446ce8c05e6447c6666c710e7bbe6528e09475074e86f72c908c4b8f3246e1f",
+      "stored_sha256": "1446ce8c05e6447c6666c710e7bbe6528e09475074e86f72c908c4b8f3246e1f"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/uart-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/uart-0002.json",
+      "encoding": "identity",
+      "original_bytes": 131821,
+      "original_sha256": "579d1bfbbb9ac7cd7f9465624c885897b24e838aeffbd4bef62b4e8d05a94941",
+      "stored_sha256": "579d1bfbbb9ac7cd7f9465624c885897b24e838aeffbd4bef62b4e8d05a94941"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/uart-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/uart-0003.json",
+      "encoding": "identity",
+      "original_bytes": 131830,
+      "original_sha256": "9377ba709825c51f08472c3ca2fc58738537b63a26f6f6aebd99a9e49667683b",
+      "stored_sha256": "9377ba709825c51f08472c3ca2fc58738537b63a26f6f6aebd99a9e49667683b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/atm/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/exit.json",
+      "encoding": "identity",
+      "original_bytes": 59,
+      "original_sha256": "8530391d016ca937b1828b56c04ed83d74d1ea1dd64244c6d3c2c11d5f313649",
+      "stored_sha256": "8530391d016ca937b1828b56c04ed83d74d1ea1dd64244c6d3c2c11d5f313649"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 42191,
+      "original_sha256": "c61841bdb81b4c4cf6394b61162f088be2ac601452ade2e9dc07897f1d1b2173",
+      "stored_sha256": "acff8c3647a41d59fd59b4dc3c08f940c207ae45fde708f8ab0447a6c8f425b9"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1682,
+      "original_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b",
+      "stored_sha256": "116bbfcd1b4b80c3a7361471255b847281de8f3ab03358324e28d0c4697e654b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/ready.json",
+      "encoding": "identity",
+      "original_bytes": 152,
+      "original_sha256": "d8af8e667f9af460b70195bbb4aadcfb0b5a6f1ba4b28b56363d870ff4cdd7c5",
+      "stored_sha256": "d8af8e667f9af460b70195bbb4aadcfb0b5a6f1ba4b28b56363d870ff4cdd7c5"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/result-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/result-0001.json",
+      "encoding": "identity",
+      "original_bytes": 313,
+      "original_sha256": "263021ab72ca5cc91e8ccf6c96abe01b48ffbd2300bbdd4bc7f90001dbe7e9c6",
+      "stored_sha256": "263021ab72ca5cc91e8ccf6c96abe01b48ffbd2300bbdd4bc7f90001dbe7e9c6"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/result-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/result-0002.json",
+      "encoding": "identity",
+      "original_bytes": 315,
+      "original_sha256": "78de451b2861c0227871ff3ee531c8ef4b3e5d82f864aa7852682c3bd85e0051",
+      "stored_sha256": "78de451b2861c0227871ff3ee531c8ef4b3e5d82f864aa7852682c3bd85e0051"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/result-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/result-0003.json",
+      "encoding": "identity",
+      "original_bytes": 315,
+      "original_sha256": "9728733e031f4cd550761caf0d3ec21f58b14775bfb31018e0567a37b508640c",
+      "stored_sha256": "9728733e031f4cd550761caf0d3ec21f58b14775bfb31018e0567a37b508640c"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/spec.json",
+      "encoding": "identity",
+      "original_bytes": 569,
+      "original_sha256": "e1d3149fe23d9466df6c6785af96a358a114cdb12d5b6efd535b1c4cf12ac70f",
+      "stored_sha256": "e1d3149fe23d9466df6c6785af96a358a114cdb12d5b6efd535b1c4cf12ac70f"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/uart-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/uart-0001.json",
+      "encoding": "identity",
+      "original_bytes": 252594,
+      "original_sha256": "9912cafbd466caf8f01fb16d68930ff45ca8ac91cf3028da18d44a8437b98efc",
+      "stored_sha256": "9912cafbd466caf8f01fb16d68930ff45ca8ac91cf3028da18d44a8437b98efc"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/uart-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/uart-0002.json",
+      "encoding": "identity",
+      "original_bytes": 131658,
+      "original_sha256": "ecba4f5addc04d3e2f711a8aef68dc5889f1587581885f2d3dd734281d3badf0",
+      "stored_sha256": "ecba4f5addc04d3e2f711a8aef68dc5889f1587581885f2d3dd734281d3badf0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/uart-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/uart-0003.json",
+      "encoding": "identity",
+      "original_bytes": 131665,
+      "original_sha256": "f0ae63fb6e1f45ce3bd2d8a1092cfc5b5f8d323d29c566c86b4535e1f0fa5f22",
+      "stored_sha256": "f0ae63fb6e1f45ce3bd2d8a1092cfc5b5f8d323d29c566c86b4535e1f0fa5f22"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/process-group-0001/fzp/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/summary.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/paired-warm-3/summary.json",
+      "encoding": "identity",
+      "original_bytes": 3650,
+      "original_sha256": "5abe079edf8bc5b0354e733e396b3a6fc154fb8aa4eeedc04e761f8c78fc97f8",
+      "stored_sha256": "5abe079edf8bc5b0354e733e396b3a6fc154fb8aa4eeedc04e761f8c78fc97f8"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/post-run-check.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/post-run-check.json",
+      "encoding": "identity",
+      "original_bytes": 427,
+      "original_sha256": "5876eaf8aa74416103f2c0af69ff5d62a2c5898c576c4637171407e87af446d2",
+      "stored_sha256": "5876eaf8aa74416103f2c0af69ff5d62a2c5898c576c4637171407e87af446d2"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/results.md",
+      "repository_path": "notes/tmo-piranha-review-20261109/results.md",
+      "encoding": "identity",
+      "original_bytes": 2611,
+      "original_sha256": "5063ad6f4f6e93d3f6f9849491d25042c51f146b5dd69e07956419406870c6ef",
+      "stored_sha256": "5063ad6f4f6e93d3f6f9849491d25042c51f146b5dd69e07956419406870c6ef"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/verified-results.json",
+      "repository_path": "notes/tmo-piranha-review-20261109/verified-results.json",
+      "encoding": "identity",
+      "original_bytes": 11540,
+      "original_sha256": "55f7d8e9c09b2c9eef614535ec2abf257cadcf1183b91a73ee4ae571fdaa5917",
+      "stored_sha256": "55f7d8e9c09b2c9eef614535ec2abf257cadcf1183b91a73ee4ae571fdaa5917"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-standalone-test-findings-2026-11-06.md",
+      "repository_path": "notes/tmo-piranha-standalone-test-findings-2026-11-06.md",
+      "encoding": "identity",
+      "original_bytes": 20171,
+      "original_sha256": "c46764eb030f1e52bd2fe6176e3ef309437e88f37b9b9baadf8c0e8a667ab667",
+      "stored_sha256": "c46764eb030f1e52bd2fe6176e3ef309437e88f37b9b9baadf8c0e8a667ab667"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-hold-plan-20261110.md",
+      "repository_path": "notes/tmo-piranha-hold-plan-20261110.md",
+      "encoding": "identity",
+      "original_bytes": 16466,
+      "original_sha256": "c34930b31cae9c9eff3c87d2a5fd9a1a59612676060030b41131c888c37edceb",
+      "stored_sha256": "c34930b31cae9c9eff3c87d2a5fd9a1a59612676060030b41131c888c37edceb"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-standalone-test-task-transfer-2026-11-06.md",
+      "repository_path": "notes/tmo-piranha-standalone-test-task-transfer-2026-11-06.md",
+      "encoding": "identity",
+      "original_bytes": 7865,
+      "original_sha256": "a410e198f7e65ef0402dc6a52dfd2f92f263746983a94b934fb9bae2e9324d58",
+      "stored_sha256": "a410e198f7e65ef0402dc6a52dfd2f92f263746983a94b934fb9bae2e9324d58"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/psdaq/psdaq/debugtools/piranha4_pilot/README.md",
+      "repository_path": "psdaq/psdaq/debugtools/piranha4_pilot/README.md",
+      "encoding": "identity",
+      "original_bytes": 8162,
+      "original_sha256": "f7458db638535129c2b057b7838220f930e17efb56dc9c92e936bb66260e27a3",
+      "stored_sha256": "f7458db638535129c2b057b7838220f930e17efb56dc9c92e936bb66260e27a3"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py",
+      "repository_path": "psdaq/psdaq/debugtools/piranha4_pilot/pilot.py",
+      "encoding": "identity",
+      "original_bytes": 22588,
+      "original_sha256": "d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804",
+      "stored_sha256": "d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/lcls2/psdaq/psdaq/debugtools/piranha4_pilot/test_pilot.py",
+      "repository_path": "psdaq/psdaq/debugtools/piranha4_pilot/test_pilot.py",
+      "encoding": "identity",
+      "original_bytes": 14290,
+      "original_sha256": "bae826430fdb83c2143d3c724878db8141f85206adaf4ab54eb8c4cbdc1bd4a2",
+      "stored_sha256": "bae826430fdb83c2143d3c724878db8141f85206adaf4ab54eb8c4cbdc1bd4a2"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212/manifest.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-165212/manifest.json",
+      "encoding": "identity",
+      "original_bytes": 637,
+      "original_sha256": "8769d0095f94dba353e2c5284175039bbf8a62a126863731ea0733a7abd04022",
+      "stored_sha256": "8769d0095f94dba353e2c5284175039bbf8a62a126863731ea0733a7abd04022"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212/process-group-0001/alloc-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-165212/process-group-0001/alloc-0001.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "d61c68921d1541905039fd212c2a195edc961f5a79fa8f54196b0f72ea279282",
+      "stored_sha256": "d61c68921d1541905039fd212c2a195edc961f5a79fa8f54196b0f72ea279282"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "2a15823eda82a157580dd6e35803875ff943adf4e8eda6ac756cd073b0a749b7",
+      "stored_sha256": "2a15823eda82a157580dd6e35803875ff943adf4e8eda6ac756cd073b0a749b7"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16702,
+      "original_sha256": "6ea00374ac7a71ea70ecd1177da841e20b65bb4298208a26c960123f3d4b1487",
+      "stored_sha256": "99a6fe577036a73fe40bd695a9ec0c8cd832b2c0c3472ffd61283303439a3b72"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/ready.json",
+      "encoding": "identity",
+      "original_bytes": 150,
+      "original_sha256": "ddcc8a9862c50a908d95253b413fc4d667850fb6424333b3f0965c4fbae6b0c0",
+      "stored_sha256": "ddcc8a9862c50a908d95253b413fc4d667850fb6424333b3f0965c4fbae6b0c0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/result-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/result-0001.json",
+      "encoding": "identity",
+      "original_bytes": 313,
+      "original_sha256": "038bc4f8e3463709fd9f474275721f18b86f7702b22de83e0a6366e3653ff555",
+      "stored_sha256": "038bc4f8e3463709fd9f474275721f18b86f7702b22de83e0a6366e3653ff555"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/spec.json",
+      "encoding": "identity",
+      "original_bytes": 524,
+      "original_sha256": "43cddc721598400743c860b48dc41cb08b3449594639e3aae24cbc2cd2388772",
+      "stored_sha256": "43cddc721598400743c860b48dc41cb08b3449594639e3aae24cbc2cd2388772"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/uart-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/uart-0001.json",
+      "encoding": "identity",
+      "original_bytes": 252584,
+      "original_sha256": "064448971c5ac5f1c8ca1e37b5bc90db14f534834a8331c25c6c2b4902220979",
+      "stored_sha256": "064448971c5ac5f1c8ca1e37b5bc90db14f534834a8331c25c6c2b4902220979"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-165212/process-group-0001/fzp/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-165212/summary.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-165212/summary.json",
+      "encoding": "identity",
+      "original_bytes": 1333,
+      "original_sha256": "dc933508dda4e187c7d3127f8bd091169c01f17c5e15dc383f25507beb218d46",
+      "stored_sha256": "dc933508dda4e187c7d3127f8bd091169c01f17c5e15dc383f25507beb218d46"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/manifest.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/manifest.json",
+      "encoding": "identity",
+      "original_bytes": 637,
+      "original_sha256": "4bcbc94d4f8dda12ec0a5cc0dfc4d1b642893d08cbb36ed99915ddcbced6c671",
+      "stored_sha256": "4bcbc94d4f8dda12ec0a5cc0dfc4d1b642893d08cbb36ed99915ddcbced6c671"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0001/alloc-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0001/alloc-0001.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "6673906f5ca85ad06f5ba55dd2ae5074561df77c69b3bd51f9e8de2a3348f1e8",
+      "stored_sha256": "6673906f5ca85ad06f5ba55dd2ae5074561df77c69b3bd51f9e8de2a3348f1e8"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "c978eff0644f606db6b7517072e8b525f52440830f73a4d9cd34fc74cc834fa4",
+      "stored_sha256": "c978eff0644f606db6b7517072e8b525f52440830f73a4d9cd34fc74cc834fa4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16950,
+      "original_sha256": "e593569c971a2d00610271f6ca6214eca51533062c8ee3c4eefab0cf3885d88e",
+      "stored_sha256": "6123903e063f1d454d5fd7da842a2fdcb0e19fe74b399a5f516a8d859e00bb03"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/ready.json",
+      "encoding": "identity",
+      "original_bytes": 150,
+      "original_sha256": "7b6a234ba902eb32df0c50ebaec3957938cd91bd1fe1c0c707476b5bb01a9fb3",
+      "stored_sha256": "7b6a234ba902eb32df0c50ebaec3957938cd91bd1fe1c0c707476b5bb01a9fb3"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/result-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/result-0001.json",
+      "encoding": "identity",
+      "original_bytes": 314,
+      "original_sha256": "951a9bcbab5e880178040014609ba3e6e2ef180e7d958a74fba660cde57735da",
+      "stored_sha256": "951a9bcbab5e880178040014609ba3e6e2ef180e7d958a74fba660cde57735da"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/spec.json",
+      "encoding": "identity",
+      "original_bytes": 524,
+      "original_sha256": "d9c91aaf6ad4cfb977f82fb3c38d2cb8d881d3ae1d3ca34cffb181aa71aae3ee",
+      "stored_sha256": "d9c91aaf6ad4cfb977f82fb3c38d2cb8d881d3ae1d3ca34cffb181aa71aae3ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/uart-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/uart-0001.json",
+      "encoding": "identity",
+      "original_bytes": 252591,
+      "original_sha256": "639f92f02852ac5e6c4a3c8a7a817e519062d563e0f0a6fe707a922e1dfa296a",
+      "stored_sha256": "639f92f02852ac5e6c4a3c8a7a817e519062d563e0f0a6fe707a922e1dfa296a"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0001/fzp/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0002/alloc-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0002/alloc-0002.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "9807fd6f66dd57f1f9a9722d9924dc463c27198fcc6fe99c0df777ea141f6689",
+      "stored_sha256": "9807fd6f66dd57f1f9a9722d9924dc463c27198fcc6fe99c0df777ea141f6689"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "8fe5652f8b25c100e0bb583c67bf3249e2772f710eb319a0ce972fdea0ad4621",
+      "stored_sha256": "8fe5652f8b25c100e0bb583c67bf3249e2772f710eb319a0ce972fdea0ad4621"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16866,
+      "original_sha256": "b67f49fb75a78174e8805abbdddbae4c981df09d6184c084e8d97974b34a4d07",
+      "stored_sha256": "3a25c101ccc8a6d3ea1aed9f0d2cb807382b3098234bd3f4bd3b31e36e70e942"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/ready.json",
+      "encoding": "identity",
+      "original_bytes": 149,
+      "original_sha256": "3fff709c875eeba1f2932d80c4ef35fefd09ae3c3ff08a05a4d82bd7f5f26600",
+      "stored_sha256": "3fff709c875eeba1f2932d80c4ef35fefd09ae3c3ff08a05a4d82bd7f5f26600"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/result-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/result-0002.json",
+      "encoding": "identity",
+      "original_bytes": 313,
+      "original_sha256": "af1d30648661857427a19f851956387a85c2d3331e2e05303891354e158c5546",
+      "stored_sha256": "af1d30648661857427a19f851956387a85c2d3331e2e05303891354e158c5546"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/spec.json",
+      "encoding": "identity",
+      "original_bytes": 524,
+      "original_sha256": "d434b78fe59845e0d23af90e2a3682a49306231e29935c2e74cf0c5aeeb7ae32",
+      "stored_sha256": "d434b78fe59845e0d23af90e2a3682a49306231e29935c2e74cf0c5aeeb7ae32"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/uart-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/uart-0002.json",
+      "encoding": "identity",
+      "original_bytes": 252583,
+      "original_sha256": "209c98fc986287e082697f3835c52f1fb5841567bec2c4d92b51fdc82e3dbae1",
+      "stored_sha256": "209c98fc986287e082697f3835c52f1fb5841567bec2c4d92b51fdc82e3dbae1"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0002/fzp/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0003/alloc-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0003/alloc-0003.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "b3912f43f14335864659610e51cb21f528dfddfcf329c36111be953b7ed1687e",
+      "stored_sha256": "b3912f43f14335864659610e51cb21f528dfddfcf329c36111be953b7ed1687e"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "ed2fe0f333972869266d45b6d9cb5470615df87da103e092f54702f4d3f288e5",
+      "stored_sha256": "ed2fe0f333972869266d45b6d9cb5470615df87da103e092f54702f4d3f288e5"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16776,
+      "original_sha256": "9ab6ec85337bac6f8592a9ae30bbbbc563eb774424e71477c29a58166d94eaff",
+      "stored_sha256": "dff03da56c791297040b504ef1c14086b47203cba8021cca36118ae4b71eddd6"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/ready.json",
+      "encoding": "identity",
+      "original_bytes": 148,
+      "original_sha256": "7c3c42ff67f50207f353c91ac06e42084290b50a8bd1ab654957124bc82a466e",
+      "stored_sha256": "7c3c42ff67f50207f353c91ac06e42084290b50a8bd1ab654957124bc82a466e"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/result-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/result-0003.json",
+      "encoding": "identity",
+      "original_bytes": 313,
+      "original_sha256": "04da7c7b580262e6314fc5149f29d855a108b08fc3137c9aac2ecb3a1b6496b5",
+      "stored_sha256": "04da7c7b580262e6314fc5149f29d855a108b08fc3137c9aac2ecb3a1b6496b5"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/spec.json",
+      "encoding": "identity",
+      "original_bytes": 524,
+      "original_sha256": "1e8c26d36ed99172989c729b0c98b25858aa97d4362f2d879d9831037b483a06",
+      "stored_sha256": "1e8c26d36ed99172989c729b0c98b25858aa97d4362f2d879d9831037b483a06"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/uart-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/uart-0003.json",
+      "encoding": "identity",
+      "original_bytes": 252593,
+      "original_sha256": "1f214c031516df79d540e0efc8768b4e5b7bd4542783feb9dca4d3fa93193fa1",
+      "stored_sha256": "1f214c031516df79d540e0efc8768b4e5b7bd4542783feb9dca4d3fa93193fa1"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/process-group-0003/fzp/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170024/summary.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170024/summary.json",
+      "encoding": "identity",
+      "original_bytes": 2612,
+      "original_sha256": "d8f76998923fcffbe33db24a9eb8255f38d05a3a20ae3c9b703e23528b35a218",
+      "stored_sha256": "d8f76998923fcffbe33db24a9eb8255f38d05a3a20ae3c9b703e23528b35a218"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/manifest.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/manifest.json",
+      "encoding": "identity",
+      "original_bytes": 637,
+      "original_sha256": "af8260b56ae20dc281909c3393ebc18b11af4f2b42ff9c552089ca614228638e",
+      "stored_sha256": "af8260b56ae20dc281909c3393ebc18b11af4f2b42ff9c552089ca614228638e"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/alloc-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/alloc-0001.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "6e3964a6eda16705e6c0d9e7b7f301b876a888c9ab929fcd264023780546af84",
+      "stored_sha256": "6e3964a6eda16705e6c0d9e7b7f301b876a888c9ab929fcd264023780546af84"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/alloc-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/alloc-0002.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "6e3964a6eda16705e6c0d9e7b7f301b876a888c9ab929fcd264023780546af84",
+      "stored_sha256": "6e3964a6eda16705e6c0d9e7b7f301b876a888c9ab929fcd264023780546af84"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/alloc-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/alloc-0003.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "6e3964a6eda16705e6c0d9e7b7f301b876a888c9ab929fcd264023780546af84",
+      "stored_sha256": "6e3964a6eda16705e6c0d9e7b7f301b876a888c9ab929fcd264023780546af84"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "2804a1f25ec2fbbc61e4ccf82ff491a83f1261449bba8367a62034bdc958cede",
+      "stored_sha256": "2804a1f25ec2fbbc61e4ccf82ff491a83f1261449bba8367a62034bdc958cede"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 42203,
+      "original_sha256": "913568377a564abebac5875fd3c626edeb345205dae77173e75d58c898b581a1",
+      "stored_sha256": "efe13db312e0fe69250c1fae34195599a24d601115742ea46cc9418e84b1d2fc"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/ready.json",
+      "encoding": "identity",
+      "original_bytes": 150,
+      "original_sha256": "a75be81f3d094874dae58aefbcd565726219db9e28eedb40c39e6ba182944788",
+      "stored_sha256": "a75be81f3d094874dae58aefbcd565726219db9e28eedb40c39e6ba182944788"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/result-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/result-0001.json",
+      "encoding": "identity",
+      "original_bytes": 314,
+      "original_sha256": "4b439067a7ac1d30a960cb680bf002599ae198be6e326bf2a5103d4f8cd0d8b9",
+      "stored_sha256": "4b439067a7ac1d30a960cb680bf002599ae198be6e326bf2a5103d4f8cd0d8b9"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/result-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/result-0002.json",
+      "encoding": "identity",
+      "original_bytes": 313,
+      "original_sha256": "77ff2c9b9af6f617a82fffb4bbb54dece7752ef3f6aa3224523796263c422f12",
+      "stored_sha256": "77ff2c9b9af6f617a82fffb4bbb54dece7752ef3f6aa3224523796263c422f12"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/result-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/result-0003.json",
+      "encoding": "identity",
+      "original_bytes": 313,
+      "original_sha256": "bd2a9dc5efa5ca52a4aedecf4edb2d1fa97e4ddc582fa6fea554fc9c300c1b22",
+      "stored_sha256": "bd2a9dc5efa5ca52a4aedecf4edb2d1fa97e4ddc582fa6fea554fc9c300c1b22"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/spec.json",
+      "encoding": "identity",
+      "original_bytes": 538,
+      "original_sha256": "ba983d67a7e11944eedafb61cb371ced72a993d6e22a58f071f926b50004fa59",
+      "stored_sha256": "ba983d67a7e11944eedafb61cb371ced72a993d6e22a58f071f926b50004fa59"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/uart-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/uart-0001.json",
+      "encoding": "identity",
+      "original_bytes": 252583,
+      "original_sha256": "4f9870c95356626ec2d11641d5253a1382b7e31334e2939f69bc8904dab24f32",
+      "stored_sha256": "4f9870c95356626ec2d11641d5253a1382b7e31334e2939f69bc8904dab24f32"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/uart-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/uart-0002.json",
+      "encoding": "identity",
+      "original_bytes": 131667,
+      "original_sha256": "7724ae4eaa7c899c2afd6f583b2f599419814ead74e32cea2ba9e5cf02e71a70",
+      "stored_sha256": "7724ae4eaa7c899c2afd6f583b2f599419814ead74e32cea2ba9e5cf02e71a70"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/uart-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/uart-0003.json",
+      "encoding": "identity",
+      "original_bytes": 131649,
+      "original_sha256": "49ff841d4edfa41a4a152f825477da654cec9ea290f3f70c70ac1c5ede869028",
+      "stored_sha256": "49ff841d4edfa41a4a152f825477da654cec9ea290f3f70c70ac1c5ede869028"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/process-group-0001/fzp/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-170600/summary.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-170600/summary.json",
+      "encoding": "identity",
+      "original_bytes": 2316,
+      "original_sha256": "d3cbf7dca833725dc789bf4ea68a9168db3070cb7f714dbf2553ebf1328e69a7",
+      "stored_sha256": "d3cbf7dca833725dc789bf4ea68a9168db3070cb7f714dbf2553ebf1328e69a7"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/manifest.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/manifest.json",
+      "encoding": "identity",
+      "original_bytes": 637,
+      "original_sha256": "2328d6be0cd3680be1ad3419ecbbdb6e084245255d006e5d24083b5631fc8e19",
+      "stored_sha256": "2328d6be0cd3680be1ad3419ecbbdb6e084245255d006e5d24083b5631fc8e19"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/alloc-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/alloc-0001.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "60aeff405d8cd752a65fed4348107317b80796d156266f9263fe77d0b1322b44",
+      "stored_sha256": "60aeff405d8cd752a65fed4348107317b80796d156266f9263fe77d0b1322b44"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/alloc-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/alloc-0002.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "60aeff405d8cd752a65fed4348107317b80796d156266f9263fe77d0b1322b44",
+      "stored_sha256": "60aeff405d8cd752a65fed4348107317b80796d156266f9263fe77d0b1322b44"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/alloc-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/alloc-0003.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "60aeff405d8cd752a65fed4348107317b80796d156266f9263fe77d0b1322b44",
+      "stored_sha256": "60aeff405d8cd752a65fed4348107317b80796d156266f9263fe77d0b1322b44"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "3bdc2a47c6f1749b162705f8b8210e932a49d3589e371647ac6c6872cabc1747",
+      "stored_sha256": "3bdc2a47c6f1749b162705f8b8210e932a49d3589e371647ac6c6872cabc1747"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 42310,
+      "original_sha256": "c1499680a54fe03b958dadda30bc81f8a3d786aa5191bf53b9be64ea42eda3bc",
+      "stored_sha256": "73447bd92373b1b86b017abf47606e30e3233315a9025e672f7125756ccb93f2"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/ready.json",
+      "encoding": "identity",
+      "original_bytes": 150,
+      "original_sha256": "363b2aac47bafa1b4e24f2cd530b6ca9d85c221edf5ee01721aa12f9d7b00e02",
+      "stored_sha256": "363b2aac47bafa1b4e24f2cd530b6ca9d85c221edf5ee01721aa12f9d7b00e02"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/result-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/result-0001.json",
+      "encoding": "identity",
+      "original_bytes": 313,
+      "original_sha256": "89b8c88b663f84ccca1e538c9300f87eea98ab1ec798ced6aea8504ddccdae28",
+      "stored_sha256": "89b8c88b663f84ccca1e538c9300f87eea98ab1ec798ced6aea8504ddccdae28"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/result-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/result-0002.json",
+      "encoding": "identity",
+      "original_bytes": 314,
+      "original_sha256": "e71cde411ace06e8feaa2c68ce529317eeb66f10218d6bb32b700afd69851ccd",
+      "stored_sha256": "e71cde411ace06e8feaa2c68ce529317eeb66f10218d6bb32b700afd69851ccd"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/result-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/result-0003.json",
+      "encoding": "identity",
+      "original_bytes": 312,
+      "original_sha256": "cf5c1a4589f97a3fe2267988524ad2b404c72a6701f53bf51ba111d2efbe1f76",
+      "stored_sha256": "cf5c1a4589f97a3fe2267988524ad2b404c72a6701f53bf51ba111d2efbe1f76"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/spec.json",
+      "encoding": "identity",
+      "original_bytes": 538,
+      "original_sha256": "cb2f52163875a7f9c725c19ac8a009aa0884eec45935183075af83397d40dc88",
+      "stored_sha256": "cb2f52163875a7f9c725c19ac8a009aa0884eec45935183075af83397d40dc88"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/uart-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/uart-0001.json",
+      "encoding": "identity",
+      "original_bytes": 252905,
+      "original_sha256": "1c8eea1fc175e883723e157852391442a4452cbc9babe242b0cd1efa1e262a80",
+      "stored_sha256": "1c8eea1fc175e883723e157852391442a4452cbc9babe242b0cd1efa1e262a80"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/uart-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/uart-0002.json",
+      "encoding": "identity",
+      "original_bytes": 131834,
+      "original_sha256": "23874ca1bbd0d126a79d01946d98bd6631550eabed903dfe5a040511ea383bd2",
+      "stored_sha256": "23874ca1bbd0d126a79d01946d98bd6631550eabed903dfe5a040511ea383bd2"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/uart-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/uart-0003.json",
+      "encoding": "identity",
+      "original_bytes": 131824,
+      "original_sha256": "1da17ecb532b6d190d134e596d7028e8705893b7af1aa6e34af2482617aeac92",
+      "stored_sha256": "1da17ecb532b6d190d134e596d7028e8705893b7af1aa6e34af2482617aeac92"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/process-group-0001/atm/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171152/summary.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171152/summary.json",
+      "encoding": "identity",
+      "original_bytes": 2315,
+      "original_sha256": "1f9c215ceb9726815ee773a292768af6f6a277da2189b5a92cd78fa9fd65753a",
+      "stored_sha256": "1f9c215ceb9726815ee773a292768af6f6a277da2189b5a92cd78fa9fd65753a"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/manifest.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/manifest.json",
+      "encoding": "identity",
+      "original_bytes": 637,
+      "original_sha256": "a7b9b816d4d8cbb333dbaea318f5a191cfbcf1f2d93bafc7a8a69a0cd6789c5b",
+      "stored_sha256": "a7b9b816d4d8cbb333dbaea318f5a191cfbcf1f2d93bafc7a8a69a0cd6789c5b"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0001/alloc-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0001/alloc-0001.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "256d8a47e26dcaf3d1d552f0420d7debee58bc486583ba81bad301eb579daaed",
+      "stored_sha256": "256d8a47e26dcaf3d1d552f0420d7debee58bc486583ba81bad301eb579daaed"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "060dd5e2b984eeab782dc5ae36f52266699bb325882d187fbed060090db3d30f",
+      "stored_sha256": "060dd5e2b984eeab782dc5ae36f52266699bb325882d187fbed060090db3d30f"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16897,
+      "original_sha256": "db2d7bbb758e5aaebf876ca29d424d9504ba7c8e847c69d3e0cc009c79c06ccd",
+      "stored_sha256": "3affca2509d96b80eb5fc26652cb90dfc2033753acff7bf4052c2b27fa21143f"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/ready.json",
+      "encoding": "identity",
+      "original_bytes": 149,
+      "original_sha256": "e4cf8588d2e2e8a58372f2a48050f77cf53c918a9317c3b42153d6eb544923f0",
+      "stored_sha256": "e4cf8588d2e2e8a58372f2a48050f77cf53c918a9317c3b42153d6eb544923f0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/result-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/result-0001.json",
+      "encoding": "identity",
+      "original_bytes": 312,
+      "original_sha256": "b469cd7bba2404f79ab1a0e825daf436f768fa222543554d04d186ba74a9a0cf",
+      "stored_sha256": "b469cd7bba2404f79ab1a0e825daf436f768fa222543554d04d186ba74a9a0cf"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/spec.json",
+      "encoding": "identity",
+      "original_bytes": 524,
+      "original_sha256": "f006ff6e652dfc45f484fa07c0aa70f7534326b99f645fffd02858198a5fd31c",
+      "stored_sha256": "f006ff6e652dfc45f484fa07c0aa70f7534326b99f645fffd02858198a5fd31c"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/uart-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/uart-0001.json",
+      "encoding": "identity",
+      "original_bytes": 252908,
+      "original_sha256": "598f1f01110ade1cf3d0d68b68628e2badc7dcf1a89a680e15f33b3788dbc241",
+      "stored_sha256": "598f1f01110ade1cf3d0d68b68628e2badc7dcf1a89a680e15f33b3788dbc241"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0001/atm/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0002/alloc-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0002/alloc-0002.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "c7f986ac3e3142dbc416ab18522b0dc700b0fcfb2b35cc839c33a4422a8a172f",
+      "stored_sha256": "c7f986ac3e3142dbc416ab18522b0dc700b0fcfb2b35cc839c33a4422a8a172f"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "634b28b3166875cf9381447619e5614e5b329767106b0443c467f70d73fddbf4",
+      "stored_sha256": "634b28b3166875cf9381447619e5614e5b329767106b0443c467f70d73fddbf4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16915,
+      "original_sha256": "4dd09c20ccad75db272b444c167b7f133331ad1452a776f56b5a7cac732ee911",
+      "stored_sha256": "4c9642bf3b730fc10992c272d296bba3349a3396ff64b0dbfd5638082652b9b6"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/ready.json",
+      "encoding": "identity",
+      "original_bytes": 150,
+      "original_sha256": "5d3e03dde1af17f34e0c82030040e04ee9cb50ca32c6d5ce061eca8ddd34e6e3",
+      "stored_sha256": "5d3e03dde1af17f34e0c82030040e04ee9cb50ca32c6d5ce061eca8ddd34e6e3"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/result-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/result-0002.json",
+      "encoding": "identity",
+      "original_bytes": 314,
+      "original_sha256": "a2a6bf10d229e1d4427601fd61fcdfaac850284279fe644a5b5d041b419c8889",
+      "stored_sha256": "a2a6bf10d229e1d4427601fd61fcdfaac850284279fe644a5b5d041b419c8889"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/spec.json",
+      "encoding": "identity",
+      "original_bytes": 524,
+      "original_sha256": "c456c721d6c14a2ee18747182478dbea2b62c34c93e9964fbd233c38c2e8cf54",
+      "stored_sha256": "c456c721d6c14a2ee18747182478dbea2b62c34c93e9964fbd233c38c2e8cf54"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/uart-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/uart-0002.json",
+      "encoding": "identity",
+      "original_bytes": 252902,
+      "original_sha256": "7f41803855d94cfcbaddc0b4d43dc0dc30b75812e00be916bfee3d873003bcf2",
+      "stored_sha256": "7f41803855d94cfcbaddc0b4d43dc0dc30b75812e00be916bfee3d873003bcf2"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0002/atm/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0003/alloc-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0003/alloc-0003.json",
+      "encoding": "identity",
+      "original_bytes": 217,
+      "original_sha256": "8f182d8a3ddc2e6350fb74f5264b82b6d30cef1bee22a202898172536c260fe4",
+      "stored_sha256": "8f182d8a3ddc2e6350fb74f5264b82b6d30cef1bee22a202898172536c260fe4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "0520920508fa6bda02e8074015b9cb97aca9d8486f6b27903cec5e4c93fb419e",
+      "stored_sha256": "0520920508fa6bda02e8074015b9cb97aca9d8486f6b27903cec5e4c93fb419e"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16793,
+      "original_sha256": "388f0f77d74449f95eb70e4ac75d583c18349f8769619751654d37108e23e286",
+      "stored_sha256": "e9d407af5e4dddad6cd067f5e8fec37444f3bdf88698b230bc21b933e90aa6a9"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/ready.json",
+      "encoding": "identity",
+      "original_bytes": 150,
+      "original_sha256": "e9ea2458fa3d9ae48ca07853a9a3143d7657e48d4dd43ff865bd033ae4a0ffaf",
+      "stored_sha256": "e9ea2458fa3d9ae48ca07853a9a3143d7657e48d4dd43ff865bd033ae4a0ffaf"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/result-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/result-0003.json",
+      "encoding": "identity",
+      "original_bytes": 313,
+      "original_sha256": "99025bf8397c05e4e8dd13e2bc6c1881aa07c64925de0e4e34fd979cc8434b4f",
+      "stored_sha256": "99025bf8397c05e4e8dd13e2bc6c1881aa07c64925de0e4e34fd979cc8434b4f"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/spec.json",
+      "encoding": "identity",
+      "original_bytes": 524,
+      "original_sha256": "d2235eccd1852564737610ccfa1ee9ed8c156d247d720a4dd2440891772f9e99",
+      "stored_sha256": "d2235eccd1852564737610ccfa1ee9ed8c156d247d720a4dd2440891772f9e99"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/uart-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/uart-0003.json",
+      "encoding": "identity",
+      "original_bytes": 252897,
+      "original_sha256": "689a4d1a8a2e13ce88a29588e91a742d13f64ee19d2e0e34609b55a07346f4fe",
+      "stored_sha256": "689a4d1a8a2e13ce88a29588e91a742d13f64ee19d2e0e34609b55a07346f4fe"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/process-group-0003/atm/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-fzp-20261106-171317/summary.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-fzp-20261106-171317/summary.json",
+      "encoding": "identity",
+      "original_bytes": 2611,
+      "original_sha256": "6282b7378199b8c632db1c1712e3f27516609105fa1e51fac31dfd009de4b4f4",
+      "stored_sha256": "6282b7378199b8c632db1c1712e3f27516609105fa1e51fac31dfd009de4b4f4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/manifest.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/manifest.json",
+      "encoding": "identity",
+      "original_bytes": 650,
+      "original_sha256": "56d0060c5834c923d72d14e78e12ba8a40925f4dfbca6b93b1dea8efa060d045",
+      "stored_sha256": "56d0060c5834c923d72d14e78e12ba8a40925f4dfbca6b93b1dea8efa060d045"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/alloc-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/alloc-0001.json",
+      "encoding": "identity",
+      "original_bytes": 396,
+      "original_sha256": "6adbf870080f66e88378fce7a46d6eda4291408e7d7a15f1a46761aeea8f717c",
+      "stored_sha256": "6adbf870080f66e88378fce7a46d6eda4291408e7d7a15f1a46761aeea8f717c"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "2af5537d3ec031cbf1a6e2982f201ba9337b5a8eacda748d46b71cdb3b8fb7df",
+      "stored_sha256": "2af5537d3ec031cbf1a6e2982f201ba9337b5a8eacda748d46b71cdb3b8fb7df"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16575,
+      "original_sha256": "790c6ed69edeab48a50e447cf5bf56850a9dc5ceb04d027b42467c3d6a61a238",
+      "stored_sha256": "82774343721e1a76392849f04b2eec888651016383c3215bec064bc5bc8b0765"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/ready.json",
+      "encoding": "identity",
+      "original_bytes": 150,
+      "original_sha256": "1a31bd03c921750b02cd631172116fbb43d5b921506bdb7dcb0546372eee953c",
+      "stored_sha256": "1a31bd03c921750b02cd631172116fbb43d5b921506bdb7dcb0546372eee953c"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/result-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/result-0001.json",
+      "encoding": "identity",
+      "original_bytes": 313,
+      "original_sha256": "623309d93fd195e324889cf0cabd5402aeec62334681fdf006476e21baf2dea8",
+      "stored_sha256": "623309d93fd195e324889cf0cabd5402aeec62334681fdf006476e21baf2dea8"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/spec.json",
+      "encoding": "identity",
+      "original_bytes": 541,
+      "original_sha256": "96e8d7b0685c2c602fad1a81bb14fc2f6547098d99027d44b4ce7e3c530976dd",
+      "stored_sha256": "96e8d7b0685c2c602fad1a81bb14fc2f6547098d99027d44b4ce7e3c530976dd"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/uart-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/uart-0001.json",
+      "encoding": "identity",
+      "original_bytes": 252909,
+      "original_sha256": "cedef33ff611e4b62ebd991dcf4144ce4fcc05e0a1bb7a53915cd2fa0ad5a3d6",
+      "stored_sha256": "cedef33ff611e4b62ebd991dcf4144ce4fcc05e0a1bb7a53915cd2fa0ad5a3d6"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/atm/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "e45e046fa5271f62d4138e52ec30afbc3920e952945173f7c765b62a45de1d79",
+      "stored_sha256": "e45e046fa5271f62d4138e52ec30afbc3920e952945173f7c765b62a45de1d79"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16823,
+      "original_sha256": "711e881482c2c13bd0708914d1daa551d001d04cfda052fed8bbba28bd786b93",
+      "stored_sha256": "8abc25d47cb8941ccc4b43f6edb0b0ea5565ce32d7c7addf4b51290edb46a7dc"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/ready.json",
+      "encoding": "identity",
+      "original_bytes": 150,
+      "original_sha256": "ed9dabe6c49ebe62d7acc5431c3018e6d54ad2b49890bbc2a20a1a48feb90ac4",
+      "stored_sha256": "ed9dabe6c49ebe62d7acc5431c3018e6d54ad2b49890bbc2a20a1a48feb90ac4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/result-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/result-0001.json",
+      "encoding": "identity",
+      "original_bytes": 311,
+      "original_sha256": "ab965c98df909bc9cb78a24ad547877a294fa761190e48a922cd265c9bf5e8ba",
+      "stored_sha256": "ab965c98df909bc9cb78a24ad547877a294fa761190e48a922cd265c9bf5e8ba"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/spec.json",
+      "encoding": "identity",
+      "original_bytes": 541,
+      "original_sha256": "3b3a10cf7a26bca17efa228351dfc0d903b1346e916588bba9ab7179f52b603d",
+      "stored_sha256": "3b3a10cf7a26bca17efa228351dfc0d903b1346e916588bba9ab7179f52b603d"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/uart-0001.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/uart-0001.json",
+      "encoding": "identity",
+      "original_bytes": 252587,
+      "original_sha256": "336e5f74eda7b59ecb330c7aaa912ef37266c5e3752ef18e4ea6bbafdc2698d6",
+      "stored_sha256": "336e5f74eda7b59ecb330c7aaa912ef37266c5e3752ef18e4ea6bbafdc2698d6"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0001/fzp/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/alloc-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/alloc-0002.json",
+      "encoding": "identity",
+      "original_bytes": 396,
+      "original_sha256": "def8c24c95d6146267745532f704cc1ffdd9fb5248771d9cad2df80d05707d99",
+      "stored_sha256": "def8c24c95d6146267745532f704cc1ffdd9fb5248771d9cad2df80d05707d99"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "22cd531ed803a39e685dd7572cc7833634f2bd134016e48b117eceb7d2211274",
+      "stored_sha256": "22cd531ed803a39e685dd7572cc7833634f2bd134016e48b117eceb7d2211274"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16615,
+      "original_sha256": "58e20040d61e8c63d5298f2652aec309cb06f6154a12e475a4bf7b90ff8b70ea",
+      "stored_sha256": "2d7b9c7e094078fc0f1bd01fb225f31a725488d474b089944a5ff7e49eeb2449"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/ready.json",
+      "encoding": "identity",
+      "original_bytes": 150,
+      "original_sha256": "435bbc48668375a52c905f488e212e9a8405d87d8637487fa96a847d4cb9ac39",
+      "stored_sha256": "435bbc48668375a52c905f488e212e9a8405d87d8637487fa96a847d4cb9ac39"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/result-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/result-0002.json",
+      "encoding": "identity",
+      "original_bytes": 313,
+      "original_sha256": "e1a1739ba25c8394c7f86d87ba04519934ad7e3086f06be208ed3b1fdccf97f7",
+      "stored_sha256": "e1a1739ba25c8394c7f86d87ba04519934ad7e3086f06be208ed3b1fdccf97f7"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/spec.json",
+      "encoding": "identity",
+      "original_bytes": 541,
+      "original_sha256": "662e9c0569011f09cc7e8e2f96bf5c5d21767e6d92fc5fc500dc1fac87fe5b2a",
+      "stored_sha256": "662e9c0569011f09cc7e8e2f96bf5c5d21767e6d92fc5fc500dc1fac87fe5b2a"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/uart-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/uart-0002.json",
+      "encoding": "identity",
+      "original_bytes": 252892,
+      "original_sha256": "53d9911c2c68eef9d68b7e6c09f88765b9458fdd544b0c279ff1af1ce6962c65",
+      "stored_sha256": "53d9911c2c68eef9d68b7e6c09f88765b9458fdd544b0c279ff1af1ce6962c65"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/atm/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "45d0ab77d55178101af20f4b545666c7c8cba58121608a92f6d42f4907761ee6",
+      "stored_sha256": "45d0ab77d55178101af20f4b545666c7c8cba58121608a92f6d42f4907761ee6"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16909,
+      "original_sha256": "6bedb4540743581ea2ed7731322210d576e0a25827a1abe39bbd32299cd6bf25",
+      "stored_sha256": "f6f5754e9029dcafdeb05f973aca03f7ed96e3919ed71c37ed7a542686074554"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/ready.json",
+      "encoding": "identity",
+      "original_bytes": 150,
+      "original_sha256": "d747d93668746f30ac80ec25be1544a9b1716d1cbdd5d3eef49ee9989b0c29bb",
+      "stored_sha256": "d747d93668746f30ac80ec25be1544a9b1716d1cbdd5d3eef49ee9989b0c29bb"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/result-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/result-0002.json",
+      "encoding": "identity",
+      "original_bytes": 312,
+      "original_sha256": "f0e0b8dd9e67806d5bff96c8c881def436a00feb774f07e7d2fdb86ac2feb7c7",
+      "stored_sha256": "f0e0b8dd9e67806d5bff96c8c881def436a00feb774f07e7d2fdb86ac2feb7c7"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/spec.json",
+      "encoding": "identity",
+      "original_bytes": 541,
+      "original_sha256": "59bbe6c2f3ea599fd952bd04eb265cedab0bad568ea66d290546a00be11dde1a",
+      "stored_sha256": "59bbe6c2f3ea599fd952bd04eb265cedab0bad568ea66d290546a00be11dde1a"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/uart-0002.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/uart-0002.json",
+      "encoding": "identity",
+      "original_bytes": 252589,
+      "original_sha256": "13f48c4f9e5c6f032beca725a51de1548f7d724e631a73b2a30b9c1571ff25a5",
+      "stored_sha256": "13f48c4f9e5c6f032beca725a51de1548f7d724e631a73b2a30b9c1571ff25a5"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0002/fzp/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/alloc-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/alloc-0003.json",
+      "encoding": "identity",
+      "original_bytes": 396,
+      "original_sha256": "2364a5bfd7a12ea2fc4d01c694f8ec05e22784a63585e1ef8e52844fe74c157e",
+      "stored_sha256": "2364a5bfd7a12ea2fc4d01c694f8ec05e22784a63585e1ef8e52844fe74c157e"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "1dbb88901386bb1596f5a34643fd679c3ea021720861badf2bc3c031c6c847d1",
+      "stored_sha256": "1dbb88901386bb1596f5a34643fd679c3ea021720861badf2bc3c031c6c847d1"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16694,
+      "original_sha256": "772901f42ca48281d274287b1a1db9627d510a42e33e97818f89fbce719f6c58",
+      "stored_sha256": "892072a48bbea3d0667f69d3b0b39fdc346446878fb161d812afe6ff153ae280"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/ready.json",
+      "encoding": "identity",
+      "original_bytes": 150,
+      "original_sha256": "9440970f985b5b96a5ac73145856f58c0d99a53d670c54e1a2cbc23a8fded1d2",
+      "stored_sha256": "9440970f985b5b96a5ac73145856f58c0d99a53d670c54e1a2cbc23a8fded1d2"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/result-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/result-0003.json",
+      "encoding": "identity",
+      "original_bytes": 313,
+      "original_sha256": "3ad98840783fb832688edfbac44b6b694592f2badd480c30f420a82ae4936a40",
+      "stored_sha256": "3ad98840783fb832688edfbac44b6b694592f2badd480c30f420a82ae4936a40"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/spec.json",
+      "encoding": "identity",
+      "original_bytes": 541,
+      "original_sha256": "f8c9545af029de7521591ae15f5a4752566e2a6afd8063f28307bcc25b17207f",
+      "stored_sha256": "f8c9545af029de7521591ae15f5a4752566e2a6afd8063f28307bcc25b17207f"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/uart-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/uart-0003.json",
+      "encoding": "identity",
+      "original_bytes": 252907,
+      "original_sha256": "dc328291488a6ad3dc376023b35b55606ec73f8f59fe07a64849b0f851bfb2bd",
+      "stored_sha256": "dc328291488a6ad3dc376023b35b55606ec73f8f59fe07a64849b0f851bfb2bd"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/atm/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/exit.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/exit.json",
+      "encoding": "identity",
+      "original_bytes": 57,
+      "original_sha256": "90a11e65f7a16a52fd5395c0a37a81f97628f3e038daedc83653f8546d2e25a3",
+      "stored_sha256": "90a11e65f7a16a52fd5395c0a37a81f97628f3e038daedc83653f8546d2e25a3"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/process.log",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/process.log.gz",
+      "encoding": "gzip",
+      "original_bytes": 16834,
+      "original_sha256": "5ae6e56e6b61ee7edf0faec4f1a49e080eb63821c05bf8729af2c318ad1f1690",
+      "stored_sha256": "573e94ca1960d0aa4136eb0cbcfed2c2cd7aa1089367948e99cd1414e086fbe0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/provenance.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/provenance.json",
+      "encoding": "identity",
+      "original_bytes": 1677,
+      "original_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee",
+      "stored_sha256": "346dd349b3667170443d45a1c05aed4e7b12ac9115b21ec597edd6cd621e31ee"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/ready.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/ready.json",
+      "encoding": "identity",
+      "original_bytes": 150,
+      "original_sha256": "ac75545d359883cee76194b3af9ec5a3f570d8937992458f0f96ef84f78882e4",
+      "stored_sha256": "ac75545d359883cee76194b3af9ec5a3f570d8937992458f0f96ef84f78882e4"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/result-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/result-0003.json",
+      "encoding": "identity",
+      "original_bytes": 313,
+      "original_sha256": "2dc4426a913f8c8665848d966ed0a55021a8bfc6d06c6db8da372901320e50b3",
+      "stored_sha256": "2dc4426a913f8c8665848d966ed0a55021a8bfc6d06c6db8da372901320e50b3"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/spec.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/spec.json",
+      "encoding": "identity",
+      "original_bytes": 541,
+      "original_sha256": "fd4b8c67dbe82f8da4eb81f694560b242c7234196c8ae7616247907c9505eeba",
+      "stored_sha256": "fd4b8c67dbe82f8da4eb81f694560b242c7234196c8ae7616247907c9505eeba"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/uart-0003.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/uart-0003.json",
+      "encoding": "identity",
+      "original_bytes": 252576,
+      "original_sha256": "41ca9604a678807d5c521835a222f068a49db71b88a12d7dd142bc16161cf20c",
+      "stored_sha256": "41ca9604a678807d5c521835a222f068a49db71b88a12d7dd142bc16161cf20c"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/uart-final.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/process-group-0003/fzp/uart-final.json",
+      "encoding": "identity",
+      "original_bytes": 138,
+      "original_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0",
+      "stored_sha256": "6d47849a36944d4bcfe48781279ae45bd82a5054bf36d7ad8a53df6813a9e4e0"
+    },
+    {
+      "original_path": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032/summary.json",
+      "repository_path": "notes/tmo-piranha-review-20261106/hardware/piranha-pilot-pair-cold-20261106-172032/summary.json",
+      "encoding": "identity",
+      "original_bytes": 3956,
+      "original_sha256": "4fbd3c32399a0ba626e4f3b7c13f45f939265b5f1818f7be3d5c6dff767ae54e",
+      "stored_sha256": "4fbd3c32399a0ba626e4f3b7c13f45f939265b5f1818f7be3d5c6dff767ae54e"
+    }
+  ]
+}

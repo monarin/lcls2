@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "trial": 3,
+  "pid": 3377801,
+  "camera": "atm",
+  "started_monotonic": 5118484.971023698,
+  "elapsed_seconds": 6.395324480719864,
+  "since_root_ready_seconds": 40.096668001264334,
+  "connection_info": {
+    "paddr": 4278588680,
+    "model": "02",
+    "serno": "12102856",
+    "bist": "Good"
+  }
+}

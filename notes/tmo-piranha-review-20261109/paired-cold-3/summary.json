@@ -1,0 +1,164 @@
+{
+  "ok": true,
+  "config": {
+    "mode": "cold",
+    "cameras": [
+      "fzp",
+      "atm"
+    ],
+    "trials": 3,
+    "settle_seconds": 40.0,
+    "interval": 2.0,
+    "timeout": 60.0,
+    "cleanup_timeout": 10.0,
+    "execute": true,
+    "daq_stopped": true,
+    "preflight": {
+      "visible_device_holders": [],
+      "inaccessible_process_fd_directories": 926,
+      "limitation": "Operator must establish exclusive board access, including invisible clients."
+    }
+  },
+  "started_utc": "2026-11-10T00:42:05.366614+00:00",
+  "script_sha256": "d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804",
+  "trials": [
+    {
+      "trial": 1,
+      "results": [
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 3376497,
+          "camera": "fzp",
+          "started_monotonic": 5118376.115797116,
+          "elapsed_seconds": 6.397496136836708,
+          "since_root_ready_seconds": 44.2519868593663,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        },
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 3376498,
+          "camera": "atm",
+          "started_monotonic": 5118376.115704027,
+          "elapsed_seconds": 6.374966189265251,
+          "since_root_ready_seconds": 40.04242801479995,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          }
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "results": [
+        {
+          "ok": true,
+          "trial": 2,
+          "pid": 3377180,
+          "camera": "fzp",
+          "started_monotonic": 5118427.845183324,
+          "elapsed_seconds": 6.383654874749482,
+          "since_root_ready_seconds": 40.092784501612186,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        },
+        {
+          "ok": true,
+          "trial": 2,
+          "pid": 3377181,
+          "camera": "atm",
+          "started_monotonic": 5118427.845374062,
+          "elapsed_seconds": 6.402251317165792,
+          "since_root_ready_seconds": 40.09724564291537,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          }
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "results": [
+        {
+          "ok": true,
+          "trial": 3,
+          "pid": 3377800,
+          "camera": "fzp",
+          "started_monotonic": 5118484.927612432,
+          "elapsed_seconds": 6.427377562969923,
+          "since_root_ready_seconds": 44.801687605679035,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        },
+        {
+          "ok": true,
+          "trial": 3,
+          "pid": 3377801,
+          "camera": "atm",
+          "started_monotonic": 5118484.971023698,
+          "elapsed_seconds": 6.395324480719864,
+          "since_root_ready_seconds": 40.096668001264334,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "group": 1,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0,
+        0
+      ]
+    },
+    {
+      "group": 2,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0,
+        0
+      ]
+    },
+    {
+      "group": 3,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0,
+        0
+      ]
+    }
+  ],
+  "finished_utc": "2026-11-10T00:44:49.234104+00:00"
+}

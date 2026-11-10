@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "trial": 2,
+  "pid": 3377180,
+  "camera": "fzp",
+  "started_monotonic": 5118427.845183324,
+  "elapsed_seconds": 6.383654874749482,
+  "since_root_ready_seconds": 40.092784501612186,
+  "connection_info": {
+    "paddr": 4278588680,
+    "model": "02",
+    "serno": "12097685",
+    "bist": "Good"
+  }
+}

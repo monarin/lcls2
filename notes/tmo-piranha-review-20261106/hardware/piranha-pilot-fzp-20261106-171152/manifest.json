@@ -1,0 +1,25 @@
+{
+  "ok": false,
+  "config": {
+    "mode": "warm",
+    "cameras": [
+      "atm"
+    ],
+    "trials": 3,
+    "settle_seconds": 40.0,
+    "interval": 2.0,
+    "timeout": 60.0,
+    "cleanup_timeout": 10.0,
+    "execute": true,
+    "daq_stopped": true,
+    "preflight": {
+      "visible_device_holders": [],
+      "inaccessible_process_fd_directories": 931,
+      "limitation": "Operator must establish exclusive board access, including invisible clients."
+    }
+  },
+  "started_utc": "2026-11-07T01:11:52.955816+00:00",
+  "script_sha256": "d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804",
+  "trials": [],
+  "groups": []
+}

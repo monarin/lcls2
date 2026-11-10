@@ -1,0 +1,14 @@
+{
+  "body": {
+    "drp": {
+      "atm": {
+        "active": true,
+        "proc_info": {
+          "host": "drp-srcf-cmp013",
+          "pid": 54360,
+          "device": "/dev/datadev_0"
+        }
+      }
+    }
+  }
+}

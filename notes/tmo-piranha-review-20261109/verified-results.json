@@ -1,0 +1,403 @@
+{
+  "date_local": "2026-11-09",
+  "host": "drp-srcf-cmp013",
+  "device": "/dev/datadev_0",
+  "authorization": "User confirmed DAQ not running and no experiment after exclusive-board question.",
+  "executed_by": "Codex via SSH as monarin",
+  "campaigns": [
+    {
+      "mode": "cold",
+      "summary": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-cold-3/summary.json",
+      "started_utc": "2026-11-10T00:42:05.366614+00:00",
+      "finished_utc": "2026-11-10T00:44:49.234104+00:00",
+      "ok": true,
+      "groups": [
+        {
+          "group": 1,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0,
+            0
+          ]
+        },
+        {
+          "group": 2,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0,
+            0
+          ]
+        },
+        {
+          "group": 3,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0,
+            0
+          ]
+        }
+      ],
+      "config": {
+        "mode": "cold",
+        "cameras": [
+          "fzp",
+          "atm"
+        ],
+        "trials": 3,
+        "settle_seconds": 40.0,
+        "interval": 2.0,
+        "timeout": 60.0,
+        "cleanup_timeout": 10.0,
+        "execute": true,
+        "daq_stopped": true,
+        "preflight": {
+          "visible_device_holders": [],
+          "inaccessible_process_fd_directories": 926,
+          "limitation": "Operator must establish exclusive board access, including invisible clients."
+        }
+      },
+      "script_sha256": "d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804",
+      "rows": [
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 3376497,
+          "camera": "fzp",
+          "started_monotonic": 5118376.115797116,
+          "elapsed_seconds": 6.397496136836708,
+          "since_root_ready_seconds": 44.2519868593663,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          },
+          "gcp_wait_seconds": 1.8595533473417163,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 3376497
+          },
+          "role": "camlink supervisor: True nworkers: 1"
+        },
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 3376498,
+          "camera": "atm",
+          "started_monotonic": 5118376.115704027,
+          "elapsed_seconds": 6.374966189265251,
+          "since_root_ready_seconds": 40.04242801479995,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          },
+          "gcp_wait_seconds": 1.8391400752589107,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 3376498
+          },
+          "role": "camlink supervisor: False nworkers: 1"
+        },
+        {
+          "ok": true,
+          "trial": 2,
+          "pid": 3377180,
+          "camera": "fzp",
+          "started_monotonic": 5118427.845183324,
+          "elapsed_seconds": 6.383654874749482,
+          "since_root_ready_seconds": 40.092784501612186,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          },
+          "gcp_wait_seconds": 1.8489799844101071,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 3377180
+          },
+          "role": "camlink supervisor: True nworkers: 1"
+        },
+        {
+          "ok": true,
+          "trial": 2,
+          "pid": 3377181,
+          "camera": "atm",
+          "started_monotonic": 5118427.845374062,
+          "elapsed_seconds": 6.402251317165792,
+          "since_root_ready_seconds": 40.09724564291537,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          },
+          "gcp_wait_seconds": 1.8683965280652046,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 3377181
+          },
+          "role": "camlink supervisor: False nworkers: 1"
+        },
+        {
+          "ok": true,
+          "trial": 3,
+          "pid": 3377800,
+          "camera": "fzp",
+          "started_monotonic": 5118484.927612432,
+          "elapsed_seconds": 6.427377562969923,
+          "since_root_ready_seconds": 44.801687605679035,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          },
+          "gcp_wait_seconds": 1.8491023872047663,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 3377800
+          },
+          "role": "camlink supervisor: True nworkers: 1"
+        },
+        {
+          "ok": true,
+          "trial": 3,
+          "pid": 3377801,
+          "camera": "atm",
+          "started_monotonic": 5118484.971023698,
+          "elapsed_seconds": 6.395324480719864,
+          "since_root_ready_seconds": 40.096668001264334,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          },
+          "gcp_wait_seconds": 1.8597977282479405,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 3377801
+          },
+          "role": "camlink supervisor: False nworkers: 1"
+        }
+      ],
+      "zmq_ports": [
+        9099,
+        9100,
+        9101,
+        9103,
+        9104,
+        9105
+      ]
+    },
+    {
+      "mode": "warm",
+      "summary": "/sdf/home/m/monarin/lcls2/notes/tmo-piranha-review-20261109/paired-warm-3/summary.json",
+      "started_utc": "2026-11-10T00:45:25.833664+00:00",
+      "finished_utc": "2026-11-10T00:46:37.754161+00:00",
+      "ok": true,
+      "groups": [
+        {
+          "group": 1,
+          "forced_kill_pids": [],
+          "unreaped_pids": [],
+          "errors": [],
+          "exit_codes": [
+            0,
+            0
+          ]
+        }
+      ],
+      "config": {
+        "mode": "warm",
+        "cameras": [
+          "fzp",
+          "atm"
+        ],
+        "trials": 3,
+        "settle_seconds": 40.0,
+        "interval": 2.0,
+        "timeout": 60.0,
+        "cleanup_timeout": 10.0,
+        "execute": true,
+        "daq_stopped": true,
+        "preflight": {
+          "visible_device_holders": [],
+          "inaccessible_process_fd_directories": 919,
+          "limitation": "Operator must establish exclusive board access, including invisible clients."
+        }
+      },
+      "script_sha256": "d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804",
+      "rows": [
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 3380282,
+          "camera": "fzp",
+          "started_monotonic": 5118576.686743935,
+          "elapsed_seconds": 6.37997536547482,
+          "since_root_ready_seconds": 40.0407794918865,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          },
+          "gcp_wait_seconds": 1.8390889158472419,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 3380282
+          },
+          "role": "camlink supervisor: True nworkers: 1"
+        },
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 3380283,
+          "camera": "atm",
+          "started_monotonic": 5118576.691286854,
+          "elapsed_seconds": 6.385969917289913,
+          "since_root_ready_seconds": 44.55408312100917,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          },
+          "gcp_wait_seconds": 1.8497920781373978,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 3380283
+          },
+          "role": "camlink supervisor: False nworkers: 1"
+        },
+        {
+          "ok": true,
+          "trial": 2,
+          "pid": 3380282,
+          "camera": "fzp",
+          "started_monotonic": 5118585.126776009,
+          "elapsed_seconds": 6.39884630497545,
+          "since_root_ready_seconds": 48.480811566114426,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          },
+          "gcp_wait_seconds": 1.858851526863873,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 3380282
+          },
+          "role": "camlink supervisor: True nworkers: 1"
+        },
+        {
+          "ok": true,
+          "trial": 2,
+          "pid": 3380283,
+          "camera": "atm",
+          "started_monotonic": 5118585.137345831,
+          "elapsed_seconds": 6.36955679114908,
+          "since_root_ready_seconds": 53.000142097473145,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          },
+          "gcp_wait_seconds": 1.839492192491889,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 3380283
+          },
+          "role": "camlink supervisor: False nworkers: 1"
+        },
+        {
+          "ok": true,
+          "trial": 3,
+          "pid": 3380282,
+          "camera": "fzp",
+          "started_monotonic": 5118593.584218269,
+          "elapsed_seconds": 6.364684725180268,
+          "since_root_ready_seconds": 56.93825382646173,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          },
+          "gcp_wait_seconds": 1.8490011058747768,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 3380282
+          },
+          "role": "camlink supervisor: True nworkers: 1"
+        },
+        {
+          "ok": true,
+          "trial": 3,
+          "pid": 3380283,
+          "camera": "atm",
+          "started_monotonic": 5118593.56971292,
+          "elapsed_seconds": 6.39850031863898,
+          "since_root_ready_seconds": 61.432509186677635,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          },
+          "gcp_wait_seconds": 1.8685091100633144,
+          "dropped_events": 0,
+          "cleanup": {
+            "ok": true,
+            "cleanup_errors": [],
+            "pid": 3380283
+          },
+          "role": "camlink supervisor: False nworkers: 1"
+        }
+      ],
+      "zmq_ports": [
+        9099,
+        9100,
+        9101,
+        9103,
+        9104,
+        9105
+      ]
+    }
+  ]
+}
