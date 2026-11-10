@@ -1,5 +1,58 @@
 # Corrected Sim10 baseline on S3DF Ada
 
+Job **44185752 completed on sdfada016**, November10,15:35:22–15:37:45PST,
+using one L40S. All31 GPU acceptance tests passed (no skips), all six cases
+passed their checks, automatic evidence audit passed, and temporary FFB inputs
+were removed. Independent results review is pending; pre-launch review passed.
+
+| CUDA streams | Repeat1 GiB/s | Repeat2 GiB/s | Median GiB/s | Median events/s | Median loop seconds |
+|---|---:|---:|---:|---:|---:|
+|1|3.464|3.355|**3.409**|1,090|9.176|
+|2|3.264|3.275|**3.269**|1,045|9.566|
+
+These are the four10k-event passes in order1,2,2,1. Two1000-event pilots are
+excluded from the table. Each pass reads31.2756747GiB of JF datagrams through
+psana descriptor staging; blow-up, calibration, cube and payload D2H are absent.
+The event-loop timer includes lazy framework setup; staging, tests and cache
+conditioning are excluded. Medians are computed per column over two repetitions.
+
+Two streams delivered **4.10% lower throughput** than one in this bounded sample.
+This is a small residual gap, not evidence of its cause, a resource ceiling or
+proof that the streams cannot overlap. Both two-stream runs exercised50 callbacks
+on each stream. No old-code control was run on this node, so this measurement
+cannot quantify the fix's speedup versus earlier Ampere/Perlmutter results.
+
+All full passes had50,000 completed reader calls,33,582,000,000 requested bytes,
+100 callbacks of100 events, correct unique event identities, no CPU payload reads
+or pressure drains, and fully drained resources. Peak outstanding reads were500
+requests/335,820,000bytes for both stream counts. Post-loop CuPy retained pool
+was~329MiB/658MiB for1/2streams (a snapshot, not total GPU peak memory).
+
+Cold evidence: all five JF files had zero resident pages after eviction and before
+each loop. Physical NIC enp69s0f0np0 received33.014–33.027GiB per full pass
+(1.0556–1.0560times JF requested bytes), with idleRX~0.96–1.11MiB/s; the other
+three observed ports recorded zero RX. The NIC interval is~0.147–0.178s wider
+than the event-loop interval. NIC bytes support substantial network-backed reads;
+they do not determine a cache-hit fraction. SMD files were expected warm and
+backend storage caches were not flushed. No NVMe data staging was used.
+
+Controls: oneBD/oneGPU,24physicalCPU allowance,NUMA interleave,batch100,SMD1000,
+bulk512KiB,budget6GiB; KvikIO26.10 fallbackON,8workers,1MiBtask,16MiBbounce,
+auto-directOFF. CuPy14.0.1,CUDA runtime12.9. Runtime PR67c327a14;
+reviewed harness58894c331. Existing native binaries reused after225source-file
+comparisons; only config mismatch is the disclosed packaging-only notes exclusion.
+
+Evidence: results.json (compact extraction with source-file hashes), audit.json,
+gpu-tests.json, runtime-evidence.json, artifact-index.json. Full raw receipts:
+`/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt02`.
+
+Next planned stage is the matching100k-event1BD/1-versus2stream comparison on the
+same node class and controls, followed by1–4BD scaling. No additional jobs are
+submitted as part of this results report.
+
+## Preparation and submission history
+
+
 Purpose: establish the post-bookkeeping-fix single-GPU baseline on Weka before
 further BD/batch/KvikIO tuning. This is descriptor staging through psana, including
 XTC metadata handling; it does not run expansion, calibration, cube or payload D2H.

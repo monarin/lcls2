@@ -1,24 +1,28 @@
 {
-  "phase": "retry-submitted-pending",
+  "phase": "results-review-pending",
   "job_id": "44185752",
   "harness_sha": "58894c331e40f70a61dd24d800cf3548479e38d7",
   "pr_sha": "67c327a148a08b2aaf972e67e1e02e367c2b298f",
   "review": {
-    "round": 2,
+    "round": 3,
     "round_limit": 3,
-    "verdict": "pass-code-readiness",
+    "verdict": "pending-results-review",
     "blocking": []
   },
   "checks": {
     "cpu_unit_passed": 1023,
     "harness_passed": 16,
-    "gpu": "pending allocation",
-    "performance": "pending allocation",
-    "final_evidence_review": "pending"
+    "gpu": {
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0
+    },
+    "performance": "six cases passed",
+    "final_evidence_review": "round03 pending",
+    "audit": "pass"
   },
   "remaining": [
-    "GPU acceptance and six cases",
-    "Audit and results review; inspect ADA-08 packaging-only diff evidence"
+    "Independent results review and closure"
   ],
   "deferred": [
     "Generalized build-config allow-list in reusable prepare/audit",
@@ -32,5 +36,6 @@
     "diagnostic_job": "44185635",
     "no_psana_reproduction": true,
     "stage_removed": true
-  }
+  },
+  "host": "sdfada016"
 }

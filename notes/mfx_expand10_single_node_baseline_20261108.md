@@ -273,3 +273,12 @@ One selected L40S on an exclusive node; oneBD, streams1/2,10k events, cold Weka
 bigdata and physical NIC counters,512KiB bulk. This is the small local baseline;
 100k scaling, additional BDs and parameter sweeps are still subsequent stages.
 CPU/harness checks and pre-launch Claude review pass; GPU/results pending.
+
+
+### Ada baseline completed
+
+Job44185752 completed on sdfada016 (L40S):31GPU tests and evidence audit pass.
+For10k events /31.28GiB per pass, median1stream3.409GiB/s versus2streams3.269GiB/s
+(two4.10%lower). All50k reads and100callbacks/pass matched; NICRX~33.02GiB,
+zero initial JF page-cache residency, SMDwarm. See Ada results record; independent
+results review pending. Next is matching100k1BD/1–2stream run, then BD scaling.
