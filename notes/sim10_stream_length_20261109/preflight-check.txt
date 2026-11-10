@@ -1,0 +1,5 @@
+Python 3.11 AST: all new Python scripts parse. bash -n run.sbatch passes.
+Accepted 100k fixture manifests/size/SHA receipts agree; five JF files and five
+SMD files, 335859913008 bytes, 100000 timestamps, 32 panels.
+Matrix: two 1000-event pilots, then s1/10k,s2/10k,s1/100k,s2/100k and reverse.
+All 17 execution/dependency files hashed. No hardware or native-audit tests yet.
