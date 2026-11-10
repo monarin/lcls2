@@ -261,3 +261,15 @@ not silently include/exclude it in the accumulation rate.
 
 Multi-node work, 400k generation, real codec qualification and per-batch D2H overlap
 remain outside this baseline sequence until the single-node result warrants them.
+
+
+## November10 local Ada baseline submission
+
+Corrected-runtime baseline resubmitted as S3DF Ada job44185752 after job44185349
+failed CUDA initialization on sdfada011. Standalone CuPy reproduces the node
+failure; the retry excludes that node and uses unchanged reviewed code. See
+[Sim10 Ada baseline](sim10_ada_baseline_20261110/README.md) and its status.json.
+One selected L40S on an exclusive node; oneBD, streams1/2,10k events, cold Weka
+bigdata and physical NIC counters,512KiB bulk. This is the small local baseline;
+100k scaling, additional BDs and parameter sweeps are still subsequent stages.
+CPU/harness checks and pre-launch Claude review pass; GPU/results pending.

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt01/source-reviewed/notes/sim10_ada_baseline_20261110/campaign.py", line 68, in <module>
+    if __name__=='__main__':main(Path(sys.argv[1]))
+                            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt01/source-reviewed/notes/sim10_ada_baseline_20261110/campaign.py", line 35, in main
+    run_owned([sys.executable,str(HERE/'gpu_tests.py'),str(output/'gpu-tests.json'),str(output/'pytest-tmp')],log,300)
+  File "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt01/source-reviewed/notes/sim10_ada_baseline_20261110/campaign.py", line 12, in run_owned
+    if rc:raise subprocess.CalledProcessError(rc,cmd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+subprocess.CalledProcessError: Command '['/sdf/scratch/users/m/monarin/gpu-validation/kvikio-2610-validation-20261015-r1/venv/bin/python', '/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt01/source-reviewed/notes/sim10_ada_baseline_20261110/gpu_tests.py', '/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt01/results/gpu-tests.json', '/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt01/results/pytest-tmp']' returned non-zero exit status 1.

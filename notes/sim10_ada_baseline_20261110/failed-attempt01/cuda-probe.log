@@ -1,0 +1,140 @@
+{
+  "host": "sdfada011",
+  "mask": "0,1,2,3,4,5,6,7,8,9",
+  "jobgpus": "0,1,2,3,4,5,6,7,8,9",
+  "ld": "/sdf/scratch/users/m/monarin/gpu-validation/pr187-pr208-integration-20261026-r1/B/install/lib:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/xpp_drp_gpu_311/lib"
+}
+GPU 0: NVIDIA L40S (UUID: GPU-82bb6b75-7f36-2e1c-f7bd-784d7ccfe280)
+GPU 1: NVIDIA L40S (UUID: GPU-3e74000c-038e-37e8-f5af-69936c12281c)
+GPU 2: NVIDIA L40S (UUID: GPU-6677f0ec-1831-531c-f7ca-6961bc75032d)
+GPU 3: NVIDIA L40S (UUID: GPU-6d0e0a10-76dd-d77b-4cd4-98ba379d579b)
+GPU 4: NVIDIA L40S (UUID: GPU-80e9a295-0723-a83b-8c17-37c090f9500e)
+GPU 5: NVIDIA L40S (UUID: GPU-ae7468cb-15ad-732b-c31a-83e554911a26)
+GPU 6: NVIDIA L40S (UUID: GPU-bd937f66-45d2-10ee-e0ca-23080d907a99)
+GPU 7: NVIDIA L40S (UUID: GPU-f6f957b1-81f4-79c7-5565-f370286acce6)
+GPU 8: NVIDIA L40S (UUID: GPU-9eaf6e06-07b1-7521-ed79-379c15059758)
+
+index, uuid, name, driver_version, memory.used [MiB], compute_mode
+0, GPU-82bb6b75-7f36-2e1c-f7bd-784d7ccfe280, NVIDIA L40S, 575.57.08, 1 MiB, Default
+1, GPU-3e74000c-038e-37e8-f5af-69936c12281c, NVIDIA L40S, 575.57.08, 1 MiB, Default
+2, GPU-6677f0ec-1831-531c-f7ca-6961bc75032d, NVIDIA L40S, 575.57.08, 1 MiB, Default
+3, GPU-6d0e0a10-76dd-d77b-4cd4-98ba379d579b, NVIDIA L40S, 575.57.08, 1 MiB, Default
+4, GPU-80e9a295-0723-a83b-8c17-37c090f9500e, NVIDIA L40S, 575.57.08, 1 MiB, Default
+5, GPU-ae7468cb-15ad-732b-c31a-83e554911a26, NVIDIA L40S, 575.57.08, 1 MiB, Default
+6, GPU-bd937f66-45d2-10ee-e0ca-23080d907a99, NVIDIA L40S, 575.57.08, 1 MiB, Default
+7, GPU-f6f957b1-81f4-79c7-5565-f370286acce6, NVIDIA L40S, 575.57.08, 1 MiB, Default
+8, GPU-9eaf6e06-07b1-7521-ed79-379c15059758, NVIDIA L40S, 575.57.08, 1 MiB, Default
+
+crw-rw-rw- 1 root root 195, 254 Oct 23 15:08 /dev/nvidia-modeset
+crw-rw-rw- 1 root root 234, 255 Oct 24 17:06 /dev/nvidia-nvswitchctl
+crw-rw-rw- 1 root root 511,   0 Oct 23 15:09 /dev/nvidia-uvm
+crw-rw-rw- 1 root root 511,   1 Oct 23 15:09 /dev/nvidia-uvm-tools
+crw-rw-rw- 1 root root 195,   0 Oct 23 15:08 /dev/nvidia0
+crw-rw-rw- 1 root root 195,   1 Oct 23 15:08 /dev/nvidia1
+crw-rw-rw- 1 root root 195,   2 Oct 23 15:08 /dev/nvidia2
+crw-rw-rw- 1 root root 195,   3 Oct 23 15:08 /dev/nvidia3
+crw-rw-rw- 1 root root 195,   4 Oct 23 15:08 /dev/nvidia4
+crw-rw-rw- 1 root root 195,   5 Oct 23 15:08 /dev/nvidia5
+crw-rw-rw- 1 root root 195,   6 Oct 23 15:08 /dev/nvidia6
+crw-rw-rw- 1 root root 195,   7 Oct 23 15:08 /dev/nvidia7
+crw-rw-rw- 1 root root 195,   8 Oct 23 15:08 /dev/nvidia8
+crw-rw-rw- 1 root root 195,   9 Oct 23 15:08 /dev/nvidia9
+crw-rw-rw- 1 root root 195, 255 Oct 23 15:08 /dev/nvidiactl
+
+/dev/nvidia-caps:
+total 0
+cr-------- 1 root root 236, 1 Oct 23 15:09 nvidia-cap1
+cr--r--r-- 1 root root 236, 2 Oct 23 15:09 nvidia-cap2
+
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  575.57.08  Sat May 24 07:21:16 UTC 2025
+GCC version:  gcc version 11.5.0 20240719 (Red Hat 11.5.0-5) (GCC)
+
+PROBE None
+RC 1 CuPy 14.0.1 runtime 12090 driver 12090
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "cupy_backends/cuda/api/runtime.pyx", line 412, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 415, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 146, in cupy_backends.cuda.api.runtime.check_status
+cupy_backends.cuda.api.runtime.CUDARuntimeError: cudaErrorUnknown: unknown error
+
+PROBE GPU-82bb6b75-7f36-2e1c-f7bd-784d7ccfe280
+RC 1 CuPy 14.0.1 runtime 12090 driver 12090
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "cupy_backends/cuda/api/runtime.pyx", line 412, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 415, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 146, in cupy_backends.cuda.api.runtime.check_status
+cupy_backends.cuda.api.runtime.CUDARuntimeError: cudaErrorUnknown: unknown error
+
+PROBE GPU-3e74000c-038e-37e8-f5af-69936c12281c
+RC 1 CuPy 14.0.1 runtime 12090 driver 12090
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "cupy_backends/cuda/api/runtime.pyx", line 412, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 415, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 146, in cupy_backends.cuda.api.runtime.check_status
+cupy_backends.cuda.api.runtime.CUDARuntimeError: cudaErrorUnknown: unknown error
+
+PROBE GPU-6677f0ec-1831-531c-f7ca-6961bc75032d
+RC 1 CuPy 14.0.1 runtime 12090 driver 12090
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "cupy_backends/cuda/api/runtime.pyx", line 412, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 415, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 146, in cupy_backends.cuda.api.runtime.check_status
+cupy_backends.cuda.api.runtime.CUDARuntimeError: cudaErrorUnknown: unknown error
+
+PROBE GPU-6d0e0a10-76dd-d77b-4cd4-98ba379d579b
+RC 1 CuPy 14.0.1 runtime 12090 driver 12090
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "cupy_backends/cuda/api/runtime.pyx", line 412, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 415, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 146, in cupy_backends.cuda.api.runtime.check_status
+cupy_backends.cuda.api.runtime.CUDARuntimeError: cudaErrorUnknown: unknown error
+
+PROBE GPU-80e9a295-0723-a83b-8c17-37c090f9500e
+RC 1 CuPy 14.0.1 runtime 12090 driver 12090
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "cupy_backends/cuda/api/runtime.pyx", line 412, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 415, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 146, in cupy_backends.cuda.api.runtime.check_status
+cupy_backends.cuda.api.runtime.CUDARuntimeError: cudaErrorUnknown: unknown error
+
+PROBE GPU-ae7468cb-15ad-732b-c31a-83e554911a26
+RC 1 CuPy 14.0.1 runtime 12090 driver 12090
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "cupy_backends/cuda/api/runtime.pyx", line 412, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 415, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 146, in cupy_backends.cuda.api.runtime.check_status
+cupy_backends.cuda.api.runtime.CUDARuntimeError: cudaErrorUnknown: unknown error
+
+PROBE GPU-bd937f66-45d2-10ee-e0ca-23080d907a99
+RC 1 CuPy 14.0.1 runtime 12090 driver 12090
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "cupy_backends/cuda/api/runtime.pyx", line 412, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 415, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 146, in cupy_backends.cuda.api.runtime.check_status
+cupy_backends.cuda.api.runtime.CUDARuntimeError: cudaErrorUnknown: unknown error
+
+PROBE GPU-f6f957b1-81f4-79c7-5565-f370286acce6
+RC 1 CuPy 14.0.1 runtime 12090 driver 12090
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "cupy_backends/cuda/api/runtime.pyx", line 412, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 415, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 146, in cupy_backends.cuda.api.runtime.check_status
+cupy_backends.cuda.api.runtime.CUDARuntimeError: cudaErrorUnknown: unknown error
+
+PROBE GPU-9eaf6e06-07b1-7521-ed79-379c15059758
+RC 1 CuPy 14.0.1 runtime 12090 driver 12090
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "cupy_backends/cuda/api/runtime.pyx", line 412, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 415, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 146, in cupy_backends.cuda.api.runtime.check_status
+cupy_backends.cuda.api.runtime.CUDARuntimeError: cudaErrorUnknown: unknown error

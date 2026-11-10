@@ -54,3 +54,31 @@ The runtime loader intentionally omits the optional psexp.parallel_pread extensi
 (debugtools-only in this checkout), and asserts that absence. Native source
 comparison includes psana, xtcdata and psalg; build configuration hashes are
 recorded separately. This reuses an existing build, not a fresh PR rebuild.
+
+## Submission, November10
+
+Job44185349 submitted at15:30PST to Ada, pending allocation at submission.
+Reviewed harness commit58894c331, Claude pre-launch pass round2; runtime PR67c327a14.
+CPU1023pass, harness16pass; GPU and performance pending. Scheduler logs and
+results are in the shared-scratch attempt01 directory above. status.json records
+remaining work; submission.json records exact launch command and identities.
+
+Build configuration disclosure: psana/meson.build differs only by adding gpu/notes
+to the package installation exclusion list. It changes no extension sources,
+flags or link inputs. See build-config-diff.json. The exact expected insertion
+and canonical PR source path were asserted before submission. Generic config
+allow-list and symlink support in the harness are deferred; this attempt is pinned.
+
+
+## Retry after node CUDA failure
+
+Attempt01/job44185349 started on sdfada011 and failed before GPU acceptance or
+data staging. Standalone CuPy diagnostic44185635 reproduces cudaErrorUnknown
+on all9 nvidia-smi-visible GPUs while Slurm advertises10. No rates produced.
+See failed-attempt01/ for logs; no psana code changes made in response.
+
+Attempt02/job44185752 resubmits the same reviewed harness with sdfada011 excluded.
+Current artifacts: `/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt02`.
+It depends on attempt01/source-reviewed for the immutable harness, so keep both
+attempt directories. Runtime PR source and receipt are separate in attempt02.
+GPU acceptance and performance remain pending; resume from status.json.

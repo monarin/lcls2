@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt01/source-reviewed/notes/sim10_ada_baseline_20261110/gpu_tests.py", line 13, in <module>
+    assert cp.cuda.runtime.getDeviceCount()==1
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "cupy_backends/cuda/api/runtime.pyx", line 412, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 415, in cupy_backends.cuda.api.runtime.getDeviceCount
+  File "cupy_backends/cuda/api/runtime.pyx", line 146, in cupy_backends.cuda.api.runtime.check_status
+cupy_backends.cuda.api.runtime.CUDARuntimeError: cudaErrorUnknown: unknown error

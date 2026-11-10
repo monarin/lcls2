@@ -1,0 +1,28 @@
+JobId=44185752 JobName=sim10-ada-baseline
+   UserId=monarin(12682) GroupId=xu(1106) MCS_label=N/A
+   Priority=16821 Nice=0 Account=lcls:prjdat21@ada QOS=normal
+   JobState=PENDING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:00 TimeLimit=00:20:00 TimeMin=N/A
+   SubmitTime=2026-11-10T15:33:53 EligibleTime=2026-11-10T15:33:53
+   AccrueTime=Unknown
+   StartTime=Unknown EndTime=Unknown Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-10T15:33:53 Scheduler=Main
+   Partition=ada AllocNode:Sid=sdfiana025.sdf.slac.stanford.edu:3437710
+   ReqNodeList=(null) ExcNodeList=sdfada011
+   NodeList=
+   NumNodes=1-1 NumCPUs=48 NumTasks=3 CPUs/Task=16 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=48,mem=128G,node=1,billing=48,gres/gpu=1
+   AllocTRES=(null)
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=16 MinMemoryNode=128G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt01/source-reviewed/notes/sim10_ada_baseline_20261110/run.sbatch
+   SubmitLine=sbatch --parsable --exclude=sdfada011 --chdir=/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt01/source-reviewed --output=/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt02/slurm-%j.out --error=/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt02/slurm-%j.err /sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt01/source-reviewed/notes/sim10_ada_baseline_20261110/run.sbatch /sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt01/source-reviewed/notes/sim10_ada_baseline_20261110 /sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt02
+   WorkDir=/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt01/source-reviewed
+   StdErr=/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt02/slurm-44185752.err
+   StdIn=/dev/null
+   StdOut=/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt02/slurm-44185752.out
+   TresPerNode=gres/gpu:l40s:1
+   TresPerTask=cpu=16

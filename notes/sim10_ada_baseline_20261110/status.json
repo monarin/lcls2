@@ -1,16 +1,36 @@
 {
-  "phase": "review-02-preparing",
+  "phase": "retry-submitted-pending",
+  "job_id": "44185752",
+  "harness_sha": "58894c331e40f70a61dd24d800cf3548479e38d7",
   "pr_sha": "67c327a148a08b2aaf972e67e1e02e367c2b298f",
-  "round": 2,
-  "round_limit": 3,
+  "review": {
+    "round": 2,
+    "round_limit": 3,
+    "verdict": "pass-code-readiness",
+    "blocking": []
+  },
   "checks": {
     "cpu_unit_passed": 1023,
     "harness_passed": 16,
-    "gpu": "pending",
-    "performance": "pending"
+    "gpu": "pending allocation",
+    "performance": "pending allocation",
+    "final_evidence_review": "pending"
   },
-  "unresolved": [
-    "ADA-01 awaiting re-review"
+  "remaining": [
+    "GPU acceptance and six cases",
+    "Audit and results review; inspect ADA-08 packaging-only diff evidence"
   ],
-  "artifacts": "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110"
+  "deferred": [
+    "Generalized build-config allow-list in reusable prepare/audit",
+    "ADA-09 symlink path support; actual source canonical"
+  ],
+  "artifacts": "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-baseline-20261110/attempt02",
+  "failed_attempt": {
+    "job_id": "44185349",
+    "node": "sdfada011",
+    "error": "cudaErrorUnknown before tests or staging",
+    "diagnostic_job": "44185635",
+    "no_psana_reproduction": true,
+    "stage_removed": true
+  }
 }
