@@ -1,5 +1,5 @@
 {
-  "phase": "results_review",
+  "phase": "complete",
   "base_commit": "cc98b8440e00123bbe86a1d82e6be7986f28a447",
   "implementation_commit": "ec0941a31222045e31e5a8ea8fb49c02c4a63a28",
   "review_round": 3,
@@ -24,9 +24,25 @@
       "round": 2,
       "status": "pass_no_blockers",
       "artifact": "/lscratch/monarin/tmp/sim10-trace-review02-20261110"
+    },
+    {
+      "round": 3,
+      "status": "pass_no_blockers",
+      "artifact": "/lscratch/monarin/tmp/sim10-trace-review03-20261110"
     }
   ],
   "remote_source": "/pscratch/sd/m/monarin/psana2-gpu/sim10-trace-20261110/source",
   "job": "61072191",
-  "artifact_local": "/lscratch/monarin/tmp/sim10-trace-artifacts-20261110"
+  "artifact_local": "/lscratch/monarin/tmp/sim10-trace-artifacts-20261110",
+  "results_review_commit": "3b1e9b3ac2d4e0d45c660be8097b1c9c3111c76b",
+  "deferred_nonblocking": [
+    "T3 timeout status hardening (actual job completed)",
+    "T4 optional missing-counter diagnostic"
+  ],
+  "documentation_clarifications": [
+    "R1 final verdict recorded",
+    "R2 net attribution clarified",
+    "R3 worker-thread attribution marked inferred",
+    "R4 retirement path marked inferred; equal CUDA event query totals cited"
+  ]
 }

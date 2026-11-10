@@ -43,13 +43,17 @@ thread, not GPU duration or pure CPU execution time.
 | User descriptor-check callback | 1.7086 | 1.6633 | -0.0453 |
 
 The first two increases sum to 10.2746 s, or 99.6% of the 10.3138 s
-host-timed loop increase. The clean increase is 9.6831 s. Instrumentation
+host-timed loop increase. This is a net share: the remaining phases net to
+about +0.04 s, with offsetting changes of up to a few tenths of a second.
+The clean increase is 9.6831 s. Instrumentation
 perturbs the workload, so the 99.6% attribution applies to the timed pair;
 it is not an exact decomposition of the clean pair. Explicit BD-thread timed CUDA
-synchronization phases total about 0.0021 s in each run. KvikIO worker-thread
-synchronizations are separate: the trace sums 1.91 / 1.76 s of
-`cuStreamSynchronize` across those threads; this is not a main-thread critical-path
-measurement and does not increase with two streams.
+synchronization phases total about 0.0021 s in each run. Separately, the trace
+sums 1.91 / 1.76 s of `cuStreamSynchronize` across all recorded host threads.
+Its 50,000 calls match the read count and are consistent with KvikIO fallback
+worker synchronization; that thread attribution is inferred, since the summary
+does not group by thread. This sum is not a main-thread critical-path measurement
+and does not increase with two streams.
 
 ## Mechanism
 
@@ -60,9 +64,13 @@ iterates every retained group. Its supplied-slot check also scans retained
 groups with `any(g.slot == slot ...)`.
 
 With two execution streams, the previous batch's parsed windows remain
-retained while the next 500 groups are issued. Repeated polling visits those
-windows even when live references make them ineligible for retirement. Each
-such visit enters `InputWindow._try_retire`, takes its lock, and checks state.
+retained while the next 500 groups are issued. The source path indicates that
+repeated polling visits those windows even when live references make them
+ineligible for retirement, entering `InputWindow._try_retire` to take its lock
+and check state. This is a code-path inference; `visited_states` counts all
+pool entries, including window-less groups, not individual `_try_retire` entries.
+Both traces record 150,000 `cudaEventQuery` calls, so the extra state visits do
+not produce an increase in the total recorded CUDA event queries.
 This consumes BD-thread time before more reads or parser work can be submitted;
 it does not require a CUDA wait on the other stream.
 
@@ -132,8 +140,11 @@ does not implement that optimization or claim a measured speedup from it.
 ## Artifacts and review
 
 Implementation: ec0941a31222045e31e5a8ea8fb49c02c4a63a28.
-Independent implementation review: PASS, no blocking findings. All six native cases and Slurm steps passed (job elapsed 5:43); results review
-is being finalized. Large report root on Perlmutter:
+Independent implementation review: PASS, no blocking findings. All six native cases and Slurm steps passed (job elapsed 5:43). Independent
+results/analysis review: PASS on
+`3b1e9b3ac2d4e0d45c660be8097b1c9c3111c76b`, no blocking findings.
+The final evidence-only commit records that verdict and applies four requested
+documentation clarifications; runtime and offline analysis code are unchanged. Large report root on Perlmutter:
 
 ```
 /pscratch/sd/m/monarin/psana2-gpu/sim10-trace-20261110/attempt01/results

@@ -1,0 +1,67 @@
+{
+  "reviewed_commit": "3b1e9b3ac2d4e0d45c660be8097b1c9c3111c76b",
+  "verdict": "pass",
+  "summary": "Results/analysis review of notes/sim10_trace_20261110 at 3b1e9b3ac. Every numeric claim in README.md was reconciled against native/analysis-summary.json, complete.json, slurm.txt, the two timing phases JSON files and timeline-analysis.json: clean 15.1488/24.8319 s and 2.0646/1.2595 GiB/s; host-timed 16.3067/26.6205 s (7.64%/7.20% overhead); input.poll 0.6404/9.2928 (+8.6523), input.issue self 1.1665/2.7888 (+1.6223), read.wait -0.4235, read.pread_loop +0.0360, read.group -0.0978, task.callback -0.0453; the two increases sum to 10.2746 s = 99.6% of the 10.3138 s host-timed increase; clean increase 9.6831 s; explicit BD sync phases 0.00206/0.00207 s; cuStreamSynchronize 1.911/1.758 s; poll calls 50,101, visits 12,524,500/37,323,500 (+24,799,000), max 500/1000; Nsight loop 16.909/28.028 s vs receipts 35.35/45.53 s; kernel union 7.05/7.14 ms; GPU union 1.552/1.464 s; 100 of each kernel, stream 13 only vs 50/50 on 13/14; batch 20/21 intervals, durations, 501 polls, poll ms, copy union and following walk_xtc coordinates all match. Exclusive phases for two streams sum to 26.620347 s vs bd.loop total 26.620348 s and receipt 26.620505 s; startup+steady self_ns reproduce the whole-loop exclusive values. Poll counter arithmetic matches the mechanism: one stream 100 x (0+...+499) + 99 x 500 reclaimed-at-plan visits = 12,524,500; two streams additionally carry 500 retained windows across all 501 polls per batch plus 98 x 500 two-batch-old reclaims = 37,323,500, with reclaimed 49,500/49,000 as recorded. Frozen gpu_input_group.py, gpu_input_window.py and gpu_events.py are textually identical to psana/psana/gpu at this checkout; the cited code paths (plan_slots->poll, issue->poll, any(g.slot==slot) scan, poll skipping window-less groups, InputWindow._try_retire lock/state check returning False on live uses, never synchronizing) exist as described. analyze_trace.py SQL and union/clip math are correct for the claims made; it opens SQLite read-only and asserts one bd.loop and 100 group.issue ranges. Caveats in the README (timed-pair attribution, untimed slot scan, worker-thread sync separate, profiler elapsed outside bd.loop, traced-activity union, local-cache-cold only, single matched pair, no fix measured) are present and accurate; the proposed fix preserves ownership/credit/deferred retirement/error cleanup. Prior T1-T4 are closed or deferred nonblocking per responses.md and remain consistent with native evidence. Four new low, nonblocking documentation-precision findings.",
+  "checks": [
+    "README.md Matched results table vs analysis-summary.json and complete.json: seconds, GiB/s, overhead percentages recomputed and match",
+    "README phase table vs analysis-summary.json exclusive_seconds and phases JSON startup+steady self_ns: all six rows and increases recomputed; 99.6% and 10.3138/9.6831 s recomputed",
+    "Two-stream exclusive phases summed manually to 26.620347 s vs bd.loop total 26.620348 s and receipt 26.620505 s",
+    "Explicit BD-thread sync phases summed (sync.pool_submit + sync.producer_retire + sync.pool_flush) = 0.00206/0.00207 s; consistent with 202 cudaStreamSynchronize_v3020 calls in both traces",
+    "Poll counters (calls, visited_states, max_states, reclaimed) checked against trace_runner.py observed_poll (len(pool._groups) per call) and against a closed-form model of 501 polls per batch with 500 groups; both cases reproduce exactly",
+    "Mechanism claims checked against frozen and repo source: plan_slots line 51 and issue line 93 call poll; issue line 108 linear slot scan; poll line 207 skips window-less groups; InputWindow._try_retire lines 124-128 lock and state check; no CUDA synchronize in poll path",
+    "Frozen gpu_input_group.py (268 lines), gpu_input_window.py (198), gpu_events.py (1176) compared line by line with psana/psana/gpu copies: identical text",
+    "_issue_group_reads lines 813-840 confirms plan once then issue per group; 100 events x 5 files = 500 groups consistent with 1000/500 owned reader allocations and 500/1000 max_states",
+    "timeline-analysis.json vs README Nsight section: loop bounds, unions, kernel counts/streams, batch 20/21 sample fields, following kernel times/streams, elapsed receipts",
+    "analyze_trace.py: union/duration/clipped logic, NVTX label filter, read-only URI, assertions, poll-within-interval thread filter, kernel/copy/API summary SQL",
+    "slurm.txt: job 61072191 and six steps COMPLETED 0:0, elapsed 5:43 on nid001129; complete.json status pass, same host/affinity all cases, input_unchanged true; provenance.json single GPU UUID and git_head ec0941a31",
+    "SHA256SUMS covers all native receipts and frozen files; TRACE_SHA256SUMS covers nsys-rep and sqlite",
+    "review-02/review.json and responses.md: T1 closed (version recorded), T2 closed by native timer install, T3/T4 deferred nonblocking; status.json round 3 of 3, unresolved empty",
+    "scope.md controls (512 KiB, batch 100, 6 GiB, KvikIO 8 workers/1 MiB/16 MiB/direct off, one node, clean/timed/Nsight pairs, cold gate, no framework change) reflected in README and receipts; campaign.py numactl --interleave=all and run.sbatch 20 min limit confirmed"
+  ],
+  "limitations": [
+    "Read-only review; no commands executed, no tests run, no hashes recomputed. Byte identity of frozen vs repo source is based on full-text comparison of the rendered files, not a checksum.",
+    "Raw .nsys-rep and .sqlite exports at /pscratch and the SDF copy are not accessible from this worktree; timeline-analysis.json is accepted as coordinator-derived output of analyze_trace.py and only its SQL/math were reviewed.",
+    "The six per-case JSON receipts (00-05) were not opened; case invariants (10k events, 50k reads, bytes, callbacks, cold gate, cleanup) are taken from analysis-summary.json/complete.json and the coordinator's recomputation.",
+    "The bulk_phase_timing.py instrumentation and trace_runner.py were reviewed in round 2; this round only re-read the poll counter wrapper to interpret visited_states.",
+    "NUMA interleave and premium QOS are confirmed from campaign.py/run.sbatch text, not from Slurm accounting fields.",
+    "Per-thread attribution of cuStreamSynchronize to KvikIO worker threads cannot be verified from timeline-analysis.json, which aggregates CUDA API calls across threads."
+  ],
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_trace_20261110/README.md",
+      "line": 135,
+      "evidence": "Text reads 'results review is being finalized' while status.json already records round 3 of 3 with unresolved empty; after this review the README's own status line will be stale.",
+      "requested_change": "Update the Artifacts and review paragraph to record the final results-review outcome and commit, or drop the in-progress phrasing."
+    },
+    {
+      "id": "R2",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_trace_20261110/README.md",
+      "line": 45,
+      "evidence": "The 99.6% figure is a net attribution. Phases outside the table move by comparable magnitudes and cancel: allocation.owned_empty +0.238 s (1017 vs 511 startup allocations), group.submit +0.214 s, retire.consumer_join +0.164 s, pool.submit +0.063 s, versus read.wait -0.423 s, admission.plan -0.073 s, read.group -0.098 s. All other phases net to about +0.039 s.",
+      "requested_change": "Add one sentence stating that the remaining phases net to roughly +0.04 s but include offsetting changes of up to a few tenths of a second, so 99.6% should be read as a net share, not as the only phases that changed."
+    },
+    {
+      "id": "R3",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_trace_20261110/README.md",
+      "line": 50,
+      "evidence": "The cuStreamSynchronize 1.91/1.76 s sum is attributed to KvikIO worker threads, but analyze_trace.py's cuda_api_summary groups by nameId only with no globalTid filter, and timeline-analysis.json itself lists 'CUDA API sums include multiple host threads' as a limitation. The thread attribution is inferred from the 50,000 call count matching the 50,000 read requests.",
+      "requested_change": "Either state that the worker-thread attribution is inferred from the per-read call count, or extend analyze_trace.py to group cuStreamSynchronize by globalTid and exclude the BD thread's tid before re-running on the exports."
+    },
+    {
+      "id": "R4",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_trace_20261110/README.md",
+      "line": 63,
+      "evidence": "'Repeated polling visits those windows even when live references make them ineligible' and 'Each such visit enters InputWindow._try_retire, takes its lock, and checks state' are source inferences. The visited_states counter records len(pool._groups) per poll, which includes window-less groups and does not count _try_retire entries or distinguish the live-use early return (line 127) from the event.done branch (line 136). The supporting measured evidence is that cudaEventQuery_v3020 stays at 150,000 calls in both captures, so no extra event queries were added by two streams.",
+      "requested_change": "Mark these two sentences as code-path inference and cite the equal cudaEventQuery counts (150,000 in both traces) as the measurement that rules out extra CUDA event queries; optionally note that visited_states counts all pool entries, not _try_retire entries."
+    }
+  ]
+}
