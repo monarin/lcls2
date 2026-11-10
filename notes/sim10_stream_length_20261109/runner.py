@@ -1,9 +1,9 @@
-"""Cold FFB, one physical GPU, one BD, variable streams/event count; descriptor staging only."""
+"""Local-page-cache-cold Lustre, one physical GPU, one BD, variable streams/event count; descriptor staging only."""
 import argparse,gc,importlib,json,os,platform,subprocess,sys,time
 from pathlib import Path
 from contextlib import closing
-from support import NOTES,raw,require,sha,cache,physical_counters,counter_delta,affinity,source_hashes,write,histogram,EVENT_BYTES,BULK,BATCH,BUDGET,WORKERS
-rank_hint=int(os.environ['OMPI_COMM_WORLD_RANK'])
+from support import NOTES,require,sha,cache,diagnostics,MODE,affinity,source_hashes,write,histogram,EVENT_BYTES,BULK,BATCH,BUDGET,WORKERS
+rank_hint=int(os.environ['SLURM_PROCID'])
 os.environ['CUDA_VISIBLE_DEVICES']=os.environ['JF_GPU_UUID'] if rank_hint>=2 else ''
 chosen=affinity()
 from mpi4py import MPI
@@ -51,10 +51,10 @@ def main(a):
         cp.cuda.Device().synchronize();free,total=cp.cuda.runtime.memGetInfo();memory=dict(before_free=free,total=total)
     comm.Barrier();observation=None
     if rank_hint==0:
-        before=physical_counters();time.sleep(1);after=physical_counters()
+        before=diagnostics();time.sleep(1);after=diagnostics()
         files=list(map(Path,info['files']));conditioning=cache(files,True);initial=cache(files)
         require(all(x['resident_pages']==0 for x in initial),'Cold gate')
-        observation=dict(conditioning=conditioning,initial_cache=initial,idle=dict(before=before,after=after,delta=counter_delta(before,after)),nic_before=physical_counters())
+        observation=dict(mode=MODE,conditioning=conditioning,initial_cache=initial,idle=dict(before=before,after=after),diagnostic_before=diagnostics(),wall_start=time.time())
         start=time.perf_counter()
     comm.Barrier();delivered=[]
     if rank_hint>=2:
@@ -67,9 +67,7 @@ def main(a):
             for event in events:delivered.append(int(event.timestamp))
     comm.Barrier()
     if rank_hint==0:
-        seconds=time.perf_counter()-start;observation['seconds']=seconds;observation['nic_after']=physical_counters()
-        observation['nic_delta']=counter_delta(observation['nic_before'],observation['nic_after'],EVENT_BYTES*a.events)
-        require(all(x['seconds']>=seconds for x in observation['nic_delta'].values()),'NIC bracket')
+        seconds=time.perf_counter()-start;observation['seconds']=seconds;observation['wall_end']=time.time();observation['diagnostic_after']=diagnostics()
         observation['final_cache']=cache(files)
     if rank_hint>=2:
         n=len(delivered);require(n>0 and delivered==sorted(set(delivered)),'Local ordered unique events')
@@ -84,9 +82,15 @@ def main(a):
     drain=[dict(closed=m._closed,pending=len(m.gpu_reader._pending),active=m.event_pool.active_count,held=m._gpu_budget._held,peers=m._n_bd_per_gpu) for m in managers]
     modules=('psana','psana.gpu.gpu_events','psana.gpu.gpu_detector','psana.gpu.gpu_task','psana.gpu.gpu_kvikio_read','psana.gpu.gpu_placement','psana.gpu.gpu_stream_read_plan','psana.gpu.gpu_group_schedule')
     runtime={n:dict(path=importlib.import_module(n).__file__,sha256=sha(importlib.import_module(n).__file__)) for n in modules}
-    row=dict(drain=drain,rank=rank_hint,role=role,host=platform.node(),affinity=chosen,device=device,memory=memory,timestamps=delivered,callbacks=task.callbacks,io=io,cpu_reads=cpu_reads[0],runtime_files=runtime,
+    admission=[dict(capacity=m._admission_capacity,margin=m._admission_margin,subbatch_budget=m._subbatch_budget_bytes,budget=m._gpu_budget.limit()) for m in managers]
+    row=dict(mask=os.environ['CUDA_VISIBLE_DEVICES'],mpi=MPI.Get_library_version(),admission=admission,drain=drain,rank=rank_hint,role=role,host=platform.node(),affinity=chosen,device=device,memory=memory,timestamps=delivered,callbacks=task.callbacks,io=io,cpu_reads=cpu_reads[0],runtime_files=runtime,
         numa_policy=subprocess.run(['numactl','--show'],capture_output=True,text=True,check=True).stdout)
     require('policy: interleave' in row['numa_policy'],'Expected interleaved page allocations')
+    reference=json.loads((NOTES/'sim10_stream_length_20261109/perlmutter-runtime.json').read_text())['modules']
+    require(runtime==reference,'Frozen runtime mismatch')
+    require('CRAY MPICH' in row['mpi'].upper(),'Cray MPI required')
+    comm.Barrier();run.close_shared_memory();managers.clear();del run,ds;gc.collect();comm.Barrier()
+    row['cleanup_complete']=True
     rows=comm.gather(row,root=0)
     if rank_hint==0:
         bds=rows[2:];merged=[t for r in bds for t in r['timestamps']]
@@ -98,7 +102,7 @@ def main(a):
             rows=rows,measurement=observation,job=os.environ['SLURM_JOB_ID'],host=platform.node(),source_sha256=source_hashes(),
             framework=dict(batch_size=BATCH,streams=a.streams,budget_gib=BUDGET,bulk_target_bytes=BULK,smd_events=int(os.environ['PS_SMD_N_EVENTS'])))
         write(a.output,result);print(json.dumps(dict(bds=a.bds,events=a.events,gib_s=result['gib_s'],hz=result['hz'])),flush=True)
-    comm.Barrier();run.close_shared_memory();managers.clear();del run,ds;gc.collect();comm.Barrier()
+    comm.Barrier()
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--inputs',required=True);p.add_argument('--output',required=True);p.add_argument('--bds',type=int,choices=(1,),default=1);p.add_argument('--events',type=int,choices=(1000,10000,100000),default=100000)

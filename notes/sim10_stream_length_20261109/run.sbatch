@@ -1,34 +1,17 @@
-#!/usr/bin/env bash
-#SBATCH --account=lcls:data@ampere
-#SBATCH --qos=normal
-#SBATCH --partition=ampere
+#!/bin/bash
+#SBATCH --account=lcls_g
+#SBATCH --constraint=gpu
+#SBATCH --qos=premium
 #SBATCH --nodes=1
 #SBATCH --ntasks=3
 #SBATCH --cpus-per-task=16
-#SBATCH --gpus=1
+#SBATCH --gpus-per-node=1
 #SBATCH --exclusive
-#SBATCH --mem=700G
-#SBATCH --time=01:30:00
-#SBATCH --signal=B:TERM@120
+#SBATCH --mem=0
+#SBATCH --time=01:00:00
+#SBATCH --job-name=sim10-stream-length
 set -euo pipefail
 source_dir=${1:?source}
-output=${2:?output}
-node_root="${SLURM_TMPDIR:-/lscratch/$USER}/sim10-stream-length-${SLURM_JOB_ID}"
-mkdir -m 700 "$node_root"
-export TMPDIR="$node_root/tmp" CUPY_CACHE_DIR="$node_root/cupy-cache"
-mkdir "$TMPDIR" "$CUPY_CACHE_DIR"
-child=''
-cleanup() {
-    rc=$?
-    trap - EXIT TERM INT
-    if [[ -n "$child" ]]; then kill -TERM "$child" 2>/dev/null || true; wait "$child" || true; fi
-    rm -rf -- "$node_root"
-    exit "$rc"
-}
-trap cleanup EXIT
-trap 'exit 143' TERM
-trap 'exit 130' INT
-bash "$source_dir/../jf_raw_cache_20261109/runtime.sh" /sdf/scratch/users/m/monarin/gpu-validation/kvikio-2610-validation-20261015-r1/venv/bin/python "$source_dir/campaign.py" "$output" &
-child=$!
-wait "$child"
-child=''
+attempt=${2:?unique attempt directory}
+mkdir -p "$attempt/tmp" "$attempt/cupy-cache"
+/usr/bin/python3 "$source_dir/clean_exec.py" "$attempt" python "$source_dir/campaign.py" "$attempt/results"

@@ -1,30 +1,33 @@
-# Controlled one-BD stream/count comparison
+# Perlmutter controlled stream and duration comparison
 
-User asks to resolve whether stream count or dataset length accounts for the
-earlier ~2.15 versus ~1.19 GiB/s single-BD cold staging results.
+Continue the transferred task on branch work/perlmutter-sim10-stream-length.
+Base d7e573f7b. Do not touch other checkouts or their builds.
+One BD/one physical GPU, SMD0+EB helpers masked before MPI/psana/CuPy imports.
+Cray MPICH via srun, constant physical CPU affinity and NUMA interleave.
+Same transferred five JF files for 10k prefix and 100k full duration; streams 1/2,
+two repeats in reverse order after two 1000-event pilots. Fixed batch100,
+SMD1000, bulk524288B, budget6GiB, compatON, 8 workers, 1MiB tasks,16MiB bounce,
+automatic direct I/O OFF. Descriptor staging only, no calibration or expansion.
 
-Run one BD on one physical A100, same node and GPU throughout: streams 1/2
-crossed with 10,000/100,000 events. Two repetitions in reverse order, two short
-stream pilots. Use the same accepted 100k Sim10 files; 10k is a prefix, not a
-separate file layout. This tests read-window duration, not physical file size.
-Batch100, SMD1000, bulk512KiB, budget6GiB, KvikIO compatibility ON,8workers,
-1MiB tasks,16MiB bounce, automatic direct I/O OFF; shared physical CPU affinity
-and NUMA interleave identical throughout. Keep the previously frozen runtime.
+Use original generation.json plus explicit transfer relocation manifest; retain
+source receipt and independently SHA256 all files on compute. Validate Names,
+panel order, SMD timestamps/offsets and complete DataSource subset traversal.
+Reuse frozen Perlmutter install-B, verify eight Python identities plus native
+imports, Cray MPI and GPU operation. No framework or installed-file edits.
 
-Cold Weka FFB input copy only; no NVMe payload staging. SHA-verified owner-only
-copy, zero local file residency after DataSource setup before every run; NIC
-physical counters and idle window, backend/SMD caches uncontrolled.
-Staging/descriptor task only: no expansion/calibration/cube/payload D2H.
+Cold scope is local page cache on Lustre only. Owner/path/size-guarded
+fsync/FADV_DONTNEED plus mincore after setup must show zero pages. No global
+cache drop, no staging copy or deletion of transferred data. Raw llite/CXI
+counter discovery is diagnostic; remote traffic remains explicitly unverified.
+Timing includes startup/fill/drain; backend caches remain uncontrolled and later
+10k prefixes follow full-file reads. No direct Weka reproduction claim.
 
-Acceptance: exact event identities, 5 reads/event with exact bytes/histogram,
-requested CUDA stream counts exercised, same host/GPU/runtime/placement, correct
-BD peer discovery, all resources drained, no CPU payload reads or pressure
-drains; independently audit native records and negative-check audit mutations.
-Preserve failure evidence; no pass without complete and cleanup receipts.
-Report individual repeats, paired ratios and NIC measurements, not statistical
-significance or an attributed node effect. Node effects require another node.
+Require exact ordered identities, bytes/read counts/histograms/callbacks,
+requested streams exercised, GPU masks, one job/node/GPU, frozen runtime,
+no pressure drains or CPU payload reads, complete retirement and cleanup.
+Independent audit and negative mutations require native receipts; absent native
+evidence is not acceptance. Report individual repeats, medians and paired ratios.
 
-Use implement-review-loop, up to three rounds, separate detached read-only
-Claude review. Branch work/synthetic-mfx-scan; no production framework changes.
-Outputs under project scratch synthetic_mfx/sim10_stream_length_20261109_r1;
-temporary FFB copy removed only after work ends.
+Use implement-review-loop, three new rounds for this Perlmutter implementation,
+separate detached read-only Claude review. Review native results separately.
+All logs, caches and reviewer worktrees under unique scratch task attempts.

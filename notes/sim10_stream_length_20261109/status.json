@@ -1,8 +1,8 @@
 {
-  "phase": "perlmutter_data_transferred_runtime_pending",
+  "phase": "perlmutter_implementation_preflight",
   "accepted": false,
-  "base_commit": "3d6a034b7",
-  "review_round": 2,
+  "base_commit": "d7e573f7b",
+  "review_round": 0,
   "review_limit": 3,
   "unresolved": [],
   "checks": {
@@ -18,8 +18,9 @@
   "implementation_commit": "21f56de8884dc386d2d0ae65d159a795ed448614",
   "artifact_root": "/sdf/data/lcls/ds/prj/prjdatpsana/scratch/synthetic_mfx/sim10_stream_length_20261109_r1",
   "remaining": [
-    "receiving agent verifies relocated fixture and bigdata SHA256, then adapts runner/audit for Perlmutter",
-    "native tests and results review"
+    "Compute fixture validation and pilots/matrix",
+    "Implementation and native results review",
+    "Native audit mutation tests"
   ],
   "sdf_job_state": "CANCELLED before start",
   "cancellation_pacific": "2026-11-09T16:05:24",

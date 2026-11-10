@@ -28,7 +28,7 @@ class Audit(unittest.TestCase):
         def change(r):
             for c in r['rows'][2]['callbacks']:c['stream']=1
         self.rejects(change,'Execution streams')
-    def test_nic(self):self.rejects(lambda r:next(iter(r['measurement']['nic_delta'].values())).update(rx_bytes=0),'NIC bracket/delta')
+    def test_bracket(self):self.rejects(lambda r:r['measurement']['diagnostic_after'].update(monotonic=0),'Diagnostic bracket')
     def test_settings(self):self.rejects(lambda r:r['framework'].update(streams=1),'Framework settings')
     def metadata(self,name,fn,pattern):
         p=self.root/name;r=json.loads(p.read_text());fn(r);p.write_text(json.dumps(r))
@@ -37,10 +37,16 @@ class Audit(unittest.TestCase):
     def test_staged_set(self):self.metadata('provenance.json',lambda r:r['staged'].pop(),'Staged file set')
     def test_fixture_identity(self):self.metadata('inputs.json',lambda r:r['timestamps'].__setitem__(0,0),'Fixture identity')
     def test_matrix(self):self.metadata('complete.json',lambda r:r['cases'].pop(),'Case matrix')
-    def test_cleanup(self):self.metadata('cleanup.json',lambda r:r.update(removed=False),'Incomplete sweep/cleanup')
+    def test_cleanup(self):self.metadata('cleanup.json',lambda r:r.update(processes_exited=False),'Incomplete sweep/cleanup')
     def test_timer(self):self.rejects(lambda r:r['measurement'].update(seconds=r['seconds']+1),'Timer identity')
     def test_event_setting(self):self.rejects(lambda r:r['settings'].update(events=10000),'Case identity')
     def test_stream_setting(self):self.rejects(lambda r:r['settings'].update(streams=1),'Case identity')
-    def test_runtime(self):self.rejects(lambda r:r['rows'][2]['runtime_files'].clear(),'CPU/runtime changed')
+    def test_runtime(self):self.rejects(lambda r:r['rows'][2]['runtime_files'].clear(),'Frozen runtime')
     def test_helper(self):self.rejects(lambda r:r['rows'][0]['timestamps'].append(0),'Helper data')
+    def test_mode(self):self.rejects(lambda r:r['measurement'].update(mode='network cold'),'Measurement mode')
+    def test_mask(self):self.rejects(lambda r:r['rows'][0].update(mask='GPU-wrong'),'Rank GPU masks')
+    def test_job(self):self.rejects(lambda r:r.update(job='different'),'Job identity')
+    def test_admission(self):self.rejects(lambda r:r['rows'][2]['admission'][0].update(capacity=0),'Admission budget')
+    def test_retirement(self):self.rejects(lambda r:r['rows'][2].update(cleanup_complete=False),'Cleanup/MPI')
+    def test_native_acceptance(self):self.metadata('validation.json',lambda r:r.update(status='fail'),'Native input acceptance')
 if __name__=='__main__':unittest.main()
