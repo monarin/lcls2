@@ -4,6 +4,7 @@ The fake loader is used only by this test executable, never by pilot.py CLI.
 """
 import ast
 import contextlib
+import ctypes
 import io
 import json
 import os
@@ -25,7 +26,7 @@ def fake_loader(spec):
     calls = []
     fault = spec.get('test_fault')
     fault_camera = spec.get('test_fault_camera', spec['camera'])
-    bad = spec['camera'] == fault_camera
+    bad = spec['camera'] == fault_camera or fault_camera == 'both'
     pc = types.SimpleNamespace()
 
     class Tx:
@@ -47,12 +48,24 @@ def fake_loader(spec):
             self._cur, self._resp = [], []
 
         def _await(self):
-            if bad and fault == 'gcp_timeout' and calls[-1] == 'gcp':
+            trial = spec['trials'][0] + calls.count('alloc') - 1
+            active = bad and trial == spec.get('test_fault_trial', trial)
+            if calls and calls[-1] == 'gcp':
+                time.sleep(spec.get('test_allocation_delay', {}).get(spec['camera'], 0.))
+            if active and fault == 'process_exit' and calls[-1] == 'gcp':
+                os._exit(3)
+            if active and fault == 'vt_timeout' and calls[-1] == 'vt':
+                raise Exception('*** await: prompt not seen: len 0, resp: []')
+            if active and fault == 'gcp_timeout' and calls[-1] == 'gcp':
+                pilot.write_json(Path(spec['directory']) / 'fake_calls.json', calls)
                 raise Exception('*** await: prompt not seen: len 0, resp: []')
 
     class Root:
         def stop(self):
             calls.append('stop')
+            pilot.write_json(Path(spec['directory']) / 'fake_calls.json', calls)
+            if bad and spec.get('test_cleanup_hang') == 'gil':
+                ctypes.PyDLL(None).sleep(20)
             if bad and (fault == 'stop_hang' or spec.get('test_cleanup_hang')):
                 while True:
                     time.sleep(1)
@@ -89,6 +102,7 @@ def fake_loader(spec):
         root.rx._await()
         root.tx.sendString('vv')
         root.rx._await()
+        pilot.write_json(Path(spec['directory']) / 'fake_calls.json', calls)
         return {'model': '02', 'serno': 'fake', 'paddr': 0xff061508}
 
     def shutdown():

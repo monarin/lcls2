@@ -1,0 +1,11 @@
+{
+  "scope": "local Piranha hold-on-error implementation; no hardware",
+  "phase": "ready_for_independent_review",
+  "round": 0,
+  "round_limit": 3,
+  "implementation_sha": null,
+  "review_sha": null,
+  "unresolved_ids": [],
+  "hardware_executed": false,
+  "checks": ["54 offline tests passed; zero skips", "pinned software-only PyRogue/SimpleClient proof passed", "dry-run and diff check passed"]
+}

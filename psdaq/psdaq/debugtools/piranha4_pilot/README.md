@@ -3,8 +3,9 @@
 Prepared for issue 205. **Cold/warm hardware smoke tests passed on November 6 and 9, 2026; the intermittent timeout has not been reproduced.**
 
 See the [routine-check work overview](../../../../notes/tmo-piranha-routine-check/README.md)
-for results, review history and the staged hold-on-error design. Hold-on-error
-is planned and reviewed, but is not implemented in this pilot.
+for historical results and review history. The opt-in hold implementation is
+under local verification; it has not been rehearsed on hardware. The earlier
+successful hardware trials validate only the original, non-hold pilot.
 This standalone driver invokes the deployed `piranha4_init`, `init_feb`,
 `connectionInfo` and `connectionShutdown` functions. It does not start control,
 TEB, MEB, Configure, acquisition or recording. It does open the real board,
@@ -23,8 +24,9 @@ The harness does not stop jobs, obtain an allocation or reset hardware.
 The execution flags attest that you established exclusivity. Preflight checks
 visible `/proc` device holders and barrier listeners; it cannot see all other
 users' descriptors and therefore cannot prove the board is free. Its advisory
-lock excludes concurrent instances of this harness only. Do not connect a
-GUI/VirtualClient to the PyRogue servers created by the child processes.
+lock excludes concurrent instances of this harness only. Do not attach clients
+during ordinary trials. Inspection clients require an acknowledged hold and
+the procedure below; generic clients are write-capable, not enforced spy mode.
 
 The driver is pinned to the observed November 3 release and source hashes.
 If the deployment changed, stop and review the new baseline; do not bypass
@@ -42,7 +44,7 @@ operator-approved test directory, not into the production installation.
 
 ```bash
 source /sdf/group/lcls/ds/ana/sw/conda2/rel/tmo/lcls2_110326_disable000/setup_env_daq.sh
-PIRANHA_PILOT=/sdf/home/m/monarin/lcls2/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py
+PIRANHA_PILOT=/sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py
 
 # Preview only: no hardware imports, children or device opens.
 python "$PIRANHA_PILOT" --cameras fzp --mode cold --trials 1
@@ -102,7 +104,8 @@ validated reproduction of the intermittent camera fault. Larger trials (maximum
 ## Results and recovery
 
 Exit code 0 and `summary.json` with `ok: true` mean every requested call returned
-and child cleanup completed. Any nonzero exit or `ok: false` means stop and inspect:
+and child cleanup completed, except rehearsal explicitly ends after its selected
+trial. Any nonzero exit or `ok: false` means stop and inspect:
 
 - `manifest.json` / `summary.json`: parameters, process groups, PIDs, trial results,
   errors, forced kills and unreaped PIDs. No authentication variables are dumped.
@@ -136,16 +139,108 @@ After **every** run, verify no test processes/listeners/device opens remain.
 normal DAQ configuration and verify readiness before returning to operations.
 Do not auto-reset or automatically repeat a failed trial.
 
+## Opt-in inspection contract
+
+Use Python 3.9+ and copy the **whole pilot directory**, not just `pilot.py`.
+Manifests record hashes of all local runtime modules as well as the existing
+deployed-source provenance. No hold mode changes the production UART commands,
+waits, parser, polling, server exposure or host/source/exclusivity gates.
+
+These examples are **dry-runs** and do not open hardware:
+
+```bash
+python "$PIRANHA_PILOT" --cameras both --mode warm --trials 3 \
+  --hold-on-error --hold-seconds 900
+python "$PIRANHA_PILOT" --cameras both --trials 1 \
+  --inspect-after-trial 1 --hold-seconds 60
+```
+
+`--hold-on-error` and `--inspect-after-trial N` are mutually exclusive. A supplied
+`--hold-seconds` requires one of them; it must be finite, positive and at most
+3600 seconds (default 900). Rehearsal requires `1 <= N <= trials`. It holds only
+after every camera succeeds, labels the hold `rehearsal`, and ends the campaign
+on release. A genuine error during rehearsal remains a failure and cleans up;
+it is never disguised as a successful rehearsal or a synthetic reproduction.
+
+| Event | Enabled-mode behavior |
+|---|---|
+| All allocations succeed | Parent authorizes deallocation; await results before another trial |
+| Exact allocation GCP prompt timeout after init | Preserve failure, retain every selected root, cancel later trials |
+| Successful peer finishes early | Park before shutdown, including final cold/warm trial |
+| Entry/CPA/VT/VV/init error, loss of original capture | Fail and clean up; no ready inspection |
+| Missing/dead/hung peer, missing hold acknowledgment | Inspection unavailable; bounded group cleanup |
+| Late ring overflow | Retain original; expose late losses and overwritten intervals |
+| Snapshot/client diagnostics publication I/O failure | Inspection unavailable; bounded cleanup |
+| Invalid/stale release | Reject/record it; never release another campaign |
+| Operator release, hold expiry, parent signal/loss | End inspection and clean up; never retry allocation |
+
+Each worker moves through `initializing`, `ready`, `allocating`,
+`allocation_done` or `target_failure`, `held`, `releasing`, then `released`
+or `cleanup_failed`. Errors can enter `inspection_unavailable`. Per-camera
+`hold.json` has camera/lane/PID, campaign/trial, endpoint, timestamps and release
+reason. Parent `hold.json` is `held` **only after every worker acknowledges**
+being parked before shutdown. A peer inside `connectionInfo()` may complete its
+remaining GCP/VT/VV operations first: this is live state, not a frozen snapshot.
+Enabled coordination overhead is recorded in `coordinated_seconds`.
+
+The first detected target sets a shared monotonic deadline; hold setup cannot
+extend it. Both parent and workers enforce it independently of ordinary trial
+timers. The parent retains the board lock. Inherited, run/trial-validated socket
+channels carry control decisions; old result/release files cannot authorize a
+new allocation. Parent-control EOF releases responsive orphaned workers.
+An independent watchdog interpreter bounds worker cleanup even if native code
+holds the Python GIL. Kernel-uninterruptible I/O can still prevent actual exit;
+missing `exit.json` or unreaped/forced-kill records mean cleanup is unverified.
+
+## Inspect and release an acknowledged hold
+
+After implementation review, a new authorized exclusive-board window is needed
+for the first hardware rehearsal. It is **not authorized by these instructions**.
+The parent prints the run's `hold.json`, both existing server endpoints, and an
+exact release command. Run release on the same host, in another terminal:
+
+```bash
+python "$PIRANHA_PILOT" --release /absolute/run/directory --campaign-id TOKEN_FROM_HOLD_JSON
+```
+
+This writes an atomic run/trial-scoped request; it does not claim cleanup has
+finished. Wait for final `hold.json`, `summary.json`, and every `exit.json`.
+An original target timeout remains nonzero even if delayed RX arrives or later
+inspection suggests recovery. GUI disconnection does not release or extend the
+hold; the bounded deadline and file evidence are independent of the client.
+
+Use the matching pinned PyRogue environment and the printed cached-only Python
+client command. It reads only the software diagnostic variable, never `get()`.
+The printed GUI command attaches to the **existing** root. Do not launch
+CameraLink `devGui.py`: it constructs a second hardware root and has no `--spy`
+option. For SSH routing, forward all three advertised ports without changing
+the server's bind address, and use matching local ports for base/base+1/base+2.
+
+Generic GUI/VirtualClient tools can write. Initially avoid ReadAll, register
+refresh, polling changes, GCP/VT/VV, UART clear/escape, reset and any hardware
+read. `SimpleClient.value()` reads cached values; `get()` requests a read.
+Polling is disabled, so caches can be stale. Receiver diagnostics are bounded,
+non-atomic software samples, not synchronized device snapshots. Late capture
+uses a 4 MiB/20,000-event ring and four rotating snapshots, nominally at most
+once per second plus state-boundary snapshots. Original failure files are never
+rewritten by inspection. Instrumented UART TX is not a complete register-write
+audit. Before any deliberate intervention, preserve a pre-intervention snapshot
+and record its UTC time and exact action separately from passive observation.
+
 ## Offline checks
 
 ```bash
-python3 -m unittest discover \
-  -s /sdf/home/m/monarin/lcls2/psdaq/psdaq/debugtools/piranha4_pilot \
+/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python -m unittest discover \
+  -s /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot \
   -p 'test_*.py' -v
 ```
 
-Tests use explicit fake child processes. They exercise orchestration, gates,
-capture bounds, failure propagation and watchdog cleanup without importing
-hardware libraries. The separate prior offline verification exercised the
+Lifecycle tests use explicit fake child processes, including a native call that
+retains the GIL during orphan cleanup. Evidence tests also use a real pinned
+PyRogue root with software-only nodes and loopback sockets; no gateway/device is
+constructed. The fixture selects an available port triplet and disables its
+heartbeat; it does not validate production startup or a real GUI/network route.
+Missing pinned libraries cause an explicit skip, not proof of compatibility.
+The separate prior offline verification exercised the
 original receiver/connectionInfo logic with fake hardware. Neither is a real
 hardware trial or a proof that the production race will recur.

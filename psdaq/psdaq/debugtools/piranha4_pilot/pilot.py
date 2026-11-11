@@ -5,7 +5,6 @@ No DAQ or hardware packages are imported by the parent. Only explicitly gated
 child processes open hardware. Run this file by path using the deployed Python.
 """
 import argparse
-from collections import deque
 import datetime
 import fcntl
 import hashlib
@@ -19,9 +18,11 @@ import socket
 import stat
 import subprocess
 import sys
-import threading
 import time
 import traceback
+
+import inspection
+from evidence import Capture, InspectionRecorder, endpoint, install_diagnostics
 
 HOST = 'drp-srcf-cmp013'
 DEVICE = '/dev/datadev_0'
@@ -48,6 +49,11 @@ def read_json(path):
 
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def local_sources():
+    return {name: sha(Path(__file__).with_name(name)) for name in
+            ('pilot.py', 'inspection.py', 'control.py', 'evidence.py', 'inspect_hold.py')}
 
 
 def check_environment():
@@ -91,48 +97,6 @@ def preflight():
                 raise RuntimeError('Barrier listener already present: ' + cols[1])
     return {'visible_device_holders': holders, 'inaccessible_process_fd_directories': unreadable,
             'limitation': 'Operator must establish exclusive board access, including invisible clients.'}
-
-
-class Capture:
-    """Bounded raw RX ring; callbacks never write to disk or send UART traffic."""
-    def __init__(self, max_bytes=4 * 1024 * 1024, max_events=20000):
-        self.max_bytes, self.max_events = max_bytes, max_events
-        self.events = deque()
-        self.size = self.dropped = 0
-        self.lock = threading.Lock()
-        self.phase = 'init'
-        self.wait_index = 0
-        self.failure_phase = None
-        self.receiver = None
-        self.initializing = True
-
-    def add(self, kind, raw=b'', **fields):
-        event = dict(kind=kind, monotonic=time.monotonic(), phase=self.phase, **fields)
-        event['raw_hex'] = raw.hex()
-        # Bound stored text as well as raw payloads.
-        cost = len(json.dumps(event, ensure_ascii=True))
-        with self.lock:
-            if cost > self.max_bytes:
-                self.dropped += 1
-                return
-            while self.events and (self.size + cost > self.max_bytes or len(self.events) >= self.max_events):
-                old_cost, _ = self.events.popleft()
-                self.size -= old_cost
-                self.dropped += 1
-            self.events.append((cost, event))
-            self.size += cost
-
-    def dump(self, path, drain=False):
-        with self.lock:
-            events = [entry for _, entry in self.events]
-            dropped = self.dropped
-            if drain:
-                self.events.clear()
-                self.size = self.dropped = 0
-        write_json(path, {'events': events, 'dropped_events': dropped,
-                          'cur': list(self.receiver._cur) if self.receiver else None,
-                          'resp': list(self.receiver._resp) if self.receiver else None})
-        return dropped
 
 
 def instrument(pc, capture):
@@ -207,6 +171,8 @@ def on_signal(signum, frame):
 
 def child_main(spec, loader=load_real):
     """One interpreter/root per camera. Parent supplies an identical Alloc body."""
+    if inspection.enabled(spec):
+        return inspection.run_child(spec, loader, sys.modules[__name__])
     if not (spec.get('execute') and spec.get('daq_stopped')):
         raise RuntimeError('Worker requires explicit execute and DAQ-stopped flags')
     directory = Path(spec['directory'])
@@ -358,11 +324,13 @@ def pause_children(children, duration):
 
 def run_controller(config, output, worker_prefix=None):
     """Testable orchestration; CLI performs host/environment/exclusivity gates."""
+    if inspection.enabled(config):
+        return inspection.run_controller(config, output, worker_prefix, sys.modules[__name__])
     worker_prefix = worker_prefix or [sys.executable, '-u', str(Path(__file__).resolve()), '--worker-spec']
     output = Path(output)
     output.mkdir(mode=0o700, parents=True, exist_ok=False)
     summary = {'ok': False, 'config': config, 'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
-               'script_sha256': sha(__file__), 'trials': [], 'groups': []}
+               'script_sha256': sha(__file__), 'local_sources_sha256': local_sources(), 'trials': [], 'groups': []}
     write_json(output / 'manifest.json', summary)
     groups = [[i] for i in range(1, config['trials'] + 1)] if config['mode'] == 'cold' else [list(range(1, config['trials'] + 1))]
     children = []
@@ -443,12 +411,37 @@ def main(argv=None):
     parser.add_argument('--output', type=Path)
     parser.add_argument('--execute', action='store_true')
     parser.add_argument('--daq-stopped', action='store_true', help='Operator confirms exclusive board access')
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument('--hold-on-error', action='store_true', help='Retain both roots after allocation GCP timeout')
+    modes.add_argument('--inspect-after-trial', type=int, help='Successful-trial rehearsal; release ends the campaign')
+    parser.add_argument('--hold-seconds', type=float, help='Inspection duration (default 900; maximum 3600)')
+    parser.add_argument('--release', type=Path, help='Release an existing hold in this campaign directory')
+    parser.add_argument('--campaign-id', help='Exact campaign token from hold.json, required with --release')
     parser.add_argument('--worker-spec', type=Path, help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
     if args.worker_spec:
         return child_main(read_json(args.worker_spec))
+    if args.release or args.campaign_id:
+        if (not args.release or not args.campaign_id or args.execute or args.hold_on_error
+                or args.inspect_after_trial is not None or args.hold_seconds is not None):
+            parser.error('--release requires --campaign-id and cannot start another campaign')
+        try:
+            inspection.release(args.release, args.campaign_id, sys.modules[__name__])
+        except (OSError, ValueError, KeyError) as exc:
+            parser.error(str(exc))
+        print('Release requested; check hold.json and summary.json for verified cleanup')
+        return 0
     if not 1 <= args.trials <= 300:
         parser.error('--trials must be 1..300')
+    if args.inspect_after_trial is not None and not 1 <= args.inspect_after_trial <= args.trials:
+        parser.error('--inspect-after-trial must be within 1..trials')
+    if args.hold_seconds is not None:
+        if not inspection.enabled(vars(args)):
+            parser.error('--hold-seconds requires an inspection mode')
+        if not math.isfinite(args.hold_seconds) or not 0 < args.hold_seconds <= 3600:
+            parser.error('--hold-seconds must be finite, positive and at most 3600')
+    elif inspection.enabled(vars(args)):
+        args.hold_seconds = 900.
     for name in ('settle_seconds', 'interval', 'timeout', 'cleanup_timeout'):
         value = getattr(args, name)
         if not math.isfinite(value) or value < 0 or (name.endswith('timeout') and value == 0):
@@ -456,6 +449,8 @@ def main(argv=None):
     config = vars(args).copy()
     config.pop('worker_spec')
     config.pop('output')
+    config.pop('release')
+    config.pop('campaign_id')
     config['cameras'] = ['fzp', 'atm'] if args.cameras == 'both' else [args.cameras]
     if not args.execute:
         print(json.dumps({'dry_run': True, 'host': HOST, 'device': DEVICE, 'plan': config,

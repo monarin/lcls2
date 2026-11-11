@@ -13,11 +13,12 @@ attempts on November 6 and 9 passed; the intermittent allocation GCP timeout
 (issue 205) has not been reproduced. This is limited smoke-test evidence, not
 proof of full-DAQ operation or absence of the fault.
 
-The hold-on-error inspection design passed independent review. It is not yet
-implemented: the current pilot still cleans up after an error. Start future
-implementation with the staged plan below. A new hardware test requires a current
-exclusive-board window; the historical confirmations are not ongoing reservations.
-No hardware was accessed during branch consolidation.
+The hold-on-error inspection design passed independent review. Local implementation
+and offline verification are now in progress; see the
+[implementation/review record](../tmo-piranha-hold-implementation-20261111/status.json).
+The new hold path has not been tested on hardware. A new hardware test requires
+a current exclusive-board window; historical confirmations are not ongoing
+reservations. No hardware is accessed during local implementation/review.
 
 ## Code, design and review
 
@@ -38,8 +39,10 @@ Historical preparation documents retain the status at the time they were written
 those time-specific status statements. Historical SHAs and absolute run paths
 are retained as provenance; use [commit-map.json](commit-map.json) to locate the
 transplanted commits and the table below to locate archived run data in this branch.
-The reviewed pilot source is unchanged (SHA256
-`d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804`).
+The historical hardware-tested pilot had SHA256
+`d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804`.
+New hold-enabled runs record hashes of all local runtime modules; do not
+attribute the historical hardware results to the new implementation.
 
 ## Recorded hardware tests
 
@@ -76,11 +79,12 @@ from the original result directories.
 
 ## Next work
 
-Follow the six-stage hold plan: controls/status; paired process coordination;
-immutable and late UART evidence; client inspection and bounded cleanup;
-offline testing plus implementation review; then authorized hardware rehearsal
-and a bounded cold/warm campaign. The existing-server GUI is write-capable, not
-an enforced spy interface. Do not open another Rogue hardware root for inspection.
+Complete local verification and independent review of the hold implementation,
+then obtain a new exclusive-board window for hardware rehearsal and a bounded
+cold/warm campaign. The existing-server GUI is write-capable, not an enforced
+spy interface. Do not open another Rogue hardware root for inspection. See the
+[implementation scope](../tmo-piranha-hold-implementation-20261111/scope.md) for
+acceptance checks and remaining hardware boundaries.
 
 ## Consolidation checks
 
