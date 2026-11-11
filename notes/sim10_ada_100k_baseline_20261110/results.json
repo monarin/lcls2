@@ -16,7 +16,7 @@
       "auto_direct_io_read": false
     }
   },
-  "status": "automatic-audit-pass-independent-results-review-pending",
+  "status": "accepted-audit-and-independent-review-pass",
   "scope": "Descriptor staging only; no blow-up, calibration, cube or payload D2H",
   "summary": [
     {
@@ -3111,5 +3111,6 @@
         "callbacks_match": true
       }
     }
-  ]
+  ],
+  "reviewed_results_sha": "596b17248e17d7ec933c1fc2e4f7d0c05db74126"
 }

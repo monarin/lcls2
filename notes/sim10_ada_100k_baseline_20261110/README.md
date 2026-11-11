@@ -1,8 +1,8 @@
 # 100k-event matched baseline on Ada
 
 Job **44189224 completed successfully** on sdfada016, November 10,
-16:04:39–16:20:29 PST (15m50s total). Automatic audit passed; independent
-results review pending. Measured harness: `7a727fd242754338be1720c457e579e6278edeb6`.
+16:04:39–16:20:29 PST (15m50s total). Automatic audit and independent
+results review passed (round 2, `596b17248`). Measured harness: `7a727fd242754338be1720c457e579e6278edeb6`.
 PR runtime: `67c327a148a08b2aaf972e67e1e02e367c2b298f` (PR #298).
 
 | Streams | Repeat 1 GiB/s | Repeat 2 GiB/s | Median GiB/s | Median events/s | Median loop seconds |

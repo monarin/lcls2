@@ -283,3 +283,24 @@ For10k events /31.28GiB per pass, median1stream3.409GiB/s versus2streams3.269GiB
 zero initial JF page-cache residency, SMDwarm. See Ada results record; independent
 results review passed (round3, fbeeddebe). Next is matching100k1BD/1–2stream run,
 then BD scaling, after carrying forward the two documented harness hardening items.
+
+
+### Matched 100k Ada baseline completed — November 10
+
+Job44189224 completed on the same sdfada016 L40S UUID and physical cores0–23,
+with the same corrected PR298 runtime and settings (one BD, batch100,
+512KiB bulk, KvikIO8workers/1MiBtasks/16MiBbounce, fallbackON).
+For100k events /312.76GiB per pass, one/two stream median rates were
+**3.019/2.870GiB/s** (two streams4.94%lower), with two repeats each.
+These are11.44%/12.21%below the matched10k medians: longer input did not
+improve this one-BD result, without establishing causality or a storage ceiling.
+All500k requests and1000callbacks/pass matched, initial JF residency was zero,
+NICRX330.476–330.593GiB/pass,31GPU tests passed, cleanup and evidence audit
+passed, and Claude results review passed at596b17248. See
+[100k Ada baseline](sim10_ada_100k_baseline_20261110/README.md).
+
+Next: corrected1–4BD/oneGPU100k screen with fixed CPU allowance and explicit
+total KvikIO workers, before batching/task-size tuning and cube restoration.
+No subsequent job is submitted. Carry forward explicit --chdir in the next
+submission helper, optional prompt copy cancellation and reverse-tree native
+inventory checks; the build-config and canonical-path followups are closed.

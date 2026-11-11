@@ -1,0 +1,78 @@
+{
+  "reviewed_commit": "596b17248e17d7ec933c1fc2e4f7d0c05db74126",
+  "verdict": "pass",
+  "summary": "Round-2 results review of the matched 100k Ada baseline recorded at 596b17248. All required artifacts are present in notes/sim10_ada_100k_baseline_20261110: scope.md, README.md, status.json, results.json, audit.json (status pass), runtime-evidence.json, artifact-index.json, complete.json (status pass, six cases in order preflight-1, preflight-2, 1,2,2,1), cleanup.json (removed true), gpu-tests.json (exit 0, 31 passed, 0 failed, 0 skipped), slurm-completed.txt and slurm-job.txt (job 44189224 COMPLETED 0:0, sdfada016, 16:04:39 to 16:20:29, 15m50s, WorkDir equals the shared artifact root). Arithmetic verified: one-stream median 3.0192892363 GiB/s is the mean of 3.0186967095 and 3.0198817630; two-stream median 2.8700860010 is the mean of 2.8618884551 and 2.8782835470; the two-stream change is -4.9417%; median seconds 103.5862/108.9721 and median events/s 965.379/917.674 follow from the per-case values; 335820000000 bytes / 2^30 = 312.7567 GiB and divided by 103.6065 s gives 3.0187 GiB/s; the 10k comparison medians 3.4094/3.2694 are in notes/sim10_ada_baseline_20261110/results.json and the 100k medians are 11.44%/12.21% lower as stated. Per-pass evidence is uniform across the four full passes: 500000 requests, 335820000000 requested and completed bytes, read-size histogram {524724:100000, 629664:100000, 734604:300000} summing to 3358200 bytes per event, 1000 callbacks of 100, 100000 unique timestamps matching the reference, callbacks matching, zero pressure drains, zero CPU reads, peak outstanding 500 requests / 335820000 bytes, drain closed with zero pending/active/held, zero resident JF pages in both initial and conditioned snapshots for all five files, NIC RX 354845368707 to 354971658576 bytes (330.476 to 330.593 GiB, 1.05665 to 1.05703 times requested) on enp69s0f0np0 only, idle RX 0.996 to 1.079 MiB/s, and NIC bracket durations slightly exceeding loop timers in every pass. Controls match the 10k baseline: same GPU UUID GPU-075afbaf-4e77-c882-8d56-bd1dc489b71a, L40S, cores 0-23 with NUMA interleave on all three ranks, KvikIO 26.10 compat ON with 8 threads / 1 MiB tasks / 16 MiB bounce / auto direct I/O off, batch 100, SMD 1000, 512 KiB bulk, 6 GiB budget. runtime-evidence.json shows every module's observed SHA256 equal to the expected receipt, 225 native sources checked, exactly one allow-listed config mismatch (psana/meson.build), ten staged files with sizes summing to 335820951264 JF bytes, wekafs FFB mount, and the chosen UUID drawn from an exclusive 10-GPU allocation as the README discloses. Raw result hashes in results.json agree with artifact-index.json. README claims are hedged appropriately: no causal attribution of the 100k-vs-10k gap, no storage ceiling, no kernel-overlap claim, backend caches and SMD warmth stated as uncontrolled. Prior findings ADA-08/ADA-09 remain closed; BDS-02 did not materialise (cleanup succeeded) and the README now carries the orphan-recovery path and timing allowance; ADA-11 deferral is supported by the recorded Slurm WorkDir. One new low, non-blocking housekeeping finding: status.json still reports checks.gpu_execution as pending although job_state, results_audit and gpu_tests in the same file record completion. The recorded results are accepted as a two-repeat-per-setting baseline with the stated limitations; no further compute is requested.",
+  "checks": [
+    "Read all twelve required files in notes/sim10_ada_100k_baseline_20261110 plus audit.py, run.sbatch, submission.json, validation.json, review-01/review.json and review-01/context.md; read the first 1410 lines of notes/sim10_ada_baseline_20261110/results.json and grepped the remainder for medians and per-case rates.",
+    "results.json medians recomputed from per-case gib_s, seconds and hz: one-stream (3.018696709541234+3.0198817630359107)/2 = 3.0192892362885724; two-stream (2.861888455093431+2.87828354697282)/2 = 2.8700860010331253; seconds 103.58621999 and 108.97209991; events/s 965.379409 and 917.673569; two_stream_rate_change_percent -4.941667 all match the file.",
+    "Rate derivation checked: 335820000000/2^30 = 312.7567 GiB; 312.7567/103.60654848790728 = 3.018697 GiB/s; 100000/103.60654848790728 = 965.19 Hz, matching 00-stream1.",
+    "10k comparison checked against notes/sim10_ada_baseline_20261110/results.json summary: 3.409376182938634 and 3.269427430620499 GiB/s medians (job 44185752, same GPU UUID, same node); 3.0192892/3.4093762 = 0.88558 (-11.44%) and 2.8700860/3.2694274 = 0.87786 (-12.21%) as README states; 10k NIC ratio 1.0558 vs 100k 1.0567 are consistent.",
+    "Per-case I/O accounting for all four full passes: requests = completed_requests = 500000, requested_bytes = completed_bytes = 335820000000, histogram {524724:100000,629664:100000,734604:300000} with 524724+629664+3*734604 = 3358200 bytes/event, peak_outstanding 500 requests / 335820000 bytes = 100 events, pressure_drains 0, cpu_reads 0, drain [{closed,0,0,0,1}].",
+    "Timestamp and callback checks for all six cases: count = unique = events, matches_reference true, callbacks_match true, callback_size_histogram {100: events/100}, callbacks_per_stream has exactly `streams` keys splitting evenly (1000 or 500/500).",
+    "Cold-cache evidence: every initial_cache and conditioned_cache entry in all six cases has resident_pages 0 and resident_fraction 0.0 for the five staged JF files; file sizes equal the staged bytes in runtime-evidence.json.",
+    "NIC evidence: enp69s0f0np0 RX 354845368707 / 354939955714 / 354863693199 / 354971658576 bytes = 330.476 to 330.593 GiB, ratios 1.05665 to 1.05703; other three interfaces 0 RX in every bracket; idle RX 1306018/1.1538 s, 1210573/1.1591 s, 1270177/1.1559 s, 1255121/1.1572 s = 0.996 to 1.079 MiB/s; NIC bracket seconds exceed loop seconds in all four passes (e.g. 103.7627 vs 103.6065).",
+    "Pilots: preflight-stream1 2.8716 GiB/s and preflight-stream2 2.9193 GiB/s match README 2.872/2.919; complete.json case order matches audit.py matrix (preflight 1,2 then 1,2,2,1).",
+    "Controls: device mask GPU-075afbaf-4e77-c882-8d56-bd1dc489b71a and PCI 0000:05:00.0 identical to 10k results.json; all three ranks affinity [0..23] with policy interleave; KvikIO effective {8, 1048576, 16777216, false}, compat ON, cupy 14.0.1, kvikio 26.10.00, cuda 12090; framework {batch 100, budget 6, bulk 524288, smd 1000} per case.",
+    "runtime-evidence.json: 13 modules observed sha256 == expected_sha256 (Python modules under attempt01/pr-source, dgram/eventbuilder/smdreader .so under pr187-pr208-integration-20261026-r1/B/install, same hashes as the 10k run); native_sources_checked 225; config_mismatches exactly {psana/meson.build: pr 4cd07821.., frozen 27ae0bce..} matching status.json/validation.json and the round-1 allow-list; staged JF bytes 52472554830+62966580132+3*73460605434 = 335820951264; mount wekafs drpsrcf/ffb; allocation_gpu_mask 0-9 with one chosen UUID.",
+    "artifact-index.json raw_sha256 for the six case files equal the raw_sha256 fields in results.json; slurm-44189224.err is 0 bytes (empty-file SHA256); cleanup.json 101 bytes is consistent with the committed pretty-printed content.",
+    "Slurm records: slurm-job.txt JobState COMPLETED ExitCode 0:0, RunTime 00:15:50 within 01:00:00, ReqNodeList sdfada016, ExcNodeList sdfada011, TresPerNode gres/gpu:l40s:1 with exclusive AllocTRES gres/gpu=10 (disclosed in README), Command and SubmitLine match submission.json, WorkDir is the shared artifact root (ADA-11 deferral evidence); slurm-completed.txt agrees (batch MaxRSS 1535180K).",
+    "run.sbatch unchanged from round 1 (ntasks 3, cpus-per-task 16, time 01:00:00, signal B:TERM@120, audit run after campaign); audit.py unchanged and covers GPU tests, cleanup, FFB mount, PR identity, build allow-list, input identity hash, matrix, exact timestamps, callbacks, read accounting, drain, host/GPU, KvikIO, placement, harness identity, runtime receipt, cold cache, rate, NIC and idle brackets.",
+    "README claims cross-checked line by line against results.json, gpu-tests.json, complete.json, cleanup.json, runtime-evidence.json and slurm-job.txt; hedging on causality, ceiling, overlap, backend cache and SMD warmth present; next 1-4 BD screen stated as not submitted.",
+    "Round-1 follow-ups: ADA-08/09 closed (no code change this commit); BDS-02 orphan recovery and timing allowance now in README lines 82-92 and cleanup succeeded; ADA-11 deferred with WorkDir confirmation; reverse-tree inventory deferred."
+  ],
+  "limitations": [
+    "No commands were run and nothing was hashed or executed. GPU test results, audit pass, Slurm state, staged-file SHA256 values and raw-result hashes are taken from the committed receipts produced by the coordinator's job, not from independent access to hardware or the attempt directory.",
+    "The raw evidence root /sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-100k-baseline-20261110/attempt01 (full timestamp arrays, provenance.json, inputs.json, native-compatibility.json, slurm .out) and the accepted fixture were not readable with the provided tools and were not attempted; the compact results.json fields were checked for internal consistency and against artifact-index.json hashes only.",
+    "Both results.json files exceed the read cap. The 100k file was read in full for lines 1-1329 and inspected for lines 1330-3116 via targeted greps on every numeric and boolean field used in the review; the 10k comparison file was read for lines 1-1410 and grepped for summary and per-case rates.",
+    "Whether the 10k evidence directory is byte-for-byte unchanged by this commit could not be verified without git; the file listing is intact and its results.json medians match the README comparison.",
+    "Stage removal is evidenced by cleanup.json and the coordinator's stated direct existence check; the reviewer cannot inspect the FFB path.",
+    "Median values here are means of two repeats per setting, so they carry no spread estimate beyond the recorded ranges; this is a reporting limitation of the agreed scope, not a defect."
+  ],
+  "findings": [
+    {
+      "id": "ADA-12",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_ada_100k_baseline_20261110/status.json",
+      "line": 24,
+      "evidence": "checks.gpu_execution is still \"pending\" while the same file records job_state COMPLETED, job_exitcode 0:0, results_audit pass and gpu_tests {31,0,0}; validation.json line 19 carries the same pre-launch value. results.json line 19 and README line 4-5 still say independent results review pending, which is expected until this round is recorded.",
+      "requested_change": "When recording this round's verdict, set checks.gpu_execution to the completed state (for example \"pass: job 44189224, 31 GPU tests, audit pass\") and update results.json status / README line 4 to reflect the review outcome. Documentation only."
+    },
+    {
+      "id": "BDS-02",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_ada_100k_baseline_20261110/README.md",
+      "line": 87,
+      "evidence": "The orphan-recovery path and 120-second grace caveat requested in round 1 are now documented (lines 87-92) together with a timing allowance (lines 82-85). cleanup.json records removed true for /sdf/data/lcls/drpsrcf/ffb/users/monarin/sim10-ada-100k-44189224 and the job completed normally, so the risk did not materialise. The campaign.py executor-shutdown behaviour itself is unchanged.",
+      "requested_change": "None for these results. Keep the optional code hardening (chunked copy with stop flag or shutdown(cancel_futures=True)) on the deferred list for the next campaign that stages large inputs."
+    },
+    {
+      "id": "ADA-11",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_ada_100k_baseline_20261110/slurm-job.txt",
+      "line": 25,
+      "evidence": "submit.py still omits --chdir, but slurm-job.txt records WorkDir=/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-100k-baseline-20261110, a shared path, and run.sbatch uses only absolute paths; the launch is reproducible for this job as the README states.",
+      "requested_change": "None for these results. Add --chdir to submit.py before the next submission so the recorded command is self-contained."
+    },
+    {
+      "id": "ADA-08",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_ada_100k_baseline_20261110/runtime-evidence.json",
+      "line": 152,
+      "evidence": "Closed. The persisted config_mismatches contains exactly the allow-listed psana/meson.build pair (pr 4cd07821.., frozen 27ae0bce..) and all other 36 build-configuration entries have identical pr/frozen hashes; audit.py line 15 re-validated it in the job. The reverse-tree inventory (files present in the frozen tree but deleted in the PR) remains uncompared, as deferred.",
+      "requested_change": "None for these results; reverse-tree inventory remains an optional hardening item for a later campaign."
+    },
+    {
+      "id": "ADA-09",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/sim10_ada_100k_baseline_20261110/runtime-evidence.json",
+      "line": 4,
+      "evidence": "Closed. source_is_canonical true; all Python runtime module paths resolve under attempt01/pr-source/psana/psana with observed hashes equal to the receipt's expected hashes.",
+      "requested_change": "None."
+    }
+  ]
+}

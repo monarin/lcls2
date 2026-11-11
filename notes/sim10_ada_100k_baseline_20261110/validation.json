@@ -16,5 +16,7 @@
       }
     }
   },
-  "gpu_execution": "pending"
+  "gpu_execution": "pass: job 44189224, 31 GPU tests, automatic audit pass",
+  "results_review": "pass at 596b17248e17d7ec933c1fc2e4f7d0c05db74126",
+  "artifact_integrity": "17 indexed raw artifacts and 13 live modules rehashed successfully"
 }
