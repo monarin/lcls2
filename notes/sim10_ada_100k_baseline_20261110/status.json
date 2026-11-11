@@ -1,6 +1,6 @@
 {
-  "phase": "submitted",
-  "round": 1,
+  "phase": "results_ready_for_review",
+  "round": 2,
   "round_limit": 3,
   "base_sha": "5f18da747",
   "checks": {
@@ -34,5 +34,13 @@
     "Reverse-tree native/config inventory comparison",
     "BDS-02 prompt staging cancellation (manual orphan recovery documented)",
     "ADA-11 explicit --chdir (shared cwd verified for this launch)"
-  ]
+  ],
+  "job_state": "COMPLETED",
+  "job_exitcode": "0:0",
+  "results_audit": "pass",
+  "gpu_tests": {
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0
+  }
 }
