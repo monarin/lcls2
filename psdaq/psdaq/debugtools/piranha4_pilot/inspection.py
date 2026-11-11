@@ -53,6 +53,7 @@ def run_child(spec, loader, api):
     failure = None
     cleanup_errors = []
     inspection_error = None
+    cancelled = None
     status = dict(identity, state='initializing', updated_utc=utc_now(), endpoint=None,
                   target_timeout=False, deadline_monotonic=None, release_reason=None)
 
@@ -179,14 +180,19 @@ def run_child(spec, loader, api):
             recorder.snapshot(dict(status), force=True)
             break
     except BaseException as exc:
-        inspection_error = repr(exc)
+        is_cancellation = isinstance(exc, SystemExit) and status['state'] in ('held', 'releasing')
         try:
-            save_failure(exc)
-            publish('inspection_unavailable', inspection_error=inspection_error,
-                    release_reason='signal' if isinstance(exc, SystemExit) else 'error')
+            if is_cancellation:
+                cancelled = repr(exc)
+                publish('releasing', cancelled=cancelled, release_reason='signal')
+            else:
+                inspection_error = repr(exc)
+                save_failure(exc)
+                publish('inspection_unavailable', inspection_error=inspection_error,
+                        release_reason='signal' if isinstance(exc, SystemExit) else 'error')
         finally:
             try:
-                channel.send('failed', identity['trial'], error=inspection_error)
+                channel.send('cancelled' if is_cancellation else 'failed', identity['trial'], error=repr(exc))
             except (OSError, ValueError, TimeoutError):
                 pass
     finally:
@@ -203,13 +209,24 @@ def run_child(spec, loader, api):
         try:
             capture.dump(directory / 'uart-final.json')
             publish('cleanup_failed' if cleanup_errors else 'released', root_alive=None if cleanup_errors else False)
-            api.write_json(directory / 'exit.json', dict(identity, ok=not (failure or cleanup_errors or inspection_error),
+            api.write_json(directory / 'exit.json', dict(identity, ok=not (failure or cleanup_errors or inspection_error or cancelled),
                 cleanup_errors=cleanup_errors, inspection_error=inspection_error,
-                release_reason=status['release_reason']))
+                release_reason=status['release_reason'], cancelled=cancelled))
         finally:
             channel.close()
             guard.close()
-    return int(bool(failure or cleanup_errors or inspection_error))
+    return int(bool(failure or cleanup_errors or inspection_error or cancelled))
+
+
+def cleanup_succeeded(children, result, target_timeout, api):
+    clean = not (result['forced_kill_pids'] or result['unreaped_pids'] or result['errors'])
+    for proc, directory, _ in children:
+        path = directory / 'exit.json'
+        record = api.read_json(path) if path.exists() else None
+        clean = clean and bool(record is not None and not record['cleanup_errors']
+            and not record['inspection_error'] and not record.get('cancelled')
+            and proc.returncode in ((0, 1) if target_timeout else (0,)))
+    return clean
 
 
 def collect(children, channels, trial, kinds, deadline, on_message=None):
@@ -336,6 +353,7 @@ def run_controller(config, output, worker_prefix, api):
     children, channels = [], {}
     previous = {sig: signal.signal(sig, api.on_signal) for sig in (signal.SIGINT, signal.SIGTERM)}
     trial = 0
+    signal_release = False
     try:
         for group_index, trials in enumerate(groups, 1):
             group = output / ('process-group-%04d' % group_index)
@@ -381,14 +399,7 @@ def run_controller(config, output, worker_prefix, api):
                     api.pause_children(children, config['interval'])
             group_result = dict(group=group_index, **api.stop_children(children, config['cleanup_timeout'], terminate=False))
             summary['groups'].append(group_result)
-            cleanup_ok = not (group_result['forced_kill_pids'] or group_result['unreaped_pids'] or group_result['errors'])
-            for proc, directory, _ in children:
-                exit_path = directory / 'exit.json'
-                exit_record = api.read_json(exit_path) if exit_path.exists() else None
-                cleanup_ok = cleanup_ok and bool(exit_record is not None and not exit_record['cleanup_errors']
-                    and not exit_record['inspection_error'] and proc.returncode in (0, 1))
-                if not summary['target_timeout']:
-                    cleanup_ok = cleanup_ok and proc.returncode == 0
+            cleanup_ok = cleanup_succeeded(children, group_result, summary['target_timeout'], api)
             children = []
             for channel in channels.values():
                 channel.close()
@@ -408,8 +419,17 @@ def run_controller(config, output, worker_prefix, api):
         hold_path = output / 'hold.json'
         if hold_path.exists():
             record = api.read_json(hold_path)
-            record.update(state='inspection_unavailable', release_reason='signal' if isinstance(exc, SystemExit) else 'error',
-                          error=repr(exc), updated_utc=utc_now())
+            signal_release = isinstance(exc, SystemExit) and record['state'] == 'held'
+            if signal_release:
+                record.update(state='releasing', release_reason='parent_signal', released_utc=utc_now())
+                summary['inspection'] = record
+            elif record['state'] in ('released', 'cleanup_failed'):
+                record['cleanup_error'] = repr(exc)
+                summary['inspection'] = record
+            else:
+                record.update(state='inspection_unavailable',
+                              release_reason=record.get('release_reason') or ('signal' if isinstance(exc, SystemExit) else 'error'))
+            record.update(error=repr(exc), updated_utc=utc_now())
             api.write_json(hold_path, record)
     finally:
         for sig in previous:
@@ -417,11 +437,15 @@ def run_controller(config, output, worker_prefix, api):
         try:
             for channel in channels.values():
                 try:
-                    channel.send('release', trial, reason='parent_shutdown')
+                    channel.send('release', trial, reason='parent_signal' if signal_release else 'parent_shutdown')
                 except (OSError, ValueError, TimeoutError):
                     pass
             if children:
-                summary['abort_cleanup'] = api.stop_children(children, config['cleanup_timeout'], terminate=True)
+                summary['abort_cleanup'] = api.stop_children(children, config['cleanup_timeout'], terminate=not signal_release)
+                if signal_release:
+                    clean = cleanup_succeeded(children, summary['abort_cleanup'], summary['target_timeout'], api)
+                    summary['inspection'].update(state='released' if clean else 'cleanup_failed', cleanup_verified=clean)
+                    api.write_json(output / 'hold.json', summary['inspection'])
                 summary['failure_records'] = []
                 for _, directory, _ in children:
                     path = directory / 'failure.json'

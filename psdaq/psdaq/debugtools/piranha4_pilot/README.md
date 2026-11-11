@@ -188,6 +188,10 @@ extend it. Both parent and workers enforce it independently of ordinary trial
 timers. The parent retains the board lock. Inherited, run/trial-validated socket
 channels carry control decisions; old result/release files cannot authorize a
 new allocation. Parent-control EOF releases responsive orphaned workers.
+Ctrl-C/SIGTERM during an acknowledged hold sends a cooperative `parent_signal`
+release before the cleanup grace expires; it does not fabricate a camera failure
+for an otherwise successful peer. A post-release cleanup failure keeps the
+original release reason and is recorded as `cleanup_failed` in both summaries.
 An independent watchdog interpreter bounds worker cleanup even if native code
 holds the Python GIL. Kernel-uninterruptible I/O can still prevent actual exit;
 missing `exit.json` or unreaped/forced-kill records mean cleanup is unverified.
@@ -215,6 +219,11 @@ The printed GUI command attaches to the **existing** root. Do not launch
 CameraLink `devGui.py`: it constructs a second hardware root and has no `--spy`
 option. For SSH routing, forward all three advertised ports without changing
 the server's bind address, and use matching local ports for base/base+1/base+2.
+The deployed wildcard-bound server advertises loopback (`127.0.0.1`), not its
+physical host. The latter is the camera record's identity `host` field. Printed
+commands therefore run on `drp-srcf-cmp013`, or locally through a tunnel to that
+host forwarding all three ports; another machine's bare loopback is not the
+camera server.
 
 Generic GUI/VirtualClient tools can write. Initially avoid ReadAll, register
 refresh, polling changes, GCP/VT/VV, UART clear/escape, reset and any hardware

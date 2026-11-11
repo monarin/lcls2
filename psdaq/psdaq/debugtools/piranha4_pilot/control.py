@@ -37,7 +37,10 @@ class Channel:
         if b'\n' not in self.buffer:
             if not select.select([self.connection], [], [], max(0., timeout))[0]:
                 return None
-            chunk = self.connection.recv(65536)
+            try:
+                chunk = self.connection.recv(65536)
+            except (ConnectionResetError, BrokenPipeError) as exc:
+                raise EOFError('Parent/child control channel reset') from exc
             if not chunk:
                 raise EOFError('Parent/child control channel closed')
             self.buffer += chunk

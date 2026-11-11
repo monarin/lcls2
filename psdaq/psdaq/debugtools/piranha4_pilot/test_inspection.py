@@ -17,6 +17,7 @@ import pilot
 import inspection
 from control import Channel
 from test_pilot import fake_loader
+from test_evidence import SoftwareNode, SoftwareRoot
 
 
 def fake_worker(path):
@@ -48,14 +49,36 @@ def fake_worker(path):
                 self.last_snapshot = time.monotonic()
                 self.sequence += 1
 
+    def load():
+        pc, provenance = fake_loader(spec)
+        if spec.get('test_real_recorder'):
+            original_init = pc.piranha4_init
+
+            class RecordingNode(SoftwareNode):
+                def set(self, update, write=True):
+                    super().set(update, write=write)
+                    pilot.write_json(Path(spec['directory']) / 'cached-diagnostics.json', json.loads(update))
+
+            def init(*args, **kwargs):
+                root = original_init(*args, **kwargs)
+                software = SoftwareRoot()
+                software.add(RecordingNode(name='PiranhaHoldDiagnostics', mode='RO', value='{}'))
+                root.PiranhaHoldDiagnostics = software.PiranhaHoldDiagnostics
+                root.zmqServer = software.zmqServer
+                return root
+
+            pc.piranha4_init = init
+        return pc, provenance
+
     with contextlib.ExitStack() as stack:
         stack.enter_context(mock.patch.object(pilot, 'Capture', FaultCapture))
         stack.enter_context(mock.patch.object(pilot, 'install_diagnostics', return_value=lambda: None))
-        stack.enter_context(mock.patch.object(pilot, 'endpoint', return_value={
-            'host': socket.gethostname(), 'base_port': 10000, 'ports': [10000, 10001, 10002],
-            'backend': 'fake; no server/listeners or hardware'}))
-        stack.enter_context(mock.patch.object(pilot, 'InspectionRecorder', Recorder))
-        return pilot.child_main(spec, loader=lambda: fake_loader(spec))
+        if not spec.get('test_real_recorder'):
+            stack.enter_context(mock.patch.object(pilot, 'endpoint', return_value={
+                'host': socket.gethostname(), 'base_port': 10000, 'ports': [10000, 10001, 10002],
+                'backend': 'fake; no server/listeners or hardware'}))
+            stack.enter_context(mock.patch.object(pilot, 'InspectionRecorder', Recorder))
+        return pilot.child_main(spec, loader=load)
 
 
 class InspectionTests(unittest.TestCase):
@@ -240,6 +263,64 @@ class InspectionTests(unittest.TestCase):
                 summary = pilot.read_json(self.output / 'summary.json')
                 self.assertFalse(summary['ok'])
                 self.assertTrue(all(code is not None for code in summary['abort_cleanup']['exit_codes']))
+                record = pilot.read_json(self.output / 'hold.json')
+                self.assertEqual(record['release_reason'], 'parent_signal')
+                self.assertEqual(record['state'], 'released')
+                self.assertEqual(record, summary['inspection'])
+                self.assertTrue(record['cleanup_verified'])
+                self.assertEqual(len(list(self.output.glob('**/failure.json'))), 1)
+                for camera in ('fzp', 'atm'):
+                    exit_record = pilot.read_json(self.output / 'process-group-0001' / camera / 'exit.json')
+                    self.assertEqual(exit_record['release_reason'], 'parent_signal')
+                    self.assertIsNone(exit_record['inspection_error'])
+
+    def test_release_reason_survives_cleanup_failure(self):
+        for reason in ('operator', 'timeout'):
+            with self.subTest(reason=reason):
+                self.output = Path(self.temp.name) / reason
+                proc = self.launch(test_fault='gcp_timeout', test_fault_camera='atm',
+                                   test_cleanup_hang=True, hold_seconds=.8)
+                record = self.wait_for(self.held)
+                if reason == 'operator':
+                    inspection.release(self.output, record['campaign'], pilot)
+                self.assertEqual(proc.wait(timeout=4.), 1)
+                hold = pilot.read_json(self.output / 'hold.json')
+                self.assertEqual(hold['state'], 'cleanup_failed')
+                self.assertEqual(hold['release_reason'], reason)
+                self.assertFalse(hold['cleanup_verified'])
+                self.assertEqual(hold, pilot.read_json(self.output / 'summary.json')['inspection'])
+
+    def test_signalled_successful_worker_is_cancelled_not_camera_failure(self):
+        proc = self.launch(test_fault='gcp_timeout', test_fault_camera='atm')
+        record = self.wait_for(self.held)
+        successful = next(item for item in record['cameras'] if item['camera'] == 'fzp')
+        os.kill(successful['pid'], signal.SIGTERM)
+        self.assertEqual(proc.wait(timeout=4.), 1)
+        directory = self.output / 'process-group-0001/fzp'
+        self.assertFalse((directory / 'failure.json').exists())
+        self.assertTrue(pilot.read_json(directory / 'exit.json')['cancelled'])
+
+    def test_real_recorder_in_worker_has_no_uart_side_effects(self):
+        proc = self.launch(test_fault='gcp_timeout', test_fault_camera='atm',
+                           test_real_recorder=True, hold_seconds=4.)
+        record = self.wait_for(self.held)
+        group = self.output / 'process-group-0001'
+        before = {camera: pilot.read_json(group / camera / 'fake_calls.json') for camera in ('fzp', 'atm')}
+        digest = pilot.sha(group / 'atm/uart-failure.json')
+        time.sleep(1.2)
+        for camera in ('fzp', 'atm'):
+            self.assertEqual(pilot.read_json(group / camera / 'fake_calls.json'), before[camera])
+            snapshots = list((group / camera / 'inspection').glob('rx-*.json'))
+            self.assertEqual(len(snapshots), 2)
+            diagnostic = pilot.read_json(group / camera / 'cached-diagnostics.json')
+            self.assertEqual(diagnostic['state']['state'], 'held')
+            self.assertEqual(diagnostic['identity']['camera'], camera)
+        inspection.release(self.output, record['campaign'], pilot)
+        self.assertEqual(proc.wait(timeout=4.), 1)
+        for camera in ('fzp', 'atm'):
+            after = pilot.read_json(group / camera / 'fake_calls.json')
+            self.assertEqual(after, before[camera] + ['shutdown', 'stop'])
+        self.assertEqual(pilot.sha(group / 'atm/uart-failure.json'), digest)
 
     def test_parent_sigkill_worker_cleanup_including_native_hang(self):
         for hang in (False, True, 'gil'):
@@ -300,6 +381,16 @@ class InspectionTests(unittest.TestCase):
         first.close()
         with self.assertRaises(EOFError):
             receiver.receive(.2)
+
+    def test_reset_peer_with_unread_data_is_eof(self):
+        first, second = socket.socketpair()
+        self.addCleanup(first.close)
+        self.addCleanup(second.close)
+        channel = Channel(first, 'campaign')
+        channel.send('held', 1)
+        second.close()
+        with self.assertRaises(EOFError):
+            channel.receive(.2)
 
 
 if __name__ == '__main__':
