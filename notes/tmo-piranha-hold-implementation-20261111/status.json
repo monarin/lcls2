@@ -1,9 +1,9 @@
 {
   "scope": "local Piranha hold-on-error implementation; no hardware",
-  "phase": "review_fixes_validated",
-  "round": 1,
+  "phase": "independent_review",
+  "round": 2,
   "round_limit": 3,
-  "implementation_sha": "36b48dbabaeb00514fcfa091f827650d28b76bad",
+  "implementation_sha": "a5a4c5f0407431dfea5ec12ba9c07b9ff3f1842a",
   "review_sha": "36b48dbabaeb00514fcfa091f827650d28b76bad",
   "unresolved_ids": ["HOLD-IMPL-001", "HOLD-IMPL-002", "HOLD-IMPL-003", "HOLD-IMPL-004", "HOLD-IMPL-005", "HOLD-IMPL-006"],
   "hardware_executed": false,
