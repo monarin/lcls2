@@ -3,9 +3,10 @@
 Prepared for issue 205. **Cold/warm hardware smoke tests passed on November 6 and 9, 2026; the intermittent timeout has not been reproduced.**
 
 See the [routine-check work overview](../../../../notes/tmo-piranha-routine-check/README.md)
-for historical results and review history. The opt-in hold implementation is
-under local verification; it has not been rehearsed on hardware. The earlier
-successful hardware trials validate only the original, non-hold pilot.
+for historical results and review history. The opt-in hold implementation passes
+58 offline tests and independent re-review. It has not been rehearsed on hardware;
+earlier successful hardware trials validate only the original, non-hold pilot.
+See the [local implementation/review record](../../../../notes/tmo-piranha-hold-implementation-20261111/status.json).
 This standalone driver invokes the deployed `piranha4_init`, `init_feb`,
 `connectionInfo` and `connectionShutdown` functions. It does not start control,
 TEB, MEB, Configure, acquisition or recording. It does open the real board,
@@ -212,6 +213,10 @@ finished. Wait for final `hold.json`, `summary.json`, and every `exit.json`.
 An original target timeout remains nonzero even if delayed RX arrives or later
 inspection suggests recovery. GUI disconnection does not release or extend the
 hold; the bounded deadline and file evidence are independent of the client.
+Known non-blocking labeling limitation: aborting before all hold acknowledgments
+can create a successful peer's `failure.json` describing cancellation. Its
+`target_timeout: false` distinguishes it from the real target; do not count every
+failure file as another camera timeout (review follow-up HOLD-IMPL-007).
 
 Use the matching pinned PyRogue environment and the printed cached-only Python
 client command. It reads only the software diagnostic variable, never `get()`.

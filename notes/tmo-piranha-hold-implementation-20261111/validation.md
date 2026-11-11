@@ -1,11 +1,19 @@
 # Local validation record
 
+Independent re-review **passed** in round 2 at
+`f967cd725480cd09728969fa434ffcd273f44aae`, with no blocking findings. See
+`round-02/review.json` and `round-02/response.md` for the optional deferred
+pre-hold cancellation-label follow-up and retained limitations.
+
 After the round-1 review repairs: **58 tests passed in 44.192 seconds, zero
 skips**; see `round-01/after-fixes-tests.txt`. This includes four new regression
 tests for the review findings and expanded assertions on signal/cleanup labels.
 The tested runtime code is committed at
 `a5a4c5f0407431dfea5ec12ba9c07b9ff3f1842a`; later metadata-only commits identify
 that code snapshot without a self-referential commit hash.
+Three additional five-test repeats of the repaired signal, cleanup, real-recorder
+and connection-reset cases also pass at that code commit; see
+`round-02/fix-repeats.txt`.
 
 Initial implementation run: **54 tests passed in 36.091 seconds, zero skips**; see
 `offline-tests.txt`. Default/hold dry-runs and `git diff --check` also pass.

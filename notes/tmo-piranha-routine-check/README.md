@@ -13,8 +13,9 @@ attempts on November 6 and 9 passed; the intermittent allocation GCP timeout
 (issue 205) has not been reproduced. This is limited smoke-test evidence, not
 proof of full-DAQ operation or absence of the fault.
 
-The hold-on-error inspection design passed independent review. Local implementation
-and offline verification are now in progress; see the
+The hold-on-error implementation passes 58 offline tests and independent
+re-review (two rounds, six findings repaired, one optional labeling follow-up
+deferred); see the
 [implementation/review record](../tmo-piranha-hold-implementation-20261111/status.json).
 The new hold path has not been tested on hardware. A new hardware test requires
 a current exclusive-board window; historical confirmations are not ongoing
@@ -79,8 +80,8 @@ from the original result directories.
 
 ## Next work
 
-Complete local verification and independent review of the hold implementation,
-then obtain a new exclusive-board window for hardware rehearsal and a bounded
+Local implementation and independent review are complete. Obtain a new
+exclusive-board window for hardware rehearsal and a bounded
 cold/warm campaign. The existing-server GUI is write-capable, not an enforced
 spy interface. Do not open another Rogue hardware root for inspection. See the
 [implementation scope](../tmo-piranha-hold-implementation-20261111/scope.md) for
