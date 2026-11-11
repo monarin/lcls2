@@ -1,0 +1,17 @@
+{
+  "harness_sha": "7a727fd242754338be1720c457e579e6278edeb6",
+  "pr_sha": "67c327a148a08b2aaf972e67e1e02e367c2b298f",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--nodelist=sdfada016",
+    "--exclude=sdfada011",
+    "--output=/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-100k-baseline-20261110/attempt01/slurm-%j.out",
+    "--error=/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-100k-baseline-20261110/attempt01/slurm-%j.err",
+    "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-100k-baseline-20261110/attempt01/source/notes/sim10_ada_100k_baseline_20261110/run.sbatch",
+    "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-100k-baseline-20261110/attempt01/source/notes/sim10_ada_100k_baseline_20261110",
+    "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-100k-baseline-20261110/attempt01"
+  ],
+  "submitted": true,
+  "job_id": "44189224"
+}

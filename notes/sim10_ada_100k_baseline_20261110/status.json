@@ -1,5 +1,5 @@
 {
-  "phase": "implementation_ready_for_review",
+  "phase": "submitted",
   "round": 1,
   "round_limit": 3,
   "base_sha": "5f18da747",
@@ -24,5 +24,15 @@
     "gpu_execution": "pending"
   },
   "unresolved": [],
-  "artifact_root": "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-100k-baseline-20261110"
+  "artifact_root": "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-100k-baseline-20261110",
+  "job": "44189224",
+  "implementation_sha": "7a727fd242754338be1720c457e579e6278edeb6",
+  "reviewed_sha": "7a727fd242754338be1720c457e579e6278edeb6",
+  "review_verdict": "pass",
+  "attempt": "/sdf/scratch/users/m/monarin/gpu-validation/sim10-ada-100k-baseline-20261110/attempt01",
+  "deferred": [
+    "Reverse-tree native/config inventory comparison",
+    "BDS-02 prompt staging cancellation (manual orphan recovery documented)",
+    "ADA-11 explicit --chdir (shared cwd verified for this launch)"
+  ]
 }
