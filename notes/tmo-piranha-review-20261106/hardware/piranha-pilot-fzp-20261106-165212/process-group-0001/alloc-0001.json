@@ -1,0 +1,14 @@
+{
+  "body": {
+    "drp": {
+      "fzp": {
+        "active": true,
+        "proc_info": {
+          "host": "drp-srcf-cmp013",
+          "pid": 39276,
+          "device": "/dev/datadev_0"
+        }
+      }
+    }
+  }
+}

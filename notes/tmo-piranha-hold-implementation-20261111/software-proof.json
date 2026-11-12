@@ -1,0 +1,124 @@
+{
+  "python": "3.9.21 | packaged by conda-forge | (main, Dec  5 2024, 13:51:40) \n[GCC 13.3.0]",
+  "executable": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python",
+  "pyrogue": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/lib/python3.9/site-packages/pyrogue/__init__.py",
+  "endpoint": {
+    "host": "127.0.0.1",
+    "base_port": 32787,
+    "ports": [
+      32787,
+      32788,
+      32789
+    ],
+    "diagnostic_path": "SoftwareOnlyPiranha.PiranhaHoldDiagnostics",
+    "gui_command": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python -m pyrogue gui --server=127.0.0.1:32787",
+    "client_command": "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/inspect_hold.py --host 127.0.0.1 --port 32787 --path SoftwareOnlyPiranha.PiranhaHoldDiagnostics --timeout 5"
+  },
+  "ports_closed_after_stop": [
+    true,
+    true,
+    true
+  ],
+  "original_sha256": "6d09b4650b538642705342fc6a80d55a9339398de69da1e3d595cdf549c27582",
+  "cached_value": {
+    "monotonic": 3403011.840367144,
+    "through_sequence": 9,
+    "phase": "init",
+    "failure_phase": "allocation_gcp_wait",
+    "rx_count": 9,
+    "rx_bytes": 40,
+    "last_rx": 3403011.839936983,
+    "dropped_events": 5,
+    "retained_bytes": 483,
+    "retained_events": 3,
+    "max_bytes": 4194304,
+    "max_events": 3,
+    "lost_intervals": [
+      {
+        "reason": "overwritten",
+        "first_sequence": 2,
+        "last_sequence": 6,
+        "count": 5,
+        "loss_ordinal_first": 1,
+        "loss_ordinal_last": 5
+      }
+    ],
+    "loss_history_omitted_events": 0,
+    "lifetime_loss_counters": {
+      "overwritten": 5,
+      "oversized": 0,
+      "total": 5
+    },
+    "cur": [
+      "U",
+      "S",
+      "E",
+      "R",
+      ">"
+    ],
+    "resp": [
+      "CPA 0"
+    ],
+    "receiver_snapshot": {
+      "started_monotonic": 3403011.840389924,
+      "finished_monotonic": 3403011.840404843,
+      "atomic": false,
+      "buffers": {
+        "cur": {
+          "length_before": 5,
+          "length_after": 5,
+          "truncated": false
+        },
+        "resp": {
+          "length_before": 1,
+          "length_after": 1,
+          "truncated": false
+        }
+      },
+      "max_items_per_buffer": 256,
+      "max_characters_per_buffer": 4096,
+      "limitation": "Unlocked bounded prefixes; RX may change buffers during sampling. Lengths apply to sampled references, not necessarily current buffers."
+    },
+    "identity": {
+      "backend": "software-only"
+    },
+    "identity_truncated": false,
+    "state": {
+      "campaign": "software-proof",
+      "trial": 1,
+      "camera": "fzp",
+      "lane": 0,
+      "pid": 2361963,
+      "phase": "allocation_gcp_wait",
+      "state": "released",
+      "deadline": 3403030.848222169,
+      "release_reason": "software-test"
+    },
+    "state_truncated": false,
+    "snapshot": {
+      "sequence": 10,
+      "slot": 1,
+      "path": "/tmp/piranha-evidence-proof-20261111-pass/inspection/rx-1.json",
+      "monotonic": 3403011.840364804,
+      "skipped": false,
+      "forced": true,
+      "slots": 4,
+      "through_sequence": 9,
+      "first_event_sequence": 7,
+      "last_event_sequence": 9,
+      "overwritten_snapshot": {
+        "sequence": 6,
+        "monotonic": 3403011.838697017,
+        "through_sequence": 6,
+        "first_event_sequence": 4,
+        "last_event_sequence": 6
+      },
+      "overwritten_snapshot_interval": {
+        "first": 1,
+        "last": 6,
+        "count": 6
+      }
+    }
+  },
+  "scope": "Software-only loopback root, no gateway or hardware, no GUI attach."
+}

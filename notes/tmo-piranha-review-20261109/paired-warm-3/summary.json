@@ -1,0 +1,144 @@
+{
+  "ok": true,
+  "config": {
+    "mode": "warm",
+    "cameras": [
+      "fzp",
+      "atm"
+    ],
+    "trials": 3,
+    "settle_seconds": 40.0,
+    "interval": 2.0,
+    "timeout": 60.0,
+    "cleanup_timeout": 10.0,
+    "execute": true,
+    "daq_stopped": true,
+    "preflight": {
+      "visible_device_holders": [],
+      "inaccessible_process_fd_directories": 919,
+      "limitation": "Operator must establish exclusive board access, including invisible clients."
+    }
+  },
+  "started_utc": "2026-11-10T00:45:25.833664+00:00",
+  "script_sha256": "d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804",
+  "trials": [
+    {
+      "trial": 1,
+      "results": [
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 3380282,
+          "camera": "fzp",
+          "started_monotonic": 5118576.686743935,
+          "elapsed_seconds": 6.37997536547482,
+          "since_root_ready_seconds": 40.0407794918865,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        },
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 3380283,
+          "camera": "atm",
+          "started_monotonic": 5118576.691286854,
+          "elapsed_seconds": 6.385969917289913,
+          "since_root_ready_seconds": 44.55408312100917,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          }
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "results": [
+        {
+          "ok": true,
+          "trial": 2,
+          "pid": 3380282,
+          "camera": "fzp",
+          "started_monotonic": 5118585.126776009,
+          "elapsed_seconds": 6.39884630497545,
+          "since_root_ready_seconds": 48.480811566114426,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        },
+        {
+          "ok": true,
+          "trial": 2,
+          "pid": 3380283,
+          "camera": "atm",
+          "started_monotonic": 5118585.137345831,
+          "elapsed_seconds": 6.36955679114908,
+          "since_root_ready_seconds": 53.000142097473145,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          }
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "results": [
+        {
+          "ok": true,
+          "trial": 3,
+          "pid": 3380282,
+          "camera": "fzp",
+          "started_monotonic": 5118593.584218269,
+          "elapsed_seconds": 6.364684725180268,
+          "since_root_ready_seconds": 56.93825382646173,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        },
+        {
+          "ok": true,
+          "trial": 3,
+          "pid": 3380283,
+          "camera": "atm",
+          "started_monotonic": 5118593.56971292,
+          "elapsed_seconds": 6.39850031863898,
+          "since_root_ready_seconds": 61.432509186677635,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "group": 1,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0,
+        0
+      ]
+    }
+  ],
+  "finished_utc": "2026-11-10T00:46:37.754161+00:00"
+}

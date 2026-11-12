@@ -1,0 +1,115 @@
+{
+  "ok": true,
+  "config": {
+    "mode": "cold",
+    "cameras": [
+      "atm"
+    ],
+    "trials": 3,
+    "settle_seconds": 40.0,
+    "interval": 2.0,
+    "timeout": 60.0,
+    "cleanup_timeout": 10.0,
+    "execute": true,
+    "daq_stopped": true,
+    "preflight": {
+      "visible_device_holders": [],
+      "inaccessible_process_fd_directories": 932,
+      "limitation": "Operator must establish exclusive board access, including invisible clients."
+    }
+  },
+  "started_utc": "2026-11-07T01:13:17.783603+00:00",
+  "script_sha256": "d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804",
+  "trials": [
+    {
+      "trial": 1,
+      "results": [
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 53781,
+          "camera": "atm",
+          "started_monotonic": 4861044.06622927,
+          "elapsed_seconds": 5.384418940171599,
+          "since_root_ready_seconds": 40.04597255028784,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          }
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "results": [
+        {
+          "ok": true,
+          "trial": 2,
+          "pid": 54360,
+          "camera": "atm",
+          "started_monotonic": 4861094.606519756,
+          "elapsed_seconds": 5.401419322006404,
+          "since_root_ready_seconds": 40.042700628750026,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          }
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "results": [
+        {
+          "ok": true,
+          "trial": 3,
+          "pid": 54957,
+          "camera": "atm",
+          "started_monotonic": 4861146.106123253,
+          "elapsed_seconds": 5.383362329564989,
+          "since_root_ready_seconds": 40.04036789480597,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "group": 1,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0
+      ]
+    },
+    {
+      "group": 2,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0
+      ]
+    },
+    {
+      "group": 3,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0
+      ]
+    }
+  ],
+  "finished_utc": "2026-11-07T01:15:49.147675+00:00"
+}

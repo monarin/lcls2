@@ -1,0 +1,30 @@
+{
+  "ClinkDevRoot.py": {
+    "source": "/sdf/group/lcls/ds/ana/sw/conda2-v4/rel/lcls2_submodules_09092026/cameralink-gateway/firmware/python/cameralink_gateway/_ClinkDevRoot.py",
+    "sha256": "26a2e0a397a52ecd01fc0612ba5919e4b8f8edbc689485ef975962924969ae20"
+  },
+  "devGui.py": {
+    "source": "/sdf/group/lcls/ds/ana/sw/conda2-v4/rel/lcls2_submodules_09092026/cameralink-gateway/software/scripts/devGui.py",
+    "sha256": "20d2a1a225c38504307ff6c7249d52b757ec9393ab49866a629ebfdb0a325366"
+  },
+  "UartPiranha4.py": {
+    "source": "/sdf/group/lcls/ds/ana/sw/conda2-v4/rel/lcls2_submodules_09092026/cameralink-gateway/firmware/submodules/surf/python/surf/protocols/clink/_UartPiranha4.py",
+    "sha256": "6a40cf5b8b1562ccfd4dbb1bf7d5e9b3b3b67a6eabb038a62d5a6874bb6fe459"
+  },
+  "deployed-piranha4_config.py": {
+    "source": "/sdf/group/lcls/ds/ana/sw/conda2/rel/tmo/lcls2_110326_disable000/psdaq/psdaq/configdb/piranha4_config.py",
+    "sha256": "9efaf0c9b206e9823e6ba3751c7b0ee3cdc68b8fb3849889fabc5cf404adcca6"
+  },
+  "setup_env_daq.sh": {
+    "source": "/sdf/group/lcls/ds/ana/sw/conda2/rel/tmo/lcls2_110326_disable000/setup_env_daq.sh",
+    "sha256": "b0667c55d22abee515a225bcae85c342a3b279042d07e81f5cfed46625f92cc8"
+  },
+  "fzp_piranha_0-launch.txt": {
+    "source": "/sdf/home/t/tmoopr/daq/logs/2026/11/03_16:00:11_drp-srcf-cmp013:fzp_piranha_0.log",
+    "excerpt": "lines 1-42, redacted AUTH line omitted"
+  },
+  "atm_piranha_ip1_0-launch.txt": {
+    "source": "/sdf/home/t/tmoopr/daq/logs/2026/11/03_16:00:11_drp-srcf-cmp013:atm_piranha_ip1_0.log",
+    "excerpt": "lines 1-42, redacted AUTH line omitted"
+  }
+}

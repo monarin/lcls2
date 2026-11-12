@@ -1,0 +1,191 @@
+{
+  "run_directory": "/sdf/home/m/monarin/piranha-pilot-pair-cold-20261106-172032",
+  "ok": true,
+  "config": {
+    "mode": "cold",
+    "cameras": [
+      "fzp",
+      "atm"
+    ],
+    "trials": 3,
+    "settle_seconds": 40.0,
+    "interval": 2.0,
+    "timeout": 60.0,
+    "cleanup_timeout": 10.0,
+    "execute": true,
+    "daq_stopped": true,
+    "preflight": {
+      "visible_device_holders": [],
+      "inaccessible_process_fd_directories": 920,
+      "limitation": "Operator must establish exclusive board access, including invisible clients."
+    }
+  },
+  "rows": [
+    {
+      "trial": 1,
+      "camera": "fzp",
+      "pid": 58871,
+      "connection_info": {
+        "paddr": 4278588680,
+        "model": "02",
+        "serno": "12097685",
+        "bist": "Good"
+      },
+      "gcp_wait_seconds": 1.859,
+      "gcp_outcome": "await_return",
+      "dropped_events": 0,
+      "role": [
+        "camlink supervisor: True nworkers: 1"
+      ],
+      "exit": {
+        "ok": true,
+        "cleanup_errors": [],
+        "pid": 58871
+      }
+    },
+    {
+      "trial": 1,
+      "camera": "atm",
+      "pid": 58872,
+      "connection_info": {
+        "paddr": 4278588680,
+        "model": "02",
+        "serno": "12102856",
+        "bist": "Good"
+      },
+      "gcp_wait_seconds": 1.849,
+      "gcp_outcome": "await_return",
+      "dropped_events": 0,
+      "role": [
+        "camlink supervisor: False nworkers: 1"
+      ],
+      "exit": {
+        "ok": true,
+        "cleanup_errors": [],
+        "pid": 58872
+      }
+    },
+    {
+      "trial": 2,
+      "camera": "fzp",
+      "pid": 59487,
+      "connection_info": {
+        "paddr": 4278588680,
+        "model": "02",
+        "serno": "12097685",
+        "bist": "Good"
+      },
+      "gcp_wait_seconds": 1.859,
+      "gcp_outcome": "await_return",
+      "dropped_events": 0,
+      "role": [
+        "camlink supervisor: True nworkers: 1"
+      ],
+      "exit": {
+        "ok": true,
+        "cleanup_errors": [],
+        "pid": 59487
+      }
+    },
+    {
+      "trial": 2,
+      "camera": "atm",
+      "pid": 59488,
+      "connection_info": {
+        "paddr": 4278588680,
+        "model": "02",
+        "serno": "12102856",
+        "bist": "Good"
+      },
+      "gcp_wait_seconds": 1.848,
+      "gcp_outcome": "await_return",
+      "dropped_events": 0,
+      "role": [
+        "camlink supervisor: False nworkers: 1"
+      ],
+      "exit": {
+        "ok": true,
+        "cleanup_errors": [],
+        "pid": 59488
+      }
+    },
+    {
+      "trial": 3,
+      "camera": "fzp",
+      "pid": 60167,
+      "connection_info": {
+        "paddr": 4278588680,
+        "model": "02",
+        "serno": "12097685",
+        "bist": "Good"
+      },
+      "gcp_wait_seconds": 1.839,
+      "gcp_outcome": "await_return",
+      "dropped_events": 0,
+      "role": [
+        "camlink supervisor: True nworkers: 1"
+      ],
+      "exit": {
+        "ok": true,
+        "cleanup_errors": [],
+        "pid": 60167
+      }
+    },
+    {
+      "trial": 3,
+      "camera": "atm",
+      "pid": 60170,
+      "connection_info": {
+        "paddr": 4278588680,
+        "model": "02",
+        "serno": "12102856",
+        "bist": "Good"
+      },
+      "gcp_wait_seconds": 1.86,
+      "gcp_outcome": "await_return",
+      "dropped_events": 0,
+      "role": [
+        "camlink supervisor: False nworkers: 1"
+      ],
+      "exit": {
+        "ok": true,
+        "cleanup_errors": [],
+        "pid": 60170
+      }
+    }
+  ],
+  "groups": [
+    {
+      "group": 1,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0,
+        0
+      ]
+    },
+    {
+      "group": 2,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0,
+        0
+      ]
+    },
+    {
+      "group": 3,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0,
+        0
+      ]
+    }
+  ],
+  "agent_actions": "Read-only inspection of operator-executed hardware results",
+  "limitation": "Small paired smoke campaign; no independent live device/socket ownership check."
+}

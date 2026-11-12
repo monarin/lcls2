@@ -1,0 +1,19 @@
+{
+  "scope": "staged hold-on-error implementation plan only",
+  "phase": "complete",
+  "round": 1,
+  "round_limit": 3,
+  "implementation_sha": "a3d454c63a4616f6d1b3e8cbac3a6251fbf6ffa8",
+  "reviewer": "in-session independent reviewer",
+  "unresolved_ids": [],
+  "checks": [
+    "commit hooks passed",
+    "pilot SHA256 unchanged",
+    "source-based design checks; no runtime tests or hardware execution"
+  ],
+  "review_sha": "a3d454c63a4616f6d1b3e8cbac3a6251fbf6ffa8",
+  "verdict": "pass",
+  "hardware_executed": false,
+  "implementation_performed": false,
+  "plan_path": "notes/tmo-piranha-hold-plan-20261110.md"
+}

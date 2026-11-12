@@ -1,0 +1,80 @@
+{
+  "reviewed_commit": "36b48dbabaeb00514fcfa091f827650d28b76bad",
+  "verdict": "changes_requested",
+  "summary": "The staged hold-on-error design is implemented faithfully: opt-in CLI/status contract, parent-controlled post-allocation decision point that parks every selected root (including an early-success peer on the last cold/warm trial) until a hold/cleanup decision, exact 'allocation_gcp_wait' + '*** await: prompt not seen:' classification gated on successful init, immutable drained original snapshot, bounded ring and four-slot rotation with explicit loss intervals, pre-start RO LocalVariable injection restored in finally, cached-only SimpleClient client with subprocess deadline, run/trial-scoped socketpair control and release file, shared monotonic deadline in parent and worker, parent-EOF detection and an independent cleanup-guard interpreter. Failures remain nonzero, no retry/resume exists, and the default path is untouched by inspection code. Required artifacts (offline-tests.txt with 54 passed/0 skipped, software-proof.json, validation.md) are present and consistent with the test sources. Six non-blocking findings concern evidence labeling after parent signal or post-release cleanup failure, parent-loss classification on ECONNRESET, lifecycle-test patching of the real recorder/endpoint, loopback endpoint documentation and a null implementation SHA in status.json. Hardware, GUI and SSH rehearsal remain unperformed and out of scope.",
+  "checks": [
+    "Read pilot.py, inspection.py, control.py, evidence.py, inspect_hold.py, README.md and all three test modules at the reviewed checkout; compared against notes/tmo-piranha-hold-plan-20261110.md and the 20261111 scope/validation/proof/status artifacts.",
+    "Default path: child_main/run_controller branch to inspection only when hold_on_error or inspect_after_trial is set (pilot.py:174,327); otherwise the original lifecycle, wait_files/stop_children grace+SIGKILL+bounded reaping, host/source-hash/exclusivity gates and deployed commands are unchanged. Parent imports only stdlib plus local modules; evidence.py imports pyrogue lazily inside install_diagnostics.",
+    "Decision point: workers send allocation_done/target_failure and wait for cleanup/hold/release before any connectionShutdown or root.stop (inspection.py:138-149); hold path breaks out of the trial loop so no further allocation runs; parent cancels remaining trials/groups on held (inspection.py:378-379,401-402). 'cleanup' after a recorded failure raises instead of resuming (inspection.py:142-143).",
+    "Classification: target_timeout requires initialized, failure_phase=='allocation_gcp_wait' (second _await in connectionInfo per deployed piranha4_config.py:275-327) and the exact exception prefix (inspection.py:71-72); hold is refused when capture_error is set.",
+    "Evidence: save_failure writes uart-failure.json once with drain=True then failure.json; InspectionRecorder writes only under a new inspection/ directory with four slots, 1 s throttle, overwritten-interval metadata and 256 KiB cap; Capture.add performs no disk I/O and bounds hex encoding; receiver sampling is unlocked and declared non-atomic. Tests assert original sha unchanged across late RX, release and parent death.",
+    "Deadlines: parent outcome deadline = min(allocation deadline, first detection + hold_seconds); ack collection bounded by the same; worker validates hold deadline against own detected+hold_seconds and allocation deadline; guard armed at each phase deadline + cleanup_timeout; hold loops in parent and worker use hold_deadline instead of ordinary timers; release() refuses expired, foreign-campaign, wrong-directory, wrong-host or non-held records; parent validates campaign/directory/trial/action and records rejections.",
+    "Diagnostics injection: deployed piranha4_config.py imports cameralink_gateway as a module and calls cameralink_gateway.ClinkDevRoot at call time (lines 8,166), so wrapping pc.cameralink_gateway.ClinkDevRoot adds the RO LocalVariable after construction and before cl.start() (line 176) without changing hardware startup; restore() runs in finally (inspection.py:87-92). endpoint() reads the existing zmqServer.port()/address and never creates a server; ClinkDevRoot.py:87 confirms addr='*', port=0 and launch logs show three consecutive ports.",
+    "Client: inspect_hold validates ROOT.PiranhaHoldDiagnostics only, uses SimpleClient.value (cached) with LINGER/SNDTIMEO/RCVTIMEO/MAXMSGSIZE and an outer subprocess deadline; software-proof.json shows cached JSON retrieval with readBlocks/writeBlocks patched to fail, unchanged original sha and all three ports closed.",
+    "Parent loss / native cleanup: Channel.receive raises EOFError on parent close in wait and hold loops; CleanupGuard is a separate interpreter that SIGKILLs the worker at the armed deadline only if still its parent; tests exercise parent SIGKILL with no hang, Python hang and GIL-holding native hang using real fake subprocesses.",
+    "Test inventory in offline-tests.txt matches sources: 17 PilotTests, 16 InspectionTests, 21 evidence tests including the pinned integration test reported ok (not skipped). Validation.md discloses fixture repairs and distinguishes fake injection, software-only server and unperformed hardware/GUI/SSH work; README does the same.",
+    "Barrier shutdown is socket close only (barrier.py:53-64), so the reduced cleanup_timeout budget for connectionShutdown in enabled mode is not expected to block."
+  ],
+  "limitations": [
+    "Pinned PyRogue sources under /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/.../pyrogue were not readable: the file tools are restricted to the worktree. SimpleClient.value/_req/_ctx/_stop, ZmqServer.port()/address and LocalVariable RO set(write=False) semantics were assessed only via the prior round-01 plan-review validation notes and the passing software-proof.json.",
+    "No commands were run and no tests were re-executed; test results are taken from the supplied offline-tests.txt and validation.md. No Git diff against base 6abb2627a was performed, so the claim that the default lifecycle is byte-for-byte unchanged relies on source reading and the 17 passing original regressions.",
+    "software-proof.json was produced by a separate manual invocation (paths under /tmp/piranha-evidence-proof-20261111-pass), not captured from the unittest temp directory; validation.md discloses this.",
+    "Hardware, gateway startup, GUI attachment, SSH routing and real fault reproduction were not performed and are explicitly out of scope; nothing here authorizes them."
+  ],
+  "findings": [
+    {
+      "id": "HOLD-IMPL-001",
+      "severity": "medium",
+      "blocking": false,
+      "file": "psdaq/psdaq/debugtools/piranha4_pilot/inspection.py",
+      "line": 420,
+      "evidence": "On parent SIGINT/SIGTERM during an acknowledged hold, the finally block sends 'release' with reason 'parent_shutdown' and immediately calls stop_children(terminate=True) (lines 420-424), delivering SIGTERM before workers can process the release. In the worker, SystemExit lands in the BaseException handler (lines 181-191), which calls save_failure for the previously successful peer, writing a failure.json with the SystemExit traceback and publishing 'inspection_unavailable' with release_reason 'signal'. The parent's failure_records then lists both cameras. test_parent_signals_release_and_cleanup only checks exit codes, not these labels.",
+      "requested_change": "When hold.json is in state 'held' and the parent receives a signal, treat it as an operator release: send 'release' with reason 'parent_signal', run stop_children(terminate=False) for cleanup_timeout, and only then escalate to terminate/kill. In run_child, do not write failure.json for a worker whose only exception is the release-path SystemExit; record it as a cancellation in hold.json/exit.json instead so failure records remain the real failures."
+    },
+    {
+      "id": "HOLD-IMPL-002",
+      "severity": "medium",
+      "blocking": false,
+      "file": "psdaq/psdaq/debugtools/piranha4_pilot/inspection.py",
+      "line": 396,
+      "evidence": "After a held run, lines 396-398 write hold.json with state 'released' or 'cleanup_failed'; if cleanup_ok is false, line 400 raises and the except handler (lines 408-413) re-reads hold.json and overwrites state to 'inspection_unavailable' and release_reason to 'error', discarding the operator/timeout release reason. summary['inspection'] (same dict object) still says 'cleanup_failed', so hold.json and summary.json disagree and the record of who ended the hold is lost.",
+      "requested_change": "In the except handler, skip the relabel when the existing record state is 'released' or 'cleanup_failed' (or any post-ack state), or add a separate 'cleanup_error' field without overwriting state/release_reason. Add a test asserting hold.json keeps release_reason and state 'cleanup_failed' when a worker's cleanup fails after release."
+    },
+    {
+      "id": "HOLD-IMPL-003",
+      "severity": "low",
+      "blocking": false,
+      "file": "psdaq/psdaq/debugtools/piranha4_pilot/control.py",
+      "line": 40,
+      "evidence": "Channel.receive converts only an empty recv into EOFError. On Linux AF_UNIX stream sockets, a peer that closes (e.g. parent SIGKILL) while holding unread data causes recv to raise ConnectionResetError. The worker hold loop (inspection.py:166-171) catches only EOFError, so this case is labeled release_reason 'error' with inspection_error 'ConnectionResetError' instead of 'parent_lost'. Cleanup is still bounded.",
+      "requested_change": "Catch ConnectionResetError (and BrokenPipeError) in Channel.receive and re-raise as EOFError, or handle both in the hold loop so parent loss is classified consistently."
+    },
+    {
+      "id": "HOLD-IMPL-004",
+      "severity": "low",
+      "blocking": false,
+      "file": "psdaq/psdaq/debugtools/piranha4_pilot/test_inspection.py",
+      "line": 52,
+      "evidence": "The fake worker patches pilot.install_diagnostics to a no-op, pilot.endpoint to a static dict and pilot.InspectionRecorder to a test Recorder. The real run_child -> InspectionRecorder integration (constructor arguments, inspection/ directory creation, node lookup, snapshot throttling and the 256 KiB cap raising ValueError) is therefore covered only by unit tests on the real class, not by any lifecycle test. No lifecycle test asserts that fake_calls.json is unchanged during a hold (no UART TX/clear/escape), only that 'shutdown' is absent.",
+      "requested_change": "Add one lifecycle case that uses the real evidence.InspectionRecorder with the fake SoftwareRoot/SoftwareNode (no pyrogue) so inspection/rx-*.json files and node updates appear in the worker directory, and assert fake_calls.json is identical before and after the hold."
+    },
+    {
+      "id": "HOLD-IMPL-005",
+      "severity": "low",
+      "blocking": false,
+      "file": "psdaq/psdaq/debugtools/piranha4_pilot/README.md",
+      "line": 212,
+      "evidence": "For the deployed wildcard-bound server (ClinkDevRoot.py:87 addr='*'), the prior validation notes record that ZmqServer.address resolves to loopback, so endpoint()['host'] (evidence.py:273) and the printed gui/client commands will say 127.0.0.1 while the physical host is only in the identity fields of the per-camera hold.json. The README tells operators to forward three ports but does not state that the printed host is loopback and the commands must run on drp-srcf-cmp013 or through a tunnel to it.",
+      "requested_change": "Document that the advertised endpoint host is loopback for the deployed root, that the worker's real host is the identity 'host' field, and that the printed commands are valid only on that host or via a tunnel to it."
+    },
+    {
+      "id": "HOLD-IMPL-006",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/tmo-piranha-hold-implementation-20261111/status.json",
+      "line": 6,
+      "evidence": "status.json records implementation_sha and review_sha as null while phase is 'ready_for_independent_review', so the artifact does not identify which snapshot the recorded checks apply to.",
+      "requested_change": "Record implementation_sha 36b48dbabaeb00514fcfa091f827650d28b76bad (and the review SHA per round) so the validation claims are tied to the reviewed snapshot."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+
+REPEAT 1
+Inspection held: /tmp/tmpirvsb1e3/run-fzpcold1/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmpirvsb1e3/run-fzpcold1 --campaign-id fcceb48765c74a46bb1a932483d8c9eb
+fzp PID 2370764: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2370765: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmpirvsb1e3/run-atmcold3/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmpirvsb1e3/run-atmcold3 --campaign-id fe0b99547df6441a811e4db17a0561fe
+fzp PID 2370811: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2370812: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmpirvsb1e3/run-bothwarm2/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmpirvsb1e3/run-bothwarm2 --campaign-id c81f68ce94cf4192ad83bb1cf7f5e1e2
+fzp PID 2370823: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2370824: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmpirvsb1e3/run-atmwarm3/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmpirvsb1e3/run-atmwarm3 --campaign-id 942851f1212e4ba0b4ec086b415ca27a
+fzp PID 2370840: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2370841: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmp69edf12a/run/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmp69edf12a/run --campaign-id 2438719b37ba45b6a0c3d275f385026e
+fzp PID 2371399: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2371400: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+----------------------------------------------------------------------
+Ran 16 tests in 25.250s
+
+OK
+
+REPEAT 2
+Inspection held: /tmp/tmp9rg5hxu7/run-fzpcold1/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmp9rg5hxu7/run-fzpcold1 --campaign-id 06938a5010644a8bacd15b73b7880178
+fzp PID 2371883: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2371884: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmp9rg5hxu7/run-atmcold3/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmp9rg5hxu7/run-atmcold3 --campaign-id fb844af7772a44f4b52f075f0467794d
+fzp PID 2371914: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2371915: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmp9rg5hxu7/run-bothwarm2/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmp9rg5hxu7/run-bothwarm2 --campaign-id 3368ae9ef9ad4187ae35c8e114a7722d
+fzp PID 2371939: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2371940: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmp9rg5hxu7/run-atmwarm3/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmp9rg5hxu7/run-atmwarm3 --campaign-id ad999241cdca4daa85472a815e09c8f0
+fzp PID 2371954: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2371955: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmpl9p8qc97/run/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmpl9p8qc97/run --campaign-id 4e9c959890e64ba9bd50a0b454c9339e
+fzp PID 2372221: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2372223: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+----------------------------------------------------------------------
+Ran 16 tests in 25.985s
+
+OK
+
+REPEAT 3
+Inspection held: /tmp/tmpcklhr9s6/run-fzpcold1/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmpcklhr9s6/run-fzpcold1 --campaign-id 4e329774088d4657a4ea32a95f6006fc
+fzp PID 2372904: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2372905: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmpcklhr9s6/run-atmcold3/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmpcklhr9s6/run-atmcold3 --campaign-id e00bccd8d14d4c4687921829053fe69f
+fzp PID 2372935: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2372936: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmpcklhr9s6/run-bothwarm2/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmpcklhr9s6/run-bothwarm2 --campaign-id d1ece0ed85f14e82b89f42885f829d68
+fzp PID 2372949: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2372950: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmpcklhr9s6/run-atmwarm3/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmpcklhr9s6/run-atmwarm3 --campaign-id c3494b10a0d846109710a6c3e4a4e2da
+fzp PID 2372962: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2372963: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmpbb06ubpr/run/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmpbb06ubpr/run --campaign-id 9a81ca9a48d44892b7194e05a013e94f
+fzp PID 2373191: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 2373192: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+----------------------------------------------------------------------
+Ran 16 tests in 25.598s
+
+OK

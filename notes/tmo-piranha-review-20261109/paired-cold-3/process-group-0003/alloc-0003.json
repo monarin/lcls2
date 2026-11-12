@@ -1,0 +1,22 @@
+{
+  "body": {
+    "drp": {
+      "fzp": {
+        "active": true,
+        "proc_info": {
+          "host": "drp-srcf-cmp013",
+          "pid": 3377800,
+          "device": "/dev/datadev_0"
+        }
+      },
+      "atm": {
+        "active": true,
+        "proc_info": {
+          "host": "drp-srcf-cmp013",
+          "pid": 3377801,
+          "device": "/dev/datadev_0"
+        }
+      }
+    }
+  }
+}

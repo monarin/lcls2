@@ -1,0 +1,57 @@
+{
+  "ok": true,
+  "config": {
+    "mode": "cold",
+    "cameras": [
+      "fzp"
+    ],
+    "trials": 1,
+    "settle_seconds": 40.0,
+    "interval": 2.0,
+    "timeout": 60.0,
+    "cleanup_timeout": 10.0,
+    "execute": true,
+    "daq_stopped": true,
+    "preflight": {
+      "visible_device_holders": [],
+      "inaccessible_process_fd_directories": 926,
+      "limitation": "Operator must establish exclusive board access, including invisible clients."
+    }
+  },
+  "started_utc": "2026-11-07T00:52:12.686363+00:00",
+  "script_sha256": "d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804",
+  "trials": [
+    {
+      "trial": 1,
+      "results": [
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 39276,
+          "camera": "fzp",
+          "started_monotonic": 4859779.709787442,
+          "elapsed_seconds": 5.372135752812028,
+          "since_root_ready_seconds": 40.05463953502476,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "group": 1,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0
+      ]
+    }
+  ],
+  "finished_utc": "2026-11-07T00:53:02.723602+00:00"
+}

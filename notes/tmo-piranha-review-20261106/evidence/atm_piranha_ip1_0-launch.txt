@@ -1,0 +1,42 @@
+/sdf/home/t/tmoopr/daq/logs/2026/11/03_16:00:11_drp-srcf-cmp013:atm_piranha_ip1_0.log
+1: # SLURM_JOB_ID:113130
+2: # ID:      atm_piranha_ip1_0
+3: # PLATFORM:0
+4: # HOST:    drp-srcf-cmp013
+5: # CMDLINE: drp -P tmo -C drp-srcf-mon001 -M /sdf/group/lcls/ds/daq/prom/tmo -o /cds/data/drpsrcf -d /dev/datadev_0 -l 0x2 -D piranha4 -p '0' -u atm_piranha_ip1_0 -W 6
+6: # CONDA_PREFIX:/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9
+8: # TESTRELDIR:/sdf/group/lcls/ds/ana/sw/conda2/rel/tmo/lcls2_110326_disable000/install
+9: # SUBMODULEDIR:/sdf/group/lcls/ds/ana/sw/conda2-v4/rel/lcls2_submodules_09092026
+10: # RDMAV_FORK_SAFE:1
+11: # RDMAV_HUGEPAGES_SAFE:1
+12: # OPENBLAS_NUM_THREADS:1
+13: # PS_PARALLEL:none
+14: # GIT_DESCRIBE:tmo-disable000-20261103
+15:
+16: tmo-drp[822248]: <I> logging configured
+17: tmo-drp[822248]: <C> Inadequate RTPRIO limit: got 0, require 99
+18: tmo-drp[822248]: <I> PGP device '/dev/datadev_0' opened
+19: tmo-drp[822248]: <I> dmaCount 4096,  dmaSize 2162688
+20: tmo-drp[822248]: <I> Allocated 9.9 GB pebble for 128 transitions of 8388608 B and 4096 L1Accepts of 2162688 B
+21: tmo-drp[822248]: <I> nL1Buffers 4096,  pebble buffer size 2162688 B
+22: tmo-drp[822248]: <I> nTrBuffers 128,  transition buffer size 8388608 B
+23: Rogue/pyrogue version v6.1.3. https://github.com/slaclab/rogue
+24: piranha4_init (i2c_setup:186M)
+25: Start: Started zmqServer on ports 9103-9105
+26:     To start a gui: python -m pyrogue gui --server='localhost:9103'
+27:     To use a virtual client: client = pyrogue.interfaces.VirtualClient(addr='localhost', port=9103)
+28: [41m
+29:                     PCIe.AxiVersion.FpgaVersion = 0x4030000 != 0x3060000
+30:                     Please update PCIe firmware using software/scripts/updatePcieFpga.py
+31:                     https://github.com/slaclab/lcls2-pgp-pcie-apps/blob/master/firmware/targets/shared_config.mk
+32:                     [0m
+33: ClinkDevRoot.ClinkFeb[1].ClinkTop.Ch[0].UartPiranha4: SendString: spf 0
+34: ClinkDevRoot.ClinkFeb[1].ClinkTop.Ch[0].UartPiranha4: SendString: gcp
+35: tmo-drp[822248]: <I> Prometheus run-time monitoring data is on port 9201
+36: tmo-drp[822248]: <I> Output dir: /cds/data/drpsrcf/tmo
+37: tmo-drp[822248]: <I> Output dir: ready
+38: tmo-drp[822248]: <I> setting lane  1, dest 0x101
+39: tmo-drp[822248]: <I> BufferedFileWriterMT is starting with process ID 822390
+40: tmo-drp[822248]: <I> Allocated 1.1 GB for 2 buffers of 536870912 B in BufferedFileWriterMT
+41: tmo-drp[822248]: <I> Allocated 0.0 GB for 1 buffers of 8388608 B in BufferedFileWriter
+42: tmo-drp[822248]: <I> Ready for transitions

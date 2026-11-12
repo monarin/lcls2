@@ -1,0 +1,20 @@
+{
+  "checked_utc": "2026-11-10T00:47:13.186217+00:00",
+  "remaining_test_pids": [],
+  "checked_ports": [
+    5561,
+    5562,
+    9099,
+    9100,
+    9101,
+    9103,
+    9104,
+    9105
+  ],
+  "remaining_listeners": [],
+  "device_preflight": {
+    "visible_device_holders": [],
+    "inaccessible_process_fd_directories": 914,
+    "limitation": "Operator must establish exclusive board access, including invisible clients."
+  }
+}

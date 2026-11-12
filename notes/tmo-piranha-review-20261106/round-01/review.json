@@ -1,0 +1,30 @@
+{
+  "reviewed_commit": "0eea03bc3861cc41f3f10b8c72c5dbaed69e4eb5",
+  "verdict": "pass",
+  "summary": "The plan faithfully identifies the narrow Python allocation path, its production effects, and its limits as a reproduction of a full DRP launch. No blocking findings. One minor clarification would improve socket isolation and teardown accounting.",
+  "checks": [
+    "Read the original task transfer, review contract, findings report, preserved issue and deployment evidence.",
+    "Verified Piranha4 constructor → BEBDetector init/init_feb and Collection Alloc → PGPDetectorApp → BEBDetector connectionInfo → Python call chain.",
+    "Verified synthetic allocation schema, insertion-order supervisor election, exact hostname/PID requirements, worker count, fixed barrier ports, and unbounded waits.",
+    "Verified startup escape/SPF/GCP commands precede allocation and remain active with enableConfig=False.",
+    "Verified timing setup and StopRun effects, distinct startup/allocation/CPA/VT/VV phases, parser stride and prompt conditions.",
+    "Checked fresh-process trial design, capture timing and bounded buffers, cleanup/watchdog requirements, production exclusivity, and phase-specific acceptance criteria.",
+    "Confirmed statistical estimates are explicitly conditional and paired-camera correlation is acknowledged."
+  ],
+  "limitations": [
+    "Review was local and read-only; no imports of hardware dependencies, device access, runtime tests, or external-service calls were performed.",
+    "The coordinator's snapshot hash validation and additional successful-Alloc log checks were not independently repeated.",
+    "Source supports path feasibility; production race fidelity, callback instrumentation effects, and cleanup behavior still require the later implementation review and authorized hardware validation."
+  ],
+  "findings": [
+    {
+      "id": "P1",
+      "severity": "low",
+      "blocking": false,
+      "file": "notes/tmo-piranha-standalone-test-findings-2026-11-06.md",
+      "line": 61,
+      "evidence": "The isolation discussion names barrier ports 5561/5562, but unchanged ClinkDevRoot also defaults zmqSrvEn=True and constructs pr.interfaces.ZmqServer(root=self, addr='*', port=0) (preserved ClinkDevRoot.py:55,85–88). The FZP launch excerpt records ports 9099–9101. Thus direct Python also starts a PyRogue server on dynamically selected ports.",
+      "requested_change": "Explicitly include the PyRogue server in the baseline side effects: record each child's assigned ports, avoid attaching GUI/VirtualClient clients during the baseline, and verify those listeners disappear during teardown. Preserve the deployed default unless a separately labeled experiment deliberately changes it."
+    }
+  ]
+}

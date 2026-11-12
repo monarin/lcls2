@@ -1,0 +1,164 @@
+{
+  "ok": true,
+  "config": {
+    "mode": "cold",
+    "cameras": [
+      "fzp",
+      "atm"
+    ],
+    "trials": 3,
+    "settle_seconds": 40.0,
+    "interval": 2.0,
+    "timeout": 60.0,
+    "cleanup_timeout": 10.0,
+    "execute": true,
+    "daq_stopped": true,
+    "preflight": {
+      "visible_device_holders": [],
+      "inaccessible_process_fd_directories": 920,
+      "limitation": "Operator must establish exclusive board access, including invisible clients."
+    }
+  },
+  "started_utc": "2026-11-07T01:20:32.360904+00:00",
+  "script_sha256": "d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804",
+  "trials": [
+    {
+      "trial": 1,
+      "results": [
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 58871,
+          "camera": "fzp",
+          "started_monotonic": 4861483.179665711,
+          "elapsed_seconds": 6.37467822432518,
+          "since_root_ready_seconds": 44.6002044249326,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        },
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 58872,
+          "camera": "atm",
+          "started_monotonic": 4861483.16015047,
+          "elapsed_seconds": 6.384090889245272,
+          "since_root_ready_seconds": 40.043905262835324,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          }
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "results": [
+        {
+          "ok": true,
+          "trial": 2,
+          "pid": 59487,
+          "camera": "fzp",
+          "started_monotonic": 4861540.495245718,
+          "elapsed_seconds": 6.394520456902683,
+          "since_root_ready_seconds": 40.0500050811097,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        },
+        {
+          "ok": true,
+          "trial": 2,
+          "pid": 59488,
+          "camera": "atm",
+          "started_monotonic": 4861540.495096799,
+          "elapsed_seconds": 6.382688123732805,
+          "since_root_ready_seconds": 45.85512289684266,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          }
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "results": [
+        {
+          "ok": true,
+          "trial": 3,
+          "pid": 60167,
+          "camera": "fzp",
+          "started_monotonic": 4861592.845108198,
+          "elapsed_seconds": 6.360758977010846,
+          "since_root_ready_seconds": 40.04301878903061,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        },
+        {
+          "ok": true,
+          "trial": 3,
+          "pid": 60170,
+          "camera": "atm",
+          "started_monotonic": 4861592.831185801,
+          "elapsed_seconds": 6.395759553648531,
+          "since_root_ready_seconds": 40.04412870667875,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12102856",
+            "bist": "Good"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "group": 1,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0,
+        0
+      ]
+    },
+    {
+      "group": 2,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0,
+        0
+      ]
+    },
+    {
+      "group": 3,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0,
+        0
+      ]
+    }
+  ],
+  "finished_utc": "2026-11-07T01:23:16.879403+00:00"
+}

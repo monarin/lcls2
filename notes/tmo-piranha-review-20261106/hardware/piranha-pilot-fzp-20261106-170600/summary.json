@@ -1,0 +1,97 @@
+{
+  "ok": true,
+  "config": {
+    "mode": "warm",
+    "cameras": [
+      "fzp"
+    ],
+    "trials": 3,
+    "settle_seconds": 40.0,
+    "interval": 2.0,
+    "timeout": 60.0,
+    "cleanup_timeout": 10.0,
+    "execute": true,
+    "daq_stopped": true,
+    "preflight": {
+      "visible_device_holders": [],
+      "inaccessible_process_fd_directories": 911,
+      "limitation": "Operator must establish exclusive board access, including invisible clients."
+    }
+  },
+  "started_utc": "2026-11-07T01:06:00.751535+00:00",
+  "script_sha256": "d7c7e249753f29dccf5d713365b79758f8fb60da42fa4e336b5728d2ea10b804",
+  "trials": [
+    {
+      "trial": 1,
+      "results": [
+        {
+          "ok": true,
+          "trial": 1,
+          "pid": 48898,
+          "camera": "fzp",
+          "started_monotonic": 4860607.161262388,
+          "elapsed_seconds": 5.397881959564984,
+          "since_root_ready_seconds": 40.095421130768955,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "results": [
+        {
+          "ok": true,
+          "trial": 2,
+          "pid": 48898,
+          "camera": "fzp",
+          "started_monotonic": 4860614.619717322,
+          "elapsed_seconds": 5.364814676344395,
+          "since_root_ready_seconds": 47.55387606471777,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "results": [
+        {
+          "ok": true,
+          "trial": 3,
+          "pid": 48898,
+          "camera": "fzp",
+          "started_monotonic": 4860622.046603915,
+          "elapsed_seconds": 5.387640961445868,
+          "since_root_ready_seconds": 54.98076265770942,
+          "connection_info": {
+            "paddr": 4278588680,
+            "model": "02",
+            "serno": "12097685",
+            "bist": "Good"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "group": 1,
+      "forced_kill_pids": [],
+      "unreaped_pids": [],
+      "errors": [],
+      "exit_codes": [
+        0
+      ]
+    }
+  ],
+  "finished_utc": "2026-11-07T01:07:05.186178+00:00"
+}

@@ -1,0 +1,27 @@
+{
+  "reviewed_commit": "820f992408c9232839273ccdd5e9121700785e96",
+  "verdict": "changes_requested",
+  "summary": "Fixture startup repair is correctly scoped; one existing hold-expiry race requires repair.",
+  "checks": [
+    "Fixture allowance applies only to ready.json; runtime timing unchanged.",
+    "Initial failures and validation disclosed.",
+    "Current controller, worker, channel, watchdog, capture, diagnostics and client inspected.",
+    "Supplied 58-test passing transcript inspected; no tests independently executed.",
+    "Hardware limitations and deferred HOLD-IMPL-007 remain accurate."
+  ],
+  "limitations": [
+    "Read-only local source/Git/evidence review; no tests, network, GUI or hardware.",
+    "Race identified by source interleaving; no runtime reproduction by reviewer."
+  ],
+  "findings": [
+    {
+      "id": "PR-001",
+      "severity": "medium",
+      "blocking": true,
+      "file": "psdaq/psdaq/debugtools/piranha4_pilot/inspection.py",
+      "line": 325,
+      "evidence": "Parent checks deadline at loop entry then may be delayed across expiry. Workers independently clean up and close; poll/receive incorrectly labels normal exit/EOF inspection_unavailable.",
+      "requested_change": "Make held-loop exit and EOF deadline-aware, retain cleanup verification, and add deterministic regression for successful rehearsal and target holds with normal and failed cleanup."
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+diff --git a/psdaq/psdaq/debugtools/piranha4_pilot/README.md b/psdaq/psdaq/debugtools/piranha4_pilot/README.md
+index e3e79eff1..2c0dc8c18 100644
+--- a/psdaq/psdaq/debugtools/piranha4_pilot/README.md
++++ b/psdaq/psdaq/debugtools/piranha4_pilot/README.md
+@@ -190,0 +191,4 @@ new allocation. Parent-control EOF releases responsive orphaned workers.
++Ctrl-C/SIGTERM during an acknowledged hold sends a cooperative `parent_signal`
++release before the cleanup grace expires; it does not fabricate a camera failure
++for an otherwise successful peer. A post-release cleanup failure keeps the
++original release reason and is recorded as `cleanup_failed` in both summaries.
+@@ -217,0 +222,5 @@ the server's bind address, and use matching local ports for base/base+1/base+2.
++The deployed wildcard-bound server advertises loopback (`127.0.0.1`), not its
++physical host. The latter is the camera record's identity `host` field. Printed
++commands therefore run on `drp-srcf-cmp013`, or locally through a tunnel to that
++host forwarding all three ports; another machine's bare loopback is not the
++camera server.
+diff --git a/psdaq/psdaq/debugtools/piranha4_pilot/control.py b/psdaq/psdaq/debugtools/piranha4_pilot/control.py
+index 27eaa1de6..ddda5861e 100644
+--- a/psdaq/psdaq/debugtools/piranha4_pilot/control.py
++++ b/psdaq/psdaq/debugtools/piranha4_pilot/control.py
+@@ -40 +40,4 @@ class Channel:
+-            chunk = self.connection.recv(65536)
++            try:
++                chunk = self.connection.recv(65536)
++            except (ConnectionResetError, BrokenPipeError) as exc:
++                raise EOFError('Parent/child control channel reset') from exc
+diff --git a/psdaq/psdaq/debugtools/piranha4_pilot/inspection.py b/psdaq/psdaq/debugtools/piranha4_pilot/inspection.py
+index a7950d90e..ac38ad23e 100644
+--- a/psdaq/psdaq/debugtools/piranha4_pilot/inspection.py
++++ b/psdaq/psdaq/debugtools/piranha4_pilot/inspection.py
+@@ -55,0 +56 @@ def run_child(spec, loader, api):
++    cancelled = None
+@@ -182 +183 @@ def run_child(spec, loader, api):
+-        inspection_error = repr(exc)
++        is_cancellation = isinstance(exc, SystemExit) and status['state'] in ('held', 'releasing')
+@@ -184,3 +185,8 @@ def run_child(spec, loader, api):
+-            save_failure(exc)
+-            publish('inspection_unavailable', inspection_error=inspection_error,
+-                    release_reason='signal' if isinstance(exc, SystemExit) else 'error')
++            if is_cancellation:
++                cancelled = repr(exc)
++                publish('releasing', cancelled=cancelled, release_reason='signal')
++            else:
++                inspection_error = repr(exc)
++                save_failure(exc)
++                publish('inspection_unavailable', inspection_error=inspection_error,
++                        release_reason='signal' if isinstance(exc, SystemExit) else 'error')
+@@ -189 +195 @@ def run_child(spec, loader, api):
+-                channel.send('failed', identity['trial'], error=inspection_error)
++                channel.send('cancelled' if is_cancellation else 'failed', identity['trial'], error=repr(exc))
+@@ -206 +212 @@ def run_child(spec, loader, api):
+-            api.write_json(directory / 'exit.json', dict(identity, ok=not (failure or cleanup_errors or inspection_error),
++            api.write_json(directory / 'exit.json', dict(identity, ok=not (failure or cleanup_errors or inspection_error or cancelled),
+@@ -208 +214 @@ def run_child(spec, loader, api):
+-                release_reason=status['release_reason']))
++                release_reason=status['release_reason'], cancelled=cancelled))
+@@ -212 +218,12 @@ def run_child(spec, loader, api):
+-    return int(bool(failure or cleanup_errors or inspection_error))
++    return int(bool(failure or cleanup_errors or inspection_error or cancelled))
++
++
++def cleanup_succeeded(children, result, target_timeout, api):
++    clean = not (result['forced_kill_pids'] or result['unreaped_pids'] or result['errors'])
++    for proc, directory, _ in children:
++        path = directory / 'exit.json'
++        record = api.read_json(path) if path.exists() else None
++        clean = clean and bool(record is not None and not record['cleanup_errors']
++            and not record['inspection_error'] and not record.get('cancelled')
++            and proc.returncode in ((0, 1) if target_timeout else (0,)))
++    return clean
+@@ -338,0 +356 @@ def run_controller(config, output, worker_prefix, api):
++    signal_release = False
+@@ -384,8 +402 @@ def run_controller(config, output, worker_prefix, api):
+-            cleanup_ok = not (group_result['forced_kill_pids'] or group_result['unreaped_pids'] or group_result['errors'])
+-            for proc, directory, _ in children:
+-                exit_path = directory / 'exit.json'
+-                exit_record = api.read_json(exit_path) if exit_path.exists() else None
+-                cleanup_ok = cleanup_ok and bool(exit_record is not None and not exit_record['cleanup_errors']
+-                    and not exit_record['inspection_error'] and proc.returncode in (0, 1))
+-                if not summary['target_timeout']:
+-                    cleanup_ok = cleanup_ok and proc.returncode == 0
++            cleanup_ok = cleanup_succeeded(children, group_result, summary['target_timeout'], api)
+@@ -411,2 +422,11 @@ def run_controller(config, output, worker_prefix, api):
+-            record.update(state='inspection_unavailable', release_reason='signal' if isinstance(exc, SystemExit) else 'error',
+-                          error=repr(exc), updated_utc=utc_now())
++            signal_release = isinstance(exc, SystemExit) and record['state'] == 'held'
++            if signal_release:
++                record.update(state='releasing', release_reason='parent_signal', released_utc=utc_now())
++                summary['inspection'] = record
++            elif record['state'] in ('released', 'cleanup_failed'):
++                record['cleanup_error'] = repr(exc)
++                summary['inspection'] = record
++            else:
++                record.update(state='inspection_unavailable',
++                              release_reason=record.get('release_reason') or ('signal' if isinstance(exc, SystemExit) else 'error'))
++            record.update(error=repr(exc), updated_utc=utc_now())
+@@ -420 +440 @@ def run_controller(config, output, worker_prefix, api):
+-                    channel.send('release', trial, reason='parent_shutdown')
++                    channel.send('release', trial, reason='parent_signal' if signal_release else 'parent_shutdown')
+@@ -424 +444,5 @@ def run_controller(config, output, worker_prefix, api):
+-                summary['abort_cleanup'] = api.stop_children(children, config['cleanup_timeout'], terminate=True)
++                summary['abort_cleanup'] = api.stop_children(children, config['cleanup_timeout'], terminate=not signal_release)
++                if signal_release:
++                    clean = cleanup_succeeded(children, summary['abort_cleanup'], summary['target_timeout'], api)
++                    summary['inspection'].update(state='released' if clean else 'cleanup_failed', cleanup_verified=clean)
++                    api.write_json(output / 'hold.json', summary['inspection'])
+diff --git a/psdaq/psdaq/debugtools/piranha4_pilot/test_inspection.py b/psdaq/psdaq/debugtools/piranha4_pilot/test_inspection.py
+index e1aca82a4..919d96340 100644
+--- a/psdaq/psdaq/debugtools/piranha4_pilot/test_inspection.py
++++ b/psdaq/psdaq/debugtools/piranha4_pilot/test_inspection.py
+@@ -19,0 +20 @@ from test_pilot import fake_loader
++from test_evidence import SoftwareNode, SoftwareRoot
+@@ -50,0 +52,21 @@ def fake_worker(path):
++    def load():
++        pc, provenance = fake_loader(spec)
++        if spec.get('test_real_recorder'):
++            original_init = pc.piranha4_init
++
++            class RecordingNode(SoftwareNode):
++                def set(self, update, write=True):
++                    super().set(update, write=write)
++                    pilot.write_json(Path(spec['directory']) / 'cached-diagnostics.json', json.loads(update))
++
++            def init(*args, **kwargs):
++                root = original_init(*args, **kwargs)
++                software = SoftwareRoot()
++                software.add(RecordingNode(name='PiranhaHoldDiagnostics', mode='RO', value='{}'))
++                root.PiranhaHoldDiagnostics = software.PiranhaHoldDiagnostics
++                root.zmqServer = software.zmqServer
++                return root
++
++            pc.piranha4_init = init
++        return pc, provenance
++
+@@ -54,5 +76,6 @@ def fake_worker(path):
+-        stack.enter_context(mock.patch.object(pilot, 'endpoint', return_value={
+-            'host': socket.gethostname(), 'base_port': 10000, 'ports': [10000, 10001, 10002],
+-            'backend': 'fake; no server/listeners or hardware'}))
+-        stack.enter_context(mock.patch.object(pilot, 'InspectionRecorder', Recorder))
+-        return pilot.child_main(spec, loader=lambda: fake_loader(spec))
++        if not spec.get('test_real_recorder'):
++            stack.enter_context(mock.patch.object(pilot, 'endpoint', return_value={
++                'host': socket.gethostname(), 'base_port': 10000, 'ports': [10000, 10001, 10002],
++                'backend': 'fake; no server/listeners or hardware'}))
++            stack.enter_context(mock.patch.object(pilot, 'InspectionRecorder', Recorder))
++        return pilot.child_main(spec, loader=load)
+@@ -242,0 +266,58 @@ class InspectionTests(unittest.TestCase):
++                record = pilot.read_json(self.output / 'hold.json')
++                self.assertEqual(record['release_reason'], 'parent_signal')
++                self.assertEqual(record['state'], 'released')
++                self.assertEqual(record, summary['inspection'])
++                self.assertTrue(record['cleanup_verified'])
++                self.assertEqual(len(list(self.output.glob('**/failure.json'))), 1)
++                for camera in ('fzp', 'atm'):
++                    exit_record = pilot.read_json(self.output / 'process-group-0001' / camera / 'exit.json')
++                    self.assertEqual(exit_record['release_reason'], 'parent_signal')
++                    self.assertIsNone(exit_record['inspection_error'])
++
++    def test_release_reason_survives_cleanup_failure(self):
++        for reason in ('operator', 'timeout'):
++            with self.subTest(reason=reason):
++                self.output = Path(self.temp.name) / reason
++                proc = self.launch(test_fault='gcp_timeout', test_fault_camera='atm',
++                                   test_cleanup_hang=True, hold_seconds=.8)
++                record = self.wait_for(self.held)
++                if reason == 'operator':
++                    inspection.release(self.output, record['campaign'], pilot)
++                self.assertEqual(proc.wait(timeout=4.), 1)
++                hold = pilot.read_json(self.output / 'hold.json')
++                self.assertEqual(hold['state'], 'cleanup_failed')
++                self.assertEqual(hold['release_reason'], reason)
++                self.assertFalse(hold['cleanup_verified'])
++                self.assertEqual(hold, pilot.read_json(self.output / 'summary.json')['inspection'])
++
++    def test_signalled_successful_worker_is_cancelled_not_camera_failure(self):
++        proc = self.launch(test_fault='gcp_timeout', test_fault_camera='atm')
++        record = self.wait_for(self.held)
++        successful = next(item for item in record['cameras'] if item['camera'] == 'fzp')
++        os.kill(successful['pid'], signal.SIGTERM)
++        self.assertEqual(proc.wait(timeout=4.), 1)
++        directory = self.output / 'process-group-0001/fzp'
++        self.assertFalse((directory / 'failure.json').exists())
++        self.assertTrue(pilot.read_json(directory / 'exit.json')['cancelled'])
++
++    def test_real_recorder_in_worker_has_no_uart_side_effects(self):
++        proc = self.launch(test_fault='gcp_timeout', test_fault_camera='atm',
++                           test_real_recorder=True, hold_seconds=4.)
++        record = self.wait_for(self.held)
++        group = self.output / 'process-group-0001'
++        before = {camera: pilot.read_json(group / camera / 'fake_calls.json') for camera in ('fzp', 'atm')}
++        digest = pilot.sha(group / 'atm/uart-failure.json')
++        time.sleep(1.2)
++        for camera in ('fzp', 'atm'):
++            self.assertEqual(pilot.read_json(group / camera / 'fake_calls.json'), before[camera])
++            snapshots = list((group / camera / 'inspection').glob('rx-*.json'))
++            self.assertEqual(len(snapshots), 2)
++            diagnostic = pilot.read_json(group / camera / 'cached-diagnostics.json')
++            self.assertEqual(diagnostic['state']['state'], 'held')
++            self.assertEqual(diagnostic['identity']['camera'], camera)
++        inspection.release(self.output, record['campaign'], pilot)
++        self.assertEqual(proc.wait(timeout=4.), 1)
++        for camera in ('fzp', 'atm'):
++            after = pilot.read_json(group / camera / 'fake_calls.json')
++            self.assertEqual(after, before[camera] + ['shutdown', 'stop'])
++        self.assertEqual(pilot.sha(group / 'atm/uart-failure.json'), digest)
+@@ -303,0 +385,10 @@ class InspectionTests(unittest.TestCase):
++    def test_reset_peer_with_unread_data_is_eof(self):
++        first, second = socket.socketpair()
++        self.addCleanup(first.close)
++        self.addCleanup(second.close)
++        channel = Channel(first, 'campaign')
++        channel.send('held', 1)
++        second.close()
++        with self.assertRaises(EOFError):
++            channel.receive(.2)
++

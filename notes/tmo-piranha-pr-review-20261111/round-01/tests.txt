@@ -1,0 +1,103 @@
+test_callback_performs_no_disk_io (test_evidence.CaptureTests) ... ok
+test_concurrent_ring_and_receiver_sampling (test_evidence.CaptureTests) ... ok
+test_drop_in_attributes_and_rx_counters (test_evidence.CaptureTests) ... ok
+test_dump_drains_only_after_success (test_evidence.CaptureTests) ... ok
+test_dump_preserves_late_rx_and_concurrent_loss (test_evidence.CaptureTests) ... ok
+test_invalid_limits (test_evidence.CaptureTests) ... ok
+test_overflow_has_exact_recent_intervals_and_omitted_count (test_evidence.CaptureTests) ... ok
+test_oversized_payload_is_not_hex_encoded (test_evidence.CaptureTests) ... ok
+test_receiver_and_fields_are_bounded (test_evidence.CaptureTests) ... ok
+test_snapshot_is_detached (test_evidence.CaptureTests) ... ok
+test_client_calls_only_value_and_closes_pinned_resources (test_evidence.ClientTests) ... ok
+test_import_or_rpc_stall_has_bounded_deadline_and_reaps (test_evidence.ClientTests) ... ok
+test_rejects_arbitrary_nodes_before_launch (test_evidence.ClientTests) ... ok
+test_actual_server_api_and_attach_commands (test_evidence.DiagnosticsTests) ... ok
+test_diagnostic_serialization_worst_case_is_bounded (test_evidence.DiagnosticsTests) ... ok
+test_factory_adds_before_start_and_restores (test_evidence.DiagnosticsTests) ... ok
+test_factory_failure_restoration (test_evidence.DiagnosticsTests) ... ok
+test_fixed_retention_even_with_forced_snapshots (test_evidence.DiagnosticsTests) ... ok
+test_io_failure_propagates_and_does_not_publish (test_evidence.DiagnosticsTests) ... ok
+test_rotation_force_throttle_and_original_immutable (test_evidence.DiagnosticsTests) ... ok
+test_pinned_software_root_and_simple_client (test_evidence.PinnedIntegrationTests) ... ok
+test_channel_rejects_stale_foreign_and_broken_connections (test_inspection.InspectionTests) ... ok
+test_child_death_in_hold_aborts_peer (test_inspection.InspectionTests) ... ok
+test_cli_controls_are_offline_and_validated (test_inspection.InspectionTests) ... ok
+test_early_success_kept_past_ordinary_timeout_and_original_immutable (test_inspection.InspectionTests) ... ok
+test_enabled_cleanup_errors_and_hangs_remain_failures (test_inspection.InspectionTests) ... ok
+test_enabled_success_preserves_warm_reuse (test_inspection.InspectionTests) ... ok
+test_late_snapshot_disk_error_ends_acknowledged_hold (test_inspection.InspectionTests) ... ok
+test_non_target_failures_and_missing_peer_never_ready_hold (test_inspection.InspectionTests) ... ok
+test_pair_order_modes_and_both_failures (test_inspection.InspectionTests) ... Inspection held: /tmp/tmp_2uyepmg/run-fzpcold1/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmp_2uyepmg/run-fzpcold1 --campaign-id 89c6d0c27ea9476aa980c754db2058c3
+fzp PID 233051: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 233052: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmp_2uyepmg/run-atmcold3/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmp_2uyepmg/run-atmcold3 --campaign-id b45d2313b65c428fa67227b2f2c38995
+fzp PID 233459: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 233463: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmp_2uyepmg/run-bothwarm2/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmp_2uyepmg/run-bothwarm2 --campaign-id 91ba2fd0fbfc4c4db17f7877dd2b7c41
+fzp PID 233677: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 233678: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+Inspection held: /tmp/tmp_2uyepmg/run-atmwarm3/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmp_2uyepmg/run-atmwarm3 --campaign-id fdb04a1fee7d459aa9f268360c5aaabc
+fzp PID 234011: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 234012: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+ok
+test_parent_sigkill_worker_cleanup_including_native_hang (test_inspection.InspectionTests) ... ok
+test_parent_signals_release_and_cleanup (test_inspection.InspectionTests) ... ok
+test_real_recorder_in_worker_has_no_uart_side_effects (test_inspection.InspectionTests) ... ok
+test_rehearsal_does_not_hold_real_target (test_inspection.InspectionTests) ... ok
+test_rehearsal_stops_without_fabricating_failure (test_inspection.InspectionTests) ... Inspection held: /tmp/tmp_vhqb6ij/run/hold.json
+Release: /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /tmp/tmp_vhqb6ij/run --campaign-id 4bbb079e0e3f405ea38af2fb378c9de4
+fzp PID 236780: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+atm PID 236781: {'host': 'sdfiana025', 'base_port': 10000, 'ports': [10000, 10001, 10002], 'backend': 'fake; no server/listeners or hardware'}
+ok
+test_release_reason_survives_cleanup_failure (test_inspection.InspectionTests) ... ok
+test_reset_peer_with_unread_data_is_eof (test_inspection.InspectionTests) ... ok
+test_signalled_successful_worker_is_cancelled_not_camera_failure (test_inspection.InspectionTests) ... ok
+test_snapshot_and_ack_failures_abort_group (test_inspection.InspectionTests) ... ok
+test_stale_and_malformed_release_do_not_end_hold (test_inspection.InspectionTests) ... ok
+test_target_deadline_includes_waiting_for_unfinished_peer (test_inspection.InspectionTests) ... ok
+test_capture_bounds_and_drain (test_pilot.PilotTests) ... ok
+test_cold_pair_has_new_pids_and_identical_alloc (test_pilot.PilotTests) ... Starting process group 1, trials [1]
+Trial 1: calling connectionInfo for ['fzp', 'atm']
+Starting process group 2, trials [2]
+Trial 2: calling connectionInfo for ['fzp', 'atm']
+ok
+test_default_dry_run_never_loads_or_preflights (test_pilot.PilotTests) ... ok
+test_execute_needs_attestation_and_output (test_pilot.PilotTests) ... ok
+test_failure_capture_survives_hanging_cleanup (test_pilot.PilotTests) ... Starting process group 1, trials [1]
+Trial 1: calling connectionInfo for ['fzp', 'atm']
+ok
+test_failure_stops_pair_before_next_trial (test_pilot.PilotTests) ... Starting process group 1, trials [1, 2, 3]
+Trial 1: calling connectionInfo for ['fzp', 'atm']
+ok
+test_init_failure_creates_no_alloc (test_pilot.PilotTests) ... Starting process group 1, trials [1]
+ok
+test_observer_preserves_actual_receiver_parsing (test_pilot.PilotTests) ... ok
+test_output_not_overwritten (test_pilot.PilotTests) ... ok
+test_parent_interrupt_reaps_children (test_pilot.PilotTests) ... ok
+test_shutdown_failure_is_not_success (test_pilot.PilotTests) ... Starting process group 1, trials [1]
+Trial 1: calling connectionInfo for ['fzp', 'atm']
+ok
+test_stuck_cleanup_forces_kill_and_fails (test_pilot.PilotTests) ... Starting process group 1, trials [1]
+Trial 1: calling connectionInfo for ['fzp', 'atm']
+ok
+test_unkillable_peers_get_all_signals_and_bounded_summary (test_pilot.PilotTests) ... Starting process group 1, trials [1]
+Trial 1: calling connectionInfo for ['fzp', 'atm']
+ok
+test_warm_pair_reuses_pids_and_roots (test_pilot.PilotTests) ... Starting process group 1, trials [1, 2, 3]
+Trial 1: calling connectionInfo for ['fzp', 'atm']
+Trial 2: calling connectionInfo for ['fzp', 'atm']
+Trial 3: calling connectionInfo for ['fzp', 'atm']
+ok
+test_watchdog_terminates_and_reaps (test_pilot.PilotTests) ... Starting process group 1, trials [1]
+ok
+test_worker_without_flags_refuses (test_pilot.PilotTests) ... ok
+test_wrong_host_refuses_before_hardware_import (test_pilot.PilotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 58 tests in 162.249s
+
+OK

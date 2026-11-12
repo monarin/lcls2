@@ -1,0 +1,8 @@
+{
+  "pid": 48898,
+  "host": "drp-srcf-cmp013",
+  "device": "/dev/datadev_0",
+  "camera": "fzp",
+  "lane": 0,
+  "ready_monotonic": 4860567.065841258
+}
