@@ -18,6 +18,17 @@ TMPDIR=/tmp PYTHONDONTWRITEBYTECODE=1 \
 -m unittest discover -s psdaq/psdaq/debugtools/piranha4_pilot -p 'test_*.py' -v
 ```
 
+Latest validation: **59 tests passed, zero skips** in 181.607 seconds on
+`fd2ab73d3332597d9ce51b1e1f97efff776ba34e`. Fresh testing initially exposed a
+fixture startup limit; the repair separates interpreter imports from tested
+allocation/hold deadlines. Review also found an expiry race, reproduced in six
+cases before repair. After repair, normal expiry records timeout release while
+failed cleanup remains a failure. Initial failures and final test output are
+preserved in [PR validation records](https://github.com/monarin/lcls2/tree/features/piranha-routine-check/notes/tmo-piranha-pr-review-20261111).
+
+Independent PR-readiness review passed in two rounds on that exact code commit;
+PR-001 was repaired and re-reviewed.
+
 The suite covers early-success peers, both camera failure orders, cold/warm reuse, immutable and late capture, release/expiry, parent signals/death, cleanup hangs including native GIL retention, cached access, and the real pinned software-only PyRogue client.
 
 Dry-run previews (no hardware imports or opens):

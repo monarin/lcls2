@@ -13,10 +13,12 @@ attempts on November 6 and 9 passed; the intermittent allocation GCP timeout
 (issue 205) has not been reproduced. This is limited smoke-test evidence, not
 proof of full-DAQ operation or absence of the fault.
 
-The hold-on-error implementation passes 58 offline tests and independent
-re-review (two rounds, six findings repaired, one optional labeling follow-up
-deferred); see the
+The hold-on-error implementation passes 59 offline tests and independent
+PR-readiness re-review on `fd2ab73d3332597d9ce51b1e1f97efff776ba34e` (two rounds,
+expiry-race finding repaired). See the
+[PR-readiness record](../tmo-piranha-pr-review-20261111/status.json) and the earlier
 [implementation/review record](../tmo-piranha-hold-implementation-20261111/status.json).
+The earlier optional labeling follow-up HOLD-IMPL-007 remains deferred.
 The new hold path has not been tested on hardware. A new hardware test requires
 a current exclusive-board window; historical confirmations are not ongoing
 reservations. No hardware is accessed during local implementation/review.
