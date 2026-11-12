@@ -7,6 +7,8 @@ on November 10, 2026. Dedicated worktree:
 
 ## Current status
 
+Draft PR: [monarin/lcls2#2](https://github.com/monarin/lcls2/pull/2).
+
 The standalone allocation pilot and offline tests are implemented. It supports
 single-camera and paired cold/warm trials. All 31 recorded camera connection
 attempts on November 6 and 9 passed; the intermittent allocation GCP timeout

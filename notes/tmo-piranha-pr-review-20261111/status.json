@@ -1,6 +1,6 @@
 {
   "scope": "prepare and review existing hold implementation as draft PR; repair test startup allowance",
-  "phase": "review_passed_pending_publication",
+  "phase": "published_draft_pr",
   "round": 2,
   "round_limit": 3,
   "implementation_sha": "fd2ab73d3332597d9ce51b1e1f97efff776ba34e",
@@ -17,5 +17,13 @@
   "review_verdict": "pass",
   "deferred_ids": [
     "HOLD-IMPL-007"
-  ]
+  ],
+  "pr_url": "https://github.com/monarin/lcls2/pull/2",
+  "pr_number": 2,
+  "repository": "monarin/lcls2",
+  "base": "master",
+  "branch": "features/piranha-routine-check",
+  "published_head_at_creation": "6afad23a3329bcf78bc25961961ac6493ae0fceb",
+  "ci_status": "pending; consult live PR checks",
+  "hardware_rehearsal": "pending"
 }

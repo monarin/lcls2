@@ -7,7 +7,7 @@ See [docs/CHANGELOG_GUIDE.md](docs/CHANGELOG_GUIDE.md) for how to add entries.
 
 ### Added
 
-- Added a standalone Piranha cold/warm allocation pilot with opt-in coordinated inspection holds, preserved UART evidence, cached diagnostics, and bounded release/cleanup. Hardware rehearsal of the hold path remains pending. @monarin
+- Added a standalone Piranha cold/warm allocation pilot with opt-in coordinated inspection holds, preserved UART evidence, cached diagnostics, and bounded release/cleanup. Hardware rehearsal of the hold path remains pending. @monarin [#2](https://github.com/monarin/lcls2/pull/2)
 
 - Added ePixUHR calibration and a CALIB mode for taking darks to the GPU DRP, with the Reader/Reducer performance work that runs five GPU DRPs on one node at 33 kHz, and per-stage metrics. @rclaus2 [#269](https://github.com/slac-lcls/lcls2/pull/269)
 
