@@ -26,5 +26,6 @@ ATM GUI:
 3. RELEASE WHEN FINISHED from the second terminal on drp-srcf-cmp013
 /sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /sdf/home/m/monarin/piranha-pair-rehearsal-20261111-181748 --campaign-id 28b374cf26174e0094ffadbb06a584b4
 
-Wait for Completed in the first terminal, then check summary.json for cleanup.
+Wait for the final status line in the first terminal, then check summary.json for cleanup.
+A captured target timeout remains a failed campaign even after clean release.
 Use commands from the current hold; ports and campaign tokens can change.

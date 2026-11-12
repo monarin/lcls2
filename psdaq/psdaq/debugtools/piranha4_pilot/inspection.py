@@ -271,7 +271,8 @@ def print_hold_instructions(record):
                   item['endpoint'].get('gui_command', '(GUI command unavailable.)')]
     lines += ['\n3. RELEASE WHEN FINISHED from the second terminal on ' + record['host'],
               record['release_command'],
-              '\nWait for Completed in the first terminal, then check summary.json for cleanup.',
+              '\nWait for the final status line in the first terminal, then check summary.json for cleanup.',
+              'A captured target timeout remains a failed campaign even after clean release.',
               'Use commands from the current hold; ports and campaign tokens can change.\n']
     print('\n'.join(lines), flush=True)
 

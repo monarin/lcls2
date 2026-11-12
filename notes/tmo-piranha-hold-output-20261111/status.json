@@ -1,0 +1,13 @@
+{
+  "phase": "review",
+  "round": 1,
+  "round_limit": 3,
+  "implementation_sha": "8d4c8c329de3039650bea2833853be4a4353870e",
+  "checks": [
+    "Existing rehearsal and paired target-failure tests pass",
+    "Preview inspected",
+    "Commit hooks pass"
+  ],
+  "unresolved_ids": [],
+  "hardware_executed": false
+}

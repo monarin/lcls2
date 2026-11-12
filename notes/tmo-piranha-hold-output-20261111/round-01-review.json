@@ -1,0 +1,27 @@
+{
+  "reviewed_commit": "8d4c8c329de3039650bea2833853be4a4353870e",
+  "verdict": "pass",
+  "summary": "Numbered output improves readability and preserves stored commands and protocol behavior. Non-blocking wording correction recommended.",
+  "checks": [
+    "Complete diff, synthetic preview, docs and supplied tests inspected",
+    "Commands printed directly from stored metadata",
+    "Local active deadline used",
+    "Only console presentation changed",
+    "Compared final-status text to pilot.main"
+  ],
+  "limitations": [
+    "Read-only review; tests not independently rerun; no hardware, GUI or network",
+    "Historical preview validates formatting only"
+  ],
+  "findings": [
+    {
+      "id": "OUT-001",
+      "severity": "low",
+      "blocking": false,
+      "file": "psdaq/psdaq/debugtools/piranha4_pilot/inspection.py",
+      "line": 274,
+      "evidence": "Wait for Completed is wrong for a real target timeout, which intentionally prints STOPPED on failure even after clean release.",
+      "requested_change": "Say final status line and explain that a target timeout remains a failed campaign; update preview."
+    }
+  ]
+}
