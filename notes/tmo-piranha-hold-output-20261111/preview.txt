@@ -1,0 +1,30 @@
+FORMATTING EXAMPLE ONLY: historical run is finished; timer set to 300 for preview.
+
+Inspection held: /sdf/home/m/monarin/piranha-pair-rehearsal-20261111-181748/hold.json
+Reason: rehearsal | Automatic release in approximately 300 seconds.
+Leave this terminal running. Ctrl-C releases the hold.
+
+1. INSPECT NOW in a second terminal on drp-srcf-cmp013
+Use the same DAQ environment. Each command reads one cached diagnostic snapshot.
+
+FZP (lane 0, PID 1494394):
+/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/inspect_hold.py --host 127.0.0.1 --port 9099 --path ClinkDevRoot.PiranhaHoldDiagnostics --timeout 5
+
+ATM (lane 1, PID 1494395):
+/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/inspect_hold.py --host 127.0.0.1 --port 9103 --path ClinkDevRoot.PiranhaHoldDiagnostics --timeout 5
+
+2. OPTIONAL GUI while the hold is active (requires a graphical display)
+These commands attach to the existing roots. Do not launch CameraLink devGui.py.
+The GUI can write: avoid ReadAll/refresh, UART commands and resets during initial inspection.
+
+FZP GUI:
+/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python -m pyrogue gui --server=127.0.0.1:9099
+
+ATM GUI:
+/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python -m pyrogue gui --server=127.0.0.1:9103
+
+3. RELEASE WHEN FINISHED from the second terminal on drp-srcf-cmp013
+/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/daq_20250402_r9/bin/python /sdf/home/m/monarin/lcls2_worktree/piranha-routine-check/psdaq/psdaq/debugtools/piranha4_pilot/pilot.py --release /sdf/home/m/monarin/piranha-pair-rehearsal-20261111-181748 --campaign-id 28b374cf26174e0094ffadbb06a584b4
+
+Wait for Completed in the first terminal, then check summary.json for cleanup.
+Use commands from the current hold; ports and campaign tokens can change.

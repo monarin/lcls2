@@ -201,8 +201,11 @@ missing `exit.json` or unreaped/forced-kill records mean cleanup is unverified.
 
 After implementation review, a new authorized exclusive-board window is needed
 for the first hardware rehearsal. It is **not authorized by these instructions**.
-The parent prints the run's `hold.json`, both existing server endpoints, and an
-exact release command. Run release on the same host, in another terminal:
+The parent prints the run's `hold.json`, approximate time remaining, and three
+numbered sections: **inspect now**, **optional GUI**, and **release when finished**.
+Each camera's cached-client and GUI commands appear on their own copy-ready lines.
+Use the current hold's commands in a second terminal on the named host; leave the
+first terminal running. Run release on that same host when inspection is finished:
 
 ```bash
 python "$PIRANHA_PILOT" --release /absolute/run/directory --campaign-id TOKEN_FROM_HOLD_JSON

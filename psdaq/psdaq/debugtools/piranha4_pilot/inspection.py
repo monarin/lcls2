@@ -251,6 +251,31 @@ def collect(children, channels, trial, kinds, deadline, on_message=None):
     return [messages[proc.pid] for proc, _, _ in children]
 
 
+def print_hold_instructions(record):
+    remaining = max(0., record['deadline_monotonic'] - time.monotonic())
+    lines = [
+        '\nInspection held: ' + str(Path(record['directory']) / 'hold.json'),
+        'Reason: %s | Automatic release in approximately %.0f seconds.' % (record['reason'], remaining),
+        'Leave this terminal running. Ctrl-C releases the hold.',
+        '\n1. INSPECT NOW in a second terminal on ' + record['host'],
+        'Use the same DAQ environment. Each command reads one cached diagnostic snapshot.',
+    ]
+    for item in record['cameras']:
+        lines += ['\n%s (lane %s, PID %s):' % (item['camera'].upper(), item['lane'], item['pid']),
+                  item['endpoint'].get('client_command', '(Cached client command unavailable.)')]
+    lines += ['\n2. OPTIONAL GUI while the hold is active (requires a graphical display)',
+              'These commands attach to the existing roots. Do not launch CameraLink devGui.py.',
+              'The GUI can write: avoid ReadAll/refresh, UART commands and resets during initial inspection.']
+    for item in record['cameras']:
+        lines += ['\n%s GUI:' % item['camera'].upper(),
+                  item['endpoint'].get('gui_command', '(GUI command unavailable.)')]
+    lines += ['\n3. RELEASE WHEN FINISHED from the second terminal on ' + record['host'],
+              record['release_command'],
+              '\nWait for Completed in the first terminal, then check summary.json for cleanup.',
+              'Use commands from the current hold; ports and campaign tokens can change.\n']
+    print('\n'.join(lines), flush=True)
+
+
 def coordinated_trial(children, channels, trial, allocation, config, output, summary, api):
     allocation_deadline = time.monotonic() + config['timeout']
     outcome_deadline = [allocation_deadline]
@@ -298,10 +323,7 @@ def coordinated_trial(children, channels, trial, allocation, config, output, sum
                   release_command=shlex.join([sys.executable, str(Path(api.__file__).resolve()),
                       '--release', str(output.resolve()), '--campaign-id', config['campaign']]))
     api.write_json(output / 'hold.json', record)
-    print('Inspection held: ' + str(output / 'hold.json'), flush=True)
-    print('Release: ' + record['release_command'], flush=True)
-    for item in record['cameras']:
-        print('%s PID %s: %s' % (item['camera'], item['pid'], item['endpoint']), flush=True)
+    print_hold_instructions(record)
     release_reason = 'timeout'
     last_rejected = None
     while time.monotonic() < hold_deadline:
