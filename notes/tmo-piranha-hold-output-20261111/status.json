@@ -1,13 +1,19 @@
 {
-  "phase": "review",
-  "round": 1,
+  "phase": "review_passed",
+  "round": 2,
   "round_limit": 3,
-  "implementation_sha": "8d4c8c329de3039650bea2833853be4a4353870e",
+  "implementation_sha": "2142a9cb102a1ad40f83fd8fea7f734cfc471b1f",
   "checks": [
     "Existing rehearsal and paired target-failure tests pass",
     "Preview inspected",
     "Commit hooks pass"
   ],
   "unresolved_ids": [],
-  "hardware_executed": false
+  "hardware_executed": false,
+  "reviewed_sha": "2142a9cb102a1ad40f83fd8fea7f734cfc471b1f",
+  "review_verdict": "pass",
+  "closed_ids": [
+    "OUT-001"
+  ],
+  "pr_url": "https://github.com/monarin/lcls2/pull/2"
 }
