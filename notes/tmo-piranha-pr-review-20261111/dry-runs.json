@@ -1,0 +1,50 @@
+[
+  {
+    "dry_run": true,
+    "host": "drp-srcf-cmp013",
+    "device": "/dev/datadev_0",
+    "plan": {
+      "mode": "cold",
+      "cameras": [
+        "fzp",
+        "atm"
+      ],
+      "trials": 3,
+      "settle_seconds": 40.0,
+      "interval": 2.0,
+      "timeout": 60.0,
+      "cleanup_timeout": 10.0,
+      "execute": false,
+      "daq_stopped": false,
+      "hold_on_error": true,
+      "inspect_after_trial": null,
+      "hold_seconds": 900.0
+    },
+    "release": "/sdf/group/lcls/ds/ana/sw/conda2/rel/tmo/lcls2_110326_disable000",
+    "hardware_opened": false
+  },
+  {
+    "dry_run": true,
+    "host": "drp-srcf-cmp013",
+    "device": "/dev/datadev_0",
+    "plan": {
+      "mode": "cold",
+      "cameras": [
+        "fzp",
+        "atm"
+      ],
+      "trials": 1,
+      "settle_seconds": 40.0,
+      "interval": 2.0,
+      "timeout": 60.0,
+      "cleanup_timeout": 10.0,
+      "execute": false,
+      "daq_stopped": false,
+      "hold_on_error": false,
+      "inspect_after_trial": 1,
+      "hold_seconds": 60.0
+    },
+    "release": "/sdf/group/lcls/ds/ana/sw/conda2/rel/tmo/lcls2_110326_disable000",
+    "hardware_opened": false
+  }
+]

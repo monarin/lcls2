@@ -254,6 +254,9 @@ retains the GIL during orphan cleanup. Evidence tests also use a real pinned
 PyRogue root with software-only nodes and loopback sockets; no gateway/device is
 constructed. The fixture selects an available port triplet and disables its
 heartbeat; it does not validate production startup or a real GUI/network route.
+Fake-controller readiness allows 15 seconds for interpreter imports; the short
+allocation, hold, and cleanup deadlines under test remain unchanged. This test
+allowance does not change the production initialization watchdog.
 Missing pinned libraries cause an explicit skip, not proof of compatibility.
 The separate prior offline verification exercised the
 original receiver/connectionInfo logic with fake hardware. Neither is a real

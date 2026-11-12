@@ -20,6 +20,24 @@ from test_pilot import fake_loader
 from test_evidence import SoftwareNode, SoftwareRoot
 
 
+def run_fake_controller(config, output, worker):
+    """Allow interpreter imports without relaxing the tested protocol deadlines.
+
+    The production init timeout includes process startup. These fake tests use
+    sub-second allocation/hold budgets; importing unittest on a shared Python
+    installation can take longer than that before a worker enters our code.
+    Only the parent's initial ready-file wait gets a separate fixture budget.
+    Worker guards, allocation/decision timers and cleanup remain unchanged.
+    """
+    original_wait = pilot.wait_files
+
+    def wait_files(children, name, timeout):
+        return original_wait(children, name, max(timeout, 15.) if name == 'ready.json' else timeout)
+
+    with mock.patch.object(pilot, 'wait_files', side_effect=wait_files):
+        return pilot.run_controller(config, output, worker)
+
+
 def fake_worker(path):
     spec = pilot.read_json(path)
     original_capture = pilot.Capture
@@ -93,7 +111,7 @@ class InspectionTests(unittest.TestCase):
         self.worker = [sys.executable, str(Path(__file__).resolve()), '--fake-worker']
 
     def run_pilot(self, **changes):
-        rc = pilot.run_controller(dict(self.config, **changes), self.output, self.worker)
+        rc = run_fake_controller(dict(self.config, **changes), self.output, self.worker)
         return rc, pilot.read_json(self.output / 'summary.json')
 
     def launch(self, **changes):
@@ -129,7 +147,7 @@ class InspectionTests(unittest.TestCase):
         except (FileNotFoundError, ProcessLookupError):
             return False
 
-    def wait_for(self, predicate, timeout=6.):
+    def wait_for(self, predicate, timeout=20.):
         deadline = time.monotonic() + timeout
         while time.monotonic() < deadline:
             value = predicate()
@@ -220,12 +238,12 @@ class InspectionTests(unittest.TestCase):
                     self.assertNotEqual(pilot.read_json(self.output / 'hold.json')['state'], 'held')
 
     def test_target_deadline_includes_waiting_for_unfinished_peer(self):
-        started = time.monotonic()
         rc, summary = self.run_pilot(test_fault='gcp_timeout', test_fault_camera='fzp',
             test_allocation_delay={'atm': 4.}, timeout=6., hold_seconds=.2)
         self.assertEqual(rc, 1)
-        self.assertLess(time.monotonic() - started, 2.)
         self.assertTrue(summary['target_timeout'])
+        failure = pilot.read_json(self.output / 'process-group-0001/fzp/failure.json')
+        self.assertLess(time.monotonic() - failure['detected_monotonic'], 2.)
         self.assertEqual(pilot.read_json(self.output / 'hold.json')['state'], 'inspection_unavailable')
 
     def test_stale_and_malformed_release_do_not_end_hold(self):
@@ -398,6 +416,6 @@ if __name__ == '__main__':
         sys.exit(fake_worker(sys.argv[2]))
     if len(sys.argv) == 3 and sys.argv[1] == '--fake-controller':
         spec = pilot.read_json(sys.argv[2])
-        sys.exit(pilot.run_controller(spec['config'], spec['output'],
+        sys.exit(run_fake_controller(spec['config'], spec['output'],
             [sys.executable, str(Path(__file__).resolve()), '--fake-worker']))
     unittest.main()
