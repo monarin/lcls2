@@ -313,7 +313,7 @@ def coordinated_trial(children, channels, trial, allocation, config, output, sum
                          and request.get('directory') == str(output.resolve()) and request.get('trial') == trial
                          and request.get('action') == 'release')
                 if valid:
-                    release_reason = 'operator'
+                    release_reason = 'operator' if time.monotonic() < hold_deadline else 'timeout'
                     break
                 rejection = 'Stale or foreign release request'
             except (ValueError, UnicodeError) as exc:
@@ -324,8 +324,19 @@ def coordinated_trial(children, channels, trial, allocation, config, output, sum
                 api.write_json(output / 'hold.json', record)
         for proc, _, _ in children:
             if proc.poll() is not None:
+                # Workers enforce this same deadline independently. The parent
+                # may resume an iteration after normal worker timeout/cleanup.
+                # Exit records and return codes are still verified below by
+                # run_controller; closure alone does not establish success.
+                if time.monotonic() >= hold_deadline:
+                    break
                 raise RuntimeError('Child died during inspection')
-            message = channels[proc.pid].receive()
+            try:
+                message = channels[proc.pid].receive()
+            except EOFError:
+                if time.monotonic() >= hold_deadline:
+                    break
+                raise
             if message is not None:
                 raise RuntimeError('Child failed during inspection: ' + repr(message))
         time.sleep(min(.05, max(0., hold_deadline - time.monotonic())))

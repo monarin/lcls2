@@ -35,3 +35,20 @@ unverified. HOLD-IMPL-007 remains the accepted optional labeling follow-up.
 
 The original failed log is stored as lossless gzip to preserve captured trailing
 whitespace through formatting hooks. Decode it with gzip -dc.
+
+## PR readiness round 2
+
+PR-001 identified normal worker expiry misclassified by a delayed parent as
+inspection_unavailable. The new six-case regression reproduced all six failures
+on the previous code. Deadline-aware exit/EOF handling now proceeds to timeout
+release and the existing cleanup verifier; before-deadline closure still fails.
+Rehearsal and target-error holds cover both poll and receive paths; cleanup-hang
+cases remain cleanup_failed. Production deadlines are unchanged.
+
+Final full-suite result (round-02/tests.txt), pinned Python, no skips:
+
+```text
+Ran 59 tests in 181.607s
+
+OK
+```

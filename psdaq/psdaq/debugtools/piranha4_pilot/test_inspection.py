@@ -218,6 +218,56 @@ class InspectionTests(unittest.TestCase):
         self.assertNotIn('inspection', summary)
         self.assertTrue(pilot.read_json(self.output / 'process-group-0001/fzp/failure.json')['target_timeout'])
 
+    def test_parent_delayed_across_expiry_verifies_cleanup(self):
+        # Delay inside a loop iteration, after its deadline check. Real workers
+        # expire and close independently; exercise both poll() and receive().
+        for target in (False, True):
+            for point, bad_cleanup in (('poll', False), ('receive', False), ('receive', True)):
+                with self.subTest(target=target, point=point, bad_cleanup=bad_cleanup):
+                    self.output = Path(self.temp.name) / ('expiry-%s-%s-%s' % (target, point, bad_cleanup))
+                    delayed = []
+                    original_exists = Path.exists
+                    original_receive = Channel.receive
+
+                    def await_worker_exit():
+                        if delayed or not original_exists(self.output / 'hold.json'):
+                            return
+                        hold = pilot.read_json(self.output / 'hold.json')
+                        if hold['state'] != 'held':
+                            return
+                        delayed.append(True)
+                        deadline = time.monotonic() + 5.
+                        while any(self.running(item['pid']) for item in hold['cameras']):
+                            if time.monotonic() >= deadline:
+                                raise AssertionError('Workers did not independently expire')
+                            time.sleep(.02)
+
+                    def exists(path):
+                        if path == self.output / 'release.json':
+                            await_worker_exit()
+                        return original_exists(path)
+
+                    def receive(channel, timeout=0.):
+                        await_worker_exit()
+                        return original_receive(channel, timeout)
+
+                    changes = dict(inspect_after_trial=None if target else 1, hold_seconds=.5,
+                                   test_fault_camera='atm', test_cleanup_hang=bad_cleanup)
+                    if target:
+                        changes['test_fault'] = 'gcp_timeout'
+                    with (mock.patch.object(Path, 'exists', exists) if point == 'poll'
+                          else mock.patch.object(Channel, 'receive', receive)):
+                        rc, summary = self.run_pilot(**changes)
+                    self.assertTrue(delayed)
+                    self.assertEqual(rc, int(target or bad_cleanup))
+                    hold = pilot.read_json(self.output / 'hold.json')
+                    self.assertEqual(hold['release_reason'], 'timeout')
+                    self.assertEqual(hold['state'], 'cleanup_failed' if bad_cleanup else 'released')
+                    self.assertEqual(hold['cleanup_verified'], not bad_cleanup)
+                    self.assertEqual(hold, summary['inspection'])
+                    self.assertEqual(summary['target_timeout'], target)
+                    self.assertEqual(len(summary['trials']), 1)
+
     def test_non_target_failures_and_missing_peer_never_ready_hold(self):
         for fault in ('init_failure', 'vt_timeout', 'process_exit', 'alloc_hang'):
             with self.subTest(fault=fault):

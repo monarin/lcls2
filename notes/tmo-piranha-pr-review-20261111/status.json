@@ -1,0 +1,17 @@
+{
+  "scope": "prepare and review existing hold implementation as draft PR; repair test startup allowance",
+  "phase": "verify_fix",
+  "round": 2,
+  "round_limit": 3,
+  "implementation_sha": "820f992408c9232839273ccdd5e9121700785e96",
+  "reviewer": "in-session independent reviewer",
+  "unresolved_ids": [
+    "PR-001"
+  ],
+  "hardware_executed": false,
+  "checks": [
+    "58 offline tests passed, zero skips",
+    "hold/rehearsal dry-runs passed",
+    "commit hooks passed"
+  ]
+}
